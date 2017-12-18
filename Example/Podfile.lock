@@ -1,0 +1,22 @@
+PODS:
+  - Hyperspace (1.0.0):
+    - Result (~> 3.2)
+  - Result (3.2.4)
+  - SwiftLint (0.23.1)
+
+DEPENDENCIES:
+  - Hyperspace (from `../`)
+  - SwiftLint
+
+EXTERNAL SOURCES:
+  Hyperspace:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Hyperspace: 791168fdf064ff4b94e268a45c3b6309633afe45
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SwiftLint: 1b670ce79284c76520f84060e87d645078fd32fa
+
+PODFILE CHECKSUM: 7931d79a68c439f5cb0b9665f498ad813acffad2
+
+COCOAPODS: 1.4.0.beta.2
