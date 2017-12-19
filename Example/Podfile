@@ -8,8 +8,6 @@ target 'Hyperspace_Example' do
 
   target 'Hyperspace_Tests' do
     inherit! :search_paths
-
-
   end
 end
 
