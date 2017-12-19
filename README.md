@@ -1,6 +1,6 @@
 # Hyperspace
 
-[![CI Status](http://img.shields.io/travis/Tyler Milner/Hyperspace.svg?style=flat)](https://travis-ci.org/Tyler Milner/Hyperspace)
+[![CI Status](http://img.shields.io/travis/BottleRocketStudios/iOS-Hyperspace.svg?style=flat)](https://travis-ci.org/BottleRocketStudios/iOS-Hyperspace)
 [![Version](https://img.shields.io/cocoapods/v/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![License](https://img.shields.io/cocoapods/l/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![Platform](https://img.shields.io/cocoapods/p/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
