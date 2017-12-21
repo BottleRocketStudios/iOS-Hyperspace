@@ -4,11 +4,34 @@
 
 osx_image: xcode9.2
 language: swift
+env:
+  global:
+    - WORKSPACE=Example/Hyperspace.xcworkspace
+    - IOS_FRAMEWORK_SCHEME="Hyperspace-Example"
+    - TVOS_FRAMEWORK_SCHEME="Hyperspace_Example_tvOS"
+    - WATCHOS_FRAMEWORK_SCHEME="Hyperspace_Example_watchOS"
+  matrix:
+    - DESTINATION="OS=4.2,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  POD_LINT="NO"
+
+    - DESTINATION="OS=11.2,name=iPhone X"          SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" POD_LINT="YES"
+
+    - DESTINATION="OS=11.2,name=Apple TV 4K"       SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" POD_LINT="NO"
 # cache: cocoapods
 # podfile: Example/Podfile
-# before_install:
-# - gem install cocoapods # Since Travis is not always on latest version
+before_install:
+  - gem install cocoapods --pre # Since Travis is not always on latest version
 # - pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/Hyperspace.xcworkspace -scheme Hyperspace-Example -sdk iphonesimulator -destination "OS=11.2,name=iPhone X" ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+  - set -o pipefail
+
+  # Build Framework and Run Tests if specified
+  - if [ $RUN_TESTS == "YES" ]; then
+      xcodebuild test -enableCodeCoverage YES -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty;
+    else
+      xcodebuild build -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty;
+    fi
+
+  # Run `pod lib lint` if specified
+  - if [ $POD_LINT == "YES" ]; then
+      pod lib lint;
+    fi
