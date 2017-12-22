@@ -48,6 +48,8 @@
 		60FC6AE81F7B17D600708502 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC6ADE1F7B104800708502 /* NetworkRequestTestDefaults.swift */; };
 		A5C67DB45A1F2A833A10249F /* Pods_Hyperspace_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C223D0B76EA2E4458AECCC1 /* Pods_Hyperspace_Example.framework */; };
 		AEB6D2CAB4F4FFF7FDFB0D4A /* Pods_Hyperspace_Example_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E02690F947FA6016D8A1C5 /* Pods_Hyperspace_Example_tvOS.framework */; };
+		B4D643011FECA34000F211C5 /* NetworkActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642FF1FECA30000F211C5 /* NetworkActivityIndicatorTests.swift */; };
+		B4D643071FECA53000F211C5 /* MockNetworkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D643051FECA52D00F211C5 /* MockNetworkActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +159,8 @@
 		8214BC428E933A4D388D4BB4 /* Pods-Hyperspace_Example_tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_tvOS/Pods-Hyperspace_Example_tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		993580CE80A2751F010C7436 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A771CD82D8FAFCE263B0EE77 /* Pods-Hyperspace_Example_tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_tvOS/Pods-Hyperspace_Example_tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		B4D642FF1FECA30000F211C5 /* NetworkActivityIndicatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorTests.swift; sourceTree = "<group>"; };
+		B4D643051FECA52D00F211C5 /* MockNetworkActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkActivityIndicator.swift; sourceTree = "<group>"; };
 		CF8729374E53729FA99EC5CB /* Hyperspace.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Hyperspace.podspec; path = ../Hyperspace.podspec; sourceTree = "<group>"; };
 		D9B6A48DD00AA543B91246A2 /* Pods-Hyperspace_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E8571D3C3C5456109632ED55 /* Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_watchOS Extension/Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 				60FC6AD81F7B0FEF00708502 /* Mocks */,
 				60FC6AE11F7B107800708502 /* NetworkRequestTests.swift */,
 				60FC6AE01F7B107800708502 /* NetworkServiceTests.swift */,
+				B4D642FF1FECA30000F211C5 /* NetworkActivityIndicatorTests.swift */,
 				60FC6ADA1F7B0FFF00708502 /* Test Defaults */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -380,6 +385,7 @@
 				60FC6ADD1F7B103C00708502 /* MockNetworkSession.swift */,
 				60FC6ADB1F7B103B00708502 /* MockNetworkSessionDataTask.swift */,
 				0E5CD4E81FD74E7F000E0C6F /* MockDecodableContainer.swift */,
+				B4D643051FECA52D00F211C5 /* MockNetworkActivityIndicator.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -871,8 +877,10 @@
 				60FC6AE41F7B17C300708502 /* MockNetworkSession.swift in Sources */,
 				60FC6AE21F7B17B600708502 /* BackendServiceTests.swift in Sources */,
 				0E5CD4EA1FD74F3D000E0C6F /* DecodingTests.swift in Sources */,
+				B4D643011FECA34000F211C5 /* NetworkActivityIndicatorTests.swift in Sources */,
 				60FC6AE71F7B17D000708502 /* NetworkServiceTests.swift in Sources */,
 				60FC6AE61F7B17CD00708502 /* NetworkRequestTests.swift in Sources */,
+				B4D643071FECA53000F211C5 /* MockNetworkActivityIndicator.swift in Sources */,
 				60FC6AE81F7B17D600708502 /* NetworkRequestTestDefaults.swift in Sources */,
 				0E5CD4E91FD74E7F000E0C6F /* MockDecodableContainer.swift in Sources */,
 			);
