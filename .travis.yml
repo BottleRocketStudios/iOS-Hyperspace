@@ -10,6 +10,6 @@ before_install:
 script:
   - set -o pipefail
 
-  - xcodebuild build -workspace Example/Hyperspace.xcworkspace -scheme "Hyperspace_Example_watchOS (Notification)" -sdk watchsimulator | xcpretty
+  - xcodebuild test -workspace Example/Hyperspace.xcworkspace -scheme Hyperspace-Example -sdk iphonesimulator -destination "platform=iOS Simulator,OS=11.2,name=iPhone X" | xcpretty
 
   - pod lib lint
