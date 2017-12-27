@@ -9,7 +9,7 @@ env:
     - WORKSPACE=Example/Hyperspace.xcworkspace
     - IOS_FRAMEWORK_SCHEME="Hyperspace-Example"
     - TVOS_FRAMEWORK_SCHEME="Hyperspace_Example_tvOS"
-    - WATCHOS_FRAMEWORK_SCHEME="Hyperspace_Example_watchOS"
+    - WATCHOS_FRAMEWORK_SCHEME="Hyperspace_Example_watchOS (Notification)"
   matrix:
     - DESTINATION="platform=watchOS Simulator,OS=latest,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  POD_LINT="NO"
 
