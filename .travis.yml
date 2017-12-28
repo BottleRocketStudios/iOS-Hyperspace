@@ -6,16 +6,16 @@ osx_image: xcode9.2
 language: swift
 env:
   global:
-    - WORKSPACE=Example/Hyperspace.xcworkspace
-    - IOS_FRAMEWORK_SCHEME="Hyperspace-Example"
-    - TVOS_FRAMEWORK_SCHEME="Hyperspace_Example_tvOS"
-    - WATCHOS_FRAMEWORK_SCHEME="Hyperspace_Example_watchOS (Notification)"
+    - WORKSPACE=Hyperspace.xcworkspace
+    - IOS_FRAMEWORK_SCHEME=Hyperspace-iOS
+    - TVOS_FRAMEWORK_SCHEME=Hyperspace-tvOS
+    - WATCHOS_FRAMEWORK_SCHEME=Hyperspace-watchOS
   matrix:
-    - DESTINATION="platform=watchOS Simulator,OS=latest,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  POD_LINT="NO"
+    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X"                        SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" POD_LINT="YES"
 
-    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X"                 SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" POD_LINT="YES"
+    - DESTINATION="platform=tvOS Simulator,OS=11.2,name=Apple TV 4K"                    SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" POD_LINT="NO"
 
-    - DESTINATION="platform=tvOS Simulator,OS=11.2,name=Apple TV 4K"             SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" POD_LINT="NO"
+    - DESTINATION="platform=watchOS Simulator,OS=4.2,name=Apple Watch Series 3 - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  POD_LINT="NO"
 before_install:
   - gem install cocoapods --pre # Since Travis is not always on latest version
   - pod install --project-directory=Example
@@ -24,7 +24,7 @@ script:
 
   # Build Framework and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -enableCodeCoverage YES -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty;
+      xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES | xcpretty;
     else
       xcodebuild build -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty;
     fi
