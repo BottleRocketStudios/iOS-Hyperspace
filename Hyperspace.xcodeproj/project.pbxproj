@@ -52,7 +52,6 @@
 		60AC82FA1FF58E3600120172 /* Hyperspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hyperspace.h; sourceTree = "<group>"; };
 		60AC82FB1FF58E3600120172 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60AC83201FF58E8B00120172 /* HyperspaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperspaceTests.swift; sourceTree = "<group>"; };
-		60AC83211FF58E8B00120172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60AC833F1FF596B600120172 /* URL+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Additions.swift"; sourceTree = "<group>"; };
 		60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItem+Extensions.swift"; sourceTree = "<group>"; };
 		60AC83421FF596B600120172 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		60AC834C1FF596B600120172 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceProtocol.swift; sourceTree = "<group>"; };
 		60AC834F1FF596B600120172 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
+		60EB8FDB1FF59FB000AC0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B58510184D78AB757C5C7A1 /* Pods-Hyperspace-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-tvOS/Pods-Hyperspace-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		747DEE6C5200CC926F74CDD2 /* Pods_Hyperspace_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B19F85FF65B8A01AE732EA /* Pods-Hyperspace-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-tvOS/Pods-Hyperspace-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -186,8 +186,8 @@
 		60AC831F1FF58E8B00120172 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				60EB8FDA1FF59FB000AC0B55 /* Supporting Files */,
 				60AC83201FF58E8B00120172 /* HyperspaceTests.swift */,
-				60AC83211FF58E8B00120172 /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -257,6 +257,14 @@
 				60AC834F1FF596B600120172 /* BackendService.swift */,
 			);
 			path = Backend;
+			sourceTree = "<group>";
+		};
+		60EB8FDA1FF59FB000AC0B55 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				60EB8FDB1FF59FB000AC0B55 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		79D2C13C3BEFD9470202523E /* Frameworks */ = {
