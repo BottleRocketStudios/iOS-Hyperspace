@@ -1,0 +1,1136 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		207FF1C24B2C7713FE0D24C6 /* Pods_Hyperspace_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC15A543BE8255D4FD2D4FC /* Pods_Hyperspace_watchOS.framework */; };
+		5A07F9B29EA95C7E886961B4 /* Pods_Hyperspace_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 747DEE6C5200CC926F74CDD2 /* Pods_Hyperspace_tvOSTests.framework */; };
+		60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; };
+		60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; };
+		60AC830F1FF58E3600120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60AC831D1FF58E4D00120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60AC831E1FF58E4F00120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60AC833A1FF58F3C00120172 /* HyperspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83201FF58E8B00120172 /* HyperspaceTests.swift */; };
+		60AC833B1FF5927200120172 /* HyperspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83201FF58E8B00120172 /* HyperspaceTests.swift */; };
+		780BF7C20BBDEB476C3ED482 /* Pods_Hyperspace_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397106F356081BB2C31509D9 /* Pods_Hyperspace_tvOS.framework */; };
+		C82643822E81DB2655D2D62A /* Pods_Hyperspace_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15C377C282A240108FBA442 /* Pods_Hyperspace_iOSTests.framework */; };
+		CC644C66EAA0D4785A4BC576 /* Pods_Hyperspace_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8904CCECE5E954EA822F97 /* Pods_Hyperspace_iOS.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		60AC82C11FF588D600120172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60AC82B51FF588D500120172;
+			remoteInfo = Hyperspace;
+		};
+		60AC82EC1FF589C200120172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60AC82E11FF589C200120172;
+			remoteInfo = "Hyperspace-tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A073DA19811476D5532E05F /* Pods-Hyperspace-watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-watchOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-watchOS/Pods-Hyperspace-watchOS.release.xcconfig"; sourceTree = "<group>"; };
+		2F955D02290EEC980B72F9DF /* Pods-Hyperspace-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-iOSTests/Pods-Hyperspace-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		357C99798397DCA3C91DA191 /* Pods-Hyperspace-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-watchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-watchOS/Pods-Hyperspace-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
+		397106F356081BB2C31509D9 /* Pods_Hyperspace_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		588CA29B0253B9C4D0B230D7 /* Pods-Hyperspace-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-iOSTests/Pods-Hyperspace-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		60AC82B61FF588D500120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60AC82BF1FF588D600120172 /* Hyperspace-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		60AC82D51FF5899800120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60AC82E21FF589C200120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		60AC82FA1FF58E3600120172 /* Hyperspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hyperspace.h; sourceTree = "<group>"; };
+		60AC82FB1FF58E3600120172 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60AC83201FF58E8B00120172 /* HyperspaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperspaceTests.swift; sourceTree = "<group>"; };
+		60AC83211FF58E8B00120172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60AC833F1FF596B600120172 /* URL+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Additions.swift"; sourceTree = "<group>"; };
+		60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItem+Extensions.swift"; sourceTree = "<group>"; };
+		60AC83421FF596B600120172 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyNetworkRequest+DecodableContainer.swift"; sourceTree = "<group>"; };
+		60AC83451FF596B600120172 /* AnyNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyNetworkRequest.swift; sourceTree = "<group>"; };
+		60AC83461FF596B600120172 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionDataTask.swift; sourceTree = "<group>"; };
+		60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		60AC834B1FF596B600120172 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		60AC834C1FF596B600120172 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceProtocol.swift; sourceTree = "<group>"; };
+		60AC834F1FF596B600120172 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
+		6B58510184D78AB757C5C7A1 /* Pods-Hyperspace-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-tvOS/Pods-Hyperspace-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		747DEE6C5200CC926F74CDD2 /* Pods_Hyperspace_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82B19F85FF65B8A01AE732EA /* Pods-Hyperspace-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-tvOS/Pods-Hyperspace-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		83BC76DC5A61D49B30F5CEBE /* Pods-Hyperspace-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-tvOSTests/Pods-Hyperspace-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8DC15A543BE8255D4FD2D4FC /* Pods_Hyperspace_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C8904CCECE5E954EA822F97 /* Pods_Hyperspace_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E9343A5E2C5DD6D0F94DF7 /* Pods-Hyperspace-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-iOS/Pods-Hyperspace-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		A7B3A7672DE62BF6ADD97258 /* Pods-Hyperspace-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-iOS/Pods-Hyperspace-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		CD74CD8FC6EC3E887C398F68 /* Pods-Hyperspace-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace-tvOSTests/Pods-Hyperspace-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		F15C377C282A240108FBA442 /* Pods_Hyperspace_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		60AC82B21FF588D500120172 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC644C66EAA0D4785A4BC576 /* Pods_Hyperspace_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82BC1FF588D600120172 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */,
+				C82643822E81DB2655D2D62A /* Pods_Hyperspace_iOSTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82D11FF5899800120172 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207FF1C24B2C7713FE0D24C6 /* Pods_Hyperspace_watchOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82DE1FF589C200120172 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780BF7C20BBDEB476C3ED482 /* Pods_Hyperspace_tvOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82E71FF589C200120172 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */,
+				5A07F9B29EA95C7E886961B4 /* Pods_Hyperspace_tvOSTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05B2E8CC946FF479C4016EE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7B3A7672DE62BF6ADD97258 /* Pods-Hyperspace-iOS.debug.xcconfig */,
+				A6E9343A5E2C5DD6D0F94DF7 /* Pods-Hyperspace-iOS.release.xcconfig */,
+				2F955D02290EEC980B72F9DF /* Pods-Hyperspace-iOSTests.debug.xcconfig */,
+				588CA29B0253B9C4D0B230D7 /* Pods-Hyperspace-iOSTests.release.xcconfig */,
+				6B58510184D78AB757C5C7A1 /* Pods-Hyperspace-tvOS.debug.xcconfig */,
+				82B19F85FF65B8A01AE732EA /* Pods-Hyperspace-tvOS.release.xcconfig */,
+				83BC76DC5A61D49B30F5CEBE /* Pods-Hyperspace-tvOSTests.debug.xcconfig */,
+				CD74CD8FC6EC3E887C398F68 /* Pods-Hyperspace-tvOSTests.release.xcconfig */,
+				357C99798397DCA3C91DA191 /* Pods-Hyperspace-watchOS.debug.xcconfig */,
+				0A073DA19811476D5532E05F /* Pods-Hyperspace-watchOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		60AC82AC1FF588D500120172 = {
+			isa = PBXGroup;
+			children = (
+				60AC82B81FF588D500120172 /* Hyperspace */,
+				60AC831F1FF58E8B00120172 /* Tests */,
+				60AC82B71FF588D500120172 /* Products */,
+				05B2E8CC946FF479C4016EE3 /* Pods */,
+				79D2C13C3BEFD9470202523E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		60AC82B71FF588D500120172 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60AC82B61FF588D500120172 /* Hyperspace.framework */,
+				60AC82BF1FF588D600120172 /* Hyperspace-iOSTests.xctest */,
+				60AC82D51FF5899800120172 /* Hyperspace.framework */,
+				60AC82E21FF589C200120172 /* Hyperspace.framework */,
+				60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60AC82B81FF588D500120172 /* Hyperspace */ = {
+			isa = PBXGroup;
+			children = (
+				60AC833D1FF596B600120172 /* Classes */,
+				60AC82F91FF58E3600120172 /* Supporting Files */,
+			);
+			name = Hyperspace;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		60AC82F91FF58E3600120172 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				60AC82FA1FF58E3600120172 /* Hyperspace.h */,
+				60AC82FB1FF58E3600120172 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			path = "Sources/Supporting Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		60AC831F1FF58E8B00120172 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				60AC83201FF58E8B00120172 /* HyperspaceTests.swift */,
+				60AC83211FF58E8B00120172 /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		60AC833D1FF596B600120172 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				60AC833E1FF596B600120172 /* Extensions */,
+				60AC83411FF596B600120172 /* HTTP */,
+				60AC83431FF596B600120172 /* Request */,
+				60AC83471FF596B600120172 /* Service */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		60AC833E1FF596B600120172 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				60AC833F1FF596B600120172 /* URL+Additions.swift */,
+				60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		60AC83411FF596B600120172 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				60AC83421FF596B600120172 /* HTTP.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		60AC83431FF596B600120172 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */,
+				60AC83451FF596B600120172 /* AnyNetworkRequest.swift */,
+				60AC83461FF596B600120172 /* NetworkRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		60AC83471FF596B600120172 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				60AC83481FF596B600120172 /* Network */,
+				60AC834D1FF596B600120172 /* Backend */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		60AC83481FF596B600120172 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */,
+				60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */,
+				60AC834B1FF596B600120172 /* NetworkSession.swift */,
+				60AC834C1FF596B600120172 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		60AC834D1FF596B600120172 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */,
+				60AC834F1FF596B600120172 /* BackendService.swift */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		79D2C13C3BEFD9470202523E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C8904CCECE5E954EA822F97 /* Pods_Hyperspace_iOS.framework */,
+				F15C377C282A240108FBA442 /* Pods_Hyperspace_iOSTests.framework */,
+				397106F356081BB2C31509D9 /* Pods_Hyperspace_tvOS.framework */,
+				747DEE6C5200CC926F74CDD2 /* Pods_Hyperspace_tvOSTests.framework */,
+				8DC15A543BE8255D4FD2D4FC /* Pods_Hyperspace_watchOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		60AC82B31FF588D500120172 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60AC830F1FF58E3600120172 /* Hyperspace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82D21FF5899800120172 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60AC831D1FF58E4D00120172 /* Hyperspace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82DF1FF589C200120172 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60AC831E1FF58E4F00120172 /* Hyperspace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		60AC82B51FF588D500120172 /* Hyperspace-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60AC82CA1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOS" */;
+			buildPhases = (
+				618F594A8CDE95565DD7F7B1 /* [CP] Check Pods Manifest.lock */,
+				60AC82B11FF588D500120172 /* Sources */,
+				60AC82B21FF588D500120172 /* Frameworks */,
+				60AC82B31FF588D500120172 /* Headers */,
+				60AC82B41FF588D500120172 /* Resources */,
+				3346365425C73835FCFCF884 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyperspace-iOS";
+			productName = Hyperspace;
+			productReference = 60AC82B61FF588D500120172 /* Hyperspace.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60AC82BE1FF588D600120172 /* Hyperspace-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60AC82CD1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOSTests" */;
+			buildPhases = (
+				04A4C973929D281A4C66DF0B /* [CP] Check Pods Manifest.lock */,
+				60AC82BB1FF588D600120172 /* Sources */,
+				60AC82BC1FF588D600120172 /* Frameworks */,
+				60AC82BD1FF588D600120172 /* Resources */,
+				0B96FFBEF74B0E3E2B61BBC1 /* [CP] Embed Pods Frameworks */,
+				13C1F35544231B537048340B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60AC82C21FF588D600120172 /* PBXTargetDependency */,
+			);
+			name = "Hyperspace-iOSTests";
+			productName = HyperspaceTests;
+			productReference = 60AC82BF1FF588D600120172 /* Hyperspace-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		60AC82D41FF5899800120172 /* Hyperspace-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60AC82DA1FF5899800120172 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOS" */;
+			buildPhases = (
+				BAA77A9D2A2220B284CD0D19 /* [CP] Check Pods Manifest.lock */,
+				60AC82D01FF5899800120172 /* Sources */,
+				60AC82D11FF5899800120172 /* Frameworks */,
+				60AC82D21FF5899800120172 /* Headers */,
+				60AC82D31FF5899800120172 /* Resources */,
+				694757E1CD649F3D16035884 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyperspace-watchOS";
+			productName = "Hyperspace-watchOS";
+			productReference = 60AC82D51FF5899800120172 /* Hyperspace.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60AC82E11FF589C200120172 /* Hyperspace-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60AC82F31FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOS" */;
+			buildPhases = (
+				CAE6C80F500E2333BF8DF278 /* [CP] Check Pods Manifest.lock */,
+				60AC82DD1FF589C200120172 /* Sources */,
+				60AC82DE1FF589C200120172 /* Frameworks */,
+				60AC82DF1FF589C200120172 /* Headers */,
+				60AC82E01FF589C200120172 /* Resources */,
+				7FFCF2B028BB1163DA00C341 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyperspace-tvOS";
+			productName = "Hyperspace-tvOS";
+			productReference = 60AC82E21FF589C200120172 /* Hyperspace.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60AC82E91FF589C200120172 /* Hyperspace-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60AC82F61FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOSTests" */;
+			buildPhases = (
+				A3AA996DA162C0E03C1EC97F /* [CP] Check Pods Manifest.lock */,
+				60AC82E61FF589C200120172 /* Sources */,
+				60AC82E71FF589C200120172 /* Frameworks */,
+				60AC82E81FF589C200120172 /* Resources */,
+				111BA211D42587BFF342967C /* [CP] Embed Pods Frameworks */,
+				B661E554B940BDDC85D6BEDF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60AC82ED1FF589C200120172 /* PBXTargetDependency */,
+			);
+			name = "Hyperspace-tvOSTests";
+			productName = "Hyperspace-tvOSTests";
+			productReference = 60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		60AC82AD1FF588D500120172 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Bottle Rocket Studios";
+				TargetAttributes = {
+					60AC82B51FF588D500120172 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					60AC82BE1FF588D600120172 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					60AC82D41FF5899800120172 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					60AC82E11FF589C200120172 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					60AC82E91FF589C200120172 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 60AC82B01FF588D500120172 /* Build configuration list for PBXProject "Hyperspace" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 60AC82AC1FF588D500120172;
+			productRefGroup = 60AC82B71FF588D500120172 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60AC82B51FF588D500120172 /* Hyperspace-iOS */,
+				60AC82BE1FF588D600120172 /* Hyperspace-iOSTests */,
+				60AC82D41FF5899800120172 /* Hyperspace-watchOS */,
+				60AC82E11FF589C200120172 /* Hyperspace-tvOS */,
+				60AC82E91FF589C200120172 /* Hyperspace-tvOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		60AC82B41FF588D500120172 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82BD1FF588D600120172 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82D31FF5899800120172 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82E01FF589C200120172 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82E81FF589C200120172 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04A4C973929D281A4C66DF0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace-iOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0B96FFBEF74B0E3E2B61BBC1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-iOSTests/Pods-Hyperspace-iOSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hyperspace-iOS/Hyperspace.framework",
+				"${BUILT_PRODUCTS_DIR}/Result-iOS/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyperspace.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-iOSTests/Pods-Hyperspace-iOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		111BA211D42587BFF342967C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-tvOSTests/Pods-Hyperspace-tvOSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hyperspace-tvOS/Hyperspace.framework",
+				"${BUILT_PRODUCTS_DIR}/Result-tvOS/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyperspace.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-tvOSTests/Pods-Hyperspace-tvOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		13C1F35544231B537048340B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-iOSTests/Pods-Hyperspace-iOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3346365425C73835FCFCF884 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-iOS/Pods-Hyperspace-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		618F594A8CDE95565DD7F7B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		694757E1CD649F3D16035884 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-watchOS/Pods-Hyperspace-watchOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FFCF2B028BB1163DA00C341 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-tvOS/Pods-Hyperspace-tvOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3AA996DA162C0E03C1EC97F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B661E554B940BDDC85D6BEDF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace-tvOSTests/Pods-Hyperspace-tvOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAA77A9D2A2220B284CD0D19 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace-watchOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAE6C80F500E2333BF8DF278 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		60AC82B11FF588D500120172 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82BB1FF588D600120172 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60AC833A1FF58F3C00120172 /* HyperspaceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82D01FF5899800120172 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82DD1FF589C200120172 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AC82E61FF589C200120172 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60AC833B1FF5927200120172 /* HyperspaceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		60AC82C21FF588D600120172 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60AC82B51FF588D500120172 /* Hyperspace-iOS */;
+			targetProxy = 60AC82C11FF588D600120172 /* PBXContainerItemProxy */;
+		};
+		60AC82ED1FF589C200120172 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60AC82E11FF589C200120172 /* Hyperspace-tvOS */;
+			targetProxy = 60AC82EC1FF589C200120172 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		60AC82C81FF588D600120172 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		60AC82C91FF588D600120172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		60AC82CB1FF588D600120172 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7B3A7672DE62BF6ADD97258 /* Pods-Hyperspace-iOS.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
+				PRODUCT_NAME = Hyperspace;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		60AC82CC1FF588D600120172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6E9343A5E2C5DD6D0F94DF7 /* Pods-Hyperspace-iOS.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
+				PRODUCT_NAME = Hyperspace;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		60AC82CE1FF588D600120172 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F955D02290EEC980B72F9DF /* Pods-Hyperspace-iOSTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.HyperspaceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		60AC82CF1FF588D600120172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 588CA29B0253B9C4D0B230D7 /* Pods-Hyperspace-iOSTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.HyperspaceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		60AC82DB1FF5899800120172 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 357C99798397DCA3C91DA191 /* Pods-Hyperspace-watchOS.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-watchOS";
+				PRODUCT_NAME = Hyperspace;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		60AC82DC1FF5899800120172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A073DA19811476D5532E05F /* Pods-Hyperspace-watchOS.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-watchOS";
+				PRODUCT_NAME = Hyperspace;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		60AC82F41FF589C200120172 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B58510184D78AB757C5C7A1 /* Pods-Hyperspace-tvOS.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOS";
+				PRODUCT_NAME = Hyperspace;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		60AC82F51FF589C200120172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82B19F85FF65B8A01AE732EA /* Pods-Hyperspace-tvOS.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOS";
+				PRODUCT_NAME = Hyperspace;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		60AC82F71FF589C200120172 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83BC76DC5A61D49B30F5CEBE /* Pods-Hyperspace-tvOSTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		60AC82F81FF589C200120172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD74CD8FC6EC3E887C398F68 /* Pods-Hyperspace-tvOSTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60AC82B01FF588D500120172 /* Build configuration list for PBXProject "Hyperspace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60AC82C81FF588D600120172 /* Debug */,
+				60AC82C91FF588D600120172 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60AC82CA1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60AC82CB1FF588D600120172 /* Debug */,
+				60AC82CC1FF588D600120172 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60AC82CD1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60AC82CE1FF588D600120172 /* Debug */,
+				60AC82CF1FF588D600120172 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60AC82DA1FF5899800120172 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60AC82DB1FF5899800120172 /* Debug */,
+				60AC82DC1FF5899800120172 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60AC82F31FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60AC82F41FF589C200120172 /* Debug */,
+				60AC82F51FF589C200120172 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60AC82F61FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60AC82F71FF589C200120172 /* Debug */,
+				60AC82F81FF589C200120172 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 60AC82AD1FF588D500120172 /* Project object */;
+}

@@ -33,7 +33,7 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
 
-  s.source_files = 'Hyperspace/Classes/**/*'
+  s.source_files = 'Sources/Classes/**/*'
 
   # s.resource_bundles = {
   #   'Hyperspace' => ['Hyperspace/Assets/*.png']
