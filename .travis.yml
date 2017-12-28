@@ -7,9 +7,9 @@ language: swift
 env:
   global:
     - WORKSPACE=Hyperspace.xcworkspace
-    - IOS_FRAMEWORK_SCHEME=Hyperspace-iOS
-    - TVOS_FRAMEWORK_SCHEME=Hyperspace-tvOS
-    - WATCHOS_FRAMEWORK_SCHEME=Hyperspace-watchOS
+    - IOS_FRAMEWORK_SCHEME=Hyperspace_iOS
+    - TVOS_FRAMEWORK_SCHEME=Hyperspace_tvOS
+    - WATCHOS_FRAMEWORK_SCHEME=Hyperspace_watchOS
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X"                        SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" POD_LINT="YES"
 
