@@ -18,7 +18,7 @@ env:
     - DESTINATION="platform=watchOS Simulator,OS=4.2,name=Apple Watch Series 3 - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  POD_LINT="NO"
 before_install:
   - gem install cocoapods --pre # Since Travis is not always on latest version
-  - pod install --project-directory=Example
+  - pod install
 script:
   - set -o pipefail
 
