@@ -1,22 +1,41 @@
-platform :ios, '8.0'
 use_frameworks!
 
-target 'Hyperspace_Example' do
-  platform :ios, '9.0'
-  pod 'Hyperspace', :path => '../'
-  pod 'SwiftLint'
-
-  target 'Hyperspace_Tests' do
-    inherit! :search_paths
-  end
+def hyperspace_pod
+    pod 'Hyperspace', :path => '../'
 end
 
-target 'Hyperspace_Example_watchOS Extension' do
-  platform :watchos, '4.1'
-  pod 'Hyperspace', :path => '../'
+target 'Hyperspace_Example' do
+    platform :ios, '8.0'
+
+    hyperspace_pod
+    pod 'SwiftLint'
+
+end
+
+target 'Hyperspace_Tests' do
+    platform :ios, '8.0'
+    
+    hyperspace_pod
+    
 end
 
 target 'Hyperspace_Example_tvOS' do
     platform :tvos, '9.0'
-    pod 'Hyperspace', :path => '../'
+    
+    hyperspace_pod
+    
+end
+
+target 'Hyperspace_Example_watchOS' do
+    platform :watchos, '2.0'
+    
+    hyperspace_pod
+
+end
+
+target 'Hyperspace_Example_watchOS Extension' do
+    platform :watchos, '2.0'
+    
+    hyperspace_pod
+
 end
