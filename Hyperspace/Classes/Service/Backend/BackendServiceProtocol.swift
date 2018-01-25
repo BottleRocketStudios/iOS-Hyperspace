@@ -52,6 +52,9 @@ public protocol BackendServiceProtocol {
     
     /// Cancels the task for the given request (if it is currently running).
     func cancelTask(for request: URLRequest)
+    
+    /// Cancels all currently running tasks
+    func cancelAllTasks()
 }
 
 // MARK: - Default Typed Implementation
