@@ -168,7 +168,7 @@ public struct HTTP {
             return data.flatMap { String(data: $0, encoding: .utf8) }
         }
         
-        /// Initialize a new HTTP.Response with any given HTTP status code and Data
+        /// Initialize a new HTTP.Response with any given HTTP status code and Data.
         ///
         /// - Parameters:
         ///   - code: The raw HTTP status code for this response.

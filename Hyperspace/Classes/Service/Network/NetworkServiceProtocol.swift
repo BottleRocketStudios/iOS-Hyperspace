@@ -37,8 +37,8 @@ public struct NetworkServiceSuccess {
 
 /// Represents the failed result of executing a NetworkRequest using a NetworkService.
 public struct NetworkServiceFailure: Error {
-    let error: NetworkServiceError
-    let response: HTTP.Response?
+    public let error: NetworkServiceError
+    public let response: HTTP.Response?
 }
 
 /// Represents the possible resulting values of a NetworkRequest using a NetworkService.
