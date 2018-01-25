@@ -41,6 +41,9 @@ public struct NetworkServiceFailure: Error {
     let response: HTTP.Response?
 }
 
+/// Represents the possible resulting values of a NetworkRequest using a NetworkService.
+public typealias NetworkServiceResult = Result<NetworkServiceSuccess, NetworkServiceFailure>
+
 /// Upon completion of executing a NetworkRequest using a NetworkService, the NetworkServiceResult is returned.
 public typealias NetworkServiceCompletion = (Result<NetworkServiceSuccess, NetworkServiceFailure>) -> Void
 
