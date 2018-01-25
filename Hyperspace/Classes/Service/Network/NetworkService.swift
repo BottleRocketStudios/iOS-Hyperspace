@@ -46,13 +46,14 @@ extension NetworkService: NetworkServiceProtocol {
     public func execute(request: URLRequest, completion: @escaping NetworkServiceCompletion) {
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
-                completion(NetworkServiceHelper.networkServiceResult(for: error))
+                let networkFailure = NetworkServiceHelper.networkServiceFailure(for: error)
+                completion(.failure(networkFailure))
                 return
             }
             
             let httpResponse = HTTP.Response(code: statusCode, data: data)
-            let result = NetworkServiceHelper.networkServiceResult(for: httpResponse)
-            completion(result)
+            let networkResult = NetworkServiceHelper.networkServiceResult(for: httpResponse)
+            completion(networkResult)
         }
         
         tasks[request] = task
@@ -75,9 +76,9 @@ public struct NetworkServiceHelper {
     ///
     /// - Parameter clientError: The error returned by the NetworkSessionDataTask.
     /// - Returns: The outcome NetworkServiceResult dictated by the error.
-    public static func networkServiceResult(for clientError: Error?) -> NetworkServiceResult {
+    public static func networkServiceFailure(for clientError: Error?) -> NetworkServiceFailure {
         let responseError = invalidHTTPResponseError(for: clientError)
-        return .failure(NetworkServiceFailure(error: responseError, response: nil))
+        return NetworkServiceFailure(error: responseError, response: nil)
     }
     
     /// Used to convert a valid HTTP.Response object, such as those returned by a NetworkSessionDataTask, into a NetworkServiceResult.
