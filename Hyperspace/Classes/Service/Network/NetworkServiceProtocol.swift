@@ -31,8 +31,8 @@ public enum NetworkServiceError: Error {
 
 /// Represents the successful result of executing a NetworkRequest using a NetworkService.
 public struct NetworkServiceSuccess {
-    let data: Data
-    let response: HTTP.Response
+    public let data: Data
+    public let response: HTTP.Response
 }
 
 /// Represents the failed result of executing a NetworkRequest using a NetworkService.
