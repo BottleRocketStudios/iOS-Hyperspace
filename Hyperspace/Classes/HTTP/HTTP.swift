@@ -167,6 +167,16 @@ public struct HTTP {
         public var dataString: String? {
             return data.flatMap { String(data: $0, encoding: .utf8) }
         }
+        
+        /// Initialize a new HTTP.Response with any given HTTP status code and Data
+        ///
+        /// - Parameters:
+        ///   - code: The raw HTTP status code for this response.
+        ///   - data: The raw Data associated with the HTTP response, if any data was provided.
+        public init(code: Int, data: Data?) {
+            self.code = code
+            self.data = data
+        }
     }
 }
 // swiftlint:enable nesting
