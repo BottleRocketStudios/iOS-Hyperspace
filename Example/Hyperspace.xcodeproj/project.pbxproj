@@ -32,8 +32,7 @@
 		129916841FD7497D0097D618 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299166C1FD748980097D618 /* Models.swift */; };
 		129916851FD7497D0097D618 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299166D1FD748980097D618 /* NetworkRequests.swift */; };
 		129916861FD749800097D618 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1299166C1FD748980097D618 /* Models.swift */; };
-		228AC1BA367F4B341DC46C47 /* Pods_Hyperspace_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A7333C9E8620792B847C98 /* Pods_Hyperspace_Tests.framework */; };
-		360CA97B655A5DA0195770B2 /* Pods_Hyperspace_Example_watchOS_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192F92F84D952FDC5FED5506 /* Pods_Hyperspace_Example_watchOS_Extension.framework */; };
+		4A92A8309339BDBA97A0C9DB /* Pods_Hyperspace_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5630E33342CEF08B10CCB0 /* Pods_Hyperspace_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -46,8 +45,10 @@
 		60FC6AE61F7B17CD00708502 /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC6AE11F7B107800708502 /* NetworkRequestTests.swift */; };
 		60FC6AE71F7B17D000708502 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC6AE01F7B107800708502 /* NetworkServiceTests.swift */; };
 		60FC6AE81F7B17D600708502 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC6ADE1F7B104800708502 /* NetworkRequestTestDefaults.swift */; };
-		A5C67DB45A1F2A833A10249F /* Pods_Hyperspace_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C223D0B76EA2E4458AECCC1 /* Pods_Hyperspace_Example.framework */; };
-		AEB6D2CAB4F4FFF7FDFB0D4A /* Pods_Hyperspace_Example_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E02690F947FA6016D8A1C5 /* Pods_Hyperspace_Example_tvOS.framework */; };
+		69F42357BB40D84FC388485E /* Pods_Hyperspace_Example_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADA43A9698F1AA6E664F10A /* Pods_Hyperspace_Example_tvOS.framework */; };
+		7F49C9D625FF3899CA3624FD /* Pods_Hyperspace_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF9E966E9EF74D175D64891 /* Pods_Hyperspace_Example.framework */; };
+		A739D0336EC16DEC835B6591 /* Pods_Hyperspace_Example_watchOS_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3EF52617E524159DB09CB1 /* Pods_Hyperspace_Example_watchOS_Extension.framework */; };
+		B8540204A012E4B97195EB07 /* Pods_Hyperspace_Example_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0237A36E70B4CFC8F83FAAE /* Pods_Hyperspace_Example_watchOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +101,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C223D0B76EA2E4458AECCC1 /* Pods_Hyperspace_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		025F70E8BAF52CD9FA0FAB64 /* Pods-Hyperspace_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example.release.xcconfig"; sourceTree = "<group>"; };
+		0ADA43A9698F1AA6E664F10A /* Pods_Hyperspace_Example_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Example_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D01E2050B6775735C7EFABC /* Pods-Hyperspace_Example_watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_watchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_watchOS/Pods-Hyperspace_Example_watchOS.debug.xcconfig"; sourceTree = "<group>"; };
 		0E24C4661FDB4F1600448212 /* Object.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Object.json; sourceTree = "<group>"; };
 		0E24C4691FDF018D00448212 /* DateObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DateObject.json; sourceTree = "<group>"; };
 		0E5CD4E21FD74DF3000E0C6F /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
@@ -126,14 +129,10 @@
 		1299167C1FD7492D0097D618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1299167E1FD7492D0097D618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		129916801FD7492D0097D618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		192F92F84D952FDC5FED5506 /* Pods_Hyperspace_Example_watchOS_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Example_watchOS_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		193C4B690C5AF15F43C648DB /* Pods-Hyperspace_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		19A4286E43AC44B22158976B /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE.txt; path = ../LICENSE.txt; sourceTree = "<group>"; };
-		2DF5BF7DDAC95D296F17D835 /* Pods_Hyperspace_Example_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Example_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		32C4E5CBA65DC995454F12C6 /* Pods-Hyperspace_Example_watchOS Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_watchOS Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_watchOS Extension/Pods-Hyperspace_Example_watchOS Extension.release.xcconfig"; sourceTree = "<group>"; };
-		34A7333C9E8620792B847C98 /* Pods_Hyperspace_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F4E480D03EE3561BDB27F67 /* Pods-Hyperspace_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		537DFD1F9FC9F20F341284E0 /* Pods-Hyperspace_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example.release.xcconfig"; sourceTree = "<group>"; };
+		43829F543E24D2D51E43FA6A /* Pods-Hyperspace_Example_tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_tvOS/Pods-Hyperspace_Example_tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		52F3F7B05F163983319CC867 /* Pods-Hyperspace_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		5F4D2E8339709124D8ACD03F /* Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_watchOS Extension/Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Hyperspace_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hyperspace_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,13 +152,17 @@
 		60FC6ADF1F7B106D00708502 /* BackendServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
 		60FC6AE01F7B107800708502 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		60FC6AE11F7B107800708502 /* NetworkRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestTests.swift; sourceTree = "<group>"; };
-		61E02690F947FA6016D8A1C5 /* Pods_Hyperspace_Example_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Example_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8214BC428E933A4D388D4BB4 /* Pods-Hyperspace_Example_tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_tvOS/Pods-Hyperspace_Example_tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		6CAA6D865C988A99F4CE11EC /* Pods-Hyperspace_Example_tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_tvOS/Pods-Hyperspace_Example_tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		993580CE80A2751F010C7436 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		A771CD82D8FAFCE263B0EE77 /* Pods-Hyperspace_Example_tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_tvOS/Pods-Hyperspace_Example_tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		AF8FF7290CBE31E4F593FF86 /* Pods-Hyperspace_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B95DDE762423E2A2B08D96C1 /* Pods-Hyperspace_Example_watchOS Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_watchOS Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_watchOS Extension/Pods-Hyperspace_Example_watchOS Extension.release.xcconfig"; sourceTree = "<group>"; };
+		BFCBD185E486F82A64F6E3E8 /* Pods-Hyperspace_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CF8729374E53729FA99EC5CB /* Hyperspace.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Hyperspace.podspec; path = ../Hyperspace.podspec; sourceTree = "<group>"; };
-		D9B6A48DD00AA543B91246A2 /* Pods-Hyperspace_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E8571D3C3C5456109632ED55 /* Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_watchOS Extension/Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		D0237A36E70B4CFC8F83FAAE /* Pods_Hyperspace_Example_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Example_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBF9E966E9EF74D175D64891 /* Pods_Hyperspace_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF5630E33342CEF08B10CCB0 /* Pods_Hyperspace_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBE065C33DBC0BB7FB3EF4F6 /* Pods-Hyperspace_Example_watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyperspace_Example_watchOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyperspace_Example_watchOS/Pods-Hyperspace_Example_watchOS.release.xcconfig"; sourceTree = "<group>"; };
+		FD3EF52617E524159DB09CB1 /* Pods_Hyperspace_Example_watchOS_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyperspace_Example_watchOS_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				360CA97B655A5DA0195770B2 /* Pods_Hyperspace_Example_watchOS_Extension.framework in Frameworks */,
+				A739D0336EC16DEC835B6591 /* Pods_Hyperspace_Example_watchOS_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEB6D2CAB4F4FFF7FDFB0D4A /* Pods_Hyperspace_Example_tvOS.framework in Frameworks */,
+				69F42357BB40D84FC388485E /* Pods_Hyperspace_Example_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8540204A012E4B97195EB07 /* Pods_Hyperspace_Example_watchOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C67DB45A1F2A833A10249F /* Pods_Hyperspace_Example.framework in Frameworks */,
+				7F49C9D625FF3899CA3624FD /* Pods_Hyperspace_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				228AC1BA367F4B341DC46C47 /* Pods_Hyperspace_Tests.framework in Frameworks */,
+				4A92A8309339BDBA97A0C9DB /* Pods_Hyperspace_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,31 +253,21 @@
 			path = Hyperspace_Example_tvOS;
 			sourceTree = "<group>";
 		};
-		13832213E5472041F17E95F7 /* Pods */ = {
+		58147421FF9B55BC4CE6C9F5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4F4E480D03EE3561BDB27F67 /* Pods-Hyperspace_Example.debug.xcconfig */,
-				537DFD1F9FC9F20F341284E0 /* Pods-Hyperspace_Example.release.xcconfig */,
-				193C4B690C5AF15F43C648DB /* Pods-Hyperspace_Tests.debug.xcconfig */,
-				D9B6A48DD00AA543B91246A2 /* Pods-Hyperspace_Tests.release.xcconfig */,
-				E8571D3C3C5456109632ED55 /* Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig */,
-				32C4E5CBA65DC995454F12C6 /* Pods-Hyperspace_Example_watchOS Extension.release.xcconfig */,
-				A771CD82D8FAFCE263B0EE77 /* Pods-Hyperspace_Example_tvOS.debug.xcconfig */,
-				8214BC428E933A4D388D4BB4 /* Pods-Hyperspace_Example_tvOS.release.xcconfig */,
+				BFCBD185E486F82A64F6E3E8 /* Pods-Hyperspace_Example.debug.xcconfig */,
+				025F70E8BAF52CD9FA0FAB64 /* Pods-Hyperspace_Example.release.xcconfig */,
+				43829F543E24D2D51E43FA6A /* Pods-Hyperspace_Example_tvOS.debug.xcconfig */,
+				6CAA6D865C988A99F4CE11EC /* Pods-Hyperspace_Example_tvOS.release.xcconfig */,
+				5F4D2E8339709124D8ACD03F /* Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig */,
+				B95DDE762423E2A2B08D96C1 /* Pods-Hyperspace_Example_watchOS Extension.release.xcconfig */,
+				52F3F7B05F163983319CC867 /* Pods-Hyperspace_Tests.debug.xcconfig */,
+				AF8FF7290CBE31E4F593FF86 /* Pods-Hyperspace_Tests.release.xcconfig */,
+				0D01E2050B6775735C7EFABC /* Pods-Hyperspace_Example_watchOS.debug.xcconfig */,
+				FBE065C33DBC0BB7FB3EF4F6 /* Pods-Hyperspace_Example_watchOS.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		4174D5410EB7DAB96EC3EA14 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0C223D0B76EA2E4458AECCC1 /* Pods_Hyperspace_Example.framework */,
-				34A7333C9E8620792B847C98 /* Pods_Hyperspace_Tests.framework */,
-				2DF5BF7DDAC95D296F17D835 /* Pods_Hyperspace_Example_watchOS.framework */,
-				192F92F84D952FDC5FED5506 /* Pods_Hyperspace_Example_watchOS_Extension.framework */,
-				61E02690F947FA6016D8A1C5 /* Pods_Hyperspace_Example_tvOS.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -287,8 +281,8 @@
 				129916761FD7492D0097D618 /* Hyperspace_Example_tvOS */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				13832213E5472041F17E95F7 /* Pods */,
-				4174D5410EB7DAB96EC3EA14 /* Frameworks */,
+				58147421FF9B55BC4CE6C9F5 /* Pods */,
+				FF6308C622601B4B5EC55ED4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -392,6 +386,18 @@
 			path = "Test Defaults";
 			sourceTree = "<group>";
 		};
+		FF6308C622601B4B5EC55ED4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBF9E966E9EF74D175D64891 /* Pods_Hyperspace_Example.framework */,
+				0ADA43A9698F1AA6E664F10A /* Pods_Hyperspace_Example_tvOS.framework */,
+				FD3EF52617E524159DB09CB1 /* Pods_Hyperspace_Example_watchOS_Extension.framework */,
+				EF5630E33342CEF08B10CCB0 /* Pods_Hyperspace_Tests.framework */,
+				D0237A36E70B4CFC8F83FAAE /* Pods_Hyperspace_Example_watchOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -399,9 +405,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 129916681FD740280097D618 /* Build configuration list for PBXNativeTarget "Hyperspace_Example_watchOS" */;
 			buildPhases = (
+				2B001E7B363C5713FF6804FB /* [CP] Check Pods Manifest.lock */,
 				129916421FD740270097D618 /* Resources */,
 				129916671FD740280097D618 /* Embed App Extensions */,
 				34E78B6886521E371176CB5F /* Frameworks */,
+				4CC05091A42B50942B8AF48C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -417,12 +425,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 129916661FD740280097D618 /* Build configuration list for PBXNativeTarget "Hyperspace_Example_watchOS Extension" */;
 			buildPhases = (
-				6FC3BDCD91437E279928EC48 /* [CP] Check Pods Manifest.lock */,
+				EFEF9CC584FF4C0568C3599C /* [CP] Check Pods Manifest.lock */,
 				1299164C1FD740270097D618 /* Sources */,
 				1299164D1FD740270097D618 /* Frameworks */,
 				1299164E1FD740270097D618 /* Resources */,
-				C2965547E6E7519FF92E86B9 /* [CP] Embed Pods Frameworks */,
-				53AA648040D31BB0F2D3028E /* [CP] Copy Pods Resources */,
+				7D5E764B2F18AE212CB067E1 /* [CP] Embed Pods Frameworks */,
+				868EC61422E191C9E27405E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -437,12 +445,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 129916811FD7492D0097D618 /* Build configuration list for PBXNativeTarget "Hyperspace_Example_tvOS" */;
 			buildPhases = (
-				1A877475C7134103C9C2D543 /* [CP] Check Pods Manifest.lock */,
+				F73A8C62FC3027201FDD477A /* [CP] Check Pods Manifest.lock */,
 				129916711FD7492D0097D618 /* Sources */,
 				129916721FD7492D0097D618 /* Frameworks */,
 				129916731FD7492D0097D618 /* Resources */,
-				53C7C1D9A9C963D22EBE881A /* [CP] Embed Pods Frameworks */,
-				A61533D581A09BBF1BC41C43 /* [CP] Copy Pods Resources */,
+				08F9DB63AA3D3EE28CDD61B9 /* [CP] Embed Pods Frameworks */,
+				7A82675C93C66290EA0893A0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -457,14 +465,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Hyperspace_Example" */;
 			buildPhases = (
-				7D4EE431C68BC0A068A987B5 /* [CP] Check Pods Manifest.lock */,
+				BC1FD4FB38B539609A72E3C4 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				27555FA98B23889EDE40E0CE /* [CP] Embed Pods Frameworks */,
-				4AE35CDFA72F3232B8865F33 /* [CP] Copy Pods Resources */,
 				129916691FD740280097D618 /* Embed Watch Content */,
 				608180781FDB4C95002BB9C7 /* SwiftLint */,
+				EB4A7CA1D0913F17E9633709 /* [CP] Embed Pods Frameworks */,
+				5C16367BB955EAF104971E2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -480,12 +488,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Hyperspace_Tests" */;
 			buildPhases = (
-				F990217B37E1AB93CCDA0485 /* [CP] Check Pods Manifest.lock */,
+				EC7BA12E0688176C4D352247 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				994E9F004719532E3DD9D9DE /* [CP] Embed Pods Frameworks */,
-				C0D8D2BF8B85C924A9A5DC6F /* [CP] Copy Pods Resources */,
+				C2A4F252991827A5776582CE /* [CP] Embed Pods Frameworks */,
+				995AE66D57F5A47B62CF6026 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -604,75 +612,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A877475C7134103C9C2D543 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Hyperspace_Example_tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		27555FA98B23889EDE40E0CE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Hyperspace-iOS/Hyperspace.framework",
-				"${BUILT_PRODUCTS_DIR}/Result-iOS/Result.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyperspace.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4AE35CDFA72F3232B8865F33 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		53AA648040D31BB0F2D3028E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example_watchOS Extension/Pods-Hyperspace_Example_watchOS Extension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		53C7C1D9A9C963D22EBE881A /* [CP] Embed Pods Frameworks */ = {
+		08F9DB63AA3D3EE28CDD61B9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -692,6 +632,54 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example_tvOS/Pods-Hyperspace_Example_tvOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2B001E7B363C5713FF6804FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace_Example_watchOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CC05091A42B50942B8AF48C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example_watchOS/Pods-Hyperspace_Example_watchOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C16367BB955EAF104971E2F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		608180781FDB4C95002BB9C7 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -706,58 +694,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		6FC3BDCD91437E279928EC48 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Hyperspace_Example_watchOS Extension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7D4EE431C68BC0A068A987B5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Hyperspace_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		994E9F004719532E3DD9D9DE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A61533D581A09BBF1BC41C43 /* [CP] Copy Pods Resources */ = {
+		7A82675C93C66290EA0893A0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -772,22 +709,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example_tvOS/Pods-Hyperspace_Example_tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C0D8D2BF8B85C924A9A5DC6F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C2965547E6E7519FF92E86B9 /* [CP] Embed Pods Frameworks */ = {
+		7D5E764B2F18AE212CB067E1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -807,7 +729,95 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example_watchOS Extension/Pods-Hyperspace_Example_watchOS Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F990217B37E1AB93CCDA0485 /* [CP] Check Pods Manifest.lock */ = {
+		868EC61422E191C9E27405E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example_watchOS Extension/Pods-Hyperspace_Example_watchOS Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		995AE66D57F5A47B62CF6026 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC1FD4FB38B539609A72E3C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace_Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2A4F252991827A5776582CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hyperspace-iOS/Hyperspace.framework",
+				"${BUILT_PRODUCTS_DIR}/Result-iOS/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyperspace.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Tests/Pods-Hyperspace_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB4A7CA1D0913F17E9633709 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hyperspace-iOS/Hyperspace.framework",
+				"${BUILT_PRODUCTS_DIR}/Result-iOS/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hyperspace.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyperspace_Example/Pods-Hyperspace_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC7BA12E0688176C4D352247 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -819,6 +829,42 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Hyperspace_Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFEF9CC584FF4C0568C3599C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace_Example_watchOS Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F73A8C62FC3027201FDD477A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyperspace_Example_tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -936,6 +982,7 @@
 /* Begin XCBuildConfiguration section */
 		129916621FD740280097D618 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D01E2050B6775735C7EFABC /* Pods-Hyperspace_Example_watchOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -960,6 +1007,7 @@
 		};
 		129916631FD740280097D618 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE065C33DBC0BB7FB3EF4F6 /* Pods-Hyperspace_Example_watchOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -982,7 +1030,7 @@
 		};
 		129916641FD740280097D618 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8571D3C3C5456109632ED55 /* Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig */;
+			baseConfigurationReference = 5F4D2E8339709124D8ACD03F /* Pods-Hyperspace_Example_watchOS Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1007,7 +1055,7 @@
 		};
 		129916651FD740280097D618 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32C4E5CBA65DC995454F12C6 /* Pods-Hyperspace_Example_watchOS Extension.release.xcconfig */;
+			baseConfigurationReference = B95DDE762423E2A2B08D96C1 /* Pods-Hyperspace_Example_watchOS Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1030,7 +1078,7 @@
 		};
 		129916821FD7492D0097D618 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A771CD82D8FAFCE263B0EE77 /* Pods-Hyperspace_Example_tvOS.debug.xcconfig */;
+			baseConfigurationReference = 43829F543E24D2D51E43FA6A /* Pods-Hyperspace_Example_tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1055,7 +1103,7 @@
 		};
 		129916831FD7492D0097D618 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8214BC428E933A4D388D4BB4 /* Pods-Hyperspace_Example_tvOS.release.xcconfig */;
+			baseConfigurationReference = 6CAA6D865C988A99F4CE11EC /* Pods-Hyperspace_Example_tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1179,7 +1227,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F4E480D03EE3561BDB27F67 /* Pods-Hyperspace_Example.debug.xcconfig */;
+			baseConfigurationReference = BFCBD185E486F82A64F6E3E8 /* Pods-Hyperspace_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hyperspace/Info.plist;
@@ -1192,7 +1240,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 537DFD1F9FC9F20F341284E0 /* Pods-Hyperspace_Example.release.xcconfig */;
+			baseConfigurationReference = 025F70E8BAF52CD9FA0FAB64 /* Pods-Hyperspace_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hyperspace/Info.plist;
@@ -1205,7 +1253,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 193C4B690C5AF15F43C648DB /* Pods-Hyperspace_Tests.debug.xcconfig */;
+			baseConfigurationReference = 52F3F7B05F163983319CC867 /* Pods-Hyperspace_Tests.debug.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1220,7 +1268,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9B6A48DD00AA543B91246A2 /* Pods-Hyperspace_Tests.release.xcconfig */;
+			baseConfigurationReference = AF8FF7290CBE31E4F593FF86 /* Pods-Hyperspace_Tests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
