@@ -45,7 +45,7 @@ public struct NetworkServiceFailure: Error {
 public typealias NetworkServiceResult = Result<NetworkServiceSuccess, NetworkServiceFailure>
 
 /// Upon completion of executing a NetworkRequest using a NetworkService, the NetworkServiceResult is returned.
-public typealias NetworkServiceCompletion = (Result<NetworkServiceSuccess, NetworkServiceFailure>) -> Void
+public typealias NetworkServiceCompletion = (NetworkServiceResult) -> Void
 
 /// Represents something that can execute a URLRequest.
 public protocol NetworkServiceProtocol {
