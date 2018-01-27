@@ -114,7 +114,7 @@ We recommend adhering to the [Interface Segregation](https://en.wikipedia.org/wi
 class ViewController: UIViewController {
 
     private let backendService = BackendService()
-    
+
     // Rest of your view controller code...
 }
 ```
@@ -127,9 +127,9 @@ Let's say our view controller is supposed to create the post whenever the user t
     let title = ... // Get the title from a text view in the UI...
     let message = ... // Get the message from a text view/field in the UI...
     let post = NewPost(userId: 1, title: title, body: message)
-    
+
     let createPostRequest = CreatePostRequest(newPost: post)
-    
+
     // Execute the network request...
 }
 ```
@@ -140,7 +140,7 @@ For the above example, here's how you would execute the request and parse the re
 ```swift
 backendService.execute(request: createPostRequest) { [weak self] (result) in
     debugPrint("Create post result: \(result)")
-    
+
     switch result {
     case .success(let post):
         // Insert the new post into the UI...
@@ -152,20 +152,37 @@ backendService.execute(request: createPostRequest) { [weak self] (result) in
 
 ## Example
 
-To run the example project, clone the repo, `cd Example`, and then run `pod install`. From here, you can run the examples:
+To run the example project, you'll first need to use [Carthage](https://github.com/Carthage/Carthage) to install Hyperspace's dependencies ([Result](https://github.com/antitypical/Result) and [SwiftLint](https://github.com/realm/SwiftLint)).
 
-* Playground/Hyperspace.playground
-    * View and run a single file that defines models, network requests, and executes the requests similar to the example above.
-* Playground/Hyperspace.Hyperspace_AnyNetworkRequest.playground
-    * The same example as above, but using the `AnyNetworkRequest<T>` struct.
-* Playground/Hyperspace_DELETE.playground
-    * An example of how to deal with requests that don't return a result. This is usually common for DELETE requests.
-* ViewController.swift, Models.swift, and NetworkRequests.swift
-    * View a simplified example of how you might use this in your app.
+After [installing Carthage](https://github.com/Carthage/Carthage#installing-carthage), clone the repo:
+
+`git clone https://github.com/BottleRocketStudios/iOS-Hyperspace.git`
+
+Next, use Carthage to install the dependencies:
+
+`carthage update`
+
+From here, you can open up `Hyperspace.xcworkspace` and run the examples:
+
+* Targets
+    * Hyperspace-iOSExample
+        * ViewController.swift, Models.swift, and NetworkRequests.swift
+            * View a simplified example of how you might use this in your app.
+    * Hyperspace-tvOSExample
+    * Hyperspace-watchOSExample
+* Playgrounds
+    * Playground/Hyperspace.playground
+        * View and run a single file that defines models, network requests, and executes the requests similar to the example above.
+    * Playground/Hyperspace.Hyperspace_AnyNetworkRequest.playground
+        * The same example as above, but using the `AnyNetworkRequest<T>` struct.
+    * Playground/Hyperspace_DELETE.playground
+        * An example of how to deal with requests that don't return a result. This is usually common for DELETE requests.
 
 ## Requirements
 
 * iOS 8.0+
+* tvOS 9.0+
+* watchOS 2.0+
 * Swift 4
 
 ## Installation
