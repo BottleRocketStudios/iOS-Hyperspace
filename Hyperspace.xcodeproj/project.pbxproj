@@ -14,6 +14,42 @@
 		60AC831E1FF58E4F00120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60AC833A1FF58F3C00120172 /* HyperspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83201FF58E8B00120172 /* HyperspaceTests.swift */; };
 		60AC833B1FF5927200120172 /* HyperspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83201FF58E8B00120172 /* HyperspaceTests.swift */; };
+		60D6C36D201CC81100B3B012 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
+		60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
+		60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
+		60D6C370201CC81100B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */; };
+		60D6C371201CC81100B3B012 /* AnyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83451FF596B600120172 /* AnyNetworkRequest.swift */; };
+		60D6C372201CC81100B3B012 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* NetworkRequest.swift */; };
+		60D6C373201CC81100B3B012 /* NetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */; };
+		60D6C374201CC81100B3B012 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */; };
+		60D6C375201CC81100B3B012 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* NetworkSession.swift */; };
+		60D6C376201CC81100B3B012 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* NetworkService.swift */; };
+		60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		60D6C378201CC81100B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
+		60D6C379201CCCAE00B3B012 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
+		60D6C37A201CCCAE00B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
+		60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
+		60D6C37C201CCCAE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */; };
+		60D6C37D201CCCAE00B3B012 /* AnyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83451FF596B600120172 /* AnyNetworkRequest.swift */; };
+		60D6C37E201CCCAE00B3B012 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* NetworkRequest.swift */; };
+		60D6C37F201CCCAE00B3B012 /* NetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */; };
+		60D6C380201CCCAE00B3B012 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */; };
+		60D6C381201CCCAE00B3B012 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* NetworkSession.swift */; };
+		60D6C382201CCCAE00B3B012 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* NetworkService.swift */; };
+		60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
+		60D6C385201CCCBE00B3B012 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
+		60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
+		60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
+		60D6C388201CCCBE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */; };
+		60D6C389201CCCBE00B3B012 /* AnyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83451FF596B600120172 /* AnyNetworkRequest.swift */; };
+		60D6C38A201CCCBE00B3B012 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* NetworkRequest.swift */; };
+		60D6C38B201CCCBE00B3B012 /* NetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */; };
+		60D6C38C201CCCBE00B3B012 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */; };
+		60D6C38D201CCCBE00B3B012 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* NetworkSession.swift */; };
+		60D6C38E201CCCBE00B3B012 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* NetworkService.swift */; };
+		60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -440,6 +476,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D6C36D201CC81100B3B012 /* URL+Additions.swift in Sources */,
+				60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */,
+				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
+				60D6C370201CC81100B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				60D6C371201CC81100B3B012 /* AnyNetworkRequest.swift in Sources */,
+				60D6C372201CC81100B3B012 /* NetworkRequest.swift in Sources */,
+				60D6C373201CC81100B3B012 /* NetworkSessionDataTask.swift in Sources */,
+				60D6C374201CC81100B3B012 /* NetworkServiceProtocol.swift in Sources */,
+				60D6C375201CC81100B3B012 /* NetworkSession.swift in Sources */,
+				60D6C376201CC81100B3B012 /* NetworkService.swift in Sources */,
+				60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */,
+				60D6C378201CC81100B3B012 /* BackendService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +503,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D6C385201CCCBE00B3B012 /* URL+Additions.swift in Sources */,
+				60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
+				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
+				60D6C388201CCCBE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				60D6C389201CCCBE00B3B012 /* AnyNetworkRequest.swift in Sources */,
+				60D6C38A201CCCBE00B3B012 /* NetworkRequest.swift in Sources */,
+				60D6C38B201CCCBE00B3B012 /* NetworkSessionDataTask.swift in Sources */,
+				60D6C38C201CCCBE00B3B012 /* NetworkServiceProtocol.swift in Sources */,
+				60D6C38D201CCCBE00B3B012 /* NetworkSession.swift in Sources */,
+				60D6C38E201CCCBE00B3B012 /* NetworkService.swift in Sources */,
+				60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */,
+				60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +522,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D6C379201CCCAE00B3B012 /* URL+Additions.swift in Sources */,
+				60D6C37A201CCCAE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
+				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
+				60D6C37C201CCCAE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				60D6C37D201CCCAE00B3B012 /* AnyNetworkRequest.swift in Sources */,
+				60D6C37E201CCCAE00B3B012 /* NetworkRequest.swift in Sources */,
+				60D6C37F201CCCAE00B3B012 /* NetworkSessionDataTask.swift in Sources */,
+				60D6C380201CCCAE00B3B012 /* NetworkServiceProtocol.swift in Sources */,
+				60D6C381201CCCAE00B3B012 /* NetworkSession.swift in Sources */,
+				60D6C382201CCCAE00B3B012 /* NetworkService.swift in Sources */,
+				60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */,
+				60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,6 +840,7 @@
 		60AC82F71FF589C200120172 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -783,6 +856,7 @@
 		60AC82F81FF589C200120172 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
