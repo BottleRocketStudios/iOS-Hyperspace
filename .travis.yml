@@ -11,7 +11,7 @@ env:
     - TVOS_FRAMEWORK_SCHEME=Hyperspace_tvOS
     - WATCHOS_FRAMEWORK_SCHEME=Hyperspace_watchOS
   matrix:
-    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X"                        SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" POD_LINT="YES"
+    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X"                        SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" POD_LINT="NO"
 
     - DESTINATION="platform=tvOS Simulator,OS=11.2,name=Apple TV 4K"                    SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" POD_LINT="NO"
 
