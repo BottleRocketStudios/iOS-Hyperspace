@@ -159,6 +159,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_DELETE.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		6032601A201D1F1F008CEFC8 /* Hyperspace.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		6032601B201D1F1F008CEFC8 /* Hyperspace_AnyNetworkRequest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_AnyNetworkRequest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-watchOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6083678E201D1AF400007247 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		60836790201D1AF400007247 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -289,6 +292,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60326018201D1F1F008CEFC8 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */,
+				6032601A201D1F1F008CEFC8 /* Hyperspace.playground */,
+				6032601B201D1F1F008CEFC8 /* Hyperspace_AnyNetworkRequest.playground */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
 		6083678C201D1AF400007247 /* Hyperspace-watchOSExample */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +518,7 @@
 		60D6C431201D16D100B3B012 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				60326018201D1F1F008CEFC8 /* Playground */,
 				60D6C432201D16F000B3B012 /* Shared */,
 				60D6C420201D156500B3B012 /* Hyperspace-iOSExample */,
 				60D6C43C201D188B00B3B012 /* Hyperspace-tvOSExample */,
