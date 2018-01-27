@@ -158,7 +158,7 @@
 		60AC82B81FF588D500120172 /* Hyperspace */ = {
 			isa = PBXGroup;
 			children = (
-				60AC833D1FF596B600120172 /* Classes */,
+				60AC833D1FF596B600120172 /* Hyperspace */,
 				60AC82F91FF58E3600120172 /* Supporting Files */,
 			);
 			name = Hyperspace;
@@ -184,7 +184,7 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		60AC833D1FF596B600120172 /* Classes */ = {
+		60AC833D1FF596B600120172 /* Hyperspace */ = {
 			isa = PBXGroup;
 			children = (
 				60AC833E1FF596B600120172 /* Extensions */,
@@ -192,7 +192,7 @@
 				60AC83431FF596B600120172 /* Request */,
 				60AC83471FF596B600120172 /* Service */,
 			);
-			path = Classes;
+			path = Hyperspace;
 			sourceTree = "<group>";
 		};
 		60AC833E1FF596B600120172 /* Extensions */ = {
