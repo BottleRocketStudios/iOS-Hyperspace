@@ -12,6 +12,16 @@ import Result
 
 class DecodingTests: XCTestCase {
     
+    // MARK: - Properties
+    
+    private static let iso8601DateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return formatter
+    }()
+    
+    // MARK: - Tests
+    
     func test_DecodingDecodableContainer_AutomaticallyDecodesChildElement() {
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         do {
@@ -60,8 +70,13 @@ class DecodingTests: XCTestCase {
     
     func test_AnyNetworkRequestWithISOJSONDecoder_SuccessfullyDecodes() {
         let decoder = JSONDecoder()
-        // TODO: Fix this test (iOS 10+ API)
-//        decoder.dateDecodingStrategy = .iso8601
+        
+        if #available(iOS 10.0, *) {
+            decoder.dateDecodingStrategy = .iso8601
+        } else {
+            decoder.dateDecodingStrategy = .formatted(DecodingTests.iso8601DateFormatter)
+        }
+        
         let request = AnyNetworkRequest<MockDate>(method: .get, url: NetworkRequestTestDefaults.defaultURL, decoder: decoder)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
         let result = request.transformData(objectJSON)
