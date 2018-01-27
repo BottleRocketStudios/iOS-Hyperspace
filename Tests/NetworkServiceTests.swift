@@ -108,11 +108,18 @@ class NetworkServiceTests: XCTestCase {
     func test_NetworkServiceDeinit_CancelsDataTask() {
         let dataTask = MockNetworkSessionDataTask(request: URLRequest(url: NetworkRequestTestDefaults.defaultURL))
         
-        var service: NetworkServiceProtocol? = execute(dataTask: dataTask)
-        service = nil
-        XCTAssertNil(service) // To silence the "variable was written to, but never read" warning. See https://stackoverflow.com/a/32861678/4343618
+        let asyncExpectation = expectation(description: "\(NetworkService.self) falls out of scope")
         
-        XCTAssertEqual(dataTask.cancelCallCount, 1)
+        var service: NetworkServiceProtocol? = execute(dataTask: dataTask)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            XCTAssertNil(service) // To silence the "variable was written to, but never read" warning. See https://stackoverflow.com/a/32861678/4343618
+            XCTAssertEqual(dataTask.cancelCallCount, 1)
+            asyncExpectation.fulfill()
+        }
+        service = nil
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     // MARK: - Private
