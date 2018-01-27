@@ -16,9 +16,13 @@ env:
     - DESTINATION="platform=tvOS Simulator,OS=11.2,name=Apple TV 4K"                    SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" POD_LINT="NO"
 
     - DESTINATION="platform=watchOS Simulator,OS=4.2,name=Apple Watch Series 3 - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  POD_LINT="NO"
+cache:
+  directories:
+    - Carthage
 before_install:
-  - gem install cocoapods --pre # Since Travis is not always on latest version
-  - pod install
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - carthage bootstrap --verbose --no-use-binaries --platform iOS,tvOS,watchOS --cache-builds
 script:
   - set -o pipefail
 
