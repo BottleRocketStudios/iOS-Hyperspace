@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60326016201D1DED008CEFC8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
+		60326017201D1DF1008CEFC8 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
 		60836787201D1A2B00007247 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
 		60836788201D1A2E00007247 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
+		6083678F201D1AF400007247 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6083678D201D1AF400007247 /* Interface.storyboard */; };
+		60836791201D1AF400007247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60836790201D1AF400007247 /* Assets.xcassets */; };
+		60836798201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6083679D201D1AF500007247 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083679C201D1AF500007247 /* InterfaceController.swift */; };
+		6083679F201D1AF500007247 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083679E201D1AF500007247 /* ExtensionDelegate.swift */; };
+		608367A1201D1AF500007247 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608367A0201D1AF500007247 /* NotificationController.swift */; };
+		608367A3201D1AF500007247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 608367A2201D1AF500007247 /* Assets.xcassets */; };
+		608367A8201D1AF500007247 /* Hyperspace-watchOSExample.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */; };
 		60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; };
 		60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; };
 		60AC830F1FF58E3600120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,6 +103,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		60836799201D1AF500007247 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60836796201D1AF500007247;
+			remoteInfo = "Hyperspace-watchOSExample Extension";
+		};
+		608367A6201D1AF500007247 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6083678A201D1AF400007247;
+			remoteInfo = "Hyperspace-watchOSExample";
+		};
 		60AC82C11FF588D600120172 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
@@ -109,7 +133,43 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		608367AC201D1AF500007247 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				60836798201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		608367B0201D1AF500007247 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				608367A8201D1AF500007247 /* Hyperspace-watchOSExample.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-watchOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6083678E201D1AF400007247 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		60836790201D1AF400007247 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		60836792201D1AF400007247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hyperspace-watchOSExample Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6083679C201D1AF500007247 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6083679E201D1AF500007247 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		608367A0201D1AF500007247 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		608367A2201D1AF500007247 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		608367A4201D1AF500007247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		608367A5201D1AF500007247 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		60AC82B61FF588D500120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC82BF1FF588D600120172 /* Hyperspace-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC82D51FF5899800120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +225,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		60836794201D1AF500007247 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60AC82B21FF588D500120172 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +289,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6083678C201D1AF400007247 /* Hyperspace-watchOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				6083678D201D1AF400007247 /* Interface.storyboard */,
+				60836790201D1AF400007247 /* Assets.xcassets */,
+				60836792201D1AF400007247 /* Info.plist */,
+			);
+			path = "Hyperspace-watchOSExample";
+			sourceTree = "<group>";
+		};
+		6083679B201D1AF500007247 /* Hyperspace-watchOSExample Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6083679C201D1AF500007247 /* InterfaceController.swift */,
+				6083679E201D1AF500007247 /* ExtensionDelegate.swift */,
+				608367A0201D1AF500007247 /* NotificationController.swift */,
+				608367A2201D1AF500007247 /* Assets.xcassets */,
+				608367A4201D1AF500007247 /* Info.plist */,
+				608367A5201D1AF500007247 /* PushNotificationPayload.apns */,
+			);
+			path = "Hyperspace-watchOSExample Extension";
+			sourceTree = "<group>";
+		};
 		60AC82AC1FF588D500120172 = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +334,8 @@
 				60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */,
 				60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */,
 				60D6C43B201D188B00B3B012 /* Hyperspace-tvOSExample.app */,
+				6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */,
+				60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -416,6 +508,8 @@
 				60D6C432201D16F000B3B012 /* Shared */,
 				60D6C420201D156500B3B012 /* Hyperspace-iOSExample */,
 				60D6C43C201D188B00B3B012 /* Hyperspace-tvOSExample */,
+				6083678C201D1AF400007247 /* Hyperspace-watchOSExample */,
+				6083679B201D1AF500007247 /* Hyperspace-watchOSExample Extension */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -479,6 +573,40 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		6083678A201D1AF400007247 /* Hyperspace-watchOSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 608367AD201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample" */;
+			buildPhases = (
+				60836789201D1AF400007247 /* Resources */,
+				608367AC201D1AF500007247 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6083679A201D1AF500007247 /* PBXTargetDependency */,
+			);
+			name = "Hyperspace-watchOSExample";
+			productName = "Hyperspace-watchOSExample";
+			productReference = 6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		60836796201D1AF500007247 /* Hyperspace-watchOSExample Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 608367A9201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample Extension" */;
+			buildPhases = (
+				60836793201D1AF500007247 /* Sources */,
+				60836794201D1AF500007247 /* Frameworks */,
+				60836795201D1AF500007247 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyperspace-watchOSExample Extension";
+			productName = "Hyperspace-watchOSExample Extension";
+			productReference = 60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		60AC82B51FF588D500120172 /* Hyperspace-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60AC82CA1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOS" */;
@@ -576,10 +704,12 @@
 				60D6C41B201D156500B3B012 /* Sources */,
 				60D6C41C201D156500B3B012 /* Frameworks */,
 				60D6C41D201D156500B3B012 /* Resources */,
+				608367B0201D1AF500007247 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				608367A7201D1AF500007247 /* PBXTargetDependency */,
 			);
 			name = "Hyperspace-iOSExample";
 			productName = "Hyperspace-iOSExample";
@@ -613,6 +743,14 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Bottle Rocket Studios";
 				TargetAttributes = {
+					6083678A201D1AF400007247 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					60836796201D1AF500007247 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					60AC82B51FF588D500120172 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
@@ -666,11 +804,30 @@
 				60AC82E91FF589C200120172 /* Hyperspace-tvOSTests */,
 				60D6C43A201D188B00B3B012 /* Hyperspace-tvOSExample */,
 				60AC82D41FF5899800120172 /* Hyperspace-watchOS */,
+				6083678A201D1AF400007247 /* Hyperspace-watchOSExample */,
+				60836796201D1AF500007247 /* Hyperspace-watchOSExample Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		60836789201D1AF400007247 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60836791201D1AF400007247 /* Assets.xcassets in Resources */,
+				6083678F201D1AF400007247 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60836795201D1AF500007247 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				608367A3201D1AF500007247 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60AC82B41FF588D500120172 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -736,6 +893,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		60836793201D1AF500007247 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				608367A1201D1AF500007247 /* NotificationController.swift in Sources */,
+				60326017201D1DF1008CEFC8 /* NetworkRequests.swift in Sources */,
+				6083679F201D1AF500007247 /* ExtensionDelegate.swift in Sources */,
+				6083679D201D1AF500007247 /* InterfaceController.swift in Sources */,
+				60326016201D1DED008CEFC8 /* Models.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60AC82B11FF588D500120172 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -850,6 +1019,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6083679A201D1AF500007247 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60836796201D1AF500007247 /* Hyperspace-watchOSExample Extension */;
+			targetProxy = 60836799201D1AF500007247 /* PBXContainerItemProxy */;
+		};
+		608367A7201D1AF500007247 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6083678A201D1AF400007247 /* Hyperspace-watchOSExample */;
+			targetProxy = 608367A6201D1AF500007247 /* PBXContainerItemProxy */;
+		};
 		60AC82C21FF588D600120172 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 60AC82B51FF588D500120172 /* Hyperspace-iOS */;
@@ -863,6 +1042,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6083678D201D1AF400007247 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6083678E201D1AF400007247 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		60D6C425201D156500B3B012 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -890,6 +1077,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		608367AA201D1AF500007247 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		608367AB201D1AF500007247 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
+		608367AE201D1AF500007247 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = Hyperspace_watchOSExample_Extension;
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		608367AF201D1AF500007247 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = Hyperspace_watchOSExample_Extension;
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
 		60AC82C81FF588D600120172 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1262,6 +1519,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		608367A9201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				608367AA201D1AF500007247 /* Debug */,
+				608367AB201D1AF500007247 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		608367AD201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				608367AE201D1AF500007247 /* Debug */,
+				608367AF201D1AF500007247 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		60AC82B01FF588D500120172 /* Build configuration list for PBXProject "Hyperspace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
