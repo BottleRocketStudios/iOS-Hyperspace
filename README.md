@@ -164,18 +164,25 @@ Next, use Carthage to install the dependencies:
 
 From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
+* Shared
+    * `Models.swift`, `NetworkRequests.swift`
+        * Sample models and network requests shared by the various examples
 * Targets
     * Hyperspace-iOSExample
-        * ViewController.swift, Models.swift, and NetworkRequests.swift
-            * View a simplified example of how you might use this in your app.
+        * `ViewController.swift`
+            * View a simplified example of how you might use this in your iOS app.
     * Hyperspace-tvOSExample
-    * Hyperspace-watchOSExample
+        * `ViewController.swift`
+            * View a simplified example of how you might use this in your tvOS app (this is essentially the same as the iOS example).
+    * Hyperspace-watchOSExample Extension
+        * `InterfaceController.swift`
+            * View a simplified example of how you might use this in your watchOS app.
 * Playgrounds
-    * Playground/Hyperspace.playground
+    * `Playground/Hyperspace.playground`
         * View and run a single file that defines models, network requests, and executes the requests similar to the example above.
-    * Playground/Hyperspace.Hyperspace_AnyNetworkRequest.playground
+    * `Playground/Hyperspace.Hyperspace_AnyNetworkRequest.playground`
         * The same example as above, but using the `AnyNetworkRequest<T>` struct.
-    * Playground/Hyperspace_DELETE.playground
+    * `Playground/Hyperspace_DELETE.playground`
         * An example of how to deal with requests that don't return a result. This is usually common for DELETE requests.
 
 ## Requirements
