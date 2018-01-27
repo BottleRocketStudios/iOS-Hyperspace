@@ -77,6 +77,13 @@
 		60D6C416201CFCCF00B3B012 /* RootKeyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */; };
 		60D6C417201CFCCF00B3B012 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3FE201CFCCF00B3B012 /* NetworkRequestTestDefaults.swift */; };
 		60D6C418201CFCCF00B3B012 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3FE201CFCCF00B3B012 /* NetworkRequestTestDefaults.swift */; };
+		60D6C422201D156500B3B012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C421201D156500B3B012 /* AppDelegate.swift */; };
+		60D6C424201D156500B3B012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C423201D156500B3B012 /* ViewController.swift */; };
+		60D6C427201D156500B3B012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C425201D156500B3B012 /* Main.storyboard */; };
+		60D6C429201D156500B3B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C428201D156500B3B012 /* Assets.xcassets */; };
+		60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C42A201D156500B3B012 /* LaunchScreen.storyboard */; };
+		60D6C435201D170F00B3B012 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
+		60D6C436201D170F00B3B012 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +140,15 @@
 		60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RootKeyArray.json; sourceTree = "<group>"; };
 		60D6C3FE201CFCCF00B3B012 /* NetworkRequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestTestDefaults.swift; sourceTree = "<group>"; };
 		60D6C41A201D13EC00B3B012 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-iOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		60D6C421201D156500B3B012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		60D6C423201D156500B3B012 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		60D6C426201D156500B3B012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		60D6C428201D156500B3B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		60D6C42B201D156500B3B012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		60D6C42D201D156500B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60D6C433201D170F00B3B012 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		60D6C434201D170F00B3B012 /* NetworkRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
 		60EB8FDB1FF59FB000AC0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +193,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60D6C41C201D156500B3B012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -186,6 +209,7 @@
 				60D6C41A201D13EC00B3B012 /* README.md */,
 				60AC82B81FF588D500120172 /* Sources */,
 				60AC831F1FF58E8B00120172 /* Tests */,
+				60D6C431201D16D100B3B012 /* Examples */,
 				60AC82B71FF588D500120172 /* Products */,
 				60D6C3E6201CD77400B3B012 /* Frameworks */,
 			);
@@ -199,6 +223,7 @@
 				60AC82D51FF5899800120172 /* Hyperspace.framework */,
 				60AC82E21FF589C200120172 /* Hyperspace.framework */,
 				60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */,
+				60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,6 +377,37 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		60D6C420201D156500B3B012 /* Hyperspace-iOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				60D6C421201D156500B3B012 /* AppDelegate.swift */,
+				60D6C423201D156500B3B012 /* ViewController.swift */,
+				60D6C425201D156500B3B012 /* Main.storyboard */,
+				60D6C428201D156500B3B012 /* Assets.xcassets */,
+				60D6C42A201D156500B3B012 /* LaunchScreen.storyboard */,
+				60D6C42D201D156500B3B012 /* Info.plist */,
+			);
+			path = "Hyperspace-iOSExample";
+			sourceTree = "<group>";
+		};
+		60D6C431201D16D100B3B012 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				60D6C432201D16F000B3B012 /* Shared */,
+				60D6C420201D156500B3B012 /* Hyperspace-iOSExample */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		60D6C432201D16F000B3B012 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				60D6C433201D170F00B3B012 /* Models.swift */,
+				60D6C434201D170F00B3B012 /* NetworkRequests.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		60EB8FDA1FF59FB000AC0B55 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +536,23 @@
 			productReference = 60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		60D6C41E201D156500B3B012 /* Hyperspace-iOSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60D6C42E201D156500B3B012 /* Build configuration list for PBXNativeTarget "Hyperspace-iOSExample" */;
+			buildPhases = (
+				60D6C41B201D156500B3B012 /* Sources */,
+				60D6C41C201D156500B3B012 /* Frameworks */,
+				60D6C41D201D156500B3B012 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyperspace-iOSExample";
+			productName = "Hyperspace-iOSExample";
+			productReference = 60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -513,6 +586,10 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
+					60D6C41E201D156500B3B012 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 60AC82B01FF588D500120172 /* Build configuration list for PBXProject "Hyperspace" */;
@@ -521,6 +598,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 60AC82AC1FF588D500120172;
 			productRefGroup = 60AC82B71FF588D500120172 /* Products */;
@@ -529,6 +607,7 @@
 			targets = (
 				60AC82B51FF588D500120172 /* Hyperspace-iOS */,
 				60AC82BE1FF588D600120172 /* Hyperspace-iOSTests */,
+				60D6C41E201D156500B3B012 /* Hyperspace-iOSExample */,
 				60AC82E11FF589C200120172 /* Hyperspace-tvOS */,
 				60AC82E91FF589C200120172 /* Hyperspace-tvOSTests */,
 				60AC82D41FF5899800120172 /* Hyperspace-watchOS */,
@@ -577,6 +656,16 @@
 				60D6C416201CFCCF00B3B012 /* RootKeyArray.json in Resources */,
 				60D6C412201CFCCF00B3B012 /* RootKeyObject.json in Resources */,
 				60D6C410201CFCCF00B3B012 /* DateObject.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60D6C41D201D156500B3B012 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */,
+				60D6C429201D156500B3B012 /* Assets.xcassets in Resources */,
+				60D6C427201D156500B3B012 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,6 +761,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60D6C41B201D156500B3B012 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60D6C435201D170F00B3B012 /* Models.swift in Sources */,
+				60D6C424201D156500B3B012 /* ViewController.swift in Sources */,
+				60D6C436201D170F00B3B012 /* NetworkRequests.swift in Sources */,
+				60D6C422201D156500B3B012 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -686,6 +786,25 @@
 			targetProxy = 60AC82EC1FF589C200120172 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		60D6C425201D156500B3B012 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60D6C426201D156500B3B012 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		60D6C42A201D156500B3B012 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60D6C42B201D156500B3B012 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		60AC82C81FF588D600120172 /* Debug */ = {
@@ -993,6 +1112,36 @@
 			};
 			name = Release;
 		};
+		60D6C42F201D156500B3B012 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-iOSExample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		60D6C430201D156500B3B012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-iOSExample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1046,6 +1195,15 @@
 			buildConfigurations = (
 				60AC82F71FF589C200120172 /* Debug */,
 				60AC82F81FF589C200120172 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60D6C42E201D156500B3B012 /* Build configuration list for PBXNativeTarget "Hyperspace-iOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60D6C42F201D156500B3B012 /* Debug */,
+				60D6C430201D156500B3B012 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
