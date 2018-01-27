@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60836787201D1A2B00007247 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
+		60836788201D1A2E00007247 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
 		60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; };
 		60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; };
 		60AC830F1FF58E3600120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -84,6 +86,10 @@
 		60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C42A201D156500B3B012 /* LaunchScreen.storyboard */; };
 		60D6C435201D170F00B3B012 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
 		60D6C436201D170F00B3B012 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
+		60D6C43E201D188B00B3B012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C43D201D188B00B3B012 /* AppDelegate.swift */; };
+		60D6C440201D188B00B3B012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C43F201D188B00B3B012 /* ViewController.swift */; };
+		60D6C443201D188B00B3B012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C441201D188B00B3B012 /* Main.storyboard */; };
+		60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C444201D188B00B3B012 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +155,12 @@
 		60D6C42D201D156500B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60D6C433201D170F00B3B012 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		60D6C434201D170F00B3B012 /* NetworkRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
+		60D6C43B201D188B00B3B012 /* Hyperspace-tvOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-tvOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		60D6C43D201D188B00B3B012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		60D6C43F201D188B00B3B012 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		60D6C442201D188B00B3B012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		60D6C444201D188B00B3B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		60D6C446201D188B00B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60EB8FDB1FF59FB000AC0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +212,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60D6C438201D188B00B3B012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -224,6 +243,7 @@
 				60AC82E21FF589C200120172 /* Hyperspace.framework */,
 				60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */,
 				60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */,
+				60D6C43B201D188B00B3B012 /* Hyperspace-tvOSExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,6 +415,7 @@
 			children = (
 				60D6C432201D16F000B3B012 /* Shared */,
 				60D6C420201D156500B3B012 /* Hyperspace-iOSExample */,
+				60D6C43C201D188B00B3B012 /* Hyperspace-tvOSExample */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -406,6 +427,18 @@
 				60D6C434201D170F00B3B012 /* NetworkRequests.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		60D6C43C201D188B00B3B012 /* Hyperspace-tvOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				60D6C43D201D188B00B3B012 /* AppDelegate.swift */,
+				60D6C43F201D188B00B3B012 /* ViewController.swift */,
+				60D6C441201D188B00B3B012 /* Main.storyboard */,
+				60D6C444201D188B00B3B012 /* Assets.xcassets */,
+				60D6C446201D188B00B3B012 /* Info.plist */,
+			);
+			path = "Hyperspace-tvOSExample";
 			sourceTree = "<group>";
 		};
 		60EB8FDA1FF59FB000AC0B55 /* Supporting Files */ = {
@@ -553,6 +586,23 @@
 			productReference = 60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		60D6C43A201D188B00B3B012 /* Hyperspace-tvOSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60D6C447201D188B00B3B012 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOSExample" */;
+			buildPhases = (
+				60D6C437201D188B00B3B012 /* Sources */,
+				60D6C438201D188B00B3B012 /* Frameworks */,
+				60D6C439201D188B00B3B012 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyperspace-tvOSExample";
+			productName = "Hyperspace-tvOSExample";
+			productReference = 60D6C43B201D188B00B3B012 /* Hyperspace-tvOSExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -590,6 +640,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					60D6C43A201D188B00B3B012 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 60AC82B01FF588D500120172 /* Build configuration list for PBXProject "Hyperspace" */;
@@ -610,6 +664,7 @@
 				60D6C41E201D156500B3B012 /* Hyperspace-iOSExample */,
 				60AC82E11FF589C200120172 /* Hyperspace-tvOS */,
 				60AC82E91FF589C200120172 /* Hyperspace-tvOSTests */,
+				60D6C43A201D188B00B3B012 /* Hyperspace-tvOSExample */,
 				60AC82D41FF5899800120172 /* Hyperspace-watchOS */,
 			);
 		};
@@ -666,6 +721,15 @@
 				60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */,
 				60D6C429201D156500B3B012 /* Assets.xcassets in Resources */,
 				60D6C427201D156500B3B012 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60D6C439201D188B00B3B012 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */,
+				60D6C443201D188B00B3B012 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +836,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60D6C437201D188B00B3B012 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60836787201D1A2B00007247 /* Models.swift in Sources */,
+				60D6C440201D188B00B3B012 /* ViewController.swift in Sources */,
+				60836788201D1A2E00007247 /* NetworkRequests.swift in Sources */,
+				60D6C43E201D188B00B3B012 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -802,6 +877,14 @@
 				60D6C42B201D156500B3B012 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		60D6C441201D188B00B3B012 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60D6C442201D188B00B3B012 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1142,6 +1225,40 @@
 			};
 			name = Release;
 		};
+		60D6C448201D188B00B3B012 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-tvOSExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		60D6C449201D188B00B3B012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-tvOSExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1204,6 +1321,15 @@
 			buildConfigurations = (
 				60D6C42F201D156500B3B012 /* Debug */,
 				60D6C430201D156500B3B012 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60D6C447201D188B00B3B012 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60D6C448201D188B00B3B012 /* Debug */,
+				60D6C449201D188B00B3B012 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

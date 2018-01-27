@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H7m-YI-9do">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="pfP-az-0EU">
+            <objects>
+                <viewController id="H7m-YI-9do" customClass="ViewController" customModule="Hyperspace_tvOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lKR-ix-SdO"/>
+                        <viewControllerLayoutGuide type="bottom" id="TDP-5e-iGe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fcr-6p-YLG">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oBv-Ox-WLq">
+                                <rect key="frame" x="427" y="240" width="1066" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ts1-b8-Gii">
+                                        <rect key="frame" x="0.0" y="0.0" width="1066" height="132"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Get User"/>
+                                        <connections>
+                                            <action selector="getUserButtonTapped:" destination="H7m-YI-9do" eventType="primaryActionTriggered" id="VR5-Su-xSy"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a post..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lZo-f2-K10">
+                                        <rect key="frame" x="0.0" y="156" width="1066" height="132"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlT-F3-ibe">
+                                        <rect key="frame" x="0.0" y="312" width="1066" height="132"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Create Post"/>
+                                        <connections>
+                                            <action selector="createPostButtonTapped:" destination="H7m-YI-9do" eventType="primaryActionTriggered" id="XwE-dy-jCR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbK-nd-hRf">
+                                        <rect key="frame" x="0.0" y="468" width="1066" height="132"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Delete Post"/>
+                                        <connections>
+                                            <action selector="deletePostButtonTapped:" destination="H7m-YI-9do" eventType="primaryActionTriggered" id="hJ9-fr-RYs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1066" id="BAR-Bl-Rab"/>
+                                    <constraint firstAttribute="height" constant="600" id="T5K-lP-rYI"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="oBv-Ox-WLq" firstAttribute="centerY" secondItem="Fcr-6p-YLG" secondAttribute="centerY" id="Dm1-tP-AKq"/>
+                            <constraint firstItem="oBv-Ox-WLq" firstAttribute="centerX" secondItem="Fcr-6p-YLG" secondAttribute="centerX" id="eB7-ZX-rxK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="y9g-0B-gUU"/>
+                    </view>
+                    <connections>
+                        <outlet property="postTextField" destination="lZo-f2-K10" id="TcW-Vl-tvx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0or-n6-mZm" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
