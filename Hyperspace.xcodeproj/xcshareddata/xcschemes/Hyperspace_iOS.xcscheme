@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1C772AFC7D06437D4632E74746B61D6D"
+               BlueprintIdentifier = "60AC82B51FF588D500120172"
                BuildableName = "Hyperspace.framework"
                BlueprintName = "Hyperspace-iOS"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+               ReferencedContainer = "container:Hyperspace.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,10 +43,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1C772AFC7D06437D4632E74746B61D6D"
+            BlueprintIdentifier = "60AC82B51FF588D500120172"
             BuildableName = "Hyperspace.framework"
             BlueprintName = "Hyperspace-iOS"
-            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            ReferencedContainer = "container:Hyperspace.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,10 +66,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1C772AFC7D06437D4632E74746B61D6D"
+            BlueprintIdentifier = "60AC82B51FF588D500120172"
             BuildableName = "Hyperspace.framework"
             BlueprintName = "Hyperspace-iOS"
-            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            ReferencedContainer = "container:Hyperspace.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -84,10 +84,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1C772AFC7D06437D4632E74746B61D6D"
+            BlueprintIdentifier = "60AC82B51FF588D500120172"
             BuildableName = "Hyperspace.framework"
             BlueprintName = "Hyperspace-iOS"
-            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            ReferencedContainer = "container:Hyperspace.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
