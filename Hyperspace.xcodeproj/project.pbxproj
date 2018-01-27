@@ -390,9 +390,9 @@
 			targets = (
 				60AC82B51FF588D500120172 /* Hyperspace-iOS */,
 				60AC82BE1FF588D600120172 /* Hyperspace-iOSTests */,
-				60AC82D41FF5899800120172 /* Hyperspace-watchOS */,
 				60AC82E11FF589C200120172 /* Hyperspace-tvOS */,
 				60AC82E91FF589C200120172 /* Hyperspace-tvOSTests */,
+				60AC82D41FF5899800120172 /* Hyperspace-watchOS */,
 			);
 		};
 /* End PBXProject section */
