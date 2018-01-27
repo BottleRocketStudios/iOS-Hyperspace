@@ -137,7 +137,7 @@
 		60AC82AC1FF588D500120172 = {
 			isa = PBXGroup;
 			children = (
-				60AC82B81FF588D500120172 /* Hyperspace */,
+				60AC82B81FF588D500120172 /* Sources */,
 				60AC831F1FF58E8B00120172 /* Tests */,
 				60AC82B71FF588D500120172 /* Products */,
 			);
@@ -155,13 +155,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		60AC82B81FF588D500120172 /* Hyperspace */ = {
+		60AC82B81FF588D500120172 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				60AC833D1FF596B600120172 /* Hyperspace */,
 				60AC82F91FF58E3600120172 /* Supporting Files */,
 			);
-			name = Hyperspace;
 			path = Sources;
 			sourceTree = "<group>";
 		};
