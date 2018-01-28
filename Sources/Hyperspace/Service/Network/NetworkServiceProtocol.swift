@@ -31,18 +31,21 @@ public enum NetworkServiceError: Error {
 
 /// Represents the successful result of executing a NetworkRequest using a NetworkService.
 public struct NetworkServiceSuccess {
-    let data: Data
-    let response: HTTP.Response
+    public let data: Data
+    public let response: HTTP.Response
 }
 
 /// Represents the failed result of executing a NetworkRequest using a NetworkService.
 public struct NetworkServiceFailure: Error {
-    let error: NetworkServiceError
-    let response: HTTP.Response?
+    public let error: NetworkServiceError
+    public let response: HTTP.Response?
 }
 
+/// Represents the possible resulting values of a NetworkRequest using a NetworkService.
+public typealias NetworkServiceResult = Result<NetworkServiceSuccess, NetworkServiceFailure>
+
 /// Upon completion of executing a NetworkRequest using a NetworkService, the NetworkServiceResult is returned.
-public typealias NetworkServiceCompletion = (Result<NetworkServiceSuccess, NetworkServiceFailure>) -> Void
+public typealias NetworkServiceCompletion = (NetworkServiceResult) -> Void
 
 /// Represents something that can execute a URLRequest.
 public protocol NetworkServiceProtocol {

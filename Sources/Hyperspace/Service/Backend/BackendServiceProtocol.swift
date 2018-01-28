@@ -41,14 +41,14 @@ public protocol BackendServiceProtocol {
     /// - Parameters:
     ///   - request: The NetworkRequest to be executed.
     ///   - completion: The completion block to invoke when execution has finished.
-    func execute<T: NetworkRequest, U>(request: T, completion: @escaping BackendServiceCompletion<U>) where T.ResponseType == U
+    func execute<T: NetworkRequest>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>)
     
     /// Executes the NetworkRequest, calling the provided typed error completion block when finished.
     ///
     /// - Parameters:
     ///   - request: The NetworkRequest to be executed.
     ///   - completion: The completion block (with a specifcally typed error) to invoke when execution has finished.
-    func execute<T: NetworkRequest, U, E: BackendServiceErrorInitializable>(request: T, completion: @escaping TypedBackendServiceCompletion<U, E>) where T.ResponseType == U, T.ErrorType == E
+    func execute<T: NetworkRequest, E: BackendServiceErrorInitializable>(request: T, completion: @escaping TypedBackendServiceCompletion<T.ResponseType, E>) where T.ErrorType == E
     
     /// Cancels the task for the given request (if it is currently running).
     func cancelTask(for request: URLRequest)
@@ -60,8 +60,8 @@ public protocol BackendServiceProtocol {
 // MARK: - Default Typed Implementation
 
 extension BackendServiceProtocol {
-    public func execute<T: NetworkRequest, U, E: BackendServiceErrorInitializable>(request: T, completion: @escaping TypedBackendServiceCompletion<U, E>) where T.ResponseType == U, T.ErrorType == E {
-        execute(request: request) { (result: Result<U, BackendServiceError>) in
+    public func execute<T: NetworkRequest, E: BackendServiceErrorInitializable>(request: T, completion: @escaping TypedBackendServiceCompletion<T.ResponseType, E>) where T.ErrorType == E {
+        execute(request: request) { (result: Result<T.ResponseType, BackendServiceError>) in
             completion(result.flatMapError { .failure(E($0)) })
         }
     }

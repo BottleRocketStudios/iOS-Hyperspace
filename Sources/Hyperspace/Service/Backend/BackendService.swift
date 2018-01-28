@@ -29,7 +29,7 @@ public class BackendService {
 // MARK: - BackendService Conformance to BackendServiceProtocol
 
 extension BackendService: BackendServiceProtocol {
-    public func execute<T: NetworkRequest, U>(request: T, completion: @escaping BackendServiceCompletion<U>) where T.ResponseType == U {
+    public func execute<T: NetworkRequest>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>) {
         networkService.execute(request: request.urlRequest) { [weak self] (result) in
             switch result {
             case .success(let result):
@@ -53,7 +53,7 @@ extension BackendService: BackendServiceProtocol {
 
 // MARK: - Helper
 private extension BackendService {
-    func handleResponseData<T: NetworkRequest, U>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<U>) where T.ResponseType == U {
+    func handleResponseData<T: NetworkRequest>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>) {
         let transformResult = request.transformData(data)
         
         DispatchQueue.main.async {
