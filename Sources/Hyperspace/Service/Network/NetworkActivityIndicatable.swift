@@ -13,7 +13,7 @@ public protocol NetworkActivityIndicatable {
     var isNetworkActivityIndicatorVisible: Bool { get set }
 }
 
-/// Represents an object that is capable of recording the state of network requests and forwarding that state onto the corresponding indicator
+/// Represents an object that is capable of recording the state of network requests and forwarding that state to the corresponding indicator
 protocol NetworkActivityObservable {
     func start()
     func stop()
@@ -29,7 +29,7 @@ public class NetworkActivityController: NetworkActivityObservable {
     public let delayInterval: TimeInterval
     public private(set) var indicator: NetworkActivityIndicatable
     
-    private let queue = DispatchQueue(label: "com.hyperspace.networkactivityindicator", qos: .userInitiated)
+    private let queue = DispatchQueue(label: "com.bottlerocketstudios.hyperspace.networkactivityindicator", qos: .userInitiated)
     private(set) var delayedHide: DispatchWorkItem?
     private(set) var activityCount = 0
     
