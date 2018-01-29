@@ -51,7 +51,9 @@ public class NetworkService {
 
 extension NetworkService: NetworkServiceProtocol {
     public func execute(request: URLRequest, completion: @escaping NetworkServiceCompletion) {
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: request) { [weak self] (data, response, error) in
+            self?.networkActivityController?.stop()
+            
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
                 let networkFailure = NetworkServiceHelper.networkServiceFailure(for: error)
                 completion(.failure(networkFailure))
@@ -65,6 +67,7 @@ extension NetworkService: NetworkServiceProtocol {
         
         tasks[request] = task
         task.resume()
+        networkActivityController?.start()
     }
     
     public func cancelTask(for request: URLRequest) {
