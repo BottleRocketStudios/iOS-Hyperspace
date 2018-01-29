@@ -22,7 +22,7 @@ public class BackendService {
     }
     
     deinit {
-        networkService.cancelAllTasks()
+        cancelAllTasks()
     }
 }
 
@@ -46,7 +46,14 @@ extension BackendService: BackendServiceProtocol {
         networkService.cancelTask(for: request)
     }
     
-    private func handleResponseData<T: NetworkRequest>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>) {
+    public func cancelAllTasks() {
+        networkService.cancelAllTasks()
+    }
+}
+
+// MARK: - Helper
+private extension BackendService {
+    func handleResponseData<T: NetworkRequest>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>) {
         let transformResult = request.transformData(data)
         
         DispatchQueue.main.async {
