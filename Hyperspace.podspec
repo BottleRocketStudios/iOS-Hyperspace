@@ -33,7 +33,7 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
 
-  s.source_files = 'Hyperspace/Classes/**/*'
+  s.source_files = 'Sources/Hyperspace/**/*'
 
   # s.resource_bundles = {
   #   'Hyperspace' => ['Hyperspace/Assets/*.png']
@@ -41,5 +41,5 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Result', '~> 3.2'
+  s.dependency 'Result', '~> 3.2.4'
 end
