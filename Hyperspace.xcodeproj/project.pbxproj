@@ -100,6 +100,21 @@
 		60D6C440201D188B00B3B012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C43F201D188B00B3B012 /* ViewController.swift */; };
 		60D6C443201D188B00B3B012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C441201D188B00B3B012 /* Main.storyboard */; };
 		60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C444201D188B00B3B012 /* Assets.xcassets */; };
+		B4C32C2C201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
+		B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
+		B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
+		B4C32C30201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */; };
+		B4C32C31201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */; };
+		B4C32C33201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */; };
+		B4C32C34201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */; };
+		B4C32C53201EA4B700FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; };
+		B4C32C54201EA4B700FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B4C32C58201EA4BC00FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; };
+		B4C32C59201EA4BC00FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B4C32C5D201EA4C100FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
+		B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
+		B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +146,34 @@
 			remoteGlobalIDString = 60AC82E11FF589C200120172;
 			remoteInfo = "Hyperspace-tvOS";
 		};
+		B4C32C55201EA4B700FC82C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60AC82B51FF588D500120172;
+			remoteInfo = "Hyperspace-iOS";
+		};
+		B4C32C5A201EA4BC00FC82C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60AC82E11FF589C200120172;
+			remoteInfo = "Hyperspace-tvOS";
+		};
+		B4C32C5F201EA4C100FC82C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60AC82D41FF5899800120172;
+			remoteInfo = "Hyperspace-watchOS";
+		};
+		B4C32C65201EA4C900FC82C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60AC82D41FF5899800120172;
+			remoteInfo = "Hyperspace-watchOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -154,6 +197,50 @@
 				608367A8201D1AF500007247 /* Hyperspace-watchOSExample.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4C32C57201EA4B700FC82C1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B4C32C54201EA4B700FC82C1 /* Hyperspace.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4C32C5C201EA4BC00FC82C1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B4C32C59201EA4BC00FC82C1 /* Hyperspace.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4C32C62201EA4C100FC82C1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4C32C67201EA4C900FC82C1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -225,6 +312,9 @@
 		60D6C444201D188B00B3B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60D6C446201D188B00B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60EB8FDB1FF59FB000AC0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatable.swift; sourceTree = "<group>"; };
+		B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkActivityIndicator.swift; sourceTree = "<group>"; };
+		B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +322,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +370,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C32C53201EA4B700FC82C1 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +378,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C32C58201EA4BC00FC82C1 /* Hyperspace.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4C32C61201EA4C100FC82C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4C32C5D201EA4C100FC82C1 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +480,7 @@
 				60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */,
 				60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */,
 				60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */,
+				B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */,
 				60D6C419201CFCE500B3B012 /* Helper */,
 				60EB8FDA1FF59FB000AC0B55 /* Supporting Files */,
 			);
@@ -435,6 +537,7 @@
 		60AC83481FF596B600120172 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */,
 				60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */,
 				60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */,
 				60AC834B1FF596B600120172 /* NetworkSession.swift */,
@@ -466,6 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				60D6C3F3201CFCCF00B3B012 /* MockNetworkSession.swift */,
+				B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */,
 				60D6C3F4201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift */,
 				60D6C3F5201CFCCF00B3B012 /* MockNetworkService.swift */,
 				60D6C3F6201CFCCF00B3B012 /* MockDecodableContainer.swift */,
@@ -593,11 +697,14 @@
 			buildPhases = (
 				60836789201D1AF400007247 /* Resources */,
 				608367AC201D1AF500007247 /* Embed App Extensions */,
+				B4C32C61201EA4C100FC82C1 /* Frameworks */,
+				B4C32C62201EA4C100FC82C1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				6083679A201D1AF500007247 /* PBXTargetDependency */,
+				B4C32C60201EA4C100FC82C1 /* PBXTargetDependency */,
 			);
 			name = "Hyperspace-watchOSExample";
 			productName = "Hyperspace-watchOSExample";
@@ -611,10 +718,12 @@
 				60836793201D1AF500007247 /* Sources */,
 				60836794201D1AF500007247 /* Frameworks */,
 				60836795201D1AF500007247 /* Resources */,
+				B4C32C67201EA4C900FC82C1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B4C32C66201EA4C900FC82C1 /* PBXTargetDependency */,
 			);
 			name = "Hyperspace-watchOSExample Extension";
 			productName = "Hyperspace-watchOSExample Extension";
@@ -719,11 +828,13 @@
 				60D6C41C201D156500B3B012 /* Frameworks */,
 				60D6C41D201D156500B3B012 /* Resources */,
 				608367B0201D1AF500007247 /* Embed Watch Content */,
+				B4C32C57201EA4B700FC82C1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				608367A7201D1AF500007247 /* PBXTargetDependency */,
+				B4C32C56201EA4B700FC82C1 /* PBXTargetDependency */,
 			);
 			name = "Hyperspace-iOSExample";
 			productName = "Hyperspace-iOSExample";
@@ -737,10 +848,12 @@
 				60D6C437201D188B00B3B012 /* Sources */,
 				60D6C438201D188B00B3B012 /* Frameworks */,
 				60D6C439201D188B00B3B012 /* Resources */,
+				B4C32C5C201EA4BC00FC82C1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B4C32C5B201EA4BC00FC82C1 /* PBXTargetDependency */,
 			);
 			name = "Hyperspace-tvOSExample";
 			productName = "Hyperspace-tvOSExample";
@@ -934,6 +1047,7 @@
 				60D6C375201CC81100B3B012 /* NetworkSession.swift in Sources */,
 				60D6C376201CC81100B3B012 /* NetworkService.swift in Sources */,
 				60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */,
+				B4C32C2C201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C378201CC81100B3B012 /* BackendService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -942,6 +1056,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C32C33201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift in Sources */,
 				60D6C409201CFCCF00B3B012 /* MockNetworkService.swift in Sources */,
 				60D6C417201CFCCF00B3B012 /* NetworkRequestTestDefaults.swift in Sources */,
 				60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
@@ -949,6 +1064,7 @@
 				60D6C40B201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C407201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
 				60D6C401201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
+				B4C32C30201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
 				60D6C3FF201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
 				60D6C405201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 			);
@@ -969,6 +1085,7 @@
 				60D6C38D201CCCBE00B3B012 /* NetworkSession.swift in Sources */,
 				60D6C38E201CCCBE00B3B012 /* NetworkService.swift in Sources */,
 				60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */,
+				B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -988,6 +1105,7 @@
 				60D6C381201CCCAE00B3B012 /* NetworkSession.swift in Sources */,
 				60D6C382201CCCAE00B3B012 /* NetworkService.swift in Sources */,
 				60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */,
+				B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -996,6 +1114,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C32C34201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift in Sources */,
 				60D6C40A201CFCCF00B3B012 /* MockNetworkService.swift in Sources */,
 				60D6C418201CFCCF00B3B012 /* NetworkRequestTestDefaults.swift in Sources */,
 				60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
@@ -1003,6 +1122,7 @@
 				60D6C40C201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C408201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
 				60D6C402201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
+				B4C32C31201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
 				60D6C400201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
 				60D6C406201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 			);
@@ -1052,6 +1172,26 @@
 			isa = PBXTargetDependency;
 			target = 60AC82E11FF589C200120172 /* Hyperspace-tvOS */;
 			targetProxy = 60AC82EC1FF589C200120172 /* PBXContainerItemProxy */;
+		};
+		B4C32C56201EA4B700FC82C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60AC82B51FF588D500120172 /* Hyperspace-iOS */;
+			targetProxy = B4C32C55201EA4B700FC82C1 /* PBXContainerItemProxy */;
+		};
+		B4C32C5B201EA4BC00FC82C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60AC82E11FF589C200120172 /* Hyperspace-tvOS */;
+			targetProxy = B4C32C5A201EA4BC00FC82C1 /* PBXContainerItemProxy */;
+		};
+		B4C32C60201EA4C100FC82C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60AC82D41FF5899800120172 /* Hyperspace-watchOS */;
+			targetProxy = B4C32C5F201EA4C100FC82C1 /* PBXContainerItemProxy */;
+		};
+		B4C32C66201EA4C900FC82C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60AC82D41FF5899800120172 /* Hyperspace-watchOS */;
+			targetProxy = B4C32C65201EA4C900FC82C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1133,6 +1273,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				IBSC_MODULE = Hyperspace_watchOSExample_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1151,6 +1292,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				IBSC_MODULE = Hyperspace_watchOSExample_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1469,6 +1611,7 @@
 		60D6C42F201D156500B3B012 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-iOSExample/Info.plist";
@@ -1484,6 +1627,7 @@
 		60D6C430201D156500B3B012 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-iOSExample/Info.plist";
@@ -1499,6 +1643,7 @@
 		60D6C448201D188B00B3B012 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
@@ -1516,6 +1661,7 @@
 		60D6C449201D188B00B3B012 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;

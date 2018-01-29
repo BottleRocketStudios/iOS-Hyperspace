@@ -27,12 +27,19 @@ public class NetworkService {
     // MARK: - Properties
     
     private let session: NetworkSession
+    private var networkActivityController: NetworkActivityController?
     private var tasks = [URLRequest: NetworkSessionDataTask]()
     
     // MARK: - Init
     
-    public init(session: NetworkSession = URLSession.shared) {
+    public init(session: NetworkSession = URLSession.shared, networkActivityController: NetworkActivityController? = nil) {
         self.session = session
+        self.networkActivityController = networkActivityController
+    }
+    
+    public convenience init(session: NetworkSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable) {
+        let networkActivityController = NetworkActivityController(indicator: networkActivityIndicatable)
+        self.init(session: session, networkActivityController: networkActivityController)
     }
     
     deinit {
@@ -44,7 +51,9 @@ public class NetworkService {
 
 extension NetworkService: NetworkServiceProtocol {
     public func execute(request: URLRequest, completion: @escaping NetworkServiceCompletion) {
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: request) { [weak self] (data, response, error) in
+            self?.networkActivityController?.stop()
+            
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
                 let networkFailure = NetworkServiceHelper.networkServiceFailure(for: error)
                 completion(.failure(networkFailure))
@@ -58,6 +67,7 @@ extension NetworkService: NetworkServiceProtocol {
         
         tasks[request] = task
         task.resume()
+        networkActivityController?.start()
     }
     
     public func cancelTask(for request: URLRequest) {

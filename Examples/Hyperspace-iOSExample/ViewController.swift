@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let backendService = BackendService()
+    private let backendService = BackendService(networkService: NetworkService(networkActivityIndicatable: UIApplication.shared))
     
     // MARK: - IBActions
     
@@ -91,3 +91,5 @@ extension UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+extension UIApplication: NetworkActivityIndicatable { /* No extra conformance needed. */ }
