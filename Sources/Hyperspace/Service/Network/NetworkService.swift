@@ -27,12 +27,19 @@ public class NetworkService {
     // MARK: - Properties
     
     private let session: NetworkSession
+    private var networkActivityController: NetworkActivityController?
     private var tasks = [URLRequest: NetworkSessionDataTask]()
     
     // MARK: - Init
     
-    public init(session: NetworkSession = URLSession.shared) {
+    public init(session: NetworkSession = URLSession.shared, networkActivityController: NetworkActivityController? = nil) {
         self.session = session
+        self.networkActivityController = networkActivityController
+    }
+    
+    public convenience init(session: NetworkSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable) {
+        let networkActivityController = NetworkActivityController(indicator: networkActivityIndicatable)
+        self.init(session: session, networkActivityController: networkActivityController)
     }
     
     deinit {
