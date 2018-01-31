@@ -125,13 +125,8 @@ class BackendServiceTests: XCTestCase {
     
     func test_BackendServiceProtocol_Execute() {
         let mock = MockBackendService()
-        
-
         mock.execute(request: NetworkRequestTests.SimpleGETRequest()) { (result: Result<NetworkRequestTests.SimpleGETRequest.ResponseType, NetworkRequestTests.SimpleGETRequest.ErrorType>) in
-            
             XCTAssert(true)
         }
-        
-    
     }
 }

@@ -87,6 +87,6 @@ extension BackendServiceError: Equatable {
 
 extension AnyError: BackendServiceErrorInitializable {
     public init(_ backendServiceError: BackendServiceError) {
-        self.init( backendServiceError as Error)
+        self.init(backendServiceError as Error)
     }
 }
