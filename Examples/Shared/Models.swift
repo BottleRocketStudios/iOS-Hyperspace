@@ -9,17 +9,27 @@
 import Foundation
 
 struct User: Decodable {
-    let id: Int
+    let identifier: Int
     let name: String
     let username: String
     let email: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case identifier = "id"
+        case name, username, email
+    }
 }
 
 struct Post: Decodable {
-    let id: Int
+    let identifier: Int
     let userId: Int
     let title: String
     let body: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case identifier = "id"
+        case userId, title, body
+    }
 }
 
 struct NewPost: Encodable {
