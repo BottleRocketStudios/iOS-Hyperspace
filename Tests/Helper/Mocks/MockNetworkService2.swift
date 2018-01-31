@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+@testable import Hyperspace
 
 class MockNetworkService2: NetworkService {
     var setup = false
