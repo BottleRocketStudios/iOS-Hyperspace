@@ -105,18 +105,6 @@ class NetworkRequestTests: XCTestCase {
         XCTAssertEqual(urlRequest.timeoutInterval, timeout, file: file, line: line)
     }
     
-//    func test_NetworkRequestQueryParameterEncodingStrategy_EncodeUrlQueryAllowedCharacterSet() {
-//        let request = SimpleGETRequest()
-//        let queryString = request.encodeQueryParameterString("this is a test")
-//        XCTAssert(queryString == "this%20is%20a%20test")
-//    }
-//
-//    func test_NetworkRequestQueryParameterEncodingStrategy_EncodeUrlQueryAllowedCharacterSetFailed() {
-//        let request = SimpleGETRequest()
-//        let queryString = request.encodeQueryParameterString("")
-//        XCTAssert(queryString == "")
-//    }
-    
     func test_NetworkRequest_InitEmptyRequest() {
         let response = EmptyResponse()
         XCTAssert(true)

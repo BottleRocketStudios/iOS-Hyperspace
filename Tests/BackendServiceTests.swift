@@ -82,11 +82,6 @@ class BackendServiceTests: XCTestCase {
         XCTAssertEqual(mockNetworkService.cancelAllTasksCallCount, 1)
     }
     
-    func test_BackendServiceError_Equatable() {
-        //let error1 = Error()
-//        BackendServiceError.dataTransformationError(<#T##Error#>)
-        
-    }
     // MARK: - Private
     
     private func executeBackendService(mockedNetworkServiceResult: Result<NetworkServiceSuccess, NetworkServiceFailure>,
@@ -118,10 +113,8 @@ class BackendServiceTests: XCTestCase {
     }
     
     func test_BackendServiceErrorInitializable_Init() {
-        
-        let _ = AnyError(BackendServiceError.networkError(.unknownError, nil))
-        
-        XCTAssert(true)
+        let error = AnyError(BackendServiceError.networkError(.unknownError, nil))
+        XCTAssert(error.error is BackendServiceError)
     }
     
     func test_BackendServiceError_EquatableNotMatching() {
