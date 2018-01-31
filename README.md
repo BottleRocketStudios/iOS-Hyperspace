@@ -71,7 +71,7 @@ let createPostRequest = AnyNetworkRequest<Post>(method: .post,
 For the above examples, the `Post` response type and `NewPost` body are defined as follows:
 ```swift
 struct Post: Decodable {
-    let id: Int
+    let identifier: Int
     let userId: Int
     let title: String
     let body: String
