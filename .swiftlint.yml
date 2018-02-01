@@ -9,5 +9,10 @@ disabled_rules:
   - todo
   - statement_position
 
+identifier_name:
+  excluded:
+    - id
+    - ok
+
 excluded:
   - Carthage

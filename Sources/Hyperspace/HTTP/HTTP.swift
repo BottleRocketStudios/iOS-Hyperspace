@@ -52,8 +52,7 @@ public struct HTTP {
     }
     
     /// Represents a HTTP status code.
-    
-    // swiftlint:disable identifier_name
+
     public enum Status {
         public enum Success: Int {
             case unknown = -1
@@ -149,7 +148,6 @@ public struct HTTP {
                 self = .unknown(code)
             }
         }
-        // swiftlint:enable identifier_name
     }
     
     /// Represents a HTTP response.
