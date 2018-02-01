@@ -9,11 +9,12 @@
 import Foundation
 @testable import Hyperspace
 
-class MockNetworkService2: NetworkService {
-    var setup = false
+class NetworkServiceMockSubclass: NetworkService {
+    
+    private(set) var initWithSessionNetworkActivityControllerWasCalled = false
     
     override init(session: NetworkSession, networkActivityController: NetworkActivityController?) {
-        setup = true
+        initWithSessionNetworkActivityControllerWasCalled = true
         super.init(session: session, networkActivityController: networkActivityController)
     }
 }

@@ -16,8 +16,7 @@ class NetworkSessionTest: XCTestCase {
     func test_URLSessionNetworkSessionImplementation_ReturnsURLSessionDataTask() {
 
         let networkSession: NetworkSession = URLSession.shared
-        let networkSessionDataTask: NetworkSessionDataTask = networkSession.dataTask(with: defaultRequest, completionHandler: { (data, response, error) in
-        })
+        let networkSessionDataTask: NetworkSessionDataTask = networkSession.dataTask(with: defaultRequest, completionHandler: { _,_,_  in })
 
         XCTAssert(networkSessionDataTask is URLSessionDataTask)
     }

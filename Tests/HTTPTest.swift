@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Hyperspace
+@testable import Hyperspace
 
 class HTTPTest: XCTestCase {
     
@@ -33,9 +33,7 @@ class HTTPTest: XCTestCase {
             HTTP.HeaderKey.userAgent: "User-Agent"
         ]
         
-        items.forEach { (arg) in
-            
-            let (key, value) = arg
+        items.forEach { (key, value) in
             XCTAssert(key == HTTP.HeaderKey(rawValue: value), "\(key) == \(HTTP.HeaderKey(rawValue: value))")
         }
     }
@@ -61,9 +59,7 @@ class HTTPTest: XCTestCase {
         ]
 
         
-        items.forEach { (arg) in
-
-            let (key, value) = arg
+        items.forEach { (key, value) in
             XCTAssert(HTTP.HeaderValue(rawValue: key) == value)
         }
     }
@@ -76,87 +72,87 @@ class HTTPTest: XCTestCase {
         XCTAssert(dataString == content)
     }
     
-    func test_HTTPStatus_InitWithCode200() {
+    func test_HTTPResponseInitWithCode200_ProducesStatusSuccessOK() {
         let response = HTTP.Response(code: 200, data: nil)
         switch response.status {
         case .success(let status):
-            XCTAssert(status.rawValue == 200)
+            XCTAssert(status == HTTP.Status.Success.ok)
         default:
             XCTFail()
         }
     }
     
-    func test_HTTPStatus_InitWithCode299() {
+    func test_HTTPStatusInitWithCode299_ProducesStatusSuccessUnknown() {
         let response = HTTP.Response(code: 299, data: nil)
         switch response.status {
         case .success(let status):
-            XCTAssert(status.rawValue == -1)
+            XCTAssert(status == HTTP.Status.Success.unknown)
         default:
             XCTFail()
         }
     }
     
-    func test_HTTPStatus_InitWithCode300() {
+    func test_HTTPStatusInitWithCode300_ProducesStatusRedirectionMultipleChoices() {
         let response = HTTP.Response(code: 300, data: nil)
         switch response.status {
         case .redirection(let status):
-            XCTAssert(status.rawValue == 300)
+            XCTAssert(status == HTTP.Status.Redirection.multipleChoices)
         default:
             XCTFail()
         }
     }
     
-    func test_HTTPStatus_InitWithCode399() {
+    func test_HTTPStatusInitWithCode399_ProducesStatusRedirectionUnknown() {
         let response = HTTP.Response(code: 399, data: nil)
         switch response.status {
         case .redirection(let status):
-            XCTAssert(status.rawValue == -1)
+            XCTAssert(status == HTTP.Status.Redirection.unknown)
         default:
             XCTFail()
         }
     }
     
-    func test_HTTPStatus_InitWithCode400() {
+    func test_HTTPStatusInitWithCode400_ProducesStatusClientErrorBadRequest() {
         let response = HTTP.Response(code: 400, data: nil)
         switch response.status {
         case .clientError(let status):
-            XCTAssert(status.rawValue == 400)
+            XCTAssert(status == HTTP.Status.ClientError.badRequest)
         default:
             XCTFail()
         }
     }
     
-    func test_HTTPStatus_InitWithCode499() {
+    func test_HTTPStatusInitWithCode499_ProducesStatusClientErrorUnknown() {
         let response = HTTP.Response(code: 499, data: nil)
         switch response.status {
         case .clientError(let status):
-            XCTAssert(status.rawValue == -1)
+            XCTAssert(status == HTTP.Status.ClientError.unknown)
         default:
             XCTFail()
         }
     }
     
-    func test_HTTPStatus_InitWithCode500() {
+    func test_HTTPStatusInitWithCode500_ProducesStatusServerErrorInternalServerError() {
         let response = HTTP.Response(code: 500, data: nil)
         switch response.status {
         case .serverError(let status):
-            XCTAssert(status.rawValue == 500)
+            XCTAssert(status == HTTP.Status.ServerError.internalServerError)
         default:
             XCTFail()
         }
     }
     
-    func test_HTTPStatus_InitWithCode599() {
+    func test_HTTPStatusInitWithCode599_ProducesStatusServerErrorUnknown() {
         let response = HTTP.Response(code: 599, data: nil)
         switch response.status {
         case .serverError(let status):
-            XCTAssert(status.rawValue == -1)
+            XCTAssert(status == HTTP.Status.ServerError.unknown)
         default:
             XCTFail()
         }
     }
     
-    func test_HTTPStatus_InitWithCode100() {
+    func test_HTTPStatusInitWithCode100_ProducesStatusUnknown() {
         let response = HTTP.Response(code: 100, data: nil)
         switch response.status {
         case .unknown(let code):

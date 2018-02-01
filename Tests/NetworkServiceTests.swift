@@ -123,9 +123,9 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func test_NetworkService_ConvenienceInit() {
-        let networkService = MockNetworkService2(session: URLSession.shared, networkActivityIndicatable: MockNetworkActivityIndicator())
+        let networkService = NetworkServiceMockSubclass(session: URLSession.shared, networkActivityIndicatable: MockNetworkActivityIndicator())
         
-        XCTAssert(networkService.setup)
+        XCTAssert(networkService.initWithSessionNetworkActivityControllerWasCalled)
     }
     
     func test_NetworkServiceHelper_InvalidHTTPResponsErrorUnknownError() {
