@@ -2,12 +2,8 @@
 line_length: 240
 
 disabled_rules:
-  - type_name
-  - trailing_whitespace
-  - force_try
-  - force_cast
-  - todo
-  - statement_position
+  - trailing_whitespace # Disables SwiftLint complaining about whitespace characters on empty lines
+  - todo # Disables auto-warning of TODO statements
 
 identifier_name:
   excluded:
