@@ -22,8 +22,10 @@ cache:
 before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
+  - brew upgrade swiftlint
   - carthage bootstrap --verbose --no-use-binaries --platform iOS,tvOS,watchOS --cache-builds
 script:
+  - swiftlint
   - set -o pipefail
 
   # Build Framework and Run Tests if specified
