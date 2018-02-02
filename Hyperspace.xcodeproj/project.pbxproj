@@ -7,6 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3083665E20239FB40067AEB9 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3083665F20239FBB0067AEB9 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
+		3083666020239FBB0067AEB9 /* NetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */; };
+		3083666120239FBB0067AEB9 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */; };
+		3083666220239FBB0067AEB9 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* NetworkSession.swift */; };
+		3083666320239FBB0067AEB9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* NetworkService.swift */; };
+		3083666420239FBB0067AEB9 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		3083666520239FBB0067AEB9 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
+		3083666620239FC00067AEB9 /* AnyNetworkRequest+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */; };
+		3083666720239FC00067AEB9 /* AnyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83451FF596B600120172 /* AnyNetworkRequest.swift */; };
+		3083666820239FC00067AEB9 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* NetworkRequest.swift */; };
+		3083666920239FC40067AEB9 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
+		3083666A20239FC80067AEB9 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
+		3083666B20239FC80067AEB9 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
+		3083666C2023A02C0067AEB9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3083666D2023A02C0067AEB9 /* Result.framework */; };
+		3083666E2023A1160067AEB9 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
+		3083666F2023A1160067AEB9 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */; };
+		308366702023A1160067AEB9 /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */; };
+		308366712023A1160067AEB9 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */; };
+		308366722023A1160067AEB9 /* NetworkActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */; };
+		308366732023A1210067AEB9 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3FE201CFCCF00B3B012 /* NetworkRequestTestDefaults.swift */; };
+		308366742023A1210067AEB9 /* MockNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F3201CFCCF00B3B012 /* MockNetworkSession.swift */; };
+		308366752023A1210067AEB9 /* MockNetworkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */; };
+		308366762023A1210067AEB9 /* MockNetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F4201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift */; };
+		308366772023A1210067AEB9 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockNetworkService.swift */; };
+		308366782023A1210067AEB9 /* MockDecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F6201CFCCF00B3B012 /* MockDecodableContainer.swift */; };
+		308366792023A1210067AEB9 /* DateObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3F9201CFCCF00B3B012 /* DateObject.json */; };
+		3083667A2023A1210067AEB9 /* RootKeyObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FA201CFCCF00B3B012 /* RootKeyObject.json */; };
+		3083667B2023A1210067AEB9 /* Object.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FB201CFCCF00B3B012 /* Object.json */; };
+		3083667C2023A1210067AEB9 /* RootKeyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */; };
+		3091F5912023D3E90061B413 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3083663820239DE20067AEB9 /* Hyperspace.framework */; };
+		3091F5992023D9A80061B413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F5982023D9A80061B413 /* AppDelegate.swift */; };
+		3091F59B2023D9A80061B413 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F59A2023D9A80061B413 /* ViewController.swift */; };
+		3091F59D2023D9A80061B413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3091F59C2023D9A80061B413 /* Assets.xcassets */; };
+		3091F5A02023D9A80061B413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3091F59E2023D9A80061B413 /* Main.storyboard */; };
+		3091F5A62023E2960061B413 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
+		3091F5A72023E2960061B413 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
 		60326016201D1DED008CEFC8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
 		60326017201D1DF1008CEFC8 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
 		60836787201D1A2B00007247 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
@@ -118,6 +155,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3083664220239DE20067AEB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3083663720239DE20067AEB9;
+			remoteInfo = Hyperspace;
+		};
 		60836799201D1AF500007247 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
@@ -246,6 +290,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3083663820239DE20067AEB9 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3083664020239DE20067AEB9 /* Hyperspace-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3083666D2023A02C0067AEB9 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3091F5962023D9A80061B413 /* Hyperspace-macOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-macOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3091F5982023D9A80061B413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3091F59A2023D9A80061B413 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3091F59C2023D9A80061B413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3091F59F2023D9A80061B413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3091F5A12023D9A80061B413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3091F5A22023D9A80061B413 /* Hyperspace_macOSExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hyperspace_macOSExample.entitlements; sourceTree = "<group>"; };
 		60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_DELETE.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601A201D1F1F008CEFC8 /* Hyperspace.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601B201D1F1F008CEFC8 /* Hyperspace_AnyNetworkRequest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_AnyNetworkRequest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -318,6 +372,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3083663420239DE20067AEB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3083666C2023A02C0067AEB9 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3083663D20239DE20067AEB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3091F5912023D3E90061B413 /* Hyperspace.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3091F5932023D9A80061B413 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60836794201D1AF500007247 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +470,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3091F5972023D9A80061B413 /* Hyperspace-macOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				3091F5982023D9A80061B413 /* AppDelegate.swift */,
+				3091F59A2023D9A80061B413 /* ViewController.swift */,
+				3091F59C2023D9A80061B413 /* Assets.xcassets */,
+				3091F59E2023D9A80061B413 /* Main.storyboard */,
+				3091F5A12023D9A80061B413 /* Info.plist */,
+				3091F5A22023D9A80061B413 /* Hyperspace_macOSExample.entitlements */,
+			);
+			path = "Hyperspace-macOSExample";
+			sourceTree = "<group>";
+		};
 		60326018201D1F1F008CEFC8 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +540,9 @@
 				60D6C43B201D188B00B3B012 /* Hyperspace-tvOSExample.app */,
 				6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */,
 				60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */,
+				3083663820239DE20067AEB9 /* Hyperspace.framework */,
+				3083664020239DE20067AEB9 /* Hyperspace-macOSTests.xctest */,
+				3091F5962023D9A80061B413 /* Hyperspace-macOSExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -558,6 +651,7 @@
 		60D6C3E6201CD77400B3B012 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3083666D2023A02C0067AEB9 /* Result.framework */,
 				60D6C3EC201CD78100B3B012 /* Result.framework */,
 				60D6C3EA201CD77B00B3B012 /* Result.framework */,
 				60D6C3E8201CD77400B3B012 /* Result.framework */,
@@ -628,6 +722,7 @@
 				60D6C43C201D188B00B3B012 /* Hyperspace-tvOSExample */,
 				6083678C201D1AF400007247 /* Hyperspace-watchOSExample */,
 				6083679B201D1AF500007247 /* Hyperspace-watchOSExample Extension */,
+				3091F5972023D9A80061B413 /* Hyperspace-macOSExample */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -664,6 +759,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3083663520239DE20067AEB9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3083665E20239FB40067AEB9 /* Hyperspace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60AC82B31FF588D500120172 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -691,6 +794,59 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3083663720239DE20067AEB9 /* Hyperspace-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3083664920239DE20067AEB9 /* Build configuration list for PBXNativeTarget "Hyperspace-macOS" */;
+			buildPhases = (
+				3083663320239DE20067AEB9 /* Sources */,
+				3083663420239DE20067AEB9 /* Frameworks */,
+				3083663520239DE20067AEB9 /* Headers */,
+				3083663620239DE20067AEB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyperspace-macOS";
+			productName = Hyperspace;
+			productReference = 3083663820239DE20067AEB9 /* Hyperspace.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3083663F20239DE20067AEB9 /* Hyperspace-macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3083664C20239DE20067AEB9 /* Build configuration list for PBXNativeTarget "Hyperspace-macOSTests" */;
+			buildPhases = (
+				3083663C20239DE20067AEB9 /* Sources */,
+				3083663D20239DE20067AEB9 /* Frameworks */,
+				3083663E20239DE20067AEB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3083664320239DE20067AEB9 /* PBXTargetDependency */,
+			);
+			name = "Hyperspace-macOSTests";
+			productName = HyperspaceTests;
+			productReference = 3083664020239DE20067AEB9 /* Hyperspace-macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3091F5952023D9A80061B413 /* Hyperspace-macOSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3091F5A32023D9A80061B413 /* Build configuration list for PBXNativeTarget "Hyperspace-macOSExample" */;
+			buildPhases = (
+				3091F5922023D9A80061B413 /* Sources */,
+				3091F5932023D9A80061B413 /* Frameworks */,
+				3091F5942023D9A80061B413 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hyperspace-macOSExample";
+			productName = "Hyperspace-macOSExample";
+			productReference = 3091F5962023D9A80061B413 /* Hyperspace-macOSExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		6083678A201D1AF400007247 /* Hyperspace-watchOSExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 608367AD201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample" */;
@@ -870,6 +1026,18 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Bottle Rocket Studios";
 				TargetAttributes = {
+					3083663720239DE20067AEB9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					3083663F20239DE20067AEB9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					3091F5952023D9A80061B413 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					6083678A201D1AF400007247 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -933,11 +1101,41 @@
 				60AC82D41FF5899800120172 /* Hyperspace-watchOS */,
 				6083678A201D1AF400007247 /* Hyperspace-watchOSExample */,
 				60836796201D1AF500007247 /* Hyperspace-watchOSExample Extension */,
+				3083663720239DE20067AEB9 /* Hyperspace-macOS */,
+				3083663F20239DE20067AEB9 /* Hyperspace-macOSTests */,
+				3091F5952023D9A80061B413 /* Hyperspace-macOSExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3083663620239DE20067AEB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3083663E20239DE20067AEB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3083667B2023A1210067AEB9 /* Object.json in Resources */,
+				3083667C2023A1210067AEB9 /* RootKeyArray.json in Resources */,
+				3083667A2023A1210067AEB9 /* RootKeyObject.json in Resources */,
+				308366792023A1210067AEB9 /* DateObject.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3091F5942023D9A80061B413 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3091F59D2023D9A80061B413 /* Assets.xcassets in Resources */,
+				3091F5A02023D9A80061B413 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60836789201D1AF400007247 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1020,6 +1218,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3083663320239DE20067AEB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3083666620239FC00067AEB9 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				3083666020239FBB0067AEB9 /* NetworkSessionDataTask.swift in Sources */,
+				3083665F20239FBB0067AEB9 /* NetworkActivityIndicatable.swift in Sources */,
+				3083666820239FC00067AEB9 /* NetworkRequest.swift in Sources */,
+				3083666220239FBB0067AEB9 /* NetworkSession.swift in Sources */,
+				3083666420239FBB0067AEB9 /* BackendServiceProtocol.swift in Sources */,
+				3083666B20239FC80067AEB9 /* URLQueryItem+Extensions.swift in Sources */,
+				3083666520239FBB0067AEB9 /* BackendService.swift in Sources */,
+				3083666320239FBB0067AEB9 /* NetworkService.swift in Sources */,
+				3083666920239FC40067AEB9 /* HTTP.swift in Sources */,
+				3083666120239FBB0067AEB9 /* NetworkServiceProtocol.swift in Sources */,
+				3083666720239FC00067AEB9 /* AnyNetworkRequest.swift in Sources */,
+				3083666A20239FC80067AEB9 /* URL+Additions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3083663C20239DE20067AEB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				308366722023A1160067AEB9 /* NetworkActivityIndicatorTests.swift in Sources */,
+				3083666F2023A1160067AEB9 /* DecodingTests.swift in Sources */,
+				308366772023A1210067AEB9 /* MockNetworkService.swift in Sources */,
+				3083666E2023A1160067AEB9 /* BackendServiceTests.swift in Sources */,
+				308366782023A1210067AEB9 /* MockDecodableContainer.swift in Sources */,
+				308366762023A1210067AEB9 /* MockNetworkSessionDataTask.swift in Sources */,
+				308366712023A1160067AEB9 /* NetworkServiceTests.swift in Sources */,
+				308366732023A1210067AEB9 /* NetworkRequestTestDefaults.swift in Sources */,
+				308366702023A1160067AEB9 /* NetworkRequestTests.swift in Sources */,
+				308366742023A1210067AEB9 /* MockNetworkSession.swift in Sources */,
+				308366752023A1210067AEB9 /* MockNetworkActivityIndicator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3091F5922023D9A80061B413 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3091F5A62023E2960061B413 /* Models.swift in Sources */,
+				3091F59B2023D9A80061B413 /* ViewController.swift in Sources */,
+				3091F5A72023E2960061B413 /* NetworkRequests.swift in Sources */,
+				3091F5992023D9A80061B413 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60836793201D1AF500007247 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1153,6 +1400,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3083664320239DE20067AEB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3083663720239DE20067AEB9 /* Hyperspace-macOS */;
+			targetProxy = 3083664220239DE20067AEB9 /* PBXContainerItemProxy */;
+		};
 		6083679A201D1AF500007247 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 60836796201D1AF500007247 /* Hyperspace-watchOSExample Extension */;
@@ -1196,6 +1448,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3091F59E2023D9A80061B413 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3091F59F2023D9A80061B413 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		6083678D201D1AF400007247 /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1231,6 +1491,127 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3083664A20239DE20067AEB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"MACOS=1",
+				);
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-macOS";
+				PRODUCT_NAME = Hyperspace;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		3083664B20239DE20067AEB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-macOS";
+				PRODUCT_NAME = Hyperspace;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		3083664D20239DE20067AEB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.HyperspaceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		3083664E20239DE20067AEB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.HyperspaceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		3091F5A42023D9A80061B413 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Examples/Hyperspace-macOSExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-macOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		3091F5A52023D9A80061B413 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Examples/Hyperspace-macOSExample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-macOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		608367AA201D1AF500007247 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1426,6 +1807,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1447,6 +1829,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1461,6 +1844,7 @@
 		60AC82CE1FF588D600120172 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1474,6 +1858,7 @@
 		60AC82CF1FF588D600120172 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1679,6 +2064,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3083664920239DE20067AEB9 /* Build configuration list for PBXNativeTarget "Hyperspace-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3083664A20239DE20067AEB9 /* Debug */,
+				3083664B20239DE20067AEB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3083664C20239DE20067AEB9 /* Build configuration list for PBXNativeTarget "Hyperspace-macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3083664D20239DE20067AEB9 /* Debug */,
+				3083664E20239DE20067AEB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3091F5A32023D9A80061B413 /* Build configuration list for PBXNativeTarget "Hyperspace-macOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3091F5A42023D9A80061B413 /* Debug */,
+				3091F5A52023D9A80061B413 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		608367A9201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
