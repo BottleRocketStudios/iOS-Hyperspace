@@ -100,14 +100,4 @@ extension NSViewController {
     }
 }
 
-extension NSApplication: NetworkActivityIndicatable {
-    public var isNetworkActivityIndicatorVisible: Bool {
-        get {
-            return false
-        }
-        set(newValue) {
-            /* no op */
-        }
-    }
-}
-
+extension NSApplication: NetworkActivityIndicatable { /* No extra conformance needed. */ }

@@ -32,6 +32,7 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.ios.deployment_target = '8.0'
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
+  s.osx.deployment_target = '10.10'
 
   s.source_files = 'Sources/Hyperspace/**/*'
 
