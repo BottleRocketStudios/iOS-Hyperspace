@@ -21,7 +21,7 @@ class NetworkRequestTests: XCTestCase {
     
     // MARK: - NetworkRequest Implementations
     
-    struct SimpleGETRequest: NetworkRequest {
+    public struct SimpleGETRequest: NetworkRequest {
         typealias ResponseType = String
         typealias ErrorType = AnyError
         
@@ -45,6 +45,31 @@ class NetworkRequestTests: XCTestCase {
         var body: Data?
         var cachePolicy: URLRequest.CachePolicy = NetworkRequestTests.defaultCachePolicy
         var timeout: TimeInterval = NetworkRequestTests.defaultTimeout
+    }
+    
+    struct CachePolicyAndTimeOutRequest: NetworkRequest {
+        typealias ResponseType = EmptyResponse
+        typealias ErrorType = AnyError
+        
+        var method: HTTP.Method = NetworkRequestTests.defaultRequestMethod
+        var url = NetworkRequestTests.defaultURL
+        var queryParameters: [URLQueryItem]?
+        var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
+        var body: Data?
+    }
+    
+    struct CustomQueryEncodingRequest: NetworkRequest {
+        typealias ResponseType = EmptyResponse
+        typealias ErrorType = AnyError
+        
+        var method: HTTP.Method = NetworkRequestTests.defaultRequestMethod
+        var url = NetworkRequestTests.defaultURL
+        var queryParameters: [URLQueryItem]?
+        var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
+        var body: Data?
+        var queryParameterEncodingStrategy =  NetworkRequestQueryParameterEncodingStrategy.custom { (content) -> String in
+            return content.replacingOccurrences(of: " ", with: "-", options: NSString.CompareOptions.literal, range:nil)
+        }
     }
     
     // MARK: - Tests
@@ -82,6 +107,39 @@ class NetworkRequestTests: XCTestCase {
         request.body = bodyData
         
         assertParameters(method: "POST", body: bodyData, for: request)
+    }
+    
+    func test_NetworkRequest_EmptyResponseInit() {
+        let _ = EmptyResponse()
+        XCTAssert(true)
+    }
+    
+    func test_NetworkRequestWithoutExplicitCachePolicyAndTimeout_ReturnsDefaultCachePolicyAndTimeout() {
+        let request = CachePolicyAndTimeOutRequest()
+        XCTAssert(request.cachePolicy == .useProtocolCachePolicy)
+        XCTAssert(request.timeout == 30)
+    }
+    
+    func test_NetworkRequest_EncodeQueryParameterString() {
+        let request = CachePolicyAndTimeOutRequest()
+        let queryString = request.encodeQueryParameterString("this is a test")
+        
+        XCTAssert(queryString == "this%20is%20a%20test")
+    }
+    
+    func test_NetworkRequest_TransformData() {
+        
+        let request = CachePolicyAndTimeOutRequest()
+        let result: Result<CachePolicyAndTimeOutRequest.ResponseType,  CachePolicyAndTimeOutRequest.ErrorType> = request.transformData("this is dummy content".data(using: .utf8)!)
+        
+        XCTAssertNotNil(result.value)
+    }
+    
+    func test_NetworkRequest_CustomQueryEncoding() {
+        let request = CustomQueryEncodingRequest()
+        let queryString = request.encodeQueryParameterString("this is a test")
+        
+        XCTAssert(queryString == "this-is-a-test")
     }
     
     // MARK: - Private

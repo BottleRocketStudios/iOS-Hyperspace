@@ -111,4 +111,22 @@ class BackendServiceTests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+    
+    func test_BackendServiceErrorInitializable_Init() {
+        let error = AnyError(BackendServiceError.networkError(.unknownError, nil))
+        XCTAssert(error.error is BackendServiceError)
+    }
+    
+    func test_BackendServiceError_EquatableNotMatching() {
+        let lhs = BackendServiceError.networkError(.unknownError, nil)
+        let rhs = BackendServiceError.dataTransformationError(NSError(domain: "Test", code: 1, userInfo: nil))
+        XCTAssertFalse(lhs == rhs)
+    }
+    
+    func test_BackendServiceProtocol_Execute() {
+        let mock = MockBackendService()
+        mock.execute(request: NetworkRequestTests.SimpleGETRequest()) { (result: Result<NetworkRequestTests.SimpleGETRequest.ResponseType, NetworkRequestTests.SimpleGETRequest.ErrorType>) in
+            XCTAssert(true)
+        }
+    }
 }

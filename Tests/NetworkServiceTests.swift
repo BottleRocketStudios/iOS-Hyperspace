@@ -122,6 +122,17 @@ class NetworkServiceTests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
+    func test_NetworkService_ConvenienceInit() {
+        let networkService = NetworkServiceMockSubclass(session: URLSession.shared, networkActivityIndicatable: MockNetworkActivityIndicator())
+        
+        XCTAssert(networkService.initWithSessionNetworkActivityControllerWasCalled)
+    }
+    
+    func test_NetworkServiceHelper_InvalidHTTPResponsErrorUnknownError() {
+        let networkServiceFailure = NetworkServiceHelper.networkServiceFailure(for: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
+        XCTAssert(networkServiceFailure.error == .unknownError)
+    }
+    
     // MARK: - Private
     
     private func execute(dataTask: NetworkSessionDataTask) -> NetworkServiceProtocol {
@@ -156,4 +167,5 @@ class NetworkServiceTests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+    
 }
