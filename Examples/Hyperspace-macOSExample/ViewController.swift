@@ -13,7 +13,7 @@ class ViewController: NSViewController {
 
     @IBOutlet private var postTextField: NSTextField!
     
-    private let backendService = BackendService(networkService: NetworkService(networkActivityIndicatable: NSApplication.shared))
+    private let backendService = BackendService(networkService: NetworkService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,5 +99,3 @@ extension NSViewController {
         alert.runModal()
     }
 }
-
-extension NSApplication: NetworkActivityIndicatable { /* No extra conformance needed. */ }
