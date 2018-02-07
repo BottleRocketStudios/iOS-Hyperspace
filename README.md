@@ -177,6 +177,9 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
     * Hyperspace-watchOSExample Extension
         * `InterfaceController.swift`
             * View a simplified example of how you might use this in your watchOS app.
+    * Hyperspace-macOSExample
+        * `ViewController.swift`
+            * View a simplified example of how you might use this in your macOS app (this is essentially the same as the iOS example).
 * Playgrounds
     * `Playground/Hyperspace.playground`
         * View and run a single file that defines models, network requests, and executes the requests similar to the example above.
@@ -190,6 +193,7 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 * iOS 8.0+
 * tvOS 9.0+
 * watchOS 2.0+
+* macOS 10.10+
 * Swift 4
 
 ## Installation
