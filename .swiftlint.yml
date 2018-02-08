@@ -1,0 +1,14 @@
+# Set max line length before warning (default is 120)
+line_length: 240
+
+disabled_rules:
+  - trailing_whitespace # Disables SwiftLint complaining about whitespace characters on empty lines
+  - todo # Disables auto-warning of TODO statements
+
+identifier_name:
+  excluded:
+    - id
+    - ok
+
+excluded:
+  - Carthage

@@ -58,7 +58,6 @@ class HTTPTest: XCTestCase {
             "application/vnd.apple.pkpass": .passKit
         ]
 
-        
         items.forEach { (key, value) in
             XCTAssert(HTTP.HeaderValue(rawValue: key) == value)
         }
@@ -78,7 +77,7 @@ class HTTPTest: XCTestCase {
         case .success(let status):
             XCTAssert(status == HTTP.Status.Success.ok)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
     
@@ -88,7 +87,7 @@ class HTTPTest: XCTestCase {
         case .success(let status):
             XCTAssert(status == HTTP.Status.Success.unknown)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
     
@@ -98,7 +97,7 @@ class HTTPTest: XCTestCase {
         case .redirection(let status):
             XCTAssert(status == HTTP.Status.Redirection.multipleChoices)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
     
@@ -108,7 +107,7 @@ class HTTPTest: XCTestCase {
         case .redirection(let status):
             XCTAssert(status == HTTP.Status.Redirection.unknown)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
     
@@ -118,7 +117,7 @@ class HTTPTest: XCTestCase {
         case .clientError(let status):
             XCTAssert(status == HTTP.Status.ClientError.badRequest)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
     
@@ -128,7 +127,7 @@ class HTTPTest: XCTestCase {
         case .clientError(let status):
             XCTAssert(status == HTTP.Status.ClientError.unknown)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
     
@@ -138,7 +137,7 @@ class HTTPTest: XCTestCase {
         case .serverError(let status):
             XCTAssert(status == HTTP.Status.ServerError.internalServerError)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
     
@@ -148,7 +147,7 @@ class HTTPTest: XCTestCase {
         case .serverError(let status):
             XCTAssert(status == HTTP.Status.ServerError.unknown)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
     
@@ -158,7 +157,7 @@ class HTTPTest: XCTestCase {
         case .unknown(let code):
             XCTAssert(code == 100)
         default:
-            XCTFail()
+            XCTFail("HTTP Response indicates failure")
         }
     }
 }

@@ -158,34 +158,43 @@ To run the example project, you'll first need to use [Carthage](https://github.c
 
 After [installing Carthage](https://github.com/Carthage/Carthage#installing-carthage), clone the repo:
 
-`git clone https://github.com/BottleRocketStudios/iOS-Hyperspace.git`
+```bash
+git clone https://github.com/BottleRocketStudios/iOS-Hyperspace.git
+```
 
 Next, use Carthage to install the dependencies:
 
-`carthage update`
+```bash
+carthage update
+```
 
 From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
-* Shared
-    * `Models.swift`, `NetworkRequests.swift`
-        * Sample models and network requests shared by the various examples
-* Targets
-    * Hyperspace-iOSExample
-        * `ViewController.swift`
-            * View a simplified example of how you might use this in your iOS app.
-    * Hyperspace-tvOSExample
-        * `ViewController.swift`
-            * View a simplified example of how you might use this in your tvOS app (this is essentially the same as the iOS example).
-    * Hyperspace-watchOSExample Extension
-        * `InterfaceController.swift`
-            * View a simplified example of how you might use this in your watchOS app.
-* Playgrounds
-    * `Playground/Hyperspace.playground`
-        * View and run a single file that defines models, network requests, and executes the requests similar to the example above.
-    * `Playground/Hyperspace.Hyperspace_AnyNetworkRequest.playground`
-        * The same example as above, but using the `AnyNetworkRequest<T>` struct.
-    * `Playground/Hyperspace_DELETE.playground`
-        * An example of how to deal with requests that don't return a result. This is usually common for DELETE requests.
+### Shared Code
+
+* `Models.swift`, `NetworkRequests.swift`
+    * Sample models and network requests shared by the various examples.
+
+### Example Targets
+
+* Hyperspace-iOSExample
+    * `ViewController.swift`
+        * View a simplified example of how you might use this in your iOS app.
+* Hyperspace-tvOSExample
+    * `ViewController.swift`
+        * View a simplified example of how you might use this in your tvOS app (this is essentially the same as the iOS example).
+* Hyperspace-watchOSExample Extension
+    * `InterfaceController.swift`
+        * View a simplified example of how you might use this in your watchOS app.
+
+### Playgrounds
+
+* `Playground/Hyperspace.playground`
+    * View and run a single file that defines models, network requests, and executes the requests similar to the example targets above.
+* `Playground/Hyperspace_AnyNetworkRequest.playground`
+    * The same example as above, but using the `AnyNetworkRequest<T>` struct.
+* `Playground/Hyperspace_DELETE.playground`
+    * An example of how to deal with requests that don't return a result. This is usually common for DELETE requests.
 
 ## Requirements
 
@@ -200,7 +209,7 @@ Hyperspace is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "Hyperspace"
+pod 'Hyperspace'
 ```
 
 ## Author
