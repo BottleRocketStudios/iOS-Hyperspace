@@ -10,17 +10,16 @@ import Foundation
 import Hyperspace
 import Result
 
-struct MockBackendService: BackendServiceProtocol
-{
+struct MockBackendService: BackendServiceProtocol {
     func cancelTask(for request: URLRequest) {
-        
+        /* No op */
     }
     
     func cancelAllTasks() {
-        
+        /* No op */
     }
     
-    func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, BackendServiceError>) -> Void) where T : NetworkRequest {
+    func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, BackendServiceError>) -> Void) where T: NetworkRequest {
         completion( Result.failure(BackendServiceError.networkError(NetworkServiceError.timedOut, nil)))
     }
 }

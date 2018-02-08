@@ -609,8 +609,7 @@
 			children = (
 				30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */,
 			);
-			name = "Test Defaults";
-			path = "../Test Defaults";
+			path = "Test Defaults";
 			sourceTree = "<group>";
 		};
 		60D6C419201CFCE500B3B012 /* Helper */ = {

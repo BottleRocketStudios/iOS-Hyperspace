@@ -68,7 +68,7 @@ class NetworkRequestTests: XCTestCase {
         var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
         var body: Data?
         var queryParameterEncodingStrategy =  NetworkRequestQueryParameterEncodingStrategy.custom { (content) -> String in
-            return content.replacingOccurrences(of: " ", with: "-", options: NSString.CompareOptions.literal, range:nil)
+            return content.replacingOccurrences(of: " ", with: "-", options: NSString.CompareOptions.literal, range: nil)
         }
     }
     
@@ -110,7 +110,7 @@ class NetworkRequestTests: XCTestCase {
     }
     
     func test_NetworkRequest_EmptyResponseInit() {
-        let _ = EmptyResponse()
+        _ = EmptyResponse()
         XCTAssert(true)
     }
     
@@ -130,7 +130,7 @@ class NetworkRequestTests: XCTestCase {
     func test_NetworkRequest_TransformData() {
         
         let request = CachePolicyAndTimeOutRequest()
-        let result: Result<CachePolicyAndTimeOutRequest.ResponseType,  CachePolicyAndTimeOutRequest.ErrorType> = request.transformData("this is dummy content".data(using: .utf8)!)
+        let result: Result<CachePolicyAndTimeOutRequest.ResponseType, CachePolicyAndTimeOutRequest.ErrorType> = request.transformData("this is dummy content".data(using: .utf8)!)
         
         XCTAssertNotNil(result.value)
     }
