@@ -26,7 +26,7 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Apache 2.0', :file => 'LICENSE.txt' }
   s.author           = { 'Tyler Milner' => 'tyler.milner@bottlerocketstudios.com' }
-  s.source           = { :git => 'https://github.com/BottleRocketStudios/iOS-Hyperspace.git', :tag => '1.1.0' }
+  s.source           = { :git => 'https://github.com/BottleRocketStudios/iOS-Hyperspace.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
