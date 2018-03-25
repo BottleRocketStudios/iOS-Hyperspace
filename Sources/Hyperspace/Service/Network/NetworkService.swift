@@ -129,7 +129,7 @@ private extension NetworkServiceHelper {
             default:
                 return .unknownError
             }
-            } ?? .unknownError
+        } ?? .unknownError
         
         return networkError
     }
