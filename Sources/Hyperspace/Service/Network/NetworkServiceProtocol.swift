@@ -64,26 +64,6 @@ public protocol NetworkServiceProtocol {
     func cancelAllTasks()
 }
 
-extension NetworkServiceProtocol {
-    
-    func invalidHTTPResponseError(for error: Error?) -> NetworkServiceError {
-        let networkError: NetworkServiceError = (error as NSError?).flatMap {
-            switch ($0.domain, $0.code) {
-            case (NSURLErrorDomain, NSURLErrorNotConnectedToInternet):
-                return .noInternetConnection
-            case (NSURLErrorDomain, NSURLErrorTimedOut):
-                return .timedOut
-            case (NSURLErrorDomain, NSURLErrorCancelled):
-                return .cancelled
-            default:
-                return .unknownError
-            }
-            } ?? .unknownError
-        
-        return networkError
-    }
-}
-
 // MARK: - Equatable Implementations
 
 extension NetworkServiceError: Equatable {
