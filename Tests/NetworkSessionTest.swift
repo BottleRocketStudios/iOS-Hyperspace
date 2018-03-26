@@ -11,14 +11,16 @@ import Hyperspace
 
 class NetworkSessionTest: XCTestCase {
     
+    // MARK: - Properties
+    
     private let defaultRequest = URLRequest(url: NetworkRequestTestDefaults.defaultURL)
     
+    // MARK: - Tests
+    
     func test_URLSessionNetworkSessionImplementation_ReturnsURLSessionDataTask() {
-
         let networkSession: NetworkSession = URLSession.shared
-        let networkSessionDataTask: NetworkSessionDataTask = networkSession.dataTask(with: defaultRequest, completionHandler: { _, _, _  in })
+        let networkSessionDataTask: NetworkSessionDataTask = networkSession.dataTask(with: defaultRequest, completionHandler: { _, _, _ in })
 
         XCTAssert(networkSessionDataTask is URLSessionDataTask)
     }
-
 }

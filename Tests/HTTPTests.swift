@@ -11,6 +11,8 @@ import XCTest
 
 class HTTPTests: XCTestCase {
     
+    // MARK: - Tests
+    
     func test_AuthorizationBearerHeaderValue_IsGeneratedCorrectly() {
         let authorizationBearer = HTTP.HeaderValue.authorizationBearer(token: "1234567890")
         XCTAssertEqual(authorizationBearer.rawValue, "Bearer 1234567890")
