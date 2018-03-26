@@ -13,33 +13,31 @@ class HTTPTests: XCTestCase {
     
     func test_AuthorizationBearerHeaderValue_IsGeneratedCorrectly() {
         let authorizationBearer = HTTP.HeaderValue.authorizationBearer(token: "1234567890")
-        
-        XCTAssert(authorizationBearer.rawValue == "Bearer 1234567890")
+        XCTAssertEqual(authorizationBearer.rawValue, "Bearer 1234567890")
     }
     
     func test_HeaderKey_RawValuesAreCorrect() {
-        
-        let items = [
-            HTTP.HeaderKey.accept: "Accept",
-            HTTP.HeaderKey.acceptCharset: "Accept-Charset",
-            HTTP.HeaderKey.acceptEncoding: "Accept-Encoding",
-            HTTP.HeaderKey.acceptLanguage: "Accept-Language",
-            HTTP.HeaderKey.acceptDatetime: "Accept-Datetime",
-            HTTP.HeaderKey.authorization: "Authorization",
-            HTTP.HeaderKey.contentLength: "Content-Length",
-            HTTP.HeaderKey.contentMD5: "Content-MD5",
-            HTTP.HeaderKey.contentType: "Content-Type",
-            HTTP.HeaderKey.date: "Date",
-            HTTP.HeaderKey.userAgent: "User-Agent"
+        let headerKeys: [HTTP.HeaderKey: String] = [
+            .accept: "Accept",
+            .acceptCharset: "Accept-Charset",
+            .acceptEncoding: "Accept-Encoding",
+            .acceptLanguage: "Accept-Language",
+            .acceptDatetime: "Accept-Datetime",
+            .authorization: "Authorization",
+            .contentLength: "Content-Length",
+            .contentMD5: "Content-MD5",
+            .contentType: "Content-Type",
+            .date: "Date",
+            .userAgent: "User-Agent"
         ]
         
-        items.forEach { (key, value) in
-            XCTAssert(key == HTTP.HeaderKey(rawValue: value), "\(key) == \(HTTP.HeaderKey(rawValue: value))")
+        headerKeys.forEach { (key, value) in
+            XCTAssertEqual(key, HTTP.HeaderKey(rawValue: value))
         }
     }
     
     func test_HeaderValue_RawValuesAreCorrect() {
-        let items: [String: HTTP.HeaderValue] = [
+        let headerValues: [String: HTTP.HeaderValue] = [
             "application/json": .applicationJSON,
             "application/x-www-form-urlencoded": .applicationFormURLEncoded,
             "application/xml": .applicationXML,
@@ -58,26 +56,26 @@ class HTTPTests: XCTestCase {
             "application/vnd.apple.pkpass": .passKit
         ]
 
-        items.forEach { (key, value) in
-            XCTAssert(HTTP.HeaderValue(rawValue: key) == value)
+        headerValues.forEach { (key, value) in
+            XCTAssertEqual(value, HTTP.HeaderValue(rawValue: key))
         }
     }
-
+    
     func test_ResponseDataString_ReturnsResponseDataAsString() {
         let content = "This is my data"
         let response = HTTP.Response(code: 200, data: content.data(using: .utf8))
         let dataString = response.dataString
         
-        XCTAssert(dataString == content)
+        XCTAssertEqual(dataString, content)
     }
     
     func test_HTTPResponseInitWithCode200_ProducesStatusSuccessOK() {
         let response = HTTP.Response(code: 200, data: nil)
         switch response.status {
         case .success(let status):
-            XCTAssert(status == HTTP.Status.Success.ok)
+            XCTAssertEqual(status, HTTP.Status.Success.ok)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("200 status should produce a 'success - ok' response")
         }
     }
     
@@ -85,9 +83,9 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(code: 299, data: nil)
         switch response.status {
         case .success(let status):
-            XCTAssert(status == HTTP.Status.Success.unknown)
+            XCTAssertEqual(status, HTTP.Status.Success.unknown)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("299 status should produce a 'success - unknown' response")
         }
     }
     
@@ -95,9 +93,9 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(code: 300, data: nil)
         switch response.status {
         case .redirection(let status):
-            XCTAssert(status == HTTP.Status.Redirection.multipleChoices)
+            XCTAssertEqual(status, HTTP.Status.Redirection.multipleChoices)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("300 status should produce a 'redirection - multiple choices' response")
         }
     }
     
@@ -105,9 +103,9 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(code: 399, data: nil)
         switch response.status {
         case .redirection(let status):
-            XCTAssert(status == HTTP.Status.Redirection.unknown)
+            XCTAssertEqual(status, HTTP.Status.Redirection.unknown)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("399 status should produce a 'redirection - unknown' response")
         }
     }
     
@@ -115,9 +113,9 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(code: 400, data: nil)
         switch response.status {
         case .clientError(let status):
-            XCTAssert(status == HTTP.Status.ClientError.badRequest)
+            XCTAssertEqual(status, HTTP.Status.ClientError.badRequest)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("400 status should produce a 'client error - bad request' response")
         }
     }
     
@@ -125,9 +123,9 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(code: 499, data: nil)
         switch response.status {
         case .clientError(let status):
-            XCTAssert(status == HTTP.Status.ClientError.unknown)
+            XCTAssertEqual(status, HTTP.Status.ClientError.unknown)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("499 status should produce a 'client error - unknown' response")
         }
     }
     
@@ -135,9 +133,9 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(code: 500, data: nil)
         switch response.status {
         case .serverError(let status):
-            XCTAssert(status == HTTP.Status.ServerError.internalServerError)
+            XCTAssertEqual(status, HTTP.Status.ServerError.internalServerError)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("500 status should produce a 'server error - internal server error' response")
         }
     }
     
@@ -145,9 +143,9 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(code: 599, data: nil)
         switch response.status {
         case .serverError(let status):
-            XCTAssert(status == HTTP.Status.ServerError.unknown)
+            XCTAssertEqual(status, HTTP.Status.ServerError.unknown)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("599 status should produce a 'server error - unknown' response")
         }
     }
     
@@ -155,9 +153,9 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(code: 100, data: nil)
         switch response.status {
         case .unknown(let code):
-            XCTAssert(code == 100)
+            XCTAssertEqual(code, 100)
         default:
-            XCTFail("HTTP Response indicates failure")
+            XCTFail("100 status should produce an 'unknown' response")
         }
     }
 }
