@@ -11,13 +11,13 @@ import XCTest
 
 class HTTPTests: XCTestCase {
     
-    func test_HTTP_GetAuthorizationBearer() {
+    func test_AuthorizationBearerHeaderValue_IsGeneratedCorrectly() {
         let authorizationBearer = HTTP.HeaderValue.authorizationBearer(token: "1234567890")
         
         XCTAssert(authorizationBearer.rawValue == "Bearer 1234567890")
     }
     
-    func test_HTTP_CompareHeaderKey() {
+    func test_HeaderKey_RawValuesAreCorrect() {
         
         let items = [
             HTTP.HeaderKey.accept: "Accept",
@@ -38,7 +38,7 @@ class HTTPTests: XCTestCase {
         }
     }
     
-    func test_HTTP_EqualityHeaderValue() {
+    func test_HeaderValue_RawValuesAreCorrect() {
         let items: [String: HTTP.HeaderValue] = [
             "application/json": .applicationJSON,
             "application/x-www-form-urlencoded": .applicationFormURLEncoded,
@@ -63,7 +63,7 @@ class HTTPTests: XCTestCase {
         }
     }
 
-    func test_HTTPResponse_GetDataString() {
+    func test_ResponseDataString_ReturnsResponseDataAsString() {
         let content = "This is my data"
         let response = HTTP.Response(code: 200, data: content.data(using: .utf8))
         let dataString = response.dataString
