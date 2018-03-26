@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
-		30F0735420210A890045CB01 /* HTTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTest.swift */; };
-		30F0735520210A8B0045CB01 /* HTTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTest.swift */; };
+		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
+		30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
 		30F07358202172420045CB01 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
 		30F07359202172450045CB01 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
 		30F0735E202205350045CB01 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
@@ -258,7 +258,7 @@
 
 /* Begin PBXFileReference section */
 		3026E457202008470003A321 /* NetworkSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTest.swift; sourceTree = "<group>"; };
-		30F07352202109F60045CB01 /* HTTPTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTest.swift; sourceTree = "<group>"; };
+		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
 		30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkRequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/NetworkRequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
 		30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMockSubclass.swift; sourceTree = "<group>"; };
@@ -497,7 +497,7 @@
 				60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */,
 				60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */,
 				3026E457202008470003A321 /* NetworkSessionTest.swift */,
-				30F07352202109F60045CB01 /* HTTPTest.swift */,
+				30F07352202109F60045CB01 /* HTTPTests.swift */,
 				B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */,
 				60D6C419201CFCE500B3B012 /* Helper */,
 				60EB8FDA1FF59FB000AC0B55 /* Supporting Files */,
@@ -1130,7 +1130,7 @@
 				60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				30F07361202213E50045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
 				60D6C40D201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
-				30F0735420210A890045CB01 /* HTTPTest.swift in Sources */,
+				30F0735420210A890045CB01 /* HTTPTests.swift in Sources */,
 				3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */,
 				60D6C40B201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C407201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
@@ -1194,7 +1194,7 @@
 				60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				30F07362202213E60045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
 				60D6C40E201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
-				30F0735520210A8B0045CB01 /* HTTPTest.swift in Sources */,
+				30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */,
 				3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */,
 				60D6C40C201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C408201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,

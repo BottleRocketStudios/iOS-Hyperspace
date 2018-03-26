@@ -9,7 +9,7 @@
 import XCTest
 @testable import Hyperspace
 
-class HTTPTest: XCTestCase {
+class HTTPTests: XCTestCase {
     
     func test_HTTP_GetAuthorizationBearer() {
         let authorizationBearer = HTTP.HeaderValue.authorizationBearer(token: "1234567890")
