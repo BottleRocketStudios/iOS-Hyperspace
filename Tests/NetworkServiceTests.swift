@@ -161,11 +161,10 @@ class NetworkServiceTests: XCTestCase {
         let asyncExpectation = expectation(description: "\(NetworkService.self) completion")
         
         service.execute(request: defaultRequest) { (result) in
-            XCTAssertTrue(result == expectedResult, file: file, line: line)
+            XCTAssertTrue(result == expectedResult, "Result '\(result)' did not equal expected result '\(expectedResult)'", file: file, line: line)
             asyncExpectation.fulfill()
         }
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
-    
 }
