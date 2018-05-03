@@ -10,4 +10,4 @@ Before your code can be accepted into the project you must also sign the
 [Individual Contributor License Agreement (CLA)][1].
 
 
- [1]: https://brcontributor.parseapp.com/
+ [1]: https://cla-assistant.io/BottleRocketStudios/iOS-Hyperspace
