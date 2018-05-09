@@ -16,8 +16,10 @@ class NetworkRequestTestDefaults {
     }
     
     struct DefaultRequest<T: Decodable>: NetworkRequest {
+        // swiftlint:disable nesting
         typealias ResponseType = T
         typealias ErrorType = AnyError
+        // swiftlint:enable nesting
         
         var method: HTTP.Method = .get
         var url: URL = NetworkRequestTestDefaults.defaultURL
