@@ -2,6 +2,17 @@
 
 ##### Enhancements
 
+* None.
+
+##### Bug Fixes
+
+* None.
+
+
+## 1.1.1 (2018-05-10)
+
+##### Enhancements
+
 * Removed some duplicate code for `invalidHTTPResponseError(_:)` in `NetworkServiceHelper`.
   [Tyler Milner](https://github.com/tylermilner)
   [#19](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/19)
