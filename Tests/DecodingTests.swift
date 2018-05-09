@@ -43,10 +43,10 @@ class DecodingTests: XCTestCase {
             let container = try decoder.decode(MockArrayDecodableContainer.self, from: objectJSON)
             let children = container.element
             
-            for i in children.startIndex..<children.endIndex {
-                let child = children[i]
-                XCTAssertEqual(child.title, "Title \(i)")
-                XCTAssertEqual(child.subtitle, "Subtitle \(i)")
+            for index in children.startIndex..<children.endIndex {
+                let child = children[index]
+                XCTAssertEqual(child.title, "Title \(index)")
+                XCTAssertEqual(child.subtitle, "Subtitle \(index)")
             }
             
         } catch {
