@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Hyperspace'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'An extremely lightweight wrapper around URLSession to make working with APIs a breeze.'
 
 # This description is used to generate tags and improve search results.
