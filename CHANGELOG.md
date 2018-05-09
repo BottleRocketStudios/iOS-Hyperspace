@@ -19,6 +19,11 @@
   [#23](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/23)
   [#24](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/24)
 
+* Added `CHANGELOG.md`. From now on, all new bugfix/feature PR's will require an entry in the changelog.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#27](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/27)
+  [#29](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/29)
+
 * Upgraded project to Xcode 9.3/Swift 4.1.
   [Tyler Milner](https://github.com/tylermilner)
   [#25](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/25)
