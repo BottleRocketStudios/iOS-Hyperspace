@@ -11,10 +11,10 @@ import Foundation
 
 class NetworkServiceMockSubclass: NetworkService {
     
-    private(set) var initWithSessionNetworkActivityControllerWasCalled = false
+    private(set) var initWithNetworkActivityControllerCalled = false
     
     override init(session: NetworkSession, networkActivityController: NetworkActivityController?) {
-        initWithSessionNetworkActivityControllerWasCalled = true
+        initWithNetworkActivityControllerCalled = true
         super.init(session: session, networkActivityController: networkActivityController)
     }
 }
