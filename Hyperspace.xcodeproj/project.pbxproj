@@ -111,6 +111,9 @@
 		60D6C440201D188B00B3B012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C43F201D188B00B3B012 /* ViewController.swift */; };
 		60D6C443201D188B00B3B012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C441201D188B00B3B012 /* Main.storyboard */; };
 		60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C444201D188B00B3B012 /* Assets.xcassets */; };
+		626DA6B220A34EB600C40611 /* BackendServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */; };
+		626DA6B320A3584800C40611 /* BackendServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */; };
+		626DA6B420A3584900C40611 /* BackendServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */; };
 		B4C32C2C201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
 		B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
 		B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
@@ -328,6 +331,7 @@
 		60D6C444201D188B00B3B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60D6C446201D188B00B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60EB8FDB1FF59FB000AC0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceHelper.swift; sourceTree = "<group>"; };
 		B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatable.swift; sourceTree = "<group>"; };
 		B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkActivityIndicator.swift; sourceTree = "<group>"; };
 		B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorTests.swift; sourceTree = "<group>"; };
@@ -570,6 +574,7 @@
 			children = (
 				60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */,
 				60AC834F1FF596B600120172 /* BackendService.swift */,
+				626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1115,6 +1120,7 @@
 				60D6C374201CC81100B3B012 /* NetworkServiceProtocol.swift in Sources */,
 				60D6C375201CC81100B3B012 /* NetworkSession.swift in Sources */,
 				60D6C376201CC81100B3B012 /* NetworkService.swift in Sources */,
+				626DA6B220A34EB600C40611 /* BackendServiceHelper.swift in Sources */,
 				60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */,
 				B4C32C2C201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C378201CC81100B3B012 /* BackendService.swift in Sources */,
@@ -1158,6 +1164,7 @@
 				60D6C38C201CCCBE00B3B012 /* NetworkServiceProtocol.swift in Sources */,
 				60D6C38D201CCCBE00B3B012 /* NetworkSession.swift in Sources */,
 				60D6C38E201CCCBE00B3B012 /* NetworkService.swift in Sources */,
+				626DA6B420A3584900C40611 /* BackendServiceHelper.swift in Sources */,
 				60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */,
 				B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */,
@@ -1179,6 +1186,7 @@
 				60D6C381201CCCAE00B3B012 /* NetworkSession.swift in Sources */,
 				60D6C382201CCCAE00B3B012 /* NetworkService.swift in Sources */,
 				60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */,
+				626DA6B320A3584800C40611 /* BackendServiceHelper.swift in Sources */,
 				30F0735E202205350045CB01 /* URL+Additions.swift in Sources */,
 				B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */,

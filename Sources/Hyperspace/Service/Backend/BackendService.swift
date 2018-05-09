@@ -30,10 +30,10 @@ public class BackendService {
 
 extension BackendService: BackendServiceProtocol {
     public func execute<T: NetworkRequest>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>) {
-        networkService.execute(request: request.urlRequest) { [weak self] (result) in
+        networkService.execute(request: request.urlRequest) { (result) in
             switch result {
             case .success(let result):
-                self?.handleResponseData(result.data, for: request, completion: completion)
+                BackendServiceHelper.handleResponseData(result.data, for: request, completion: completion)
             case .failure(let result):
                 DispatchQueue.main.async {
                     completion(.failure(.networkError(result.error, result.response)))
@@ -48,21 +48,5 @@ extension BackendService: BackendServiceProtocol {
     
     public func cancelAllTasks() {
         networkService.cancelAllTasks()
-    }
-}
-
-// MARK: - Helper
-private extension BackendService {
-    func handleResponseData<T: NetworkRequest>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>) {
-        let transformResult = request.transformData(data)
-        
-        DispatchQueue.main.async {
-            switch transformResult {
-            case .success(let transformedObject):
-                completion(.success(transformedObject))
-            case .failure(let error):
-                completion(.failure(.dataTransformationError(error)))
-            }
-        }
     }
 }
