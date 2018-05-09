@@ -269,6 +269,7 @@
 		60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_DELETE.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601A201D1F1F008CEFC8 /* Hyperspace.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601B201D1F1F008CEFC8 /* Hyperspace_AnyNetworkRequest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_AnyNetworkRequest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		6077BA2120A3B7F600326828 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-watchOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6083678E201D1AF400007247 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		60836790201D1AF400007247 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -450,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				60D6C41A201D13EC00B3B012 /* README.md */,
+				6077BA2120A3B7F600326828 /* CHANGELOG.md */,
 				60AC82B81FF588D500120172 /* Sources */,
 				60AC831F1FF58E8B00120172 /* Tests */,
 				60D6C431201D16D100B3B012 /* Examples */,
