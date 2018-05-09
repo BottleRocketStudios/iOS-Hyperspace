@@ -19,6 +19,11 @@
   [#23](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/23)
   [#24](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/24)
 
+* Upgraded project to Xcode 9.3/Swift 4.1.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#25](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/25)
+  [#30](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/30)
+
 ##### Bug Fixes
 
 * None.
