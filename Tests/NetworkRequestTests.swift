@@ -22,8 +22,10 @@ class NetworkRequestTests: XCTestCase {
     // MARK: - NetworkRequest Implementations
     
     public struct SimpleGETRequest: NetworkRequest {
+        // swiftlint:disable nesting
         typealias ResponseType = String
         typealias ErrorType = AnyError
+        // swiftlint:enable nesting
         
         var method: HTTP.Method = NetworkRequestTests.defaultRequestMethod
         var url = NetworkRequestTests.defaultURL
@@ -35,8 +37,10 @@ class NetworkRequestTests: XCTestCase {
     }
     
     struct SimplePOSTRequest: NetworkRequest {
+        // swiftlint:disable nesting
         typealias ResponseType = String
         typealias ErrorType = AnyError
+        // swiftlint:enable nesting
         
         var method: HTTP.Method = .post
         var url = NetworkRequestTests.defaultURL
@@ -48,8 +52,10 @@ class NetworkRequestTests: XCTestCase {
     }
     
     struct CachePolicyAndTimeOutRequest: NetworkRequest {
+        // swiftlint:disable nesting
         typealias ResponseType = EmptyResponse
         typealias ErrorType = AnyError
+        // swiftlint:enable nesting
         
         var method: HTTP.Method = NetworkRequestTests.defaultRequestMethod
         var url = NetworkRequestTests.defaultURL
@@ -59,8 +65,10 @@ class NetworkRequestTests: XCTestCase {
     }
     
     struct CustomQueryEncodingRequest: NetworkRequest {
+        // swiftlint:disable nesting
         typealias ResponseType = EmptyResponse
         typealias ErrorType = AnyError
+        // swiftlint:enable nesting
         
         var method: HTTP.Method = NetworkRequestTests.defaultRequestMethod
         var url = NetworkRequestTests.defaultURL

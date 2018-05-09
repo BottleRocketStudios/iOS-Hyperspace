@@ -201,7 +201,7 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 * iOS 8.0+
 * tvOS 9.0+
 * watchOS 2.0+
-* Swift 4
+* Swift 4.1
 
 ## Installation
 

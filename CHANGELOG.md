@@ -28,6 +28,11 @@
   [Earl Gaspard](https://github.com/earlgaspard)
   [#31](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/31)
 
+* Upgraded project to Xcode 9.3/Swift 4.1.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#25](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/25)
+  [#30](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/30)
+
 ##### Bug Fixes
 
 * None.
