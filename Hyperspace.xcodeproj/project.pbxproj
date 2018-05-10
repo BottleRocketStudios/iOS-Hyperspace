@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
-		30F0735420210A890045CB01 /* HTTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTest.swift */; };
-		30F0735520210A8B0045CB01 /* HTTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTest.swift */; };
+		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
+		30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
 		30F07358202172420045CB01 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
 		30F07359202172450045CB01 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
 		30F0735E202205350045CB01 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
@@ -18,6 +18,9 @@
 		30F07362202213E60045CB01 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */; };
 		30F07367202227790045CB01 /* NetworkServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */; };
 		30F073682022277A0045CB01 /* NetworkServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */; };
+		60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60127D5B20686AF8002B7BB9 /* NetworkServiceHelper.swift */; };
+		60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60127D5B20686AF8002B7BB9 /* NetworkServiceHelper.swift */; };
+		60127D5E20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60127D5B20686AF8002B7BB9 /* NetworkServiceHelper.swift */; };
 		60326016201D1DED008CEFC8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
 		60326017201D1DF1008CEFC8 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
 		60836787201D1A2B00007247 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
@@ -108,6 +111,9 @@
 		60D6C440201D188B00B3B012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C43F201D188B00B3B012 /* ViewController.swift */; };
 		60D6C443201D188B00B3B012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C441201D188B00B3B012 /* Main.storyboard */; };
 		60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C444201D188B00B3B012 /* Assets.xcassets */; };
+		626DA6B220A34EB600C40611 /* BackendServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */; };
+		626DA6B320A3584800C40611 /* BackendServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */; };
+		626DA6B420A3584900C40611 /* BackendServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */; };
 		B4C32C2C201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
 		B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
 		B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
@@ -255,13 +261,15 @@
 
 /* Begin PBXFileReference section */
 		3026E457202008470003A321 /* NetworkSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTest.swift; sourceTree = "<group>"; };
-		30F07352202109F60045CB01 /* HTTPTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTest.swift; sourceTree = "<group>"; };
+		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
 		30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkRequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/NetworkRequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
 		30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMockSubclass.swift; sourceTree = "<group>"; };
+		60127D5B20686AF8002B7BB9 /* NetworkServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceHelper.swift; sourceTree = "<group>"; };
 		60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_DELETE.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601A201D1F1F008CEFC8 /* Hyperspace.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601B201D1F1F008CEFC8 /* Hyperspace_AnyNetworkRequest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_AnyNetworkRequest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		6077BA2120A3B7F600326828 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-watchOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6083678E201D1AF400007247 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		60836790201D1AF400007247 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -324,6 +332,7 @@
 		60D6C444201D188B00B3B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60D6C446201D188B00B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60EB8FDB1FF59FB000AC0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceHelper.swift; sourceTree = "<group>"; };
 		B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatable.swift; sourceTree = "<group>"; };
 		B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkActivityIndicator.swift; sourceTree = "<group>"; };
 		B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorTests.swift; sourceTree = "<group>"; };
@@ -442,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				60D6C41A201D13EC00B3B012 /* README.md */,
+				6077BA2120A3B7F600326828 /* CHANGELOG.md */,
 				60AC82B81FF588D500120172 /* Sources */,
 				60AC831F1FF58E8B00120172 /* Tests */,
 				60D6C431201D16D100B3B012 /* Examples */,
@@ -493,7 +503,7 @@
 				60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */,
 				60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */,
 				3026E457202008470003A321 /* NetworkSessionTest.swift */,
-				30F07352202109F60045CB01 /* HTTPTest.swift */,
+				30F07352202109F60045CB01 /* HTTPTests.swift */,
 				B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */,
 				60D6C419201CFCE500B3B012 /* Helper */,
 				60EB8FDA1FF59FB000AC0B55 /* Supporting Files */,
@@ -556,6 +566,7 @@
 				60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */,
 				60AC834B1FF596B600120172 /* NetworkSession.swift */,
 				60AC834C1FF596B600120172 /* NetworkService.swift */,
+				60127D5B20686AF8002B7BB9 /* NetworkServiceHelper.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -565,6 +576,7 @@
 			children = (
 				60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */,
 				60AC834F1FF596B600120172 /* BackendService.swift */,
+				626DA6B120A34EB600C40611 /* BackendServiceHelper.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -886,7 +898,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Bottle Rocket Studios";
 				TargetAttributes = {
 					6083678A201D1AF400007247 = {
@@ -1103,12 +1115,14 @@
 				60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
 				60D6C370201CC81100B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyNetworkRequest.swift in Sources */,
 				60D6C372201CC81100B3B012 /* NetworkRequest.swift in Sources */,
 				60D6C373201CC81100B3B012 /* NetworkSessionDataTask.swift in Sources */,
 				60D6C374201CC81100B3B012 /* NetworkServiceProtocol.swift in Sources */,
 				60D6C375201CC81100B3B012 /* NetworkSession.swift in Sources */,
 				60D6C376201CC81100B3B012 /* NetworkService.swift in Sources */,
+				626DA6B220A34EB600C40611 /* BackendServiceHelper.swift in Sources */,
 				60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */,
 				B4C32C2C201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C378201CC81100B3B012 /* BackendService.swift in Sources */,
@@ -1124,7 +1138,7 @@
 				60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				30F07361202213E50045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
 				60D6C40D201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
-				30F0735420210A890045CB01 /* HTTPTest.swift in Sources */,
+				30F0735420210A890045CB01 /* HTTPTests.swift in Sources */,
 				3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */,
 				60D6C40B201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C407201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
@@ -1145,12 +1159,14 @@
 				60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
 				60D6C388201CCCBE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				60127D5E20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C389201CCCBE00B3B012 /* AnyNetworkRequest.swift in Sources */,
 				60D6C38A201CCCBE00B3B012 /* NetworkRequest.swift in Sources */,
 				60D6C38B201CCCBE00B3B012 /* NetworkSessionDataTask.swift in Sources */,
 				60D6C38C201CCCBE00B3B012 /* NetworkServiceProtocol.swift in Sources */,
 				60D6C38D201CCCBE00B3B012 /* NetworkSession.swift in Sources */,
 				60D6C38E201CCCBE00B3B012 /* NetworkService.swift in Sources */,
+				626DA6B420A3584900C40611 /* BackendServiceHelper.swift in Sources */,
 				60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */,
 				B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */,
@@ -1165,12 +1181,14 @@
 				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
 				60D6C37C201CCCAE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
 				60D6C37D201CCCAE00B3B012 /* AnyNetworkRequest.swift in Sources */,
+				60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C37E201CCCAE00B3B012 /* NetworkRequest.swift in Sources */,
 				60D6C37F201CCCAE00B3B012 /* NetworkSessionDataTask.swift in Sources */,
 				60D6C380201CCCAE00B3B012 /* NetworkServiceProtocol.swift in Sources */,
 				60D6C381201CCCAE00B3B012 /* NetworkSession.swift in Sources */,
 				60D6C382201CCCAE00B3B012 /* NetworkService.swift in Sources */,
 				60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */,
+				626DA6B320A3584800C40611 /* BackendServiceHelper.swift in Sources */,
 				30F0735E202205350045CB01 /* URL+Additions.swift in Sources */,
 				B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */,
@@ -1186,7 +1204,7 @@
 				60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				30F07362202213E60045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
 				60D6C40E201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
-				30F0735520210A8B0045CB01 /* HTTPTest.swift in Sources */,
+				30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */,
 				3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */,
 				60D6C40C201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C408201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
@@ -1349,7 +1367,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
@@ -1368,7 +1385,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
@@ -1388,6 +1404,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1395,6 +1412,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1429,7 +1447,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSION = 1.1.0;
+				VERSION = 1.1.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1449,6 +1467,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1456,6 +1475,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1483,7 +1503,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
-				VERSION = 1.1.0;
+				VERSION = 1.1.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

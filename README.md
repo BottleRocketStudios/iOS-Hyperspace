@@ -21,10 +21,10 @@ This library provides a simple abstraction around URLSession and HTTP. There are
 
 ## Key Concepts
 
-* HTTP - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request!
-* NetworkRequest - A protocol that defines the details of a request, including the desired result type. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in *HTTP*.
-* NetworkService - Uses a *NetworkSession* (`URLSession` by default) to execute `URLRequests`. Deals with raw *HTTP* and `Data`.
-* BackendService - Uses a *NetworkService* to execute *NetworkRequests*. Transforms the raw `Data` returned from the *NetworkService* into the response model type defined by the *NetworkRequest*. **This is the main worker object your app will deal with directly**.
+* **HTTP** - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request!
+* **NetworkRequest** - A protocol that defines the details of a request, including the desired result type. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
+* **NetworkService** - Uses a `NetworkSession` (`URLSession` by default) to execute `URLRequests`. Deals with raw `HTTP` and `Data`.
+* **BackendService** - Uses a `NetworkService` to execute `NetworkRequests`. Transforms the raw `Data` returned from the `NetworkService` into the response model type defined by the `NetworkRequest`. **This is the main worker object your app will deal with directly**.
 
 ## Usage
 
@@ -177,23 +177,23 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
 ### Example Targets
 
-* Hyperspace-iOSExample
+* **Hyperspace-iOSExample**
     * `ViewController.swift`
         * View a simplified example of how you might use this in your iOS app.
-* Hyperspace-tvOSExample
+* **Hyperspace-tvOSExample**
     * `ViewController.swift`
         * View a simplified example of how you might use this in your tvOS app (this is essentially the same as the iOS example).
-* Hyperspace-watchOSExample Extension
+* **Hyperspace-watchOSExample Extension**
     * `InterfaceController.swift`
         * View a simplified example of how you might use this in your watchOS app.
 
 ### Playgrounds
 
-* `Playground/Hyperspace.playground`
+* **Playground/Hyperspace.playground**
     * View and run a single file that defines models, network requests, and executes the requests similar to the example targets above.
-* `Playground/Hyperspace_AnyNetworkRequest.playground`
+* **Playground/Hyperspace_AnyNetworkRequest.playground**
     * The same example as above, but using the `AnyNetworkRequest<T>` struct.
-* `Playground/Hyperspace_DELETE.playground`
+* **Playground/Hyperspace_DELETE.playground**
     * An example of how to deal with requests that don't return a result. This is usually common for DELETE requests.
 
 ## Requirements
@@ -201,7 +201,7 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 * iOS 8.0+
 * tvOS 9.0+
 * watchOS 2.0+
-* Swift 4
+* Swift 4.1
 
 ## Installation
 
