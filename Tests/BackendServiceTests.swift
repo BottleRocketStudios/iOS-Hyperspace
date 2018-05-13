@@ -26,6 +26,14 @@ class BackendServiceTests: XCTestCase {
     
     // MARK: - Tests
     
+    func test_AnyError_CreatesSuccessfullyFromNetworkServiceFailure() {
+        let failure = NetworkServiceFailure(error: .noInternetConnection, response: nil)
+        let anyError = AnyError(networkServiceFailure: failure)
+        
+        XCTAssertTrue(anyError.error is NetworkServiceError)
+        XCTAssertEqual(anyError.error as! NetworkServiceError, .noInternetConnection)
+    }
+    
     func test_NetworkServiceSuccess_TransformsResponseCorrectly() {
         let model = NetworkRequestTestDefaults.defaultModel
         let mockedResult = NetworkServiceSuccess(data: modelJSONData, response: defaultSuccessResponse)
