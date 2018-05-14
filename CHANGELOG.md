@@ -5,6 +5,10 @@
 * Two new error-facing protocols were added. `NetworkServiceFailureInitializable` represents a `Swift.Error` that can be initialized from a `NetworkServiceFailure` object. `DecodingFailureInitializable` represents a `Swift.Error` that can be initialized from a `DecodingError` as a result of decoding `Data`. These conformances have been added as extensions to `AnyError` (meaning `AnyNetworkRequest` usage is unaffected). As a result of these new protocols, the `BackendServiceError` type has been removed. Types conforming to `NetworkRequest` now have an associated `ErrorType` which must conform to `NetworkServiceFailureInitializable`. If a request generates any sort of failure response, the custom error type will be initialized from it instead of returning a generic `BackendServiceError`. In addition, if `NetworkRequest.ErrorType` conforms to `DecodingFailureInitializable`, the custom erorr type will be instantiated and returned.
     [Will McGinty](https://github.com/wmcginty)
     [#38](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/38)
+    
+* Separated the generation/encoding of the URL query from the `NetworkRequest` object into an extension `URL`.
+    [Will McGinty](https://github.com/wmcginty)
+    [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/41)
 
 ##### Bug Fixes
 
