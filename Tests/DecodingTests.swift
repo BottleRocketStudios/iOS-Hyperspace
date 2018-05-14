@@ -148,6 +148,81 @@ class DecodingTests: XCTestCase {
         XCTAssertTrue(result.error?.error is DecodingError)
     }
     
+    func test_AnyDecodable_testFunctionalJSONDecoding() {
+        let mixedJSON = loadedJSONData(fromFileNamed: "MixedTypeObject")
+        let dictionary = try! JSONDecoder().decode([String: AnyDecodable].self, from: mixedJSON)
+        
+        XCTAssertEqual(dictionary["boolean"]?.value as! Bool, true)
+        XCTAssertEqual(dictionary["integer"]?.value as! Int, 1)
+        XCTAssertEqual(dictionary["double"]?.value as! Double, 3.14159265358979323846, accuracy: 0.001)
+        XCTAssertEqual(dictionary["string"]?.value as! String, "string")
+        XCTAssertEqual(dictionary["array"]?.value as! [Int], [1, 2, 3])
+        XCTAssertEqual(dictionary["nested"]?.value as! [String: String], ["a": "alpha", "b": "bravo", "c": "charlie"])
+    }
+    
+    func test_AnyDecodable_testEqualityOfUnderlyingType() {
+        XCTAssertEqual(AnyDecodable(true), AnyDecodable(true))
+        XCTAssertNotEqual(AnyDecodable(true), AnyDecodable(false))
+        
+        XCTAssertEqual(AnyDecodable(2), AnyDecodable(2))
+        XCTAssertNotEqual(AnyDecodable(2), AnyDecodable(4))
+        
+        XCTAssertEqual(AnyDecodable(Int8(2)), AnyDecodable(Int8(2)))
+        XCTAssertNotEqual(AnyDecodable(Int8(2)), AnyDecodable(Int8(3)))
+        
+        XCTAssertEqual(AnyDecodable(Int16(2)), AnyDecodable(Int16(2)))
+        XCTAssertNotEqual(AnyDecodable(Int16(2)), AnyDecodable(Int16(7)))
+        
+        XCTAssertEqual(AnyDecodable(Int32(2)), AnyDecodable(Int32(2)))
+        XCTAssertNotEqual(AnyDecodable(Int32(2)), AnyDecodable(Int32(3)))
+        
+        XCTAssertEqual(AnyDecodable(Int64(2)), AnyDecodable(Int64(2)))
+        XCTAssertNotEqual(AnyDecodable(Int64(2)), AnyDecodable(Int64(6)))
+        
+        XCTAssertEqual(AnyDecodable(UInt(2)), AnyDecodable(UInt(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt(2)), AnyDecodable(UInt(7)))
+        
+        XCTAssertEqual(AnyDecodable(UInt8(2)), AnyDecodable(UInt8(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt8(2)), AnyDecodable(UInt8(8)))
+        
+        XCTAssertEqual(AnyDecodable(UInt32(2)), AnyDecodable(UInt32(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt32(2)), AnyDecodable(UInt32(6)))
+        
+        XCTAssertEqual(AnyDecodable(UInt64(2)), AnyDecodable(UInt64(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt64(2)), AnyDecodable(UInt64(4)))
+        
+        XCTAssertEqual(AnyDecodable(Float(2.0)), AnyDecodable(Float(2.0)))
+        XCTAssertNotEqual(AnyDecodable(Float(2.0)), AnyDecodable(Float(5.0)))
+        
+        XCTAssertEqual(AnyDecodable(Double(2.0)), AnyDecodable(Double(2.0)))
+        XCTAssertNotEqual(AnyDecodable(Double(2.0)), AnyDecodable(Double(5.0)))
+        
+        XCTAssertEqual(AnyDecodable("string"), AnyDecodable("string"))
+        XCTAssertNotEqual(AnyDecodable("string"), AnyDecodable("a string"))
+        
+        XCTAssertEqual(AnyDecodable([AnyDecodable(1), AnyDecodable(2), AnyDecodable(3)]), AnyDecodable([AnyDecodable(1), AnyDecodable(2), AnyDecodable(3)]))
+        XCTAssertNotEqual(AnyDecodable([AnyDecodable(1), AnyDecodable(2), AnyDecodable(3)]), AnyDecodable([AnyDecodable(1), AnyDecodable(2), AnyDecodable(4)]))
+        
+        XCTAssertEqual(AnyDecodable(["val": AnyDecodable(1)]), AnyDecodable(["val": AnyDecodable(1)]))
+        XCTAssertNotEqual(AnyDecodable(["val": AnyDecodable(1)]), AnyDecodable(["val": AnyDecodable(2)]))
+    }
+    
+    // swiftlint:disable syntactic_sugar
+    func test_AnyDecodable_testDescriptionOfUnderlyingType() {
+        
+        let nilDecodable = AnyDecodable(Optional<Int>.none)
+        let mock = MockObject(title: "t", subtitle: "s")
+        let nonStringConvertible = AnyDecodable(mock)
+    
+        let obj = NSObject()
+        let stringConvertible = AnyDecodable(obj)
+        
+        XCTAssertEqual(nilDecodable.description, String(describing: nil as Any?))
+        XCTAssertEqual(nonStringConvertible.description, String(describing: mock))
+        XCTAssertEqual(stringConvertible.description, obj.description)
+    }
+    // swiftlint:enable syntactic_sugar
+    
     // MARK: - Helper
 
     private func loadedJSONData(fromFileNamed name: String) -> Data {

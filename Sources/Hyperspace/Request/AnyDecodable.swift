@@ -80,13 +80,3 @@ extension AnyDecodable: CustomStringConvertible {
         }
     }
 }
-
-// MARK: CustomDebugStringConvertible
-extension AnyDecodable: CustomDebugStringConvertible {
-    public var debugDescription: String {
-        switch value {
-        case let value as CustomDebugStringConvertible: return "AnyDecodable(\(value.debugDescription))"
-        default: return "AnyDecodable(\(self.description))"
-        }
-    }
-}

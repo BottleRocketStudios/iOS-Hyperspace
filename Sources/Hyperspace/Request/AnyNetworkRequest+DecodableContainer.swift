@@ -55,7 +55,7 @@ extension AnyNetworkRequest where T: Decodable {
                                                         debugDescription: "No value found at root key \"\(rootDecodingKey)\".")
                     throw DecodingError.valueNotFound(T.self, context)
                 }
-                
+
                 let data = try JSONSerialization.data(withJSONObject: element.value, options: [])
                 let decodedElement = try decoder.decode(T.self, from: data)
                 return .success(decodedElement)
