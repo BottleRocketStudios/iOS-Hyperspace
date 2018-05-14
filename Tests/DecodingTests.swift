@@ -110,6 +110,45 @@ class DecodingTests: XCTestCase {
         let result = request.transformData(objectJSON)
         XCTAssertNil(result.value) //Should fail because RootKeyArray json contains [MockObject], not a single MockObject
     }
+    
+    func test_AnyNetworkRequesWithRootDecodableKey_SuccessfullyDecodesChildElement() {
+        let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        let result = request.transformData(objectJSON)
+        XCTAssertNotNil(result.value)
+    }
+    
+    func test_AnyNetworkRequesWithRootDecodableKey_SuccessfullyDecodesChildElements() {
+        let request = AnyNetworkRequest<[MockObject]>(method: .get, url: NetworkRequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
+        let result = request.transformData(objectJSON)
+        XCTAssertNotNil(result.value)
+    }
+    
+    func test_AnyNetworkRequesWithRootDecodableKey_SuccessfullyDecodesChildElementWhenExtraJSONPresent() {
+        let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObjectPlus")
+        let result = request.transformData(objectJSON)
+        XCTAssertNotNil(result.value)
+    }
+    
+    func test_AnyNetworkRequesWithRootDecodableKey_FailsWithIncorrectKey() {
+        let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL, rootDecodingKey: "incorrectkey")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        let result = request.transformData(objectJSON)
+        XCTAssertNil(result.value)
+        XCTAssertTrue(result.error?.error is DecodingError)
+    }
+    
+    func test_AnyNetworkRequesWithRootDecodableKey_FailsWithIncorrectType() {
+        let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyIncorrectType")
+        let result = request.transformData(objectJSON)
+        XCTAssertNil(result.value)
+        XCTAssertTrue(result.error?.error is DecodingError)
+    }
+    
+    // MARK: - Helper
 
     private func loadedJSONData(fromFileNamed name: String) -> Data {
         let bundle = Bundle(for: DecodingTests.self)
