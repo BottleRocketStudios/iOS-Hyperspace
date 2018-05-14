@@ -23,7 +23,6 @@ class NetworkRequestTestDefaults {
         
         var method: HTTP.Method = .get
         var url: URL = NetworkRequestTestDefaults.defaultURL
-        var queryParameters: [URLQueryItem]?
         var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
         var body: Data?
         var cachePolicy: URLRequest.CachePolicy = NetworkRequestTestDefaults.defaultCachePolicy

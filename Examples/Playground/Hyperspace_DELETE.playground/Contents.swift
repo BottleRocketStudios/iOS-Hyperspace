@@ -15,7 +15,6 @@ struct DeletePostRequest: NetworkRequest {
     var url: URL {
         return URL(string: "http://jsonplaceholder.typicode.com/posts/\(postId)")!
     }
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     var body: Data?
 

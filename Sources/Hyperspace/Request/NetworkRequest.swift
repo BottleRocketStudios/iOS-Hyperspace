@@ -15,26 +15,6 @@
 import Foundation
 import Result
 
-/// Represents the strategy used to encode query parameters in the URL.
-// swiftlint:disable type_name
-public enum NetworkRequestQueryParameterEncodingStrategy {
-    public typealias QueryStringEncodingBlock = (String) -> String
-    
-    case urlQueryAllowedCharacterSet
-    case custom(QueryStringEncodingBlock)
-    
-    func encode(string: String) -> String {
-        switch self {
-        case .urlQueryAllowedCharacterSet:
-            guard let encodedQueryString = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { fatalError("Unable to encode query parameters for \(self)") }
-            return encodedQueryString
-        case .custom(let encodingBlock):
-            return encodingBlock(string)
-        }
-    }
-}
-// swiftlint:enable type_name
-
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
 public protocol NetworkRequest {
     
@@ -47,12 +27,6 @@ public protocol NetworkRequest {
     
     /// The URL to use when executing this network request.
     var url: URL { get }
-    
-    /// The query parameters to use when executing this network request.
-    var queryParameters: [URLQueryItem]? { get }
-    
-    /// The encoding strategy to use when encoding the raw query parameter string before generating the final URL used to execute the request against.
-    var queryParameterEncodingStrategy: NetworkRequestQueryParameterEncodingStrategy { get }
     
     /// The header field keys/values to use when executing this network request.
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? { get }
@@ -68,13 +42,7 @@ public protocol NetworkRequest {
     
     /// The URLRequest that represents this network request.
     var urlRequest: URLRequest { get }
-    
-    /// Generates a raw query string from the provided query parameters. Does not include the '?' prefix.
-    ///
-    /// - Parameter queryParameters: The query parameter key-value pairs.
-    /// - Returns: A string representing the unencoded concatination of each key-value pair.
-    func generateRawQueryParameterString(from queryParameters: [URLQueryItem]) -> String
-    
+        
     /// Attempts to parse the provided Data into the associated response model type for this request.
     ///
     /// - Parameter data: The raw Data retrieved from the network.
@@ -99,8 +67,6 @@ public struct NetworkRequestDefaults {
     
     public static var defaultTimeout: TimeInterval = 30
     
-    public static var defaultQueryParameterEncodingStrategy: NetworkRequestQueryParameterEncodingStrategy = .urlQueryAllowedCharacterSet
-    
     public static func dataTransformer<T: Decodable>(for decoder: JSONDecoder) -> (Data) -> Result<T, AnyError> {
         return { data in
             do {
@@ -122,18 +88,9 @@ public extension NetworkRequest {
     var timeout: TimeInterval {
         return NetworkRequestDefaults.defaultTimeout
     }
-    
-    var queryParameterEncodingStrategy: NetworkRequestQueryParameterEncodingStrategy {
-        return NetworkRequestDefaults.defaultQueryParameterEncodingStrategy
-    }
-    
+        
     var urlRequest: URLRequest {
-        let rawQueryString = generateRawQueryParameterString(from: queryParameters ?? [])
-        let encodedQueryString = queryParameterEncodingStrategy.encode(string: rawQueryString)
-        
-        let requestURL = url.appendingQueryString(encodedQueryString)
-        
-        var request = URLRequest(url: requestURL, cachePolicy: cachePolicy, timeoutInterval: timeout)
+        var request = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: timeout)
         request.httpMethod = method.rawValue
         request.httpBody = body
         
@@ -142,14 +99,6 @@ public extension NetworkRequest {
         request.allHTTPHeaderFields = rawHeaders
         
         return request
-    }
-    
-    func generateRawQueryParameterString(from queryParameters: [URLQueryItem]) -> String {
-        return URLQueryItem.generateRawQueryParametersString(from: queryParameters)
-    }
-    
-    func encodeQueryParameterString(_ queryString: String) -> String {
-        return queryParameterEncodingStrategy.encode(string: queryString)
     }
 }
 

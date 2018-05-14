@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
+		0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
@@ -260,6 +262,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterTests.swift; sourceTree = "<group>"; };
 		3026E457202008470003A321 /* NetworkSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTest.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
@@ -505,6 +508,7 @@
 				3026E457202008470003A321 /* NetworkSessionTest.swift */,
 				30F07352202109F60045CB01 /* HTTPTests.swift */,
 				B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */,
+				0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */,
 				60D6C419201CFCE500B3B012 /* Helper */,
 				60EB8FDA1FF59FB000AC0B55 /* Supporting Files */,
 			);
@@ -1137,6 +1141,7 @@
 				60D6C409201CFCCF00B3B012 /* MockNetworkService.swift in Sources */,
 				60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				30F07361202213E50045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
+				0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */,
 				60D6C40D201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
 				30F0735420210A890045CB01 /* HTTPTests.swift in Sources */,
 				3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */,
@@ -1203,6 +1208,7 @@
 				60D6C40A201CFCCF00B3B012 /* MockNetworkService.swift in Sources */,
 				60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				30F07362202213E60045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
+				0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */,
 				60D6C40E201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
 				30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */,
 				3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */,

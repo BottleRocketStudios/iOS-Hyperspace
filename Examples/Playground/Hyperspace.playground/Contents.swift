@@ -48,7 +48,6 @@ struct GetUserRequest: NetworkRequest {
     var url: URL {
         return URL(string: "http://jsonplaceholder.typicode.com/users/\(userId)")!
     }
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     var body: Data?
     
@@ -69,7 +68,6 @@ struct CreatePostRequest: NetworkRequest {
     // Define NetworkRequest property values
     var method: HTTP.Method = .post
     var url = URL(string: "http://jsonplaceholder.typicode.com/posts")!
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
     var body: Data? {
         let encoder = JSONEncoder()
