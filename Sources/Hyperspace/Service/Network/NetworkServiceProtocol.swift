@@ -8,7 +8,6 @@
 
 //
 //  TODO: Future functionality:
-//          - Look into providing a protocol that allows clients to custom interpret URLResponses (HTTP status codes).
 //          - Look into providing the raw URLResponse as a property on NetworkServiceSuccess/FailureResult so that clients have access to the raw response object.
 //            One caveat is the fact that HTTPURLResponse and URLResponse don't currently properly handle Equatable so we'll need to figure out how we want to handle this.
 //
