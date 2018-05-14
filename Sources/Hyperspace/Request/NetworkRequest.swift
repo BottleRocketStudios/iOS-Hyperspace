@@ -40,7 +40,7 @@ public protocol NetworkServiceFailureInitializable: Swift.Error {
     init(networkServiceFailure: NetworkServiceFailure)
 }
 
-/// Represents an error which can be constructed from a `DecodingError`.
+/// Represents an error which can be constructed from a `DecodingError` and `Data`.
 public protocol DecodingFailureInitializable: Swift.Error {
     init(decodingError: DecodingError, data: Data)
 }
@@ -117,7 +117,7 @@ public struct NetworkRequestDefaults {
                 let decodedResponse: T = try decoder.decode(T.self, from: data)
                 return .success(decodedResponse)
             } catch {
-                guard let decodingError = error as? DecodingError else { fatalError("JSONDecoder should alsays throw a DecodingError.") }
+                guard let decodingError = error as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
                 return .failure(E(decodingError: decodingError, data: data))
             }
         }
@@ -191,7 +191,7 @@ extension AnyError: NetworkServiceFailureInitializable {
     }
 }
 
-// MARK: - AnyError Conformance to NetworkServiceInitializable
+// MARK: - AnyError Conformance to DecodingFailureInitializable
 
 extension AnyError: DecodingFailureInitializable {
     public init(decodingError: DecodingError, data: Data) {
