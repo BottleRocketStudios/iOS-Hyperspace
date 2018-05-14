@@ -17,7 +17,7 @@ public struct BackendServiceHelper {
     ///   - data: The raw Data retrieved from the network.
     ///   - request: The NetworkRequest that will be used to transform the Data.
     ///   - completion: The completion block to invoke when execution has finished.
-    public static func handleResponseData<T: NetworkRequest>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>) {
+    public static func handleResponseData<T: NetworkRequest>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
         let transformResult = request.transformData(data)
         
         DispatchQueue.main.async {
@@ -25,7 +25,7 @@ public struct BackendServiceHelper {
             case .success(let transformedObject):
                 completion(.success(transformedObject))
             case .failure(let error):
-                completion(.failure(.dataTransformationError(error)))
+                completion(.failure(error))
             }
         }
     }

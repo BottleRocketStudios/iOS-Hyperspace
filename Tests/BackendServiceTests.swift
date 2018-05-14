@@ -26,6 +26,14 @@ class BackendServiceTests: XCTestCase {
     
     // MARK: - Tests
     
+    func test_AnyError_CreatesSuccessfullyFromNetworkServiceFailure() {
+        let failure = NetworkServiceFailure(error: .noInternetConnection, response: nil)
+        let anyError = AnyError(networkServiceFailure: failure)
+        
+        XCTAssertTrue(anyError.error is NetworkServiceError)
+        XCTAssertEqual(anyError.error as! NetworkServiceError, .noInternetConnection)
+    }
+    
     func test_NetworkServiceSuccess_TransformsResponseCorrectly() {
         let model = NetworkRequestTestDefaults.defaultModel
         let mockedResult = NetworkServiceSuccess(data: modelJSONData, response: defaultSuccessResponse)
@@ -82,21 +90,12 @@ class BackendServiceTests: XCTestCase {
         XCTAssertEqual(mockNetworkService.cancelAllTasksCallCount, 1)
     }
     
-    func test_AnyErrorBackendServiceErrorInitializableConformance_CreatesAnyErrorWithBackendServiceError() {
-        let error = AnyError(BackendServiceError.networkError(.unknownError, nil))
-        XCTAssert(error.error is BackendServiceError)
-    }
-    
-    func test_BackendServiceErrorEquatableConformance_DifferentErrorsAreNotEqual() {
-        let lhs = BackendServiceError.networkError(.unknownError, nil)
-        let rhs = BackendServiceError.dataTransformationError(NSError(domain: "Test", code: 1, userInfo: nil))
-        XCTAssertNotEqual(lhs, rhs)
-    }
-    
     // MARK: - Private
     
+    //create a concrete implementation of NetworkServiceFailureInitializable(Error) for testing (aka BackendServiceError...)
+    
     private func executeBackendService(mockedNetworkServiceResult: Result<NetworkServiceSuccess, NetworkServiceFailure>,
-                                       expectingResult expectedResult: Result<DefaultModel, BackendServiceError>,
+                                       expectingResult expectedResult: Result<DefaultModel, MockBackendServiceError>,
                                        file: StaticString = #file,
                                        line: UInt = #line) {
         let mockNetworkService = MockNetworkService(responseResult: mockedNetworkServiceResult)

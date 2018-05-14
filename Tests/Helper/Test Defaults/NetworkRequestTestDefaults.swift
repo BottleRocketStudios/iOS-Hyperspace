@@ -16,9 +16,10 @@ class NetworkRequestTestDefaults {
     }
     
     struct DefaultRequest<T: Decodable>: NetworkRequest {
+        
         // swiftlint:disable nesting
         typealias ResponseType = T
-        typealias ErrorType = AnyError
+        typealias ErrorType = MockBackendServiceError
         // swiftlint:enable nesting
         
         var method: HTTP.Method = .get
