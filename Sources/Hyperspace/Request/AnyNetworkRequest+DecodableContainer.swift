@@ -49,6 +49,9 @@ extension AnyNetworkRequest where T: Decodable {
                 rootDecodingKey: String) {
         self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { data in
             do {
+                
+                //TODO: This logic could be extracted to accomodate a [String] of keys, but would incur additional performance costs (due to re-serialization).
+                
                 let container = try decoder.decode([String: AnyDecodable].self, from: data)
                 guard let element = container[rootDecodingKey] else {
                     let context = DecodingError.Context(codingPath: [],
