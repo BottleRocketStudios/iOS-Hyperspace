@@ -29,14 +29,14 @@ public class BackendService {
 // MARK: - BackendService Conformance to BackendServiceProtocol
 
 extension BackendService: BackendServiceProtocol {
-    public func execute<T: NetworkRequest>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType>) {
-        networkService.execute(request: request.urlRequest) { (result) in
+    public func execute<T: NetworkRequest>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
+        networkService.execute(request: request.urlRequest) { result in
             switch result {
             case .success(let result):
                 BackendServiceHelper.handleResponseData(result.data, for: request, completion: completion)
             case .failure(let result):
                 DispatchQueue.main.async {
-                    completion(.failure(.networkError(result.error, result.response)))
+                    completion(.failure(T.ErrorType(networkServiceFailure: result)))
                 }
             }
         }

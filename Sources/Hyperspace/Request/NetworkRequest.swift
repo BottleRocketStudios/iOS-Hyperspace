@@ -15,12 +15,22 @@
 import Foundation
 import Result
 
+/// Represents an error which can be constructed from a `NetworkServiceFailure`.
+public protocol NetworkServiceFailureInitializable: Swift.Error {
+    init(networkServiceFailure: NetworkServiceFailure)
+}
+
+/// Represents an error which can be constructed from a `DecodingError` and `Data`.
+public protocol DecodingFailureInitializable: Swift.Error {
+    init(decodingError: DecodingError, data: Data)
+}
+
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
 public protocol NetworkRequest {
     
     /// The model type that this NetworkRequest will attempt to transform Data into.
     associatedtype ResponseType
-    associatedtype ErrorType: Swift.Error
+    associatedtype ErrorType: NetworkServiceFailureInitializable
     
     /// The HTTP method to be use when executing this request.
     var method: HTTP.Method { get }
@@ -59,7 +69,7 @@ public struct EmptyResponse {
     public init() { }
 }
 
-// MARK: - NetworkRequest Default Implementations
+// MARK: - NetworkRequest Defaults
 
 public struct NetworkRequestDefaults {
     
@@ -67,17 +77,20 @@ public struct NetworkRequestDefaults {
     
     public static var defaultTimeout: TimeInterval = 30
     
-    public static func dataTransformer<T: Decodable>(for decoder: JSONDecoder) -> (Data) -> Result<T, AnyError> {
+public static func dataTransformer<T: Decodable, E: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<T, E> {
         return { data in
             do {
                 let decodedResponse: T = try decoder.decode(T.self, from: data)
                 return .success(decodedResponse)
             } catch {
-                return .failure(AnyError(error))
+                guard let decodingError = error as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
+                return .failure(E(decodingError: decodingError, data: data))
             }
         }
     }
 }
+
+// MARK: - NetworkRequest Default Implementations
 
 public extension NetworkRequest {
     
@@ -102,7 +115,7 @@ public extension NetworkRequest {
     }
 }
 
-public extension NetworkRequest where ResponseType: Decodable, ErrorType == AnyError {
+public extension NetworkRequest where ResponseType: Decodable, ErrorType: DecodingFailureInitializable {
     
     func dataTransformer(with decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
         return NetworkRequestDefaults.dataTransformer(for: decoder)
@@ -116,5 +129,21 @@ public extension NetworkRequest where ResponseType: Decodable, ErrorType == AnyE
 public extension NetworkRequest where ResponseType == EmptyResponse {
     func transformData(_ data: Data) -> Result<EmptyResponse, ErrorType> {
         return .success(EmptyResponse())
+    }
+}
+
+// MARK: - AnyError Conformance to NetworkServiceInitializable
+
+extension AnyError: NetworkServiceFailureInitializable {
+    public init(networkServiceFailure: NetworkServiceFailure) {
+        self.init(networkServiceFailure.error)
+    }
+}
+
+// MARK: - AnyError Conformance to DecodingFailureInitializable
+
+extension AnyError: DecodingFailureInitializable {
+    public init(decodingError: DecodingError, data: Data) {
+        self.init(decodingError)
     }
 }
