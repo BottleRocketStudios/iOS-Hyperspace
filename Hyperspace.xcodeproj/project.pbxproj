@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
+		0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
+		0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */; };
+		0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */; };
+		0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */; };
 		0ECDC1C820A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */; };
 		0ECDC1C920A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */; };
 		0ECDC1CC20A9FD3500ABF991 /* RootKeyIncorrectType.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1CA20A9FCDE00ABF991 /* RootKeyIncorrectType.json */; };
@@ -273,6 +278,8 @@
 		0ECDC1CA20A9FCDE00ABF991 /* RootKeyIncorrectType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RootKeyIncorrectType.json; sourceTree = "<group>"; };
 		0ECDC1CE20A9FE3100ABF991 /* AnyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
 		0ECDC1D020AA039F00ABF991 /* MixedTypeObject.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MixedTypeObject.json; sourceTree = "<group>"; };
+		0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterTests.swift; sourceTree = "<group>"; };
+		0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterEncoder.swift; sourceTree = "<group>"; };
 		3026E457202008470003A321 /* NetworkSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTest.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
@@ -518,6 +525,7 @@
 				3026E457202008470003A321 /* NetworkSessionTest.swift */,
 				30F07352202109F60045CB01 /* HTTPTests.swift */,
 				B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */,
+				0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */,
 				60D6C419201CFCE500B3B012 /* Helper */,
 				60EB8FDA1FF59FB000AC0B55 /* Supporting Files */,
 			);
@@ -559,6 +567,7 @@
 				60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */,
 				60AC83451FF596B600120172 /* AnyNetworkRequest.swift */,
 				60AC83461FF596B600120172 /* NetworkRequest.swift */,
+				0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1137,6 +1146,7 @@
 				60D6C36D201CC81100B3B012 /* URL+Additions.swift in Sources */,
 				60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
+				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
 				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyNetworkRequest.swift in Sources */,
@@ -1161,6 +1171,7 @@
 				60D6C409201CFCCF00B3B012 /* MockNetworkService.swift in Sources */,
 				60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				30F07361202213E50045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
+				0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */,
 				60D6C40D201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
 				30F0735420210A890045CB01 /* HTTPTests.swift in Sources */,
 				3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */,
@@ -1182,6 +1193,7 @@
 				60D6C385201CCCBE00B3B012 /* URL+Additions.swift in Sources */,
 				60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
+				0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C388201CCCBE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
 				60127D5E20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C389201CCCBE00B3B012 /* AnyNetworkRequest.swift in Sources */,
@@ -1205,6 +1217,7 @@
 				60D6C37A201CCCAE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
 				60D6C37C201CCCAE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C37D201CCCAE00B3B012 /* AnyNetworkRequest.swift in Sources */,
 				60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C37E201CCCAE00B3B012 /* NetworkRequest.swift in Sources */,
@@ -1229,6 +1242,7 @@
 				60D6C40A201CFCCF00B3B012 /* MockNetworkService.swift in Sources */,
 				60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				30F07362202213E60045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
+				0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */,
 				60D6C40E201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
 				30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */,
 				3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */,

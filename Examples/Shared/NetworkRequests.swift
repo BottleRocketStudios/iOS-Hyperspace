@@ -44,7 +44,6 @@ struct GetUserRequest: NetworkRequest {
     var url: URL {
         return URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)")!
     }
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     var body: Data?
     
@@ -67,7 +66,6 @@ struct CreatePostRequest: NetworkRequest {
     // Define NetworkRequest property values
     var method: HTTP.Method = .post
     var url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
     var body: Data? {
         let encoder = JSONEncoder()
@@ -93,7 +91,6 @@ struct DeletePostRequest: NetworkRequest {
     var url: URL {
         return URL(string: "https://jsonplaceholder.typicode.com/posts/\(postId)")!
     }
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     var body: Data?
     

@@ -1,6 +1,6 @@
 //
-//  MockNetworkService2.swift
-//  Hyperspace-iOS
+//  NetworkServiceMockSubclass.swift
+//  Hyperspace
 //
 //  Created by Adam Brzozowski on 1/31/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
