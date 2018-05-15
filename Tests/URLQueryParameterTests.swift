@@ -21,7 +21,7 @@ class URLQueryParameterTests: XCTestCase {
             // TODO: What other complex query parameters can we generate to test the URL encoding?
         ]
         
-        let finalURL = url.appendingQueryItems(queryParameters, using: .urlQueryAllowedCharacterSet)
+        let finalURL = url.appendingQueryItems(queryParameters)
         XCTAssertEqual(finalURL.absoluteString, "https://apple.com?param1=param1value&param2=param2%20value&param3")
     }
     
@@ -33,23 +33,27 @@ class URLQueryParameterTests: XCTestCase {
         ]
         
         let url = NetworkRequestTestDefaults.defaultURL
-        let finalURL = url.appendingQueryItems(queryParameters, using: .customTest)
+        let finalURL = url.appendingQueryItems(queryParameters, using: .customEncoder)
         XCTAssertEqual(finalURL.absoluteString, "https://apple.com?param1=param1value&param2=param2-value&param3")
     }
     
     func testDefaultURLQueryEncodingStrategy_EncodesQueryProperly() {
-        let queryString = URL.QueryParameterEncodingStrategy.urlQueryAllowedCharacterSet.encode(string: "this is a test")
+        let queryString = URLQueryParameterEncoder().encode("this is a test")
         XCTAssertEqual(queryString, "this%20is%20a%20test")
     }
     
     func testCustomURLQueryEncodingStrategy_EncodesQueryProperly() {
-        let queryString = URL.QueryParameterEncodingStrategy.customTest.encode(string: "this is a test")
+        let queryString = URLQueryParameterEncoder.customEncoder.encode("this is a test")
         XCTAssertEqual(queryString, "this-is-a-test")
     }
 }
 
-fileprivate extension URL.QueryParameterEncodingStrategy {
-    static let customTest = URL.QueryParameterEncodingStrategy.custom { content in
-        return content.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
-    }
+fileprivate extension URLQueryParameterEncoder {
+    static let customEncoder: URLQueryParameterEncoder = {
+        var encoder = URLQueryParameterEncoder()
+        encoder.encodingStrategy = .custom { content -> String in
+            return content.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
+        }
+        return encoder
+    }()
 }
