@@ -38,4 +38,34 @@ extension AnyNetworkRequest where T: Decodable {
             }
         }
     }
+    
+    public init(method: HTTP.Method,
+                url: URL,
+                headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
+                body: Data? = nil,
+                cachePolicy: URLRequest.CachePolicy = NetworkRequestDefaults.defaultCachePolicy,
+                timeout: TimeInterval = NetworkRequestDefaults.defaultTimeout,
+                decoder: JSONDecoder = JSONDecoder(),
+                rootDecodingKey: String) {
+        self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { data in
+            do {
+                
+                //TODO: This logic could be extracted to accomodate a [String] of keys, but would incur additional performance costs (due to re-serialization).
+                
+                let container = try decoder.decode([String: AnyDecodable].self, from: data)
+                guard let element = container[rootDecodingKey] else {
+                    let context = DecodingError.Context(codingPath: [],
+                                                        debugDescription: "No value found at root key \"\(rootDecodingKey)\".")
+                    throw DecodingError.valueNotFound(T.self, context)
+                }
+
+                let data = try JSONSerialization.data(withJSONObject: element.value, options: [])
+                let decodedElement = try decoder.decode(T.self, from: data)
+                return .success(decodedElement)
+
+            } catch {
+                return .failure(AnyError(error))
+            }
+        }
+    }
 }

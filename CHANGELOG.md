@@ -6,6 +6,10 @@
     [Will McGinty](https://github.com/wmcginty)
     [#38](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/38)
     
+* Added a new initalizer to `AnyNetworkRequest` which accepts a `String` value designating the key of JSON at which to begin decoding.
+    [Will McGinty](https://github.com/wmcginty)
+    [#41](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/41)
+    
 * Separated the generation/encoding of the URL query from the `NetworkRequest` object into an extension `URL`.
     [Will McGinty](https://github.com/wmcginty)
     [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/41)
