@@ -103,6 +103,32 @@ class NetworkRequestTests: XCTestCase {
         XCTAssertNotNil(result.value)
     }
     
+    func test_NetworkRequest_ModifyingBody() {
+        let body = Data(bytes: [1, 2, 3, 4, 5, 6, 7, 8])
+        let request = SimpleGETRequest()
+        let modified = request.modifyingBody(body)
+        
+        XCTAssertEqual(modified.body, body)
+        XCTAssertEqual(modified.headers, request.headers)
+        XCTAssertEqual(modified.url, request.url)
+        XCTAssertEqual(modified.method, request.method)
+        XCTAssertEqual(modified.cachePolicy, request.cachePolicy)
+        XCTAssertEqual(modified.timeout, request.timeout)
+    }
+    
+    func test_NetworkRequest_ModifyingHeaders() {
+        let headers: [HTTP.HeaderKey: HTTP.HeaderValue] = [.authorization: HTTP.HeaderValue(rawValue: "auth")]
+        let request = SimpleGETRequest()
+        let modified = request.modifyingHeaders([.authorization: HTTP.HeaderValue(rawValue: "auth")])
+        
+        XCTAssertEqual(modified.body, request.body)
+        XCTAssertEqual(modified.headers, headers)
+        XCTAssertEqual(modified.url, request.url)
+        XCTAssertEqual(modified.method, request.method)
+        XCTAssertEqual(modified.cachePolicy, request.cachePolicy)
+        XCTAssertEqual(modified.timeout, request.timeout)
+    }
+
     // MARK: - Private
     
     private func assertParameters<T: NetworkRequest, U>(method: String = NetworkRequestTests.defaultRequestMethod.rawValue,

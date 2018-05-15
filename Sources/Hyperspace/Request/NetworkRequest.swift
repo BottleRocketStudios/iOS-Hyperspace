@@ -39,10 +39,10 @@ public protocol NetworkRequest {
     var url: URL { get }
     
     /// The header field keys/values to use when executing this network request.
-    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? { get }
+    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? { get set }
     
     /// The payload body for this network request, if any.
-    var body: Data? { get }
+    var body: Data? { get set }
     
     /// The cache policy to use when executing this network request.
     var cachePolicy: URLRequest.CachePolicy { get }
@@ -77,7 +77,7 @@ public struct NetworkRequestDefaults {
     
     public static var defaultTimeout: TimeInterval = 30
     
-public static func dataTransformer<T: Decodable, E: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<T, E> {
+    public static func dataTransformer<T: Decodable, E: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<T, E> {
         return { data in
             do {
                 let decodedResponse: T = try decoder.decode(T.self, from: data)
@@ -112,6 +112,18 @@ public extension NetworkRequest {
         request.allHTTPHeaderFields = rawHeaders
         
         return request
+    }
+    
+    func modifyingHeaders(_ headers: [HTTP.HeaderKey: HTTP.HeaderValue]?) -> Self {
+        var copy = self
+        copy.headers = headers
+        return copy
+    }
+    
+    func modifyingBody(_ body: Data?) -> Self {
+        var copy = self
+        copy.body = body
+        return copy
     }
 }
 
