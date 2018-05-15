@@ -1,0 +1,9 @@
+{
+    "root_key": {
+        "title": "Title",
+        "subtitle": "Subtitle"
+    },
+    "another_key": "String value",
+    "another_key_key": "s"
+}
+
