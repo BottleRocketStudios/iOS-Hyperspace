@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Result
 
 /// A helper struct for use with BackendService.
 public struct BackendServiceHelper {
@@ -27,6 +28,24 @@ public struct BackendServiceHelper {
             case .failure(let error):
                 completion(.failure(error))
             }
+        }
+    }
+    
+    public static func handleResponse<T, U>(_ response: T, completion: @escaping BackendServiceCompletion<T, U>) {
+        DispatchQueue.main.async {
+            completion(.success(response))
+        }
+    }
+    
+    public static func handleNetworkServiceFailure<T, U: NetworkServiceFailureInitializable>(_ serviceFailure: NetworkServiceFailure, completion: @escaping BackendServiceCompletion<T, U>) {
+        DispatchQueue.main.async {
+            completion(.failure(U(networkServiceFailure: serviceFailure)))
+        }
+    }
+    
+    public static func handleErrorFailure<T, U>(_ error: U, completion: @escaping BackendServiceCompletion<T, U>) {
+        DispatchQueue.main.async {
+            completion(.failure(error))
         }
     }
 }

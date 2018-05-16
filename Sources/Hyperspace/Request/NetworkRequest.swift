@@ -18,6 +18,9 @@ import Result
 /// Represents an error which can be constructed from a `NetworkServiceFailure`.
 public protocol NetworkServiceFailureInitializable: Swift.Error {
     init(networkServiceFailure: NetworkServiceFailure)
+    
+    var networkServiceError: NetworkServiceError { get }
+    var failureResponse: HTTP.Response? { get }
 }
 
 /// Represents an error which can be constructed from a `DecodingError` and `Data`.
@@ -164,8 +167,17 @@ public extension NetworkRequest where ResponseType == EmptyResponse {
 // MARK: - AnyError Conformance to NetworkServiceInitializable
 
 extension AnyError: NetworkServiceFailureInitializable {
+
     public init(networkServiceFailure: NetworkServiceFailure) {
         self.init(networkServiceFailure.error)
+    }
+    
+    public var networkServiceError: NetworkServiceError {
+        return (error as? NetworkServiceError) ?? .unknownError
+    }
+    
+    public var failureResponse: HTTP.Response? {
+        return nil
     }
 }
 
