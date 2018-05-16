@@ -106,7 +106,7 @@ class NetworkRequestTests: XCTestCase {
     func test_NetworkRequest_ModifyingBody() {
         let body = Data(bytes: [1, 2, 3, 4, 5, 6, 7, 8])
         let request = SimpleGETRequest()
-        let modified = request.modifyingBody(body)
+        let modified = request.usingBody(body)
         
         XCTAssertEqual(modified.body, body)
         XCTAssertEqual(modified.headers, request.headers)
@@ -119,7 +119,7 @@ class NetworkRequestTests: XCTestCase {
     func test_NetworkRequest_ModifyingHeaders() {
         let headers: [HTTP.HeaderKey: HTTP.HeaderValue] = [.authorization: HTTP.HeaderValue(rawValue: "auth")]
         let request = SimpleGETRequest()
-        let modified = request.modifyingHeaders([.authorization: HTTP.HeaderValue(rawValue: "auth")])
+        let modified = request.usingHeaders([.authorization: HTTP.HeaderValue(rawValue: "auth")])
         
         XCTAssertEqual(modified.body, request.body)
         XCTAssertEqual(modified.headers, headers)
