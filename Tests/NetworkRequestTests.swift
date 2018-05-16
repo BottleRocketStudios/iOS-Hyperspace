@@ -103,6 +103,64 @@ class NetworkRequestTests: XCTestCase {
         XCTAssertNotNil(result.value)
     }
     
+    func test_NetworkRequest_ModifyingBody() {
+        let body = Data(bytes: [1, 2, 3, 4, 5, 6, 7, 8])
+        let request = SimpleGETRequest()
+        let modified = request.usingBody(body)
+        
+        XCTAssertEqual(modified.body, body)
+        XCTAssertEqual(modified.headers, request.headers)
+        XCTAssertEqual(modified.url, request.url)
+        XCTAssertEqual(modified.method, request.method)
+        XCTAssertEqual(modified.cachePolicy, request.cachePolicy)
+        XCTAssertEqual(modified.timeout, request.timeout)
+    }
+    
+    func test_NetworkRequest_ModifyingHeaders() {
+        let headers: [HTTP.HeaderKey: HTTP.HeaderValue] = [.authorization: HTTP.HeaderValue(rawValue: "auth")]
+        let request = SimpleGETRequest()
+        let modified = request.usingHeaders([.authorization: HTTP.HeaderValue(rawValue: "auth")])
+        
+        XCTAssertEqual(modified.body, request.body)
+        XCTAssertEqual(modified.headers, headers)
+        XCTAssertEqual(modified.url, request.url)
+        XCTAssertEqual(modified.method, request.method)
+        XCTAssertEqual(modified.cachePolicy, request.cachePolicy)
+        XCTAssertEqual(modified.timeout, request.timeout)
+    }
+    
+    func test_NetworkRequest_AddingHeaders() {
+        let request = SimpleGETRequest()
+        let headers = [HTTP.HeaderKey.authorization: HTTP.HeaderValue(rawValue: "some_value")]
+        let new = request.addingHeaders(headers)
+        let headers2 = [HTTP.HeaderKey.contentType: HTTP.HeaderValue(rawValue: "some_value")]
+        let final = new.addingHeaders(headers2)
+        
+        let finalHeaders = final.headers
+        XCTAssertNotNil(finalHeaders?[.authorization])
+        XCTAssertNotNil(finalHeaders?[.contentType])
+    }
+    
+    func test_NetworkRequest_AddingHeadersWhenNonePresent() {
+        var request = SimpleGETRequest()
+        request.headers = nil
+        
+        let headers = [HTTP.HeaderKey.authorization: HTTP.HeaderValue(rawValue: "some_value")]
+        let final = request.addingHeaders(headers)
+        
+        let finalHeaders = final.headers
+        XCTAssertNotNil(finalHeaders?[.authorization])
+    }
+    
+    func test_NetworkRequest_CollisionsPrefersNewHeadersWhenAddingHeaders() {
+        let request = SimpleGETRequest().addingHeaders([.authorization: HTTP.HeaderValue(rawValue: "some_value")])
+        let accessToken = "access_token"
+        let final = request.addingHeaders([.authorization: HTTP.HeaderValue(rawValue: accessToken)])
+        
+        let finalHeaders = final.headers
+        XCTAssertEqual(finalHeaders?[.authorization]?.rawValue, accessToken)
+    }
+
     // MARK: - Private
     
     private func assertParameters<T: NetworkRequest, U>(method: String = NetworkRequestTests.defaultRequestMethod.rawValue,
