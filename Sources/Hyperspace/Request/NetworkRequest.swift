@@ -114,12 +114,29 @@ public extension NetworkRequest {
         return request
     }
     
+    /// Adds the specified headers to the HTTP headers already attached to the `NetworkRequest`.
+    ///
+    /// - Parameter additionalHeaders: The HTTP headers to add to the request
+    /// - Returns: A new `NetworkReqest` with the combined HTTP headers. In the case of a collision, the value from `additionalHeaders` is preferred.
+    func addingHeaders(_ additionalHeaders: [HTTP.HeaderKey: HTTP.HeaderValue]) -> Self {
+        let modifiedHeaders = (headers ?? [:])?.merging(additionalHeaders) { return $1 }
+        return modifyingHeaders(modifiedHeaders)
+    }
+    
+    /// Modifies the HTTP headers on the `NetworkRequest`.
+    ///
+    /// - Parameter headers: The HTTP headers to add to the request.
+    /// - Returns: A new `NetworkReqest` with the given HTTP headers.
     func modifyingHeaders(_ headers: [HTTP.HeaderKey: HTTP.HeaderValue]?) -> Self {
         var copy = self
         copy.headers = headers
         return copy
     }
     
+    /// Modifies the HTTP body on the `NetworkRequest`.
+    ///
+    /// - Parameter body: The HTTP body to add to the request.
+    /// - Returns: A new `NetworkReqest` with the given HTTP body
     func modifyingBody(_ body: Data?) -> Self {
         var copy = self
         copy.body = body
