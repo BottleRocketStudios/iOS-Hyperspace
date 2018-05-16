@@ -12,7 +12,11 @@
     
 * Separated the generation/encoding of the URL query from the `NetworkRequest` object into an extension `URL`.
     [Will McGinty](https://github.com/wmcginty)
-    [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/41)
+    [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/40)
+    
+* Add functionality to `NetworkReqest` to allow for replacing and adding to the HTTP headers.
+    [Will McGinty](https://github.com/wmcginty)
+    [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/43)
 
 ##### Bug Fixes
 
