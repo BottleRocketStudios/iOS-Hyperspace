@@ -22,7 +22,7 @@ extension Recoverable {
     
     /// The ability of this operation to recover from the last encountered failure.
     var isRecoverable: Bool {
-        return recoveryAttemptCount < maxRecoveryAttempts ?? .max
+        return maxRecoveryAttempts.map { recoveryAttemptCount < $0 } ?? true
     }
     
     /// Creates a new copy of the operation ready for a new attempt to be made.

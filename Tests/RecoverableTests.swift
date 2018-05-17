@@ -21,7 +21,7 @@ class RecoverableTests: XCTestCase {
     
     struct MockRecoverable: Recoverable {
         var recoveryAttemptCount: UInt = 0
-        var maxRecoveryAttempts: UInt = 1
+        var maxRecoveryAttempts: UInt? = 1
     }
     
     struct RecoverableRequest<T: Codable>: NetworkRequest, Recoverable {
@@ -37,7 +37,7 @@ class RecoverableTests: XCTestCase {
         var cachePolicy: URLRequest.CachePolicy = RecoverableTests.defaultCachePolicy
         var timeout: TimeInterval = RecoverableTests.defaultTimeout
         var recoveryAttemptCount: UInt = 0
-        let maxRecoveryAttempts: UInt = 1
+        let maxRecoveryAttempts: UInt? = 1
     }
     
     struct MockAuthorizationRecoveryStrategy: RecoveryStrategy {
@@ -91,6 +91,9 @@ class RecoverableTests: XCTestCase {
         
         let mockFour = MockRecoverable(recoveryAttemptCount: 0, maxRecoveryAttempts: 0)
         XCTAssertFalse(mockFour.isRecoverable)
+        
+        let mockFive = MockRecoverable(recoveryAttemptCount: 0, maxRecoveryAttempts: nil)
+        XCTAssertTrue(mockFive.isRecoverable)
     }
     
     func test_Recoverable_CreationOfNextAttemptSucceedsWhenAttemptsRemain() {
