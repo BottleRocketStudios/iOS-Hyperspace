@@ -1,5 +1,5 @@
 //
-//  AnyNetworkRequest+DecodableContainerType.swift
+//  DecodableContainer.swift
 //  Hyperspace
 //
 //  Created by Will McGinty on 11/27/17.
@@ -19,6 +19,8 @@ public protocol DecodableContainer: Decodable {
     var element: ContainedType { get }
 }
 
+// MARK: - AnyNetworkRequest Default Implementations
+
 extension AnyNetworkRequest where T: Decodable {
     
     public init<U: DecodableContainer>(method: HTTP.Method,
@@ -31,8 +33,7 @@ extension AnyNetworkRequest where T: Decodable {
                                        containerType: U.Type) where U.ContainedType == T {
         self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { data in
             do {
-                let container = try decoder.decode(U.self, from: data)
-                return .success(container.element)
+                return try .success(decoder.decode(U.ContainedType.self, from: data, with: U.self))
             } catch {
                 return .failure(AnyError(error))
             }
@@ -49,13 +50,10 @@ extension AnyNetworkRequest where T: Decodable {
                 rootDecodingKey: String) {
         self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { data in
             do {
-                
-                //TODO: This logic could be extracted to accomodate a [String] of keys, but would incur additional performance costs (due to re-serialization).
-                
+                //TODO: This logic could be extracted to accomodate a [String] (or String...) of keys, but would incur additional performance costs (due to re-serialization for each key).
                 let container = try decoder.decode([String: AnyDecodable].self, from: data)
                 guard let element = container[rootDecodingKey] else {
-                    let context = DecodingError.Context(codingPath: [],
-                                                        debugDescription: "No value found at root key \"\(rootDecodingKey)\".")
+                    let context = DecodingError.Context(codingPath: [], debugDescription: "No value found at root key \"\(rootDecodingKey)\".")
                     throw DecodingError.valueNotFound(T.self, context)
                 }
 
