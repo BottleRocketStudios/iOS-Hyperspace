@@ -16,11 +16,11 @@
     
 * Add functionality to `NetworkReqest` to allow for replacing and adding to the HTTP headers.
     [Will McGinty](https://github.com/wmcginty)
-    [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/43)
+    [#43](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/43)
     
 * Simplify usage of `DecodableContainer` types with `JSONDecoder`
     [Will McGinty](https://github.com/wmcginty)
-    [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/44)
+    [#44](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/44)
 
 ##### Bug Fixes
 
