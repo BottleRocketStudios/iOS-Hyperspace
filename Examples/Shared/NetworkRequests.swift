@@ -59,6 +59,7 @@ struct GetUserRequest: NetworkRequest {
 // MARK: - Create Post Request
 
 struct CreatePostRequest: NetworkRequest {
+
     // Define the model we want to get back
     typealias ResponseType = Post
     typealias ErrorType = AnyError
@@ -67,10 +68,7 @@ struct CreatePostRequest: NetworkRequest {
     var method: HTTP.Method = .post
     var url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
-    var body: Data? {
-        let encoder = JSONEncoder()
-        return try? encoder.encode(newPost)
-    }
+    var body: Data?
     
     // Define any custom properties needed
     private let newPost: NewPost
@@ -78,6 +76,7 @@ struct CreatePostRequest: NetworkRequest {
     // Initializer
     init(newPost: NewPost) {
         self.newPost = newPost
+        body = try? JSONEncoder().encode(newPost)
     }
 }
 

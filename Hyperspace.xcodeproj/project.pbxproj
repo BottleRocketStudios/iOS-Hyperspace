@@ -12,6 +12,9 @@
 		0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0E81B49D20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
 		0E81B49E20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
+		0E81B4A220ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */; };
+		0E81B4A320ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */; };
+		0E81B4A420ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */; };
 		0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		0ECDC1C820A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */; };
@@ -60,7 +63,7 @@
 		60D6C36D201CC81100B3B012 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
 		60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
 		60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
-		60D6C370201CC81100B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */; };
+		60D6C370201CC81100B3B012 /* DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* DecodableContainer.swift */; };
 		60D6C371201CC81100B3B012 /* AnyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83451FF596B600120172 /* AnyNetworkRequest.swift */; };
 		60D6C372201CC81100B3B012 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* NetworkRequest.swift */; };
 		60D6C373201CC81100B3B012 /* NetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */; };
@@ -71,7 +74,7 @@
 		60D6C378201CC81100B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		60D6C37A201CCCAE00B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
 		60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
-		60D6C37C201CCCAE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */; };
+		60D6C37C201CCCAE00B3B012 /* DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* DecodableContainer.swift */; };
 		60D6C37D201CCCAE00B3B012 /* AnyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83451FF596B600120172 /* AnyNetworkRequest.swift */; };
 		60D6C37E201CCCAE00B3B012 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* NetworkRequest.swift */; };
 		60D6C37F201CCCAE00B3B012 /* NetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */; };
@@ -83,7 +86,7 @@
 		60D6C385201CCCBE00B3B012 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
 		60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
 		60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
-		60D6C388201CCCBE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */; };
+		60D6C388201CCCBE00B3B012 /* DecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* DecodableContainer.swift */; };
 		60D6C389201CCCBE00B3B012 /* AnyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83451FF596B600120172 /* AnyNetworkRequest.swift */; };
 		60D6C38A201CCCBE00B3B012 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* NetworkRequest.swift */; };
 		60D6C38B201CCCBE00B3B012 /* NetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */; };
@@ -282,6 +285,8 @@
 		0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryStrategy.swift; sourceTree = "<group>"; };
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterTests.swift; sourceTree = "<group>"; };
+		0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+DecodableContainer.swift"; sourceTree = "<group>"; };
+		0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterTests.swift; sourceTree = "<group>"; };
 		0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RootKeyObjectPlus.json; sourceTree = "<group>"; };
 		0ECDC1CA20A9FCDE00ABF991 /* RootKeyIncorrectType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RootKeyIncorrectType.json; sourceTree = "<group>"; };
 		0ECDC1CE20A9FE3100ABF991 /* AnyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
@@ -318,7 +323,7 @@
 		60AC833F1FF596B600120172 /* URL+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Additions.swift"; sourceTree = "<group>"; };
 		60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItem+Extensions.swift"; sourceTree = "<group>"; };
 		60AC83421FF596B600120172 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
-		60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyNetworkRequest+DecodableContainer.swift"; sourceTree = "<group>"; };
+		60AC83441FF596B600120172 /* DecodableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableContainer.swift; sourceTree = "<group>"; };
 		60AC83451FF596B600120172 /* AnyNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyNetworkRequest.swift; sourceTree = "<group>"; };
 		60AC83461FF596B600120172 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionDataTask.swift; sourceTree = "<group>"; };
@@ -441,6 +446,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E81B4A520ADE56900DC1F4E /* Decoding */ = {
+			isa = PBXGroup;
+			children = (
+				0ECDC1CE20A9FE3100ABF991 /* AnyDecodable.swift */,
+				60AC83441FF596B600120172 /* DecodableContainer.swift */,
+			);
+			path = Decoding;
+			sourceTree = "<group>";
+		};
 		0E81B49520AC85B600DC1F4E /* Recovery */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +578,7 @@
 			children = (
 				60AC833F1FF596B600120172 /* URL+Additions.swift */,
 				60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */,
+				0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -579,8 +594,7 @@
 		60AC83431FF596B600120172 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				0ECDC1CE20A9FE3100ABF991 /* AnyDecodable.swift */,
-				60AC83441FF596B600120172 /* AnyNetworkRequest+DecodableContainer.swift */,
+				0E81B4A520ADE56900DC1F4E /* Decoding */,
 				60AC83451FF596B600120172 /* AnyNetworkRequest.swift */,
 				60AC83461FF596B600120172 /* NetworkRequest.swift */,
 				0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */,
@@ -1164,7 +1178,7 @@
 				60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
-				60D6C370201CC81100B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				60D6C370201CC81100B3B012 /* DecodableContainer.swift in Sources */,
 				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyNetworkRequest.swift in Sources */,
 				60D6C372201CC81100B3B012 /* NetworkRequest.swift in Sources */,
@@ -1172,6 +1186,7 @@
 				0ECDC1CF20A9FE3100ABF991 /* AnyDecodable.swift in Sources */,
 				60D6C374201CC81100B3B012 /* NetworkServiceProtocol.swift in Sources */,
 				60D6C375201CC81100B3B012 /* NetworkSession.swift in Sources */,
+				0E81B4A220ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift in Sources */,
 				60D6C376201CC81100B3B012 /* NetworkService.swift in Sources */,
 				626DA6B220A34EB600C40611 /* BackendServiceHelper.swift in Sources */,
 				60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */,
@@ -1214,7 +1229,7 @@
 				60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
-				60D6C388201CCCBE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				60D6C388201CCCBE00B3B012 /* DecodableContainer.swift in Sources */,
 				60127D5E20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C389201CCCBE00B3B012 /* AnyNetworkRequest.swift in Sources */,
 				60D6C38A201CCCBE00B3B012 /* NetworkRequest.swift in Sources */,
@@ -1222,6 +1237,7 @@
 				0ECDC1D520AA3EE900ABF991 /* AnyDecodable.swift in Sources */,
 				60D6C38C201CCCBE00B3B012 /* NetworkServiceProtocol.swift in Sources */,
 				60D6C38D201CCCBE00B3B012 /* NetworkSession.swift in Sources */,
+				0E81B4A420ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift in Sources */,
 				60D6C38E201CCCBE00B3B012 /* NetworkService.swift in Sources */,
 				626DA6B420A3584900C40611 /* BackendServiceHelper.swift in Sources */,
 				60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */,
@@ -1237,7 +1253,7 @@
 				60D6C37A201CCCAE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				0E81B49D20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */,
 				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
-				60D6C37C201CCCAE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
+				60D6C37C201CCCAE00B3B012 /* DecodableContainer.swift in Sources */,
 				0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C37D201CCCAE00B3B012 /* AnyNetworkRequest.swift in Sources */,
 				60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
@@ -1247,6 +1263,7 @@
 				0ECDC1D420AA3EE800ABF991 /* AnyDecodable.swift in Sources */,
 				60D6C381201CCCAE00B3B012 /* NetworkSession.swift in Sources */,
 				60D6C382201CCCAE00B3B012 /* NetworkService.swift in Sources */,
+				0E81B4A320ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift in Sources */,
 				60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */,
 				626DA6B320A3584800C40611 /* BackendServiceHelper.swift in Sources */,
 				30F0735E202205350045CB01 /* URL+Additions.swift in Sources */,
