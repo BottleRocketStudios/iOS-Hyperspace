@@ -14,11 +14,11 @@ public class BackendService {
     // MARK: - Properties
     
     private let networkService: NetworkServiceProtocol
-    public var recoveryStrategy: RecoveryStrategy?
+    public var recoveryStrategy: RequestRecoveryStrategy?
     
     // MARK: - Init
     
-    public init(networkService: NetworkServiceProtocol = NetworkService(), recoveryStrategy: RecoveryStrategy? = nil) {
+    public init(networkService: NetworkServiceProtocol = NetworkService(), recoveryStrategy: RequestRecoveryStrategy? = nil) {
         self.networkService = networkService
         self.recoveryStrategy = recoveryStrategy
     }

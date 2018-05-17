@@ -7,14 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E81B49720AC85C600DC1F4E /* Recoverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49620AC85C600DC1F4E /* Recoverable.swift */; };
 		0E81B49920AC8E0B00DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
 		0E81B49B20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0E81B49D20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
 		0E81B49E20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
-		0E81B49F20ADDE3900DC1F4E /* Recoverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49620AC85C600DC1F4E /* Recoverable.swift */; };
-		0E81B4A020ADDE3A00DC1F4E /* Recoverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49620AC85C600DC1F4E /* Recoverable.swift */; };
 		0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		0ECDC1C820A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */; };
@@ -282,7 +279,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0E81B49620AC85C600DC1F4E /* Recoverable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recoverable.swift; sourceTree = "<group>"; };
 		0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryStrategy.swift; sourceTree = "<group>"; };
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterTests.swift; sourceTree = "<group>"; };
@@ -448,7 +444,6 @@
 		0E81B49520AC85B600DC1F4E /* Recovery */ = {
 			isa = PBXGroup;
 			children = (
-				0E81B49620AC85C600DC1F4E /* Recoverable.swift */,
 				0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */,
 			);
 			path = Recovery;
@@ -1167,7 +1162,6 @@
 			files = (
 				60D6C36D201CC81100B3B012 /* URL+Additions.swift in Sources */,
 				60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */,
-				0E81B49720AC85C600DC1F4E /* Recoverable.swift in Sources */,
 				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
@@ -1223,7 +1217,6 @@
 				60D6C388201CCCBE00B3B012 /* AnyNetworkRequest+DecodableContainer.swift in Sources */,
 				60127D5E20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C389201CCCBE00B3B012 /* AnyNetworkRequest.swift in Sources */,
-				0E81B4A020ADDE3A00DC1F4E /* Recoverable.swift in Sources */,
 				60D6C38A201CCCBE00B3B012 /* NetworkRequest.swift in Sources */,
 				60D6C38B201CCCBE00B3B012 /* NetworkSessionDataTask.swift in Sources */,
 				0ECDC1D520AA3EE900ABF991 /* AnyDecodable.swift in Sources */,
@@ -1249,7 +1242,6 @@
 				60D6C37D201CCCAE00B3B012 /* AnyNetworkRequest.swift in Sources */,
 				60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C37E201CCCAE00B3B012 /* NetworkRequest.swift in Sources */,
-				0E81B49F20ADDE3900DC1F4E /* Recoverable.swift in Sources */,
 				60D6C37F201CCCAE00B3B012 /* NetworkSessionDataTask.swift in Sources */,
 				60D6C380201CCCAE00B3B012 /* NetworkServiceProtocol.swift in Sources */,
 				0ECDC1D420AA3EE800ABF991 /* AnyDecodable.swift in Sources */,

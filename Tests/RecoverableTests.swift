@@ -19,16 +19,16 @@ class RecoverableTests: XCTestCase {
     private static let defaultTimeout: TimeInterval = 1.0
     private var backendService: BackendService?
     
+    // swiftlint:disable nesting
     struct MockRecoverable: Recoverable {
+        typealias ErrorType = AnyError
         var recoveryAttemptCount: UInt = 0
         var maxRecoveryAttempts: UInt? = 1
     }
     
     struct RecoverableRequest<T: Codable>: NetworkRequest, Recoverable {
-        // swiftlint:disable nesting
         typealias ResponseType = T
         typealias ErrorType = AnyError
-        // swiftlint:enable nesting
         
         var method: HTTP.Method = RecoverableTests.defaultRequestMethod
         var url = RecoverableTests.defaultURL
@@ -40,7 +40,7 @@ class RecoverableTests: XCTestCase {
         let maxRecoveryAttempts: UInt? = 1
     }
     
-    struct MockAuthorizationRecoveryStrategy: RecoveryStrategy {
+    struct MockAuthorizationRecoveryStrategy: RequestRecoveryStrategy {
         func handleRecoveryAttempt<T: NetworkRequest & Recoverable>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void) {
             guard case let .clientError(clientError) = error.networkServiceError, clientError == .unauthorized, let nextAttempt = request.updatedForNextAttempt() else { return completion(.fail) }
             
@@ -48,6 +48,13 @@ class RecoverableTests: XCTestCase {
             completion(.retry(authorized))
         }
     }
+    
+    struct MockFailureRecoveryStrategy: RequestRecoveryStrategy {
+        func handleRecoveryAttempt<T: NetworkRequest & Recoverable>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void) {
+            completion(.fail)
+        }
+    }
+    // swiftlint:enable nesting
     
     class MockRecoverableNetworkService: NetworkServiceProtocol {
         var responseCreator: (URLRequest) -> Result<NetworkServiceSuccess, NetworkServiceFailure>
@@ -112,8 +119,7 @@ class RecoverableTests: XCTestCase {
         let exp = expectation(description: "backendServiceRecovery")
         let title = "title"
         let subtitle = "subtitle"
-        backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: title, subtitle: subtitle)),
-                                            recoveryStrategy: MockAuthorizationRecoveryStrategy())
+        backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: title, subtitle: subtitle)), recoveryStrategy: MockAuthorizationRecoveryStrategy())
         
         backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { result in
             switch result {
@@ -123,6 +129,27 @@ class RecoverableTests: XCTestCase {
                 
             case .failure(let error):
                 XCTFail("The error should be recoverable: \(error)")
+            }
+            
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func test_Recoverable_BackendServiceCorrectlyForwardsToRecoveryStrategyWhichAlwaysFailsToRecover() {
+        let exp = expectation(description: "backendServiceRecovery")
+        backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: "title", subtitle: "subtitle")), recoveryStrategy: MockFailureRecoveryStrategy())
+        
+        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { result in
+            switch result {
+            case .success:
+                XCTFail("The error should not recoverable!")
+                
+            case .failure(let error):
+                guard let innerError = error.error as? NetworkServiceError else { return XCTFail("The error that causes the failure should be a NetworkServiceError.") }
+                guard case let .clientError(clientError) = innerError else { return XCTFail("The error that causes the failure should be a NetworkServiceError.ClientError.") }
+                XCTAssertEqual(clientError, .unauthorized)
             }
             
             exp.fulfill()
