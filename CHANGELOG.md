@@ -21,6 +21,10 @@
 * Simplify usage of `DecodableContainer` types with `JSONDecoder`
     [Will McGinty](https://github.com/wmcginty)
     [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/44)
+    
+* Add a subsystem which can perform transparent error using `RequestRecoveryStrategy`.
+    [Will McGinty](https://github.com/wmcginty)
+    [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/45)
 
 ##### Bug Fixes
 
