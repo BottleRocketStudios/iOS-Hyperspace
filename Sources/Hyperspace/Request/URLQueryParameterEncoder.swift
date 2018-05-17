@@ -10,6 +10,8 @@ import Foundation
 
 public struct URLQueryParameterEncoder {
     
+    public init() { /* No op */ }
+    
     /// Represents the strategy used to encode query parameters in the URL.
     // swiftlint:disable nesting
     public enum EncodingStrategy {

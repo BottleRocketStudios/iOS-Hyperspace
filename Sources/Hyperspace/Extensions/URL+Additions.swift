@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension URL {
+public extension URL {
     
     func appendingQueryString(_ queryString: String) -> URL {
         // Conditionally add the '?' character

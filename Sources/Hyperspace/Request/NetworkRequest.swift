@@ -9,7 +9,6 @@
 //
 //  TODO: Future functionality:
 //          - Extend to allow for easy handling of multipart form data upload.
-//          - Add support for providing a root key to parse the response from (for the NetworkRequest extension dealing with a 'ResponseType' that's 'Decodable').
 //
 
 import Foundation
@@ -60,6 +59,8 @@ public protocol NetworkRequest {
     func transformData(_ data: Data) -> Result<ResponseType, ErrorType>
 }
 
+// MARK: - EmptyResponse
+
 /// A simple struct representing an empty server response to a request.
 /// This is useful primarily for DELETE requests, in which case a "200" status with empty body is often the response.
 public struct EmptyResponse {
@@ -77,14 +78,14 @@ public struct NetworkRequestDefaults {
     
     public static var defaultTimeout: TimeInterval = 30
     
-    public static func dataTransformer<T: Decodable, E: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<T, E> {
+    public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
         return { data in
             do {
-                let decodedResponse: T = try decoder.decode(T.self, from: data)
+                let decodedResponse: ResponseType = try decoder.decode(ResponseType.self, from: data)
                 return .success(decodedResponse)
             } catch {
                 guard let decodingError = error as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
-                return .failure(E(decodingError: decodingError, data: data))
+                return .failure(ErrorType(decodingError: decodingError, data: data))
             }
         }
     }
@@ -143,6 +144,8 @@ public extension NetworkRequest {
         return copy
     }
 }
+
+// MARK: - NetworkRequest Default Implementations
 
 public extension NetworkRequest where ResponseType: Decodable, ErrorType: DecodingFailureInitializable {
     

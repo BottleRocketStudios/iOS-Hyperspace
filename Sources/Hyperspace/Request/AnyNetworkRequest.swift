@@ -48,6 +48,8 @@ public struct AnyNetworkRequest<T>: NetworkRequest {
     }
 }
 
+// MARK: - AnyNetworkRequest Default Implementations
+
 extension AnyNetworkRequest where T: Decodable {
     
     public init(method: HTTP.Method,
