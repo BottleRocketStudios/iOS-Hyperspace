@@ -46,9 +46,8 @@ extension BackendService: BackendServiceProtocol {
         execute(request: request) { [weak self] result in
             switch result {
             case .success(let response):
-                //TODO: We're dispatch asyncing twice. Can we go straight to the network service here to avoid that? Does it increase the code we need to duplicate?
                 BackendServiceHelper.handleResponse(response, completion: completion)
-                completion(.success(response))
+                
             case .failure(let error):
                 guard let recoveryStrategy = self?.recoveryStrategy else { return completion(.failure(error)) }
                 recoveryStrategy.handleRecoveryAttempt(for: request, withError: error) { recoveryDisposition in

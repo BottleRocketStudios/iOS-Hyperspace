@@ -21,7 +21,7 @@ public struct BackendServiceHelper {
     public static func handleResponseData<T: NetworkRequest>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
         let transformResult = request.transformData(data)
         
-        DispatchQueue.main.async {
+        executeOnMain {
             switch transformResult {
             case .success(let transformedObject):
                 completion(.success(transformedObject))
@@ -32,20 +32,27 @@ public struct BackendServiceHelper {
     }
     
     public static func handleResponse<T, U>(_ response: T, completion: @escaping BackendServiceCompletion<T, U>) {
-        DispatchQueue.main.async {
+        executeOnMain {
             completion(.success(response))
         }
     }
     
     public static func handleNetworkServiceFailure<T, U: NetworkServiceFailureInitializable>(_ serviceFailure: NetworkServiceFailure, completion: @escaping BackendServiceCompletion<T, U>) {
-        DispatchQueue.main.async {
+        executeOnMain {
             completion(.failure(U(networkServiceFailure: serviceFailure)))
         }
     }
     
     public static func handleErrorFailure<T, U>(_ error: U, completion: @escaping BackendServiceCompletion<T, U>) {
-        DispatchQueue.main.async {
+        executeOnMain {
             completion(.failure(error))
+        }
+    }
+    
+    private static func executeOnMain(block: @escaping () -> Void) {
+        guard !Thread.isMainThread else { return block() }
+        DispatchQueue.main.async {
+            block()
         }
     }
 }
