@@ -176,7 +176,10 @@ class DecodingTests: XCTestCase {
         XCTAssertEqual(dictionary["nested"]?.value as! [String: String], ["a": "alpha", "b": "bravo", "c": "charlie"])
     }
     
+    // swiftlint:disable syntactic_sugar
     func test_AnyDecodable_testEqualityOfUnderlyingType() {
+        XCTAssertEqual(AnyDecodable(Optional<Int>.none), AnyDecodable(Optional<Int>.none))
+        
         XCTAssertEqual(AnyDecodable(true), AnyDecodable(true))
         XCTAssertNotEqual(AnyDecodable(true), AnyDecodable(false))
         
@@ -201,6 +204,9 @@ class DecodingTests: XCTestCase {
         XCTAssertEqual(AnyDecodable(UInt8(2)), AnyDecodable(UInt8(2)))
         XCTAssertNotEqual(AnyDecodable(UInt8(2)), AnyDecodable(UInt8(8)))
         
+        XCTAssertEqual(AnyDecodable(UInt16(2)), AnyDecodable(UInt16(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt16(2)), AnyDecodable(UInt16(8)))
+        
         XCTAssertEqual(AnyDecodable(UInt32(2)), AnyDecodable(UInt32(2)))
         XCTAssertNotEqual(AnyDecodable(UInt32(2)), AnyDecodable(UInt32(6)))
         
@@ -223,7 +229,6 @@ class DecodingTests: XCTestCase {
         XCTAssertNotEqual(AnyDecodable(["val": AnyDecodable(1)]), AnyDecodable(["val": AnyDecodable(2)]))
     }
     
-    // swiftlint:disable syntactic_sugar
     func test_AnyDecodable_testDescriptionOfUnderlyingType() {
         
         let nilDecodable = AnyDecodable(Optional<Int>.none)
