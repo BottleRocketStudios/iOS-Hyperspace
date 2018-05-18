@@ -21,6 +21,10 @@
 * Simplify usage of `DecodableContainer` types with `JSONDecoder`
     [Will McGinty](https://github.com/wmcginty)
     [#44](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/44)
+    
+* Simplify usage of `dataTransfomer` extensions with custom error types
+    [Will McGinty](https://github.com/wmcginty)
+    [#47](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/47)
 
 * Add `HTTP.HeaderValue` for JSON API specification.
     [Earl Gaspard](https://github.com/earlgaspard)
