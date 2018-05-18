@@ -49,7 +49,10 @@ extension BackendService: BackendServiceProtocol {
                 BackendServiceHelper.handleResponse(response, completion: completion)
                 
             case .failure(let error):
-                guard let recoveryStrategy = self?.recoveryStrategy else { return completion(.failure(error)) }
+                guard let recoveryStrategy = self?.recoveryStrategy else {
+                    return BackendServiceHelper.handleErrorFailure(error, completion: completion)
+                }
+                
                 recoveryStrategy.handleRecoveryAttempt(for: request, withError: error) { recoveryDisposition in
                     switch recoveryDisposition {
                     case .fail:
