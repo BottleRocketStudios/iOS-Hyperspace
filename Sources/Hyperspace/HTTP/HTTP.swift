@@ -217,6 +217,7 @@ extension HTTP.HeaderValue {
     public static let encodingPack200Gzip = HTTP.HeaderValue(rawValue: "pack200-gzip")
     public static let encodingBr = HTTP.HeaderValue(rawValue: "br")
     public static let passKit = HTTP.HeaderValue(rawValue: "application/vnd.apple.pkpass")
+    public static let jsonAPI = HTTP.HeaderValue(rawValue: "application/vnd.api+json")
     
     public static func authorizationBearer(token: String) -> HTTP.HeaderValue {
         return HTTP.HeaderValue(rawValue: "Bearer \(token)")

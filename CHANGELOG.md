@@ -25,6 +25,14 @@
 * Add a subsystem which can perform transparent error using `RequestRecoveryStrategy`.
     [Will McGinty](https://github.com/wmcginty)
     [#45](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/45)
+    
+* Simplify usage of `dataTransfomer` extensions with custom error types
+    [Will McGinty](https://github.com/wmcginty)
+    [#47](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/47)
+
+* Add `HTTP.HeaderValue` for JSON API specification.
+    [Earl Gaspard](https://github.com/earlgaspard)
+    [#46](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/46)
 
 ##### Bug Fixes
 

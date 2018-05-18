@@ -81,15 +81,23 @@ public struct NetworkRequestDefaults {
     
     public static var defaultTimeout: TimeInterval = 30
     
-    public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
+    public typealias CatchErrorTransformer<E> = (Swift.Error, Data) -> E
+    
+    public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, catchTransformer: @escaping CatchErrorTransformer<ErrorType>) -> (Data) -> Result<ResponseType, ErrorType> {
         return { data in
             do {
                 let decodedResponse: ResponseType = try decoder.decode(ResponseType.self, from: data)
                 return .success(decodedResponse)
             } catch {
-                guard let decodingError = error as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
-                return .failure(ErrorType(decodingError: decodingError, data: data))
+                return .failure(catchTransformer(error, data))
             }
+        }
+    }
+    
+    public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
+        return dataTransformer(for: decoder) {
+            guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
+            return ErrorType(decodingError: decodingError, data: $1)
         }
     }
 }
