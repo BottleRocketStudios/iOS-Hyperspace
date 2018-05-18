@@ -100,6 +100,27 @@ public struct NetworkRequestDefaults {
             return ErrorType(decodingError: decodingError, data: $1)
         }
     }
+    
+    public static func dataTransformer<ContainerType: DecodableContainer, ErrorType>(for decoder: JSONDecoder, withContainerType containerType: ContainerType.Type,
+                                                                                     catchTransformer: @escaping CatchErrorTransformer<ErrorType>) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
+        return { data in
+            do {
+                
+                let decodedResponse: ContainerType.ContainedType = try decoder.decode(ContainerType.ContainedType.self, from: data, with: containerType)
+                return .success(decodedResponse)
+            } catch {
+                return .failure(catchTransformer(error, data))
+            }
+        }
+    }
+    
+    public static func dataTransformer<ContainerType: DecodableContainer, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder,
+                                                                                                                   withContainerType containerType: ContainerType.Type) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
+        return dataTransformer(for: decoder, withContainerType: containerType) {
+            guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
+            return ErrorType(decodingError: decodingError, data: $1)
+        }
+    }
 }
 
 // MARK: - NetworkRequest Default Implementations
