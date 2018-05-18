@@ -132,6 +132,24 @@ class NetworkServiceTests: XCTestCase {
         let networkServiceFailure = NetworkServiceHelper.networkServiceFailure(for: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
         XCTAssert(networkServiceFailure.error == .unknownError)
     }
+
+    func test_NetworkServiceError_Equality() {
+        XCTAssertEqual(NetworkServiceError.unknownError, NetworkServiceError.unknownError)
+        XCTAssertEqual(NetworkServiceError.unknownStatusCode, NetworkServiceError.unknownStatusCode)
+        XCTAssertEqual(NetworkServiceError.redirection, NetworkServiceError.redirection)
+        XCTAssertEqual(NetworkServiceError.redirection, NetworkServiceError.redirection)
+        XCTAssertEqual(NetworkServiceError.clientError(.unauthorized), NetworkServiceError.clientError(.unauthorized))
+        XCTAssertEqual(NetworkServiceError.serverError(.badGateway), NetworkServiceError.serverError(.badGateway))
+        XCTAssertEqual(NetworkServiceError.noInternetConnection, NetworkServiceError.noInternetConnection)
+        XCTAssertEqual(NetworkServiceError.timedOut, NetworkServiceError.timedOut)
+        XCTAssertEqual(NetworkServiceError.cancelled, NetworkServiceError.cancelled)
+        XCTAssertNotEqual(NetworkServiceError.redirection, NetworkServiceError.cancelled)
+    }
+    
+    func test_AnyError_NeverHasResponse() {
+        let error = AnyError(networkServiceFailure: NetworkServiceFailure(error: .cancelled, response: HTTP.Response(code: 1, data: nil)))
+        XCTAssertNil(error.failureResponse)
+    }
     
     // MARK: - Private
     

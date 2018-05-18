@@ -22,6 +22,10 @@
     [Will McGinty](https://github.com/wmcginty)
     [#44](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/44)
     
+* Add a subsystem which can perform transparent error using `RequestRecoveryStrategy`.
+    [Will McGinty](https://github.com/wmcginty)
+    [#45](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/45)
+    
 * Simplify usage of `dataTransfomer` extensions with custom error types
     [Will McGinty](https://github.com/wmcginty)
     [#47](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/47)

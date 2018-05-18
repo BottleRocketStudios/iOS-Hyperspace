@@ -30,7 +30,7 @@ public struct AnyNetworkRequest<T>: NetworkRequest {
                 body: Data? = nil,
                 cachePolicy: URLRequest.CachePolicy = NetworkRequestDefaults.defaultCachePolicy,
                 timeout: TimeInterval = NetworkRequestDefaults.defaultTimeout,
-                dataTransformationBlock: @escaping (Data) -> Result<T, AnyError>) {
+                dataTransformer: @escaping (Data) -> Result<T, AnyError>) {
         self.method = method
         self.url = url
         self.headers = headers
@@ -38,7 +38,7 @@ public struct AnyNetworkRequest<T>: NetworkRequest {
         self.cachePolicy = cachePolicy
         self.timeout = timeout
         
-        _transformData = dataTransformationBlock
+        _transformData = dataTransformer
     }
     
     // MARK: - Public
