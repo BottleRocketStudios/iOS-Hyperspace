@@ -54,6 +54,34 @@ class DecodingTests: XCTestCase {
         }
     }
     
+    func test_NetworkRequestDefaultsContainer_AutomaticallyDecodesChildElement() {
+        let function: (Data) -> Result<MockObject, AnyError> = NetworkRequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        let mockObject = function(objectJSON)
+        XCTAssertNotNil(mockObject.value)
+    }
+    
+    func test_NetworkRequestDefaultsContainer_AutomaticallyDecodesChildElements() {
+        let function: (Data) -> Result<[MockObject], AnyError> = NetworkRequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
+        let mockObject = function(objectJSON)
+        XCTAssertNotNil(mockObject.value)
+    }
+    
+    func test_NetworkRequestDefaultsContainer_ThrowsErrorForChildElement() {
+        let function: (Data) -> Result<MockObject, AnyError> = NetworkRequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
+        let mockObject = function(objectJSON)
+        XCTAssertNotNil(mockObject.error)
+    }
+    
+    func test_NetworkRequestDefaultsContainer_ThrowsErrorForChildElements() {
+        let function: (Data) -> Result<[MockObject], AnyError> = NetworkRequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        let mockObject = function(objectJSON)
+        XCTAssertNotNil(mockObject.error)
+    }
+    
     func test_AnyNetworkRequestWithDefaultJSONDecoder_SuccessfullyDecodes() {
         let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL, decoder: JSONDecoder())
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
