@@ -54,8 +54,6 @@ public struct HTTP {
     /// Represents a HTTP status code.
     public enum Status {
         public struct Success: RawRepresentable {
-            public typealias RawValue = Int
-            
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -64,8 +62,6 @@ public struct HTTP {
         }
         
         public struct Redirection: RawRepresentable {
-            public typealias RawValue = Int
-            
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -74,8 +70,6 @@ public struct HTTP {
         }
         
         public struct ClientError: RawRepresentable {
-            public typealias RawValue = Int
-            
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -84,8 +78,6 @@ public struct HTTP {
         }
         
         public struct ServerError: RawRepresentable {
-            public typealias RawValue = Int
-            
             public var rawValue: Int
             
             public init(rawValue: Int) {
