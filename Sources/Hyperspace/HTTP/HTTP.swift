@@ -52,80 +52,45 @@ public struct HTTP {
     }
     
     /// Represents a HTTP status code.
-
     public enum Status {
-        public enum Success: Int {
-            case unknown = -1
-            case ok = 200
-            case created = 201
-            case accepted = 202
-            case nonAuthoritativeInformation = 203
-            case noContent = 204
-            case resetContent = 205
-            case partialContent = 206
-            case multiStatus = 207
-            case alreadyReported = 208
-            case imUsed = 226
+        public struct Success: RawRepresentable {
+            public typealias RawValue = Int
+            
+            public var rawValue: Int
+            
+            public init(rawValue: Int) {
+                self.rawValue = rawValue
+            }
         }
         
-        public enum Redirection: Int {
-            case unknown = -1
-            case multipleChoices = 300
-            case movedPermanently = 301
-            case found = 302
-            case seeOther = 303
-            case notModified = 304
-            case useProxy = 305
-            case switchProxy = 306
-            case temporaryRedirect = 307
-            case permanentRedirect = 308
+        public struct Redirection: RawRepresentable {
+            public typealias RawValue = Int
+            
+            public var rawValue: Int
+            
+            public init(rawValue: Int) {
+                self.rawValue = rawValue
+            }
         }
         
-        public enum ClientError: Int {
-            case unknown = -1
-            case badRequest = 400
-            case unauthorized = 401
-            case paymentRequired = 402
-            case forbidden = 403
-            case notFound = 404
-            case methodNotAllowed = 405
-            case notAcceptable = 406
-            case proxyAuthenticationRequired = 407
-            case requestTimeout = 408
-            case conflict = 409
-            case gone = 410
-            case lengthRequried = 411
-            case preconditionFailed = 412
-            case payloadTooLarge = 413
-            case uriTooLong = 414
-            case unsupportedMediaType = 415
-            case rangeNotSatisfiable = 416
-            case expectationFailed = 417
-            case imATeapot = 418
-            case misdirectedRequest = 421
-            case unproccessableEntity = 422
-            case locked = 423
-            case failedDependency = 424
-            case upgradeRequired = 426
-            case preconditionRequired = 428
-            case tooManyRequests = 429
-            case requestHeaderFieldsTooLarge = 431
-            case unavailableForLegalReasons = 451
+        public struct ClientError: RawRepresentable {
+            public typealias RawValue = Int
+            
+            public var rawValue: Int
+            
+            public init(rawValue: Int) {
+                self.rawValue = rawValue
+            }
         }
         
-        public enum ServerError: Int {
-            case unknown = -1
-            case internalServerError = 500
-            case notImplemented = 501
-            case badGateway = 502
-            case serviceUnavailable = 503
-            case gatewayTimeout = 504
-            case httpVersionNotSupported = 505
-            case variantAlsoNegotiates = 506
-            case insufficientStorage = 507
-            case loopDetected = 508
-            case notExtended = 510
-            case networkAuthenticationRequired = 511
+        public struct ServerError: RawRepresentable {
+            public typealias RawValue = Int
+            
+            public var rawValue: Int
+            
+            public init(rawValue: Int) {
+                self.rawValue = rawValue
+            }
         }
         
         case unknown(Int)
@@ -137,13 +102,13 @@ public struct HTTP {
         init(code: Int) {
             switch code {
             case 200..<300:
-                self = .success(Success(rawValue: code) ?? .unknown)
+                self = .success(Success(rawValue: code))
             case 300..<400:
-                self = .redirection(Redirection(rawValue: code) ?? .unknown)
+                self = .redirection(Redirection(rawValue: code))
             case 400..<500:
-                self = .clientError(ClientError(rawValue: code) ?? .unknown)
+                self = .clientError(ClientError(rawValue: code))
             case 500..<600:
-                self = .serverError(ServerError(rawValue: code) ?? .unknown)
+                self = .serverError(ServerError(rawValue: code))
             default:
                 self = .unknown(code)
             }
@@ -222,6 +187,78 @@ extension HTTP.HeaderValue {
     public static func authorizationBearer(token: String) -> HTTP.HeaderValue {
         return HTTP.HeaderValue(rawValue: "Bearer \(token)")
     }
+}
+
+// MARK: - Common HTTP Status Codes
+
+extension HTTP.Status.Success {
+    public static let ok = HTTP.Status.Success(rawValue: 200)
+    public static let created = HTTP.Status.Success(rawValue: 201)
+    public static let accepted = HTTP.Status.Success(rawValue: 202)
+    public static let nonAuthoritativeInformation = HTTP.Status.Success(rawValue: 203)
+    public static let noContent = HTTP.Status.Success(rawValue: 204)
+    public static let resetContent = HTTP.Status.Success(rawValue: 205)
+    public static let partialContent = HTTP.Status.Success(rawValue: 206)
+    public static let multiStatus = HTTP.Status.Success(rawValue: 207)
+    public static let alreadyReported = HTTP.Status.Success(rawValue: 208)
+    public static let imUsed = HTTP.Status.Success(rawValue: 226)
+}
+
+extension HTTP.Status.Redirection {
+    public static let multipleChoices = HTTP.Status.Redirection(rawValue: 300)
+    public static let movedPermanently = HTTP.Status.Redirection(rawValue: 301)
+    public static let found = HTTP.Status.Redirection(rawValue: 302)
+    public static let seeOther = HTTP.Status.Redirection(rawValue: 303)
+    public static let notModified = HTTP.Status.Redirection(rawValue: 304)
+    public static let useProxy = HTTP.Status.Redirection(rawValue: 305)
+    public static let switchProxy = HTTP.Status.Redirection(rawValue: 306)
+    public static let temporaryRedirect = HTTP.Status.Redirection(rawValue: 307)
+    public static let permanentRedirect = HTTP.Status.Redirection(rawValue: 308)
+}
+
+extension HTTP.Status.ClientError {
+    public static let badRequest = HTTP.Status.ClientError(rawValue: 400)
+    public static let unauthorized = HTTP.Status.ClientError(rawValue: 401)
+    public static let paymentRequired = HTTP.Status.ClientError(rawValue: 402)
+    public static let forbidden = HTTP.Status.ClientError(rawValue: 403)
+    public static let notFound = HTTP.Status.ClientError(rawValue: 404)
+    public static let methodNotAllowed = HTTP.Status.ClientError(rawValue: 405)
+    public static let notAcceptable = HTTP.Status.ClientError(rawValue: 406)
+    public static let proxyAuthenticationRequired = HTTP.Status.ClientError(rawValue: 407)
+    public static let requestTimeout = HTTP.Status.ClientError(rawValue: 408)
+    public static let conflict = HTTP.Status.ClientError(rawValue: 409)
+    public static let gone = HTTP.Status.ClientError(rawValue: 410)
+    public static let lengthRequried = HTTP.Status.ClientError(rawValue: 411)
+    public static let preconditionFailed = HTTP.Status.ClientError(rawValue: 412)
+    public static let payloadTooLarge = HTTP.Status.ClientError(rawValue: 413)
+    public static let uriTooLong = HTTP.Status.ClientError(rawValue: 414)
+    public static let unsupportedMediaType = HTTP.Status.ClientError(rawValue: 415)
+    public static let rangeNotSatisfiable = HTTP.Status.ClientError(rawValue: 416)
+    public static let expectationFailed = HTTP.Status.ClientError(rawValue: 417)
+    public static let imATeapot = HTTP.Status.ClientError(rawValue: 418)
+    public static let misdirectedRequest = HTTP.Status.ClientError(rawValue: 421)
+    public static let unproccessableEntity = HTTP.Status.ClientError(rawValue: 422)
+    public static let locked = HTTP.Status.ClientError(rawValue: 423)
+    public static let failedDependency = HTTP.Status.ClientError(rawValue: 424)
+    public static let upgradeRequired = HTTP.Status.ClientError(rawValue: 426)
+    public static let preconditionRequired = HTTP.Status.ClientError(rawValue: 428)
+    public static let tooManyRequests = HTTP.Status.ClientError(rawValue: 429)
+    public static let requestHeaderFieldsTooLarge = HTTP.Status.ClientError(rawValue: 431)
+    public static let unavailableForLegalReasons = HTTP.Status.ClientError(rawValue: 451)
+}
+
+extension HTTP.Status.ServerError {
+    public static let internalServerError = HTTP.Status.ServerError(rawValue: 500)
+    public static let notImplemented = HTTP.Status.ServerError(rawValue: 501)
+    public static let badGateway = HTTP.Status.ServerError(rawValue: 502)
+    public static let serviceUnavailable = HTTP.Status.ServerError(rawValue: 503)
+    public static let gatewayTimeout = HTTP.Status.ServerError(rawValue: 504)
+    public static let httpVersionNotSupported = HTTP.Status.ServerError(rawValue: 505)
+    public static let variantAlsoNegotiates = HTTP.Status.ServerError(rawValue: 506)
+    public static let insufficientStorage = HTTP.Status.ServerError(rawValue: 507)
+    public static let loopDetected = HTTP.Status.ServerError(rawValue: 508)
+    public static let notExtended = HTTP.Status.ServerError(rawValue: 510)
+    public static let networkAuthenticationRequired = HTTP.Status.ServerError(rawValue: 511)
 }
 
 // MARK: - Hashable Implementations
