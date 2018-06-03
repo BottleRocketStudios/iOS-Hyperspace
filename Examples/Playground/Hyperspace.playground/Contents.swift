@@ -69,10 +69,7 @@ struct CreatePostRequest: NetworkRequest {
     var method: HTTP.Method = .post
     var url = URL(string: "http://jsonplaceholder.typicode.com/posts")!
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
-    var body: Data? {
-        let encoder = JSONEncoder()
-        return try? encoder.encode(newPost)
-    }
+    var body: Data?
     
     // Define any custom properties needed
     private let newPost: NewPost
@@ -80,6 +77,9 @@ struct CreatePostRequest: NetworkRequest {
     // Initializer
     init(newPost: NewPost) {
         self.newPost = newPost
+        
+        let encoder = JSONEncoder()
+        self.body = try? encoder.encode(newPost)
     }
 }
 
