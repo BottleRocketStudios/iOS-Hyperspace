@@ -81,16 +81,6 @@ class HTTPTests: XCTestCase {
         }
     }
     
-    func test_HTTPStatusInitWithCode299_ProducesStatusSuccessUnknown() {
-        let response = HTTP.Response(code: 299, data: nil)
-        switch response.status {
-        case .success(let status):
-            XCTAssertEqual(status, HTTP.Status.Success.unknown)
-        default:
-            XCTFail("299 status should produce a 'success - unknown' response")
-        }
-    }
-    
     func test_HTTPStatusInitWithCode300_ProducesStatusRedirectionMultipleChoices() {
         let response = HTTP.Response(code: 300, data: nil)
         switch response.status {
@@ -98,16 +88,6 @@ class HTTPTests: XCTestCase {
             XCTAssertEqual(status, HTTP.Status.Redirection.multipleChoices)
         default:
             XCTFail("300 status should produce a 'redirection - multiple choices' response")
-        }
-    }
-    
-    func test_HTTPStatusInitWithCode399_ProducesStatusRedirectionUnknown() {
-        let response = HTTP.Response(code: 399, data: nil)
-        switch response.status {
-        case .redirection(let status):
-            XCTAssertEqual(status, HTTP.Status.Redirection.unknown)
-        default:
-            XCTFail("399 status should produce a 'redirection - unknown' response")
         }
     }
     
@@ -121,16 +101,6 @@ class HTTPTests: XCTestCase {
         }
     }
     
-    func test_HTTPStatusInitWithCode499_ProducesStatusClientErrorUnknown() {
-        let response = HTTP.Response(code: 499, data: nil)
-        switch response.status {
-        case .clientError(let status):
-            XCTAssertEqual(status, HTTP.Status.ClientError.unknown)
-        default:
-            XCTFail("499 status should produce a 'client error - unknown' response")
-        }
-    }
-    
     func test_HTTPStatusInitWithCode500_ProducesStatusServerErrorInternalServerError() {
         let response = HTTP.Response(code: 500, data: nil)
         switch response.status {
@@ -138,16 +108,6 @@ class HTTPTests: XCTestCase {
             XCTAssertEqual(status, HTTP.Status.ServerError.internalServerError)
         default:
             XCTFail("500 status should produce a 'server error - internal server error' response")
-        }
-    }
-    
-    func test_HTTPStatusInitWithCode599_ProducesStatusServerErrorUnknown() {
-        let response = HTTP.Response(code: 599, data: nil)
-        switch response.status {
-        case .serverError(let status):
-            XCTAssertEqual(status, HTTP.Status.ServerError.unknown)
-        default:
-            XCTFail("599 status should produce a 'server error - unknown' response")
         }
     }
     

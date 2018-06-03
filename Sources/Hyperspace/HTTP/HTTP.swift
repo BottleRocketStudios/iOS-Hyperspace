@@ -283,6 +283,14 @@ extension HTTP.HeaderValue: Equatable {
     }
 }
 
+extension HTTP.Status.Success: Equatable { }
+
+extension HTTP.Status.Redirection: Equatable { }
+
+extension HTTP.Status.ClientError: Equatable { }
+
+extension HTTP.Status.ServerError: Equatable { }
+
 extension HTTP.Response: Equatable {
     public static func == (lhs: HTTP.Response, rhs: HTTP.Response) -> Bool {
         return lhs.code == rhs.code && lhs.data == rhs.data
