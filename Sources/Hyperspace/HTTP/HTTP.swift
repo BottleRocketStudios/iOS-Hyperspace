@@ -31,8 +31,6 @@ public struct HTTP {
     
     /// Represents the key portion of a HTTP header field key-value pair.
     public struct HeaderKey: RawRepresentable {
-        public typealias RawValue = String
-        
         public var rawValue: String
         
         public init(rawValue: String) {
@@ -42,8 +40,6 @@ public struct HTTP {
     
     /// Represents the value portion of a HTTP header field key-value pair.
     public struct HeaderValue: RawRepresentable {
-        public typealias RawValue = String
-        
         public var rawValue: String
         
         public init(rawValue: String) {
