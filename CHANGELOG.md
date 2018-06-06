@@ -33,6 +33,11 @@
 * Add `HTTP.HeaderValue` for JSON API specification.
     [Earl Gaspard](https://github.com/earlgaspard)
     [#46](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/46)
+    
+* Converted `HTTP.Status`nested types (`HTTP.Status.Success`, `HTTP.Status.ClientError`, etc.) from enums to `RawRepresentable` structs. This keeps the library more open for extension by allowing clients to more easily specify and use custom HTTP status codes.
+    [Tyler Milner](https://github.com/tylermilner)
+    [#49](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/49)
+    [#50](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/50)
 
 ##### Bug Fixes
 
