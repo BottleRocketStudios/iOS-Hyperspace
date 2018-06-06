@@ -38,6 +38,10 @@
     [Tyler Milner](https://github.com/tylermilner)
     [#49](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/49)
     [#50](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/50)
+    
+* Implemented synthesized `Equatable` and `Hashable` conformance that was introduced in Swift 4.1.
+    [Tyler Milner](https://github.com/tylermilner)
+    [#51](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/51)
 
 ##### Bug Fixes
 
