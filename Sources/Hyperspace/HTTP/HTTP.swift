@@ -30,7 +30,7 @@ public struct HTTP {
     }
     
     /// Represents the key portion of a HTTP header field key-value pair.
-    public struct HeaderKey: RawRepresentable {
+    public struct HeaderKey: RawRepresentable, Equatable, Hashable {
         public var rawValue: String
         
         public init(rawValue: String) {
@@ -39,7 +39,7 @@ public struct HTTP {
     }
     
     /// Represents the value portion of a HTTP header field key-value pair.
-    public struct HeaderValue: RawRepresentable {
+    public struct HeaderValue: RawRepresentable, Equatable {
         public var rawValue: String
         
         public init(rawValue: String) {
@@ -49,7 +49,7 @@ public struct HTTP {
     
     /// Represents a HTTP status code.
     public enum Status {
-        public struct Success: RawRepresentable {
+        public struct Success: RawRepresentable, Equatable {
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -57,7 +57,7 @@ public struct HTTP {
             }
         }
         
-        public struct Redirection: RawRepresentable {
+        public struct Redirection: RawRepresentable, Equatable {
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -65,7 +65,7 @@ public struct HTTP {
             }
         }
         
-        public struct ClientError: RawRepresentable {
+        public struct ClientError: RawRepresentable, Equatable {
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -73,7 +73,7 @@ public struct HTTP {
             }
         }
         
-        public struct ServerError: RawRepresentable {
+        public struct ServerError: RawRepresentable, Equatable {
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -104,7 +104,7 @@ public struct HTTP {
     }
     
     /// Represents a HTTP response.
-    public struct Response {
+    public struct Response: Equatable {
         
         /// The raw HTTP status code for this response.
         public let code: Int
@@ -247,40 +247,4 @@ extension HTTP.Status.ServerError {
     public static let loopDetected = HTTP.Status.ServerError(rawValue: 508)
     public static let notExtended = HTTP.Status.ServerError(rawValue: 510)
     public static let networkAuthenticationRequired = HTTP.Status.ServerError(rawValue: 511)
-}
-
-// MARK: - Hashable Implementations
-
-extension HTTP.HeaderKey: Hashable {
-    public var hashValue: Int {
-        return rawValue.hashValue
-    }
-}
-
-// MARK: - Equatable Implementations
-
-extension HTTP.HeaderKey: Equatable {
-    public static func == (lhs: HTTP.HeaderKey, rhs: HTTP.HeaderKey) -> Bool {
-        return lhs.rawValue == rhs.rawValue
-    }
-}
-
-extension HTTP.HeaderValue: Equatable {
-    public static func == (lhs: HTTP.HeaderValue, rhs: HTTP.HeaderValue) -> Bool {
-        return lhs.rawValue == rhs.rawValue
-    }
-}
-
-extension HTTP.Status.Success: Equatable { }
-
-extension HTTP.Status.Redirection: Equatable { }
-
-extension HTTP.Status.ClientError: Equatable { }
-
-extension HTTP.Status.ServerError: Equatable { }
-
-extension HTTP.Response: Equatable {
-    public static func == (lhs: HTTP.Response, rhs: HTTP.Response) -> Bool {
-        return lhs.code == rhs.code && lhs.data == rhs.data
-    }
 }

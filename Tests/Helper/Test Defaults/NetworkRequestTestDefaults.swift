@@ -11,7 +11,7 @@ import Hyperspace
 import Result
 
 class NetworkRequestTestDefaults {
-    struct DefaultModel: Codable {
+    struct DefaultModel: Codable, Equatable {
         let title: String
     }
     
@@ -38,10 +38,4 @@ class NetworkRequestTestDefaults {
     static let defaultURL = URL(string: "https://apple.com")!
     static let defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
     static let defaultTimeout: TimeInterval = 1.0
-}
-
-extension NetworkRequestTestDefaults.DefaultModel: Equatable {
-    public static func == (lhs: NetworkRequestTestDefaults.DefaultModel, rhs: NetworkRequestTestDefaults.DefaultModel) -> Bool {
-        return lhs.title == rhs.title
-    }
 }

@@ -16,7 +16,7 @@ import Foundation
 import Result
 
 /// Represents an error that occurred when executing a NetworkRequest using a NetworkService.
-public enum NetworkServiceError: Error {
+public enum NetworkServiceError: Error, Equatable {
     case unknownError
     case unknownStatusCode
     case redirection
@@ -29,13 +29,13 @@ public enum NetworkServiceError: Error {
 }
 
 /// Represents the successful result of executing a NetworkRequest using a NetworkService.
-public struct NetworkServiceSuccess {
+public struct NetworkServiceSuccess: Equatable {
     public let data: Data
     public let response: HTTP.Response
 }
 
 /// Represents the failed result of executing a NetworkRequest using a NetworkService.
-public struct NetworkServiceFailure: Error {
+public struct NetworkServiceFailure: Error, Equatable {
     public let error: NetworkServiceError
     public let response: HTTP.Response?
 }
@@ -61,45 +61,4 @@ public protocol NetworkServiceProtocol {
 
     /// Cancels all currently running tasks
     func cancelAllTasks()
-}
-
-// MARK: - Equatable Implementations
-
-extension NetworkServiceError: Equatable {
-    public static func == (lhs: NetworkServiceError, rhs: NetworkServiceError) -> Bool {
-        switch (lhs, rhs) {
-        case (.unknownError, .unknownError):
-            return true
-        case (.unknownStatusCode, .unknownStatusCode):
-            return true
-        case (.redirection, .redirection):
-            return true
-        case (.clientError(let lhsError), .clientError(let rhsError)):
-            return lhsError == rhsError
-        case (.serverError(let lhsError), .serverError(let rhsError)):
-            return lhsError == rhsError
-        case (.noData, .noData):
-            return true
-        case (.noInternetConnection, .noInternetConnection):
-            return true
-        case (.timedOut, .timedOut):
-            return true
-        case (.cancelled, .cancelled):
-            return true
-        default:
-            return false
-        }
-    }
-}
-
-extension NetworkServiceSuccess: Equatable {
-    public static func == (lhs: NetworkServiceSuccess, rhs: NetworkServiceSuccess) -> Bool {
-        return lhs.data == rhs.data && lhs.response == rhs.response
-    }
-}
-
-extension NetworkServiceFailure: Equatable {
-    public static func == (lhs: NetworkServiceFailure, rhs: NetworkServiceFailure) -> Bool {
-        return lhs.error == rhs.error && lhs.response == rhs.response
-    }
 }
