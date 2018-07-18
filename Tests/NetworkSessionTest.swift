@@ -13,7 +13,7 @@ class NetworkSessionTest: XCTestCase {
     
     // MARK: - Properties
     
-    private let defaultRequest = URLRequest(url: NetworkRequestTestDefaults.defaultURL)
+    private let defaultRequest = URLRequest(url: RequestTestDefaults.defaultURL)
     
     // MARK: - Tests
     

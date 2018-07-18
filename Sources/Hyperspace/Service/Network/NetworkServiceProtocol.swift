@@ -15,7 +15,7 @@
 import Foundation
 import Result
 
-/// Represents an error that occurred when executing a NetworkRequest using a NetworkService.
+/// Represents an error that occurred when executing a Request using a NetworkService.
 public enum NetworkServiceError: Error, Equatable {
     case unknownError
     case unknownStatusCode
@@ -28,22 +28,22 @@ public enum NetworkServiceError: Error, Equatable {
     case cancelled
 }
 
-/// Represents the successful result of executing a NetworkRequest using a NetworkService.
+/// Represents the successful result of executing a Request using a NetworkService.
 public struct NetworkServiceSuccess: Equatable {
     public let data: Data
     public let response: HTTP.Response
 }
 
-/// Represents the failed result of executing a NetworkRequest using a NetworkService.
+/// Represents the failed result of executing a Request using a NetworkService.
 public struct NetworkServiceFailure: Error, Equatable {
     public let error: NetworkServiceError
     public let response: HTTP.Response?
 }
 
-/// Represents the possible resulting values of a NetworkRequest using a NetworkService.
+/// Represents the possible resulting values of a Request using a NetworkService.
 public typealias NetworkServiceResult = Result<NetworkServiceSuccess, NetworkServiceFailure>
 
-/// Upon completion of executing a NetworkRequest using a NetworkService, the NetworkServiceResult is returned.
+/// Upon completion of executing a Request using a NetworkService, the NetworkServiceResult is returned.
 public typealias NetworkServiceCompletion = (NetworkServiceResult) -> Void
 
 /// Represents something that can execute a URLRequest.

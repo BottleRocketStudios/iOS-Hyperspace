@@ -60,7 +60,7 @@ struct MockBackendService: BackendServiceProtocol {
         /* No op */
     }
     
-    func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, T.ErrorType>) -> Void) where T: NetworkRequest {
+    func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, T.ErrorType>) -> Void) where T: Request {
         let failure = NetworkServiceFailure(error: .timedOut, response: nil)
         completion(Result.failure(T.ErrorType(networkServiceFailure: failure)))
     }

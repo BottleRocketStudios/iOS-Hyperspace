@@ -2,15 +2,15 @@
 
 ##### Enhancements
 
-* Two new error-facing protocols were added. `NetworkServiceFailureInitializable` represents a `Swift.Error` that can be initialized from a `NetworkServiceFailure` object. `DecodingFailureInitializable` represents a `Swift.Error` that can be initialized from a `DecodingError` as a result of decoding `Data`. These conformances have been added as extensions to `AnyError` (meaning `AnyNetworkRequest` usage is unaffected). As a result of these new protocols, the `BackendServiceError` type has been removed. Types conforming to `NetworkRequest` now have an associated `ErrorType` which must conform to `NetworkServiceFailureInitializable`. If a request generates any sort of failure response, the custom error type will be initialized from it instead of returning a generic `BackendServiceError`. In addition, if `NetworkRequest.ErrorType` conforms to `DecodingFailureInitializable`, the custom erorr type will be instantiated and returned.
+* Two new error-facing protocols were added. `NetworkServiceFailureInitializable` represents a `Swift.Error` that can be initialized from a `NetworkServiceFailure` object. `DecodingFailureInitializable` represents a `Swift.Error` that can be initialized from a `DecodingError` as a result of decoding `Data`. These conformances have been added as extensions to `AnyError` (meaning `AnyRequest` usage is unaffected). As a result of these new protocols, the `BackendServiceError` type has been removed. Types conforming to `Request` now have an associated `ErrorType` which must conform to `NetworkServiceFailureInitializable`. If a request generates any sort of failure response, the custom error type will be initialized from it instead of returning a generic `BackendServiceError`. In addition, if `Request.ErrorType` conforms to `DecodingFailureInitializable`, the custom erorr type will be instantiated and returned.
     [Will McGinty](https://github.com/wmcginty)
     [#38](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/38)
     
-* Added a new initalizer to `AnyNetworkRequest` which accepts a `String` value designating the key of JSON at which to begin decoding.
+* Added a new initalizer to `AnyRequest` which accepts a `String` value designating the key of JSON at which to begin decoding.
     [Will McGinty](https://github.com/wmcginty)
     [#41](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/41)
     
-* Separated the generation/encoding of the URL query from the `NetworkRequest` object into an extension `URL`.
+* Separated the generation/encoding of the URL query from the `Request` object into an extension `URL`.
     [Will McGinty](https://github.com/wmcginty)
     [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/40)
     

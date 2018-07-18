@@ -1,5 +1,5 @@
 //
-//  AnyNetworkRequest.swift
+//  AnyRequest.swift
 //  Hyperspace
 //
 //  Created by Will McGinty on 6/26/17.
@@ -9,8 +9,8 @@
 import Foundation
 import Result
 
-/// A type-erased structure to allow for simple NetworkRequests to be easily created.
-public struct AnyNetworkRequest<T>: NetworkRequest {
+/// A type-erased structure to allow for simple Requests to be easily created.
+public struct AnyRequest<T>: Request {
     
     // MARK: - Properties
     
@@ -28,8 +28,8 @@ public struct AnyNetworkRequest<T>: NetworkRequest {
                 url: URL,
                 headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
                 body: Data? = nil,
-                cachePolicy: URLRequest.CachePolicy = NetworkRequestDefaults.defaultCachePolicy,
-                timeout: TimeInterval = NetworkRequestDefaults.defaultTimeout,
+                cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
+                timeout: TimeInterval = RequestDefaults.defaultTimeout,
                 dataTransformer: @escaping (Data) -> Result<T, AnyError>) {
         self.method = method
         self.url = url
@@ -48,16 +48,16 @@ public struct AnyNetworkRequest<T>: NetworkRequest {
     }
 }
 
-// MARK: - AnyNetworkRequest Default Implementations
+// MARK: - AnyRequest Default Implementations
 
-extension AnyNetworkRequest where T: Decodable {
+extension AnyRequest where T: Decodable {
     
     public init(method: HTTP.Method,
                 url: URL,
                 headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
                 body: Data? = nil,
-                cachePolicy: URLRequest.CachePolicy = NetworkRequestDefaults.defaultCachePolicy,
-                timeout: TimeInterval = NetworkRequestDefaults.defaultTimeout,
+                cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
+                timeout: TimeInterval = RequestDefaults.defaultTimeout,
                 decoder: JSONDecoder = JSONDecoder()) {
         self.method = method
         self.url = url
@@ -66,6 +66,6 @@ extension AnyNetworkRequest where T: Decodable {
         self.cachePolicy = cachePolicy
         self.timeout = timeout
         
-        _transformData = NetworkRequestDefaults.dataTransformer(for: decoder)
+        _transformData = RequestDefaults.dataTransformer(for: decoder)
     }
 }
