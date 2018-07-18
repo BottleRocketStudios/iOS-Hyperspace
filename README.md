@@ -65,9 +65,9 @@ struct CreatePostRequest: Request {
 
 ```swift
 let createPostRequest = AnyRequest<Post>(method: .post,
-                                                url: URL(string: "http://jsonplaceholder.typicode.com/posts")!,
-                                                headers: [.contentType: .applicationJSON],
-                                                body: postBody)
+                                         url: URL(string: "http://jsonplaceholder.typicode.com/posts")!,
+                                         headers: [.contentType: .applicationJSON],
+                                         body: postBody)
 ```
 
 For the above examples, the `Post` response type and `NewPost` body are defined as follows:
