@@ -26,7 +26,7 @@ class RecoverableTests: XCTestCase {
         var maxRecoveryAttempts: UInt? = 1
     }
     
-    struct RecoverableRequest<T: Codable>: NetworkRequest, Recoverable {
+    struct RecoverableRequest<T: Codable>: Request, Recoverable {
         typealias ResponseType = T
         typealias ErrorType = AnyError
         
@@ -41,7 +41,7 @@ class RecoverableTests: XCTestCase {
     }
     
     struct MockAuthorizationRecoveryStrategy: RequestRecoveryStrategy {
-        func handleRecoveryAttempt<T: NetworkRequest & Recoverable>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void) {
+        func handleRecoveryAttempt<T: Request & Recoverable>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void) {
             guard case let .clientError(clientError) = error.networkServiceError, clientError == .unauthorized, let nextAttempt = request.updatedForNextAttempt() else { return completion(.fail) }
             
             let authorized = nextAttempt.addingHeaders([.authorization: HTTP.HeaderValue(rawValue: "some_access_token")])
@@ -50,7 +50,7 @@ class RecoverableTests: XCTestCase {
     }
     
     struct MockFailureRecoveryStrategy: RequestRecoveryStrategy {
-        func handleRecoveryAttempt<T: NetworkRequest & Recoverable>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void) {
+        func handleRecoveryAttempt<T: Request & Recoverable>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void) {
             completion(.fail)
         }
     }

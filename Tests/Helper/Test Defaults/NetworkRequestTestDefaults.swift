@@ -1,5 +1,5 @@
 //
-//  NetworkRequestTestDefaults.swift
+//  RequestTestDefaults.swift
 //  HyperspaceTests
 //
 //  Created by Tyler Milner on 6/29/17.
@@ -10,12 +10,12 @@ import Foundation
 import Hyperspace
 import Result
 
-class NetworkRequestTestDefaults {
+class RequestTestDefaults {
     struct DefaultModel: Codable, Equatable {
         let title: String
     }
     
-    struct DefaultRequest<T: Decodable>: NetworkRequest {
+    struct DefaultRequest<T: Decodable>: Request {
         
         // swiftlint:disable nesting
         typealias ResponseType = T
@@ -23,11 +23,11 @@ class NetworkRequestTestDefaults {
         // swiftlint:enable nesting
         
         var method: HTTP.Method = .get
-        var url: URL = NetworkRequestTestDefaults.defaultURL
+        var url: URL = RequestTestDefaults.defaultURL
         var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
         var body: Data?
-        var cachePolicy: URLRequest.CachePolicy = NetworkRequestTestDefaults.defaultCachePolicy
-        var timeout: TimeInterval = NetworkRequestTestDefaults.defaultTimeout
+        var cachePolicy: URLRequest.CachePolicy = RequestTestDefaults.defaultCachePolicy
+        var timeout: TimeInterval = RequestTestDefaults.defaultTimeout
     }
     
     static let defaultModel = DefaultModel(title: "test")

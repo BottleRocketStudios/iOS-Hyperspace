@@ -1,5 +1,5 @@
 //
-//  NetworkRequests.swift
+//  Requests.swift
 //  Hyperspace_Example
 //
 //  Created by Tyler Milner on 7/14/17.
@@ -12,8 +12,8 @@ import Result
 
 // MARK: - Network Request Defaults
 
-// An extension like this can be used so that you don't have to specify them in every NetworkRequest you create.
-extension NetworkRequest {
+// An extension like this can be used so that you don't have to specify them in every Request you create.
+extension Request {
     static var defaultTimeout: TimeInterval {
         return 30.0
     }
@@ -33,13 +33,13 @@ extension NetworkRequest {
 
 // MARK: - Get User Request
 
-struct GetUserRequest: NetworkRequest {
+struct GetUserRequest: Request {
     
     // Define the model we want to get back
     typealias ResponseType = User
     typealias ErrorType = AnyError
     
-    // Define NetworkRequest property values
+    // Define Request property values
     var method: HTTP.Method = .get
     var url: URL {
         return URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)")!
@@ -58,13 +58,13 @@ struct GetUserRequest: NetworkRequest {
 
 // MARK: - Create Post Request
 
-struct CreatePostRequest: NetworkRequest {
+struct CreatePostRequest: Request {
 
     // Define the model we want to get back
     typealias ResponseType = Post
     typealias ErrorType = AnyError
     
-    // Define NetworkRequest property values
+    // Define Request property values
     var method: HTTP.Method = .post
     var url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
@@ -82,7 +82,7 @@ struct CreatePostRequest: NetworkRequest {
 
 // MARK: - Delete Post Request
 
-struct DeletePostRequest: NetworkRequest {
+struct DeletePostRequest: Request {
     typealias ResponseType = EmptyResponse
     typealias ErrorType = AnyError
     

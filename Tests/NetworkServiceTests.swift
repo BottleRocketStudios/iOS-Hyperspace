@@ -14,7 +14,7 @@ class NetworkServiceTests: XCTestCase {
     
     // MARK: - Properties
     
-    private let defaultRequest = URLRequest(url: NetworkRequestTestDefaults.defaultURL)
+    private let defaultRequest = URLRequest(url: RequestTestDefaults.defaultURL)
     
     // MARK: - Tests
     
@@ -106,7 +106,7 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func test_NetworkServiceDeinit_CancelsDataTask() {
-        let dataTask = MockNetworkSessionDataTask(request: URLRequest(url: NetworkRequestTestDefaults.defaultURL))
+        let dataTask = MockNetworkSessionDataTask(request: URLRequest(url: RequestTestDefaults.defaultURL))
         
         let asyncExpectation = expectation(description: "\(NetworkService.self) falls out of scope")
         

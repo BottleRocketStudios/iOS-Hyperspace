@@ -41,12 +41,12 @@ struct NewPost: Encodable {
 
 // MARK: - Request
 
-let getUserRequest = AnyNetworkRequest<User>(method: .get, url: URL(string: "http://jsonplaceholder.typicode.com/users/1")!)
+let getUserRequest = AnyRequest<User>(method: .get, url: URL(string: "http://jsonplaceholder.typicode.com/users/1")!)
 
 let newPost = NewPost(userId: 1, title: "Test tile", body: "Test body")
 let postBody = try? JSONEncoder().encode(newPost)
 
-let createPostRequest = AnyNetworkRequest<Post>(method: .post,
+let createPostRequest = AnyRequest<Post>(method: .post,
                                                 url: URL(string: "http://jsonplaceholder.typicode.com/posts")!,
                                                 headers: [.contentType: .applicationJSON],
                                                 body: postBody)

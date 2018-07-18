@@ -1,5 +1,5 @@
 //
-//  NetworkRequest.swift
+//  Request.swift
 //  Hyperspace
 //
 //  Created by Tyler Milner on 6/26/17.
@@ -28,9 +28,9 @@ public protocol DecodingFailureInitializable: Swift.Error {
 }
 
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
-public protocol NetworkRequest {
+public protocol Request {
     
-    /// The model type that this NetworkRequest will attempt to transform Data into.
+    /// The model type that this Request will attempt to transform Data into.
     associatedtype ResponseType
     associatedtype ErrorType: NetworkServiceFailureInitializable
     
@@ -73,9 +73,9 @@ public struct EmptyResponse {
     public init() { }
 }
 
-// MARK: - NetworkRequest Defaults
+// MARK: - Request Defaults
 
-public struct NetworkRequestDefaults {
+public struct RequestDefaults {
     
     public static var defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
     
@@ -123,16 +123,16 @@ public struct NetworkRequestDefaults {
     }
 }
 
-// MARK: - NetworkRequest Default Implementations
+// MARK: - Request Default Implementations
 
-public extension NetworkRequest {
+public extension Request {
     
     var cachePolicy: URLRequest.CachePolicy {
-        return NetworkRequestDefaults.defaultCachePolicy
+        return RequestDefaults.defaultCachePolicy
     }
     
     var timeout: TimeInterval {
-        return NetworkRequestDefaults.defaultTimeout
+        return RequestDefaults.defaultTimeout
     }
         
     var urlRequest: URLRequest {
@@ -147,7 +147,7 @@ public extension NetworkRequest {
         return request
     }
     
-    /// Adds the specified headers to the HTTP headers already attached to the `NetworkRequest`.
+    /// Adds the specified headers to the HTTP headers already attached to the `Request`.
     ///
     /// - Parameter additionalHeaders: The HTTP headers to add to the request
     /// - Returns: A new `NetworkReqest` with the combined HTTP headers. In the case of a collision, the value from `additionalHeaders` is preferred.
@@ -156,7 +156,7 @@ public extension NetworkRequest {
         return usingHeaders(modifiedHeaders)
     }
     
-    /// Modifies the HTTP headers on the `NetworkRequest`.
+    /// Modifies the HTTP headers on the `Request`.
     ///
     /// - Parameter headers: The HTTP headers to add to the request.
     /// - Returns: A new `NetworkReqest` with the given HTTP headers.
@@ -166,7 +166,7 @@ public extension NetworkRequest {
         return copy
     }
     
-    /// Modifies the HTTP body on the `NetworkRequest`.
+    /// Modifies the HTTP body on the `Request`.
     ///
     /// - Parameter body: The HTTP body to add to the request.
     /// - Returns: A new `NetworkReqest` with the given HTTP body
@@ -177,12 +177,12 @@ public extension NetworkRequest {
     }
 }
 
-// MARK: - NetworkRequest Default Implementations
+// MARK: - Request Default Implementations
 
-public extension NetworkRequest where ResponseType: Decodable, ErrorType: DecodingFailureInitializable {
+public extension Request where ResponseType: Decodable, ErrorType: DecodingFailureInitializable {
     
     func dataTransformer(with decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
-        return NetworkRequestDefaults.dataTransformer(for: decoder)
+        return RequestDefaults.dataTransformer(for: decoder)
     }
     
     func transformData(_ data: Data) -> Result<ResponseType, ErrorType> {
@@ -190,7 +190,7 @@ public extension NetworkRequest where ResponseType: Decodable, ErrorType: Decodi
     }
 }
 
-public extension NetworkRequest where ResponseType == EmptyResponse {
+public extension Request where ResponseType == EmptyResponse {
     func transformData(_ data: Data) -> Result<EmptyResponse, ErrorType> {
         return .success(EmptyResponse())
     }

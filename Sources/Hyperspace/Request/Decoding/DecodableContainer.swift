@@ -19,16 +19,16 @@ public protocol DecodableContainer: Decodable {
     var element: ContainedType { get }
 }
 
-// MARK: - AnyNetworkRequest Default Implementations
+// MARK: - AnyRequest Default Implementations
 
-extension AnyNetworkRequest where T: Decodable {
+extension AnyRequest where T: Decodable {
     
     public init<U: DecodableContainer>(method: HTTP.Method,
                                        url: URL,
                                        headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
                                        body: Data? = nil,
-                                       cachePolicy: URLRequest.CachePolicy = NetworkRequestDefaults.defaultCachePolicy,
-                                       timeout: TimeInterval = NetworkRequestDefaults.defaultTimeout,
+                                       cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
+                                       timeout: TimeInterval = RequestDefaults.defaultTimeout,
                                        decoder: JSONDecoder = JSONDecoder(),
                                        containerType: U.Type) where U.ContainedType == T {
         self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { data in
@@ -44,8 +44,8 @@ extension AnyNetworkRequest where T: Decodable {
                 url: URL,
                 headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
                 body: Data? = nil,
-                cachePolicy: URLRequest.CachePolicy = NetworkRequestDefaults.defaultCachePolicy,
-                timeout: TimeInterval = NetworkRequestDefaults.defaultTimeout,
+                cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
+                timeout: TimeInterval = RequestDefaults.defaultTimeout,
                 decoder: JSONDecoder = JSONDecoder(),
                 rootDecodingKey: String) {
         self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { data in

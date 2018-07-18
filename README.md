@@ -22,26 +22,26 @@ This library provides a simple abstraction around URLSession and HTTP. There are
 ## Key Concepts
 
 * **HTTP** - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request!
-* **NetworkRequest** - A protocol that defines the details of a request, including the desired result type. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
+* **Request** - A protocol that defines the details of a request, including the desired result type. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
 * **NetworkService** - Uses a `NetworkSession` (`URLSession` by default) to execute `URLRequests`. Deals with raw `HTTP` and `Data`.
-* **BackendService** - Uses a `NetworkService` to execute `NetworkRequests`. Transforms the raw `Data` returned from the `NetworkService` into the response model type defined by the `NetworkRequest`. **This is the main worker object your app will deal with directly**.
+* **BackendService** - Uses a `NetworkService` to execute `Requests`. Transforms the raw `Data` returned from the `NetworkService` into the response model type defined by the `Request`. **This is the main worker object your app will deal with directly**.
 
 ## Usage
 
-### 1. Create NetworkRequests
+### 1. Create Requests
 
-You have two options to create requests - create your own struct or class that conforms to the `NetworkRequest` protocol or by utilize the built-in `AnyNetworkRequest<T>` type-erased struct. Creating your own structs or classes is a bit more explicit, but can help encourage encapsulation and testability if your requests are complex. The `AnyNetworkRequest<T>` struct is generally fine to use for most cases.
+You have two options to create requests - create your own struct or class that conforms to the `Request` protocol or by utilize the built-in `AnyRequest<T>` type-erased struct. Creating your own structs or classes is a bit more explicit, but can help encourage encapsulation and testability if your requests are complex. The `AnyRequest<T>` struct is generally fine to use for most cases.
 
-#### Option 1 - Adopting the `NetworkRequest` protocol
+#### Option 1 - Adopting the `Request` protocol
 
 The `CreatePostRequest` in the example below represents a simple request to create a new post in something like a social network feed:
 ```swift
-struct CreatePostRequest: NetworkRequest {
+struct CreatePostRequest: Request {
     // Define the model we want to get back
     typealias ResponseType = Post
     typealias ErrorType = AnyError
 
-    // Define NetworkRequest property values
+    // Define Request property values
     var method: HTTP.Method = .post
     var url = URL(string: "http://jsonplaceholder.typicode.com/posts")!
     var queryParameters: [URLQueryItem]?
@@ -61,13 +61,13 @@ struct CreatePostRequest: NetworkRequest {
 }
 ```
 
-#### Option 2 - Using the `AnyNetworkRequest<T>` struct
+#### Option 2 - Using the `AnyRequest<T>` struct
 
 ```swift
-let createPostRequest = AnyNetworkRequest<Post>(method: .post,
-                                                url: URL(string: "http://jsonplaceholder.typicode.com/posts")!,
-                                                headers: [.contentType: .applicationJSON],
-                                                body: postBody)
+let createPostRequest = AnyRequest<Post>(method: .post,
+                                         url: URL(string: "http://jsonplaceholder.typicode.com/posts")!,
+                                         headers: [.contentType: .applicationJSON],
+                                         body: postBody)
 ```
 
 For the above examples, the `Post` response type and `NewPost` body are defined as follows:
@@ -88,11 +88,11 @@ struct NewPost: Encodable {
 }
 ```
 
-### 2. Create NetworkRequest defaults (optional)
+### 2. Create Request defaults (optional)
 
-To avoid having to define default `NetworkRequest` property values for every request in your app, it can be useful to extend `NetworkRequest` with the defaults you want every request to have:
+To avoid having to define default `Request` property values for every request in your app, it can be useful to extend `Request` with the defaults you want every request to have:
 ```swift
-extension NetworkRequest {
+extension Request {
     var cachePolicy: URLRequest.CachePolicy {
         return .reloadIgnoringLocalCacheData
     }
@@ -103,10 +103,10 @@ extension NetworkRequest {
 }
 ```
 
-Alternatively, you can also modify the values of `NetworkRequestDefaults` directly:
+Alternatively, you can also modify the values of `RequestDefaults` directly:
 ```swift
-NetworkRequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
-NetworkRequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
+RequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
+RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
 ```
 
 ### 3. Create a BackendService to execute your requests
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
 }
 ```
 
-### 4. Instantiate your NetworkRequest
+### 4. Instantiate your Request
 
 Let's say our view controller is supposed to create the post whenever the user taps the "send" button. Here's what that might look like:
 ```swift
@@ -136,7 +136,7 @@ Let's say our view controller is supposed to create the post whenever the user t
 }
 ```
 
-### 5. Execute the NetworkRequest using the BackendService
+### 5. Execute the Request using the BackendService
 
 For the above example, here's how you would execute the request and parse the response. While all data transformation happens on the background queue that the underlying URLSession is using, all `BackendService` completion callbacks happen on the main queue so there's no need to worry about threading before you update UI. Notice that the type of the success response's associated value below is a `Post` struct as defined in the `CreatePostRequest` above:
 ```swift
@@ -172,7 +172,7 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
 ### Shared Code
 
-* `Models.swift`, `NetworkRequests.swift`
+* `Models.swift`, `Requests.swift`
     * Sample models and network requests shared by the various examples.
 
 ### Example Targets
@@ -191,8 +191,8 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
 * **Playground/Hyperspace.playground**
     * View and run a single file that defines models, network requests, and executes the requests similar to the example targets above.
-* **Playground/Hyperspace_AnyNetworkRequest.playground**
-    * The same example as above, but using the `AnyNetworkRequest<T>` struct.
+* **Playground/Hyperspace_AnyRequest.playground**
+    * The same example as above, but using the `AnyRequest<T>` struct.
 * **Playground/Hyperspace_DELETE.playground**
     * An example of how to deal with requests that don't return a result. This is usually common for DELETE requests.
 

@@ -12,7 +12,7 @@ import XCTest
 class URLQueryParameterTests: XCTestCase {
     
     func test_DefaultURLQueryEncodingStraegy_GeneratesCorrectURL() {
-        let url = NetworkRequestTestDefaults.defaultURL
+        let url = RequestTestDefaults.defaultURL
         
         let queryParameters = [
             URLQueryItem(name: "param1", value: "param1value"),
@@ -32,7 +32,7 @@ class URLQueryParameterTests: XCTestCase {
             URLQueryItem(name: "param3", value: nil)
         ]
         
-        let url = NetworkRequestTestDefaults.defaultURL
+        let url = RequestTestDefaults.defaultURL
         let finalURL = url.appendingQueryItems(queryParameters, using: .customEncoder)
         XCTAssertEqual(finalURL.absoluteString, "https://apple.com?param1=param1value&param2=param2-value&param3")
     }
