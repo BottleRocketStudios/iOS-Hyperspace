@@ -10,7 +10,7 @@ import Foundation
 import Hyperspace
 import Result
 
-class NetworkRequestTestDefaults {
+class RequestTestDefaults {
     struct DefaultModel: Codable, Equatable {
         let title: String
     }

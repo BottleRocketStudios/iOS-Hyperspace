@@ -104,7 +104,7 @@ class BackendServiceTests: XCTestCase {
         let asyncExpectation = expectation(description: "\(BackendService.self) completion")
         
         let request = defaultRequest
-        backendService.execute(request: Request) { (result) in
+        backendService.execute(request: request) { (result) in
             switch (result, expectedResult) {
             case (.success(let resultObject), .success(let expectedObject)):
                 XCTAssertEqual(resultObject, expectedObject, file: file, line: line)
@@ -117,7 +117,7 @@ class BackendServiceTests: XCTestCase {
             asyncExpectation.fulfill()
         }
         
-        XCTAssertEqual(mockNetworkService.lastExecutedURLRequest, Request.urlRequest, file: file, line: line)
+        XCTAssertEqual(mockNetworkService.lastExecutedURLRequest, request.urlRequest, file: file, line: line)
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
