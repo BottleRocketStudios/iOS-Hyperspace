@@ -16,7 +16,7 @@ This library provides a simple abstraction around URLSession and HTTP. There are
     * Make error handling more pleasant.
     * Make it easy to define the details of your request and the model type you want to get back.
 * Keep things simple.
-    * There are currently around 600 SLOC, with about a third of that being boilerplate HTTP definitions.
+    * There are currently around 1300 SLOC, with about a quarter of that being boilerplate HTTP definitions.
     * Of course, complexity will increase over time as new features are added, but we're not trying to cover every possible networking use case here.
 
 ## Key Concepts
