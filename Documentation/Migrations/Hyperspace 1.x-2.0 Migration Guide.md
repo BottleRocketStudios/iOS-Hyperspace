@@ -34,4 +34,4 @@ You can now specify custom HTTP status codes if you wish.
 
 #### Container Decoding Improvements
 
-We've improved the way you can handle decoding containers. More information is available in `[Documentation/Guides/Custom Decoding.md](../Guides/Custom%20Decoding.md)`.
+We've improved the way you can handle decoding containers. More information is available in [`Documentation/Guides/Custom Decoding.md`](../Guides/Custom%20Decoding.md).
