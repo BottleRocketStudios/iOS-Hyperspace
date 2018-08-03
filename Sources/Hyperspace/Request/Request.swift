@@ -27,7 +27,7 @@ public protocol DecodingFailureInitializable: Swift.Error {
     init(decodingError: DecodingError, data: Data)
 }
 
-@available(*, deprecated, message: "The NetworkRequest protocol has been renamed Request.")
+@available(*, deprecated, renamed: "Request")
 public typealias NetworkRequest = Request
 
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
@@ -78,7 +78,7 @@ public struct EmptyResponse {
 
 // MARK: - Request Defaults
 
-@available(*, deprecated, message: "The NetworkRequestDefaults struct has been renamed RequestDefaults.")
+@available(*, deprecated, renamed: "RequestDefaults")
 public typealias NetworkRequestDefaults = RequestDefaults
 
 public struct RequestDefaults {
