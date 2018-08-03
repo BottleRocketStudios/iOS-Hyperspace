@@ -27,6 +27,9 @@ public protocol DecodingFailureInitializable: Swift.Error {
     init(decodingError: DecodingError, data: Data)
 }
 
+@available(*, deprecated: 2.0, renamed: "Request")
+public typealias NetworkRequest = Request
+
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
 public protocol Request {
     
@@ -74,6 +77,9 @@ public struct EmptyResponse {
 }
 
 // MARK: - Request Defaults
+
+@available(*, deprecated: 2.0, renamed: "RequestDefaults")
+public typealias NetworkRequestDefaults = RequestDefaults
 
 public struct RequestDefaults {
     
@@ -218,5 +224,14 @@ extension AnyError: NetworkServiceFailureInitializable {
 extension AnyError: DecodingFailureInitializable {
     public init(decodingError: DecodingError, data: Data) {
         self.init(decodingError)
+    }
+}
+
+// MARK: - AnyError Conformance to BackendServiceErrorInitializable
+
+@available(*, deprecated: 2.0, message: "Utilize Request.ErrorType to initialize a custom error type instead.")
+extension AnyError: BackendServiceErrorInitializable {
+    public init(_ backendServiceError: BackendServiceError) {
+        self.init(backendServiceError as Error)
     }
 }
