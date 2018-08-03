@@ -2,7 +2,7 @@
 
 ##### Enhancements
 
-* Two new error-facing protocols were added. `NetworkServiceFailureInitializable` represents a `Swift.Error` that can be initialized from a `NetworkServiceFailure` object. `DecodingFailureInitializable` represents a `Swift.Error` that can be initialized from a `DecodingError` as a result of decoding `Data`. These conformances have been added as extensions to `AnyError` (meaning `AnyRequest` usage is unaffected). As a result of these new protocols, the `BackendServiceError` type has been removed. Types conforming to `Request` now have an associated `ErrorType` which must conform to `NetworkServiceFailureInitializable`. If a request generates any sort of failure response, the custom error type will be initialized from it instead of returning a generic `BackendServiceError`. In addition, if `Request.ErrorType` conforms to `DecodingFailureInitializable`, the custom erorr type will be instantiated and returned.
+* Two new error-facing protocols were added. `NetworkServiceFailureInitializable` represents a `Swift.Error` that can be initialized from a `NetworkServiceFailure` object. `DecodingFailureInitializable` represents a `Swift.Error` that can be initialized from a `DecodingError` as a result of decoding `Data`. These conformances have been added as extensions to `AnyError` (meaning `AnyRequest` usage is unaffected). As a result of these new protocols, the `BackendServiceError` type has been removed. Types conforming to `Request` now have an associated `ErrorType` which must conform to `NetworkServiceFailureInitializable`. If a request generates any sort of failure response, the custom error type will be initialized from it instead of returning a generic `BackendServiceError`. In addition, if `Request.ErrorType` conforms to `DecodingFailureInitializable`, the custom error type will be instantiated and returned.
     [Will McGinty](https://github.com/wmcginty)
     [#38](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/38)
 
@@ -22,7 +22,7 @@
     [Will McGinty](https://github.com/wmcginty)
     [#44](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/44)
 
-* Add a subsystem which can perform transparent error using `RequestRecoveryStrategy`.
+* Add a subsystem which can perform transparent error handling using `RequestRecoveryStrategy`.
     [Will McGinty](https://github.com/wmcginty)
     [#45](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/45)
 
