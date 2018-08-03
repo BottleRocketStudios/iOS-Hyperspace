@@ -1,4 +1,4 @@
-# Hyperspace 2 Migration Guide
+# Hyperspace 1.x-2.0 Migration Guide
 
 This guide has been provided in order to ease the transition of existing applications using Hyperspace 1.x to the latest APIs, as well as to explain the structure of the new and changed functionality.
 
