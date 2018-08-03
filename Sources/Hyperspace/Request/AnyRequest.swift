@@ -9,6 +9,9 @@
 import Foundation
 import Result
 
+@available(*, deprecated, message: "The AnyNetworkRequest struct has been renamed AnyRequest.")
+public typealias AnyNetworkRequest<T> = AnyRequest<T>
+
 /// A type-erased structure to allow for simple Requests to be easily created.
 public struct AnyRequest<T>: Request {
     

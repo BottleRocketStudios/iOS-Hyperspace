@@ -27,6 +27,9 @@ public protocol DecodingFailureInitializable: Swift.Error {
     init(decodingError: DecodingError, data: Data)
 }
 
+@available(*, deprecated, message: "The NetworkRequest protocol has been renamed Request.")
+public typealias NetworkRequest = Request
+
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
 public protocol Request {
     
