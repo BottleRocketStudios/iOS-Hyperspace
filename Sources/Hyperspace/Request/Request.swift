@@ -78,6 +78,9 @@ public struct EmptyResponse {
 
 // MARK: - Request Defaults
 
+@available(*, deprecated, message: "The NetworkRequestDefaults struct has been renamed RequestDefaults.")
+public typealias NetworkRequestDefaults = RequestDefaults
+
 public struct RequestDefaults {
     
     public static var defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
