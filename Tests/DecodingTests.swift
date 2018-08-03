@@ -54,21 +54,49 @@ class DecodingTests: XCTestCase {
         }
     }
     
-    func test_AnyNetworkRequestWithDefaultJSONDecoder_SuccessfullyDecodes() {
-        let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL, decoder: JSONDecoder())
+    func test_RequestDefaultsContainer_AutomaticallyDecodesChildElement() {
+        let function: (Data) -> Result<MockObject, AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        let mockObject = function(objectJSON)
+        XCTAssertNotNil(mockObject.value)
+    }
+    
+    func test_RequestDefaultsContainer_AutomaticallyDecodesChildElements() {
+        let function: (Data) -> Result<[MockObject], AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
+        let mockObject = function(objectJSON)
+        XCTAssertNotNil(mockObject.value)
+    }
+    
+    func test_RequestDefaultsContainer_ThrowsErrorForChildElement() {
+        let function: (Data) -> Result<MockObject, AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
+        let mockObject = function(objectJSON)
+        XCTAssertNotNil(mockObject.error)
+    }
+    
+    func test_RequestDefaultsContainer_ThrowsErrorForChildElements() {
+        let function: (Data) -> Result<[MockObject], AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        let mockObject = function(objectJSON)
+        XCTAssertNotNil(mockObject.error)
+    }
+    
+    func test_AnyRequestWithDefaultJSONDecoder_SuccessfullyDecodes() {
+        let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, decoder: JSONDecoder())
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
         let result = request.transformData(objectJSON)
         XCTAssertNotNil(result.value)
     }
     
-    func test_AnyNetworkRequestWithImplicitJSONDecoder_SuccessfullyDecodes() {
-        let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL)
+    func test_AnyRequestWithImplicitJSONDecoder_SuccessfullyDecodes() {
+        let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
         let result = request.transformData(objectJSON)
         XCTAssertNotNil(result.value)
     }
     
-    func test_AnyNetworkRequestWithISOJSONDecoder_SuccessfullyDecodes() {
+    func test_AnyRequestWithISOJSONDecoder_SuccessfullyDecodes() {
         let decoder = JSONDecoder()
         
         if #available(iOS 10.0, *) {
@@ -77,39 +105,174 @@ class DecodingTests: XCTestCase {
             decoder.dateDecodingStrategy = .formatted(DecodingTests.iso8601DateFormatter)
         }
         
-        let request = AnyNetworkRequest<MockDate>(method: .get, url: NetworkRequestTestDefaults.defaultURL, decoder: decoder)
+        let request = AnyRequest<MockDate>(method: .get, url: RequestTestDefaults.defaultURL, decoder: decoder)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
         let result = request.transformData(objectJSON)
         XCTAssertNotNil(result.value)
     }
     
-    func test_AnyNetworkRequestWithImplicitJSONDecoder_DecodeFails() {
-        let request = AnyNetworkRequest<MockDate>(method: .get, url: NetworkRequestTestDefaults.defaultURL)
+    func test_AnyRequestWithImplicitJSONDecoder_DecodeFails() {
+        let request = AnyRequest<MockDate>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
         let result = request.transformData(objectJSON)
         XCTAssertNil(result.value)
     }
     
-    func test_AnyNetworkRequesWithDecodableContainer_SuccessfullyDecodesChildElement() {
-        let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
+    func test_AnyRequestWithDecodableContainer_SuccessfullyDecodesChildElement() {
+        let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let result = request.transformData(objectJSON)
         XCTAssertNotNil(result.value)
     }
 
-    func test_AnyNetworkRequesWithDecodableContainer_SuccessfullyDecodesChildElements() {
-        let request = AnyNetworkRequest<[MockObject]>(method: .get, url: NetworkRequestTestDefaults.defaultURL, containerType: MockArrayDecodableContainer.self)
+    func test_AnyRequestWithDecodableContainer_SuccessfullyDecodesChildElements() {
+        let request = AnyRequest<[MockObject]>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockArrayDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let result = request.transformData(objectJSON)
         XCTAssertNotNil(result.value)
     }
     
-    func test_AnyNetworkRequesWithDecodableContainer_FailsToDecodesChildElement() {
-        let request = AnyNetworkRequest<MockObject>(method: .get, url: NetworkRequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
+    func test_AnyRequestWithDecodableContainer_FailsToDecodesChildElement() {
+        let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let result = request.transformData(objectJSON)
         XCTAssertNil(result.value) //Should fail because RootKeyArray json contains [MockObject], not a single MockObject
     }
+    
+    func test_AnyRequestWithRootDecodableKey_SuccessfullyDecodesChildElement() {
+        let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        let result = request.transformData(objectJSON)
+        XCTAssertNotNil(result.value)
+    }
+    
+    func test_AnyRequestWithRootDecodableKey_SuccessfullyDecodesChildElements() {
+        let request = AnyRequest<[MockObject]>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
+        let result = request.transformData(objectJSON)
+        XCTAssertNotNil(result.value)
+    }
+    
+    func test_AnyRequestWithRootDecodableKey_SuccessfullyDecodesChildElementWhenExtraJSONPresent() {
+        let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObjectPlus")
+        let result = request.transformData(objectJSON)
+        XCTAssertNotNil(result.value)
+    }
+    
+    func test_AnyRequestWithRootDecodableKey_FailsWithIncorrectKey() {
+        let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "incorrectkey")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        let result = request.transformData(objectJSON)
+        XCTAssertNil(result.value)
+        
+        let decodeError = result.error!.error as! DecodingError
+        guard case let .valueNotFound(missingType, context) = decodeError else {
+            return XCTFail("Decoding should fail with a .valueNotFound error")
+        }
+        
+        XCTAssert(missingType == MockObject.self)
+        XCTAssertTrue(context.codingPath.isEmpty)
+        XCTAssertEqual(context.debugDescription, "No value found at root key \"incorrectkey\".")
+    }
+    
+    func test_AnyRequestWithRootDecodableKey_FailsWithIncorrectType() {
+        let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyIncorrectType")
+        let result = request.transformData(objectJSON)
+        XCTAssertNil(result.value)
+        
+        let decodeError = result.error!.error as! DecodingError
+        guard case let DecodingError.keyNotFound(codingKey, context) = decodeError else {
+            return XCTFail("Decoding should fail with a .keyNotFound error")
+        }
+        
+        XCTAssertEqual(codingKey.stringValue, "title")
+        XCTAssertTrue(context.codingPath.isEmpty)
+        XCTAssertEqual(context.debugDescription, "No value associated with key CodingKeys(stringValue: \"title\", intValue: nil) (\"title\").")
+    }
+    
+    func test_AnyDecodable_testFunctionalJSONDecoding() {
+        let mixedJSON = loadedJSONData(fromFileNamed: "MixedTypeObject")
+        let dictionary = try! JSONDecoder().decode([String: AnyDecodable].self, from: mixedJSON)
+        
+        XCTAssertEqual(dictionary["boolean"]?.value as! Bool, true)
+        XCTAssertEqual(dictionary["integer"]?.value as! Int, 1)
+        XCTAssertEqual(dictionary["double"]?.value as! Double, 3.14159265358979323846, accuracy: 0.001)
+        XCTAssertEqual(dictionary["string"]?.value as! String, "string")
+        XCTAssertEqual(dictionary["array"]?.value as! [Int], [1, 2, 3])
+        XCTAssertEqual(dictionary["nested"]?.value as! [String: String], ["a": "alpha", "b": "bravo", "c": "charlie"])
+    }
+    
+    // swiftlint:disable syntactic_sugar
+    func test_AnyDecodable_testEqualityOfUnderlyingType() {
+        XCTAssertEqual(AnyDecodable(Optional<Int>.none), AnyDecodable(Optional<Int>.none))
+        
+        XCTAssertEqual(AnyDecodable(true), AnyDecodable(true))
+        XCTAssertNotEqual(AnyDecodable(true), AnyDecodable(false))
+        
+        XCTAssertEqual(AnyDecodable(2), AnyDecodable(2))
+        XCTAssertNotEqual(AnyDecodable(2), AnyDecodable(4))
+        
+        XCTAssertEqual(AnyDecodable(Int8(2)), AnyDecodable(Int8(2)))
+        XCTAssertNotEqual(AnyDecodable(Int8(2)), AnyDecodable(Int8(3)))
+        
+        XCTAssertEqual(AnyDecodable(Int16(2)), AnyDecodable(Int16(2)))
+        XCTAssertNotEqual(AnyDecodable(Int16(2)), AnyDecodable(Int16(7)))
+        
+        XCTAssertEqual(AnyDecodable(Int32(2)), AnyDecodable(Int32(2)))
+        XCTAssertNotEqual(AnyDecodable(Int32(2)), AnyDecodable(Int32(3)))
+        
+        XCTAssertEqual(AnyDecodable(Int64(2)), AnyDecodable(Int64(2)))
+        XCTAssertNotEqual(AnyDecodable(Int64(2)), AnyDecodable(Int64(6)))
+        
+        XCTAssertEqual(AnyDecodable(UInt(2)), AnyDecodable(UInt(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt(2)), AnyDecodable(UInt(7)))
+        
+        XCTAssertEqual(AnyDecodable(UInt8(2)), AnyDecodable(UInt8(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt8(2)), AnyDecodable(UInt8(8)))
+        
+        XCTAssertEqual(AnyDecodable(UInt16(2)), AnyDecodable(UInt16(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt16(2)), AnyDecodable(UInt16(8)))
+        
+        XCTAssertEqual(AnyDecodable(UInt32(2)), AnyDecodable(UInt32(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt32(2)), AnyDecodable(UInt32(6)))
+        
+        XCTAssertEqual(AnyDecodable(UInt64(2)), AnyDecodable(UInt64(2)))
+        XCTAssertNotEqual(AnyDecodable(UInt64(2)), AnyDecodable(UInt64(4)))
+        
+        XCTAssertEqual(AnyDecodable(Float(2.0)), AnyDecodable(Float(2.0)))
+        XCTAssertNotEqual(AnyDecodable(Float(2.0)), AnyDecodable(Float(5.0)))
+        
+        XCTAssertEqual(AnyDecodable(Double(2.0)), AnyDecodable(Double(2.0)))
+        XCTAssertNotEqual(AnyDecodable(Double(2.0)), AnyDecodable(Double(5.0)))
+        
+        XCTAssertEqual(AnyDecodable("string"), AnyDecodable("string"))
+        XCTAssertNotEqual(AnyDecodable("string"), AnyDecodable("a string"))
+        
+        XCTAssertEqual(AnyDecodable([AnyDecodable(1), AnyDecodable(2), AnyDecodable(3)]), AnyDecodable([AnyDecodable(1), AnyDecodable(2), AnyDecodable(3)]))
+        XCTAssertNotEqual(AnyDecodable([AnyDecodable(1), AnyDecodable(2), AnyDecodable(3)]), AnyDecodable([AnyDecodable(1), AnyDecodable(2), AnyDecodable(4)]))
+        
+        XCTAssertEqual(AnyDecodable(["val": AnyDecodable(1)]), AnyDecodable(["val": AnyDecodable(1)]))
+        XCTAssertNotEqual(AnyDecodable(["val": AnyDecodable(1)]), AnyDecodable(["val": AnyDecodable(2)]))
+    }
+    
+    func test_AnyDecodable_testDescriptionOfUnderlyingType() {
+        
+        let nilDecodable = AnyDecodable(Optional<Int>.none)
+        let mock = MockObject(title: "t", subtitle: "s")
+        let nonStringConvertible = AnyDecodable(mock)
+    
+        let obj = NSObject()
+        let stringConvertible = AnyDecodable(obj)
+        
+        XCTAssertEqual(nilDecodable.description, String(describing: nil as Any?))
+        XCTAssertEqual(nonStringConvertible.description, String(describing: mock))
+        XCTAssertEqual(stringConvertible.description, obj.description)
+    }
+    // swiftlint:enable syntactic_sugar
+    
+    // MARK: - Helper
 
     private func loadedJSONData(fromFileNamed name: String) -> Data {
         let bundle = Bundle(for: DecodingTests.self)

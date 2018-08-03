@@ -14,20 +14,28 @@ class BackendServiceTests: XCTestCase {
     
     // MARK: - Typealias
     
-    typealias DefaultModel = NetworkRequestTestDefaults.DefaultModel
+    typealias DefaultModel = RequestTestDefaults.DefaultModel
     
     // MARK: - Properties
     
-    private let modelJSONData = NetworkRequestTestDefaults.defaultModelJSONData
+    private let modelJSONData = RequestTestDefaults.defaultModelJSONData
     private lazy var defaultSuccessResponse: HTTP.Response = {
         HTTP.Response(code: 200, data: self.modelJSONData)
     }()
-    private let defaultRequest = NetworkRequestTestDefaults.DefaultRequest<DefaultModel>()
+    private let defaultRequest = RequestTestDefaults.DefaultRequest<DefaultModel>()
     
     // MARK: - Tests
     
+    func test_AnyError_CreatesSuccessfullyFromNetworkServiceFailure() {
+        let failure = NetworkServiceFailure(error: .noInternetConnection, response: nil)
+        let anyError = AnyError(networkServiceFailure: failure)
+        
+        XCTAssertTrue(anyError.error is NetworkServiceError)
+        XCTAssertEqual(anyError.error as! NetworkServiceError, .noInternetConnection)
+    }
+    
     func test_NetworkServiceSuccess_TransformsResponseCorrectly() {
-        let model = NetworkRequestTestDefaults.defaultModel
+        let model = RequestTestDefaults.defaultModel
         let mockedResult = NetworkServiceSuccess(data: modelJSONData, response: defaultSuccessResponse)
         
         executeBackendService(mockedNetworkServiceResult: .success(mockedResult), expectingResult: .success(model))
@@ -64,7 +72,7 @@ class BackendServiceTests: XCTestCase {
         let mockNetworkService = MockNetworkService(responseResult: .success(mockedResult))
         
         let backendService = BackendService(networkService: mockNetworkService)
-        let request = URLRequest(url: NetworkRequestTestDefaults.defaultURL)
+        let request = URLRequest(url: RequestTestDefaults.defaultURL)
         backendService.cancelTask(for: request)
         
         XCTAssertEqual(mockNetworkService.cancelCallCount, 1)
@@ -82,21 +90,12 @@ class BackendServiceTests: XCTestCase {
         XCTAssertEqual(mockNetworkService.cancelAllTasksCallCount, 1)
     }
     
-    func test_AnyErrorBackendServiceErrorInitializableConformance_CreatesAnyErrorWithBackendServiceError() {
-        let error = AnyError(BackendServiceError.networkError(.unknownError, nil))
-        XCTAssert(error.error is BackendServiceError)
-    }
-    
-    func test_BackendServiceErrorEquatableConformance_DifferentErrorsAreNotEqual() {
-        let lhs = BackendServiceError.networkError(.unknownError, nil)
-        let rhs = BackendServiceError.dataTransformationError(NSError(domain: "Test", code: 1, userInfo: nil))
-        XCTAssertNotEqual(lhs, rhs)
-    }
-    
     // MARK: - Private
     
+    //create a concrete implementation of NetworkServiceFailureInitializable(Error) for testing (aka BackendServiceError...)
+    
     private func executeBackendService(mockedNetworkServiceResult: Result<NetworkServiceSuccess, NetworkServiceFailure>,
-                                       expectingResult expectedResult: Result<DefaultModel, BackendServiceError>,
+                                       expectingResult expectedResult: Result<DefaultModel, MockBackendServiceError>,
                                        file: StaticString = #file,
                                        line: UInt = #line) {
         let mockNetworkService = MockNetworkService(responseResult: mockedNetworkServiceResult)
@@ -104,8 +103,8 @@ class BackendServiceTests: XCTestCase {
         
         let asyncExpectation = expectation(description: "\(BackendService.self) completion")
         
-        let networkRequest = defaultRequest
-        backendService.execute(request: networkRequest) { (result) in
+        let request = defaultRequest
+        backendService.execute(request: request) { (result) in
             switch (result, expectedResult) {
             case (.success(let resultObject), .success(let expectedObject)):
                 XCTAssertEqual(resultObject, expectedObject, file: file, line: line)
@@ -118,7 +117,7 @@ class BackendServiceTests: XCTestCase {
             asyncExpectation.fulfill()
         }
         
-        XCTAssertEqual(mockNetworkService.lastExecutedURLRequest, networkRequest.urlRequest, file: file, line: line)
+        XCTAssertEqual(mockNetworkService.lastExecutedURLRequest, request.urlRequest, file: file, line: line)
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }

@@ -14,7 +14,7 @@ class MockNetworkSession {
     private let responseStatusCode: Int?
     private let responseData: Data?
     private let error: Error?
-    var nextDataTask: NetworkSessionDataTask = MockNetworkSessionDataTask(request: URLRequest(url: NetworkRequestTestDefaults.defaultURL))
+    var nextDataTask: NetworkSessionDataTask = MockNetworkSessionDataTask(request: URLRequest(url: RequestTestDefaults.defaultURL))
     
     init(responseStatusCode: Int?, responseData: Data?, error: Error?) {
         self.responseStatusCode = responseStatusCode

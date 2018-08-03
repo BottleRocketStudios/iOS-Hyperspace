@@ -9,11 +9,6 @@
 //
 //  TODO: Future functionality:
 //          - Provide an implementation that uses the URLSession delegate methods.
-//          - Provide an easy way to retry a request.
-//          - Look into providing hooks to allow for custom parsing of status codes.
-//                  Example:
-//                      - Handling of 401 Unauthorized responses - execute a request to reobtain a valid auth token and then retry the request.
-//                      - Bad APIs that return a 200 response when an error actually ocurred
 //          - Look into using an ephemeral URLSession as the default NetworkSession since it requires no cleanup.
 //          - Look into initialization using a session configuration rather than a NetworkSession.
 //

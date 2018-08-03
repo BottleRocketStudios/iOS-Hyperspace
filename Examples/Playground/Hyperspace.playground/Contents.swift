@@ -31,24 +31,23 @@ struct NewPost: Encodable {
 
 // MARK: - Example
 
-/// 1. Customize the defaults for NetworkRequest creation (optional)
+/// 1. Customize the defaults for Request creation (optional)
 
-NetworkRequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
-NetworkRequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
+RequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
+RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
 
-/// 2. Create your concrete NetworkRequest types
+/// 2. Create your concrete Request types
 
-struct GetUserRequest: NetworkRequest {
+struct GetUserRequest: Request {
     // Define the model we want to get back
     typealias ResponseType = User
     typealias ErrorType = AnyError
     
-    // Define NetworkRequest property values
+    // Define Request property values
     var method: HTTP.Method = .get
     var url: URL {
         return URL(string: "http://jsonplaceholder.typicode.com/users/\(userId)")!
     }
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     var body: Data?
     
@@ -61,20 +60,16 @@ struct GetUserRequest: NetworkRequest {
     }
 }
 
-struct CreatePostRequest: NetworkRequest {
+struct CreatePostRequest: Request {
     // Define the model we want to get back
     typealias ResponseType = Post
     typealias ErrorType = AnyError
     
-    // Define NetworkRequest property values
+    // Define Request property values
     var method: HTTP.Method = .post
     var url = URL(string: "http://jsonplaceholder.typicode.com/posts")!
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
-    var body: Data? {
-        let encoder = JSONEncoder()
-        return try? encoder.encode(newPost)
-    }
+    var body: Data?
     
     // Define any custom properties needed
     private let newPost: NewPost
@@ -82,10 +77,13 @@ struct CreatePostRequest: NetworkRequest {
     // Initializer
     init(newPost: NewPost) {
         self.newPost = newPost
+        
+        let encoder = JSONEncoder()
+        self.body = try? encoder.encode(newPost)
     }
 }
 
-/// 3. Instantiate your concrete NetworkRequest types
+/// 3. Instantiate your concrete Request types
 
 let getUserRequest = GetUserRequest(userId: 1)
 let createPostRequest = CreatePostRequest(newPost: NewPost(userId: 1, title: "Test tile", body: "Test body"))
@@ -94,7 +92,7 @@ let createPostRequest = CreatePostRequest(newPost: NewPost(userId: 1, title: "Te
 
 let backendService = BackendService()
 
-/// 5. Execute the NetworkRequest
+/// 5. Execute the Request
 
 func getUser(completion: @escaping () -> Void) {
     backendService.execute(request: getUserRequest) { (result) in

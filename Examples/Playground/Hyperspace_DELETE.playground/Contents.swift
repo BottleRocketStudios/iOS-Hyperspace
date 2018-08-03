@@ -7,7 +7,7 @@ import Result
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
-struct DeletePostRequest: NetworkRequest {
+struct DeletePostRequest: Request {
     typealias ResponseType = EmptyResponse
     typealias ErrorType = AnyError
     
@@ -15,7 +15,6 @@ struct DeletePostRequest: NetworkRequest {
     var url: URL {
         return URL(string: "http://jsonplaceholder.typicode.com/posts/\(postId)")!
     }
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     var body: Data?
 
@@ -28,9 +27,9 @@ struct DeletePostRequest: NetworkRequest {
 
 let deletePostRequest = DeletePostRequest(postId: 1)
 
-// Alternatively, you can use the "AnyNetworkRequest" type to implement this simple DELETE request:
+// Alternatively, you can use the "AnyRequest" type to implement this simple DELETE request:
 
-//let deletePostRequest = AnyNetworkRequest<EmptyResponse>(method: .delete, url: URL(string: "http://jsonplaceholder.typicode.com/posts/1")!) { (data) -> Result<EmptyResponse, AnyError> in
+//let deletePostRequest = AnyRequest<EmptyResponse>(method: .delete, url: URL(string: "http://jsonplaceholder.typicode.com/posts/1")!) { (data) -> Result<EmptyResponse, AnyError> in
 //    return .success(EmptyResponse())
 //}
 

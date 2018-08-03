@@ -2,7 +2,50 @@
 
 ##### Enhancements
 
-* None.
+* Two new error-facing protocols were added. `NetworkServiceFailureInitializable` represents a `Swift.Error` that can be initialized from a `NetworkServiceFailure` object. `DecodingFailureInitializable` represents a `Swift.Error` that can be initialized from a `DecodingError` as a result of decoding `Data`. These conformances have been added as extensions to `AnyError` (meaning `AnyRequest` usage is unaffected). As a result of these new protocols, the `BackendServiceError` type has been removed. Types conforming to `Request` now have an associated `ErrorType` which must conform to `NetworkServiceFailureInitializable`. If a request generates any sort of failure response, the custom error type will be initialized from it instead of returning a generic `BackendServiceError`. In addition, if `Request.ErrorType` conforms to `DecodingFailureInitializable`, the custom error type will be instantiated and returned.
+    [Will McGinty](https://github.com/wmcginty)
+    [#38](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/38)
+
+* Added a new initalizer to `AnyRequest` which accepts a `String` value designating the key of JSON at which to begin decoding.
+    [Will McGinty](https://github.com/wmcginty)
+    [#41](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/41)
+
+* Separated the generation/encoding of the URL query from the `Request` object into an extension `URL`.
+    [Will McGinty](https://github.com/wmcginty)
+    [#40](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/40)
+
+* Add functionality to `NetworkReqest` to allow for replacing and adding to the HTTP headers.
+    [Will McGinty](https://github.com/wmcginty)
+    [#43](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/43)
+
+* Simplify usage of `DecodableContainer` types with `JSONDecoder`
+    [Will McGinty](https://github.com/wmcginty)
+    [#44](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/44)
+
+* Add a subsystem which can perform transparent error handling using `RequestRecoveryStrategy`.
+    [Will McGinty](https://github.com/wmcginty)
+    [#45](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/45)
+
+* Simplify usage of `dataTransfomer` extensions with custom error types
+    [Will McGinty](https://github.com/wmcginty)
+    [#47](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/47)
+
+* Add `HTTP.HeaderValue` for JSON API specification.
+    [Earl Gaspard](https://github.com/earlgaspard)
+    [#46](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/46)
+
+* Converted `HTTP.Status`nested types (`HTTP.Status.Success`, `HTTP.Status.ClientError`, etc.) from enums to `RawRepresentable` structs. This keeps the library more open for extension by allowing clients to more easily specify and use custom HTTP status codes.
+    [Tyler Milner](https://github.com/tylermilner)
+    [#49](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/49)
+    [#50](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/50)
+
+* Implemented synthesized `Equatable` and `Hashable` conformance that was introduced in Swift 4.1.
+    [Tyler Milner](https://github.com/tylermilner)
+    [#51](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/51)
+
+* Renamed `NetworkRequest` and `AnyNetworkRequest` to `Request` and `AnyRequest`.
+    [Will McGinty](https://github.com/wmcginty)
+    [#51](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/52)
 
 ##### Bug Fixes
 

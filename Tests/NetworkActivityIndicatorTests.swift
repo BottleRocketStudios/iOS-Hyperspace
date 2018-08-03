@@ -49,6 +49,23 @@ class NetworkActivityIndicatorTests: XCTestCase {
         XCTAssertNotNil(activityController.delayedHide)
     }
     
+    func test_RequestCompletion_HideResponseExecutes() {
+        let exp = expectation(description: "delayedHideExecutes")
+        let indicator = MockNetworkActivityIndicator()
+        let activityController = NetworkActivityController(delayInterval: 0.1, indicator: indicator)
+        
+        activityController.start()
+        activityController.stop()
+        
+        XCTAssertEqual(activityController.activityCount, 0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            XCTAssertFalse(indicator.isNetworkActivityIndicatorVisible)
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 0.3, handler: nil)
+    }
+    
     func test_RequestStart_CancelsHideEffectInProgress() {
         let indicator = MockNetworkActivityIndicator()
         let activityController = NetworkActivityController(indicator: indicator)

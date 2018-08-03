@@ -14,7 +14,7 @@ class NetworkServiceTests: XCTestCase {
     
     // MARK: - Properties
     
-    private let defaultRequest = URLRequest(url: NetworkRequestTestDefaults.defaultURL)
+    private let defaultRequest = URLRequest(url: RequestTestDefaults.defaultURL)
     
     // MARK: - Tests
     
@@ -106,7 +106,7 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func test_NetworkServiceDeinit_CancelsDataTask() {
-        let dataTask = MockNetworkSessionDataTask(request: URLRequest(url: NetworkRequestTestDefaults.defaultURL))
+        let dataTask = MockNetworkSessionDataTask(request: URLRequest(url: RequestTestDefaults.defaultURL))
         
         let asyncExpectation = expectation(description: "\(NetworkService.self) falls out of scope")
         
@@ -131,6 +131,24 @@ class NetworkServiceTests: XCTestCase {
     func test_NetworkServiceHelper_InvalidHTTPResponsErrorUnknownError() {
         let networkServiceFailure = NetworkServiceHelper.networkServiceFailure(for: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
         XCTAssert(networkServiceFailure.error == .unknownError)
+    }
+
+    func test_NetworkServiceError_Equality() {
+        XCTAssertEqual(NetworkServiceError.unknownError, NetworkServiceError.unknownError)
+        XCTAssertEqual(NetworkServiceError.unknownStatusCode, NetworkServiceError.unknownStatusCode)
+        XCTAssertEqual(NetworkServiceError.redirection, NetworkServiceError.redirection)
+        XCTAssertEqual(NetworkServiceError.redirection, NetworkServiceError.redirection)
+        XCTAssertEqual(NetworkServiceError.clientError(.unauthorized), NetworkServiceError.clientError(.unauthorized))
+        XCTAssertEqual(NetworkServiceError.serverError(.badGateway), NetworkServiceError.serverError(.badGateway))
+        XCTAssertEqual(NetworkServiceError.noInternetConnection, NetworkServiceError.noInternetConnection)
+        XCTAssertEqual(NetworkServiceError.timedOut, NetworkServiceError.timedOut)
+        XCTAssertEqual(NetworkServiceError.cancelled, NetworkServiceError.cancelled)
+        XCTAssertNotEqual(NetworkServiceError.redirection, NetworkServiceError.cancelled)
+    }
+    
+    func test_AnyError_NeverHasResponse() {
+        let error = AnyError(networkServiceFailure: NetworkServiceFailure(error: .cancelled, response: HTTP.Response(code: 1, data: nil)))
+        XCTAssertNil(error.failureResponse)
     }
     
     // MARK: - Private
