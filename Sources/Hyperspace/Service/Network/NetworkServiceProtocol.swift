@@ -38,6 +38,11 @@ public struct NetworkServiceSuccess: Equatable {
 public struct NetworkServiceFailure: Error, Equatable {
     public let error: NetworkServiceError
     public let response: HTTP.Response?
+    
+    public init(error: NetworkServiceError, response: HTTP.Response?) {
+        self.error = error
+        self.response = response
+    }
 }
 
 /// Represents the possible resulting values of a Request using a NetworkService.
