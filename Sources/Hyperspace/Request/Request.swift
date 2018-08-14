@@ -37,8 +37,8 @@ public protocol Request {
     associatedtype ResponseType
     associatedtype ErrorType: NetworkServiceFailureInitializable
 
-    /// The query parameters for the URL. These parameters should now be specified as part of the url property.
-    @available(*, deprecated: 2.0, message: "Query parameters should now be specified as part of the url property")
+    /// The query parameters for the URL. These parameters should now be specified as part of the `url` property.
+    @available(*, deprecated: 2.0, message: "Query parameters should now be specified as part of the `url` property")
     var queryParameters: [URLQueryItem]? { get }
     
     /// The HTTP method to be use when executing this request.
