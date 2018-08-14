@@ -36,6 +36,10 @@ public protocol Request {
     /// The model type that this Request will attempt to transform Data into.
     associatedtype ResponseType
     associatedtype ErrorType: NetworkServiceFailureInitializable
+
+    /// The query parameters for the URL. These parameters should now be specified as part of the url property.
+    @available(*, deprecated: 2.0, message: "Query parameters should now be specified as part of the url property")
+    var queryParameters: [URLQueryItem]? { get }
     
     /// The HTTP method to be use when executing this request.
     var method: HTTP.Method { get }
@@ -132,6 +136,10 @@ public struct RequestDefaults {
 // MARK: - Request Default Implementations
 
 public extension Request {
+
+    var queryParameters: [URLQueryItem]? {
+        return nil
+    }
     
     var cachePolicy: URLRequest.CachePolicy {
         return RequestDefaults.defaultCachePolicy
