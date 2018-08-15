@@ -26,6 +26,12 @@ The second major change in Hyperspace 2 is the introduction of a new `associated
 
 In order to simplify the `Request` protocol, we've changed the way URL query parameters are handled. If your request needs to use query parameters, it's now up to use the `generateRawQueryParametersString(from:)` in the extension on `URLQueryItem` to generate a query parameter string that you can append to the end of the request's URL. We've provided an `appendingQueryString(_:)` method on `URL` to help you generate a new `URL` from the generated query string. You can also just use the `appendingQueryItems(_:using:)` method on `URL` to shortcut this two-step process. 
 
+#### `Request` Protocol `headers` Property Is Now a Stored Property
+
+The `headers` property has changed from a `{ get }` read-only computed property to a `{ get set }` stored property. This change allowed for some helper functions regarding request headers to be added to `Request`: 
+* `addingHeaders(_:)` - Adds/merges the provided headers with the receiver's headers.
+* `usingHeaders(_:)` - Replaces the receiver's headers with the provided headers.
+
 ### Other Improvements
 
 #### `HTTP.Status` Converted to `RawRepresentable` Struct
