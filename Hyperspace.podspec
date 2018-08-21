@@ -41,5 +41,5 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Result', '~> 3.2.4'
+  s.dependency 'Result', '~> 4.0'
 end
