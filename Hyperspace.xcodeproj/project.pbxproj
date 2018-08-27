@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
+		0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
 		0E81B49920AC8E0B00DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
 		0E81B49B20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
@@ -282,6 +284,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E29092B21349F320031F67C /* DecodingFailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingFailureTests.swift; sourceTree = "<group>"; };
 		0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryStrategy.swift; sourceTree = "<group>"; };
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+DecodableContainer.swift"; sourceTree = "<group>"; };
@@ -549,6 +552,7 @@
 				60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */,
 				0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */,
 				60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */,
+				0E29092B21349F320031F67C /* DecodingFailureTests.swift */,
 				60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */,
 				60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */,
 				3026E457202008470003A321 /* NetworkSessionTest.swift */,
@@ -1214,6 +1218,7 @@
 				30F07358202172420045CB01 /* MockBackendService.swift in Sources */,
 				B4C32C30201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
 				60D6C3FF201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
+				0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */,
 				60D6C405201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 				30F07367202227790045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
 			);
@@ -1290,6 +1295,7 @@
 				30F07359202172450045CB01 /* MockBackendService.swift in Sources */,
 				B4C32C31201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
 				60D6C400201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
+				0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */,
 				60D6C406201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 				30F073682022277A0045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
 			);
