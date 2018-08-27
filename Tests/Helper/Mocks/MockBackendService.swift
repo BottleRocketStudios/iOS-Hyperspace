@@ -11,6 +11,7 @@ import Foundation
 import Result
 
 public enum MockBackendServiceError: NetworkServiceFailureInitializable, DecodingFailureInitializable {
+
     case networkError(NetworkServiceError, HTTP.Response?)
     case dataTransformationError(Error)
     
@@ -18,7 +19,7 @@ public enum MockBackendServiceError: NetworkServiceFailureInitializable, Decodin
         self = .networkError(networkServiceFailure.error, networkServiceFailure.response)
     }
     
-    public init(decodingError: DecodingError, data: Data) {
+    public init(decodingError: DecodingError, decoding: Decodable.Type, data: Data) {
         self = .dataTransformationError(decodingError)
     }
     
