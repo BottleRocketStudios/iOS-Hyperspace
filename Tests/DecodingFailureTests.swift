@@ -31,9 +31,9 @@ class DecodingFailureTests: XCTestCase {
         let transformer: (Data) -> Result<MockDecodableContainer, MockDecodeError> = RequestDefaults.dataTransformer(for: JSONDecoder())
         let result = transformer(objectJSON)
         
-        XCTAssertNotNil(result.error)
-        XCTAssertEqual(String(describing: result.error?.type), "Optional(Hyperspace_iOSTests.MockDecodableContainer)")
-        XCTAssertEqual(result.error?.data, objectJSON)
+        guard let error = result.error else { XCTFail("The decode should fail."); return }
+        XCTAssertEqual(String(describing: error.type), String(describing: MockDecodableContainer.self))
+        XCTAssertEqual(error.data, objectJSON)
     }
     
     // MARK: - Helper
