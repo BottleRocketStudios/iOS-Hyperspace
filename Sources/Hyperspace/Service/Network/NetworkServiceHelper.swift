@@ -29,11 +29,7 @@ public struct NetworkServiceHelper {
         case .unknown:
             return .failure(NetworkServiceFailure(error: .unknownStatusCode, response: response))
         case .success:
-            guard let data = response.data else {
-                return .failure(NetworkServiceFailure(error: .noData, response: response))
-            }
-            
-            return .success(NetworkServiceSuccess(data: data, response: response))
+            return .success(NetworkServiceSuccess(response: response))
         case .redirection:
             return .failure(NetworkServiceFailure(error: .redirection, response: response))
         case .clientError(let clientError):

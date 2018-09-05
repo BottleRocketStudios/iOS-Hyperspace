@@ -39,8 +39,11 @@ extension ViewController {
     private func getUser() {
         let getUserRequest = GetUserRequest(userId: 1)
         
-        backendService.execute(request: getUserRequest) { [weak self] (result) in
+        backendService.execute(request: getUserRequest) { [weak self] (result, response) in
             debugPrint("Get user result: \(result)")
+            if let response = response {
+                debugPrint("Get user response: \(response)")
+            }
             
             switch result {
             case .success(let user):
@@ -55,8 +58,11 @@ extension ViewController {
         let post = NewPost(userId: 1, title: title, body: "")
         let createPostRequest = CreatePostRequest(newPost: post)
         
-        backendService.execute(request: createPostRequest) { [weak self] (result) in
+        backendService.execute(request: createPostRequest) { [weak self] (result, response) in
             debugPrint("Create post result: \(result)")
+            if let response = response {
+                debugPrint("Create post response: \(response)")
+            }
             
             switch result {
             case .success(let post):
@@ -70,7 +76,7 @@ extension ViewController {
     private func deletePost(postId: Int) {
         let deletePostRequest = DeletePostRequest(postId: postId)
         
-        backendService.execute(request: deletePostRequest) { [weak self] (result) in
+        backendService.execute(request: deletePostRequest) { [weak self] (result, _) in
             switch result {
             case .success:
                 self?.presentAlert(titled: "Deleted Post", message: "Success")

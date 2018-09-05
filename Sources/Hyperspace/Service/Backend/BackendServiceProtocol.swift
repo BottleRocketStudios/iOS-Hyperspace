@@ -28,7 +28,7 @@ public protocol BackendServiceErrorInitializable: Error {
 /// Represents the completion of a request executed using a BackendService.
 /// When successful, the parsed object is provided as the associated value.
 /// When request execution fails, the relevant E is provided as the associated value.
-public typealias BackendServiceCompletion<T, E: Swift.Error> = (Result<T, E>) -> Void
+public typealias BackendServiceCompletion<T, E: Swift.Error> = (Result<T, E>, HTTP.Response?) -> Void
 
 /// Represents something that's capable of executing a typed Request
 public protocol BackendServiceProtocol {
