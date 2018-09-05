@@ -76,7 +76,7 @@ class RecoverableTests: XCTestCase {
         static func protectedService<T: Encodable>(for object: T) -> MockRecoverableNetworkService {
             return MockRecoverableNetworkService { request -> Result<NetworkServiceSuccess, NetworkServiceFailure> in
                 if request.allHTTPHeaderFields?["Authorization"] != nil {
-                    return .success(NetworkServiceSuccess(data: try! JSONEncoder().encode(object), response: HTTP.Response(code: 200, data: nil)))
+                    return .success(NetworkServiceSuccess(response: HTTP.Response(code: 200, data: try! JSONEncoder().encode(object), headers: [:])))
                 } else {
                     return .failure(NetworkServiceFailure(error: .clientError(.unauthorized), response: nil))
                 }
@@ -121,16 +121,18 @@ class RecoverableTests: XCTestCase {
         let subtitle = "subtitle"
         backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: title, subtitle: subtitle)), recoveryStrategy: MockAuthorizationRecoveryStrategy())
         
-        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { result in
+        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { (result, response) in
+            XCTAssertNil(response)
+
             switch result {
             case .success(let mockObject):
                 XCTAssertEqual(mockObject.title, title)
                 XCTAssertEqual(mockObject.subtitle, subtitle)
-                
+
             case .failure(let error):
                 XCTFail("The error should be recoverable: \(error)")
             }
-            
+
             exp.fulfill()
         }
         
@@ -141,7 +143,9 @@ class RecoverableTests: XCTestCase {
         let exp = expectation(description: "backendServiceRecovery")
         backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: "title", subtitle: "subtitle")), recoveryStrategy: MockFailureRecoveryStrategy())
         
-        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { result in
+        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { (result, response) in
+            XCTAssertNil(response)
+            
             switch result {
             case .success:
                 XCTFail("The error should not recoverable!")
