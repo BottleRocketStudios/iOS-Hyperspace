@@ -62,7 +62,7 @@ public protocol Request {
     /// The URLRequest that represents this network request.
     var urlRequest: URLRequest { get }
         
-    /// Attempts to parse the provided NetworkServiceSuccess into the associated response model type for this request.
+    /// Attempts to parse the provided Data into the associated response model type for this request.
     ///
     /// - Parameter data: The raw Data retrieved from the network.
     /// - Parameter serviceSuccess: The successful result of executing a Request using a NetworkService.
