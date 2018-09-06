@@ -76,7 +76,7 @@ class RecoverableTests: XCTestCase {
         static func protectedService<T: Encodable>(for object: T) -> MockRecoverableNetworkService {
             return MockRecoverableNetworkService { request -> Result<NetworkServiceSuccess, NetworkServiceFailure> in
                 if request.allHTTPHeaderFields?["Authorization"] != nil {
-                    return .success(NetworkServiceSuccess(response: HTTP.Response(code: 200, data: try! JSONEncoder().encode(object), headers: [:])))
+                    return .success(NetworkServiceSuccess(response: HTTP.Response(code: 200, data: try! JSONEncoder().encode(object))))
                 } else {
                     return .failure(NetworkServiceFailure(error: .clientError(.unauthorized), response: nil))
                 }

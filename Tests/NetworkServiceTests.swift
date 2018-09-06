@@ -24,14 +24,14 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func test_InvalidStatusCode_GeneratesUnknownStatusCodeError() {
-        let response = HTTP.Response(code: 0, data: nil, headers: [:])
+        let response = HTTP.Response(code: 0, data: nil)
         let expectedResult = NetworkServiceFailure(error: .unknownStatusCode, response: response)
         
         executeNetworkServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
     }
     
     func test_SuccessResponseWithNoData_GeneratesNoDataError() {
-        let response = HTTP.Response(code: 200, data: nil, headers: [:])
+        let response = HTTP.Response(code: 200, data: nil)
         let expectedResult = NetworkServiceSuccess(response: response)
 //        let expectedResult = NetworkServiceFailure(error: .noData, response: response)
         
@@ -40,28 +40,28 @@ class NetworkServiceTests: XCTestCase {
     
     func test_SuccessResponseWithData_Succeeds() {
         let responseData = "test".data(using: .utf8)!
-        let response = HTTP.Response(code: 200, data: responseData, headers: [:])
+        let response = HTTP.Response(code: 200, data: responseData)
         let expectedResult = NetworkServiceSuccess(response: response)
         
         executeNetworkServiceUsingMockHTTPResponse(response, expectingResult: .success(expectedResult))
     }
     
     func test_300Status_GeneratesRedirectionError() {
-        let response = HTTP.Response(code: 300, data: nil, headers: [:])
+        let response = HTTP.Response(code: 300, data: nil)
         let expectedResult = NetworkServiceFailure(error: .redirection, response: response)
         
         executeNetworkServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
     }
     
     func test_400Status_GeneratesClientError() {
-        let response = HTTP.Response(code: 400, data: nil, headers: [:])
+        let response = HTTP.Response(code: 400, data: nil)
         let expectedResult = NetworkServiceFailure(error: .clientError(.badRequest), response: response)
         
         executeNetworkServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
     }
     
     func test_500Status_GeneratesServerError() {
-        let response = HTTP.Response(code: 500, data: nil, headers: [:])
+        let response = HTTP.Response(code: 500, data: nil)
         let expectedResult = NetworkServiceFailure(error: .serverError(.internalServerError), response: response)
         
         executeNetworkServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
@@ -148,7 +148,7 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func test_AnyError_NeverHasResponse() {
-        let error = AnyError(networkServiceFailure: NetworkServiceFailure(error: .cancelled, response: HTTP.Response(code: 1, data: nil, headers: [:])))
+        let error = AnyError(networkServiceFailure: NetworkServiceFailure(error: .cancelled, response: HTTP.Response(code: 1, data: nil)))
         XCTAssertNil(error.failureResponse)
     }
     

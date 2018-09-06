@@ -20,7 +20,7 @@ class BackendServiceTests: XCTestCase {
     
     private let modelJSONData = RequestTestDefaults.defaultModelJSONData
     private lazy var defaultSuccessResponse: HTTP.Response = {
-        HTTP.Response(code: 200, data: self.modelJSONData, headers: [:])
+        HTTP.Response(code: 200, data: self.modelJSONData)
     }()
     private let defaultRequest = RequestTestDefaults.DefaultRequest<DefaultModel>()
     
@@ -44,14 +44,14 @@ class BackendServiceTests: XCTestCase {
     func test_NetworkServiceResponseTransformFailure_GeneratesDataTransformationError() {
         let invalidJSONData = "test".data(using: .utf8)!
         let jsonDecodingError = NSError(domain: NSCocoaErrorDomain, code: 3840, userInfo: nil)
-        let response = HTTP.Response(code: 200, data: invalidJSONData, headers: [:])
+        let response = HTTP.Response(code: 200, data: invalidJSONData)
         let mockedResult = NetworkServiceSuccess(response: response)
         
         executeBackendService(mockedNetworkServiceResult: .success(mockedResult), expectingResult: .failure(.dataTransformationError(jsonDecodingError)))
     }
     
     func test_NetworkServiceNetworkFailure_GeneratesNetworkError() {
-        let response = HTTP.Response(code: 503, data: nil, headers: [:])
+        let response = HTTP.Response(code: 503, data: nil)
         let mockedResult = NetworkServiceFailure(error: .serverError(.serviceUnavailable), response: response)
         
         executeBackendService(mockedNetworkServiceResult: .failure(mockedResult), expectingResult: .failure(.networkError(.serverError(.serviceUnavailable), response)))
