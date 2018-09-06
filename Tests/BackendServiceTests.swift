@@ -36,7 +36,7 @@ class BackendServiceTests: XCTestCase {
     
     func test_NetworkServiceSuccess_TransformsResponseCorrectly() {
         let model = RequestTestDefaults.defaultModel
-        let mockedResult = NetworkServiceSuccess(response: defaultSuccessResponse)
+        let mockedResult = NetworkServiceSuccess(data: modelJSONData, response: defaultSuccessResponse)
         
         executeBackendService(mockedNetworkServiceResult: .success(mockedResult), expectingResult: .success(model))
     }
@@ -45,7 +45,7 @@ class BackendServiceTests: XCTestCase {
         let invalidJSONData = "test".data(using: .utf8)!
         let jsonDecodingError = NSError(domain: NSCocoaErrorDomain, code: 3840, userInfo: nil)
         let response = HTTP.Response(code: 200, data: invalidJSONData)
-        let mockedResult = NetworkServiceSuccess(response: response)
+        let mockedResult = NetworkServiceSuccess(data: invalidJSONData, response: response)
         
         executeBackendService(mockedNetworkServiceResult: .success(mockedResult), expectingResult: .failure(.dataTransformationError(jsonDecodingError)))
     }
@@ -58,17 +58,17 @@ class BackendServiceTests: XCTestCase {
     }
     
     func test_ExecutingBackendService_ExecutesUnderlyingNetworkService() {
-        let mockedResult = NetworkServiceSuccess(response: defaultSuccessResponse)
+        let mockedResult = NetworkServiceSuccess(data: modelJSONData, response: defaultSuccessResponse)
         let mockNetworkService = MockNetworkService(responseResult: .success(mockedResult))
         
         let backendService = BackendService(networkService: mockNetworkService)
-        backendService.execute(request: defaultRequest) { (_, _) in }
+        backendService.execute(request: defaultRequest) { (_) in }
         
         XCTAssertEqual(mockNetworkService.executeCallCount, 1)
     }
     
     func test_CancellingBackendService_CancelsUnderlyingNetworkService() {
-        let mockedResult = NetworkServiceSuccess(response: defaultSuccessResponse)
+        let mockedResult = NetworkServiceSuccess(data: modelJSONData, response: defaultSuccessResponse)
         let mockNetworkService = MockNetworkService(responseResult: .success(mockedResult))
         
         let backendService = BackendService(networkService: mockNetworkService)
@@ -80,7 +80,7 @@ class BackendServiceTests: XCTestCase {
     }
     
     func test_BackendServiceDeinit_CancelsAllTasksForUnderlyingNetworkService() {
-        let mockedResult = NetworkServiceSuccess(response: defaultSuccessResponse)
+        let mockedResult = NetworkServiceSuccess(data: modelJSONData, response: defaultSuccessResponse)
         let mockNetworkService = MockNetworkService(responseResult: .success(mockedResult))
         
         var backendService: BackendService? = BackendService(networkService: mockNetworkService)
@@ -104,7 +104,7 @@ class BackendServiceTests: XCTestCase {
         let asyncExpectation = expectation(description: "\(BackendService.self) completion")
         
         let request = defaultRequest
-        backendService.execute(request: request) { (result, _) in            
+        backendService.execute(request: request) { (result) in            
             switch (result, expectedResult) {
             case (.success(let resultObject), .success(let expectedObject)):
                 XCTAssertEqual(resultObject, expectedObject, file: file, line: line)

@@ -46,7 +46,7 @@ public struct AnyRequest<T>: Request {
     
     // MARK: - Public
     
-    public func transformData(_ data: Data) -> Result<T, AnyError> {
+    public func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<T, AnyError> {
         return _transformData(data)
     }
 }

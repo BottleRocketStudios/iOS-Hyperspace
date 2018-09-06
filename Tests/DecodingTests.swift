@@ -85,14 +85,16 @@ class DecodingTests: XCTestCase {
     func test_AnyRequestWithDefaultJSONDecoder_SuccessfullyDecodes() {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, decoder: JSONDecoder())
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
     func test_AnyRequestWithImplicitJSONDecoder_SuccessfullyDecodes() {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
@@ -107,63 +109,72 @@ class DecodingTests: XCTestCase {
         
         let request = AnyRequest<MockDate>(method: .get, url: RequestTestDefaults.defaultURL, decoder: decoder)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
     func test_AnyRequestWithImplicitJSONDecoder_DecodeFails() {
         let request = AnyRequest<MockDate>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNil(result.value)
     }
     
     func test_AnyRequestWithDecodableContainer_SuccessfullyDecodesChildElement() {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNotNil(result.value)
     }
 
     func test_AnyRequestWithDecodableContainer_SuccessfullyDecodesChildElements() {
         let request = AnyRequest<[MockObject]>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockArrayDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
     func test_AnyRequestWithDecodableContainer_FailsToDecodesChildElement() {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNil(result.value) //Should fail because RootKeyArray json contains [MockObject], not a single MockObject
     }
     
     func test_AnyRequestWithRootDecodableKey_SuccessfullyDecodesChildElement() {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
     func test_AnyRequestWithRootDecodableKey_SuccessfullyDecodesChildElements() {
         let request = AnyRequest<[MockObject]>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
     func test_AnyRequestWithRootDecodableKey_SuccessfullyDecodesChildElementWhenExtraJSONPresent() {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObjectPlus")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
     func test_AnyRequestWithRootDecodableKey_FailsWithIncorrectKey() {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "incorrectkey")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNil(result.value)
         
         let decodeError = result.error!.error as! DecodingError
@@ -179,7 +190,8 @@ class DecodingTests: XCTestCase {
     func test_AnyRequestWithRootDecodableKey_FailsWithIncorrectType() {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyIncorrectType")
-        let result = request.transformData(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
         XCTAssertNil(result.value)
         
         let decodeError = result.error!.error as! DecodingError

@@ -98,7 +98,9 @@ class RequestTests: XCTestCase {
     func test_Request_TransformData() {
         
         let request = CachePolicyAndTimeOutRequest()
-        let result: Result<CachePolicyAndTimeOutRequest.ResponseType, CachePolicyAndTimeOutRequest.ErrorType> = request.transformData("this is dummy content".data(using: .utf8)!)
+        let data = "this is dummy content".data(using: .utf8)!
+        let serviceSuccess = NetworkServiceSuccess(data: data, response: HTTP.Response(code: 200, data: data))
+        let result: Result<CachePolicyAndTimeOutRequest.ResponseType, CachePolicyAndTimeOutRequest.ErrorType> = request.transformData(data, serviceSuccess: serviceSuccess)
         
         XCTAssertNotNil(result.value)
     }

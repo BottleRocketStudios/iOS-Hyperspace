@@ -30,9 +30,11 @@ public enum NetworkServiceError: Error, Equatable {
 
 /// Represents the successful result of executing a Request using a NetworkService.
 public struct NetworkServiceSuccess: Equatable {
+    public let data: Data
     public let response: HTTP.Response
     
-    public init(response: HTTP.Response) {
+    public init(data: Data, response: HTTP.Response) {
+        self.data = data
         self.response = response
     }
 }

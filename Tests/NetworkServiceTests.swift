@@ -32,16 +32,15 @@ class NetworkServiceTests: XCTestCase {
     
     func test_SuccessResponseWithNoData_GeneratesNoDataError() {
         let response = HTTP.Response(code: 200, data: nil)
-        let expectedResult = NetworkServiceSuccess(response: response)
-//        let expectedResult = NetworkServiceFailure(error: .noData, response: response)
+        let expectedResult = NetworkServiceFailure(error: .noData, response: response)
         
-        executeNetworkServiceUsingMockHTTPResponse(response, expectingResult: .success(expectedResult))
+        executeNetworkServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
     }
     
     func test_SuccessResponseWithData_Succeeds() {
         let responseData = "test".data(using: .utf8)!
         let response = HTTP.Response(code: 200, data: responseData)
-        let expectedResult = NetworkServiceSuccess(response: response)
+        let expectedResult = NetworkServiceSuccess(data: responseData, response: response)
         
         executeNetworkServiceUsingMockHTTPResponse(response, expectingResult: .success(expectedResult))
     }

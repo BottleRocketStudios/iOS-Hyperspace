@@ -35,7 +35,7 @@ extension BackendService: BackendServiceProtocol {
         networkService.execute(request: request.urlRequest) { result in
             switch result {
             case .success(let serviceSuccess):
-                BackendServiceHelper.handleResponse(serviceSuccess.response, for: request, completion: completion)
+                BackendServiceHelper.handleResponseData(serviceSuccess.data, serviceSuccess: serviceSuccess, for: request, completion: completion)
             case .failure(let serviceFailure):
                 BackendServiceHelper.handleNetworkServiceFailure(serviceFailure, completion: completion)
             }
@@ -43,7 +43,7 @@ extension BackendService: BackendServiceProtocol {
     }
     
     public func execute<T: Request & Recoverable>(recoverable request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
-        execute(request: request) { [weak self] (result, _) in
+        execute(request: request) { [weak self] (result) in
             switch result {
             case .success(let response):
                 BackendServiceHelper.handleResponse(response, completion: completion)
