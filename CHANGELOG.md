@@ -47,6 +47,10 @@
     [Will McGinty](https://github.com/wmcginty)
     [#51](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/52)
 
+* Add `headers` property to `HTTP.Response`.
+    [Earl Gaspard](https://github.com/earlgaspard)
+    [#64](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/64)
+
 ##### Bug Fixes
 
 * None.
