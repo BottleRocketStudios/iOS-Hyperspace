@@ -30,7 +30,7 @@
     [Will McGinty](https://github.com/wmcginty)
     [#47](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/47)
 
-* Add `HTTP.HeaderValue` for JSON API specification. 
+* Add `HTTP.HeaderValue` for JSON API specification.
     [Earl Gaspard](https://github.com/earlgaspard)
     [#46](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/46)
 
