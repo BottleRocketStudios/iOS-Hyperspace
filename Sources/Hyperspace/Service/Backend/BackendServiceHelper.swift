@@ -15,11 +15,11 @@ public struct BackendServiceHelper {
     /// Attempts to transform response data into the associated response model.
     ///
     /// - Parameters:
-    ///   - data: The raw Data retrieved from the network.
+    ///   - serviceSuccess: The successful result of executing a Request using a NetworkService.
     ///   - request: The Request that will be used to transform the Data.
     ///   - completion: The completion block to invoke when execution has finished.
-    public static func handleResponseData<T: Request>(_ data: Data, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
-        let transformResult = request.transformData(data)
+    public static func handleNetworkServiceSuccess<T: Request>(_ serviceSuccess: NetworkServiceSuccess, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
+        let transformResult = request.transformData(serviceSuccess.data, serviceSuccess: serviceSuccess)
         
         executeOnMain {
             switch transformResult {

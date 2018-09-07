@@ -140,7 +140,7 @@ Let's say our view controller is supposed to create the post whenever the user t
 
 For the above example, here's how you would execute the request and parse the response. While all data transformation happens on the background queue that the underlying URLSession is using, all `BackendService` completion callbacks happen on the main queue so there's no need to worry about threading before you update UI. Notice that the type of the success response's associated value below is a `Post` struct as defined in the `CreatePostRequest` above:
 ```swift
-backendService.execute(request: createPostRequest) { [weak self] (result) in
+backendService.execute(request: createPostRequest) { [weak self] result in
     debugPrint("Create post result: \(result)")
 
     switch result {
