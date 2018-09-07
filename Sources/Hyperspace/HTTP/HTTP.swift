@@ -113,7 +113,7 @@ public struct HTTP {
         public let data: Data?
 
         /// The HTTP header fields for this response.
-        public let headers: [String: String]
+        public let headers: [String: String]?
 
         /// The parsed HTTP status associated with this response.
         public var status: HTTP.Status {
@@ -131,7 +131,7 @@ public struct HTTP {
         ///   - code: The raw HTTP status code for this response.
         ///   - data: The raw Data associated with the HTTP response, if any data was provided.
         ///   - headers: The HTTP header fields for this response.
-        public init(code: Int, data: Data?, headers: [String: String] = [:]) {
+        public init(code: Int, data: Data?, headers: [String: String]? = nil) {
             self.code = code
             self.data = data
             self.headers = headers

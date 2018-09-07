@@ -49,12 +49,14 @@ extension NetworkService: NetworkServiceProtocol {
         let task = session.dataTask(with: request) { [weak self] (data, response, error) in
             self?.networkActivityController?.stop()
             
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, let headers = (response as? HTTPURLResponse)?.allHeaderFields as? [String: String] else {
+            guard let response = response as? HTTPURLResponse else {
                 let networkFailure = NetworkServiceHelper.networkServiceFailure(for: error)
                 completion(.failure(networkFailure))
                 return
             }
             
+            let statusCode = response.statusCode
+            let headers = response.allHeaderFields as? [String: String]
             let httpResponse = HTTP.Response(code: statusCode, data: data, headers: headers)
             let networkResult = NetworkServiceHelper.networkServiceResult(for: httpResponse)
             completion(networkResult)
