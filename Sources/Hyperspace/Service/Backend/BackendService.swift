@@ -35,7 +35,7 @@ extension BackendService: BackendServiceProtocol {
         networkService.execute(request: request.urlRequest) { result in
             switch result {
             case .success(let serviceSuccess):
-                BackendServiceHelper.handleResponseData(serviceSuccess.data, serviceSuccess: serviceSuccess, for: request, completion: completion)
+                BackendServiceHelper.handleNetworkServiceSuccess(serviceSuccess, for: request, completion: completion)
             case .failure(let serviceFailure):
                 BackendServiceHelper.handleNetworkServiceFailure(serviceFailure, completion: completion)
             }
