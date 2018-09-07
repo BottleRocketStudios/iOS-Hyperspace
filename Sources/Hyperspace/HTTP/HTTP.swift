@@ -131,7 +131,7 @@ public struct HTTP {
         ///   - code: The raw HTTP status code for this response.
         ///   - data: The raw Data associated with the HTTP response, if any data was provided.
         ///   - headers: The HTTP header fields for this response.
-        public init(code: Int, data: Data?, headers: [String: String]? = nil) {
+        public init(code: Int, data: Data?, headers: [String: String]? = [:]) {
             self.code = code
             self.data = data
             self.headers = headers
