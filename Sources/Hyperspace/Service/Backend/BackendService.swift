@@ -43,7 +43,7 @@ extension BackendService: BackendServiceProtocol {
     }
     
     public func execute<T: Request & Recoverable>(recoverable request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
-        execute(request: request) { [weak self] (result) in
+        execute(request: request) { [weak self] result in
             switch result {
             case .success(let response):
                 BackendServiceHelper.handleResponse(response, completion: completion)

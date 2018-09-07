@@ -122,7 +122,7 @@ class RecoverableTests: XCTestCase {
         let subtitle = "subtitle"
         backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: title, subtitle: subtitle)), recoveryStrategy: MockAuthorizationRecoveryStrategy())
         
-        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { (result) in
+        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { result in
             switch result {
             case .success(let mockObject):
                 XCTAssertEqual(mockObject.title, title)
@@ -142,7 +142,7 @@ class RecoverableTests: XCTestCase {
         let exp = expectation(description: "backendServiceRecovery")
         backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: "title", subtitle: "subtitle")), recoveryStrategy: MockFailureRecoveryStrategy())
         
-        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { (result) in
+        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { result in
             switch result {
             case .success:
                 XCTFail("The error should not recoverable!")

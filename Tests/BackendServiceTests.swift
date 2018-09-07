@@ -104,7 +104,7 @@ class BackendServiceTests: XCTestCase {
         let asyncExpectation = expectation(description: "\(BackendService.self) completion")
         
         let request = defaultRequest
-        backendService.execute(request: request) { (result) in            
+        backendService.execute(request: request) { result in            
             switch (result, expectedResult) {
             case (.success(let resultObject), .success(let expectedObject)):
                 XCTAssertEqual(resultObject, expectedObject, file: file, line: line)
