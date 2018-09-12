@@ -95,7 +95,7 @@ let backendService = BackendService()
 /// 5. Execute the Request
 
 func getUser(completion: @escaping () -> Void) {
-    backendService.execute(request: getUserRequest) { (result) in
+    backendService.execute(request: getUserRequest) { result in
         switch result {
         case .success(let user):
             print("Fetched user: \(user)")
@@ -108,7 +108,7 @@ func getUser(completion: @escaping () -> Void) {
 }
 
 func createPost(completion: @escaping () -> Void) {
-    backendService.execute(request: createPostRequest) { (result) in
+    backendService.execute(request: createPostRequest) { result in
         switch result {
         case .success(let post):
             print("Created post: \(post)")

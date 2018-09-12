@@ -35,7 +35,7 @@ let deletePostRequest = DeletePostRequest(postId: 1)
 
 let backendService = BackendService()
 
-backendService.execute(request: deletePostRequest) { (result) in
+backendService.execute(request: deletePostRequest) { result in
     switch result {
     case .success:
         debugPrint("Deleted post successfully")
