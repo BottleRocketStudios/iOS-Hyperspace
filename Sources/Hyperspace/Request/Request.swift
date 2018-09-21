@@ -65,8 +65,9 @@ public protocol Request {
     /// Attempts to parse the provided Data into the associated response model type for this request.
     ///
     /// - Parameter data: The raw Data retrieved from the network.
+    /// - Parameter serviceSuccess: The successful result of executing a Request using a NetworkService.
     /// - Returns: A result indicating the successful or failed transformation of the data into the associated response type.
-    func transformData(_ data: Data) -> Result<ResponseType, ErrorType>
+    func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<ResponseType, ErrorType>
 }
 
 // MARK: - EmptyResponse
@@ -199,13 +200,14 @@ public extension Request where ResponseType: Decodable, ErrorType: DecodingFailu
         return RequestDefaults.dataTransformer(for: decoder)
     }
     
-    func transformData(_ data: Data) -> Result<ResponseType, ErrorType> {
+    func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<ResponseType, ErrorType> {
         return dataTransformer(with: JSONDecoder())(data)
     }
 }
 
 public extension Request where ResponseType == EmptyResponse {
-    func transformData(_ data: Data) -> Result<EmptyResponse, ErrorType> {
+    
+    func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<EmptyResponse, ErrorType> {
         return .success(EmptyResponse())
     }
 }

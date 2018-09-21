@@ -2,7 +2,7 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode9.4
+osx_image: xcode10
 language: swift
 env:
   global:
@@ -22,7 +22,6 @@ cache:
 before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
-  - brew upgrade swiftlint
   - carthage bootstrap --verbose --no-use-binaries --platform iOS,tvOS,watchOS --cache-builds
 script:
   - swiftlint

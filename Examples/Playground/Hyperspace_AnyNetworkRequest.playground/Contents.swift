@@ -55,7 +55,7 @@ let createPostRequest = AnyRequest<Post>(method: .post,
 
 let backendService = BackendService()
 
-backendService.execute(request: getUserRequest) { (result) in
+backendService.execute(request: getUserRequest) { result in
     switch result {
     case .success(let user):
         debugPrint("Fetched user: \(user)")

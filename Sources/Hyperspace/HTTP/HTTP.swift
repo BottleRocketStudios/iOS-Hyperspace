@@ -105,31 +105,36 @@ public struct HTTP {
     
     /// Represents a HTTP response.
     public struct Response: Equatable {
-        
+
         /// The raw HTTP status code for this response.
         public let code: Int
-        
+
         /// The raw Data associated with the HTTP response, if any data was provided.
         public let data: Data?
-        
+
+        /// The HTTP header fields for this response.
+        public let headers: [String: String]?
+
         /// The parsed HTTP status associated with this response.
         public var status: HTTP.Status {
             return HTTP.Status(code: code)
         }
-        
+
         /// A convenience property to encode the data associated with this response into a String. Can be useful for debugging.
         public var dataString: String? {
             return data.flatMap { String(data: $0, encoding: .utf8) }
         }
-        
-        /// Initialize a new HTTP.Response with any given HTTP status code and Data.
+
+        /// Initialize a new Response with any given HTTP status code and Data.
         ///
         /// - Parameters:
         ///   - code: The raw HTTP status code for this response.
         ///   - data: The raw Data associated with the HTTP response, if any data was provided.
-        public init(code: Int, data: Data?) {
+        ///   - headers: The HTTP header fields for this response.
+        public init(code: Int, data: Data?, headers: [String: String]? = nil) {
             self.code = code
             self.data = data
+            self.headers = headers
         }
     }
 }

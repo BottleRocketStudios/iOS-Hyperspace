@@ -76,7 +76,8 @@ class RecoverableTests: XCTestCase {
         static func protectedService<T: Encodable>(for object: T) -> MockRecoverableNetworkService {
             return MockRecoverableNetworkService { request -> Result<NetworkServiceSuccess, NetworkServiceFailure> in
                 if request.allHTTPHeaderFields?["Authorization"] != nil {
-                    return .success(NetworkServiceSuccess(data: try! JSONEncoder().encode(object), response: HTTP.Response(code: 200, data: nil)))
+                    let data = try! JSONEncoder().encode(object)
+                    return .success(NetworkServiceSuccess(data: data, response: HTTP.Response(code: 200, data: nil)))
                 } else {
                     return .failure(NetworkServiceFailure(error: .clientError(.unauthorized), response: nil))
                 }
@@ -126,11 +127,11 @@ class RecoverableTests: XCTestCase {
             case .success(let mockObject):
                 XCTAssertEqual(mockObject.title, title)
                 XCTAssertEqual(mockObject.subtitle, subtitle)
-                
+
             case .failure(let error):
                 XCTFail("The error should be recoverable: \(error)")
             }
-            
+
             exp.fulfill()
         }
         

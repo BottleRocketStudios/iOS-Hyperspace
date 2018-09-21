@@ -53,16 +53,17 @@ extension MockBackendServiceError: Equatable {
 }
 
 struct MockBackendService: BackendServiceProtocol {
+    
+    func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, T.ErrorType>) -> Void) where T: Request {
+        let failure = NetworkServiceFailure(error: .timedOut, response: nil)
+        completion(Result.failure(T.ErrorType(networkServiceFailure: failure)))
+    }
+    
     func cancelTask(for request: URLRequest) {
         /* No op */
     }
     
     func cancelAllTasks() {
         /* No op */
-    }
-    
-    func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, T.ErrorType>) -> Void) where T: Request {
-        let failure = NetworkServiceFailure(error: .timedOut, response: nil)
-        completion(Result.failure(T.ErrorType(networkServiceFailure: failure)))
     }
 }
