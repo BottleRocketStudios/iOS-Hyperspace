@@ -24,7 +24,7 @@ public protocol NetworkServiceFailureInitializable: Swift.Error {
 
 /// Represents an error which can be constructed from a `DecodingError` and `Data`.
 public protocol DecodingFailureInitializable: Swift.Error {
-    init(decodingError: DecodingError, decoding: Decodable.Type, data: Data)
+    init(error: DecodingError, decoding: Decodable.Type, data: Data)
 }
 
 @available(*, deprecated: 2.0, renamed: "Request")
@@ -108,7 +108,7 @@ public struct RequestDefaults {
     public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
         return dataTransformer(for: decoder) {
             guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
-            return ErrorType(decodingError: decodingError, decoding: ResponseType.self, data: $2)
+            return ErrorType(error: decodingError, decoding: ResponseType.self, data: $2)
         }
     }
     
@@ -129,7 +129,7 @@ public struct RequestDefaults {
                                                                                                                    withContainerType containerType: ContainerType.Type) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
         return dataTransformer(for: decoder, withContainerType: containerType) {
             guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
-            return ErrorType(decodingError: decodingError, decoding: ContainerType.self, data: $2)
+            return ErrorType(error: decodingError, decoding: ContainerType.self, data: $2)
         }
     }
 }
@@ -192,7 +192,7 @@ public extension Request {
     }
 }
 
-// MARK: - Request Default Implementations
+// MARK: - Request Default Implementations [Codable]
 
 public extension Request where ResponseType: Decodable, ErrorType: DecodingFailureInitializable {
     
@@ -205,43 +205,11 @@ public extension Request where ResponseType: Decodable, ErrorType: DecodingFailu
     }
 }
 
+// MARK: - Request Default Implementations [EmptyResponse]
+
 public extension Request where ResponseType == EmptyResponse {
     
     func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<EmptyResponse, ErrorType> {
         return .success(EmptyResponse())
-    }
-}
-
-// MARK: - AnyError Conformance to NetworkServiceInitializable
-
-extension AnyError: NetworkServiceFailureInitializable {
-
-    public init(networkServiceFailure: NetworkServiceFailure) {
-        self.init(networkServiceFailure.error)
-    }
-    
-    public var networkServiceError: NetworkServiceError {
-        return (error as? NetworkServiceError) ?? .unknownError
-    }
-    
-    public var failureResponse: HTTP.Response? {
-        return nil
-    }
-}
-
-// MARK: - AnyError Conformance to DecodingFailureInitializable
-
-extension AnyError: DecodingFailureInitializable {
-    public init(decodingError: DecodingError, decoding: Decodable.Type, data: Data) {
-        self.init(decodingError)
-    }
-}
-
-// MARK: - AnyError Conformance to BackendServiceErrorInitializable
-
-@available(*, deprecated: 2.0, message: "Utilize Request.ErrorType to initialize a custom error type instead.")
-extension AnyError: BackendServiceErrorInitializable {
-    public init(_ backendServiceError: BackendServiceError) {
-        self.init(backendServiceError as Error)
     }
 }

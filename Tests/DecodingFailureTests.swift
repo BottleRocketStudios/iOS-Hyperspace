@@ -18,8 +18,8 @@ class DecodingFailureTests: XCTestCase {
         let type: Decodable.Type
         let data: Data
         
-        init(decodingError: DecodingError, decoding: Decodable.Type, data: Data) {
-            self.error = decodingError
+        init(error: DecodingError, decoding: Decodable.Type, data: Data) {
+            self.error = error
             self.type = decoding
             self.data = data
         }

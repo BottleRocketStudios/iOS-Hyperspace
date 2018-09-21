@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
 		0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
+		0E347E5B2155A7A500BF18FA /* AnyError+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */; };
 		0E81B49920AC8E0B00DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
 		0E81B49B20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
@@ -285,6 +286,7 @@
 
 /* Begin PBXFileReference section */
 		0E29092B21349F320031F67C /* DecodingFailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingFailureTests.swift; sourceTree = "<group>"; };
+		0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyError+Request.swift"; sourceTree = "<group>"; };
 		0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryStrategy.swift; sourceTree = "<group>"; };
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+DecodableContainer.swift"; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 				60AC833F1FF596B600120172 /* URL+Additions.swift */,
 				60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */,
 				0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */,
+				0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1184,6 +1187,7 @@
 				60D6C370201CC81100B3B012 /* DecodableContainer.swift in Sources */,
 				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyRequest.swift in Sources */,
+				0E347E5B2155A7A500BF18FA /* AnyError+Request.swift in Sources */,
 				60D6C372201CC81100B3B012 /* Request.swift in Sources */,
 				60D6C373201CC81100B3B012 /* NetworkSessionDataTask.swift in Sources */,
 				0ECDC1CF20A9FE3100ABF991 /* AnyDecodable.swift in Sources */,

@@ -19,8 +19,8 @@ public enum MockBackendServiceError: NetworkServiceFailureInitializable, Decodin
         self = .networkError(networkServiceFailure.error, networkServiceFailure.response)
     }
     
-    public init(decodingError: DecodingError, decoding: Decodable.Type, data: Data) {
-        self = .dataTransformationError(decodingError)
+    public init(error: DecodingError, decoding: Decodable.Type, data: Data) {
+        self = .dataTransformationError(error)
     }
     
     public var networkServiceError: NetworkServiceError {
