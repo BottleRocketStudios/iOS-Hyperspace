@@ -17,7 +17,6 @@ struct AnyDecodable: Decodable {
     }
 }
 
-@available(*, deprecated)
 extension AnyDecodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
