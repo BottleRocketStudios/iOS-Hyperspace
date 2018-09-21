@@ -27,6 +27,10 @@ public protocol DecodingFailureInitializable: Swift.Error {
     init(decodingError: DecodingError, data: Data)
 }
 
+/// A block that transforms a request's `NetworkServiceSuccess` into a `Result<T,E>`.
+/// This is the same signature as the `transformSuccess(_:)` method on the `Request` protocol.
+public typealias RequestTransformBlock<T, E: Error> = (NetworkServiceSuccess) -> Result<T, E>
+
 @available(*, deprecated: 2.0, renamed: "Request")
 public typealias NetworkRequest = Request
 
@@ -67,7 +71,7 @@ public protocol Request {
     /// - Parameter data: The raw Data retrieved from the network.
     /// - Parameter serviceSuccess: The successful result of executing a Request using a NetworkService.
     /// - Returns: A result indicating the successful or failed transformation of the data into the associated response type.
-    func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<ResponseType, ErrorType>
+    func transformSuccess(_ serviceSuccess: NetworkServiceSuccess) -> Result<ResponseType, ErrorType>
 }
 
 // MARK: - EmptyResponse
@@ -94,8 +98,10 @@ public struct RequestDefaults {
     
     public typealias CatchErrorTransformer<E> = (Swift.Error, Data) -> E
     
-    public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, catchTransformer: @escaping CatchErrorTransformer<ErrorType>) -> (Data) -> Result<ResponseType, ErrorType> {
-        return { data in
+    public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, catchTransformer: @escaping CatchErrorTransformer<ErrorType>) -> RequestTransformBlock<ResponseType, ErrorType> {
+        return { serviceSuccess in
+            let data = serviceSuccess.data
+            
             do {
                 let decodedResponse: ResponseType = try decoder.decode(ResponseType.self, from: data)
                 return .success(decodedResponse)
@@ -105,7 +111,7 @@ public struct RequestDefaults {
         }
     }
     
-    public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
+    public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> RequestTransformBlock<ResponseType, ErrorType> {
         return dataTransformer(for: decoder) {
             guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
             return ErrorType(decodingError: decodingError, data: $1)
@@ -113,8 +119,10 @@ public struct RequestDefaults {
     }
     
     public static func dataTransformer<ContainerType: DecodableContainer, ErrorType>(for decoder: JSONDecoder, withContainerType containerType: ContainerType.Type,
-                                                                                     catchTransformer: @escaping CatchErrorTransformer<ErrorType>) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
-        return { data in
+                                                                                     catchTransformer: @escaping CatchErrorTransformer<ErrorType>) -> RequestTransformBlock<ContainerType.ContainedType, ErrorType> {
+        return { success in
+            let data = success.data
+            
             do {
                 
                 let decodedResponse: ContainerType.ContainedType = try decoder.decode(ContainerType.ContainedType.self, from: data, with: containerType)
@@ -126,7 +134,7 @@ public struct RequestDefaults {
     }
     
     public static func dataTransformer<ContainerType: DecodableContainer, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder,
-                                                                                                                   withContainerType containerType: ContainerType.Type) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
+                                                                                                                   withContainerType containerType: ContainerType.Type) -> RequestTransformBlock<ContainerType.ContainedType, ErrorType> {
         return dataTransformer(for: decoder, withContainerType: containerType) {
             guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
             return ErrorType(decodingError: decodingError, data: $1)
@@ -196,18 +204,18 @@ public extension Request {
 
 public extension Request where ResponseType: Decodable, ErrorType: DecodingFailureInitializable {
     
-    func dataTransformer(with decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
+    func dataTransformer(with decoder: JSONDecoder) -> RequestTransformBlock<ResponseType, ErrorType> {
         return RequestDefaults.dataTransformer(for: decoder)
     }
     
-    func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<ResponseType, ErrorType> {
-        return dataTransformer(with: JSONDecoder())(data)
+    func transformSuccess(_ serviceSuccess: NetworkServiceSuccess) -> Result<ResponseType, ErrorType> {
+        return dataTransformer(with: JSONDecoder())(serviceSuccess)
     }
 }
 
 public extension Request where ResponseType == EmptyResponse {
     
-    func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<EmptyResponse, ErrorType> {
+    func transformSuccess(_ serviceSuccess: NetworkServiceSuccess) -> Result<EmptyResponse, ErrorType> {
         return .success(EmptyResponse())
     }
 }
