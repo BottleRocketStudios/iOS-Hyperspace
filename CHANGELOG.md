@@ -56,7 +56,7 @@
 
 * Renamed `NetworkRequest` and `AnyNetworkRequest` to `Request` and `AnyRequest`.
     [Will McGinty](https://github.com/wmcginty)
-    [#51](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/52)
+    [#52](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/52)
 
 * Add `headers` property to `HTTP.Response`. The method signature of `Request`’s `transformData(_:)` method has changed. If you implement a custom `transformData(_:)` method, you will need to replace it with `transformData(_:serviceSuccess:)`.
     [Earl Gaspard](https://github.com/earlgaspard)
