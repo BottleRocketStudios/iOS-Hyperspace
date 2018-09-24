@@ -35,12 +35,4 @@ class DecodingFailureTests: XCTestCase {
         XCTAssertEqual(String(describing: error.type), String(describing: MockDecodableContainer.self))
         XCTAssertEqual(error.data, objectJSON)
     }
-    
-    // MARK: - Helper
-    
-    private func loadedJSONData(fromFileNamed name: String) -> Data {
-        let bundle = Bundle(for: DecodingTests.self)
-        let url = bundle.url(forResource: name, withExtension: "json")!
-        return try! Data(contentsOf: url)
-    }
 }
