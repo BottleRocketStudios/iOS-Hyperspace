@@ -107,8 +107,7 @@ public struct RequestDefaults {
     
     public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
         return dataTransformer(for: decoder) {
-            guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
-            return ErrorType(error: decodingError, decoding: ResponseType.self, data: $2)
+            return error(from: $0, decoding: ResponseType.self, from: $2)
         }
     }
     
@@ -128,9 +127,13 @@ public struct RequestDefaults {
     public static func dataTransformer<ContainerType: DecodableContainer, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder,
                                                                                                                    withContainerType containerType: ContainerType.Type) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
         return dataTransformer(for: decoder, withContainerType: containerType) {
-            guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
-            return ErrorType(error: decodingError, decoding: ContainerType.self, data: $2)
+            return error(from: $0, decoding: ContainerType.self, from: $2)
         }
+    }
+    
+    private static func error<ErrorType: DecodingFailureInitializable>(from error: Swift.Error, decoding type: Decodable.Type, from data: Data) -> ErrorType {
+        guard let decodingError = error as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
+        return ErrorType(error: decodingError, decoding: type, data: data)
     }
 }
 
