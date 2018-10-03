@@ -2,7 +2,9 @@
 
 ##### Enhancements
 
-* None.
+* Remove the type definitions deprecated in 2.0.0
+[Will McGinty](https://github.com/wmcginty)
+[#72](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/72)
 
 ##### Bug Fixes
 
