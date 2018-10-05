@@ -33,12 +33,3 @@ extension AnyError: DecodingFailureInitializable {
         self.init(error)
     }
 }
-
-// MARK: - AnyError Conformance to BackendServiceErrorInitializable
-
-@available(*, deprecated: 2.0, message: "Utilize Request.ErrorType to initialize a custom error type instead.")
-extension AnyError: BackendServiceErrorInitializable {
-    public init(_ backendServiceError: BackendServiceError) {
-        self.init(backendServiceError as Error)
-    }
-}

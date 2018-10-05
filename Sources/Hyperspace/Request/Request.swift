@@ -27,19 +27,12 @@ public protocol DecodingFailureInitializable: Swift.Error {
     init(error: DecodingError, decoding: Decodable.Type, data: Data)
 }
 
-@available(*, deprecated: 2.0, renamed: "Request")
-public typealias NetworkRequest = Request
-
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
 public protocol Request {
     
     /// The model type that this Request will attempt to transform Data into.
     associatedtype ResponseType
     associatedtype ErrorType: NetworkServiceFailureInitializable
-
-    /// The query parameters for the URL. These parameters should now be specified as part of the `url` property.
-    @available(*, deprecated: 2.0, message: "Query parameters should now be specified as part of the `url` property")
-    var queryParameters: [URLQueryItem]? { get }
     
     /// The HTTP method to be use when executing this request.
     var method: HTTP.Method { get }
@@ -82,9 +75,6 @@ public struct EmptyResponse {
 }
 
 // MARK: - Request Defaults
-
-@available(*, deprecated: 2.0, renamed: "RequestDefaults")
-public typealias NetworkRequestDefaults = RequestDefaults
 
 public struct RequestDefaults {
     

@@ -9,22 +9,6 @@
 import Foundation
 import Result
 
-/// Represents an error that a BackendService can produce.
-///
-/// - networkError: Represents an error that ocurred with the underlying NetworkService.
-/// - dataTransformationError: Represents an error that ocurred when parsing the raw Data into the associated model type.
-@available(*, deprecated: 2.0, message: "Utilize Request.ErrorType to initialize a custom error type instead.")
-public enum BackendServiceError: Error {
-    case networkError(NetworkServiceError, HTTP.Response?)
-    case dataTransformationError(Error)
-}
-
-/// Represents an error that can be created from a BackendServiceError. This type can be used for strongly typed error handling.
-@available(*, deprecated: 2.0, message: "Utilize Request.ErrorType to initialize a custom error type instead.")
-public protocol BackendServiceErrorInitializable: Error {
-    init(_ backendServiceError: BackendServiceError)
-}
-
 /// Represents the completion of a request executed using a BackendService.
 /// When successful, the parsed object is provided as the associated value.
 /// When request execution fails, the relevant E is provided as the associated value.
