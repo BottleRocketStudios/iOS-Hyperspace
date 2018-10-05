@@ -24,7 +24,7 @@ public protocol NetworkServiceFailureInitializable: Swift.Error {
 
 /// Represents an error which can be constructed from a `DecodingError` and `Data`.
 public protocol DecodingFailureInitializable: Swift.Error {
-    init(decodingError: DecodingError, data: Data)
+    init(error: DecodingError, decoding: Decodable.Type, data: Data)
 }
 
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
@@ -82,35 +82,34 @@ public struct RequestDefaults {
     
     public static var defaultTimeout: TimeInterval = 30
     
-    public typealias CatchErrorTransformer<E> = (Swift.Error, Data) -> E
+    public typealias DecodingErrorTransformer<E> = (Swift.Error, Any.Type, Data) -> E
     
-    public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, catchTransformer: @escaping CatchErrorTransformer<ErrorType>) -> (Data) -> Result<ResponseType, ErrorType> {
+    public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, catchTransformer: @escaping DecodingErrorTransformer<ErrorType>) -> (Data) -> Result<ResponseType, ErrorType> {
         return { data in
             do {
                 let decodedResponse: ResponseType = try decoder.decode(ResponseType.self, from: data)
                 return .success(decodedResponse)
             } catch {
-                return .failure(catchTransformer(error, data))
+                return .failure(catchTransformer(error, ResponseType.self, data))
             }
         }
     }
     
     public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType> {
         return dataTransformer(for: decoder) {
-            guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
-            return ErrorType(decodingError: decodingError, data: $1)
+            return error(from: $0, decoding: ResponseType.self, from: $2)
         }
     }
     
     public static func dataTransformer<ContainerType: DecodableContainer, ErrorType>(for decoder: JSONDecoder, withContainerType containerType: ContainerType.Type,
-                                                                                     catchTransformer: @escaping CatchErrorTransformer<ErrorType>) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
+                                                                                     catchTransformer: @escaping DecodingErrorTransformer<ErrorType>) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
         return { data in
             do {
                 
                 let decodedResponse: ContainerType.ContainedType = try decoder.decode(ContainerType.ContainedType.self, from: data, with: containerType)
                 return .success(decodedResponse)
             } catch {
-                return .failure(catchTransformer(error, data))
+                return .failure(catchTransformer(error, ContainerType.ContainedType.self, data))
             }
         }
     }
@@ -118,9 +117,13 @@ public struct RequestDefaults {
     public static func dataTransformer<ContainerType: DecodableContainer, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder,
                                                                                                                    withContainerType containerType: ContainerType.Type) -> (Data) -> Result<ContainerType.ContainedType, ErrorType> {
         return dataTransformer(for: decoder, withContainerType: containerType) {
-            guard let decodingError = $0 as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
-            return ErrorType(decodingError: decodingError, data: $1)
+            return error(from: $0, decoding: ContainerType.self, from: $2)
         }
+    }
+    
+    private static func error<ErrorType: DecodingFailureInitializable>(from error: Swift.Error, decoding type: Decodable.Type, from data: Data) -> ErrorType {
+        guard let decodingError = error as? DecodingError else { fatalError("JSONDecoder should always throw a DecodingError.") }
+        return ErrorType(error: decodingError, decoding: type, data: data)
     }
 }
 
@@ -182,7 +185,7 @@ public extension Request {
     }
 }
 
-// MARK: - Request Default Implementations
+// MARK: - Request Default Implementations [Codable]
 
 public extension Request where ResponseType: Decodable, ErrorType: DecodingFailureInitializable {
     
@@ -195,34 +198,11 @@ public extension Request where ResponseType: Decodable, ErrorType: DecodingFailu
     }
 }
 
+// MARK: - Request Default Implementations [EmptyResponse]
+
 public extension Request where ResponseType == EmptyResponse {
     
     func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<EmptyResponse, ErrorType> {
         return .success(EmptyResponse())
-    }
-}
-
-// MARK: - AnyError Conformance to NetworkServiceInitializable
-
-extension AnyError: NetworkServiceFailureInitializable {
-
-    public init(networkServiceFailure: NetworkServiceFailure) {
-        self.init(networkServiceFailure.error)
-    }
-    
-    public var networkServiceError: NetworkServiceError {
-        return (error as? NetworkServiceError) ?? .unknownError
-    }
-    
-    public var failureResponse: HTTP.Response? {
-        return nil
-    }
-}
-
-// MARK: - AnyError Conformance to DecodingFailureInitializable
-
-extension AnyError: DecodingFailureInitializable {
-    public init(decodingError: DecodingError, data: Data) {
-        self.init(decodingError)
     }
 }

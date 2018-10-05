@@ -8,7 +8,6 @@
 
 //
 //  TODO: Future functionality:
-//          - Consider converting HTTP.Status to a "RawRepresentable" type with static constants for codes. This would allow clients to extend or provide their own status codes and eliminate the need for an 'unknown' enum case.
 //          - Are there any HTTP.HeaderKeys that we should add (or remove)?
 //          - Are there any HTTP.HeaderValues that we should add (or remove)?
 //

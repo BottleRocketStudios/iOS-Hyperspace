@@ -6,6 +6,10 @@
 [Will McGinty](https://github.com/wmcginty)
 [#72](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/72)
 
+* Added failing type information to `DecodingFailureInitializable` allowing the API to make decisions based off of the type that failed to decode and deprecate dynamically keyed decoding.
+[Will McGinty](https://github.com/wmcginty)
+[#71](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/71)
+
 ##### Bug Fixes
 
 * None.
