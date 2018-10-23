@@ -2,7 +2,9 @@
 
 ##### Enhancements
 
-* None.
+* **[BREAKING]** Renamed `Request` protocol's `transformData(_:serviceSuccess:)` method to `transformSuccess(_:)`. The redundant `data` parameter was removed since the `NetworkServiceSuccess` makes it available as a property. Also simplified method signatures by introducing `RequestTransformBlock` typealias.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#70](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/70)
 
 ##### Bug Fixes
 
