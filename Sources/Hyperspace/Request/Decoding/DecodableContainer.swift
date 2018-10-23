@@ -31,15 +31,10 @@ extension AnyRequest where T: Decodable {
                                        timeout: TimeInterval = RequestDefaults.defaultTimeout,
                                        decoder: JSONDecoder = JSONDecoder(),
                                        containerType: U.Type) where U.ContainedType == T {
-        self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { success in
-            do {
-                return try .success(decoder.decode(U.ContainedType.self, from: success.data, with: U.self))
-            } catch {
-                return .failure(AnyError(error))
-            }
-        }
+        self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout, dataTransformer: RequestDefaults.dataTransformer(for: decoder, withContainerType: containerType))
     }
     
+    @available(*, deprecated, message: "This method of dynamically assigning a rootKey is not only unsafe but non-performant. Users of this API should migrate to `DecodableContainer` usage instead.")
     public init(method: HTTP.Method,
                 url: URL,
                 headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,

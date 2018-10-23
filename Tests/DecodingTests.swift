@@ -287,12 +287,5 @@ class DecodingTests: XCTestCase {
         XCTAssertEqual(stringConvertible.description, obj.description)
     }
     // swiftlint:enable syntactic_sugar
-    
-    // MARK: - Helper
 
-    private func loadedJSONData(fromFileNamed name: String) -> Data {
-        let bundle = Bundle(for: DecodingTests.self)
-        let url = bundle.url(forResource: name, withExtension: "json")!
-        return try! Data(contentsOf: url)
-    }
 }
