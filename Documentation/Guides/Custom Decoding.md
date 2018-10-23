@@ -1,14 +1,14 @@
-### Custom Decoding with NetworkRequest
+### Custom Decoding with Request
 
-Since the introduction of `Codable`, parsing alternate representations of model objects has become drastically simpler. Hyperspace is no different - it heavily leans on `Codable` to make parsing network responses painless. By default, Hyperspace will opt to use the default instance of `JSONDecoder`. This object expects it's `Date`s represented as a time interval since 1970, it's data represented as a base-64 encoded `String` and will `throw` if encountering any non-conforming floats. 
+Since the introduction of `Codable`, parsing alternate representations of model objects has become drastically simpler. Hyperspace is no different - it heavily leans on `Codable` to make parsing network responses painless. By default, Hyperspace will opt to use the default instance of `JSONDecoder`. This object expects it's `Date`s represented as a time interval since 1970, it's data represented as a base-64 encoded `String` and will `throw` if encountering any non-conforming floats.
 
-If the objects you are trying to fetch with a `NetworkRequest` rely on a non-default setting of these properties, you can still use the default `Codable` extensions that are built into Hyperspace - you don't have to rewrite anything. 
+If the objects you are trying to fetch with a `Request` rely on a non-default setting of these properties, you can still use the default `Codable` extensions that are built into Hyperspace - you don't have to rewrite anything. 
 
-If you are using `AnyNetworkRequest<T>`, there are two initializers:
+If you are using `AnyRequest<T>`, there are two initializers:
 
 ```swift
 public init(method: HTTP.Method, url: URL, headers: [HTTP.HeaderKey: HTTP.HeaderValue]?, body: Data?,
-    cachePolicy: URLRequest.CachePolicy, timeout: TimeInterval, dataTransformer: @escaping (Data) -> Result<T, AnyError>)
+    cachePolicy: URLRequest.CachePolicy, timeout: TimeInterval, dataTransformer: @escaping RequestTransformBlock<T, AnyError>)
     
 public init(method: HTTP.Method, url: URL, headers: [HTTP.HeaderKey: HTTP.HeaderValue]?, body: Data?,
     cachePolicy: URLRequest.CachePolicy, timeout: TimeInterval, decoder: JSONDecoder)
@@ -16,16 +16,15 @@ public init(method: HTTP.Method, url: URL, headers: [HTTP.HeaderKey: HTTP.Header
 
 The first of these initializers allows you to completely customize the data transformation block to your liking. This is the default initializer that is used with all types. The second initializer is an option only when `ResponseType` is `Decodable`. At this point you simply pass in the `JSONDecoder` instance you need, and Hyperspace will use it to do the rest.
 
-If you are conforming to `NetworkRequest` with your own custom structs, you have similar options. First, you can implement the protocol requirement `transformData(_:)` however you wish - this is a great option if you have not yet gotten around to adopting `Codable` (or if you are parsing something other than JSON). In addition, the `NetworkRequestDefaults` struct contains two more options when you are working with a `ResponseType: Codable`:
+If you are conforming to `Request` with your own custom structs, you have similar options. First, you can implement the protocol requirement `transformSuccess(_:)` however you wish - this is a great option if you have not yet gotten around to adopting `Codable` (or if you are parsing something other than JSON). In addition, the `RequestDefaults` struct contains two more options when you are working with a `ResponseType: Codable`:
 
 ```swift
-public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> (Data) -> Result<ResponseType, ErrorType>
-public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, 
-                                                                  catchTransformer: @escaping (Swift.Error, Data) -> E) -> (Data) -> Result<ResponseType, ErrorType>
+public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> RequestTransformBlock<ResponseType, ErrorType>
 
+public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, catchTransformer: @escaping DecodingErrorTransformer<ErrorType>) -> RequestTransformBlock<ResponseType, ErrorType>
 ```
 
-The first of these functions provides a defaul that can be used for any `Codable` type, as long as your error conforms to `DecodingFailureInitializable`. But, in the case your `ErrorType` does not conform, you can use the other function - in which you simply provide a closure to convert a generic error to your type: `(Swift.Error) -> E`
+The first of these functions provides a default that can be used for any `Codable` type, as long as your error conforms to `DecodingFailureInitializable`. But, in the case that your `ErrorType` does not conform, you can use the other function - in which you simply provide a closure to convert a generic error to your type: `(Swift.Error) -> E`
 
 ### Decoding With Containers
 
@@ -60,7 +59,7 @@ In `JSONDecoder`:
 func decode<T, U: DecodableContainer>(_ type: T.Type, from data: Data, with container: U.Type) throws -> T where T == U.ContainedType
 ```
 
-In `AnyNetworkRequest`:
+In `AnyRequest`:
 
 ```swift
 public init<U: DecodableContainer>(method: HTTP.Method, url: URL, headers: [HTTP.HeaderKey: HTTP.HeaderValue]?, body: Data?,

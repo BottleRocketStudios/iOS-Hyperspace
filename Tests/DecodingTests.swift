@@ -55,30 +55,34 @@ class DecodingTests: XCTestCase {
     }
     
     func test_RequestDefaultsContainer_AutomaticallyDecodesChildElement() {
-        let function: (Data) -> Result<MockObject, AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
+        let function: RequestTransformBlock<MockObject, AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
-        let mockObject = function(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let mockObject = function(serviceSuccess)
         XCTAssertNotNil(mockObject.value)
     }
     
     func test_RequestDefaultsContainer_AutomaticallyDecodesChildElements() {
-        let function: (Data) -> Result<[MockObject], AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
+        let function: RequestTransformBlock<[MockObject], AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
-        let mockObject = function(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let mockObject = function(serviceSuccess)
         XCTAssertNotNil(mockObject.value)
     }
     
     func test_RequestDefaultsContainer_ThrowsErrorForChildElement() {
-        let function: (Data) -> Result<MockObject, AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
+        let function: RequestTransformBlock<MockObject, AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
-        let mockObject = function(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let mockObject = function(serviceSuccess)
         XCTAssertNotNil(mockObject.error)
     }
     
     func test_RequestDefaultsContainer_ThrowsErrorForChildElements() {
-        let function: (Data) -> Result<[MockObject], AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
+        let function: RequestTransformBlock<[MockObject], AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
-        let mockObject = function(objectJSON)
+        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let mockObject = function(serviceSuccess)
         XCTAssertNotNil(mockObject.error)
     }
     
@@ -86,7 +90,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, decoder: JSONDecoder())
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
@@ -94,7 +98,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
@@ -110,7 +114,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockDate>(method: .get, url: RequestTestDefaults.defaultURL, decoder: decoder)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
@@ -118,7 +122,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockDate>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNil(result.value)
     }
     
@@ -126,7 +130,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNotNil(result.value)
     }
 
@@ -134,7 +138,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<[MockObject]>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockArrayDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
@@ -142,7 +146,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNil(result.value) //Should fail because RootKeyArray json contains [MockObject], not a single MockObject
     }
     
@@ -150,7 +154,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
@@ -158,7 +162,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<[MockObject]>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
@@ -166,7 +170,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObjectPlus")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNotNil(result.value)
     }
     
@@ -174,7 +178,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "incorrectkey")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNil(result.value)
         
         let decodeError = result.error!.error as! DecodingError
@@ -191,7 +195,7 @@ class DecodingTests: XCTestCase {
         let request = AnyRequest<MockObject>(method: .get, url: RequestTestDefaults.defaultURL, rootDecodingKey: "root_key")
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyIncorrectType")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
-        let result = request.transformData(objectJSON, serviceSuccess: serviceSuccess)
+        let result = request.transformSuccess(serviceSuccess)
         XCTAssertNil(result.value)
         
         let decodeError = result.error!.error as! DecodingError

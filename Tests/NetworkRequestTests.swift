@@ -100,7 +100,7 @@ class RequestTests: XCTestCase {
         let request = CachePolicyAndTimeOutRequest()
         let data = "this is dummy content".data(using: .utf8)!
         let serviceSuccess = NetworkServiceSuccess(data: data, response: HTTP.Response(code: 200, data: data))
-        let result: Result<CachePolicyAndTimeOutRequest.ResponseType, CachePolicyAndTimeOutRequest.ErrorType> = request.transformData(data, serviceSuccess: serviceSuccess)
+        let result: Result<CachePolicyAndTimeOutRequest.ResponseType, CachePolicyAndTimeOutRequest.ErrorType> = request.transformSuccess(serviceSuccess)
         
         XCTAssertNotNil(result.value)
     }

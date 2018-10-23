@@ -12,6 +12,8 @@ import Result
 /// A type-erased structure to allow for simple Requests to be easily created.
 public struct AnyRequest<T>: Request {
     
+    public typealias TransformBlock = RequestTransformBlock<T, AnyError>
+    
     // MARK: - Properties
     
     public var method: HTTP.Method
@@ -20,7 +22,7 @@ public struct AnyRequest<T>: Request {
     public var body: Data?
     public var cachePolicy: URLRequest.CachePolicy
     public var timeout: TimeInterval
-    private let _transformData: (Data) -> Result<T, AnyError>
+    private let _transformSuccess: TransformBlock
     
     // MARK: - Init
     
@@ -30,7 +32,7 @@ public struct AnyRequest<T>: Request {
                 body: Data? = nil,
                 cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
                 timeout: TimeInterval = RequestDefaults.defaultTimeout,
-                dataTransformer: @escaping (Data) -> Result<T, AnyError>) {
+                dataTransformer: @escaping TransformBlock) {
         self.method = method
         self.url = url
         self.headers = headers
@@ -38,13 +40,13 @@ public struct AnyRequest<T>: Request {
         self.cachePolicy = cachePolicy
         self.timeout = timeout
         
-        _transformData = dataTransformer
+        _transformSuccess = dataTransformer
     }
     
     // MARK: - Public
     
-    public func transformData(_ data: Data, serviceSuccess: NetworkServiceSuccess) -> Result<T, AnyError> {
-        return _transformData(data)
+    public func transformSuccess(_ serviceSuccess: NetworkServiceSuccess) -> Result<T, AnyError> {
+        return _transformSuccess(serviceSuccess)
     }
 }
 
@@ -66,6 +68,6 @@ extension AnyRequest where T: Decodable {
         self.cachePolicy = cachePolicy
         self.timeout = timeout
         
-        _transformData = RequestDefaults.dataTransformer(for: decoder)
+        _transformSuccess = RequestDefaults.dataTransformer(for: decoder)
     }
 }
