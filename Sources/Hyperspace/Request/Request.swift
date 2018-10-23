@@ -93,6 +93,8 @@ public struct RequestDefaults {
     
     public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, catchTransformer: @escaping DecodingErrorTransformer<ErrorType>) -> RequestTransformBlock<ResponseType, ErrorType> {
         return { success in
+            let data = success.data
+            
             do {
                 let decodedResponse: ResponseType = try decoder.decode(ResponseType.self, from: data)
                 return .success(decodedResponse)
@@ -111,6 +113,8 @@ public struct RequestDefaults {
     public static func dataTransformer<ContainerType: DecodableContainer, ErrorType>(for decoder: JSONDecoder, withContainerType containerType: ContainerType.Type,
                                                                                      catchTransformer: @escaping DecodingErrorTransformer<ErrorType>) -> RequestTransformBlock<ContainerType.ContainedType, ErrorType> {
         return { success in
+            let data = success.data
+            
             do {
                 
                 let decodedResponse: ContainerType.ContainedType = try decoder.decode(ContainerType.ContainedType.self, from: data, with: containerType)
