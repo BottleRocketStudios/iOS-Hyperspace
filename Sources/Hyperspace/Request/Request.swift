@@ -31,9 +31,6 @@ public protocol DecodingFailureInitializable: Swift.Error {
 /// This is the same signature as the `transformSuccess(_:)` method on the `Request` protocol.
 public typealias RequestTransformBlock<T, E: Error> = (NetworkServiceSuccess) -> Result<T, E>
 
-@available(*, deprecated: 2.0, renamed: "Request")
-public typealias NetworkRequest = Request
-
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
 public protocol Request {
     
