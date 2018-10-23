@@ -3,15 +3,16 @@
 ##### Enhancements
 
 * Remove the type definitions deprecated in 2.0.0
-[Will McGinty](https://github.com/wmcginty)
-[#72](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/72)
+  [Will McGinty](https://github.com/wmcginty)
+  [#72](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/72)
 
 * Added failing type information to `DecodingFailureInitializable` allowing the API to make decisions based off of the type that failed to decode and deprecate dynamically keyed decoding.
-[Will McGinty](https://github.com/wmcginty)
-[#71](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/71)
+  [Will McGinty](https://github.com/wmcginty)
+  [#71](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/71)
 
 * **[BREAKING]** Renamed `Request` protocol's `transformData(_:serviceSuccess:)` method to `transformSuccess(_:)`. The redundant `data` parameter was removed since the `NetworkServiceSuccess` makes it available as a property. Also simplified method signatures by introducing `RequestTransformBlock` typealias.
   [Tyler Milner](https://github.com/tylermilner)
+  [#69](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/69)
   [#70](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/70)
 
 ##### Bug Fixes
