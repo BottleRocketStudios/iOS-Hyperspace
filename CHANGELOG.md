@@ -2,6 +2,10 @@
 
 ##### Enhancements
 
+* Fixed CHANGELOG for version 2.0.0/2.1.0.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#73](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/73)
+
 * Remove the type definitions deprecated in 2.0.0
   [Will McGinty](https://github.com/wmcginty)
   [#72](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/72)
