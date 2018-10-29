@@ -2,6 +2,10 @@
 
 ##### Enhancements
 
+* Fixed CHANGELOG for version 2.0.0/2.1.0.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#73](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/73)
+
 * Remove the type definitions deprecated in 2.0.0
   [Will McGinty](https://github.com/wmcginty)
   [#72](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/72)
@@ -14,13 +18,46 @@
   [Tyler Milner](https://github.com/tylermilner)
   [#69](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/69)
   [#70](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/70)
+  
+* Fixed minor typo in CHANGELOG where the PR URL text didn't match the underlying PR number.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#68](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/68)
 
 ##### Bug Fixes
 
 * None.
 
-
 ## 2.1.0 (2018-09-20)
+
+##### Enhancements
+
+* Mark `Request.queryParameters` as deprecated in v2.
+  [Daniel Larsen](https://github.com/GrandLarseny)
+  [#59](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/59)
+  [#61](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/61)
+
+* Added notes about `headers` property changes to migration guide.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#60](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/60)
+  [#62](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/62)
+  
+* Updated Travis-CI to Xcode 9.4.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#63](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/63)
+
+* Add `headers` property to `HTTP.Response`. The method signature of `Request`’s `transformData(_:)` method has changed. If you implement a custom `transformData(_:)` method, you will need to replace it with `transformData(_:serviceSuccess:)`.
+  [Earl Gaspard](https://github.com/earlgaspard)
+  [#64](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/64)
+
+* Updated Result dependency to version 4.0, updated Travis-CI to Xcode 10, and updated Swift version from Swift 4.1 to Swift 4.2 (for both library and sample app).
+  [Tyler Milner](https://github.com/tylermilner)
+  [#67](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/67)
+
+##### Bug Fixes
+
+* None.
+
+## 2.0.0 (2018-08-03)
 
 ##### Enhancements
 
@@ -68,10 +105,6 @@
 * Renamed `NetworkRequest` and `AnyNetworkRequest` to `Request` and `AnyRequest`.
     [Will McGinty](https://github.com/wmcginty)
     [#52](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/52)
-
-* Add `headers` property to `HTTP.Response`. The method signature of `Request`’s `transformData(_:)` method has changed. If you implement a custom `transformData(_:)` method, you will need to replace it with `transformData(_:serviceSuccess:)`.
-    [Earl Gaspard](https://github.com/earlgaspard)
-    [#64](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/64)
 
 ##### Bug Fixes
 
