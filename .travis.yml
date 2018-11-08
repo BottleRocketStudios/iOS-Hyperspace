@@ -23,6 +23,8 @@ before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
   - carthage bootstrap --verbose --no-use-binaries --platform iOS,tvOS,watchOS --cache-builds
+  - npm install -g danger
+  - brew install danger/tap/danger-swift
 script:
   - swiftlint
   - set -o pipefail
@@ -38,5 +40,8 @@ script:
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
     fi
+  
+  # Run Danger
+  - danger process danger-swift
 after_success:
   - bash <(curl -s https://codecov.io/bash)
