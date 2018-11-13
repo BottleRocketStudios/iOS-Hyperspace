@@ -24,7 +24,8 @@ before_install:
   - brew outdated carthage || brew upgrade carthage
   - carthage bootstrap --verbose --no-use-binaries --platform iOS,tvOS,watchOS --cache-builds
   - npm install -g danger
-  - brew outdated danger/tap/danger-swift || brew upgrade danger/tap/danger-swift
+  - brew tap danger/tap
+  - brew outdated danger-swift || brew upgrade danger-swift
 script:
   - swiftlint
   - set -o pipefail
