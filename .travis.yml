@@ -26,6 +26,7 @@ before_install:
   - npm install -g danger
   - brew tap danger/tap
   - brew outdated danger-swift || brew upgrade danger-swift
+  - brew info danger-swift
 script:
   - swiftlint
   - set -o pipefail
