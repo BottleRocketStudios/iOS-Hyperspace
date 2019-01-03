@@ -2,6 +2,16 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None.
+
+## 3.0.0 (2018-01-03)
+
+##### Enhancements
+
 * Fixed CHANGELOG for version 2.0.0/2.1.0.
   [Tyler Milner](https://github.com/tylermilner)
   [#73](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/73)
@@ -10,7 +20,7 @@
   [Will McGinty](https://github.com/wmcginty)
   [#72](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/72)
 
-* Added failing type information to `DecodingFailureInitializable` allowing the API to make decisions based off of the type that failed to decode and deprecate dynamically keyed decoding.
+* **[BREAKING]** Added failing type information to `DecodingFailureInitializable` allowing the API to make decisions based off of the type that failed to decode and deprecate dynamically keyed decoding.
   [Will McGinty](https://github.com/wmcginty)
   [#71](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/71)
 
@@ -18,7 +28,7 @@
   [Tyler Milner](https://github.com/tylermilner)
   [#69](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/69)
   [#70](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/70)
-  
+
 * Fixed minor typo in CHANGELOG where the PR URL text didn't match the underlying PR number.
   [Tyler Milner](https://github.com/tylermilner)
   [#68](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/68)
@@ -40,7 +50,7 @@
   [Tyler Milner](https://github.com/tylermilner)
   [#60](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/60)
   [#62](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/62)
-  
+
 * Updated Travis-CI to Xcode 9.4.
   [Tyler Milner](https://github.com/tylermilner)
   [#63](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/63)

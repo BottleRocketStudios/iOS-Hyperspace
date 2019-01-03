@@ -41,10 +41,10 @@ In this case, the `ErrorType` associated type must be a type conforming to `Netw
 While most APIs return proper HTTP status codes with their error messages, there are some that don't. In the case that a successful status code is returned, but the `Data` contained in the response does not represent the desired model object (as it would in a true success), `NetworkRequest.transformSuccess(_:)` would ordinarily throw a failure. If you are dealing with strictly `Decodable` types, conforming your error type to `DecodingFailureInitializable` will give you another chance to refine the error handling. Hyperspace provides a default `transformSuccess(_:)` implementation that handles any `Decodable` type when your error type conforms to this protocol. If, in the process of decoding your response from `Data`, a `DecodingError` is thrown, the results will be passed on to your error through the function:
 
 ```swift
-init(decodingError: DecodingError, data: Data)
+init(decodingError: DecodingError, decoding: Decodable.Type, data: Data)
 ```
 
-This initializer will allow you to inspect the problem with the decode (this will happen frequently during development), as well as provide you with the raw data. In some cases, this `Data` may be representative of an error and can then be decoded before being returned to the caller.
+This initializer will allow you to inspect the problem with the decode (this will happen frequently during development), as well as provide you with the raw data and the type that failed to decode. In some cases, this `Data` may be representative of an error and can then be decoded before being returned to the caller.
 
 ### Error Recovery
 
