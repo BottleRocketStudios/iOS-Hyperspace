@@ -44,6 +44,6 @@ script:
     fi
   
   # Run Danger
-  - danger-swift ci
+  - danger process danger-swift
 after_success:
   - bash <(curl -s https://codecov.io/bash)
