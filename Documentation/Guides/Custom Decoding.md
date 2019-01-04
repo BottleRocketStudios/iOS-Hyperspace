@@ -2,14 +2,14 @@
 
 Since the introduction of `Codable`, parsing alternate representations of model objects has become drastically simpler. Hyperspace is no different - it heavily leans on `Codable` to make parsing network responses painless. By default, Hyperspace will opt to use the default instance of `JSONDecoder`. This object expects it's `Date`s represented as a time interval since 1970, it's data represented as a base-64 encoded `String` and will `throw` if encountering any non-conforming floats.
 
-If the objects you are trying to fetch with a `Request` rely on a non-default setting of these properties, you can still use the default `Codable` extensions that are built into Hyperspace - you don't have to rewrite anything. 
+If the objects you are trying to fetch with a `Request` rely on a non-default setting of these properties, you can still use the default `Codable` extensions that are built into Hyperspace - you don't have to rewrite anything.
 
 If you are using `AnyRequest<T>`, there are two initializers:
 
 ```swift
 public init(method: HTTP.Method, url: URL, headers: [HTTP.HeaderKey: HTTP.HeaderValue]?, body: Data?,
     cachePolicy: URLRequest.CachePolicy, timeout: TimeInterval, dataTransformer: @escaping RequestTransformBlock<T, AnyError>)
-    
+
 public init(method: HTTP.Method, url: URL, headers: [HTTP.HeaderKey: HTTP.HeaderValue]?, body: Data?,
     cachePolicy: URLRequest.CachePolicy, timeout: TimeInterval, decoder: JSONDecoder)
 ```
@@ -64,9 +64,4 @@ In `AnyRequest`:
 ```swift
 public init<U: DecodableContainer>(method: HTTP.Method, url: URL, headers: [HTTP.HeaderKey: HTTP.HeaderValue]?, body: Data?,
     cachePolicy: URLRequest.CachePolicy, timeout: TimeInterval, decoder: JSONDecoder, containerType: U.Type) where U.ContainedType == T
-    
-public init(method: HTTP.Method, url: URL, headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil, body: Data? = nil, 
-    cachePolicy: URLRequest.CachePolicy, timeout: TimeInterval, decoder: JSONDecoder, rootDecodingKey: String)
 ```
-
-In addition to the ability for these containers to be generic over the `Decodable` type (as long as they all use the same `CodingKey.element` raw value) you can also simply specify a `String` here. Using this value will sacrifice some runtime performance, but allows you handle much less standard JSON.
