@@ -68,6 +68,6 @@ extension AnyRequest where T: Decodable {
         self.cachePolicy = cachePolicy
         self.timeout = timeout
         
-        _transformSuccess = RequestDefaults.dataTransformer(for: decoder)
+        _transformSuccess = RequestDefaults.successTransformer(for: decoder)
     }
 }
