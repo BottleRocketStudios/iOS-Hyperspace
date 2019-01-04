@@ -131,47 +131,24 @@ public struct RequestDefaults {
     
     @available(*, deprecated, renamed: "successTransformer(for:)")
     public static func dataTransformer<ResponseType: Decodable, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder) -> RequestTransformBlock<ResponseType, ErrorType> {
-        return dataTransformer(for: decoder) {
-            return error(from: $0, decoding: ResponseType.self, from: $2)
-        }
+        return successTransformer(for: decoder)
     }
 
     @available(*, deprecated, renamed: "successTransformer(for:catchTransformer:)")
     public static func dataTransformer<ResponseType: Decodable, ErrorType>(for decoder: JSONDecoder, catchTransformer: @escaping DecodingErrorTransformer<ErrorType>) -> RequestTransformBlock<ResponseType, ErrorType> {
-        return { success in
-            let data = success.data
-            
-            do {
-                let decodedResponse: ResponseType = try decoder.decode(ResponseType.self, from: data)
-                return .success(decodedResponse)
-            } catch {
-                return .failure(catchTransformer(error, ResponseType.self, data))
-            }
-        }
+        return successTransformer(for: decoder, catchTransformer: catchTransformer)
     }
     
     @available(*, deprecated, renamed: "successTransformer(for:withContainerType:)")
     public static func dataTransformer<ContainerType: DecodableContainer, ErrorType: DecodingFailureInitializable>(for decoder: JSONDecoder,
                                                                                                                    withContainerType containerType: ContainerType.Type) -> RequestTransformBlock<ContainerType.ContainedType, ErrorType> {
-        return dataTransformer(for: decoder, withContainerType: containerType) {
-            return error(from: $0, decoding: ContainerType.self, from: $2)
-        }
+        return successTransformer(for: decoder, withContainerType: containerType)
     }
     
     @available(*, deprecated, renamed: "successTransformer(for:withContainerType:catchTransformer:)")
     public static func dataTransformer<ContainerType: DecodableContainer, ErrorType>(for decoder: JSONDecoder, withContainerType containerType: ContainerType.Type,
                                                                                      catchTransformer: @escaping DecodingErrorTransformer<ErrorType>) -> RequestTransformBlock<ContainerType.ContainedType, ErrorType> {
-        return { success in
-            let data = success.data
-            
-            do {
-                
-                let decodedResponse: ContainerType.ContainedType = try decoder.decode(ContainerType.ContainedType.self, from: data, with: containerType)
-                return .success(decodedResponse)
-            } catch {
-                return .failure(catchTransformer(error, ContainerType.ContainedType.self, data))
-            }
-        }
+        return successTransformer(for: decoder, withContainerType: containerType, catchTransformer: catchTransformer)
     }
     
     private static func error<ErrorType: DecodingFailureInitializable>(from error: Swift.Error, decoding type: Decodable.Type, from data: Data) -> ErrorType {
