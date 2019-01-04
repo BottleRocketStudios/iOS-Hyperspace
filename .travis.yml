@@ -48,7 +48,7 @@ script:
   
   # Run Danger if specified
   - if [ $RUN_DANGER == "YES" ]; then
-      danger-swift ci;
+      DEBUG='*' danger-swift ci;
     fi
 after_success:
   - bash <(curl -s https://codecov.io/bash)
