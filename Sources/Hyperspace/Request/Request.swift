@@ -6,8 +6,6 @@
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 
-// Testing the Travis-CI Danger integration...
-
 //
 //  TODO: Future functionality:
 //          - Extend to allow for easy handling of multipart form data upload.
