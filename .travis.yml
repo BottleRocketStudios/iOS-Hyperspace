@@ -19,13 +19,16 @@ env:
 cache:
   directories:
     - Carthage
+addons:
+  homebrew:
+    update: true
+    taps:
+      - danger/tap
+    packages:
+      - carthage
+      - danger-swift
 before_install:
-  - brew update
-  - brew outdated carthage || brew upgrade carthage
   - carthage bootstrap --verbose --no-use-binaries --platform iOS,tvOS,watchOS --cache-builds
-  - npm install -g danger
-  - brew tap danger/tap
-  - brew outdated danger-swift || brew upgrade danger-swift
 
 script:
   - swiftlint
@@ -44,6 +47,6 @@ script:
     fi
   
   # Run Danger
-  - danger process danger-swift
+  #- danger-swift ci
 after_success:
   - bash <(curl -s https://codecov.io/bash)
