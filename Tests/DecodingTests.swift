@@ -55,7 +55,7 @@ class DecodingTests: XCTestCase {
     }
     
     func test_RequestDefaultsContainer_AutomaticallyDecodesChildElement() {
-        let function: RequestTransformBlock<MockObject, AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
+        let function: RequestTransformBlock<MockObject, AnyError> = RequestDefaults.successTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
         let mockObject = function(serviceSuccess)
@@ -63,7 +63,7 @@ class DecodingTests: XCTestCase {
     }
     
     func test_RequestDefaultsContainer_AutomaticallyDecodesChildElements() {
-        let function: RequestTransformBlock<[MockObject], AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
+        let function: RequestTransformBlock<[MockObject], AnyError> = RequestDefaults.successTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
         let mockObject = function(serviceSuccess)
@@ -71,7 +71,7 @@ class DecodingTests: XCTestCase {
     }
     
     func test_RequestDefaultsContainer_ThrowsErrorForChildElement() {
-        let function: RequestTransformBlock<MockObject, AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
+        let function: RequestTransformBlock<MockObject, AnyError> = RequestDefaults.successTransformer(for: JSONDecoder(), withContainerType: MockDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
         let mockObject = function(serviceSuccess)
@@ -79,7 +79,7 @@ class DecodingTests: XCTestCase {
     }
     
     func test_RequestDefaultsContainer_ThrowsErrorForChildElements() {
-        let function: RequestTransformBlock<[MockObject], AnyError> = RequestDefaults.dataTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
+        let function: RequestTransformBlock<[MockObject], AnyError> = RequestDefaults.successTransformer(for: JSONDecoder(), withContainerType: MockArrayDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
         let mockObject = function(serviceSuccess)

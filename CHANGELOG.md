@@ -5,6 +5,9 @@
 * Remove the type definitions deprecated in 3.0.0
 [Will McGinty](https://github.com/wmcginty)
 [#77](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/77)
+* Rename `dataTransformer` family of functions to  `successTransformer` to more accurately reflect their purpose.
+[Will McGinty](https://github.com/wmcginty)
+[#78](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/78)
 
 ##### Bug Fixes
 

@@ -28,7 +28,7 @@ class DecodingFailureTests: XCTestCase {
     func test_DecodingFailure_CatchesFailedTypeInformation() {
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
 
-        let transformer: RequestTransformBlock<MockDecodableContainer, MockDecodeError> = RequestDefaults.dataTransformer(for: JSONDecoder())
+        let transformer: RequestTransformBlock<MockDecodableContainer, MockDecodeError> = RequestDefaults.successTransformer(for: JSONDecoder())
         let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
         let result = transformer(serviceSuccess)
         
