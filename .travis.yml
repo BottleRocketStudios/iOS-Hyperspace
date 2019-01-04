@@ -11,11 +11,11 @@ env:
     - TVOS_FRAMEWORK_SCHEME=Hyperspace_tvOS
     - WATCHOS_FRAMEWORK_SCHEME=Hyperspace_watchOS
   matrix:
-    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X"                        SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" POD_LINT="YES"
+    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X"                        SCHEME="$IOS_FRAMEWORK_SCHEME"      RUN_TESTS="YES" POD_LINT="YES"  RUN_DANGER="YES"
 
-    - DESTINATION="platform=tvOS Simulator,OS=11.2,name=Apple TV 4K"                    SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" POD_LINT="NO"
+    - DESTINATION="platform=tvOS Simulator,OS=11.2,name=Apple TV 4K"                    SCHEME="$TVOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" POD_LINT="NO"   RUN_DANGER="NO"
 
-    - DESTINATION="platform=watchOS Simulator,OS=4.2,name=Apple Watch Series 3 - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  POD_LINT="NO"
+    - DESTINATION="platform=watchOS Simulator,OS=4.2,name=Apple Watch Series 3 - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  RUN_TESTS="NO"  POD_LINT="NO"   RUN_DANGER="NO"
 cache:
   directories:
     - Carthage
@@ -46,7 +46,9 @@ script:
       pod lib lint;
     fi
   
-  # Run Danger
-  - danger-swift ci
+  # Run Danger if specified
+  - if [ $RUN_DANGER == "YES" ]; then
+      danger-swift ci;
+    fi
 after_success:
   - bash <(curl -s https://codecov.io/bash)
