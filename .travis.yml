@@ -47,6 +47,6 @@ script:
     fi
   
   # Run Danger
-  #- danger-swift ci
+  - danger-swift ci
 after_success:
   - bash <(curl -s https://codecov.io/bash)
