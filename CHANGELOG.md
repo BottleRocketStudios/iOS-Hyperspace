@@ -4,7 +4,7 @@
 
 * Rename `dataTransformer` family of functions to  `successTransformer` to more accurately reflect their purpose.
 [Will McGinty](https://github.com/wmcginty)
-[#72](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/78)
+[#78](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/78)
 
 ##### Bug Fixes
 
