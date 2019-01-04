@@ -19,6 +19,7 @@ env:
 cache:
   directories:
     - Carthage
+    - ~/.danger-swift
 addons:
   homebrew:
     update: true
