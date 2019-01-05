@@ -10,24 +10,16 @@ import Foundation
 import Hyperspace
 import Result
 
+extension Request {
+    
+    static func `default`<T: Decodable>() -> Request<T, MockBackendServiceError> {
+        return Request<T, MockBackendServiceError>(method: .get, url: RequestTestDefaults.defaultURL, cachePolicy: RequestTestDefaults.defaultCachePolicy, timeout: RequestTestDefaults.defaultTimeout)
+    }
+}
+
 class RequestTestDefaults {
     struct DefaultModel: Codable, Equatable {
         let title: String
-    }
-    
-    struct DefaultRequest<T: Decodable>: Request {
-        
-        // swiftlint:disable nesting
-        typealias ResponseType = T
-        typealias ErrorType = MockBackendServiceError
-        // swiftlint:enable nesting
-        
-        var method: HTTP.Method = .get
-        var url: URL = RequestTestDefaults.defaultURL
-        var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-        var body: Data?
-        var cachePolicy: URLRequest.CachePolicy = RequestTestDefaults.defaultCachePolicy
-        var timeout: TimeInterval = RequestTestDefaults.defaultTimeout
     }
     
     static let defaultModel = DefaultModel(title: "test")

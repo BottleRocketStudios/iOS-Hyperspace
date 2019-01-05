@@ -47,7 +47,7 @@ public protocol RequestRecoveryStrategy {
     ///   - request: The object that encountered a failure.
     ///   - error: The specific failure returned by the operation.
     ///   - completion: The handler to execute once the RecoveryDisposition has been determined.
-    func handleRecoveryAttempt<T: Recoverable & Request>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void)
+    func handleRecoveryAttempt<T, U>(for request: Request<T, U>, withError error: U, completion: @escaping (RecoveryDisposition<Request<T, U>>) -> Void)
 }
 
 // MARK: - RecoveryDisposition

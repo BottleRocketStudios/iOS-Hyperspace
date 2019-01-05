@@ -22,7 +22,7 @@ public protocol BackendServiceProtocol {
     /// - Parameters:
     ///   - request: The Request to be executed.
     ///   - completion: The completion block to invoke when execution has finished.
-    func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>)
+    func execute<T, U>(request: Request<T, U>, completion: @escaping BackendServiceCompletion<T, U>)
     
     /// Cancels the task for the given request (if it is currently running).
     func cancelTask(for request: URLRequest)

@@ -22,7 +22,6 @@ class BackendServiceTests: XCTestCase {
     private lazy var defaultSuccessResponse: HTTP.Response = {
         HTTP.Response(code: 200, data: self.modelJSONData)
     }()
-    private let defaultRequest = RequestTestDefaults.DefaultRequest<DefaultModel>()
     
     // MARK: - Tests
     
@@ -46,24 +45,25 @@ class BackendServiceTests: XCTestCase {
         let jsonDecodingError = NSError(domain: NSCocoaErrorDomain, code: 3840, userInfo: nil)
         let response = HTTP.Response(code: 200, data: invalidJSONData)
         let mockedResult = NetworkServiceSuccess(data: invalidJSONData, response: response)
-        
+
         executeBackendService(mockedNetworkServiceResult: .success(mockedResult), expectingResult: .failure(.dataTransformationError(jsonDecodingError)))
     }
     
     func test_NetworkServiceNetworkFailure_GeneratesNetworkError() {
         let response = HTTP.Response(code: 503, data: nil)
         let mockedResult = NetworkServiceFailure(error: .serverError(.serviceUnavailable), response: response)
-        
+
         executeBackendService(mockedNetworkServiceResult: .failure(mockedResult), expectingResult: .failure(.networkError(.serverError(.serviceUnavailable), response)))
     }
     
     func test_ExecutingBackendService_ExecutesUnderlyingNetworkService() {
         let mockedResult = NetworkServiceSuccess(data: modelJSONData, response: defaultSuccessResponse)
         let mockNetworkService = MockNetworkService(responseResult: .success(mockedResult))
-        
+
         let backendService = BackendService(networkService: mockNetworkService)
+        let defaultRequest: Request<DefaultModel, MockBackendServiceError> = .default()
         backendService.execute(request: defaultRequest) { (_) in }
-        
+
         XCTAssertEqual(mockNetworkService.executeCallCount, 1)
     }
     
@@ -93,18 +93,17 @@ class BackendServiceTests: XCTestCase {
     // MARK: - Private
     
     //create a concrete implementation of NetworkServiceFailureInitializable(Error) for testing (aka BackendServiceError...)
-    
     private func executeBackendService(mockedNetworkServiceResult: Result<NetworkServiceSuccess, NetworkServiceFailure>,
                                        expectingResult expectedResult: Result<DefaultModel, MockBackendServiceError>,
                                        file: StaticString = #file,
                                        line: UInt = #line) {
         let mockNetworkService = MockNetworkService(responseResult: mockedNetworkServiceResult)
         let backendService = BackendService(networkService: mockNetworkService)
-        
+
         let asyncExpectation = expectation(description: "\(BackendService.self) completion")
-        
-        let request = defaultRequest
-        backendService.execute(request: request) { result in            
+
+        let request: Request<DefaultModel, MockBackendServiceError> = .default()
+        backendService.execute(request: request) { result in
             switch (result, expectedResult) {
             case (.success(let resultObject), .success(let expectedObject)):
                 XCTAssertEqual(resultObject, expectedObject, file: file, line: line)
@@ -113,12 +112,12 @@ class BackendServiceTests: XCTestCase {
             default:
                 XCTFail("Result '\(result)' not equal to expected result '\(expectedResult)'", file: file, line: line)
             }
-            
+
             asyncExpectation.fulfill()
         }
-        
+
         XCTAssertEqual(mockNetworkService.lastExecutedURLRequest, request.urlRequest, file: file, line: line)
-        
+
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 }

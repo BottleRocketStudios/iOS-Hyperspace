@@ -10,14 +10,21 @@ import XCTest
 @testable import Hyperspace
 import Result
 
+fileprivate extension Request {
+    
+    static func recoverable<T: Codable>() -> Request<T, AnyError> {
+        return Request<T, AnyError>(method: .get, url: RecoverableTests.defaultURL, cachePolicy: RecoverableTests.defaultCachePolicy, timeout: RecoverableTests.defaultTimeout)
+    }
+}
+
 class RecoverableTests: XCTestCase {
     
     // MARK: Constants
-    private static let defaultRequestMethod: HTTP.Method = .get
-    private static let defaultURL = URL(string: "http://apple.com")!
-    private static let defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
-    private static let defaultTimeout: TimeInterval = 1.0
-    private var backendService: BackendService?
+    fileprivate static let defaultRequestMethod: HTTP.Method = .get
+    fileprivate static let defaultURL = URL(string: "http://apple.com")!
+    fileprivate static let defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
+    fileprivate static let defaultTimeout: TimeInterval = 1.0
+    fileprivate var backendService: BackendService?
     
     // swiftlint:disable nesting
     struct MockRecoverable: Recoverable {
@@ -26,22 +33,8 @@ class RecoverableTests: XCTestCase {
         var maxRecoveryAttempts: UInt? = 1
     }
     
-    struct RecoverableRequest<T: Codable>: Request, Recoverable {
-        typealias ResponseType = T
-        typealias ErrorType = AnyError
-        
-        var method: HTTP.Method = RecoverableTests.defaultRequestMethod
-        var url = RecoverableTests.defaultURL
-        var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-        var body: Data?
-        var cachePolicy: URLRequest.CachePolicy = RecoverableTests.defaultCachePolicy
-        var timeout: TimeInterval = RecoverableTests.defaultTimeout
-        var recoveryAttemptCount: UInt = 0
-        let maxRecoveryAttempts: UInt? = 1
-    }
-    
     struct MockAuthorizationRecoveryStrategy: RequestRecoveryStrategy {
-        func handleRecoveryAttempt<T: Request & Recoverable>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void) {
+        func handleRecoveryAttempt<T, U>(for request: Request<T, U>, withError error: U, completion: @escaping (RecoveryDisposition<Request<T, U>>) -> Void) {
             guard case let .clientError(clientError) = error.networkServiceError, clientError == .unauthorized, let nextAttempt = request.updatedForNextAttempt() else { return completion(.fail) }
             
             let authorized = nextAttempt.addingHeaders([.authorization: HTTP.HeaderValue(rawValue: "some_access_token")])
@@ -50,7 +43,7 @@ class RecoverableTests: XCTestCase {
     }
     
     struct MockFailureRecoveryStrategy: RequestRecoveryStrategy {
-        func handleRecoveryAttempt<T: Request & Recoverable>(for request: T, withError error: T.ErrorType, completion: @escaping (RecoveryDisposition<T>) -> Void) {
+        func handleRecoveryAttempt<T, U>(for request: Request<T, U>, withError error: U, completion: @escaping (RecoveryDisposition<Request<T, U>>) -> Void) {
             completion(.fail)
         }
     }
@@ -122,7 +115,8 @@ class RecoverableTests: XCTestCase {
         let subtitle = "subtitle"
         backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: title, subtitle: subtitle)), recoveryStrategy: MockAuthorizationRecoveryStrategy())
         
-        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { result in
+        let recoverableRequest: Request<MockObject, AnyError> = Request<MockObject, AnyError>.recoverable()
+        backendService?.execute(recoverable: recoverableRequest) { result in
             switch result {
             case .success(let mockObject):
                 XCTAssertEqual(mockObject.title, title)
@@ -142,17 +136,18 @@ class RecoverableTests: XCTestCase {
         let exp = expectation(description: "backendServiceRecovery")
         backendService = BackendService(networkService: MockRecoverableNetworkService.protectedService(for: MockObject(title: "title", subtitle: "subtitle")), recoveryStrategy: MockFailureRecoveryStrategy())
         
-        backendService?.execute(recoverable: RecoverableRequest<MockObject>()) { result in
+        let recoverableRequest: Request<MockObject, AnyError> = Request<MockObject, AnyError>.recoverable()
+        backendService?.execute(recoverable: recoverableRequest) { result in
             switch result {
             case .success:
                 XCTFail("The error should not recoverable!")
-                
+
             case .failure(let error):
                 guard let innerError = error.error as? NetworkServiceError else { return XCTFail("The error that causes the failure should be a NetworkServiceError.") }
                 guard case let .clientError(clientError) = innerError else { return XCTFail("The error that causes the failure should be a NetworkServiceError.ClientError.") }
                 XCTAssertEqual(clientError, .unauthorized)
             }
-            
+
             exp.fulfill()
         }
         

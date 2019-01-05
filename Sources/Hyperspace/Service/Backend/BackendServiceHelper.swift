@@ -18,8 +18,8 @@ public struct BackendServiceHelper {
     ///   - serviceSuccess: The successful result of executing a Request using a NetworkService.
     ///   - request: The Request that will be used to transform the Data.
     ///   - completion: The completion block to invoke when execution has finished.
-    public static func handleNetworkServiceSuccess<T: Request>(_ serviceSuccess: NetworkServiceSuccess, for request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
-        let transformResult = request.transformSuccess(serviceSuccess)
+    public static func handleNetworkServiceSuccess<T, U: NetworkServiceFailureInitializable>(_ serviceSuccess: NetworkServiceSuccess, for request: Request<T, U>, completion: @escaping BackendServiceCompletion<T, U>) {
+        let transformResult = request.transformer(serviceSuccess)
         
         executeOnMain {
             switch transformResult {

@@ -27,39 +27,58 @@ public protocol DecodingFailureInitializable: Swift.Error {
 public typealias RequestTransformBlock<T, E: Error> = (NetworkServiceSuccess) -> Result<T, E>
 
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
-public protocol Request {
-    
-    /// The model type that this Request will attempt to transform Data into.
-    associatedtype ResponseType
-    associatedtype ErrorType: NetworkServiceFailureInitializable
+public typealias AnyRequest<T> = Request<T, AnyError>
+public struct Request<ResponseType, ErrorType: NetworkServiceFailureInitializable>: Recoverable {
     
     /// The HTTP method to be use when executing this request.
-    var method: HTTP.Method { get }
+    public var method: HTTP.Method
     
     /// The URL to use when executing this network request.
-    var url: URL { get }
+    public var url: URL
     
     /// The header field keys/values to use when executing this network request.
-    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? { get set }
+    public var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     
     /// The payload body for this network request, if any.
-    var body: Data? { get set }
+    public var body: Data?
     
     /// The cache policy to use when executing this network request.
-    var cachePolicy: URLRequest.CachePolicy { get }
+    public var cachePolicy: URLRequest.CachePolicy
     
     /// The timeout to use when executing this network request.
-    var timeout: TimeInterval { get }
+    public var timeout: TimeInterval
     
-    /// The URLRequest that represents this network request.
-    var urlRequest: URLRequest { get }
-        
+    /// The number of attempts that this operation has made
+    public var recoveryAttemptCount: UInt
+    
+    /// The maximum number of attempts that this operation should make before completely aborting. This value is nil when there is no maximum.
+    public var maxRecoveryAttempts: UInt?
+    
     /// Attempts to parse the provided Data into the associated response model type for this request.
     ///
-    /// - Parameter data: The raw Data retrieved from the network.
     /// - Parameter serviceSuccess: The successful result of executing a Request using a NetworkService.
     /// - Returns: A result indicating the successful or failed transformation of the data into the associated response type.
-    func transformSuccess(_ serviceSuccess: NetworkServiceSuccess) -> Result<ResponseType, ErrorType>
+    var transformer: (NetworkServiceSuccess) -> Result<ResponseType, ErrorType>
+    
+    public init(method: HTTP.Method = .get,
+                url: URL,
+                headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
+                body: Data? = nil,
+                cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
+                timeout: TimeInterval = RequestDefaults.defaultTimeout,
+                recoveryAttemptCount: UInt = 0,
+                maxRecoveryAttempts: UInt? = nil,
+                transformer: @escaping (NetworkServiceSuccess) -> Result<ResponseType, ErrorType>) {
+        self.method = method
+        self.url = url
+        self.headers = headers
+        self.body = body
+        self.cachePolicy = cachePolicy
+        self.timeout = timeout
+        self.recoveryAttemptCount = recoveryAttemptCount
+        self.maxRecoveryAttempts = maxRecoveryAttempts
+        self.transformer = transformer
+    }
 }
 
 // MARK: - EmptyResponse
@@ -155,19 +174,7 @@ public struct RequestDefaults {
 // MARK: - Request Default Implementations
 
 public extension Request {
-
-    var queryParameters: [URLQueryItem]? {
-        return nil
-    }
     
-    var cachePolicy: URLRequest.CachePolicy {
-        return RequestDefaults.defaultCachePolicy
-    }
-    
-    var timeout: TimeInterval {
-        return RequestDefaults.defaultTimeout
-    }
-        
     var urlRequest: URLRequest {
         var request = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: timeout)
         request.httpMethod = method.rawValue
@@ -184,7 +191,7 @@ public extension Request {
     ///
     /// - Parameter additionalHeaders: The HTTP headers to add to the request
     /// - Returns: A new `NetworkReqest` with the combined HTTP headers. In the case of a collision, the value from `additionalHeaders` is preferred.
-    func addingHeaders(_ additionalHeaders: [HTTP.HeaderKey: HTTP.HeaderValue]) -> Self {
+    func addingHeaders(_ additionalHeaders: [HTTP.HeaderKey: HTTP.HeaderValue]) -> Request {
         let modifiedHeaders = (headers ?? [:])?.merging(additionalHeaders) { return $1 }
         return usingHeaders(modifiedHeaders)
     }
@@ -193,7 +200,7 @@ public extension Request {
     ///
     /// - Parameter headers: The HTTP headers to add to the request.
     /// - Returns: A new `NetworkReqest` with the given HTTP headers.
-    func usingHeaders(_ headers: [HTTP.HeaderKey: HTTP.HeaderValue]?) -> Self {
+    func usingHeaders(_ headers: [HTTP.HeaderKey: HTTP.HeaderValue]?) -> Request {
         var copy = self
         copy.headers = headers
         return copy
@@ -203,7 +210,7 @@ public extension Request {
     ///
     /// - Parameter body: The HTTP body to add to the request.
     /// - Returns: A new `NetworkReqest` with the given HTTP body
-    func usingBody(_ body: Data?) -> Self {
+    func usingBody(_ body: Data?) -> Request {
         var copy = self
         copy.body = body
         return copy
@@ -214,12 +221,12 @@ public extension Request {
 
 public extension Request where ResponseType: Decodable, ErrorType: DecodingFailureInitializable {
     
-    func dataTransformer(with decoder: JSONDecoder) -> RequestTransformBlock<ResponseType, ErrorType> {
+    func successTransformer(with decoder: JSONDecoder) -> RequestTransformBlock<ResponseType, ErrorType> {
         return RequestDefaults.successTransformer(for: decoder)
     }
     
     func transformSuccess(_ serviceSuccess: NetworkServiceSuccess) -> Result<ResponseType, ErrorType> {
-        return dataTransformer(with: JSONDecoder())(serviceSuccess)
+        return transformer(serviceSuccess)
     }
 }
 

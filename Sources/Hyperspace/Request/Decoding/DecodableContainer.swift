@@ -21,7 +21,7 @@ public protocol DecodableContainer: Decodable {
 
 // MARK: - AnyRequest Default Implementations
 
-extension AnyRequest where T: Decodable {
+extension Request where ResponseType: Decodable, ErrorType == AnyError {
     
     public init<U: DecodableContainer>(method: HTTP.Method,
                                        url: URL,
@@ -30,7 +30,8 @@ extension AnyRequest where T: Decodable {
                                        cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
                                        timeout: TimeInterval = RequestDefaults.defaultTimeout,
                                        decoder: JSONDecoder = JSONDecoder(),
-                                       containerType: U.Type) where U.ContainedType == T {
-        self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout, dataTransformer: RequestDefaults.successTransformer(for: decoder, withContainerType: containerType))
+                                       containerType: U.Type) where U.ContainedType == ResponseType {
+        self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout,
+                  transformer: RequestDefaults.successTransformer(for: decoder, withContainerType: containerType))
     }
 }
