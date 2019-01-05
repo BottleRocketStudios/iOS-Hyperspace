@@ -44,7 +44,6 @@ extension MockBackendServiceError: Equatable {
         case (.networkError(let lhsError, let lhsResponse), .networkError(let rhsError, let rhsResponse)):
             return lhsError == rhsError && lhsResponse == rhsResponse
         case (.dataTransformationError(let lhsError), .dataTransformationError(let rhsError)):
-            // TODO: Need to come up with a better way to compare equality in this case
             return lhsError.localizedDescription == rhsError.localizedDescription
         default:
             return false

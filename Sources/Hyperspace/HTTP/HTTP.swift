@@ -6,12 +6,6 @@
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 
-//
-//  TODO: Future functionality:
-//          - Are there any HTTP.HeaderKeys that we should add (or remove)?
-//          - Are there any HTTP.HeaderValues that we should add (or remove)?
-//
-
 import Foundation
 
 // swiftlint:disable nesting
