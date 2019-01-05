@@ -18,7 +18,6 @@ class URLQueryParameterTests: XCTestCase {
             URLQueryItem(name: "param1", value: "param1value"),
             URLQueryItem(name: "param2", value: "param2 value"),
             URLQueryItem(name: "param3", value: nil)
-            // TODO: What other complex query parameters can we generate to test the URL encoding?
         ]
         
         let finalURL = url.appendingQueryItems(queryParameters)
