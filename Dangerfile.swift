@@ -2,6 +2,9 @@ import Danger
 
 let danger = Danger()
 
+//
+//  Ensure CHANGELOG.md was modified for edits to source files.
+//
 let allSourceFiles = danger.git.modifiedFiles + danger.git.createdFiles
 
 let changelogChanged = allSourceFiles.contains("CHANGELOG.md")
