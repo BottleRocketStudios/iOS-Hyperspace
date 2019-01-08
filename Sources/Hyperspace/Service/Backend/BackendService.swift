@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FutureKit
 import Result
 
 public class BackendService {
@@ -31,6 +32,16 @@ public class BackendService {
 // MARK: - BackendService Conformance to BackendServiceProtocol
 
 extension BackendService: BackendServiceProtocol {
+    public func execute<T: Request>(request: T) -> Future<T.ResponseType> {
+        let promise = Promise<T.ResponseType>()
+        
+        execute(request: request) { result in
+            promise.complete(result)
+        }
+        
+        return promise.future
+    }
+    
     public func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
         networkService.execute(request: request.urlRequest) { result in
             switch result {

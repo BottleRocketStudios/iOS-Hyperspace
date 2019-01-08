@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FutureKit
 @testable import Hyperspace
 import Result
 
@@ -52,10 +53,19 @@ extension MockBackendServiceError: Equatable {
 }
 
 struct MockBackendService: BackendServiceProtocol {
-    
     func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, T.ErrorType>) -> Void) where T: Request {
         let failure = NetworkServiceFailure(error: .timedOut, response: nil)
         completion(Result.failure(T.ErrorType(networkServiceFailure: failure)))
+    }
+    
+    func execute<T>(request: T) -> Future<T.ResponseType> where T: Request {
+        let promise = Promise<T.ResponseType>()
+        
+        execute(request: request) { result in
+            promise.complete(result)
+        }
+        
+        return promise.future
     }
     
     func cancelTask(for request: URLRequest) {

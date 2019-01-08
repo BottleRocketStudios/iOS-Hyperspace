@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FutureKit
 import Result
 
 /// Represents the completion of a request executed using a BackendService.
@@ -23,6 +24,8 @@ public protocol BackendServiceProtocol {
     ///   - request: The Request to be executed.
     ///   - completion: The completion block to invoke when execution has finished.
     func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>)
+    
+    func execute<T: Request>(request: T) -> Future<T.ResponseType>
     
     /// Cancels the task for the given request (if it is currently running).
     func cancelTask(for request: URLRequest)

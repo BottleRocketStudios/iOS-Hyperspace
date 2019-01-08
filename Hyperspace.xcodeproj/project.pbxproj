@@ -155,6 +155,12 @@
 		B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
 		B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB0961E321E5187F006CC9F5 /* FutureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0961E221E5187F006CC9F5 /* FutureKit.framework */; };
+		CB0961E521E51889006CC9F5 /* FutureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0961E421E51889006CC9F5 /* FutureKit.framework */; };
+		CB0961E721E51894006CC9F5 /* FutureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0961E621E51894006CC9F5 /* FutureKit.framework */; };
+		CB0961E921E52FF4006CC9F5 /* Result+CompletionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+CompletionType.swift */; };
+		CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
+		CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,6 +379,12 @@
 		B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatable.swift; sourceTree = "<group>"; };
 		B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkActivityIndicator.swift; sourceTree = "<group>"; };
 		B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorTests.swift; sourceTree = "<group>"; };
+		CB0961E021E51830006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB0961E221E5187F006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB0961E421E51889006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB0961E621E51894006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB0961E821E52FF4006CC9F5 /* Result+CompletionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+CompletionType.swift"; sourceTree = "<group>"; };
+		CB0961EA21E5317B006CC9F5 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +400,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0961E321E5187F006CC9F5 /* FutureKit.framework in Frameworks */,
 				60D6C3E7201CD77400B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +417,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0961E721E51894006CC9F5 /* FutureKit.framework in Frameworks */,
 				60D6C3EB201CD78100B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +426,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0961E521E51889006CC9F5 /* FutureKit.framework in Frameworks */,
 				60D6C3E9201CD77B00B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +570,7 @@
 				0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */,
 				60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */,
 				0E29092B21349F320031F67C /* DecodingFailureTests.swift */,
+				CB0961EA21E5317B006CC9F5 /* FutureTests.swift */,
 				60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */,
 				60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */,
 				3026E457202008470003A321 /* NetworkSessionTest.swift */,
@@ -585,6 +601,7 @@
 				60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */,
 				0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */,
 				0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */,
+				CB0961E821E52FF4006CC9F5 /* Result+CompletionType.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -644,6 +661,10 @@
 		60D6C3E6201CD77400B3B012 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB0961E621E51894006CC9F5 /* FutureKit.framework */,
+				CB0961E421E51889006CC9F5 /* FutureKit.framework */,
+				CB0961E221E5187F006CC9F5 /* FutureKit.framework */,
+				CB0961E021E51830006CC9F5 /* FutureKit.framework */,
 				60D6C3EC201CD78100B3B012 /* Result.framework */,
 				60D6C3EA201CD77B00B3B012 /* Result.framework */,
 				60D6C3E8201CD77400B3B012 /* Result.framework */,
@@ -1189,6 +1210,7 @@
 				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyRequest.swift in Sources */,
 				0E347E5B2155A7A500BF18FA /* AnyError+Request.swift in Sources */,
+				CB0961E921E52FF4006CC9F5 /* Result+CompletionType.swift in Sources */,
 				60D6C372201CC81100B3B012 /* Request.swift in Sources */,
 				60D6C373201CC81100B3B012 /* NetworkSessionDataTask.swift in Sources */,
 				60D6C374201CC81100B3B012 /* NetworkServiceProtocol.swift in Sources */,
@@ -1217,6 +1239,7 @@
 				60D6C40D201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
 				30F0735420210A890045CB01 /* HTTPTests.swift in Sources */,
 				3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */,
+				CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */,
 				60D6C40B201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C407201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
 				60D6C401201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
@@ -1295,6 +1318,7 @@
 				60D6C40E201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
 				30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */,
 				3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */,
+				CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */,
 				60D6C40C201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C408201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
 				60D6C402201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
