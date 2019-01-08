@@ -57,17 +57,7 @@ struct MockBackendService: BackendServiceProtocol {
         let failure = NetworkServiceFailure(error: .timedOut, response: nil)
         completion(Result.failure(T.ErrorType(networkServiceFailure: failure)))
     }
-    
-    func execute<T>(request: T) -> Future<T.ResponseType, T.ErrorType> where T: Request {
-        let promise = Promise<T.ResponseType, T.ErrorType>()
-        
-        execute(request: request) { result in
-            promise.complete(result)
-        }
-        
-        return promise.future
-    }
-    
+
     func cancelTask(for request: URLRequest) {
         /* No op */
     }
