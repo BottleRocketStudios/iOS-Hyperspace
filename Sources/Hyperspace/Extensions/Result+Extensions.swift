@@ -1,5 +1,5 @@
 //
-//  Result+CompletionType.swift
+//  Result+Extensions.swift
 //  Hyperspace-iOS
 //
 //  Created by Pranjal Satija on 1/8/19.
@@ -9,7 +9,6 @@
 import BrightFutures
 import Result
 
-// This enables promise.complete(result).
 extension Result {
     public var isFailure: Bool {
         return error != nil

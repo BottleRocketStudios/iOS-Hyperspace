@@ -155,7 +155,7 @@
 		B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
 		B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CB0961E921E52FF4006CC9F5 /* Result+CompletionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+CompletionType.swift */; };
+		CB0961E921E52FF4006CC9F5 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
 		CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
 		CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
 		CB3A954C21E5521B00A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954B21E5521B00A70243 /* BrightFutures.framework */; };
@@ -383,7 +383,7 @@
 		CB0961E221E5187F006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0961E421E51889006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0961E621E51894006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB0961E821E52FF4006CC9F5 /* Result+CompletionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+CompletionType.swift"; sourceTree = "<group>"; };
+		CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		CB0961EA21E5317B006CC9F5 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
 		CB3A954B21E5521B00A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3A954D21E5522600A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -604,7 +604,7 @@
 				60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */,
 				0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */,
 				0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */,
-				CB0961E821E52FF4006CC9F5 /* Result+CompletionType.swift */,
+				CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1216,7 +1216,7 @@
 				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyRequest.swift in Sources */,
 				0E347E5B2155A7A500BF18FA /* AnyError+Request.swift in Sources */,
-				CB0961E921E52FF4006CC9F5 /* Result+CompletionType.swift in Sources */,
+				CB0961E921E52FF4006CC9F5 /* Result+Extensions.swift in Sources */,
 				60D6C372201CC81100B3B012 /* Request.swift in Sources */,
 				60D6C373201CC81100B3B012 /* NetworkSessionDataTask.swift in Sources */,
 				60D6C374201CC81100B3B012 /* NetworkServiceProtocol.swift in Sources */,
