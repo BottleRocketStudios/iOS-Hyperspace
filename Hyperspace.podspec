@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Hyperspace'
-  s.version          = '3.0.0'
+  s.version          = '3.1.0'
   s.summary          = 'An extremely lightweight wrapper around URLSession to make working with APIs a breeze.'
 
 # This description is used to generate tags and improve search results.
@@ -42,4 +42,5 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'Result', '~> 4.0'
+  s.dependency 'BrightFutures', '~> 7.0.0'
 end

@@ -1,3 +1,19 @@
+## 3.1.0 (2019-01-08)
+
+#### Enhancements
+
+* Add support for futures and chaining requests.
+[Pranjal Satija](https://github.com/pranjalsatija)
+[#81](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/81)
+
+* Fix 3.0.0 changelog.
+[Pranjal Satija](https://github.com/pranjalsatija)
+[#82](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/82)
+
+##### Bug Fixes
+
+* None.
+
 ## Master
 
 ##### Enhancements
