@@ -8,6 +8,6 @@
       location = "group:Carthage/Checkouts/Result/Result.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/FutureKit/FutureKit.xcodeproj">
+      location = "group:Carthage/Checkouts/BrightFutures/BrightFutures.xcodeproj">
    </FileRef>
 </Workspace>

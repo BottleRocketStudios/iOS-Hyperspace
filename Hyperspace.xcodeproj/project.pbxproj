@@ -155,12 +155,12 @@
 		B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
 		B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CB0961E321E5187F006CC9F5 /* FutureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0961E221E5187F006CC9F5 /* FutureKit.framework */; };
-		CB0961E521E51889006CC9F5 /* FutureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0961E421E51889006CC9F5 /* FutureKit.framework */; };
-		CB0961E721E51894006CC9F5 /* FutureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0961E621E51894006CC9F5 /* FutureKit.framework */; };
 		CB0961E921E52FF4006CC9F5 /* Result+CompletionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+CompletionType.swift */; };
 		CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
 		CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
+		CB3A954C21E5521B00A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954B21E5521B00A70243 /* BrightFutures.framework */; };
+		CB3A954E21E5522600A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954D21E5522600A70243 /* BrightFutures.framework */; };
+		CB3A955021E5523000A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954F21E5523000A70243 /* BrightFutures.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +385,9 @@
 		CB0961E621E51894006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0961E821E52FF4006CC9F5 /* Result+CompletionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+CompletionType.swift"; sourceTree = "<group>"; };
 		CB0961EA21E5317B006CC9F5 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
+		CB3A954B21E5521B00A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3A954D21E5522600A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3A954F21E5523000A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,7 +403,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB0961E321E5187F006CC9F5 /* FutureKit.framework in Frameworks */,
+				CB3A954C21E5521B00A70243 /* BrightFutures.framework in Frameworks */,
 				60D6C3E7201CD77400B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,7 +420,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB0961E721E51894006CC9F5 /* FutureKit.framework in Frameworks */,
+				CB3A955021E5523000A70243 /* BrightFutures.framework in Frameworks */,
 				60D6C3EB201CD78100B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,7 +429,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB0961E521E51889006CC9F5 /* FutureKit.framework in Frameworks */,
+				CB3A954E21E5522600A70243 /* BrightFutures.framework in Frameworks */,
 				60D6C3E9201CD77B00B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +664,9 @@
 		60D6C3E6201CD77400B3B012 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB3A954F21E5523000A70243 /* BrightFutures.framework */,
+				CB3A954D21E5522600A70243 /* BrightFutures.framework */,
+				CB3A954B21E5521B00A70243 /* BrightFutures.framework */,
 				CB0961E621E51894006CC9F5 /* FutureKit.framework */,
 				CB0961E421E51889006CC9F5 /* FutureKit.framework */,
 				CB0961E221E5187F006CC9F5 /* FutureKit.framework */,

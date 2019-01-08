@@ -6,8 +6,8 @@
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 
+import BrightFutures
 import Foundation
-import FutureKit
 import Result
 
 /// Represents the completion of a request executed using a BackendService.
@@ -30,7 +30,7 @@ public protocol BackendServiceProtocol {
     /// - Parameters:
     ///   - request: The Request to be executed.
     /// - Returns: A Future<T.ResponseType> that resolves to the request's response type.
-    func execute<T: Request>(request: T) -> Future<T.ResponseType>
+    func execute<T: Request>(request: T) -> Future<T.ResponseType, T.ErrorType>
     
     /// Cancels the task for the given request (if it is currently running).
     func cancelTask(for request: URLRequest)
@@ -40,8 +40,8 @@ public protocol BackendServiceProtocol {
 }
 
 extension BackendServiceProtocol {
-    public func execute<T: Request>(request: T) -> Future<T.ResponseType> {
-        let promise = Promise<T.ResponseType>()
+    public func execute<T: Request>(request: T) -> Future<T.ResponseType, T.ErrorType> {
+        let promise = Promise<T.ResponseType, T.ErrorType>()
         
         execute(request: request) { result in
             promise.complete(result)

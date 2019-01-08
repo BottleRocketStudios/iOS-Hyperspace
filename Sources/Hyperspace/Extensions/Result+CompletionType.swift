@@ -6,17 +6,16 @@
 //  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 
-import FutureKit
+import BrightFutures
 import Result
 
 // This enables promise.complete(result).
-extension Result: CompletionType {
-    public var completion: Completion<Value> {
-        switch self {
-        case .success(let value):
-            return .success(value)
-        case .failure(let error):
-            return .fail(error)
-        }
+extension Result {
+    public var isFailure: Bool {
+        return error != nil
+    }
+    
+    public var isSuccess: Bool {
+        return value != nil
     }
 }

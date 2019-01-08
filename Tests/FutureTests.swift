@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import FutureKit
+import BrightFutures
 @testable import Hyperspace
 import Result
 
@@ -40,8 +40,8 @@ class FutureTests: XCTestCase {
             }
             
             expectation.fulfill()
-        }.onFail { _ in
-            if !expectedResult.isFail {
+        }.onFailure { _ in
+            if !expectedResult.isFailure {
                 XCTFail("The expected result was not failure, but the Future failed.")
             }
             

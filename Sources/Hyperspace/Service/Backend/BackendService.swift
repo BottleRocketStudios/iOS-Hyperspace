@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FutureKit
 import Result
 
 public class BackendService {

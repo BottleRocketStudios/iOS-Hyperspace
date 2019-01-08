@@ -6,8 +6,8 @@
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 
+import BrightFutures
 import Foundation
-import FutureKit
 @testable import Hyperspace
 import Result
 
@@ -58,8 +58,8 @@ struct MockBackendService: BackendServiceProtocol {
         completion(Result.failure(T.ErrorType(networkServiceFailure: failure)))
     }
     
-    func execute<T>(request: T) -> Future<T.ResponseType> where T: Request {
-        let promise = Promise<T.ResponseType>()
+    func execute<T>(request: T) -> Future<T.ResponseType, T.ErrorType> where T: Request {
+        let promise = Promise<T.ResponseType, T.ErrorType>()
         
         execute(request: request) { result in
             promise.complete(result)
