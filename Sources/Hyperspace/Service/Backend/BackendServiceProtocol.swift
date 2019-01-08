@@ -25,6 +25,11 @@ public protocol BackendServiceProtocol {
     ///   - completion: The completion block to invoke when execution has finished.
     func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>)
     
+    /// Executes the Request, returning a Future when finished.
+    ///
+    /// - Parameters:
+    ///   - request: The Request to be executed.
+    /// - Returns: A Future<T.ResponseType> that resolves to the request's response type.
     func execute<T: Request>(request: T) -> Future<T.ResponseType>
     
     /// Cancels the task for the given request (if it is currently running).
@@ -32,4 +37,16 @@ public protocol BackendServiceProtocol {
     
     /// Cancels all currently running tasks
     func cancelAllTasks()
+}
+
+extension BackendServiceProtocol {
+    public func execute<T: Request>(request: T) -> Future<T.ResponseType> {
+        let promise = Promise<T.ResponseType>()
+        
+        execute(request: request) { result in
+            promise.complete(result)
+        }
+        
+        return promise.future
+    }
 }
