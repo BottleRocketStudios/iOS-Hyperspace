@@ -161,6 +161,7 @@
 		CB3A954C21E5521B00A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954B21E5521B00A70243 /* BrightFutures.framework */; };
 		CB3A954E21E5522600A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954D21E5522600A70243 /* BrightFutures.framework */; };
 		CB3A955021E5523000A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954F21E5523000A70243 /* BrightFutures.framework */; };
+		CBB361BA21E55D850082E860 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1292,6 +1293,7 @@
 				0E81B49D20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */,
 				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
 				60D6C37C201CCCAE00B3B012 /* DecodableContainer.swift in Sources */,
+				CBB361BA21E55D850082E860 /* Result+Extensions.swift in Sources */,
 				0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C37D201CCCAE00B3B012 /* AnyRequest.swift in Sources */,
 				60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
