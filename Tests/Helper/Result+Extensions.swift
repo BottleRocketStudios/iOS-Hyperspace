@@ -10,11 +10,11 @@ import BrightFutures
 import Result
 
 extension Result {
-    public var isFailure: Bool {
+    var isFailure: Bool {
         return error != nil
     }
     
-    public var isSuccess: Bool {
+    var isSuccess: Bool {
         return value != nil
     }
 }
