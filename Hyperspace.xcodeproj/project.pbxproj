@@ -380,10 +380,6 @@
 		B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatable.swift; sourceTree = "<group>"; };
 		B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkActivityIndicator.swift; sourceTree = "<group>"; };
 		B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorTests.swift; sourceTree = "<group>"; };
-		CB0961E021E51830006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB0961E221E5187F006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB0961E421E51889006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB0961E621E51894006CC9F5 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		CB0961EA21E5317B006CC9F5 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
 		CB3A954B21E5521B00A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -667,10 +663,6 @@
 				CB3A954F21E5523000A70243 /* BrightFutures.framework */,
 				CB3A954D21E5522600A70243 /* BrightFutures.framework */,
 				CB3A954B21E5521B00A70243 /* BrightFutures.framework */,
-				CB0961E621E51894006CC9F5 /* FutureKit.framework */,
-				CB0961E421E51889006CC9F5 /* FutureKit.framework */,
-				CB0961E221E5187F006CC9F5 /* FutureKit.framework */,
-				CB0961E021E51830006CC9F5 /* FutureKit.framework */,
 				60D6C3EC201CD78100B3B012 /* Result.framework */,
 				60D6C3EA201CD77B00B3B012 /* Result.framework */,
 				60D6C3E8201CD77400B3B012 /* Result.framework */,
