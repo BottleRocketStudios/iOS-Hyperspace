@@ -12,12 +12,15 @@ import BrightFutures
 import Result
 
 class FutureTests: XCTestCase {
+    // MARK: Type Aliases
     typealias DefaultModel = RequestTestDefaults.DefaultModel
     
+    // MARK: Properties
     private let defaultModelJSONData = RequestTestDefaults.defaultModelJSONData
     private let defaultRequest = RequestTestDefaults.DefaultRequest<DefaultModel>()
     private let defaultSuccessResponse = HTTP.Response(code: 200, data: nil)
     
+    // MARK: Tests
     func test_FailingRequestAlsoFailsFuture() {
         let failure = NetworkServiceFailure(error: .noData, response: nil)
         executeBackendRequest(expectedResult: .failure(failure))
@@ -28,26 +31,21 @@ class FutureTests: XCTestCase {
         executeBackendRequest(expectedResult: .success(success))
     }
     
-    private func executeBackendRequest(expectedResult: Result<NetworkServiceSuccess, NetworkServiceFailure>) {
+    // MARK: Private Helpers
+    private func executeBackendRequest(expectedResult: Result<NetworkServiceSuccess, NetworkServiceFailure>, file: StaticString = #file, line: UInt = #line) {
         let expectation = self.expectation(description: "\(BackendService.self) Completion")
         
         let networkService = MockNetworkService(responseResult: expectedResult)
         let backendService = BackendService(networkService: networkService, recoveryStrategy: nil)
         
         backendService.execute(request: defaultRequest).onSuccess { _ in
-            if !expectedResult.isSuccess {
-                XCTFail("The expected result was not success, but the Future succeeded.")
-            }
-            
+            XCTAssertTrue(expectedResult.isSuccess, file: file, line: line)
             expectation.fulfill()
         }.onFailure { _ in
-            if !expectedResult.isFailure {
-                XCTFail("The expected result was not failure, but the Future failed.")
-            }
-            
+            XCTAssertTrue(expectedResult.isFailure, file: file, line: line)
             expectation.fulfill()
         }
         
-        waitForExpectations(timeout: 5)
+        waitForExpectations(timeout: 1)
     }
 }
