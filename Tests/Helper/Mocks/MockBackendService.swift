@@ -6,7 +6,6 @@
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 
-import BrightFutures
 import Foundation
 @testable import Hyperspace
 import Result
