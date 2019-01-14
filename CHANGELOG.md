@@ -1,4 +1,4 @@
-## 3.1.0 (2019-01-08)
+## Master
 
 #### Enhancements
 
