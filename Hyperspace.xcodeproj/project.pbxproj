@@ -155,6 +155,16 @@
 		B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
 		B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
+		CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
+		CB0DE06321E7E62500661F0E /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
+		CB3A954C21E5521B00A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954B21E5521B00A70243 /* BrightFutures.framework */; };
+		CB3A954E21E5522600A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954D21E5522600A70243 /* BrightFutures.framework */; };
+		CB3A955021E5523000A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954F21E5523000A70243 /* BrightFutures.framework */; };
+		CB7B20A621ECDDC400AB8FE3 /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
+		CB7B20A721ECDDC500AB8FE3 /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
+		CBB361BB21E643520082E860 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
+		CBB361BC21E643520082E860 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,6 +383,12 @@
 		B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatable.swift; sourceTree = "<group>"; };
 		B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkActivityIndicator.swift; sourceTree = "<group>"; };
 		B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorTests.swift; sourceTree = "<group>"; };
+		CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
+		CB0961EA21E5317B006CC9F5 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
+		CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendService+Futures.swift"; sourceTree = "<group>"; };
+		CB3A954B21E5521B00A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3A954D21E5522600A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3A954F21E5523000A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +404,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3A954C21E5521B00A70243 /* BrightFutures.framework in Frameworks */,
 				60D6C3E7201CD77400B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +421,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3A955021E5523000A70243 /* BrightFutures.framework in Frameworks */,
 				60D6C3EB201CD78100B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +430,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3A954E21E5522600A70243 /* BrightFutures.framework in Frameworks */,
 				60D6C3E9201CD77B00B3B012 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +552,7 @@
 			isa = PBXGroup;
 			children = (
 				60AC833D1FF596B600120172 /* Hyperspace */,
+				CB0DE06121E7E5EF00661F0E /* Futures */,
 				60AC82F91FF58E3600120172 /* Supporting Files */,
 			);
 			path = Sources;
@@ -555,6 +575,7 @@
 				0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */,
 				60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */,
 				0E29092B21349F320031F67C /* DecodingFailureTests.swift */,
+				CB0961EA21E5317B006CC9F5 /* FutureTests.swift */,
 				60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */,
 				60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */,
 				3026E457202008470003A321 /* NetworkSessionTest.swift */,
@@ -644,6 +665,9 @@
 		60D6C3E6201CD77400B3B012 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB3A954F21E5523000A70243 /* BrightFutures.framework */,
+				CB3A954D21E5522600A70243 /* BrightFutures.framework */,
+				CB3A954B21E5521B00A70243 /* BrightFutures.framework */,
 				60D6C3EC201CD78100B3B012 /* Result.framework */,
 				60D6C3EA201CD77B00B3B012 /* Result.framework */,
 				60D6C3E8201CD77400B3B012 /* Result.framework */,
@@ -693,6 +717,7 @@
 				60D6C3FD201CFCCF00B3B012 /* Test Defaults */,
 				60D6C3F2201CFCCF00B3B012 /* Mocks */,
 				60D6C3F8201CFCCF00B3B012 /* JSON */,
+				CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */,
 				0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */,
 			);
 			path = Helper;
@@ -751,6 +776,14 @@
 				60EB8FDB1FF59FB000AC0B55 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB0DE06121E7E5EF00661F0E /* Futures */ = {
+			isa = PBXGroup;
+			children = (
+				CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */,
+			);
+			path = Futures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1186,6 +1219,7 @@
 				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* DecodableContainer.swift in Sources */,
+				CB0DE06321E7E62500661F0E /* BackendService+Futures.swift in Sources */,
 				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyRequest.swift in Sources */,
 				0E347E5B2155A7A500BF18FA /* AnyError+Request.swift in Sources */,
@@ -1217,6 +1251,7 @@
 				60D6C40D201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
 				30F0735420210A890045CB01 /* HTTPTests.swift in Sources */,
 				3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */,
+				CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */,
 				60D6C40B201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C407201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
 				60D6C401201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
@@ -1224,6 +1259,7 @@
 				B4C32C30201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
 				60D6C3FF201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
 				0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */,
+				CBB361BB21E643520082E860 /* Result+Extensions.swift in Sources */,
 				60D6C405201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 				30F07367202227790045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
 			);
@@ -1238,6 +1274,7 @@
 				60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
+				CB7B20A721ECDDC500AB8FE3 /* BackendService+Futures.swift in Sources */,
 				60D6C388201CCCBE00B3B012 /* DecodableContainer.swift in Sources */,
 				60127D5E20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				0E347E5D2155AC3700BF18FA /* AnyError+Request.swift in Sources */,
@@ -1264,6 +1301,7 @@
 				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
 				60D6C37C201CCCAE00B3B012 /* DecodableContainer.swift in Sources */,
 				0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
+				CB7B20A621ECDDC400AB8FE3 /* BackendService+Futures.swift in Sources */,
 				60D6C37D201CCCAE00B3B012 /* AnyRequest.swift in Sources */,
 				60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				0E347E5C2155AC3700BF18FA /* AnyError+Request.swift in Sources */,
@@ -1295,6 +1333,7 @@
 				60D6C40E201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */,
 				30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */,
 				3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */,
+				CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */,
 				60D6C40C201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
 				60D6C408201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
 				60D6C402201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
@@ -1302,6 +1341,7 @@
 				B4C32C31201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
 				60D6C400201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
 				0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */,
+				CBB361BC21E643520082E860 /* Result+Extensions.swift in Sources */,
 				60D6C406201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 				30F073682022277A0045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
 			);

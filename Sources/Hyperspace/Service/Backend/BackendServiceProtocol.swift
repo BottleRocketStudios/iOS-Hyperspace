@@ -16,7 +16,6 @@ public typealias BackendServiceCompletion<T, E: Swift.Error> = (Result<T, E>) ->
 
 /// Represents something that's capable of executing a typed Request
 public protocol BackendServiceProtocol {
-    
     /// Executes the Request, calling the provided completion block when finished.
     ///
     /// - Parameters:
