@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     // MARK: - Properties
     
     private let backendService = BackendService(networkService: NetworkService(networkActivityIndicatable: UIApplication.shared))
+    private lazy var pinningBackendService = BackendService(networkService: NetworkService(session: URLSession(configuration: .default, delegate: self, delegateQueue: .main), networkActivityController: nil), recoveryStrategy: nil)
     
     // MARK: - IBActions
     
@@ -39,7 +40,7 @@ extension ViewController {
     private func getUser() {
         let getUserRequest = GetUserRequest(userId: 1)
         
-        backendService.execute(request: getUserRequest) { [weak self] result in
+        pinningBackendService.execute(request: getUserRequest) { [weak self] result in
             debugPrint("Get user result: \(result)")
             
             switch result {
@@ -93,3 +94,15 @@ extension UIViewController {
 }
 
 extension UIApplication: NetworkActivityIndicatable { /* No extra conformance needed. */ }
+
+extension ViewController: URLSessionDelegate {
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        let validator = CertificateValidator(configuration: PinningConfiguration(domainConfigurations: [PinningConfiguration.DomainConfiguration(domain: "jsonplaceholder.typicode.com")]), localCertificate: Data())
+        if validator.handle(challenge: challenge, handler: completionHandler) {
+            print("handled")
+        } else {
+            completionHandler(.performDefaultHandling, nil)
+        }
+    }
+}

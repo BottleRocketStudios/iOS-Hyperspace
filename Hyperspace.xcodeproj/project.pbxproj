@@ -15,6 +15,11 @@
 		0E347E6421599B7D00BF18FA /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
 		0E347E6521599B7F00BF18FA /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
 		0E4B3ADF22023C0D00D65DB5 /* CertificateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3ADE22023C0D00D65DB5 /* CertificateValidator.swift */; };
+		0E4B3AE02202449F00D65DB5 /* CertificateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3ADE22023C0D00D65DB5 /* CertificateValidator.swift */; };
+		0E4B3AE1220244A000D65DB5 /* CertificateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3ADE22023C0D00D65DB5 /* CertificateValidator.swift */; };
+		0E4B3AE3220244B100D65DB5 /* PinningConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* PinningConfiguration.swift */; };
+		0E4B3AE42202483A00D65DB5 /* PinningConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* PinningConfiguration.swift */; };
+		0E4B3AE52202483A00D65DB5 /* PinningConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* PinningConfiguration.swift */; };
 		0E81B49920AC8E0B00DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
 		0E81B49B20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
@@ -291,6 +296,7 @@
 		0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyError+Request.swift"; sourceTree = "<group>"; };
 		0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+JSON.swift"; sourceTree = "<group>"; };
 		0E4B3ADE22023C0D00D65DB5 /* CertificateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateValidator.swift; sourceTree = "<group>"; };
+		0E4B3AE2220244B100D65DB5 /* PinningConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningConfiguration.swift; sourceTree = "<group>"; };
 		0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryStrategy.swift; sourceTree = "<group>"; };
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+DecodableContainer.swift"; sourceTree = "<group>"; };
@@ -457,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				0E4B3ADE22023C0D00D65DB5 /* CertificateValidator.swift */,
+				0E4B3AE2220244B100D65DB5 /* PinningConfiguration.swift */,
 			);
 			path = "Certificate Pinning";
 			sourceTree = "<group>";
@@ -1198,6 +1205,7 @@
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* DecodableContainer.swift in Sources */,
 				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
+				0E4B3AE3220244B100D65DB5 /* PinningConfiguration.swift in Sources */,
 				0E4B3ADF22023C0D00D65DB5 /* CertificateValidator.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyRequest.swift in Sources */,
 				0E347E5B2155A7A500BF18FA /* AnyError+Request.swift in Sources */,
@@ -1251,6 +1259,8 @@
 				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C388201CCCBE00B3B012 /* DecodableContainer.swift in Sources */,
+				0E4B3AE52202483A00D65DB5 /* PinningConfiguration.swift in Sources */,
+				0E4B3AE02202449F00D65DB5 /* CertificateValidator.swift in Sources */,
 				60127D5E20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				0E347E5D2155AC3700BF18FA /* AnyError+Request.swift in Sources */,
 				60D6C389201CCCBE00B3B012 /* AnyRequest.swift in Sources */,
@@ -1277,6 +1287,8 @@
 				60D6C37C201CCCAE00B3B012 /* DecodableContainer.swift in Sources */,
 				0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C37D201CCCAE00B3B012 /* AnyRequest.swift in Sources */,
+				0E4B3AE42202483A00D65DB5 /* PinningConfiguration.swift in Sources */,
+				0E4B3AE1220244A000D65DB5 /* CertificateValidator.swift in Sources */,
 				60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				0E347E5C2155AC3700BF18FA /* AnyError+Request.swift in Sources */,
 				60D6C37E201CCCAE00B3B012 /* Request.swift in Sources */,
