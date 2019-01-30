@@ -98,7 +98,8 @@ extension UIApplication: NetworkActivityIndicatable { /* No extra conformance ne
 extension ViewController: URLSessionDelegate {
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        let validator = CertificateValidator(configuration: PinningConfiguration(domainConfigurations: [PinningConfiguration.DomainConfiguration(domain: "jsonplaceholder.typicode.com")]), localCertificate: Data())
+        let configuration = PinningConfiguration(domainConfigurations: [.init(domain: "jsonplaceholder.typicode.com", certificate: Data())])
+        let validator = CertificateValidator(configuration: configuration)
         if validator.handle(challenge: challenge, handler: completionHandler) {
             print("handled")
         } else {

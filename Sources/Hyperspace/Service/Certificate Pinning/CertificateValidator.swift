@@ -19,12 +19,10 @@ public class CertificateValidator {
     
     // MARK: Properties
     public let configuration: PinningConfiguration
-    public let localCertificate: Data
     
     // MARK: Initializers
-    public init(configuration: PinningConfiguration, localCertificate: Data) {
+    public init(configuration: PinningConfiguration) {
         self.configuration = configuration
-        self.localCertificate = localCertificate
     }
     
     // MARK: Interface
@@ -36,11 +34,11 @@ public class CertificateValidator {
     ///   - handler: The handler to be called when the challenge is a 'server trust' authentication challenge. For all other types of authentication challenge, this handler will NOT be called.
     public func handle(challenge: URLAuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Bool {
         let host = challenge.protectionSpace.host
-        guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust, let serverTrust = challenge.protectionSpace.serverTrust, configuration.shouldValidateAuthenticationChallenge(fromHost: host) else {
+        guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust, let serverTrust = challenge.protectionSpace.serverTrust else {
             return false //The challenge was not a server trust evaluation, and so left unhandled
         }
         
-        switch evaluate(serverTrust, forHost: challenge.protectionSpace.host, againstLocalCertificate: localCertificate) {
+        switch evaluate(serverTrust, forHost: host) {
         case .allow(let credential): handler(.useCredential, credential)
         case .block:
             let finalDisposition = configuration.authenticationDispositionForFailedValidation(forHost: host)
@@ -51,9 +49,9 @@ public class CertificateValidator {
         return true
     }
     
-    public func evaluate(_ trust: SecTrust, forHost host: String, againstLocalCertificate localCert: Data) -> ValidationDecision {
-        guard let certificate = SecTrustGetCertificateAtIndex(trust, 0) else {
-            return .notPinned //We are not able to continue to validate the certificate if it we can't obtain it from the trust
+    public func evaluate(_ trust: SecTrust, forHost host: String) -> ValidationDecision {
+        guard let domainConfig = configuration.domainConfiguration(forHost: host), domainConfig.shouldValidateCertificate(forHost: host, at: Date()), let certificate = SecTrustGetCertificateAtIndex(trust, 0) else {
+            return .notPinned //We are either not able to retrieve the certificate from the trust or we are not configured to pin this domain
         }
         
         let policies = NSArray(array: [SecPolicyCreateSSL(true, (host as CFString))])
@@ -63,7 +61,7 @@ public class CertificateValidator {
         SecTrustEvaluate(trust, &result)
         
         let remoteCertificate = SecCertificateCopyData(certificate) as Data
-        if ((result == .proceed) || (result == .unspecified)) && remoteCertificate == localCert {
+        if ((result == .proceed) || (result == .unspecified)) && remoteCertificate == domainConfig.certificate {
             return .allow(URLCredential(trust: trust))
         } else {
             return .block
