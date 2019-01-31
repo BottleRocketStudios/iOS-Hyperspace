@@ -16,15 +16,20 @@ public struct PinningConfiguration {
         let domain: String //ex: www.apple.com
         let enforced: Bool //BLOCk if fail, otherwise proceed
         let includeSubdomains: Bool // x.apple.com is part of apple.com
-        let certificate: Data
+        let certificates: [Data]
         let expiration: Date?
         
         // MARK: Initializers
-        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, certificate: Data, expiration: Date? = nil) {
+        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, certificateHashes: [String], expiration: Date? = nil) {
+            let certificates = certificateHashes.compactMap { Data(base64Encoded: $0, options: []) }
+            self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, certificates: certificates, expiration: expiration)
+        }
+        
+        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, certificates: [Data], expiration: Date? = nil) {
             self.domain = domain
             self.enforced = enforced
             self.includeSubdomains = includeSubdomains
-            self.certificate = certificate
+            self.certificates = certificates
             self.expiration = expiration
         }
         
@@ -37,6 +42,10 @@ public struct PinningConfiguration {
         func shouldValidateCertificate(forHost host: String, at date: Date) -> Bool {
             guard shouldValidateCertificate(forHost: host), let expired = expiration else { return true }
             return date < expired
+        }
+        
+        func validate(against remoteCertificate: Data) -> Bool {
+            return certificates.contains(remoteCertificate)
         }
         
         var dispositionForFailedValidation: URLSession.AuthChallengeDisposition {

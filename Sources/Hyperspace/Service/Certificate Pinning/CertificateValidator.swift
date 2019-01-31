@@ -61,7 +61,7 @@ public class CertificateValidator {
         SecTrustEvaluate(trust, &result)
         
         let remoteCertificate = SecCertificateCopyData(certificate) as Data
-        if ((result == .proceed) || (result == .unspecified)) && remoteCertificate == domainConfig.certificate {
+        if ((result == .proceed) || (result == .unspecified)) && domainConfig.validate(against: remoteCertificate) {
             return .allow(URLCredential(trust: trust))
         } else {
             return .block
