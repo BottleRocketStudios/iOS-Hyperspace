@@ -14,6 +14,17 @@ class PinningTests: XCTestCase {
     private let defaultHost = "apple.com"
     private let secondaryHost = "google.com"
     
+    func test_DomainPinningConfiguration_detectsSubdomains() {
+        let config = PinningConfiguration.DomainConfiguration(domain: defaultHost, certificate: Data())
+        XCTAssertTrue(config.shouldValidateCertificate(forHost: defaultHost))
+        XCTAssertTrue(config.shouldValidateCertificate(forHost: "dev.\(defaultHost)"))
+        XCTAssertTrue(config.shouldValidateCertificate(forHost: "x.y.\(defaultHost)"))
+        
+        let config2 = PinningConfiguration.DomainConfiguration(domain: defaultHost, includeSubdomains: false, certificate: Data())
+        XCTAssertFalse(config2.shouldValidateCertificate(forHost: "dev.\(defaultHost)"))
+        XCTAssertFalse(config2.shouldValidateCertificate(forHost: "x.y.\(defaultHost)"))
+    }
+    
     func test_DomainPinningConfiguration_enforcesOnlyOwnDomain() {
         let config = PinningConfiguration.DomainConfiguration(domain: defaultHost, certificate: Data())
         XCTAssertTrue(config.shouldValidateCertificate(forHost: defaultHost))

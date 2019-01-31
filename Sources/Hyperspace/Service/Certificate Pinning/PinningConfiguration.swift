@@ -30,7 +30,8 @@ public struct PinningConfiguration {
         
         // MARK: Interface
         func shouldValidateCertificate(forHost host: String) -> Bool {
-            return domain == host
+            guard includeSubdomains else { return domain == host }
+            return host.contains(domain)
         }
         
         func shouldValidateCertificate(forHost host: String, at date: Date) -> Bool {
