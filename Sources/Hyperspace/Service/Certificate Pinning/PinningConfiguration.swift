@@ -29,18 +29,31 @@ public struct PinningConfiguration {
         }
         
         // MARK: Interface
+        func shouldValidateCertificate(forHost host: String) -> Bool {
+            return domain == host
+        }
+        
         func shouldValidateCertificate(forHost host: String, at date: Date) -> Bool {
-            guard let expired = expiration else { return true }
+            guard shouldValidateCertificate(forHost: host), let expired = expiration else { return true }
             return date < expired
         }
         
-        func authenticationDispositionForFailedValidation(forHost host: String) -> URLSession.AuthChallengeDisposition {
+        var dispositionForFailedValidation: URLSession.AuthChallengeDisposition {
             if enforced {
                 return .cancelAuthenticationChallenge
             }
             
-            debugPrint("SSL certificate pin failed for host: '\(host)'. Configuration set to allow connection anyway.")
+            debugPrint("SSL certificate pin failed for host: '\(domain)'. Configuration set to allow connection anyway.")
             return .performDefaultHandling
+        }
+        
+        // MARK: Hashable
+        public var hashValue: Int {
+            return domain.hashValue
+        }
+        
+        public static func == (lhs: DomainConfiguration, rhs: DomainConfiguration) -> Bool {
+            return lhs.domain == rhs.domain
         }
     }
     
@@ -54,7 +67,7 @@ public struct PinningConfiguration {
     
     // MARK: Interface
     func domainConfiguration(forHost host: String) -> DomainConfiguration? {
-        return domainConfigurations.first { $0.domain == host }
+        return domainConfigurations.first { $0.shouldValidateCertificate(forHost: host) }
     }
     
     func shouldValidateCertificate(forHost host: String, at date: Date) -> Bool {
@@ -62,7 +75,7 @@ public struct PinningConfiguration {
     }
     
     func authenticationDispositionForFailedValidation(forHost host: String) -> URLSession.AuthChallengeDisposition {
-        return domainConfiguration(forHost: host).map { $0.authenticationDispositionForFailedValidation(forHost: host) } ?? .performDefaultHandling
+        return domainConfiguration(forHost: host).map { $0.dispositionForFailedValidation } ?? .performDefaultHandling
     }
 }
 
