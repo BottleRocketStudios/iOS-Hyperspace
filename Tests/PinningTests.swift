@@ -66,7 +66,7 @@ class PinningTests: XCTestCase {
         XCTAssertEqual(config.domainConfigurations.first, .init(domain: defaultHost, pinningHashes: [Data()]))
     }
 
-    func test_PinningConfiguration_findsCorrectDomainConfigurationI() {
+    func test_PinningConfiguration_findsCorrectDomainConfiguration() {
         let config = PinningConfiguration(domainConfigurations: [.init(domain: defaultHost, pinningHashes: [Data()]),
                                                                  .init(domain: secondaryHost, pinningHashes: [Data(bytes: [1, 2, 3, 4])])])
 
@@ -113,32 +113,52 @@ class PinningTests: XCTestCase {
     }
     
     func test_PinningConfiguration_properlyValidatesCertificates() {
-        guard let googleCert = certificate(named: "google"), let appleCert = certificate(named: "apple"),
-            let domainConfig = try? PinningConfiguration.DomainConfiguration(domain: defaultHost, certificates: [googleCert])else { return XCTFail("Unable to load testing certificate") }
+        guard let domainConfig = try? PinningConfiguration.DomainConfiguration(domain: defaultHost, certificates: [TestCertificates.google]) else {
+            return XCTFail("Unable to load testing certificate")
+        }
         
-        XCTAssertTrue(domainConfig.validate(against: googleCert))
-        XCTAssertFalse(domainConfig.validate(against: appleCert))
+        XCTAssertTrue(domainConfig.validate(against: TestCertificates.google))
+        XCTAssertFalse(domainConfig.validate(against: TestCertificates.apple))
     }
     
     func test_PinningConfiguration_properlyValidatesCertificateHashes() {
-        guard let googleCert = certificate(named: "google"), let appleCert = certificate(named: "apple") else { return XCTFail("Unable to load testing certificate") }
-        
         let domainConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, encodedPinningHashes: ["ivJZzhltgbIeXZGekPcWiLySsZ846YXSsGgyL9bjqEY="])
-        XCTAssertTrue(domainConfig.validate(against: googleCert))
-        XCTAssertFalse(domainConfig.validate(against: appleCert))
+        XCTAssertTrue(domainConfig.validate(against: TestCertificates.google))
+        XCTAssertFalse(domainConfig.validate(against: TestCertificates.apple))
+    }
+    
+    func test_CertificateValidator_testValidTrustValidates() {
+        let trust = TestTrusts.leaf.trust
+        
+        let policies = [SecPolicyCreateBasicX509()]
+        SecTrustSetPolicies(trust, policies as CFTypeRef)
+        
+        XCTAssertTrue(trust.isValid)
+    }
+    
+    func test_CertificateValidator_testInvalidTrustDoesNotValidate() {
+        let trust = TestTrusts.leafMissingIntermediate.trust
+        
+        let policies = [SecPolicyCreateBasicX509()]
+        SecTrustSetPolicies(trust, policies as CFTypeRef)
+        
+        XCTAssertFalse(trust.isValid)
     }
     
     func test_CertificateValidator_decidesOnAuthenticationSuccessWhenPinningSucceeds() {
-        guard let google = certificate(named: "google"), let root = certificate(named: "root"), let intermediate = certificate(named: "comodo"),
-            let trust = createdTrust(with: [google, intermediate], anchorCertificates: [root]) else { return XCTFail("Unable to load testing certificate") }
-        
-        let domainConfig = PinningConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["ivJZzhltgbIeXZGekPcWiLySsZ846YXSsGgyL9bjqEY="])
+        let trust = TestTrusts.leaf.trust
+        let domainConfig = PinningConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["5NSH3u1+iF//AOjN69ploBrid88u75at+Zrlp8APBfM="])
         let validator = CertificateValidator(configuration: PinningConfiguration(domainConfigurations: [domainConfig]))
         let result = validator.evaluate(trust, forHost: secondaryHost)
-        print(result)
+        
+        switch result {
+        case .allow: break
+        default: XCTFail("This trust should pass pinning validation.")
+        }
     }
     
     func test_CertificateValidator_decidesOnAuthenticationCancellationWhenPinningFails() {
+        
     }
     
     func test_CertificateValidator_doesNothingWhenPinningDoesNotOccur() {

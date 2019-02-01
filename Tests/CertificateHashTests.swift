@@ -11,16 +11,11 @@ import XCTest
 
 class CertificateHashTests: XCTestCase {
     
-    func test_CertificateHasher_publicKeyHashGenerationFromCertificate() {
-        guard let googleCert = certificate(named: "google"), let appleCert = certificate(named: "apple"),
-            let bbcCert = certificate(named: "bbc") else {
-                return XCTFail("Could not locate test certificates in test bundle.")
-        }
-        
+    func test_CertificateHasher_publicKeyHashGenerationFromCertificate() {        
         do {
-            let googleHash = try CertificateHasher.pinningHash(for: googleCert).base64EncodedString()
-            let appleHash = try CertificateHasher.pinningHash(for: appleCert).base64EncodedString()
-            let bbcHash = try CertificateHasher.pinningHash(for: bbcCert).base64EncodedString()
+            let googleHash = try CertificateHasher.pinningHash(for: TestCertificates.google).base64EncodedString()
+            let appleHash = try CertificateHasher.pinningHash(for: TestCertificates.apple).base64EncodedString()
+            let bbcHash = try CertificateHasher.pinningHash(for: TestCertificates.bbc).base64EncodedString()
             
             XCTAssertEqual(googleHash, "ivJZzhltgbIeXZGekPcWiLySsZ846YXSsGgyL9bjqEY=")
             XCTAssertEqual(appleHash, "WHaeY9m+VRkoyxfmPwZnqJZ5s7sRUG1nZ2cWQUvDNF4=")
@@ -46,37 +41,4 @@ class CertificateHashTests: XCTestCase {
         XCTAssertEqual(algo3?.asn1HeaderBytes, CertificateHasher.PublicKeyAlgorithm.ecDsaSecp256r1.asn1HeaderBytes)
         XCTAssertEqual(algo4?.asn1HeaderBytes, CertificateHasher.PublicKeyAlgorithm.ecDsaSecp384r1.asn1HeaderBytes)
     }
-}
-
-extension XCTestCase {
-
-    func certificate(named: String) -> SecCertificate? {
-        guard let certPath = Bundle(for: CertificateHashTests.self).url(forResource: named, withExtension: "der"),
-            let certificateData = try? Data(contentsOf: certPath),
-            let certificate = SecCertificateCreateWithData(kCFAllocatorDefault, certificateData as CFData) else {
-                return nil
-        }
-        
-        return certificate
-    }
-    
-    func createdTrust(with certificates: [SecCertificate], anchorCertificates: [SecCertificate]) -> SecTrust? {
-            var trust: SecTrust?
-            let result = SecTrustCreateWithCertificates(certificates as CFTypeRef, SecPolicyCreateSSL(true, nil), &trust)
-            
-            guard result == errSecSuccess else { return nil }
-            
-            if let trust = trust {
-                if SecTrustSetAnchorCertificates(trust, anchorCertificates as CFArray) != errSecSuccess {
-                    return nil
-                }
-                
-                let verifyTime: CFAbsoluteTime = 475163640.0
-                let testVerifyDate: CFDate = CFDateCreate(nil, verifyTime)
-                SecTrustSetVerifyDate(trust, testVerifyDate)
-                return trust
-            }
-        
-            return nil
-        }
 }

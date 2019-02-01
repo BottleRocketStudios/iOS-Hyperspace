@@ -55,14 +55,15 @@
 		0EF57B972203CD0B00484C01 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
 		0EFB54282204A8A400949F24 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
 		0EFB54292204A8A400949F24 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
-		0EFB542D2204ABA500949F24 /* root.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542A2204ABA400949F24 /* root.der */; };
-		0EFB542E2204ABA500949F24 /* root.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542A2204ABA400949F24 /* root.der */; };
-		0EFB542F2204ABA500949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542B2204ABA500949F24 /* cloudflare.der */; };
-		0EFB54302204ABA500949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542B2204ABA500949F24 /* cloudflare.der */; };
-		0EFB54312204ABA500949F24 /* comodo.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542C2204ABA500949F24 /* comodo.der */; };
-		0EFB54322204ABA500949F24 /* comodo.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542C2204ABA500949F24 /* comodo.der */; };
-		0EFB54332204AD1E00949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542B2204ABA500949F24 /* cloudflare.der */; };
-		0EFB54342204AD7700949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542B2204ABA500949F24 /* cloudflare.der */; };
+		0EFB54362204AFBA00949F24 /* Trusts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54352204AFBA00949F24 /* Trusts.swift */; };
+		0EFB54372204AFBA00949F24 /* Trusts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54352204AFBA00949F24 /* Trusts.swift */; };
+		0EFB54392204BF6900949F24 /* root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54382204BF6900949F24 /* root.cer */; };
+		0EFB543A2204BF6900949F24 /* root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54382204BF6900949F24 /* root.cer */; };
+		0EFB543C2204BF7F00949F24 /* leaf.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543B2204BF7F00949F24 /* leaf.cer */; };
+		0EFB543D2204BF7F00949F24 /* leaf.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543B2204BF7F00949F24 /* leaf.cer */; };
+		0EFB543F2204BF9500949F24 /* intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543E2204BF9500949F24 /* intermediate.cer */; };
+		0EFB54402204BF9500949F24 /* intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543E2204BF9500949F24 /* intermediate.cer */; };
+		0EFB54422204C3A400949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54412204C3A400949F24 /* cloudflare.der */; };
 		3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
@@ -346,9 +347,11 @@
 		0EF57B8D2202A25300484C01 /* apple.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = apple.der; sourceTree = "<group>"; };
 		0EF57B932202A39E00484C01 /* bbc.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = bbc.der; sourceTree = "<group>"; };
 		0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationChallenge.swift; sourceTree = "<group>"; };
-		0EFB542A2204ABA400949F24 /* root.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = root.der; sourceTree = "<group>"; };
-		0EFB542B2204ABA500949F24 /* cloudflare.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cloudflare.der; sourceTree = "<group>"; };
-		0EFB542C2204ABA500949F24 /* comodo.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = comodo.der; sourceTree = "<group>"; };
+		0EFB54352204AFBA00949F24 /* Trusts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trusts.swift; sourceTree = "<group>"; };
+		0EFB54382204BF6900949F24 /* root.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = root.cer; sourceTree = "<group>"; };
+		0EFB543B2204BF7F00949F24 /* leaf.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = leaf.cer; sourceTree = "<group>"; };
+		0EFB543E2204BF9500949F24 /* intermediate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = intermediate.cer; sourceTree = "<group>"; };
+		0EFB54412204C3A400949F24 /* cloudflare.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cloudflare.der; sourceTree = "<group>"; };
 		3026E457202008470003A321 /* NetworkSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTest.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
@@ -545,9 +548,9 @@
 				0EF57B862202968300484C01 /* google.der */,
 				0EF57B932202A39E00484C01 /* bbc.der */,
 				0EF57B8D2202A25300484C01 /* apple.der */,
-				0EFB542B2204ABA500949F24 /* cloudflare.der */,
-				0EFB542C2204ABA500949F24 /* comodo.der */,
-				0EFB542A2204ABA400949F24 /* root.der */,
+				0EFB54382204BF6900949F24 /* root.cer */,
+				0EFB543B2204BF7F00949F24 /* leaf.cer */,
+				0EFB543E2204BF9500949F24 /* intermediate.cer */,
 			);
 			path = Certificates;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				60D6C3FD201CFCCF00B3B012 /* Test Defaults */,
 				60D6C3F2201CFCCF00B3B012 /* Mocks */,
 				60D6C3F8201CFCCF00B3B012 /* JSON */,
+				0EFB54352204AFBA00949F24 /* Trusts.swift */,
 				CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */,
 				0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */,
 			);
@@ -796,6 +800,7 @@
 		60D6C420201D156500B3B012 /* Hyperspace-iOSExample */ = {
 			isa = PBXGroup;
 			children = (
+				0EFB54412204C3A400949F24 /* cloudflare.der */,
 				60D6C421201D156500B3B012 /* AppDelegate.swift */,
 				60D6C423201D156500B3B012 /* ViewController.swift */,
 				60D6C425201D156500B3B012 /* Main.storyboard */,
@@ -1157,7 +1162,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EFB54332204AD1E00949F24 /* cloudflare.der in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1167,14 +1171,14 @@
 			files = (
 				0EF57B942202A39E00484C01 /* bbc.der in Resources */,
 				0EF57B8A220297E400484C01 /* google.der in Resources */,
-				0EFB54312204ABA500949F24 /* comodo.der in Resources */,
-				0EFB542D2204ABA500949F24 /* root.der in Resources */,
+				0EFB543C2204BF7F00949F24 /* leaf.cer in Resources */,
 				0ECDC1D220AA03A200ABF991 /* MixedTypeObject.json in Resources */,
+				0EFB543F2204BF9500949F24 /* intermediate.cer in Resources */,
 				60D6C413201CFCCF00B3B012 /* Object.json in Resources */,
+				0EFB54392204BF6900949F24 /* root.cer in Resources */,
 				0ECDC1C820A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */,
 				0EF57B8F2202A25300484C01 /* apple.der in Resources */,
 				60D6C415201CFCCF00B3B012 /* RootKeyArray.json in Resources */,
-				0EFB542F2204ABA500949F24 /* cloudflare.der in Resources */,
 				60D6C411201CFCCF00B3B012 /* RootKeyObject.json in Resources */,
 				60D6C40F201CFCCF00B3B012 /* DateObject.json in Resources */,
 				0ECDC1CC20A9FD3500ABF991 /* RootKeyIncorrectType.json in Resources */,
@@ -1201,14 +1205,14 @@
 			files = (
 				0EF57B952202A39E00484C01 /* bbc.der in Resources */,
 				0EF57B8B220297E500484C01 /* google.der in Resources */,
-				0EFB54322204ABA500949F24 /* comodo.der in Resources */,
-				0EFB542E2204ABA500949F24 /* root.der in Resources */,
+				0EFB543D2204BF7F00949F24 /* leaf.cer in Resources */,
 				0ECDC1D320AA03A300ABF991 /* MixedTypeObject.json in Resources */,
+				0EFB54402204BF9500949F24 /* intermediate.cer in Resources */,
 				60D6C414201CFCCF00B3B012 /* Object.json in Resources */,
+				0EFB543A2204BF6900949F24 /* root.cer in Resources */,
 				0ECDC1C920A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */,
 				0EF57B902202A25300484C01 /* apple.der in Resources */,
 				60D6C416201CFCCF00B3B012 /* RootKeyArray.json in Resources */,
-				0EFB54302204ABA500949F24 /* cloudflare.der in Resources */,
 				60D6C412201CFCCF00B3B012 /* RootKeyObject.json in Resources */,
 				60D6C410201CFCCF00B3B012 /* DateObject.json in Resources */,
 				0ECDC1CD20A9FD3600ABF991 /* RootKeyIncorrectType.json in Resources */,
@@ -1219,7 +1223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EFB54342204AD7700949F24 /* cloudflare.der in Resources */,
+				0EFB54422204C3A400949F24 /* cloudflare.der in Resources */,
 				60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */,
 				60D6C429201D156500B3B012 /* Assets.xcassets in Resources */,
 				60D6C427201D156500B3B012 /* Main.storyboard in Resources */,
@@ -1349,6 +1353,7 @@
 				60D6C3FF201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
 				0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */,
 				0EF57B88220296A700484C01 /* CertificateHashTests.swift in Sources */,
+				0EFB54362204AFBA00949F24 /* Trusts.swift in Sources */,
 				CBB361BB21E643520082E860 /* Result+Extensions.swift in Sources */,
 				60D6C405201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 				30F07367202227790045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
@@ -1441,6 +1446,7 @@
 				60D6C400201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
 				0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */,
 				CBB361BC21E643520082E860 /* Result+Extensions.swift in Sources */,
+				0EFB54372204AFBA00949F24 /* Trusts.swift in Sources */,
 				0EF57B89220296A700484C01 /* CertificateHashTests.swift in Sources */,
 				60D6C406201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 				30F073682022277A0045CB01 /* NetworkServiceMockSubclass.swift in Sources */,

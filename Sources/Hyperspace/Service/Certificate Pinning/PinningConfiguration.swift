@@ -120,7 +120,7 @@ public struct PinningConfiguration {
     
     /// Create a `PinningConfiguration` instance which will govern how the validator behaves when presented with a remote SSL certificate.
     ///
-    /// - Parameter domainConfigurations: A list of `DomainConfiguration` objects which control the pinning process for each individual domai.
+    /// - Parameter domainConfigurations: A list of `DomainConfiguration` objects which control the pinning process for each individual domain.
     ///         Note that providing multiple configurations for a single domain will result in only the first being kept, the rest discarded.
     public init(domainConfigurations: [DomainConfiguration]) {
         self.domainConfigurations = Set(domainConfigurations)

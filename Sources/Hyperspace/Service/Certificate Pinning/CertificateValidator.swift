@@ -58,13 +58,10 @@ public class CertificateValidator {
         }
         
         //Set an SSL policy and evaluate the trust
-        let policies = NSArray(array: [SecPolicyCreateSSL(true, (host as CFString))])
+        let policies = NSArray(array: [SecPolicyCreateSSL(true, nil)])
         SecTrustSetPolicies(trust, policies)
         
-        var result: SecTrustResultType = .unspecified
-        SecTrustEvaluate(trust, &result)
-        
-        if result == .proceed || result == .unspecified {
+        if trust.isValid {
             
             //If the server trust evaluation is successful, walk the certificate chain
             let certificateCount = SecTrustGetCertificateCount(trust)
@@ -77,7 +74,18 @@ public class CertificateValidator {
                 }
             }
         }
-        
+
         return .block
+    }
+}
+
+extension SecTrust {
+    
+    /// Evaluates `self` and returns `true` if the evaluation succeeds with a value of `.unspecified` or `.proceed`.
+    var isValid: Bool {
+        var result = SecTrustResultType.invalid
+        let status = SecTrustEvaluate(self, &result)
+        
+        return (status == errSecSuccess) ? (result == .unspecified || result == .proceed) : false
     }
 }
