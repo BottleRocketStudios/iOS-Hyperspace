@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(iOSApplicationExtension 10.0, *)
 public class CertificateValidator {
     
     // MARK: ValidationDecision Subtype
@@ -50,7 +51,7 @@ public class CertificateValidator {
     }
     
     public func evaluate(_ trust: SecTrust, forHost host: String) -> ValidationDecision {
-        guard let domainConfig = configuration.domainConfiguration(forHost: host), domainConfig.shouldValidateCertificate(forHost: host, at: Date()), let certificate = SecTrustGetCertificateAtIndex(trust, 0) else {
+        guard let domainConfig = configuration.domainConfiguration(forHost: host), domainConfig.shouldValidateCertificate(forHost: host, at: Date()) else {
             return .notPinned //We are either not able to retrieve the certificate from the trust or we are not configured to pin this domain
         }
         
@@ -60,11 +61,19 @@ public class CertificateValidator {
         var result: SecTrustResultType = .unspecified
         SecTrustEvaluate(trust, &result)
         
-        let remoteCertificate = SecCertificateCopyData(certificate) as Data
-        if ((result == .proceed) || (result == .unspecified)) && domainConfig.validate(against: remoteCertificate) {
-            return .allow(URLCredential(trust: trust))
-        } else {
+        guard result == .proceed || result == .unspecified else {
             return .block
         }
+            
+        let certificateCount = SecTrustGetCertificateCount(trust)
+        for certIndex in 0..<certificateCount {
+            guard let certificate = SecTrustGetCertificateAtIndex(trust, certIndex) else { continue }
+            
+            if domainConfig.validate(against: certificate) {
+                return .allow(URLCredential(trust: trust))
+            }
+        }
+        
+        return .block
     }
 }

@@ -8,28 +8,34 @@
 
 import Foundation
 
+@available(iOSApplicationExtension 10.0, *)
 public struct PinningConfiguration {
     
     public struct DomainConfiguration: Hashable {
         
         // MARK: Properties
-        let domain: String //ex: www.apple.com
-        let enforced: Bool //BLOCk if fail, otherwise proceed
-        let includeSubdomains: Bool // x.apple.com is part of apple.com
-        let certificates: [Data]
+        let domain: String
+        let enforced: Bool
+        let includeSubdomains: Bool
+        let pinningHashes: [Data]
         let expiration: Date?
         
         // MARK: Initializers
-        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, certificateHashes: [String], expiration: Date? = nil) {
-            let certificates = certificateHashes.compactMap { Data(base64Encoded: $0, options: []) }
-            self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, certificates: certificates, expiration: expiration)
+        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, certificates: [SecCertificate], expiration: Date? = nil) throws {
+            let pinningHashes = try certificates.compactMap { try CertificateHasher.pinningHash(for: $0) }
+            self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expiration: expiration)
         }
         
-        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, certificates: [Data], expiration: Date? = nil) {
+        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, encodedPinningHashes: [String], expiration: Date? = nil) {
+            let pinningHashes = encodedPinningHashes.compactMap { Data(base64Encoded: $0) }
+            self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expiration: expiration)
+        }
+        
+        init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, pinningHashes: [Data], expiration: Date? = nil) {
             self.domain = domain
             self.enforced = enforced
             self.includeSubdomains = includeSubdomains
-            self.certificates = certificates
+            self.pinningHashes = pinningHashes
             self.expiration = expiration
         }
         
@@ -44,8 +50,9 @@ public struct PinningConfiguration {
             return date < expired
         }
         
-        func validate(against remoteCertificate: Data) -> Bool {
-            return certificates.contains(remoteCertificate)
+        func validate(against remoteCertificate: SecCertificate) -> Bool {
+            let pinningHash = try? CertificateHasher.pinningHash(for: remoteCertificate)
+            return pinningHash.map(pinningHashes.contains) ?? false
         }
         
         var dispositionForFailedValidation: URLSession.AuthChallengeDisposition {
@@ -87,8 +94,4 @@ public struct PinningConfiguration {
     func authenticationDispositionForFailedValidation(forHost host: String) -> URLSession.AuthChallengeDisposition {
         return domainConfiguration(forHost: host).map { $0.dispositionForFailedValidation } ?? .performDefaultHandling
     }
-}
-
-// MARK: Helper
-extension PinningConfiguration {
 }
