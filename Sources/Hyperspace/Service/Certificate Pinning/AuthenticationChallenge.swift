@@ -8,16 +8,16 @@
 
 import Foundation
 
-/// <#Description#>
+/// This protocol represents a generic authentication challenge, such as those presented as part of the SSL and TLS handshakes.
 public protocol AuthenticationChallenge {
     
-    /// <#Description#>
+    /// The host of the remote connection
     var host: String { get }
     
-    /// <#Description#>
+    /// The method of authentication. For possible values see `URLAuthenticationChallenge`.
     var authenticationMethod: String { get }
     
-    /// <#Description#>
+    /// The `SecTrust` object packaged as part of the challenge. Will be nil unless the challenge is a server trust challenge.
     var serverTrust: SecTrust? { get }
 }
 

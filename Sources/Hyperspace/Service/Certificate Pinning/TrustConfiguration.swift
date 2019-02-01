@@ -11,10 +11,10 @@ import Foundation
 @available(iOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 
-/// <#Description#>
+/// A configuration object which controls how a `TrustValidator` object makes decisions on which connections to accept and which to block. The configuration object consists of a series of configuration objects, each designed for a single domain.
 public struct TrustConfiguration {
     
-    /// <#Description#>
+    /// A configuration object which controls how a `TrustValidator` object makes decisions on which connections to accept and which to block, and pertains only to a single domain.
     public struct DomainConfiguration: Hashable {
         
         // MARK: - Properties

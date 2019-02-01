@@ -11,7 +11,7 @@ import Foundation
 @available(iOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 
-/// <#Description#>
+/// This class builds upon the `NetworkServiceProtocol` to offer a quick option for performing server trust validation.
 public class TrustValidatingNetworkService: NetworkServiceProtocol {
     
     private class TrustValidatingURLSessionDelegate: NSObject, URLSessionDelegate {
@@ -47,12 +47,12 @@ public class TrustValidatingNetworkService: NetworkServiceProtocol {
     
     // MARK: - Initializers
     
-    /// <#Description#>
+    /// Returns an instance of `TrustValidatingNetworkService` capable of performing server trust validation based on the provided configuration.
     ///
     /// - Parameters:
-    ///   - trustConfiguration: <#trustConfiguration description#>
-    ///   - sessionConfiguration: <#sessionConfiguration description#>
-    ///   - networkActivityIndicatable: <#networkActivityIndicatable description#>
+    ///   - trustConfiguration: The configuration object used to govern the rules as to how server trust validation is performed on the network service.
+    ///   - sessionConfiguration: The configuration of the `URLSession` object used by the `NetworkService`.
+    ///   - networkActivityIndicatable: An object capable of displaying currently network activity visually to the user.
     public init(trustConfiguration: TrustConfiguration, sessionConfiguration: URLSessionConfiguration = .default, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
         let trustDelegate = TrustValidatingURLSessionDelegate(configuration: trustConfiguration)
         let session = URLSession(configuration: sessionConfiguration, delegate: trustDelegate, delegateQueue: .main)

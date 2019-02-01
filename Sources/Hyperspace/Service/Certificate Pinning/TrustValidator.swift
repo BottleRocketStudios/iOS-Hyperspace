@@ -11,7 +11,8 @@ import Foundation
 @available(iOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 
-/// <#Description#>
+/* This class performs validation on authentication challenges prestented to it. In addition to ensuring that the challenge is trusted by the operating system, it will
+    ensure that the certificate being presented as part of the SSL/TLS authentication challenge is recognized by the device. */
 public class TrustValidator {
     
     // MARK: - ValidationDecision Subtype
