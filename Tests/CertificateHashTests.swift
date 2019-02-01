@@ -59,4 +59,24 @@ extension XCTestCase {
         
         return certificate
     }
+    
+    func createdTrust(with certificates: [SecCertificate], anchorCertificates: [SecCertificate]) -> SecTrust? {
+            var trust: SecTrust?
+            let result = SecTrustCreateWithCertificates(certificates as CFTypeRef, SecPolicyCreateSSL(true, nil), &trust)
+            
+            guard result == errSecSuccess else { return nil }
+            
+            if let trust = trust {
+                if SecTrustSetAnchorCertificates(trust, anchorCertificates as CFArray) != errSecSuccess {
+                    return nil
+                }
+                
+                let verifyTime: CFAbsoluteTime = 475163640.0
+                let testVerifyDate: CFDate = CFDateCreate(nil, verifyTime)
+                SecTrustSetVerifyDate(trust, testVerifyDate)
+                return trust
+            }
+        
+            return nil
+        }
 }

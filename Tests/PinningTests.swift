@@ -11,6 +11,12 @@ import XCTest
 
 class PinningTests: XCTestCase {
     
+    struct TestAuthenticationChallenge {
+        let host: String
+        let authenticationMethod: String = NSURLAuthenticationMethodServerTrust
+        let serverTrust: SecTrust?
+    }
+    
     private let defaultHost = "apple.com"
     private let secondaryHost = "google.com"
     
@@ -120,5 +126,23 @@ class PinningTests: XCTestCase {
         let domainConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, encodedPinningHashes: ["ivJZzhltgbIeXZGekPcWiLySsZ846YXSsGgyL9bjqEY="])
         XCTAssertTrue(domainConfig.validate(against: googleCert))
         XCTAssertFalse(domainConfig.validate(against: appleCert))
+    }
+    
+    func test_CertificateValidator_decidesOnAuthenticationSuccessWhenPinningSucceeds() {
+    }
+    
+    func test_CertificateValidator_decidesOnAuthenticationCancellationWhenPinningFails() {
+    }
+    
+    func test_CertificateValidator_doesNothingWhenPinningDoesNotOccur() {
+    }
+    
+    func test_CertificateValidator_pinningDoesNotOccurBecauseOfDomainMismatch() {
+    }
+    
+    func test_CertificateValidator_pinningDoesNotOccurBecauseOfExpirationTime() {
+    }
+    
+    func test_CertificateValidator_pinningDoesNotOccurBecauseOfUnconfiguredSubdomainUsage() {
     }
 }

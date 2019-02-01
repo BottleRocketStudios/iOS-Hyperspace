@@ -34,9 +34,9 @@ public class CertificateValidator {
     /// - Parameters:
     ///   - challenge: The `URLAuthenticationChallenge` presented to the `URLSession` object with which this validator is associated.
     ///   - handler: The handler to be called when the challenge is a 'server trust' authentication challenge. For all other types of authentication challenge, this handler will NOT be called.
-    public func handle(challenge: URLAuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Bool {
-        let host = challenge.protectionSpace.host
-        guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust, let serverTrust = challenge.protectionSpace.serverTrust else {
+    public func handle(challenge: AuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Bool {
+        let host = challenge.host
+        guard challenge.authenticationMethod == NSURLAuthenticationMethodServerTrust, let serverTrust = challenge.serverTrust else {
             return false //The challenge was not a server trust evaluation, and so left unhandled
         }
         
