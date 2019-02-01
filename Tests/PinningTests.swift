@@ -20,54 +20,54 @@ class PinningTests: XCTestCase {
     private let defaultHost = "apple.com"
     private let secondaryHost = "google.com"
     
-    func test_DomainPinningConfiguration_detectsSubdomains() {
-        let config = PinningConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()])
+    func test_DomainConfiguration_detectsSubdomains() {
+        let config = TrustConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()])
         XCTAssertTrue(config.shouldValidateCertificate(forHost: defaultHost))
         XCTAssertTrue(config.shouldValidateCertificate(forHost: "dev.\(defaultHost)"))
         XCTAssertTrue(config.shouldValidateCertificate(forHost: "x.y.\(defaultHost)"))
 
-        let config2 = PinningConfiguration.DomainConfiguration(domain: defaultHost, includeSubdomains: false, pinningHashes: [Data()])
+        let config2 = TrustConfiguration.DomainConfiguration(domain: defaultHost, includeSubdomains: false, pinningHashes: [Data()])
         XCTAssertFalse(config2.shouldValidateCertificate(forHost: "dev.\(defaultHost)"))
         XCTAssertFalse(config2.shouldValidateCertificate(forHost: "x.y.\(defaultHost)"))
     }
 
-    func test_DomainPinningConfiguration_enforcesOnlyOwnDomain() {
-        let config = PinningConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()])
+    func test_DomainConfiguration_enforcesOnlyOwnDomain() {
+        let config = TrustConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()])
         XCTAssertTrue(config.shouldValidateCertificate(forHost: defaultHost))
         XCTAssertFalse(config.shouldValidateCertificate(forHost: ""))
         XCTAssertFalse(config.shouldValidateCertificate(forHost: "google.com"))
     }
 
-    func test_DomainPinningConfiguration_enforcesOnlyBeforeExpiration() {
-        let nonExpiringConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()])
+    func test_DomainConfiguration_enforcesOnlyBeforeExpiration() {
+        let nonExpiringConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()])
         XCTAssertTrue(nonExpiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date()))
         XCTAssertTrue(nonExpiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date().addingTimeInterval(1000)))
         XCTAssertTrue(nonExpiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date().addingTimeInterval(1000000)))
 
         let expiration = Date().addingTimeInterval(100)
-        let expiringConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()], expiration: expiration)
+        let expiringConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()], expiration: expiration)
         XCTAssertTrue(expiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date()))
         XCTAssertTrue(expiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date().addingTimeInterval(99)))
         XCTAssertFalse(expiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date().addingTimeInterval(1001)))
     }
 
-    func test_DomainPinningConfiguration_finalDispositionForFailedValidation() {
-        let enforcedConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()])
+    func test_DomainConfiguration_finalDispositionForFailedValidation() {
+        let enforcedConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()])
         XCTAssertEqual(enforcedConfig.dispositionForFailedValidation, .cancelAuthenticationChallenge)
 
-        let unenforcedConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, enforced: false, pinningHashes: [Data()])
+        let unenforcedConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: false, pinningHashes: [Data()])
         XCTAssertEqual(unenforcedConfig.dispositionForFailedValidation, .performDefaultHandling)
     }
 
-    func test_PinningConfiguration_respectsSetSemantics() {
-        let config = PinningConfiguration(domainConfigurations: [.init(domain: defaultHost, pinningHashes: [Data()]),
+    func test_TrustConfiguration_respectsSetSemantics() {
+        let config = TrustConfiguration(domainConfigurations: [.init(domain: defaultHost, pinningHashes: [Data()]),
                                                                  .init(domain: defaultHost, pinningHashes: [Data(bytes: [1, 2, 3, 4])])])
         XCTAssertEqual(config.domainConfigurations.count, 1)
         XCTAssertEqual(config.domainConfigurations.first, .init(domain: defaultHost, pinningHashes: [Data()]))
     }
 
-    func test_PinningConfiguration_findsCorrectDomainConfiguration() {
-        let config = PinningConfiguration(domainConfigurations: [.init(domain: defaultHost, pinningHashes: [Data()]),
+    func test_TrustConfiguration_findsCorrectDomainConfiguration() {
+        let config = TrustConfiguration(domainConfigurations: [.init(domain: defaultHost, pinningHashes: [Data()]),
                                                                  .init(domain: secondaryHost, pinningHashes: [Data(bytes: [1, 2, 3, 4])])])
 
         XCTAssertEqual(config.domainConfiguration(forHost: defaultHost)?.domain, defaultHost)
@@ -81,39 +81,39 @@ class PinningTests: XCTestCase {
         XCTAssertNil(config.domainConfiguration(forHost: "bbc.com"))
     }
 
-    func test_PinningConfiguration_finalDispositionForFailedValidation() {
-        let domainConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()])
-        let config = PinningConfiguration(domainConfigurations: [domainConfig])
+    func test_TrustConfiguration_finalDispositionForFailedValidation() {
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()])
+        let config = TrustConfiguration(domainConfigurations: [domainConfig])
 
         XCTAssertEqual(config.authenticationDispositionForFailedValidation(forHost: defaultHost), .cancelAuthenticationChallenge)
         XCTAssertEqual(config.authenticationDispositionForFailedValidation(forHost: secondaryHost), .performDefaultHandling)
 
-        let domainConfig2 = PinningConfiguration.DomainConfiguration(domain: defaultHost, enforced: false, pinningHashes: [Data()])
-        let config2 = PinningConfiguration(domainConfigurations: [domainConfig2])
+        let domainConfig2 = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: false, pinningHashes: [Data()])
+        let config2 = TrustConfiguration(domainConfigurations: [domainConfig2])
 
         XCTAssertEqual(config2.authenticationDispositionForFailedValidation(forHost: defaultHost), .performDefaultHandling)
     }
 
-    func test_PinningConfiguration_enforcesOnlyBeforeExpiration() {
+    func test_TrustConfiguration_enforcesOnlyBeforeExpiration() {
         let expiration = Date().addingTimeInterval(100)
-        let domainConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()], expiration: expiration)
-        let config = PinningConfiguration(domainConfigurations: [domainConfig])
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()], expiration: expiration)
+        let config = TrustConfiguration(domainConfigurations: [domainConfig])
 
         XCTAssertTrue(config.shouldValidateCertificate(forHost: defaultHost, at: Date()))
         XCTAssertFalse(config.shouldValidateCertificate(forHost: defaultHost, at: expiration.addingTimeInterval(1)))
         XCTAssertFalse(config.shouldValidateCertificate(forHost: secondaryHost, at: expiration.addingTimeInterval(1)))
         XCTAssertFalse(config.shouldValidateCertificate(forHost: secondaryHost, at: Date()))
 
-        let domainConfig2 = PinningConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()])
-        let config2 = PinningConfiguration(domainConfigurations: [domainConfig2])
+        let domainConfig2 = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()])
+        let config2 = TrustConfiguration(domainConfigurations: [domainConfig2])
 
         XCTAssertTrue(config2.shouldValidateCertificate(forHost: defaultHost, at: Date()))
         XCTAssertTrue(config2.shouldValidateCertificate(forHost: defaultHost, at: Date().addingTimeInterval(100)))
         XCTAssertFalse(config2.shouldValidateCertificate(forHost: secondaryHost, at: Date()))
     }
     
-    func test_PinningConfiguration_properlyValidatesCertificates() {
-        guard let domainConfig = try? PinningConfiguration.DomainConfiguration(domain: defaultHost, certificates: [TestCertificates.google]) else {
+    func test_TrustConfiguration_properlyValidatesCertificates() {
+        guard let domainConfig = try? TrustConfiguration.DomainConfiguration(domain: defaultHost, certificates: [TestCertificates.google]) else {
             return XCTFail("Unable to load testing certificate")
         }
         
@@ -121,13 +121,13 @@ class PinningTests: XCTestCase {
         XCTAssertFalse(domainConfig.validate(against: TestCertificates.apple))
     }
     
-    func test_PinningConfiguration_properlyValidatesCertificateHashes() {
-        let domainConfig = PinningConfiguration.DomainConfiguration(domain: defaultHost, encodedPinningHashes: ["ivJZzhltgbIeXZGekPcWiLySsZ846YXSsGgyL9bjqEY="])
+    func test_TrustConfiguration_properlyValidatesCertificateHashes() {
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, encodedPinningHashes: ["ivJZzhltgbIeXZGekPcWiLySsZ846YXSsGgyL9bjqEY="])
         XCTAssertTrue(domainConfig.validate(against: TestCertificates.google))
         XCTAssertFalse(domainConfig.validate(against: TestCertificates.apple))
     }
     
-    func test_CertificateValidator_testValidTrustValidates() {
+    func test_TrustValidator_testValidTrustValidates() {
         let trust = TestTrusts.leaf.trust
         
         let policies = [SecPolicyCreateBasicX509()]
@@ -145,10 +145,10 @@ class PinningTests: XCTestCase {
         XCTAssertFalse(trust.isValid)
     }
     
-    func test_CertificateValidator_decidesOnAuthenticationSuccessWhenPinningSucceeds() {
+    func test_TrustValidator_decidesOnAuthenticationSuccessWhenPinningSucceeds() {
         let trust = TestTrusts.leaf.trust
-        let domainConfig = PinningConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["5NSH3u1+iF//AOjN69ploBrid88u75at+Zrlp8APBfM="])
-        let validator = CertificateValidator(configuration: PinningConfiguration(domainConfigurations: [domainConfig]))
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["5NSH3u1+iF//AOjN69ploBrid88u75at+Zrlp8APBfM="])
+        let validator = TrustValidator(configuration: TrustConfiguration(domainConfigurations: [domainConfig]))
         let result = validator.evaluate(trust, forHost: secondaryHost)
         
         switch result {
@@ -157,19 +157,19 @@ class PinningTests: XCTestCase {
         }
     }
     
-    func test_CertificateValidator_decidesOnAuthenticationCancellationWhenPinningFails() {
+    func test_TrustValidator_decidesOnAuthenticationCancellationWhenPinningFails() {
         
     }
     
-    func test_CertificateValidator_doesNothingWhenPinningDoesNotOccur() {
+    func test_TrustValidator_doesNothingWhenPinningDoesNotOccur() {
     }
     
-    func test_CertificateValidator_pinningDoesNotOccurBecauseOfDomainMismatch() {
+    func test_TrustValidator_pinningDoesNotOccurBecauseOfDomainMismatch() {
     }
     
-    func test_CertificateValidator_pinningDoesNotOccurBecauseOfExpirationTime() {
+    func test_Trustalidator_pinningDoesNotOccurBecauseOfExpirationTime() {
     }
     
-    func test_CertificateValidator_pinningDoesNotOccurBecauseOfUnconfiguredSubdomainUsage() {
+    func test_TrustValidator_pinningDoesNotOccurBecauseOfUnconfiguredSubdomainUsage() {
     }
 }

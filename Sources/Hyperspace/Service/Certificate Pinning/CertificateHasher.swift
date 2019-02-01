@@ -54,12 +54,12 @@ struct CertificateHasher {
     }
 }
 
-// MARK: Helper
+// MARK: - Helper
 @available(iOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 private extension CertificateHasher {
     
-    // MARK: PublicKey Internal Subtype
+    // MARK: - PublicKey Internal Subtype
     struct PublicKey {
         let key: SecKey
         let type: CFString

@@ -14,11 +14,27 @@ class ViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet private var postTextField: UITextField!
+    @IBOutlet private var serverTrustValidationToggle: UISwitch!
     
     // MARK: - Properties
     
     private let backendService = BackendService(networkService: NetworkService(networkActivityIndicatable: UIApplication.shared))
-    private lazy var pinningBackendService = BackendService(networkService: NetworkService(session: URLSession(configuration: .default, delegate: self, delegateQueue: .main), networkActivityController: nil), recoveryStrategy: nil)
+    private var trustValidatingBackendService: BackendService?
+    
+    var preferredBackendService: BackendService {
+        return serverTrustValidationToggle.isOn ? trustValidatingBackendService ?? backendService : backendService
+    }
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Create's a trust configuration whereby requests to the domain 'jsonplaceholder.typicode.com' will be validated to ensure they are being served a certificate matchin 'jsonplaceholder.der'
+        let domainConfiguration = try? TrustConfiguration.DomainConfiguration(domain: "jsonplaceholder.typicode.com", certificates: certificate(named: "jsonplaceholder").map { [$0] } ?? [])
+        let validatingNetworkService = TrustValidatingNetworkService(trustConfiguration: domainConfiguration.map { [$0] } ?? [],
+                                                                     networkActivityIndicatable: UIApplication.shared)
+        trustValidatingBackendService = BackendService(networkService: validatingNetworkService)
+    }
     
     // MARK: - IBActions
     
@@ -40,7 +56,7 @@ extension ViewController {
     private func getUser() {
         let getUserRequest = GetUserRequest(userId: 1)
         
-        pinningBackendService.execute(request: getUserRequest) { [weak self] result in
+        preferredBackendService.execute(request: getUserRequest) { [weak self] result in
             debugPrint("Get user result: \(result)")
             
             switch result {
@@ -56,7 +72,7 @@ extension ViewController {
         let post = NewPost(userId: 1, title: title, body: "")
         let createPostRequest = CreatePostRequest(newPost: post)
         
-        backendService.execute(request: createPostRequest) { [weak self] result in
+        preferredBackendService.execute(request: createPostRequest) { [weak self] result in
             debugPrint("Create post result: \(result)")
             
             switch result {
@@ -71,7 +87,7 @@ extension ViewController {
     private func deletePost(postId: Int) {
         let deletePostRequest = DeletePostRequest(postId: postId)
         
-        backendService.execute(request: deletePostRequest) { [weak self] result in
+        preferredBackendService.execute(request: deletePostRequest) { [weak self] result in
             switch result {
             case .success:
                 self?.presentAlert(titled: "Deleted Post", message: "Success")
@@ -83,6 +99,7 @@ extension ViewController {
 }
 
 extension UIViewController {
+    
     func presentAlert(titled title: String, message: String) {
         let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         
@@ -90,27 +107,6 @@ extension UIViewController {
         alertController.addAction(dismissAction)
         
         present(alertController, animated: true, completion: nil)
-    }
-}
-
-extension UIApplication: NetworkActivityIndicatable { /* No extra conformance needed. */ }
-
-extension ViewController: URLSessionDelegate {
-    
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        guard let cert = certificate(named: "cloudflare") else { return completionHandler(.performDefaultHandling, nil) }
-        do {
-            let configuration = try PinningConfiguration(domainConfigurations: [.init(domain: "jsonplaceholder.typicode.com", enforced: false, certificates: [cert])])
-            let validator = CertificateValidator(configuration: configuration)
-            if validator.handle(challenge: challenge, handler: completionHandler) {
-                print("handled")
-            } else {
-                completionHandler(.performDefaultHandling, nil)
-            }
-        } catch {
-            completionHandler(.performDefaultHandling, nil)
-        }
-        
     }
     
     func certificate(named: String) -> SecCertificate? {
@@ -123,3 +119,5 @@ extension ViewController: URLSessionDelegate {
         return certificate
     }
 }
+
+extension UIApplication: NetworkActivityIndicatable { /* No extra conformance needed. */ }

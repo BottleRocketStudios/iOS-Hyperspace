@@ -1,5 +1,5 @@
 //
-//  CertificateValidator.swift
+//  TrustValidator.swift
 //  Hyperspace-iOS
 //
 //  Created by Will McGinty on 1/30/19.
@@ -10,31 +10,38 @@ import Foundation
 
 @available(iOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
-public class CertificateValidator {
+
+/// <#Description#>
+public class TrustValidator {
     
-    // MARK: ValidationDecision Subtype
-    public enum ValidationDecision {
+    // MARK: - ValidationDecision Subtype
+    
+    public enum Decision {
 
         case allow(URLCredential) /// The certificate has passed validation, and the authentication challge should be allowed with the given credentials
         case block /// The certificate has not passed pinning validation, the authentication challenge should be blocked
         case notPinned /// The request domain has not been configured to be pinned
     }
     
-    // MARK: Properties
-    public let configuration: PinningConfiguration
+    // MARK: - Properties
     
-    // MARK: Initializers
-    public init(configuration: PinningConfiguration) {
+    public let configuration: TrustConfiguration
+    
+    // MARK: - Initializers
+    
+    public init(configuration: TrustConfiguration) {
         self.configuration = configuration
     }
     
     // MARK: Interface
     
-    /// Allows the `CertificateValidator` the chance to validate a given `URLAuthenticationChallenge` against it's local certificate.
+    /// Allows the `TrustValidator` the chance to validate a given `URLAuthenticationChallenge` against it's local certificate.
     ///
     /// - Parameters:
     ///   - challenge: The `URLAuthenticationChallenge` presented to the `URLSession` object with which this validator is associated.
     ///   - handler: The handler to be called when the challenge is a 'server trust' authentication challenge. For all other types of authentication challenge, this handler will NOT be called.
+    /// - Returns: Returns `true` when the 'server trust' authentication challenge has been handled. Returns `false` for all other types of authentication challenge.
+    
     public func handle(challenge: AuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Bool {
         let host = challenge.host
         guard challenge.authenticationMethod == NSURLAuthenticationMethodServerTrust, let serverTrust = challenge.serverTrust else {
@@ -52,7 +59,7 @@ public class CertificateValidator {
         return true
     }
     
-    public func evaluate(_ trust: SecTrust, forHost host: String, date: Date = Date()) -> ValidationDecision {
+    func evaluate(_ trust: SecTrust, forHost host: String, date: Date = Date()) -> Decision {
         guard let domainConfig = configuration.domainConfiguration(forHost: host), domainConfig.shouldValidateCertificate(forHost: host, at: date) else {
             return .notPinned //We are either not able to retrieve the certificate from the trust or we are not configured to pin this domain
         }
@@ -78,6 +85,8 @@ public class CertificateValidator {
         return .block
     }
 }
+
+// MARK: - SecTrust Utility
 
 extension SecTrust {
     

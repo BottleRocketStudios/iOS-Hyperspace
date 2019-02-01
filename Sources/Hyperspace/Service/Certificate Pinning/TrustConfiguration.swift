@@ -1,5 +1,5 @@
 //
-//  PinningConfiguration.swift
+//  TrustConfiguration.swift
 //  Hyperspace-iOS
 //
 //  Created by Will McGinty on 1/30/19.
@@ -10,11 +10,14 @@ import Foundation
 
 @available(iOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
-public struct PinningConfiguration {
+
+/// <#Description#>
+public struct TrustConfiguration {
     
+    /// <#Description#>
     public struct DomainConfiguration: Hashable {
         
-        // MARK: Properties
+        // MARK: - Properties
     
         /// The URL domain for which this configuration is responsible
         let domain: String
@@ -31,7 +34,7 @@ public struct PinningConfiguration {
         /// The date of expiration for the certificate in question. For any dates after the expiration, pinning will not be attempted, and the connection allowed.
         let expiration: Date?
         
-        // MARK: Initializers
+        // MARK: - Initializers
         
         /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
         ///
@@ -76,7 +79,8 @@ public struct PinningConfiguration {
             self.expiration = expiration
         }
         
-        // MARK: Interface
+        // MARK: - Interface
+        
         func shouldValidateCertificate(forHost host: String) -> Bool {
             guard includeSubdomains else { return domain == host }
             return host.contains(domain)
@@ -102,24 +106,24 @@ public struct PinningConfiguration {
         }
     }
     
-    // MARK: Properties
+    // MARK: - Properties
     
     /// A list of `DomainConfiguration` objects which each represent a single domain's SSL pinning configuration.
     public let domainConfigurations: [DomainConfiguration]
     
-    // MARK: Initializers
+    // MARK: - Initializers
     
-    /// Create a `PinningConfiguration` instance which will govern how the validator behaves when presented with a remote SSL certificate.
+    /// Create a `TrustConfiguration` instance which will govern how the validator behaves when presented with a remote SSL certificate.
     ///
     /// - Parameter domainConfigurations: A list of `DomainConfiguration` objects which control the pinning process for each individual domain.
     ///         There must only be a single domain configuration for a given domain. Multiple will trigger an assertion.
     public init(domainConfigurations: [DomainConfiguration]) {
         assert(Set(domainConfigurations.map { $0.domain}).count == domainConfigurations.count, "You must not provided multiple domain configurations for any given domain.")
-        
         self.domainConfigurations = domainConfigurations
     }
     
-    // MARK: Interface
+    // MARK: - Interface
+    
     func domainConfiguration(forHost host: String) -> DomainConfiguration? {
         return domainConfigurations.first { $0.shouldValidateCertificate(forHost: host) }
     }
@@ -130,5 +134,17 @@ public struct PinningConfiguration {
     
     func authenticationDispositionForFailedValidation(forHost host: String) -> URLSession.AuthChallengeDisposition {
         return domainConfiguration(forHost: host).map { $0.dispositionForFailedValidation } ?? .performDefaultHandling
+    }
+}
+
+// MARK: - TrustConfiguration conformance to ExpressibleByArrayLiteral
+
+@available(iOSApplicationExtension 10.0, *)
+@available(watchOSApplicationExtension 3.0, *)
+extension TrustConfiguration: ExpressibleByArrayLiteral {
+    public typealias ArrayLiteralElement = DomainConfiguration
+    
+    public init(arrayLiteral elements: TrustConfiguration.DomainConfiguration...) {
+        self.init(domainConfigurations: elements)
     }
 }

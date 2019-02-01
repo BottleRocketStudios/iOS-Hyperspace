@@ -8,13 +8,21 @@
 
 import Foundation
 
+/// <#Description#>
 public protocol AuthenticationChallenge {
+    
+    /// <#Description#>
     var host: String { get }
+    
+    /// <#Description#>
     var authenticationMethod: String { get }
+    
+    /// <#Description#>
     var serverTrust: SecTrust? { get }
 }
 
-// MARK: URLAuthenticationChallenge Conformance
+// MARK: - URLAuthenticationChallenge conformance to AuthenticationChallenge
+
 extension URLAuthenticationChallenge: AuthenticationChallenge {
     public var host: String { return protectionSpace.host }
     public var authenticationMethod: String { return protectionSpace.authenticationMethod }
