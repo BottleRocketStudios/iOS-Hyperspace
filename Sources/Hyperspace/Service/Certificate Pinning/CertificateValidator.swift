@@ -13,9 +13,10 @@ public class CertificateValidator {
     
     // MARK: ValidationDecision Subtype
     public enum ValidationDecision {
-        case allow(URLCredential)
-        case block
-        case notPinned
+
+        case allow(URLCredential) /// The certificate has passed validation, and the authentication challge should be allowed with the given credentials
+        case block /// The certificate has not passed pinning validation, the authentication challenge should be blocked
+        case notPinned /// The request domain has not been configured to be pinned
     }
     
     // MARK: Properties
@@ -50,27 +51,29 @@ public class CertificateValidator {
         return true
     }
     
-    public func evaluate(_ trust: SecTrust, forHost host: String) -> ValidationDecision {
-        guard let domainConfig = configuration.domainConfiguration(forHost: host), domainConfig.shouldValidateCertificate(forHost: host, at: Date()) else {
+    public func evaluate(_ trust: SecTrust, forHost host: String, date: Date = Date()) -> ValidationDecision {
+        guard let domainConfig = configuration.domainConfiguration(forHost: host), domainConfig.shouldValidateCertificate(forHost: host, at: date) else {
             return .notPinned //We are either not able to retrieve the certificate from the trust or we are not configured to pin this domain
         }
         
+        //Set an SSL policy and evaluate the trust
         let policies = NSArray(array: [SecPolicyCreateSSL(true, (host as CFString))])
         SecTrustSetPolicies(trust, policies)
         
         var result: SecTrustResultType = .unspecified
         SecTrustEvaluate(trust, &result)
         
-        guard result == .proceed || result == .unspecified else {
-            return .block
-        }
+        if result == .proceed || result == .unspecified {
             
-        let certificateCount = SecTrustGetCertificateCount(trust)
-        for certIndex in 0..<certificateCount {
-            guard let certificate = SecTrustGetCertificateAtIndex(trust, certIndex) else { continue }
-            
-            if domainConfig.validate(against: certificate) {
-                return .allow(URLCredential(trust: trust))
+            //If the server trust evaluation is successful, walk the certificate chain
+            let certificateCount = SecTrustGetCertificateCount(trust)
+            for certIndex in 0..<certificateCount {
+                guard let certificate = SecTrustGetCertificateAtIndex(trust, certIndex) else { continue }
+                
+                if domainConfig.validate(against: certificate) {
+                    //Found a pinned certificate, allow the connection
+                    return .allow(URLCredential(trust: trust))
+                }
             }
         }
         

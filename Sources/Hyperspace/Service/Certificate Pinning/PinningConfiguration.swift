@@ -14,24 +14,60 @@ public struct PinningConfiguration {
     public struct DomainConfiguration: Hashable {
         
         // MARK: Properties
+    
+        /// The URL domain for which this configuration is responsible
         let domain: String
+        
+        /// Determines whether any failures to pin (`.block` as a `ValidationDecision`) will cause the connection to be blocked. Setting this value to 'false' will allow connections that fail pinning validation. Defaults to `true`.
         let enforced: Bool
+        
+        /// Any subdomains of the configuration's domain should be included. For example, dev.apple.com would be included for a configuration for apple.com. Defaults to `true`.
         let includeSubdomains: Bool
+        
+        /// The public key hashes for which to match the presented remote certificate.
         let pinningHashes: [Data]
+        
+        /// The date of expiration for the certificate in question. For any dates after the expiration, pinning will not be attempted, and the connection allowed.
         let expiration: Date?
         
         // MARK: Initializers
-        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, certificates: [SecCertificate], expiration: Date? = nil) throws {
+        
+        /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
+        ///
+        /// - Parameters:
+        ///   - domain: The domain for which this configuration is responsible.
+        ///   - enforced: When this value is set to true, a failure to pin a request will cause the connection to be blocked. Defaults to true.
+        ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
+        ///   - certificates: An array of `SectCertificate`. These certificates will have their public key extracted and hashed. This hash will then be compared against the presented remote SSL certificate at authentication time.
+        ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
+        /// - Throws: A CertificateHasher.Error if the given `SecCertificate` can not be properly hashed.
+        public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, certificates: [SecCertificate], expiration: Date? = nil) throws {
             let pinningHashes = try certificates.compactMap { try CertificateHasher.pinningHash(for: $0) }
             self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expiration: expiration)
         }
         
-        public init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, encodedPinningHashes: [String], expiration: Date? = nil) {
+        /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
+        ///
+        /// - Parameters:
+        ///   - domain: The domain for which this configuration is responsible.
+        ///   - enforced: When this value is set to true, a failure to pin a request will cause the connection to be blocked. Defaults to true.
+        ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
+        ///   - encodedPinningHashes: An array of base-64 encoded strings representing the hash of a certificate's public key.
+        ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
+        public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, encodedPinningHashes: [String], expiration: Date? = nil) {
             let pinningHashes = encodedPinningHashes.compactMap { Data(base64Encoded: $0) }
             self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expiration: expiration)
         }
         
-        init(domain: String, enforced: Bool = false, includeSubdomains: Bool = true, pinningHashes: [Data], expiration: Date? = nil) {
+        /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
+        ///
+        /// - Parameters:
+        ///   - domain: The domain for which this configuration is responsible.
+        ///   - enforced: When this value is set to true, a failure to pin a request will cause the connection to be blocked. Defaults to true.
+        ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
+        ///   - pinningHashes: An array of public key hashes that will be used to verify the presented SSL certificate.
+        ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
+        init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, pinningHashes: [Data], expiration: Date? = nil) {
             self.domain = domain
             self.enforced = enforced
             self.includeSubdomains = includeSubdomains
@@ -75,9 +111,16 @@ public struct PinningConfiguration {
     }
     
     // MARK: Properties
+    
+    /// A list of `DomainConfiguration` objects which each represent a single domain's SSL pinning configuration.
     public let domainConfigurations: Set<DomainConfiguration>
     
     // MARK: Initializers
+    
+    /// Create a `PinningConfiguration` instance which will govern how the validator behaves when presented with a remote SSL certificate.
+    ///
+    /// - Parameter domainConfigurations: A list of `DomainConfiguration` objects which control the pinning process for each individual domai.
+    ///         Note that providing multiple configurations for a single domain will result in only the first being kept, the rest discarded.
     public init(domainConfigurations: [DomainConfiguration]) {
         self.domainConfigurations = Set(domainConfigurations)
     }
