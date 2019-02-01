@@ -1,8 +1,24 @@
 ## Master
 
+#### Enhancements
+
+* Add support for futures and chaining requests.
+[Pranjal Satija](https://github.com/pranjalsatija)
+[#81](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/81)
+
+* Fix 3.0.0 changelog.
+[Pranjal Satija](https://github.com/pranjalsatija)
+[#82](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/82)
+
+##### Bug Fixes
+
+* None.
+
+## Master
+
 ##### Enhancements
 
-* Remove the type definitions deprecated in 3.0.0
+* Remove the type definitions deprecated in 3.0.0.
 [Will McGinty](https://github.com/wmcginty)
 [#77](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/77)
 
