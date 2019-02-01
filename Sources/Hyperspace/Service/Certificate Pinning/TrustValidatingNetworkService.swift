@@ -14,7 +14,7 @@ import Foundation
 /// This class builds upon the `NetworkServiceProtocol` to offer a quick option for performing server trust validation.
 public class TrustValidatingNetworkService: NetworkServiceProtocol {
     
-    private class TrustValidatingURLSessionDelegate: NSObject, URLSessionDelegate {
+    class SessionDelegate: NSObject, URLSessionDelegate {
         
         // MARK: - Properties
         
@@ -43,7 +43,7 @@ public class TrustValidatingNetworkService: NetworkServiceProtocol {
     // MARK: Properties
     
     private let networkService: NetworkService
-    private let sessionTrustValidator: TrustValidatingURLSessionDelegate
+    private let sessionTrustValidator: SessionDelegate
     
     // MARK: - Initializers
     
@@ -54,7 +54,7 @@ public class TrustValidatingNetworkService: NetworkServiceProtocol {
     ///   - sessionConfiguration: The configuration of the `URLSession` object used by the `NetworkService`.
     ///   - networkActivityIndicatable: An object capable of displaying currently network activity visually to the user.
     public init(trustConfiguration: TrustConfiguration, sessionConfiguration: URLSessionConfiguration = .default, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
-        let trustDelegate = TrustValidatingURLSessionDelegate(configuration: trustConfiguration)
+        let trustDelegate = SessionDelegate(configuration: trustConfiguration)
         let session = URLSession(configuration: sessionConfiguration, delegate: trustDelegate, delegateQueue: .main)
         let networkActivityController = networkActivityIndicatable.map { NetworkActivityController(indicator: $0) }
         
