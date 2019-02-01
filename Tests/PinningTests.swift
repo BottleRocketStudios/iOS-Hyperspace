@@ -82,7 +82,7 @@ class PinningTests: XCTestCase {
 
     func test_TrustConfiguration_finalDispositionForFailedValidation() {
         let domainConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()])
-        let config = TrustConfiguration(domainConfigurations: [domainConfig])
+        let config: TrustConfiguration = [domainConfig]
 
         XCTAssertEqual(config.authenticationDispositionForFailedValidation(forHost: defaultHost), .cancelAuthenticationChallenge)
         XCTAssertEqual(config.authenticationDispositionForFailedValidation(forHost: secondaryHost), .performDefaultHandling)
