@@ -11,10 +11,16 @@ import XCTest
 
 class PinningTests: XCTestCase {
     
-    struct TestAuthenticationChallenge {
+    struct TestAuthenticationChallenge: AuthenticationChallenge {
         let host: String
-        let authenticationMethod: String = NSURLAuthenticationMethodServerTrust
+        let authenticationMethod: String
         let serverTrust: SecTrust?
+        
+        init(host: String, authenticationMethod: String = NSURLAuthenticationMethodServerTrust, serverTrust: SecTrust?) {
+            self.host = host
+            self.authenticationMethod = authenticationMethod
+            self.serverTrust = serverTrust
+        }
     }
     
     private let defaultHost = "apple.com"
@@ -57,13 +63,6 @@ class PinningTests: XCTestCase {
 
         let unenforcedConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: false, pinningHashes: [Data()])
         XCTAssertEqual(unenforcedConfig.dispositionForFailedValidation, .performDefaultHandling)
-    }
-
-    func test_TrustConfiguration_respectsSetSemantics() {
-        let config = TrustConfiguration(domainConfigurations: [.init(domain: defaultHost, pinningHashes: [Data()]),
-                                                                 .init(domain: defaultHost, pinningHashes: [Data(bytes: [1, 2, 3, 4])])])
-        XCTAssertEqual(config.domainConfigurations.count, 1)
-        XCTAssertEqual(config.domainConfigurations.first, .init(domain: defaultHost, pinningHashes: [Data()]))
     }
 
     func test_TrustConfiguration_findsCorrectDomainConfiguration() {
@@ -158,18 +157,77 @@ class PinningTests: XCTestCase {
     }
     
     func test_TrustValidator_decidesOnAuthenticationCancellationWhenPinningFails() {
+        let trust = TestTrusts.leafMissingIntermediate.trust
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["5NSH3u1+iF//AOjN69ploBrid88u75at+Zrlp8APBfM="])
+        let validator = TrustValidator(configuration: TrustConfiguration(domainConfigurations: [domainConfig]))
+        let result = validator.evaluate(trust, forHost: secondaryHost)
         
+        switch result {
+        case .block: break
+        default: XCTFail("This trust should fail pinning validation.")
+        }
     }
     
     func test_TrustValidator_doesNothingWhenPinningDoesNotOccur() {
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["5NSH3u1+iF//AOjN69ploBrid88u75at+Zrlp8APBfM="])
+        let validator = TrustValidator(configuration: TrustConfiguration(domainConfigurations: [domainConfig]))
+        
+        let challenge = TestAuthenticationChallenge(host: defaultHost, serverTrust: TestTrusts.leaf.trust)
+        let result = validator.handle(challenge: challenge, handler: { _, _ in })
+        XCTAssertTrue(result)
+        
+        let challenge2 = TestAuthenticationChallenge(host: secondaryHost, authenticationMethod: "", serverTrust: TestTrusts.leaf.trust)
+        let result2 = validator.handle(challenge: challenge2, handler: { _, _ in })
+        XCTAssertFalse(result2)
+        
+        let challenge3 = TestAuthenticationChallenge(host: secondaryHost, serverTrust: nil)
+        let result3 = validator.handle(challenge: challenge3, handler: { _, _ in })
+        XCTAssertFalse(result3)
     }
     
-    func test_TrustValidator_pinningDoesNotOccurBecauseOfDomainMismatch() {
+    func test_TrustValidator_pinningDoesNotOccurBecauseMisconfiguration() {
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["5NSH3u1+iF//AOjN69ploBrid88u75at+Zrlp8APBfM="])
+        let validator = TrustValidator(configuration: TrustConfiguration(domainConfigurations: [domainConfig]))
+        
+        switch validator.evaluate(TestTrusts.leaf.trust, forHost: defaultHost) {
+        case .notPinned: break
+        default: XCTFail("This validation should not occur.")
+        }
     }
     
-    func test_Trustalidator_pinningDoesNotOccurBecauseOfExpirationTime() {
+    func test_TrustValidator_returnsBlockDispositionWhenConfigurationEnforcesPinning() {
+        let exp = expectation(description: "validation")
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["aaaaaaaaaaaaaaa"])
+        let validator = TrustValidator(configuration: TrustConfiguration(domainConfigurations: [domainConfig]))
+
+        let challenge = TestAuthenticationChallenge(host: secondaryHost, authenticationMethod: NSURLAuthenticationMethodServerTrust, serverTrust: TestTrusts.leaf.trust)
+        validator.handle(challenge: challenge) { disposition, _ in
+            switch disposition {
+            case .cancelAuthenticationChallenge: break
+            default: XCTFail("When enforcing pinning, a failure to pin should cancel the challenge")
+            }
+            
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
-    func test_TrustValidator_pinningDoesNotOccurBecauseOfUnconfiguredSubdomainUsage() {
+    func test_TrustValidator_returnsAllowDispositionWhenConfigurationIsNotEnforcingPinning() {
+        let exp = expectation(description: "validation")
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: secondaryHost, enforced: false, encodedPinningHashes: ["aaaaaaaaaaaaaaa"])
+        let validator = TrustValidator(configuration: TrustConfiguration(domainConfigurations: [domainConfig]))
+        
+        let challenge = TestAuthenticationChallenge(host: secondaryHost, authenticationMethod: NSURLAuthenticationMethodServerTrust, serverTrust: TestTrusts.leaf.trust)
+        validator.handle(challenge: challenge) { disposition, _ in
+            switch disposition {
+            case .performDefaultHandling: break
+            default: XCTFail("When enforcing pinning, a failure to pin should not cancel the challenge")
+            }
+            
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
 }

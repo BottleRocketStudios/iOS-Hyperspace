@@ -43,6 +43,7 @@ public class TrustValidator {
     ///   - handler: The handler to be called when the challenge is a 'server trust' authentication challenge. For all other types of authentication challenge, this handler will NOT be called.
     /// - Returns: Returns `true` when the 'server trust' authentication challenge has been handled. Returns `false` for all other types of authentication challenge.
     
+    @discardableResult
     public func handle(challenge: AuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Bool {
         let host = challenge.host
         guard challenge.authenticationMethod == NSURLAuthenticationMethodServerTrust, let serverTrust = challenge.serverTrust else {
