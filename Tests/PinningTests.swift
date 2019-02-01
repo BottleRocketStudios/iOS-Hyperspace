@@ -129,6 +129,13 @@ class PinningTests: XCTestCase {
     }
     
     func test_CertificateValidator_decidesOnAuthenticationSuccessWhenPinningSucceeds() {
+        guard let google = certificate(named: "google"), let root = certificate(named: "root"), let intermediate = certificate(named: "comodo"),
+            let trust = createdTrust(with: [google, intermediate], anchorCertificates: [root]) else { return XCTFail("Unable to load testing certificate") }
+        
+        let domainConfig = PinningConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["ivJZzhltgbIeXZGekPcWiLySsZ846YXSsGgyL9bjqEY="])
+        let validator = CertificateValidator(configuration: PinningConfiguration(domainConfigurations: [domainConfig]))
+        let result = validator.evaluate(trust, forHost: secondaryHost)
+        print(result)
     }
     
     func test_CertificateValidator_decidesOnAuthenticationCancellationWhenPinningFails() {

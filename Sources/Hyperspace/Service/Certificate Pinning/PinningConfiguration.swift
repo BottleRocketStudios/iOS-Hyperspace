@@ -9,6 +9,7 @@
 import Foundation
 
 @available(iOSApplicationExtension 10.0, *)
+@available(watchOSApplicationExtension 3.0, *)
 public struct PinningConfiguration {
     
     public struct DomainConfiguration: Hashable {

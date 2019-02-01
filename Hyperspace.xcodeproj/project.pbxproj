@@ -53,12 +53,16 @@
 		0EF57B942202A39E00484C01 /* bbc.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B932202A39E00484C01 /* bbc.der */; };
 		0EF57B952202A39E00484C01 /* bbc.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B932202A39E00484C01 /* bbc.der */; };
 		0EF57B972203CD0B00484C01 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
-		0EF57B9A2204A55700484C01 /* intermediate.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B982204A55700484C01 /* intermediate.der */; };
-		0EF57B9B2204A55700484C01 /* intermediate.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B982204A55700484C01 /* intermediate.der */; };
-		0EF57B9C2204A55700484C01 /* root.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B992204A55700484C01 /* root.der */; };
-		0EF57B9D2204A55700484C01 /* root.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B992204A55700484C01 /* root.der */; };
-		0EF57B9F2204A74000484C01 /* globalsign.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B9E2204A74000484C01 /* globalsign.der */; };
-		0EF57BA02204A74000484C01 /* globalsign.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B9E2204A74000484C01 /* globalsign.der */; };
+		0EFB54282204A8A400949F24 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
+		0EFB54292204A8A400949F24 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
+		0EFB542D2204ABA500949F24 /* root.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542A2204ABA400949F24 /* root.der */; };
+		0EFB542E2204ABA500949F24 /* root.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542A2204ABA400949F24 /* root.der */; };
+		0EFB542F2204ABA500949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542B2204ABA500949F24 /* cloudflare.der */; };
+		0EFB54302204ABA500949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542B2204ABA500949F24 /* cloudflare.der */; };
+		0EFB54312204ABA500949F24 /* comodo.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542C2204ABA500949F24 /* comodo.der */; };
+		0EFB54322204ABA500949F24 /* comodo.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542C2204ABA500949F24 /* comodo.der */; };
+		0EFB54332204AD1E00949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542B2204ABA500949F24 /* cloudflare.der */; };
+		0EFB54342204AD7700949F24 /* cloudflare.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB542B2204ABA500949F24 /* cloudflare.der */; };
 		3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
@@ -342,9 +346,9 @@
 		0EF57B8D2202A25300484C01 /* apple.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = apple.der; sourceTree = "<group>"; };
 		0EF57B932202A39E00484C01 /* bbc.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = bbc.der; sourceTree = "<group>"; };
 		0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationChallenge.swift; sourceTree = "<group>"; };
-		0EF57B982204A55700484C01 /* intermediate.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = intermediate.der; sourceTree = "<group>"; };
-		0EF57B992204A55700484C01 /* root.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = root.der; sourceTree = "<group>"; };
-		0EF57B9E2204A74000484C01 /* globalsign.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = globalsign.der; sourceTree = "<group>"; };
+		0EFB542A2204ABA400949F24 /* root.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = root.der; sourceTree = "<group>"; };
+		0EFB542B2204ABA500949F24 /* cloudflare.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cloudflare.der; sourceTree = "<group>"; };
+		0EFB542C2204ABA500949F24 /* comodo.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = comodo.der; sourceTree = "<group>"; };
 		3026E457202008470003A321 /* NetworkSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTest.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
@@ -541,9 +545,9 @@
 				0EF57B862202968300484C01 /* google.der */,
 				0EF57B932202A39E00484C01 /* bbc.der */,
 				0EF57B8D2202A25300484C01 /* apple.der */,
-				0EF57B982204A55700484C01 /* intermediate.der */,
-				0EF57B992204A55700484C01 /* root.der */,
-				0EF57B9E2204A74000484C01 /* globalsign.der */,
+				0EFB542B2204ABA500949F24 /* cloudflare.der */,
+				0EFB542C2204ABA500949F24 /* comodo.der */,
+				0EFB542A2204ABA400949F24 /* root.der */,
 			);
 			path = Certificates;
 			sourceTree = "<group>";
@@ -1153,6 +1157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFB54332204AD1E00949F24 /* cloudflare.der in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1160,16 +1165,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EF57B9C2204A55700484C01 /* root.der in Resources */,
 				0EF57B942202A39E00484C01 /* bbc.der in Resources */,
 				0EF57B8A220297E400484C01 /* google.der in Resources */,
-				0EF57B9A2204A55700484C01 /* intermediate.der in Resources */,
+				0EFB54312204ABA500949F24 /* comodo.der in Resources */,
+				0EFB542D2204ABA500949F24 /* root.der in Resources */,
 				0ECDC1D220AA03A200ABF991 /* MixedTypeObject.json in Resources */,
 				60D6C413201CFCCF00B3B012 /* Object.json in Resources */,
 				0ECDC1C820A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */,
 				0EF57B8F2202A25300484C01 /* apple.der in Resources */,
-				0EF57B9F2204A74000484C01 /* globalsign.der in Resources */,
 				60D6C415201CFCCF00B3B012 /* RootKeyArray.json in Resources */,
+				0EFB542F2204ABA500949F24 /* cloudflare.der in Resources */,
 				60D6C411201CFCCF00B3B012 /* RootKeyObject.json in Resources */,
 				60D6C40F201CFCCF00B3B012 /* DateObject.json in Resources */,
 				0ECDC1CC20A9FD3500ABF991 /* RootKeyIncorrectType.json in Resources */,
@@ -1194,16 +1199,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EF57B9D2204A55700484C01 /* root.der in Resources */,
 				0EF57B952202A39E00484C01 /* bbc.der in Resources */,
 				0EF57B8B220297E500484C01 /* google.der in Resources */,
-				0EF57B9B2204A55700484C01 /* intermediate.der in Resources */,
+				0EFB54322204ABA500949F24 /* comodo.der in Resources */,
+				0EFB542E2204ABA500949F24 /* root.der in Resources */,
 				0ECDC1D320AA03A300ABF991 /* MixedTypeObject.json in Resources */,
 				60D6C414201CFCCF00B3B012 /* Object.json in Resources */,
 				0ECDC1C920A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */,
 				0EF57B902202A25300484C01 /* apple.der in Resources */,
-				0EF57BA02204A74000484C01 /* globalsign.der in Resources */,
 				60D6C416201CFCCF00B3B012 /* RootKeyArray.json in Resources */,
+				0EFB54302204ABA500949F24 /* cloudflare.der in Resources */,
 				60D6C412201CFCCF00B3B012 /* RootKeyObject.json in Resources */,
 				60D6C410201CFCCF00B3B012 /* DateObject.json in Resources */,
 				0ECDC1CD20A9FD3600ABF991 /* RootKeyIncorrectType.json in Resources */,
@@ -1214,6 +1219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFB54342204AD7700949F24 /* cloudflare.der in Resources */,
 				60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */,
 				60D6C429201D156500B3B012 /* Assets.xcassets in Resources */,
 				60D6C427201D156500B3B012 /* Main.storyboard in Resources */,
@@ -1356,6 +1362,7 @@
 				60D6C385201CCCBE00B3B012 /* URL+Additions.swift in Sources */,
 				0E81B49E20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */,
 				60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
+				0EFB54292204A8A400949F24 /* AuthenticationChallenge.swift in Sources */,
 				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				CB7B20A721ECDDC500AB8FE3 /* BackendService+Futures.swift in Sources */,
@@ -1386,6 +1393,7 @@
 				60D6C37A201CCCAE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				0E81B49D20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */,
 				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
+				0EFB54282204A8A400949F24 /* AuthenticationChallenge.swift in Sources */,
 				60D6C37C201CCCAE00B3B012 /* DecodableContainer.swift in Sources */,
 				0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				CB7B20A621ECDDC400AB8FE3 /* BackendService+Futures.swift in Sources */,

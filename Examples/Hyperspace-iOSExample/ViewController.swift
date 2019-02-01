@@ -98,12 +98,28 @@ extension UIApplication: NetworkActivityIndicatable { /* No extra conformance ne
 extension ViewController: URLSessionDelegate {
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        let configuration = PinningConfiguration(domainConfigurations: [.init(domain: "jsonplaceholder.typicode.com", certificate: Data())])
-        let validator = CertificateValidator(configuration: configuration)
-        if validator.handle(challenge: challenge, handler: completionHandler) {
-            print("handled")
-        } else {
+        guard let cert = certificate(named: "cloudflare") else { return completionHandler(.performDefaultHandling, nil) }
+        do {
+            let configuration = try PinningConfiguration(domainConfigurations: [.init(domain: "jsonplaceholder.typicode.com", enforced: false, certificates: [cert])])
+            let validator = CertificateValidator(configuration: configuration)
+            if validator.handle(challenge: challenge, handler: completionHandler) {
+                print("handled")
+            } else {
+                completionHandler(.performDefaultHandling, nil)
+            }
+        } catch {
             completionHandler(.performDefaultHandling, nil)
         }
+        
+    }
+    
+    func certificate(named: String) -> SecCertificate? {
+        guard let certPath = Bundle.main.url(forResource: named, withExtension: "der"),
+            let certificateData = try? Data(contentsOf: certPath),
+            let certificate = SecCertificateCreateWithData(kCFAllocatorDefault, certificateData as CFData) else {
+                return nil
+        }
+        
+        return certificate
     }
 }
