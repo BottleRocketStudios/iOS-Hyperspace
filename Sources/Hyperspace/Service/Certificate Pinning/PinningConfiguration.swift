@@ -100,30 +100,23 @@ public struct PinningConfiguration {
             debugPrint("SSL certificate pin failed for host: '\(domain)'. Configuration set to allow connection anyway.")
             return .performDefaultHandling
         }
-        
-        // MARK: Hashable
-        public var hashValue: Int {
-            return domain.hashValue
-        }
-        
-        public static func == (lhs: DomainConfiguration, rhs: DomainConfiguration) -> Bool {
-            return lhs.domain == rhs.domain
-        }
     }
     
     // MARK: Properties
     
     /// A list of `DomainConfiguration` objects which each represent a single domain's SSL pinning configuration.
-    public let domainConfigurations: Set<DomainConfiguration>
+    public let domainConfigurations: [DomainConfiguration]
     
     // MARK: Initializers
     
     /// Create a `PinningConfiguration` instance which will govern how the validator behaves when presented with a remote SSL certificate.
     ///
     /// - Parameter domainConfigurations: A list of `DomainConfiguration` objects which control the pinning process for each individual domain.
-    ///         Note that providing multiple configurations for a single domain will result in only the first being kept, the rest discarded.
+    ///         There must only be a single domain configuration for a given domain. Multiple will trigger an assertion.
     public init(domainConfigurations: [DomainConfiguration]) {
-        self.domainConfigurations = Set(domainConfigurations)
+        assert(Set(domainConfigurations.map { $0.domain}).count == domainConfigurations.count, "You must not provided multiple domain configurations for any given domain.")
+        
+        self.domainConfigurations = domainConfigurations
     }
     
     // MARK: Interface
