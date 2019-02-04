@@ -10,6 +10,7 @@ import Foundation
 import CommonCrypto
 
 @available(iOSApplicationExtension 10.0, *)
+@available(tvOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 struct CertificateHasher {
     

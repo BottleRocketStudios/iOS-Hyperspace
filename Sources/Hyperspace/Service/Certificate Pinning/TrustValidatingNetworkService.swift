@@ -9,6 +9,7 @@
 import Foundation
 
 @available(iOSApplicationExtension 10.0, *)
+@available(tvOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 
 /// This class builds upon the `NetworkServiceProtocol` to offer a quick option for performing server trust validation.

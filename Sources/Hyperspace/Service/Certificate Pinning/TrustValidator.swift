@@ -9,6 +9,7 @@
 import Foundation
 
 @available(iOSApplicationExtension 10.0, *)
+@available(tvOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 
 /* This class performs validation on authentication challenges prestented to it. In addition to ensuring that the challenge is trusted by the operating system, it will

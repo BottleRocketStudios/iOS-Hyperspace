@@ -9,6 +9,7 @@
 import Foundation
 
 @available(iOSApplicationExtension 10.0, *)
+@available(tvOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 
 /* A configuration object which controls how a `TrustValidator` object makes decisions on which connections to accept and which to block. The configuration
