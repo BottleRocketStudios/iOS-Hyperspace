@@ -173,15 +173,16 @@ class PinningTests: XCTestCase {
         let validator = TrustValidator(configuration: TrustConfiguration(domainConfigurations: [domainConfig]))
         
         let challenge = TestAuthenticationChallenge(host: defaultHost, serverTrust: TestTrusts.leaf.trust)
-        let result = validator.handle(challenge: challenge, handler: { _, _ in })
+        
+        let result = validator.canHandle(challenge: challenge)
         XCTAssertTrue(result)
         
         let challenge2 = TestAuthenticationChallenge(host: secondaryHost, authenticationMethod: "", serverTrust: TestTrusts.leaf.trust)
-        let result2 = validator.handle(challenge: challenge2, handler: { _, _ in })
+        let result2 = validator.canHandle(challenge: challenge2)
         XCTAssertFalse(result2)
         
         let challenge3 = TestAuthenticationChallenge(host: secondaryHost, serverTrust: nil)
-        let result3 = validator.handle(challenge: challenge3, handler: { _, _ in })
+        let result3 = validator.canHandle(challenge: challenge3)
         XCTAssertFalse(result3)
     }
     

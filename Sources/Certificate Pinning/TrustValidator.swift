@@ -42,7 +42,7 @@ public class TrustValidator {
     /// - Parameter challenge: The `URLAuthenticationChallenge` presented to the `URLSession` object with which this validator is associated.
     /// - Returns: Returns `true` when the 'server trust' authentication challenge has been handled. Returns `false` for all other types of authentication challenge.
     public func canHandle(challenge: AuthenticationChallenge) -> Bool {
-        return challenge.isServerTrustAuthentication
+        return challenge.isServerTrustAuthentication && challenge.serverTrust != nil
     }
     
     /// Allows the `TrustValidator` the chance to validate a given `URLAuthenticationChallenge` against it's local certificate.
