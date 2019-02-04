@@ -626,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				60AC833D1FF596B600120172 /* Hyperspace */,
+				0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */,
 				CB0DE06121E7E5EF00661F0E /* Futures */,
 				60AC82F91FF58E3600120172 /* Supporting Files */,
 			);
@@ -712,7 +713,6 @@
 				0E81B49520AC85B600DC1F4E /* Recovery */,
 				60AC83481FF596B600120172 /* Network */,
 				60AC834D1FF596B600120172 /* Backend */,
-				0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */,
 			);
 			path = Service;
 			sourceTree = "<group>";

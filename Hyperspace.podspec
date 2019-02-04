@@ -51,4 +51,12 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   futures.dependency 'Hyperspace/Core'
   futures.source_files = 'Sources/Futures/**/*'
   end
+
+  s.subspec 'Pinning' do |pinning|
+  pinning.dependency 'Hyperspace/Core'
+  pinning.source_files = 'Sources/Certificate\ Pinning/**/*'
+  pinning.ios.deployment_target = '10.0'
+  pinning.watchos.deployment_target = '3.0'
+  pinning.tvos.deployment_target = '10.0'
+  end
 end
