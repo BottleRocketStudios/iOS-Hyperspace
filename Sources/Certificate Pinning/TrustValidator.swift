@@ -37,17 +37,22 @@ public class TrustValidator {
     
     // MARK: Interface
     
+    /// Determines if the validator can handle a given `AuthenticationChallenge`.
+    ///
+    /// - Parameter challenge: The `URLAuthenticationChallenge` presented to the `URLSession` object with which this validator is associated.
+    /// - Returns: Returns `true` when the 'server trust' authentication challenge has been handled. Returns `false` for all other types of authentication challenge.
+    public func canHandle(challenge: AuthenticationChallenge) -> Bool {
+        return challenge.isServerTrustAuthentication
+    }
+    
     /// Allows the `TrustValidator` the chance to validate a given `URLAuthenticationChallenge` against it's local certificate.
     ///
     /// - Parameters:
     ///   - challenge: The `URLAuthenticationChallenge` presented to the `URLSession` object with which this validator is associated.
     ///   - handler: The handler to be called when the challenge is a 'server trust' authentication challenge. For all other types of authentication challenge, this handler will NOT be called.
-    /// - Returns: Returns `true` when the 'server trust' authentication challenge has been handled. Returns `false` for all other types of authentication challenge.
-    
-    @discardableResult
-    public func handle(challenge: AuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Bool {
-        guard challenge.isServerTrustAuthentication, let serverTrust = challenge.serverTrust else {
-            return false //The challenge was not a server trust evaluation, and so left unhandled
+    public func handle(challenge: AuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        guard canHandle(challenge: challenge), let serverTrust = challenge.serverTrust else {
+            return //The challenge was not a server trust evaluation, and so left unhandled
         }
         
         switch evaluate(serverTrust, forHost: challenge.host) {
@@ -55,8 +60,6 @@ public class TrustValidator {
         case .block: handler(configuration.authenticationDispositionForFailedValidation(forHost: challenge.host), nil)
         case .notPinned: handler(.performDefaultHandling, nil)
         }
-        
-        return true
     }
     
     func evaluate(_ trust: SecTrust, forHost host: String, date: Date = Date()) -> Decision {

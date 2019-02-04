@@ -31,13 +31,15 @@ public class TrustValidatingNetworkService: NetworkServiceProtocol {
         
         func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
             let validator = TrustValidator(configuration: configuration)
-            if validator.handle(challenge: challenge, handler: completionHandler) {
-                debugPrint("Server Trust validation handled.")
-                //The server trust authentication challenge was handled (for both allow and blocks) - not further input is required
-            } else {
+            
+            guard validator.canHandle(challenge: challenge) else {
                 //This was NOT a server trust authentication challenge - further input is required
-                completionHandler(.performDefaultHandling, nil)
+                return completionHandler(.performDefaultHandling, nil)
             }
+            
+            validator.handle(challenge: challenge, handler: completionHandler)
+            //The server trust authentication challenge was handled (for both allow and blocks) - not further input is required
+            debugPrint("Server Trust validation handled.")
         }
     }
 
