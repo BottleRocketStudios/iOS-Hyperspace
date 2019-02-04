@@ -21,6 +21,13 @@ public protocol AuthenticationChallenge {
     var serverTrust: SecTrust? { get }
 }
 
+public extension AuthenticationChallenge {
+    
+    public var isServerTrustAuthentication: Bool {
+        return authenticationMethod == NSURLAuthenticationMethodServerTrust
+    }
+}
+
 // MARK: - URLAuthenticationChallenge conformance to AuthenticationChallenge
 
 extension URLAuthenticationChallenge: AuthenticationChallenge {

@@ -524,9 +524,9 @@
 			children = (
 				0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */,
 				0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */,
-				0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */,
 				0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */,
 				0EF57B7F22028F0000484C01 /* CertificateHasher.swift */,
+				0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */,
 			);
 			path = "Certificate Pinning";
 			sourceTree = "<group>";

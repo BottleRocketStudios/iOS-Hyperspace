@@ -46,15 +46,14 @@ public class TrustValidator {
     
     @discardableResult
     public func handle(challenge: AuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Bool {
-        let host = challenge.host
-        guard challenge.authenticationMethod == NSURLAuthenticationMethodServerTrust, let serverTrust = challenge.serverTrust else {
+        guard challenge.isServerTrustAuthentication, let serverTrust = challenge.serverTrust else {
             return false //The challenge was not a server trust evaluation, and so left unhandled
         }
         
-        switch evaluate(serverTrust, forHost: host) {
+        switch evaluate(serverTrust, forHost: challenge.host) {
         case .allow(let credential): handler(.useCredential, credential)
         case .block:
-            let finalDisposition = configuration.authenticationDispositionForFailedValidation(forHost: host)
+            let finalDisposition = configuration.authenticationDispositionForFailedValidation(forHost: challenge.host)
             handler(finalDisposition, nil)
         case .notPinned: handler(.performDefaultHandling, nil)
         }
