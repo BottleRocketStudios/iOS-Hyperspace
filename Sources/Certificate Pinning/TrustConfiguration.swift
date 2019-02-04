@@ -142,6 +142,7 @@ public struct TrustConfiguration {
 // MARK: - TrustConfiguration conformance to ExpressibleByArrayLiteral
 
 @available(iOSApplicationExtension 10.0, *)
+@available(tvOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 extension TrustConfiguration: ExpressibleByArrayLiteral {
     public typealias ArrayLiteralElement = DomainConfiguration

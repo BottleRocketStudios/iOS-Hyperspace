@@ -57,6 +57,7 @@ struct CertificateHasher {
 
 // MARK: - Helper
 @available(iOSApplicationExtension 10.0, *)
+@available(tvOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 private extension CertificateHasher {
     
