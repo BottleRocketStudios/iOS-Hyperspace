@@ -52,9 +52,7 @@ public class TrustValidator {
         
         switch evaluate(serverTrust, forHost: challenge.host) {
         case .allow(let credential): handler(.useCredential, credential)
-        case .block:
-            let finalDisposition = configuration.authenticationDispositionForFailedValidation(forHost: challenge.host)
-            handler(finalDisposition, nil)
+        case .block: handler(configuration.authenticationDispositionForFailedValidation(forHost: challenge.host), nil)
         case .notPinned: handler(.performDefaultHandling, nil)
         }
         

@@ -68,6 +68,11 @@ enum TestTrusts {
         SecTrustSetAnchorCertificates(trust!, [TestCertificates.root] as CFArray)
         SecTrustSetAnchorCertificatesOnly(trust!, true)
         
+        /// All of our leaf, intermediate and root certificates are valid on `verifyDate`. Hardcode the verification time so that we don't have to continually replace certificates as they expire.
+        let verifyTime: CFAbsoluteTime = 570998974.425934
+        let verifyDate = CFDateCreate(nil, verifyTime)!
+        SecTrustSetVerifyDate(trust!, verifyDate)
+        
         return trust!
     }
 }
