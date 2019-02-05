@@ -71,20 +71,19 @@ public class TrustValidator {
         let policies = NSArray(array: [SecPolicyCreateSSL(true, nil)])
         SecTrustSetPolicies(trust, policies)
         
-        if trust.isValid {
+        guard trust.isValid else { return .block }
+        
+        //If the server trust evaluation is successful, walk the certificate chain
+        let certificateCount = SecTrustGetCertificateCount(trust)
+        for certIndex in 0..<certificateCount {
+            guard let certificate = SecTrustGetCertificateAtIndex(trust, certIndex) else { continue }
             
-            //If the server trust evaluation is successful, walk the certificate chain
-            let certificateCount = SecTrustGetCertificateCount(trust)
-            for certIndex in 0..<certificateCount {
-                guard let certificate = SecTrustGetCertificateAtIndex(trust, certIndex) else { continue }
-                
-                if domainConfig.validate(against: certificate) {
-                    //Found a pinned certificate, allow the connection
-                    return .allow(URLCredential(trust: trust))
-                }
+            if domainConfig.validate(against: certificate) {
+                //Found a pinned certificate, allow the connection
+                return .allow(URLCredential(trust: trust))
             }
         }
-
+        
         return .block
     }
 }
