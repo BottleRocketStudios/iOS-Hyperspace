@@ -51,7 +51,7 @@ class PinningTests: XCTestCase {
         XCTAssertTrue(nonExpiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date().addingTimeInterval(1000000)))
 
         let expiration = Date().addingTimeInterval(100)
-        let expiringConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()], expiration: expiration)
+        let expiringConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()], expirationPolicy: .allow(after: expiration))
         XCTAssertTrue(expiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date()))
         XCTAssertTrue(expiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date().addingTimeInterval(99)))
         XCTAssertFalse(expiringConfig.shouldValidateCertificate(forHost: defaultHost, at: Date().addingTimeInterval(1001)))
@@ -95,7 +95,7 @@ class PinningTests: XCTestCase {
 
     func test_TrustConfiguration_enforcesOnlyBeforeExpiration() {
         let expiration = Date().addingTimeInterval(100)
-        let domainConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()], expiration: expiration)
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, enforced: true, pinningHashes: [Data()], expirationPolicy: .allow(after: expiration))
         let config = TrustConfiguration(domainConfigurations: [domainConfig])
 
         XCTAssertTrue(config.shouldValidateCertificate(forHost: defaultHost, at: Date()))

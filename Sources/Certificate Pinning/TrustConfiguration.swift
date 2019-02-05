@@ -16,6 +16,22 @@ import Foundation
     object consists of a series of configuration objects, each designed for a single domain. */
 public struct TrustConfiguration {
     
+    /// The `CertificateExpirationPolicy` determines how the validation should proceed when the certificate being pinned has expired.
+    ///
+    /// - allow: Connections should be allowed after the certificate has expired, on the given `Date`.
+    /// - block: Connections should be blocked after the certificate has expired.
+    public enum CertificateExpirationPolicy: Hashable {
+        case allow(after: Date)
+        case block
+        
+        var expiration: Date? {
+            switch self {
+            case .allow(after: let date): return date
+            default: return nil
+            }
+        }
+    }
+    
     /// A configuration object which controls how a `TrustValidator` object makes decisions on which connections to accept and which to block, and pertains only to a single domain.
     public struct DomainConfiguration: Hashable {
         
@@ -33,8 +49,8 @@ public struct TrustConfiguration {
         /// The public key hashes for which to match the presented remote certificate.
         let pinningHashes: [Data]
         
-        /// The date of expiration for the certificate in question. For any dates after the expiration, pinning will not be attempted, and the connection allowed.
-        let expiration: Date?
+        /// The expiration policy for the pinned certificate. See `CertificateExpirationPolicy`.
+        let expirationPolicy: CertificateExpirationPolicy
         
         // MARK: - Initializers
         
@@ -47,9 +63,9 @@ public struct TrustConfiguration {
         ///   - certificates: An array of `SectCertificate`. These certificates will have their public key extracted and hashed. This hash will then be compared against the presented remote SSL certificate at authentication time.
         ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
         /// - Throws: A CertificateHasher.Error if the given `SecCertificate` can not be properly hashed.
-        public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, certificates: [SecCertificate], expiration: Date? = nil) throws {
+        public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, certificates: [SecCertificate], expirationPolicy: CertificateExpirationPolicy = .block) throws {
             let pinningHashes = try certificates.compactMap { try CertificateHasher.pinningHash(for: $0) }
-            self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expiration: expiration)
+            self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expirationPolicy: expirationPolicy)
         }
         
         /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
@@ -60,9 +76,9 @@ public struct TrustConfiguration {
         ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
         ///   - encodedPinningHashes: An array of base-64 encoded strings representing the hash of a certificate's public key.
         ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
-        public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, encodedPinningHashes: [String], expiration: Date? = nil) {
+        public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, encodedPinningHashes: [String], expirationPolicy: CertificateExpirationPolicy = .block) {
             let pinningHashes = encodedPinningHashes.compactMap { Data(base64Encoded: $0) }
-            self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expiration: expiration)
+            self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expirationPolicy: expirationPolicy)
         }
         
         /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
@@ -73,12 +89,12 @@ public struct TrustConfiguration {
         ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
         ///   - pinningHashes: An array of public key hashes that will be used to verify the presented SSL certificate.
         ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
-        init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, pinningHashes: [Data], expiration: Date? = nil) {
+        init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, pinningHashes: [Data], expirationPolicy: CertificateExpirationPolicy = .block) {
             self.domain = domain
             self.enforced = enforced
             self.includeSubdomains = includeSubdomains
             self.pinningHashes = pinningHashes
-            self.expiration = expiration
+            self.expirationPolicy = expirationPolicy
         }
         
         // MARK: - Interface
@@ -89,7 +105,7 @@ public struct TrustConfiguration {
         }
         
         func shouldValidateCertificate(forHost host: String, at date: Date) -> Bool {
-            guard shouldValidateCertificate(forHost: host), let expired = expiration else { return true }
+            guard shouldValidateCertificate(forHost: host), let expired = expirationPolicy.expiration else { return true }
             return date < expired
         }
         
