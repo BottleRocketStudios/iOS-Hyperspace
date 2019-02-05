@@ -23,8 +23,26 @@ class PinningTests: XCTestCase {
         }
     }
     
+    class TestURLAuthenticationChallengeSender: NSObject, URLAuthenticationChallengeSender {
+        func use(_ credential: URLCredential, for challenge: URLAuthenticationChallenge) { }
+        func continueWithoutCredential(for challenge: URLAuthenticationChallenge) { }
+        func cancel(_ challenge: URLAuthenticationChallenge) { }
+        func performDefaultHandling(for challenge: URLAuthenticationChallenge) { }
+    }
+    
     private let defaultHost = "apple.com"
     private let secondaryHost = "google.com"
+    
+    func test_AuthChallenge_URLAuthChallengeConformance() {
+        let challenge = URLAuthenticationChallenge(protectionSpace: URLProtectionSpace(host: "local", port: 8080, protocol: nil, realm: nil, authenticationMethod: NSURLAuthenticationMethodServerTrust),
+                                                   proposedCredential: nil, previousFailureCount: 0, failureResponse: nil, error: nil, sender: TestURLAuthenticationChallengeSender())
+        let authChallenge: AuthenticationChallenge = challenge
+        
+        XCTAssertEqual(authChallenge.authenticationMethod, challenge.protectionSpace.authenticationMethod)
+        XCTAssertEqual(authChallenge.host, challenge.protectionSpace.host)
+        XCTAssertEqual(authChallenge.serverTrust, challenge.protectionSpace.serverTrust)
+        XCTAssertEqual(authChallenge.isServerTrustAuthentication, challenge.isServerTrustAuthentication)
+    }
     
     func test_DomainConfiguration_detectsSubdomains() {
         let config = TrustConfiguration.DomainConfiguration(domain: defaultHost, pinningHashes: [Data()])
