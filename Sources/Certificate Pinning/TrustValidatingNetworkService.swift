@@ -39,7 +39,6 @@ public class TrustValidatingNetworkService: NetworkServiceProtocol {
             
             validator.handle(challenge: challenge, handler: completionHandler)
             //The server trust authentication challenge was handled (for both allow and blocks) - not further input is required
-            debugPrint("Server Trust validation handled.")
         }
     }
 
