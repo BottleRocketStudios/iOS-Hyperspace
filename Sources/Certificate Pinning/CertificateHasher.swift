@@ -114,8 +114,9 @@ private extension CertificateHasher {
         var trust: SecTrust?
         let status = SecTrustCreateWithCertificates(certificate, SecPolicyCreateBasicX509(), &trust)
         
-        guard let securityTrust = trust, status == errSecSuccess, checkValidity(of: securityTrust) else { return nil }
-    
+        /*We do not need to evaluate trust here as we are simply looking to extract a public key - explicit evaluation is achieved by calling `checkValidity(of:)`.
+            This is useful for instance, when attempting to create a pinning hash for an invalid or expired certificate. If we were to validate on creation, we would not be able to test this. */
+        guard let securityTrust = trust, status == errSecSuccess else { return nil }
         return SecTrustCopyPublicKey(securityTrust)
     }
 
