@@ -138,7 +138,7 @@ class PinningTests: XCTestCase {
         XCTAssertFalse(domainConfig.validate(against: TestCertificates.apple))
     }
     
-    func test_TrustConfiguration_properlyValidatesCertificateHashes() {
+    func test_TrustConfiguration_properlyValidatesCertificateHashesAgainstEncodedPinningHash() {
         let domainConfig = TrustConfiguration.DomainConfiguration(domain: defaultHost, encodedPinningHashes: ["ivJZzhltgbIeXZGekPcWiLySsZ846YXSsGgyL9bjqEY="])
         XCTAssertTrue(domainConfig.validate(against: TestCertificates.google))
         XCTAssertFalse(domainConfig.validate(against: TestCertificates.apple))

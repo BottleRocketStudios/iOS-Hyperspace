@@ -12,15 +12,14 @@ import Foundation
 @available(tvOSApplicationExtension 10.0, *)
 @available(watchOSApplicationExtension 3.0, *)
 
-/* This class performs validation on authentication challenges prestented to it. In addition to ensuring that the challenge is trusted by the operating system, it will
+/* This class performs validation on authentication challenges presented to it. In addition to ensuring that the challenge is trusted by the operating system, it will
     ensure that the certificate being presented as part of the SSL/TLS authentication challenge is recognized by the device. */
 public class TrustValidator {
     
     // MARK: - ValidationDecision Subtype
     
     public enum Decision {
-
-        case allow(URLCredential) /// The certificate has passed validation, and the authentication challge should be allowed with the given credentials
+        case allow(URLCredential) /// The certificate has passed validation, and the authentication challenge should be allowed with the given credentials
         case block /// The certificate has not passed pinning validation, the authentication challenge should be blocked
         case notPinned /// The request domain has not been configured to be pinned
     }
@@ -45,7 +44,7 @@ public class TrustValidator {
         return challenge.isServerTrustAuthentication && challenge.serverTrust != nil
     }
     
-    /// Allows the `TrustValidator` the chance to validate a given `URLAuthenticationChallenge` against it's local certificate.
+    /// Allows the `TrustValidator` the chance to validate a given `URLAuthenticationChallenge` against its local certificate.
     ///
     /// - Parameters:
     ///   - challenge: The `URLAuthenticationChallenge` presented to the `URLSession` object with which this validator is associated.
@@ -90,13 +89,14 @@ public class TrustValidator {
 
 // MARK: - SecTrust Utility
 
+@available(iOSApplicationExtension 10.0, *)
+@available(tvOSApplicationExtension 10.0, *)
+@available(watchOSApplicationExtension 3.0, *)
+
 extension SecTrust {
     
     /// Evaluates `self` and returns `true` if the evaluation succeeds with a value of `.unspecified` or `.proceed`.
     var isValid: Bool {
-        var result = SecTrustResultType.invalid
-        let status = SecTrustEvaluate(self, &result)
-        
-        return (status == errSecSuccess) ? (result == .unspecified || result == .proceed) : false
+        return CertificateHasher.checkValidity(of: self)
     }
 }

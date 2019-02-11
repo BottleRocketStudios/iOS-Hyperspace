@@ -19,10 +19,16 @@ class ViewController: UIViewController {
     // MARK: - Properties
     
     private let backendService = BackendService(networkService: NetworkService(networkActivityIndicatable: UIApplication.shared))
-    private var trustValidatingBackendService: BackendService?
+    private lazy var trustValidatingBackendService: BackendService = {
+        // Create's a trust configuration whereby requests to the domain 'jsonplaceholder.typicode.com' will be validated to ensure they are being served a certificate matchin 'jsonplaceholder.der'
+        let domainConfiguration = try? TrustConfiguration.DomainConfiguration(domain: "jsonplaceholder.typicode.com", certificates: certificate(named: "jsonplaceholder").map { [$0] } ?? [])
+        let validatingNetworkService = TrustValidatingNetworkService(trustConfiguration: domainConfiguration.map { [$0] } ?? [],
+                                                                     networkActivityIndicatable: UIApplication.shared)
+        return BackendService(networkService: validatingNetworkService)
+    }()
     
     var preferredBackendService: BackendService {
-        return serverTrustValidationToggle.isOn ? trustValidatingBackendService ?? backendService : backendService
+        return serverTrustValidationToggle.isOn ? trustValidatingBackendService : backendService
     }
     
     // MARK: - Lifecycle

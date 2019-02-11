@@ -37,7 +37,7 @@ public struct TrustConfiguration {
         
         // MARK: - Properties
     
-        /// The URL domain for which this configuration is responsible
+        /// The URL domain for which this configuration is responsible. Should be entered in the format `example.com`.
         let domain: String
         
         /// Determines whether any failures to pin (`.block` as a `ValidationDecision`) will cause the connection to be blocked. Setting this value to 'false' will allow connections that fail pinning validation. Defaults to `true`.
@@ -57,11 +57,11 @@ public struct TrustConfiguration {
         /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
         ///
         /// - Parameters:
-        ///   - domain: The domain for which this configuration is responsible.
+        ///   - domain: The domain for which this configuration is responsible. Should be entered in the format `example.com`.
         ///   - enforced: When this value is set to true, a failure to pin a request will cause the connection to be blocked. Defaults to true.
         ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
-        ///   - certificates: An array of `SectCertificate`. These certificates will have their public key extracted and hashed. This hash will then be compared against the presented remote SSL certificate at authentication time.
-        ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
+        ///   - certificates: An array of `SecCertificate`. These certificates will have their public key extracted and hashed. This hash will then be compared against the presented remote SSL certificate at authentication time.
+        ///   - expirationPolicy: The expiration policy to be used when creating this domain. A value of `.block` will cause an expired certificate to block all connections.
         /// - Throws: A CertificateHasher.Error if the given `SecCertificate` can not be properly hashed.
         public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, certificates: [SecCertificate], expirationPolicy: CertificateExpirationPolicy = .block) throws {
             let pinningHashes = try certificates.compactMap { try CertificateHasher.pinningHash(for: $0) }
@@ -71,11 +71,11 @@ public struct TrustConfiguration {
         /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
         ///
         /// - Parameters:
-        ///   - domain: The domain for which this configuration is responsible.
+        ///   - domain: The domain for which this configuration is responsible. Should be entered in the format `example.com`.
         ///   - enforced: When this value is set to true, a failure to pin a request will cause the connection to be blocked. Defaults to true.
         ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
         ///   - encodedPinningHashes: An array of base-64 encoded strings representing the hash of a certificate's public key.
-        ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
+        ///   - expirationPolicy: The expiration policy to be used when creating this domain. A value of `.block` will cause an expired certificate to block all connections.
         public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, encodedPinningHashes: [String], expirationPolicy: CertificateExpirationPolicy = .block) {
             let pinningHashes = encodedPinningHashes.compactMap { Data(base64Encoded: $0) }
             self.init(domain: domain, enforced: enforced, includeSubdomains: includeSubdomains, pinningHashes: pinningHashes, expirationPolicy: expirationPolicy)
@@ -84,11 +84,11 @@ public struct TrustConfiguration {
         /// Creates an instance of `DomainConfiguration` which will govern how any presented SSL certificate from that domain will be pinned.
         ///
         /// - Parameters:
-        ///   - domain: The domain for which this configuration is responsible.
+        ///   - domain: The domain for which this configuration is responsible. Should be entered in the format `example.com`.
         ///   - enforced: When this value is set to true, a failure to pin a request will cause the connection to be blocked. Defaults to true.
         ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
         ///   - pinningHashes: An array of public key hashes that will be used to verify the presented SSL certificate.
-        ///   - expiration: The expiration date of the SSL Certificate to be pinned. After this date, pinning will not be attempted.
+        ///   - expirationPolicy: The expiration policy to be used when creating this domain. A value of `.block` will cause an expired certificate to block all connections.
         init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, pinningHashes: [Data], expirationPolicy: CertificateExpirationPolicy = .block) {
             self.domain = domain
             self.enforced = enforced
@@ -136,7 +136,7 @@ public struct TrustConfiguration {
     /// - Parameter domainConfigurations: A list of `DomainConfiguration` objects which control the pinning process for each individual domain.
     ///         There must only be a single domain configuration for a given domain. Multiple will trigger an assertion.
     public init(domainConfigurations: [DomainConfiguration]) {
-        assert(Set(domainConfigurations.map { $0.domain}).count == domainConfigurations.count, "You must not provided multiple domain configurations for any given domain.")
+        assert(Set(domainConfigurations.map { $0.domain }).count == domainConfigurations.count, "You must not provided multiple domain configurations for any given domain.")
         self.domainConfigurations = domainConfigurations
     }
     

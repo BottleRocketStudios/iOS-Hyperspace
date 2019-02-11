@@ -1,5 +1,5 @@
 //
-//  CertificateExtractor.swift
+//  CertificateHasher.swift
 //  Hyperspace
 //
 //  Created by Will McGinty on 1/30/19.
@@ -52,6 +52,13 @@ struct CertificateHasher {
     
     static func pinningHash(for certificate: SecCertificate) throws -> Data {
         return try sha256PublicKeyData(from: certificate)
+    }
+    
+    static func checkValidity(of trust: SecTrust) -> Bool {
+        var result = SecTrustResultType.invalid
+        let status = SecTrustEvaluate(trust, &result)
+        
+        return (status == errSecSuccess) ? (result == .unspecified || result == .proceed) : false
     }
 }
 
@@ -107,13 +114,11 @@ private extension CertificateHasher {
         var trust: SecTrust?
         let status = SecTrustCreateWithCertificates(certificate, SecPolicyCreateBasicX509(), &trust)
         
-        guard let securityTrust = trust, status == errSecSuccess else { return nil }
-        var result = SecTrustResultType.invalid
-        SecTrustEvaluate(securityTrust, &result)
-        
+        guard let securityTrust = trust, status == errSecSuccess, checkValidity(of: securityTrust) else { return nil }
+    
         return SecTrustCopyPublicKey(securityTrust)
     }
-    
+
     static func attributes(from publicKey: SecKey) -> (type: CFString, size: UInt)? {
         guard let attributes = SecKeyCopyAttributes(publicKey) as? [String: AnyObject],
             let size = attributes[kSecAttrKeySizeInBits as String] as? NSNumber,

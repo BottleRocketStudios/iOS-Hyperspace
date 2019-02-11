@@ -1,5 +1,5 @@
 //
-//  XCTestCase+Certs.swift
+//  Trusts.swift
 //  Hyperspace
 //
 //  Created by Will McGinty on 2/1/19.
@@ -68,7 +68,8 @@ enum TestTrusts {
         SecTrustSetAnchorCertificates(trust!, [TestCertificates.root] as CFArray)
         SecTrustSetAnchorCertificatesOnly(trust!, true)
         
-        /// All of our leaf, intermediate and root certificates are valid on `verifyDate`. Hardcode the verification time so that we don't have to continually replace certificates as they expire.
+        /* All of our leaf, intermediate and root certificates are valid on `verifyDate`. Hardcode the verification time so that we don't have to continually replace certificates as they expire.
+            This time represents a date in Feb, 2019 in which all certificates are valid. */
         let verifyTime: CFAbsoluteTime = 570998974.425934
         let verifyDate = CFDateCreate(nil, verifyTime)!
         SecTrustSetVerifyDate(trust!, verifyDate)
