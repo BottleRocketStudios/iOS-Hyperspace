@@ -132,7 +132,7 @@ class NetworkServiceTests: XCTestCase {
         let networkServiceFailure = NetworkServiceHelper.networkServiceFailure(for: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
         XCTAssert(networkServiceFailure.error == .unknownError)
     }
-
+    
     func test_NetworkServiceError_Equality() {
         XCTAssertEqual(NetworkServiceError.unknownError, NetworkServiceError.unknownError)
         XCTAssertEqual(NetworkServiceError.unknownStatusCode, NetworkServiceError.unknownStatusCode)

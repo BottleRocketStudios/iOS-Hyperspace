@@ -14,6 +14,12 @@
 		0E347E5D2155AC3700BF18FA /* AnyError+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */; };
 		0E347E6421599B7D00BF18FA /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
 		0E347E6521599B7F00BF18FA /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
+		0E4B3ADF22023C0D00D65DB5 /* TrustValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */; };
+		0E4B3AE02202449F00D65DB5 /* TrustValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */; };
+		0E4B3AE1220244A000D65DB5 /* TrustValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */; };
+		0E4B3AE3220244B100D65DB5 /* TrustConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */; };
+		0E4B3AE42202483A00D65DB5 /* TrustConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */; };
+		0E4B3AE52202483A00D65DB5 /* TrustConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */; };
 		0E81B49920AC8E0B00DC1F4E /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
 		0E81B49B20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
@@ -33,6 +39,34 @@
 		0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */; };
 		0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */; };
 		0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */; };
+		0EF57B7D2202745800484C01 /* PinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7C2202745800484C01 /* PinningTests.swift */; };
+		0EF57B7E2202745800484C01 /* PinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7C2202745800484C01 /* PinningTests.swift */; };
+		0EF57B822202901E00484C01 /* CertificateHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7F22028F0000484C01 /* CertificateHasher.swift */; };
+		0EF57B832202901F00484C01 /* CertificateHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7F22028F0000484C01 /* CertificateHasher.swift */; };
+		0EF57B842202902000484C01 /* CertificateHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7F22028F0000484C01 /* CertificateHasher.swift */; };
+		0EF57B88220296A700484C01 /* CertificateHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B87220296A700484C01 /* CertificateHashTests.swift */; };
+		0EF57B89220296A700484C01 /* CertificateHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B87220296A700484C01 /* CertificateHashTests.swift */; };
+		0EF57B8A220297E400484C01 /* google.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B862202968300484C01 /* google.der */; };
+		0EF57B8B220297E500484C01 /* google.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B862202968300484C01 /* google.der */; };
+		0EF57B8F2202A25300484C01 /* apple.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B8D2202A25300484C01 /* apple.der */; };
+		0EF57B902202A25300484C01 /* apple.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B8D2202A25300484C01 /* apple.der */; };
+		0EF57B942202A39E00484C01 /* bbc.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B932202A39E00484C01 /* bbc.der */; };
+		0EF57B952202A39E00484C01 /* bbc.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B932202A39E00484C01 /* bbc.der */; };
+		0EF57B972203CD0B00484C01 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
+		0EFB54282204A8A400949F24 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
+		0EFB54292204A8A400949F24 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
+		0EFB54362204AFBA00949F24 /* Trusts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54352204AFBA00949F24 /* Trusts.swift */; };
+		0EFB54372204AFBA00949F24 /* Trusts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54352204AFBA00949F24 /* Trusts.swift */; };
+		0EFB54392204BF6900949F24 /* root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54382204BF6900949F24 /* root.cer */; };
+		0EFB543A2204BF6900949F24 /* root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54382204BF6900949F24 /* root.cer */; };
+		0EFB543C2204BF7F00949F24 /* leaf.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543B2204BF7F00949F24 /* leaf.cer */; };
+		0EFB543D2204BF7F00949F24 /* leaf.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543B2204BF7F00949F24 /* leaf.cer */; };
+		0EFB543F2204BF9500949F24 /* intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543E2204BF9500949F24 /* intermediate.cer */; };
+		0EFB54402204BF9500949F24 /* intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543E2204BF9500949F24 /* intermediate.cer */; };
+		0EFB54422204C3A400949F24 /* jsonplaceholder.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54412204C3A400949F24 /* jsonplaceholder.der */; };
+		0EFB544A2204CC1500949F24 /* TrustValidatingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */; };
+		0EFB544B2204CC1500949F24 /* TrustValidatingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */; };
+		0EFB544C2204CC1600949F24 /* TrustValidatingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */; };
 		3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
@@ -299,6 +333,8 @@
 		0E29092B21349F320031F67C /* DecodingFailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingFailureTests.swift; sourceTree = "<group>"; };
 		0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyError+Request.swift"; sourceTree = "<group>"; };
 		0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+JSON.swift"; sourceTree = "<group>"; };
+		0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustValidator.swift; sourceTree = "<group>"; };
+		0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustConfiguration.swift; sourceTree = "<group>"; };
 		0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryStrategy.swift; sourceTree = "<group>"; };
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0E81B4A120ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+DecodableContainer.swift"; sourceTree = "<group>"; };
@@ -307,6 +343,19 @@
 		0ECDC1CA20A9FCDE00ABF991 /* RootKeyIncorrectType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RootKeyIncorrectType.json; sourceTree = "<group>"; };
 		0ECDC1D020AA039F00ABF991 /* MixedTypeObject.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MixedTypeObject.json; sourceTree = "<group>"; };
 		0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterEncoder.swift; sourceTree = "<group>"; };
+		0EF57B7C2202745800484C01 /* PinningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTests.swift; sourceTree = "<group>"; };
+		0EF57B7F22028F0000484C01 /* CertificateHasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateHasher.swift; sourceTree = "<group>"; };
+		0EF57B862202968300484C01 /* google.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = google.der; sourceTree = "<group>"; };
+		0EF57B87220296A700484C01 /* CertificateHashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateHashTests.swift; sourceTree = "<group>"; };
+		0EF57B8D2202A25300484C01 /* apple.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = apple.der; sourceTree = "<group>"; };
+		0EF57B932202A39E00484C01 /* bbc.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = bbc.der; sourceTree = "<group>"; };
+		0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationChallenge.swift; sourceTree = "<group>"; };
+		0EFB54352204AFBA00949F24 /* Trusts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trusts.swift; sourceTree = "<group>"; };
+		0EFB54382204BF6900949F24 /* root.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = root.cer; sourceTree = "<group>"; };
+		0EFB543B2204BF7F00949F24 /* leaf.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = leaf.cer; sourceTree = "<group>"; };
+		0EFB543E2204BF9500949F24 /* intermediate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = intermediate.cer; sourceTree = "<group>"; };
+		0EFB54412204C3A400949F24 /* jsonplaceholder.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = jsonplaceholder.der; sourceTree = "<group>"; };
+		0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustValidatingNetworkService.swift; sourceTree = "<group>"; };
 		3026E457202008470003A321 /* NetworkSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTest.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
@@ -470,6 +519,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */ = {
+			isa = PBXGroup;
+			children = (
+				0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */,
+				0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */,
+				0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */,
+				0EF57B7F22028F0000484C01 /* CertificateHasher.swift */,
+				0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */,
+			);
+			path = "Certificate Pinning";
+			sourceTree = "<group>";
+		};
 		0E81B49520AC85B600DC1F4E /* Recovery */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +545,19 @@
 				60AC83441FF596B600120172 /* DecodableContainer.swift */,
 			);
 			path = Decoding;
+			sourceTree = "<group>";
+		};
+		0EF57B852202967900484C01 /* Certificates */ = {
+			isa = PBXGroup;
+			children = (
+				0EF57B862202968300484C01 /* google.der */,
+				0EF57B932202A39E00484C01 /* bbc.der */,
+				0EF57B8D2202A25300484C01 /* apple.der */,
+				0EFB54382204BF6900949F24 /* root.cer */,
+				0EFB543B2204BF7F00949F24 /* leaf.cer */,
+				0EFB543E2204BF9500949F24 /* intermediate.cer */,
+			);
+			path = Certificates;
 			sourceTree = "<group>";
 		};
 		60326018201D1F1F008CEFC8 /* Playground */ = {
@@ -552,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				60AC833D1FF596B600120172 /* Hyperspace */,
+				0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */,
 				CB0DE06121E7E5EF00661F0E /* Futures */,
 				60AC82F91FF58E3600120172 /* Supporting Files */,
 			);
@@ -571,6 +646,7 @@
 		60AC831F1FF58E8B00120172 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				0EF57B852202967900484C01 /* Certificates */,
 				60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */,
 				0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */,
 				60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */,
@@ -582,6 +658,8 @@
 				30F07352202109F60045CB01 /* HTTPTests.swift */,
 				B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */,
 				0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */,
+				0EF57B7C2202745800484C01 /* PinningTests.swift */,
+				0EF57B87220296A700484C01 /* CertificateHashTests.swift */,
 				60D6C419201CFCE500B3B012 /* Helper */,
 				60EB8FDA1FF59FB000AC0B55 /* Supporting Files */,
 			);
@@ -717,6 +795,7 @@
 				60D6C3FD201CFCCF00B3B012 /* Test Defaults */,
 				60D6C3F2201CFCCF00B3B012 /* Mocks */,
 				60D6C3F8201CFCCF00B3B012 /* JSON */,
+				0EFB54352204AFBA00949F24 /* Trusts.swift */,
 				CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */,
 				0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */,
 			);
@@ -726,6 +805,7 @@
 		60D6C420201D156500B3B012 /* Hyperspace-iOSExample */ = {
 			isa = PBXGroup;
 			children = (
+				0EFB54412204C3A400949F24 /* jsonplaceholder.der */,
 				60D6C421201D156500B3B012 /* AppDelegate.swift */,
 				60D6C423201D156500B3B012 /* ViewController.swift */,
 				60D6C425201D156500B3B012 /* Main.storyboard */,
@@ -1094,9 +1174,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EF57B942202A39E00484C01 /* bbc.der in Resources */,
+				0EF57B8A220297E400484C01 /* google.der in Resources */,
+				0EFB543C2204BF7F00949F24 /* leaf.cer in Resources */,
 				0ECDC1D220AA03A200ABF991 /* MixedTypeObject.json in Resources */,
+				0EFB543F2204BF9500949F24 /* intermediate.cer in Resources */,
 				60D6C413201CFCCF00B3B012 /* Object.json in Resources */,
+				0EFB54392204BF6900949F24 /* root.cer in Resources */,
 				0ECDC1C820A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */,
+				0EF57B8F2202A25300484C01 /* apple.der in Resources */,
 				60D6C415201CFCCF00B3B012 /* RootKeyArray.json in Resources */,
 				60D6C411201CFCCF00B3B012 /* RootKeyObject.json in Resources */,
 				60D6C40F201CFCCF00B3B012 /* DateObject.json in Resources */,
@@ -1122,9 +1208,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EF57B952202A39E00484C01 /* bbc.der in Resources */,
+				0EF57B8B220297E500484C01 /* google.der in Resources */,
+				0EFB543D2204BF7F00949F24 /* leaf.cer in Resources */,
 				0ECDC1D320AA03A300ABF991 /* MixedTypeObject.json in Resources */,
+				0EFB54402204BF9500949F24 /* intermediate.cer in Resources */,
 				60D6C414201CFCCF00B3B012 /* Object.json in Resources */,
+				0EFB543A2204BF6900949F24 /* root.cer in Resources */,
 				0ECDC1C920A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */,
+				0EF57B902202A25300484C01 /* apple.der in Resources */,
 				60D6C416201CFCCF00B3B012 /* RootKeyArray.json in Resources */,
 				60D6C412201CFCCF00B3B012 /* RootKeyObject.json in Resources */,
 				60D6C410201CFCCF00B3B012 /* DateObject.json in Resources */,
@@ -1136,6 +1228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFB54422204C3A400949F24 /* jsonplaceholder.der in Resources */,
 				60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */,
 				60D6C429201D156500B3B012 /* Assets.xcassets in Resources */,
 				60D6C427201D156500B3B012 /* Main.storyboard in Resources */,
@@ -1217,10 +1310,13 @@
 				60D6C36D201CC81100B3B012 /* URL+Additions.swift in Sources */,
 				60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
+				0EF57B972203CD0B00484C01 /* AuthenticationChallenge.swift in Sources */,
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* DecodableContainer.swift in Sources */,
 				CB0DE06321E7E62500661F0E /* BackendService+Futures.swift in Sources */,
 				60127D5C20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
+				0E4B3AE3220244B100D65DB5 /* TrustConfiguration.swift in Sources */,
+				0E4B3ADF22023C0D00D65DB5 /* TrustValidator.swift in Sources */,
 				60D6C371201CC81100B3B012 /* AnyRequest.swift in Sources */,
 				0E347E5B2155A7A500BF18FA /* AnyError+Request.swift in Sources */,
 				60D6C372201CC81100B3B012 /* Request.swift in Sources */,
@@ -1233,6 +1329,8 @@
 				60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */,
 				B4C32C2C201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				60D6C378201CC81100B3B012 /* BackendService.swift in Sources */,
+				0EFB544A2204CC1500949F24 /* TrustValidatingNetworkService.swift in Sources */,
+				0EF57B822202901E00484C01 /* CertificateHasher.swift in Sources */,
 				0E81B49920AC8E0B00DC1F4E /* RecoveryStrategy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1253,12 +1351,15 @@
 				3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */,
 				CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */,
 				60D6C40B201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
+				0EF57B7D2202745800484C01 /* PinningTests.swift in Sources */,
 				60D6C407201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
 				60D6C401201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
 				30F07358202172420045CB01 /* MockBackendService.swift in Sources */,
 				B4C32C30201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
 				60D6C3FF201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
 				0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */,
+				0EF57B88220296A700484C01 /* CertificateHashTests.swift in Sources */,
+				0EFB54362204AFBA00949F24 /* Trusts.swift in Sources */,
 				CBB361BB21E643520082E860 /* Result+Extensions.swift in Sources */,
 				60D6C405201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 				30F07367202227790045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
@@ -1272,10 +1373,13 @@
 				60D6C385201CCCBE00B3B012 /* URL+Additions.swift in Sources */,
 				0E81B49E20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */,
 				60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
+				0EFB54292204A8A400949F24 /* AuthenticationChallenge.swift in Sources */,
 				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				CB7B20A721ECDDC500AB8FE3 /* BackendService+Futures.swift in Sources */,
 				60D6C388201CCCBE00B3B012 /* DecodableContainer.swift in Sources */,
+				0E4B3AE52202483A00D65DB5 /* TrustConfiguration.swift in Sources */,
+				0E4B3AE02202449F00D65DB5 /* TrustValidator.swift in Sources */,
 				60127D5E20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				0E347E5D2155AC3700BF18FA /* AnyError+Request.swift in Sources */,
 				60D6C389201CCCBE00B3B012 /* AnyRequest.swift in Sources */,
@@ -1288,6 +1392,8 @@
 				626DA6B420A3584900C40611 /* BackendServiceHelper.swift in Sources */,
 				60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */,
 				B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
+				0EFB544C2204CC1600949F24 /* TrustValidatingNetworkService.swift in Sources */,
+				0EF57B842202902000484C01 /* CertificateHasher.swift in Sources */,
 				60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1299,10 +1405,13 @@
 				60D6C37A201CCCAE00B3B012 /* URLQueryItem+Extensions.swift in Sources */,
 				0E81B49D20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */,
 				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
+				0EFB54282204A8A400949F24 /* AuthenticationChallenge.swift in Sources */,
 				60D6C37C201CCCAE00B3B012 /* DecodableContainer.swift in Sources */,
 				0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				CB7B20A621ECDDC400AB8FE3 /* BackendService+Futures.swift in Sources */,
 				60D6C37D201CCCAE00B3B012 /* AnyRequest.swift in Sources */,
+				0E4B3AE42202483A00D65DB5 /* TrustConfiguration.swift in Sources */,
+				0E4B3AE1220244A000D65DB5 /* TrustValidator.swift in Sources */,
 				60127D5D20686AF8002B7BB9 /* NetworkServiceHelper.swift in Sources */,
 				0E347E5C2155AC3700BF18FA /* AnyError+Request.swift in Sources */,
 				60D6C37E201CCCAE00B3B012 /* Request.swift in Sources */,
@@ -1315,6 +1424,8 @@
 				626DA6B320A3584800C40611 /* BackendServiceHelper.swift in Sources */,
 				30F0735E202205350045CB01 /* URL+Additions.swift in Sources */,
 				B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
+				0EFB544B2204CC1500949F24 /* TrustValidatingNetworkService.swift in Sources */,
+				0EF57B832202901F00484C01 /* CertificateHasher.swift in Sources */,
 				60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1335,6 +1446,7 @@
 				3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */,
 				CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */,
 				60D6C40C201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */,
+				0EF57B7E2202745800484C01 /* PinningTests.swift in Sources */,
 				60D6C408201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */,
 				60D6C402201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
 				30F07359202172450045CB01 /* MockBackendService.swift in Sources */,
@@ -1342,6 +1454,8 @@
 				60D6C400201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
 				0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */,
 				CBB361BC21E643520082E860 /* Result+Extensions.swift in Sources */,
+				0EFB54372204AFBA00949F24 /* Trusts.swift in Sources */,
+				0EF57B89220296A700484C01 /* CertificateHashTests.swift in Sources */,
 				60D6C406201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
 				30F073682022277A0045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
 			);
@@ -1686,6 +1800,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1699,6 +1814,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

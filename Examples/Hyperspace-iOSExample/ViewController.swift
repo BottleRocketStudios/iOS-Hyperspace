@@ -14,10 +14,22 @@ class ViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet private var postTextField: UITextField!
+    @IBOutlet private var serverTrustValidationToggle: UISwitch!
     
     // MARK: - Properties
     
     private let backendService = BackendService(networkService: NetworkService(networkActivityIndicatable: UIApplication.shared))
+    private lazy var trustValidatingBackendService: BackendService = {
+        // Creates a trust configuration whereby requests to the domain 'jsonplaceholder.typicode.com' will be validated to ensure they are being served a certificate matching 'jsonplaceholder.der'
+        let domainConfiguration = try? TrustConfiguration.DomainConfiguration(domain: "jsonplaceholder.typicode.com", certificates: certificate(named: "jsonplaceholder").map { [$0] } ?? [])
+        let validatingNetworkService = TrustValidatingNetworkService(trustConfiguration: domainConfiguration.map { [$0] } ?? [],
+                                                                     networkActivityIndicatable: UIApplication.shared)
+        return BackendService(networkService: validatingNetworkService)
+    }()
+    
+    var preferredBackendService: BackendService {
+        return serverTrustValidationToggle.isOn ? trustValidatingBackendService : backendService
+    }
     
     // MARK: - IBActions
     
@@ -39,7 +51,7 @@ extension ViewController {
     private func getUser() {
         let getUserRequest = GetUserRequest(userId: 1)
         
-        backendService.execute(request: getUserRequest) { [weak self] result in
+        preferredBackendService.execute(request: getUserRequest) { [weak self] result in
             debugPrint("Get user result: \(result)")
             
             switch result {
@@ -55,7 +67,7 @@ extension ViewController {
         let post = NewPost(userId: 1, title: title, body: "")
         let createPostRequest = CreatePostRequest(newPost: post)
         
-        backendService.execute(request: createPostRequest) { [weak self] result in
+        preferredBackendService.execute(request: createPostRequest) { [weak self] result in
             debugPrint("Create post result: \(result)")
             
             switch result {
@@ -70,7 +82,7 @@ extension ViewController {
     private func deletePost(postId: Int) {
         let deletePostRequest = DeletePostRequest(postId: postId)
         
-        backendService.execute(request: deletePostRequest) { [weak self] result in
+        preferredBackendService.execute(request: deletePostRequest) { [weak self] result in
             switch result {
             case .success:
                 self?.presentAlert(titled: "Deleted Post", message: "Success")
@@ -82,6 +94,7 @@ extension ViewController {
 }
 
 extension UIViewController {
+    
     func presentAlert(titled title: String, message: String) {
         let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         
@@ -89,6 +102,16 @@ extension UIViewController {
         alertController.addAction(dismissAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func certificate(named: String) -> SecCertificate? {
+        guard let certPath = Bundle.main.url(forResource: named, withExtension: "der"),
+            let certificateData = try? Data(contentsOf: certPath),
+            let certificate = SecCertificateCreateWithData(kCFAllocatorDefault, certificateData as CFData) else {
+                return nil
+        }
+        
+        return certificate
     }
 }
 
