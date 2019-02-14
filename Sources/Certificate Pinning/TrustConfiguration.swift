@@ -131,7 +131,7 @@ public struct TrustConfiguration {
     /// Create a `TrustConfiguration` instance which will govern how the validator behaves when presented with a remote SSL certificate.
     ///
     /// - Parameter domainConfigurations: A list of `DomainConfiguration` objects which control the pinning process for each individual domain.
-    ///         There must only be a single domain configuration for a given domain. Multiple will trigger an assertion.
+    ///         There must only be a single domain configuration for a given domain. Multiple domain configurations will trigger an assertion.
     public init(domainConfigurations: [DomainConfiguration]) {
         assert(Set(domainConfigurations.map { $0.domain }).count == domainConfigurations.count, "You must not provide multiple domain configurations for any given domain.")
         self.domainConfigurations = domainConfigurations
