@@ -8,12 +8,9 @@
 
 import Foundation
 
-@available(iOSApplicationExtension 10.0, *)
-@available(tvOSApplicationExtension 10.0, *)
-@available(watchOSApplicationExtension 3.0, *)
-
-/* A configuration object which controls how a `TrustValidator` object makes decisions on which connections to accept and which to block. The configuration
+/** A configuration object which controls how a `TrustValidator` object makes decisions on which connections to accept and which to block. The configuration
     object consists of a series of configuration objects, each designed for a single domain. */
+@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
 public struct TrustConfiguration {
     
     /// The `CertificateExpirationPolicy` determines how the validation should proceed when the certificate being pinned has expired.
@@ -27,7 +24,7 @@ public struct TrustConfiguration {
         var expiration: Date? {
             switch self {
             case .allow(after: let date): return date
-            default: return nil
+            case .block: return nil
             }
         }
     }
@@ -89,7 +86,7 @@ public struct TrustConfiguration {
         ///   - includeSubdomains: Include any subdomains of the given domain in the pinning process. Defaults to true.
         ///   - pinningHashes: An array of public key hashes that will be used to verify the presented SSL certificate.
         ///   - expirationPolicy: The expiration policy to be used when creating this domain. A value of `.block` will cause an expired certificate to block all connections.
-        init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, pinningHashes: [Data], expirationPolicy: CertificateExpirationPolicy = .block) {
+        public init(domain: String, enforced: Bool = true, includeSubdomains: Bool = true, pinningHashes: [Data], expirationPolicy: CertificateExpirationPolicy = .block) {
             self.domain = domain
             self.enforced = enforced
             self.includeSubdomains = includeSubdomains
@@ -136,7 +133,7 @@ public struct TrustConfiguration {
     /// - Parameter domainConfigurations: A list of `DomainConfiguration` objects which control the pinning process for each individual domain.
     ///         There must only be a single domain configuration for a given domain. Multiple will trigger an assertion.
     public init(domainConfigurations: [DomainConfiguration]) {
-        assert(Set(domainConfigurations.map { $0.domain }).count == domainConfigurations.count, "You must not provided multiple domain configurations for any given domain.")
+        assert(Set(domainConfigurations.map { $0.domain }).count == domainConfigurations.count, "You must not provide multiple domain configurations for any given domain.")
         self.domainConfigurations = domainConfigurations
     }
     
@@ -157,9 +154,7 @@ public struct TrustConfiguration {
 
 // MARK: - TrustConfiguration conformance to ExpressibleByArrayLiteral
 
-@available(iOSApplicationExtension 10.0, *)
-@available(tvOSApplicationExtension 10.0, *)
-@available(watchOSApplicationExtension 3.0, *)
+@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
 extension TrustConfiguration: ExpressibleByArrayLiteral {
     public typealias ArrayLiteralElement = DomainConfiguration
     

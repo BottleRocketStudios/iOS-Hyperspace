@@ -9,9 +9,7 @@
 import Foundation
 import CommonCrypto
 
-@available(iOSApplicationExtension 10.0, *)
-@available(tvOSApplicationExtension 10.0, *)
-@available(watchOSApplicationExtension 3.0, *)
+@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
 struct CertificateHasher {
     
     enum Error: Swift.Error {
@@ -63,9 +61,7 @@ struct CertificateHasher {
 }
 
 // MARK: - Helper
-@available(iOSApplicationExtension 10.0, *)
-@available(tvOSApplicationExtension 10.0, *)
-@available(watchOSApplicationExtension 3.0, *)
+@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
 private extension CertificateHasher {
     
     // MARK: - PublicKey Internal Subtype
@@ -115,7 +111,7 @@ private extension CertificateHasher {
         let status = SecTrustCreateWithCertificates(certificate, SecPolicyCreateBasicX509(), &trust)
         
         /*We do not need to evaluate trust here as we are simply looking to extract a public key - explicit evaluation is achieved by calling `checkValidity(of:)`.
-            This is useful for instance, when attempting to create a pinning hash for an invalid or expired certificate. If we were to validate on creation, we would not be able to test this. */
+            This is useful, for instance, when attempting to create a pinning hash for an invalid or expired certificate. If we were to validate on creation, we would not be able to test this. */
         guard let securityTrust = trust, status == errSecSuccess else { return nil }
         return SecTrustCopyPublicKey(securityTrust)
     }

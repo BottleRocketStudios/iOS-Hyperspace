@@ -11,7 +11,7 @@ import Foundation
 /// This protocol represents a generic authentication challenge, such as those presented as part of the SSL and TLS handshakes.
 public protocol AuthenticationChallenge {
     
-    /// The host of the remote connection
+    /// The host of the remote connection.
     var host: String { get }
     
     /// The method of authentication. For possible values see `URLAuthenticationChallenge`.
