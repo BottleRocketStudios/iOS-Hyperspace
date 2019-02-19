@@ -1,6 +1,6 @@
 //
 //  Cancellation.swift
-//  Hyperspace-iOS
+//  Hyperspace
 //
 //  Created by Will McGinty on 2/19/19.
 //  Copyright © 2019 Bottle Rocket Studios. All rights reserved.

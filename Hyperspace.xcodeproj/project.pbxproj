@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0E00FDD0221CB8BF00141E6A /* Cancellation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00FDCF221CB8BF00141E6A /* Cancellation.swift */; };
+		0E00FDD1221CBA6B00141E6A /* Cancellation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00FDCF221CB8BF00141E6A /* Cancellation.swift */; };
+		0E00FDD2221CBA6C00141E6A /* Cancellation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00FDCF221CB8BF00141E6A /* Cancellation.swift */; };
 		0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
 		0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
 		0E347E5B2155A7A500BF18FA /* AnyError+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E5A2155A7A500BF18FA /* AnyError+Request.swift */; };
@@ -715,7 +717,6 @@
 				0E81B49520AC85B600DC1F4E /* Recovery */,
 				60AC83481FF596B600120172 /* Network */,
 				60AC834D1FF596B600120172 /* Backend */,
-				0E00FDCF221CB8BF00141E6A /* Cancellation.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -723,6 +724,7 @@
 		60AC83481FF596B600120172 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0E00FDCF221CB8BF00141E6A /* Cancellation.swift */,
 				B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */,
 				60AC83491FF596B600120172 /* NetworkSessionDataTask.swift */,
 				60AC834A1FF596B600120172 /* NetworkServiceProtocol.swift */,
@@ -1394,6 +1396,7 @@
 				0E81B4A420ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift in Sources */,
 				60D6C38E201CCCBE00B3B012 /* NetworkService.swift in Sources */,
 				626DA6B420A3584900C40611 /* BackendServiceHelper.swift in Sources */,
+				0E00FDD2221CBA6C00141E6A /* Cancellation.swift in Sources */,
 				60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */,
 				B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				0EFB544C2204CC1600949F24 /* TrustValidatingNetworkService.swift in Sources */,
@@ -1426,6 +1429,7 @@
 				0E81B4A320ADE0E100DC1F4E /* JSONDecoder+DecodableContainer.swift in Sources */,
 				60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */,
 				626DA6B320A3584800C40611 /* BackendServiceHelper.swift in Sources */,
+				0E00FDD1221CBA6B00141E6A /* Cancellation.swift in Sources */,
 				30F0735E202205350045CB01 /* URL+Additions.swift in Sources */,
 				B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				0EFB544B2204CC1500949F24 /* TrustValidatingNetworkService.swift in Sources */,
