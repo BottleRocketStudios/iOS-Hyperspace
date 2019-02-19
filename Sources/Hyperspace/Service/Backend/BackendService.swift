@@ -31,8 +31,8 @@ public class BackendService {
 // MARK: - BackendService Conformance to BackendServiceProtocol
 
 extension BackendService: BackendServiceProtocol {
-    public func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
-        networkService.execute(request: request.urlRequest) { result in
+    public func execute<T: Request>(request: T, cancellationToken: CancellationSource.Token? = nil, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
+        networkService.execute(request: request.urlRequest, cancellationToken: cancellationToken) { result in
             switch result {
             case .success(let serviceSuccess):
                 BackendServiceHelper.handleNetworkServiceSuccess(serviceSuccess, for: request, completion: completion)
@@ -42,8 +42,8 @@ extension BackendService: BackendServiceProtocol {
         }
     }
     
-    public func execute<T: Request & Recoverable>(recoverable request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
-        execute(request: request) { [weak self] result in
+    public func execute<T: Request & Recoverable>(recoverable request: T, cancellationToken: CancellationSource.Token? = nil, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
+        execute(request: request, cancellationToken: cancellationToken) { [weak self] result in
             switch result {
             case .success(let response):
                 BackendServiceHelper.handleResponse(response, completion: completion)

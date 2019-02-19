@@ -64,7 +64,7 @@ public protocol NetworkServiceProtocol {
     /// - Parameters:
     ///   - request: The URLRequest to execute.
     ///   - completion: The completion block to be invoked when request execution is complete.
-    func execute(request: URLRequest, completion: @escaping NetworkServiceCompletion)
+    func execute(request: URLRequest, cancellationToken: CancellationSource.Token?, completion: @escaping NetworkServiceCompletion)
     
     /// Cancels the task for the given request (if it is currently running).
     func cancelTask(for request: URLRequest)

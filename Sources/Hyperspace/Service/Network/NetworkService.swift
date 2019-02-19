@@ -45,7 +45,7 @@ public class NetworkService {
 // MARK: - NetworkService Conformance to NetworkServiceProtocol
 
 extension NetworkService: NetworkServiceProtocol {
-    public func execute(request: URLRequest, completion: @escaping NetworkServiceCompletion) {
+    public func execute(request: URLRequest, cancellationToken: CancellationSource.Token? = nil, completion: @escaping NetworkServiceCompletion) {
         let task = session.dataTask(with: request) { [weak self] (data, response, error) in
             self?.networkActivityController?.stop()
             
@@ -63,6 +63,7 @@ extension NetworkService: NetworkServiceProtocol {
         }
         
         tasks[request] = task
+        cancellationToken?.register { task.cancel() }
         task.resume()
         networkActivityController?.start()
     }
