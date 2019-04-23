@@ -8,7 +8,6 @@
 
 import XCTest
 import Hyperspace
-import Result
 
 class RequestTests: XCTestCase {
     

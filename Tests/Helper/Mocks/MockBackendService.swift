@@ -8,7 +8,6 @@
 
 import Foundation
 @testable import Hyperspace
-import Result
 
 public enum MockBackendServiceError: NetworkServiceFailureInitializable, DecodingFailureInitializable {
 

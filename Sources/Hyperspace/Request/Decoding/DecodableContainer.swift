@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 /// Represents something that is capable of Decoding itself (using Swift.Decodable) and contains a child type.
 public protocol DecodableContainer: Decodable {

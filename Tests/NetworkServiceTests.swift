@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import Hyperspace
-import Result
 
 class NetworkServiceTests: XCTestCase {
     

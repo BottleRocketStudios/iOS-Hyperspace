@@ -13,7 +13,6 @@
 //
 
 import Foundation
-import Result
 
 /// Represents an error that occurred when executing a Request using a NetworkService.
 public enum NetworkServiceError: Error, Equatable {

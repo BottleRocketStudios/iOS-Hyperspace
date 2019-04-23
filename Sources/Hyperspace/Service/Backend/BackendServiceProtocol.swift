@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 /// Represents the completion of a request executed using a BackendService.
 /// When successful, the parsed object is provided as the associated value.

@@ -8,7 +8,6 @@
 
 import Foundation
 import Hyperspace
-import Result
 
 class MockNetworkService {
     private(set) var executeCallCount = 0
