@@ -36,18 +36,10 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
 
   s.subspec 'Core' do |core|
   core.source_files = 'Sources/Hyperspace/**/*'
-
-  # core.resource_bundles = {
-  #   'Hyperspace' => ['Hyperspace/Assets/*.png']
-  # }
-
-  # core.public_header_files = 'Pod/Classes/**/*.h'
-  # core.frameworks = 'UIKit', 'MapKit'
-  core.dependency 'Result', '~> 4.0'
   end
 
   s.subspec 'Futures' do |futures|
-  futures.dependency 'BrightFutures', '~> 7.0.0'
+  futures.dependency 'BrightFutures', '~> 8.0.0'
   futures.dependency 'Hyperspace/Core'
   futures.source_files = 'Sources/Futures/**/*'
   end

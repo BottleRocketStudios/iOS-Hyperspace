@@ -85,7 +85,7 @@ class PinningTests: XCTestCase {
 
     func test_TrustConfiguration_findsCorrectDomainConfiguration() {
         let config = TrustConfiguration(domainConfigurations: [.init(domain: defaultHost, pinningHashes: [Data()]),
-                                                                 .init(domain: secondaryHost, pinningHashes: [Data(bytes: [1, 2, 3, 4])])])
+                                                                 .init(domain: secondaryHost, pinningHashes: [Data([1, 2, 3, 4])])])
 
         XCTAssertEqual(config.domainConfiguration(forHost: defaultHost)?.domain, defaultHost)
         XCTAssertEqual(config.domainConfiguration(forHost: defaultHost)?.pinningHashes.count, 1)
@@ -93,7 +93,7 @@ class PinningTests: XCTestCase {
         
         XCTAssertEqual(config.domainConfiguration(forHost: secondaryHost)?.domain, secondaryHost)
         XCTAssertEqual(config.domainConfiguration(forHost: secondaryHost)?.pinningHashes.count, 1)
-        XCTAssertEqual(config.domainConfiguration(forHost: secondaryHost)?.pinningHashes.first, Data(bytes: [1, 2, 3, 4]))
+        XCTAssertEqual(config.domainConfiguration(forHost: secondaryHost)?.pinningHashes.first, Data([1, 2, 3, 4]))
 
         XCTAssertNil(config.domainConfiguration(forHost: "bbc.com"))
     }
