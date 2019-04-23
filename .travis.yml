@@ -2,7 +2,7 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode10.1
+osx_image: xcode10.2
 language: swift
 env:
   global:
@@ -46,7 +46,7 @@ script:
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
     fi
-  
+
   # Run Danger if specified
   - if [ $RUN_DANGER == "YES" ]; then
       DEBUG='*' danger-swift ci;
