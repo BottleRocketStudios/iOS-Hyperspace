@@ -9,7 +9,6 @@
 import XCTest
 import BrightFutures
 @testable import Hyperspace
-import Result
 
 class FutureTests: XCTestCase {
     // MARK: Type Aliases

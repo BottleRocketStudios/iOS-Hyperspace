@@ -26,6 +26,10 @@
 [Pranjal Satija](https://github.com/pranjalsatija)
 [#82](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/82)
 
+* Added support for Swift 5
+[Will McGinty](https://github.com/wmcginty)
+[#88](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/88)
+
 ##### Bug Fixes
 
 * None.

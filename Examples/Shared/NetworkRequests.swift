@@ -8,7 +8,6 @@
 
 import Foundation
 import Hyperspace
-import Result
 
 // MARK: - Network Request Defaults
 

@@ -29,6 +29,7 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.source           = { :git => 'https://github.com/BottleRocketStudios/iOS-Hyperspace.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
+  s.swift_version = '5.0'
   s.ios.deployment_target = '8.0'
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
@@ -36,18 +37,10 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
 
   s.subspec 'Core' do |core|
   core.source_files = 'Sources/Hyperspace/**/*'
-
-  # core.resource_bundles = {
-  #   'Hyperspace' => ['Hyperspace/Assets/*.png']
-  # }
-
-  # core.public_header_files = 'Pod/Classes/**/*.h'
-  # core.frameworks = 'UIKit', 'MapKit'
-  core.dependency 'Result', '~> 4.0'
   end
 
   s.subspec 'Futures' do |futures|
-  futures.dependency 'BrightFutures', '~> 7.0.0'
+  futures.dependency 'BrightFutures', '~> 8.0.0'
   futures.dependency 'Hyperspace/Core'
   futures.source_files = 'Sources/Futures/**/*'
   end

@@ -7,7 +7,6 @@
 //
 
 import BrightFutures
-import Result
 
 extension Result {
     var isFailure: Bool {

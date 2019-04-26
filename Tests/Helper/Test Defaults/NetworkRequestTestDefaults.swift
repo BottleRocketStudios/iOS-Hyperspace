@@ -8,7 +8,6 @@
 
 import Foundation
 import Hyperspace
-import Result
 
 class RequestTestDefaults {
     struct DefaultModel: Codable, Equatable {

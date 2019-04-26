@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 /// Represents an error which can be constructed from a `NetworkServiceFailure`.
 public protocol NetworkServiceFailureInitializable: Swift.Error {

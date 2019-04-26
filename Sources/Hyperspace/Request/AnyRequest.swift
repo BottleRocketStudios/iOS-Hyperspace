@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 /// A type-erased structure to allow for simple Requests to be easily created.
 public struct AnyRequest<T>: Request {

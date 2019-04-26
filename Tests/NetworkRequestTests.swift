@@ -8,7 +8,6 @@
 
 import XCTest
 import Hyperspace
-import Result
 
 class RequestTests: XCTestCase {
     
@@ -106,7 +105,7 @@ class RequestTests: XCTestCase {
     }
     
     func test_Request_ModifyingBody() {
-        let body = Data(bytes: [1, 2, 3, 4, 5, 6, 7, 8])
+        let body = Data([1, 2, 3, 4, 5, 6, 7, 8])
         let request = SimpleGETRequest()
         let modified = request.usingBody(body)
         

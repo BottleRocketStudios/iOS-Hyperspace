@@ -14,7 +14,6 @@
 //
 
 import Foundation
-import Result
 
 /// Adopts the NetworkServiceProtocol to perform HTTP communication via the execution of URLRequests.
 public class NetworkService {

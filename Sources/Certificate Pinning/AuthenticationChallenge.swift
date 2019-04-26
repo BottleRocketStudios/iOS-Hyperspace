@@ -23,7 +23,7 @@ public protocol AuthenticationChallenge {
 
 public extension AuthenticationChallenge {
     
-    public var isServerTrustAuthentication: Bool {
+    var isServerTrustAuthentication: Bool {
         return authenticationMethod == NSURLAuthenticationMethodServerTrust
     }
 }

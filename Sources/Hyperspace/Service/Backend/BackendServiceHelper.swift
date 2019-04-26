@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 /// A helper struct for use with BackendService.
 public struct BackendServiceHelper {
