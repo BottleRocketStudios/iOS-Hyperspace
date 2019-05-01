@@ -44,7 +44,6 @@ struct CreatePostRequest: Request {
     // Define Request property values
     var method: HTTP.Method = .post
     var url = URL(string: "http://jsonplaceholder.typicode.com/posts")!
-    var queryParameters: [URLQueryItem]?
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
     var body: Data? {
         let encoder = JSONEncoder()

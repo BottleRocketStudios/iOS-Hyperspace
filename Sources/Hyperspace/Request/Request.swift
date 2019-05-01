@@ -154,10 +154,6 @@ public struct RequestDefaults {
 // MARK: - Request Default Implementations
 
 public extension Request {
-
-    var queryParameters: [URLQueryItem]? {
-        return nil
-    }
     
     var cachePolicy: URLRequest.CachePolicy {
         return RequestDefaults.defaultCachePolicy
