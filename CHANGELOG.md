@@ -30,6 +30,10 @@
 [Will McGinty](https://github.com/wmcginty)
 [#88](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/88)
 
+* Remove the `queryParameter` property deprecated in 2.0.0.
+[Will McGinty](https://github.com/wmcginty)
+[#90](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/90)
+
 ##### Bug Fixes
 
 * None.
