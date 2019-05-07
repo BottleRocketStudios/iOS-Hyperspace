@@ -2,6 +2,17 @@
 
 #### Enhancements
 
+* None.
+
+##### Bug Fixes
+
+* None.
+
+
+## 3.1.0 (2019-05-07)
+
+#### Enhancements
+
 * Remove the type definitions deprecated in 3.0.0.
 [Will McGinty](https://github.com/wmcginty)
 [#77](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/77)
@@ -38,6 +49,7 @@
 
 * None.
 
+
 ## 3.0.0 (2019-01-03)
 
 ##### Enhancements
@@ -66,6 +78,7 @@
 ##### Bug Fixes
 
 * None.
+
 
 ## 2.1.0 (2018-09-20)
 
@@ -96,6 +109,7 @@
 ##### Bug Fixes
 
 * None.
+
 
 ## 2.0.0 (2018-08-03)
 

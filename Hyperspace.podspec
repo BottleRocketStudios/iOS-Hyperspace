@@ -8,14 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Hyperspace'
-  s.version          = '3.0.0'
+  s.version          = '3.1.0'
   s.summary          = 'An extremely lightweight wrapper around URLSession to make working with APIs a breeze.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
 Hyperspace attempts to take the boilerplate out of working with HTTP in your app.
@@ -23,11 +17,9 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
                        DESC
 
   s.homepage         = 'https://github.com/BottleRocketStudios/iOS-Hyperspace'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Apache 2.0', :file => 'LICENSE.txt' }
   s.author           = { 'Tyler Milner' => 'tyler.milner@bottlerocketstudios.com' }
   s.source           = { :git => 'https://github.com/BottleRocketStudios/iOS-Hyperspace.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.swift_version = '5.0'
   s.ios.deployment_target = '8.0'
