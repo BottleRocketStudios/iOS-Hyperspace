@@ -36,7 +36,7 @@ public protocol Request {
     var method: HTTP.Method { get }
     
     /// The URL to use when executing this network request.
-    var url: URL { get }
+    var url: URL { get set }
     
     /// The header field keys/values to use when executing this network request.
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? { get set }
@@ -191,6 +191,16 @@ public extension Request {
     func usingHeaders(_ headers: [HTTP.HeaderKey: HTTP.HeaderValue]?) -> Self {
         var copy = self
         copy.headers = headers
+        return copy
+    }
+    
+    /// Modifies the URL on the `Request`.
+    ///
+    /// - Parameter URL: The new URL to use with the request.
+    /// - Returns: A new `NetworkReqest` with the given URL.
+    func usingURL(_ url: URL) -> Self {
+        var copy = self
+        copy.url = url
         return copy
     }
     

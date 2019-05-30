@@ -153,6 +153,13 @@ class RequestTests: XCTestCase {
         XCTAssertNotNil(finalHeaders?[.authorization])
     }
     
+    func test_Request_ModifyingURL() {
+        var request = SimpleGETRequest()
+        
+        let final = request.usingURL(request.url.appendingQueryItems([URLQueryItem(name: "test", value: "value")]))
+        XCTAssertNotNil(final.url.query)
+    }
+    
     func test_Request_CollisionsPrefersNewHeadersWhenAddingHeaders() {
         let request = SimpleGETRequest().addingHeaders([.authorization: HTTP.HeaderValue(rawValue: "some_value")])
         let accessToken = "access_token"
