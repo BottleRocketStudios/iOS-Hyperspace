@@ -45,7 +45,22 @@ class URLQueryParameterTests: XCTestCase {
         let queryString = URLQueryParameterEncoder.customEncoder.encode("this is a test")
         XCTAssertEqual(queryString, "this-is-a-test")
     }
-}
+    
+    func testAppendingQueryStringToURLWithNoQueryString() {
+        let url = RequestTestDefaults.defaultURL
+        let queryString = URLQueryParameterEncoder().encode([URLQueryItem(name: "test", value: "value")])
+        
+        let final = url.appendingQueryString(queryString)
+        XCTAssertEqual(final.absoluteString, "https://apple.com?test=value")
+    }
+    
+    func testAppendingQueryStringToURLWithExistingQueryString() {
+        let url = RequestTestDefaults.defaultURL.appendingQueryString("test=value")
+        let queryString = URLQueryParameterEncoder().encode([URLQueryItem(name: "test2", value: "value")])
+        
+        let final = url.appendingQueryString(queryString)
+        XCTAssertEqual(final.absoluteString, "https://apple.com?test=value&test2=value")
+    }}
 
 fileprivate extension URLQueryParameterEncoder {
     static let customEncoder: URLQueryParameterEncoder = {
