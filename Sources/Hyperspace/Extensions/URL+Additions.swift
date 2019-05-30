@@ -19,7 +19,8 @@ public extension URL {
         }
         
         // The URL already contains a query
-        guard let url = URL(string: "\(absoluteString)&\(queryString)") else { fatalError("Unable to create \(URL.self) from query string: \(queryString)") }
+        let fullQueryString = queryString.isEmpty ? "" : "&\(queryString)"
+        guard let url = URL(string: "\(absoluteString)\(fullQueryString)") else { fatalError("Unable to create \(URL.self) from query string: \(fullQueryString)") }
         return url
     }
     
