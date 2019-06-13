@@ -154,10 +154,10 @@ class RequestTests: XCTestCase {
     }
     
     func test_Request_ModifyingURL() {
-        var request = SimpleGETRequest()
+        let request = SimpleGETRequest()
         
         let final = request.usingURL(request.url.appendingQueryItems([URLQueryItem(name: "test", value: "value")]))
-        XCTAssertNotNil(final.url.query)
+        XCTAssertEqual(final.url.absoluteString, "http://apple.com?test=value")
     }
         
     func test_Request_CollisionsPrefersNewHeadersWhenAddingHeaders() {
