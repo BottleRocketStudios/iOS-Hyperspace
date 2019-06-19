@@ -40,9 +40,8 @@ struct GetUserRequest: Request {
     
     // Define Request property values
     var method: HTTP.Method = .get
-    var url: URL {
-        return URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)")!
-    }
+    var url: URL
+    
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     var body: Data?
     
@@ -52,6 +51,7 @@ struct GetUserRequest: Request {
     // Initializer
     init(userId: Int) {
         self.userId = userId
+        self.url = URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)")!
     }
 }
 
@@ -86,9 +86,8 @@ struct DeletePostRequest: Request {
     typealias ErrorType = AnyError
     
     var method: HTTP.Method = .delete
-    var url: URL {
-        return URL(string: "https://jsonplaceholder.typicode.com/posts/\(postId)")!
-    }
+    var url: URL
+    
     var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
     var body: Data?
     
@@ -96,5 +95,6 @@ struct DeletePostRequest: Request {
     
     init(postId: Int) {
         self.postId = postId
+        self.url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(postId)")!
     }
 }
