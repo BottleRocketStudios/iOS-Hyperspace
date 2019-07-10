@@ -2,6 +2,18 @@
 
 #### Enhancements
 
+* None
+
+
+##### Bug Fixes
+
+* None
+
+
+## 3.2.0 (2019-07-11)
+
+#### Enhancements
+
 * Add URL modification capabilitites.
 [Will McGinty](https://github.com/wmcginty)
 [#92](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/92)
@@ -9,7 +21,7 @@
 
 ##### Bug Fixes
 
-* None.
+* None
 
 
 ## 3.1.0 (2019-05-07)
