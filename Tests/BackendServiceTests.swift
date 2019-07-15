@@ -29,8 +29,8 @@ class BackendServiceTests: XCTestCase {
         let failure = NetworkServiceFailure(error: .noInternetConnection, response: nil)
         let anyError = AnyError(networkServiceFailure: failure)
         
-        XCTAssertTrue(anyError.error is NetworkServiceError)
-        XCTAssertEqual(anyError.error as! NetworkServiceError, .noInternetConnection)
+        XCTAssertTrue(anyError.error is NetworkServiceFailure)
+        XCTAssertEqual((anyError.error as! NetworkServiceFailure).error, .noInternetConnection)
     }
     
     func test_NetworkServiceSuccess_TransformsResponseCorrectly() {
