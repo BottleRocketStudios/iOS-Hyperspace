@@ -20,7 +20,7 @@ public protocol Recoverable {
 
 // MARK: - Recoverable Default Implementations
 
-extension Recoverable {
+public extension Recoverable {
     
     /// The ability of this operation to recover from the last encountered failure.
     var isRecoverable: Bool {
