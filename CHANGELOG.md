@@ -7,7 +7,9 @@
 
 ##### Bug Fixes
 
-* None
+* Make default implementations on `Recoverable` `public`.
+[Will McGinty](https://github.com/wmcginty)
+[#97](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/97)
 
 
 ## 3.2.0 (2019-07-11)
