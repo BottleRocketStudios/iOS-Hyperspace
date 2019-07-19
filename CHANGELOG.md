@@ -4,6 +4,15 @@
 
 * None
 
+##### Bug Fixes
+
+* None
+
+## 3.2.1 (2019-07-19)
+
+#### Enhancements
+
+* None
 
 ##### Bug Fixes
 
