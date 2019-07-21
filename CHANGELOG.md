@@ -2,8 +2,9 @@
 
 #### Enhancements
 
-* None
-
+* Changed underlying error in AnyError's NetworkServiceFailureInitializable implementation from NetworkServiceError to NetworkServiceFailure so it can return its failure response rather than nil.
+[Richard Burgess](https://github.com/rickbdotcom)
+[#95](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/95)
 
 ##### Bug Fixes
 
