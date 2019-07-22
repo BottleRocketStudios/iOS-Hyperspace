@@ -2,7 +2,9 @@
 
 #### Enhancements
 
-* None
+* Finished migrating all targets to Swift 5.
+[Tyler Milner](https://github.com/tylermilner)
+[#100](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/100)
 
 ##### Bug Fixes
 
