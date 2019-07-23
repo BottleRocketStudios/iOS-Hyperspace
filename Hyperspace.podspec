@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Hyperspace'
-  s.version          = '3.2.0'
+  s.version          = '3.2.1'
   s.summary          = 'An extremely lightweight wrapper around URLSession to make working with APIs a breeze.'
 
   s.description      = <<-DESC

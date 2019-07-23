@@ -6,9 +6,25 @@
 [Richard Burgess](https://github.com/rickbdotcom)
 [#95](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/95)
 
+* Finished migrating all targets to Swift 5.
+[Tyler Milner](https://github.com/tylermilner)
+[#100](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/100)
+
 ##### Bug Fixes
 
 * None
+
+## 3.2.1 (2019-07-19)
+
+#### Enhancements
+
+* None
+
+##### Bug Fixes
+
+* Make default implementations on `Recoverable` `public`.
+[Will McGinty](https://github.com/wmcginty)
+[#97](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/97)
 
 
 ## 3.2.0 (2019-07-11)
