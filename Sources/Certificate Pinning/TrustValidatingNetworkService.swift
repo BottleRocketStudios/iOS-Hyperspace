@@ -63,8 +63,8 @@ public class TrustValidatingNetworkService: NetworkServiceProtocol {
     
     // MARK: - TrustValidatingNetworkService conformance to NetworkServiceProtocol
     
-    public func execute(request: URLRequest, completion: @escaping NetworkServiceCompletion) {
-        networkService.execute(request: request, completion: completion)
+    public func execute(request: URLRequest, cancellationToken: CancellationSource.Token? = nil, completion: @escaping NetworkServiceCompletion) {
+        networkService.execute(request: request, cancellationToken: cancellationToken, completion: completion)
     }
     
     public func cancelTask(for request: URLRequest) {

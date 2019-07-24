@@ -50,8 +50,8 @@ class ViewController: UIViewController {
 extension ViewController {
     private func getUser() {
         let getUserRequest = GetUserRequest(userId: 1)
-        
-        preferredBackendService.execute(request: getUserRequest) { [weak self] result in
+        let source = CancellationSource()
+        preferredBackendService.execute(request: getUserRequest, cancellationToken: source.token) { [weak self] result in
             debugPrint("Get user result: \(result)")
             
             switch result {
@@ -61,6 +61,8 @@ extension ViewController {
                 self?.presentAlert(titled: "Error", message: "\(error)")
             }
         }
+        
+        source.cancel()
     }
     
     private func createPost(titled title: String) {

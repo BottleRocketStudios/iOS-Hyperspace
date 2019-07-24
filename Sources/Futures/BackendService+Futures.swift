@@ -14,10 +14,10 @@ extension BackendServiceProtocol {
     /// - Parameters:
     ///   - request: The Request to be executed.
     /// - Returns: A Future<T.ResponseType> that resolves to the request's response type.
-    public func execute<T: Request>(request: T) -> Future<T.ResponseType, T.ErrorType> {
+    public func execute<T: Request>(request: T, cancellationToken: CancellationSource.Token? = nil) -> Future<T.ResponseType, T.ErrorType> {
         let promise = Promise<T.ResponseType, T.ErrorType>()
         
-        execute(request: request) { result in
+        execute(request: request, cancellationToken: cancellationToken) { result in
             promise.complete(result)
         }
         
