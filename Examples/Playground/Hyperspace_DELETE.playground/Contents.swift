@@ -3,7 +3,6 @@
 import UIKit
 import PlaygroundSupport
 import Hyperspace
-import Result
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
