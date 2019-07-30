@@ -70,6 +70,8 @@
 		125DD8F922F0C51900AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8F822F0C51900AFA88B /* BrightFutures.framework */; };
 		125DD8FB22F0C52700AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8FA22F0C52700AFA88B /* BrightFutures.framework */; };
 		125DD8FD22F0C52F00AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8FC22F0C52F00AFA88B /* BrightFutures.framework */; };
+		125DD90D22F0E47D00AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8F822F0C51900AFA88B /* BrightFutures.framework */; };
+		125DD90F22F0E4E900AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8FA22F0C52700AFA88B /* BrightFutures.framework */; };
 		3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
@@ -455,6 +457,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				125DD90D22F0E47D00AFA88B /* BrightFutures.framework in Frameworks */,
 				60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +482,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				125DD90F22F0E4E900AFA88B /* BrightFutures.framework in Frameworks */,
 				60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -950,6 +954,7 @@
 				60AC82BB1FF588D600120172 /* Sources */,
 				60AC82BC1FF588D600120172 /* Frameworks */,
 				60AC82BD1FF588D600120172 /* Resources */,
+				125DD90E22F0E49900AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1006,6 +1011,7 @@
 				60AC82E61FF589C200120172 /* Sources */,
 				60AC82E71FF589C200120172 /* Frameworks */,
 				60AC82E81FF589C200120172 /* Resources */,
+				125DD91022F0E4EF00AFA88B /* Carthage Copy-Framework */,
 			);
 			buildRules = (
 			);
@@ -1335,6 +1341,46 @@
 				"$(SRCROOT)/Carthage/Build/watchOS/BrightFutures.framework",
 			);
 			name = "Carthage Copy-Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		125DD90E22F0E49900AFA88B /* Carthage Copy-Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
+			);
+			name = "Carthage Copy-Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		125DD91022F0E4EF00AFA88B /* Carthage Copy-Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/BrightFutures.framework",
+			);
+			name = "Carthage Copy-Framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1863,6 +1909,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1877,6 +1927,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2000,6 +2054,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
@@ -2016,6 +2074,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
