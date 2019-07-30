@@ -2,6 +2,7 @@
 
 [![CI Status](https://img.shields.io/travis/BottleRocketStudios/iOS-Hyperspace/master.svg)](https://travis-ci.org/BottleRocketStudios/iOS-Hyperspace)
 [![Version](https://img.shields.io/cocoapods/v/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![Platform](https://img.shields.io/cocoapods/p/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace)
@@ -204,12 +205,25 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
 ## Installation
 
+### Cocoapods
 Hyperspace is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Hyperspace'
 ```
+
+### Carthage
+
+Add the following to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
+
+```
+github "BottleRocketStudios/iOS-Hyperspace"
+```
+
+Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
+
+NOTE: Don't forget to add both `Hyperspace.framework` and the `BrightFutures.framework` dependency to your project.
 
 ## Author
 
