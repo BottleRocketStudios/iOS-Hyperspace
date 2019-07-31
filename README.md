@@ -154,7 +154,7 @@ backendService.execute(request: createPostRequest) { [weak self] result in
 
 ## Example
 
-To run the example project, you'll first need to use [Carthage](https://github.com/Carthage/Carthage) to install Hyperspace's dependencies ([Result](https://github.com/antitypical/Result) and [SwiftLint](https://github.com/realm/SwiftLint)).
+To run the example project, you'll first need to use [Carthage](https://github.com/Carthage/Carthage) to install Hyperspace's dependency ([BrightFutures](https://github.com/Thomvis/BrightFutures).
 
 After [installing Carthage](https://github.com/Carthage/Carthage#installing-carthage), clone the repo:
 
