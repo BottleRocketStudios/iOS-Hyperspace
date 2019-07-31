@@ -206,6 +206,7 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 ## Installation
 
 ### Cocoapods
+
 Hyperspace is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
