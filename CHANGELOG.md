@@ -10,6 +10,10 @@
 [Tyler Milner](https://github.com/tylermilner)
 [#100](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/100)
 
+* Added Carthage support.
+[Ryan Gant](https://github.com/ganttastic)
+[#101](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/101)
+
 ##### Bug Fixes
 
 * None

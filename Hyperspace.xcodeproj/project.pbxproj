@@ -67,6 +67,11 @@
 		0EFB544A2204CC1500949F24 /* TrustValidatingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */; };
 		0EFB544B2204CC1500949F24 /* TrustValidatingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */; };
 		0EFB544C2204CC1600949F24 /* TrustValidatingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */; };
+		125DD8F922F0C51900AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8F822F0C51900AFA88B /* BrightFutures.framework */; };
+		125DD8FB22F0C52700AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8FA22F0C52700AFA88B /* BrightFutures.framework */; };
+		125DD8FD22F0C52F00AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8FC22F0C52F00AFA88B /* BrightFutures.framework */; };
+		125DD90D22F0E47D00AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8F822F0C51900AFA88B /* BrightFutures.framework */; };
+		125DD90F22F0E4E900AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8FA22F0C52700AFA88B /* BrightFutures.framework */; };
 		3026E459202008720003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* NetworkSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* NetworkSessionTest.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
@@ -189,9 +194,6 @@
 		CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
 		CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
 		CB0DE06321E7E62500661F0E /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
-		CB3A954C21E5521B00A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954B21E5521B00A70243 /* BrightFutures.framework */; };
-		CB3A954E21E5522600A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954D21E5522600A70243 /* BrightFutures.framework */; };
-		CB3A955021E5523000A70243 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3A954F21E5523000A70243 /* BrightFutures.framework */; };
 		CB7B20A621ECDDC400AB8FE3 /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
 		CB7B20A721ECDDC500AB8FE3 /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
 		CBB361BB21E643520082E860 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
@@ -353,6 +355,9 @@
 		0EFB543E2204BF9500949F24 /* intermediate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = intermediate.cer; sourceTree = "<group>"; };
 		0EFB54412204C3A400949F24 /* jsonplaceholder.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = jsonplaceholder.der; sourceTree = "<group>"; };
 		0EFB54482204CBE400949F24 /* TrustValidatingNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustValidatingNetworkService.swift; sourceTree = "<group>"; };
+		125DD8F822F0C51900AFA88B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
+		125DD8FA22F0C52700AFA88B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/tvOS/BrightFutures.framework; sourceTree = "<group>"; };
+		125DD8FC22F0C52F00AFA88B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/watchOS/BrightFutures.framework; sourceTree = "<group>"; };
 		3026E457202008470003A321 /* NetworkSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionTest.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
@@ -393,9 +398,6 @@
 		60AC834C1FF596B600120172 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceProtocol.swift; sourceTree = "<group>"; };
 		60AC834F1FF596B600120172 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
-		60D6C3E8201CD77400B3B012 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		60D6C3EA201CD77B00B3B012 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		60D6C3EC201CD78100B3B012 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
 		60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
@@ -432,9 +434,6 @@
 		CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		CB0961EA21E5317B006CC9F5 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
 		CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendService+Futures.swift"; sourceTree = "<group>"; };
-		CB3A954B21E5521B00A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB3A954D21E5522600A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB3A954F21E5523000A70243 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,7 +449,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3A954C21E5521B00A70243 /* BrightFutures.framework in Frameworks */,
+				125DD8F922F0C51900AFA88B /* BrightFutures.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +457,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				125DD90D22F0E47D00AFA88B /* BrightFutures.framework in Frameworks */,
 				60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,7 +466,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3A955021E5523000A70243 /* BrightFutures.framework in Frameworks */,
+				125DD8FD22F0C52F00AFA88B /* BrightFutures.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +474,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3A954E21E5522600A70243 /* BrightFutures.framework in Frameworks */,
+				125DD8FB22F0C52700AFA88B /* BrightFutures.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +482,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				125DD90F22F0E4E900AFA88B /* BrightFutures.framework in Frameworks */,
 				60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,12 +738,9 @@
 		60D6C3E6201CD77400B3B012 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CB3A954F21E5523000A70243 /* BrightFutures.framework */,
-				CB3A954D21E5522600A70243 /* BrightFutures.framework */,
-				CB3A954B21E5521B00A70243 /* BrightFutures.framework */,
-				60D6C3EC201CD78100B3B012 /* Result.framework */,
-				60D6C3EA201CD77B00B3B012 /* Result.framework */,
-				60D6C3E8201CD77400B3B012 /* Result.framework */,
+				125DD8FC22F0C52F00AFA88B /* BrightFutures.framework */,
+				125DD8FA22F0C52700AFA88B /* BrightFutures.framework */,
+				125DD8F822F0C51900AFA88B /* BrightFutures.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -918,6 +916,7 @@
 				60836794201D1AF500007247 /* Frameworks */,
 				60836795201D1AF500007247 /* Resources */,
 				B4C32C67201EA4C900FC82C1 /* Embed Frameworks */,
+				125DD90122F0C89600AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -955,6 +954,7 @@
 				60AC82BB1FF588D600120172 /* Sources */,
 				60AC82BC1FF588D600120172 /* Frameworks */,
 				60AC82BD1FF588D600120172 /* Resources */,
+				125DD90E22F0E49900AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1011,6 +1011,7 @@
 				60AC82E61FF589C200120172 /* Sources */,
 				60AC82E71FF589C200120172 /* Frameworks */,
 				60AC82E81FF589C200120172 /* Resources */,
+				125DD91022F0E4EF00AFA88B /* Carthage Copy-Framework */,
 			);
 			buildRules = (
 			);
@@ -1031,6 +1032,7 @@
 				60D6C41D201D156500B3B012 /* Resources */,
 				608367B0201D1AF500007247 /* Embed Watch Content */,
 				B4C32C57201EA4B700FC82C1 /* Embed Frameworks */,
+				125DD8FE22F0C5C400AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1051,6 +1053,7 @@
 				60D6C438201D188B00B3B012 /* Frameworks */,
 				60D6C439201D188B00B3B012 /* Resources */,
 				B4C32C5C201EA4BC00FC82C1 /* Embed Frameworks */,
+				125DD90022F0C77800AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1286,6 +1289,106 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		125DD8FE22F0C5C400AFA88B /* Carthage Copy-Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
+			);
+			name = "Carthage Copy-Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		125DD90022F0C77800AFA88B /* Carthage Copy-Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/BrightFutures.framework",
+			);
+			name = "Carthage Copy-Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		125DD90122F0C89600AFA88B /* Carthage Copy-Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/watchOS/BrightFutures.framework",
+			);
+			name = "Carthage Copy-Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		125DD90E22F0E49900AFA88B /* Carthage Copy-Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
+			);
+			name = "Carthage Copy-Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		125DD91022F0E4EF00AFA88B /* Carthage Copy-Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/BrightFutures.framework",
+			);
+			name = "Carthage Copy-Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1762,6 +1865,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1783,6 +1890,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1798,6 +1909,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1812,6 +1927,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1832,6 +1951,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1855,6 +1978,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1878,6 +2005,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1901,6 +2032,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1919,6 +2054,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
@@ -1935,6 +2074,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
