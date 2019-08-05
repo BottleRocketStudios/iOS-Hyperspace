@@ -5,8 +5,8 @@ let package = Package(
     name: "Hyperspace",
     platforms: [
         .macOS("10.12"),
-        .iOS("8.0"),
-        .tvOS("9.0"),
+        .iOS("10.0"),
+        .tvOS("10.0"),
         .watchOS("4.2")
     ],
     products: [
