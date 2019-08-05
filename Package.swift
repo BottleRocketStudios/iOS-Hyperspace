@@ -12,7 +12,7 @@ let package = Package(
     products: [
         .library(
             name: "Hyperspace",
-            targets: ["Hyperspace"]),
+            targets: ["Hyperspace"])
     ],
     dependencies: [
         .package(url: "https://github.com/Thomvis/BrightFutures.git", from: "8.0.1")
