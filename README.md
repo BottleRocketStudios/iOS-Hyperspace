@@ -226,6 +226,14 @@ Run `carthage update` and follow the steps as described in Carthage's [README](h
 
 NOTE: Don't forget to add both `Hyperspace.framework` and the `BrightFutures.framework` dependency to your project.
 
+### Swift Package Manager
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/BottleRocketStudios/iOS-Hyperspace.git", from: "3.2.1")
+]
+```
+
 ## Author
 
 [Bottle Rocket Studios](https://www.bottlerocketstudios.com/)
