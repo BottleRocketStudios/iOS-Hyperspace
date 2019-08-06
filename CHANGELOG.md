@@ -14,6 +14,10 @@
 [Ryan Gant](https://github.com/ganttastic)
 [#101](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/101)
 
+* Added Swift Package Manager support.
+[Ryan Gant](https://github.com/ganttastic)
+[#102](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/102)
+
 ##### Bug Fixes
 
 * None
