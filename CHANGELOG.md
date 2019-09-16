@@ -18,6 +18,10 @@
 [Ryan Gant](https://github.com/ganttastic)
 [#102](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/102)
 
+* Added an associated type to the `unknownError` case of `NetworkServiceError`. Previously, the `Error` provided in the completion of the execution of a request was being thrown away if the `response` parameter was not a `HTTPURLResponse`. In some cases, these errors were internally mapped to a `NetworkServiceError` (`noInternetConnection`, `timedOut`, and `cancelled`), but now clients have access to all other errors that might occur (`NSURLErrorBadURL`, `NSURLErrorCannotFindHost`, `NSURLErrorDNSLookupFailed`, etc.).
+[Tyler Milner](https://github.com/tylermilner)
+[#105](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/105)
+
 ##### Bug Fixes
 
 * None
