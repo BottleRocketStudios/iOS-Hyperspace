@@ -25,7 +25,7 @@ public enum MockBackendServiceError: NetworkServiceFailureInitializable, Decodin
     public var networkServiceError: NetworkServiceError {
         switch self {
         case .networkError(let error, _): return error
-        case .dataTransformationError: return .unknownError
+        case .dataTransformationError(let error): return .unknownError(error)
         }
     }
     

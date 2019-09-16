@@ -18,7 +18,7 @@ class NetworkServiceTests: XCTestCase {
     // MARK: - Tests
     
     func test_MissingURLResponse_GeneratesUnknownError() {
-        let expectedResult = NetworkServiceFailure(error: .unknownError, response: nil)
+        let expectedResult = NetworkServiceFailure(error: .unknownError(nil), response: nil)
         executeNetworkServiceUsingMockHTTPResponse(nil, expectingResult: .failure(expectedResult))
     }
     
@@ -128,12 +128,14 @@ class NetworkServiceTests: XCTestCase {
     }
     
     func test_NetworkServiceHelper_InvalidHTTPResponsErrorUnknownError() {
-        let networkServiceFailure = NetworkServiceHelper.networkServiceFailure(for: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
-        XCTAssert(networkServiceFailure.error == .unknownError)
+        let badURLError = NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil)
+        let networkServiceFailure = NetworkServiceHelper.networkServiceFailure(for: badURLError)
+        XCTAssertEqual(networkServiceFailure.error, .unknownError(badURLError))
     }
     
     func test_NetworkServiceError_Equality() {
-        XCTAssertEqual(NetworkServiceError.unknownError, NetworkServiceError.unknownError)
+        let unknownError = NSError(domain: NSURLErrorDomain, code: NSURLErrorUnknown, userInfo: nil)
+        XCTAssertEqual(NetworkServiceError.unknownError(unknownError), NetworkServiceError.unknownError(unknownError))
         XCTAssertEqual(NetworkServiceError.unknownStatusCode, NetworkServiceError.unknownStatusCode)
         XCTAssertEqual(NetworkServiceError.redirection, NetworkServiceError.redirection)
         XCTAssertEqual(NetworkServiceError.redirection, NetworkServiceError.redirection)

@@ -61,7 +61,7 @@ extension AnyError: NetworkServiceFailureInitializable {
     }
     
     public var networkServiceError: NetworkServiceError {
-        return (error as? NetworkServiceFailure)?.error ?? .unknownError
+        return (error as? NetworkServiceFailure)?.error ?? .unknownError(error)
     }
     
     public var failureResponse: HTTP.Response? {

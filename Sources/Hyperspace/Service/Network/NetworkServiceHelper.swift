@@ -56,9 +56,9 @@ private extension NetworkServiceHelper {
             case (NSURLErrorDomain, NSURLErrorCancelled):
                 return .cancelled
             default:
-                return .unknownError
+                return .unknownError($0)
             }
-            } ?? .unknownError
+        } ?? .unknownError(error)
         
         return networkError
     }

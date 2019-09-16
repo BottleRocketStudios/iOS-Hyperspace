@@ -15,8 +15,8 @@
 import Foundation
 
 /// Represents an error that occurred when executing a Request using a NetworkService.
-public enum NetworkServiceError: Error, Equatable {
-    case unknownError
+public enum NetworkServiceError: Error {
+    case unknownError(Error?)
     case unknownStatusCode
     case redirection
     case clientError(HTTP.Status.ClientError)
@@ -70,4 +70,34 @@ public protocol NetworkServiceProtocol {
 
     /// Cancels all currently running tasks
     func cancelAllTasks()
+}
+
+// MARK: - Equatable Implementations
+
+extension NetworkServiceError: Equatable {
+    
+    public static func == (lhs: NetworkServiceError, rhs: NetworkServiceError) -> Bool {
+        switch (lhs, rhs) {
+        case (.unknownError(let lhsError), .unknownError(let rhsError)):
+            return lhsError?.localizedDescription == rhsError?.localizedDescription
+        case (.unknownStatusCode, .unknownStatusCode):
+            return true
+        case (.redirection, .redirection):
+            return true
+        case (.clientError(let lhsError), .clientError(let rhsError)):
+            return lhsError == rhsError
+        case (.serverError(let lhsError), .serverError(let rhsError)):
+            return lhsError == rhsError
+        case (.noData, .noData):
+            return true
+        case (.noInternetConnection, .noInternetConnection):
+            return true
+        case (.timedOut, .timedOut):
+            return true
+        case (.cancelled, .cancelled):
+            return true
+        default:
+            return false
+        }
+    }
 }
