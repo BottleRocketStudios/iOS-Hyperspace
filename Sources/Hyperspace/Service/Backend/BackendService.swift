@@ -31,6 +31,8 @@ public class BackendService {
 
 extension BackendService: BackendServiceProtocol {
     public func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
+        assert(!(request.method == .get && request.body != nil), "An HTTP GET request should not contain request body data.")
+        
         networkService.execute(request: request.urlRequest) { result in
             switch result {
             case .success(let serviceSuccess):
