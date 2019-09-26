@@ -145,9 +145,10 @@ class NetworkServiceTests: XCTestCase {
         XCTAssertNotEqual(NetworkServiceError.redirection, NetworkServiceError.cancelled)
     }
     
-    func test_AnyError_NeverHasResponse() {
-        let error = AnyError(networkServiceFailure: NetworkServiceFailure(error: .cancelled, response: HTTP.Response(code: 1, data: nil)))
-        XCTAssertNil(error.failureResponse)
+    func test_AnyError_HasResponse() {
+		let response = HTTP.Response(code: 1, data: nil)
+        let error = AnyError(networkServiceFailure: NetworkServiceFailure(error: .cancelled, response: response))
+        XCTAssertEqual(error.failureResponse, response)
     }
     
     // MARK: - Private

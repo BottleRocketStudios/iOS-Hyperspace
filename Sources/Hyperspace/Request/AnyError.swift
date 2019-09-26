@@ -57,15 +57,15 @@ extension AnyError: LocalizedError {
 extension AnyError: NetworkServiceFailureInitializable {
     
     public init(networkServiceFailure: NetworkServiceFailure) {
-        self.init(networkServiceFailure.error)
+        self.init(networkServiceFailure)
     }
     
     public var networkServiceError: NetworkServiceError {
-        return (error as? NetworkServiceError) ?? .unknownError
+        return (error as? NetworkServiceFailure)?.error ?? .unknownError
     }
     
     public var failureResponse: HTTP.Response? {
-        return nil
+        return (error as? NetworkServiceFailure)?.response
     }
 }
 

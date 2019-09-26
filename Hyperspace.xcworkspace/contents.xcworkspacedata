@@ -4,10 +4,4 @@
    <FileRef
       location = "group:Hyperspace.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Carthage/Checkouts/Result/Result.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Carthage/Checkouts/BrightFutures/BrightFutures.xcodeproj">
-   </FileRef>
 </Workspace>

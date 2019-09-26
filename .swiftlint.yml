@@ -12,3 +12,4 @@ identifier_name:
 
 excluded:
   - Carthage
+  - .build
