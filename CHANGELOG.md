@@ -20,7 +20,9 @@
 
 ##### Bug Fixes
 
-* None
+* Add an assertion to `BackendService` if a GET HTTP request with body data is detected.
+[Will McGinty](https://github.com/wmcginty)
+[#106](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/106)
 
 ## 3.2.1 (2019-07-19)
 
