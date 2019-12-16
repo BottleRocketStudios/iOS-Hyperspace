@@ -50,7 +50,7 @@ extension MockBackendServiceError: Equatable {
     }
 }
 
-struct MockBackendService: BackendServiceProtocol {
+class MockBackendService: BackendServiceProtocol {
     func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, T.ErrorType>) -> Void) where T: Request {
         let failure = NetworkServiceFailure(error: .timedOut, response: nil)
         completion(Result.failure(T.ErrorType(networkServiceFailure: failure)))

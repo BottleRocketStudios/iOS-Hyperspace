@@ -30,6 +30,7 @@ public class BackendService {
 // MARK: - BackendService Conformance to BackendServiceProtocol
 
 extension BackendService: BackendServiceProtocol {
+
     public func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
         assert(!(request.method == .get && request.body != nil), "An HTTP GET request should not contain request body data.")
         
@@ -39,28 +40,6 @@ extension BackendService: BackendServiceProtocol {
                 BackendServiceHelper.handleNetworkServiceSuccess(serviceSuccess, for: request, completion: completion)
             case .failure(let serviceFailure):
                 BackendServiceHelper.handleNetworkServiceFailure(serviceFailure, completion: completion)
-            }
-        }
-    }
-    
-    public func execute<T: Request & Recoverable>(recoverable request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
-        execute(request: request) { [weak self] result in
-            switch result {
-            case .success(let response):
-                BackendServiceHelper.handleResponse(response, completion: completion)
-            case .failure(let error):
-                guard let recoveryStrategy = self?.recoveryStrategy else {
-                    return BackendServiceHelper.handleErrorFailure(error, completion: completion)
-                }
-                
-                recoveryStrategy.handleRecoveryAttempt(for: request, withError: error) { recoveryDisposition in
-                    switch recoveryDisposition {
-                    case .fail:
-                        BackendServiceHelper.handleErrorFailure(error, completion: completion)
-                    case .retry(let recoveredRequest):
-                        self?.execute(recoverable: recoveredRequest, completion: completion)
-                    }
-                }
             }
         }
     }
