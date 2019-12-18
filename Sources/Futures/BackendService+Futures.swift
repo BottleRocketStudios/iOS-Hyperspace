@@ -30,7 +30,7 @@ extension BackendServiceProtocol {
     /// - Parameters:
     ///   - recoverable: The Request to be executed, and is eligible to be recovered from in the case of failure.
     /// - Returns: A Future<T.ResponseType> that resolves to the request's response type.
-    public func execute<T: Request & Recoverable>(request: T) -> Future<T.ResponseType, T.ErrorType> {
+    public func execute<T: Request & Recoverable>(recoverable: T) -> Future<T.ResponseType, T.ErrorType> {
         let promise = Promise<T.ResponseType, T.ErrorType>()
 
         execute(recoverable: request) { result in
