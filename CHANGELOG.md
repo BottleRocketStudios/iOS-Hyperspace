@@ -18,6 +18,10 @@
 [Ryan Gant](https://github.com/ganttastic)
 [#102](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/102)
 
+* Added `execute()` method that accepts a request that's `Recoverable` to `BackendServiceProtocol`.
+[Tyler Milner](https://github.com/tylermilner)
+[#109](https://github.com/BottleRocketStudios/iOS-Hyperspace/issues/109)
+
 ##### Bug Fixes
 
 * Add an assertion to `BackendService` if a GET HTTP request with body data is detected.
