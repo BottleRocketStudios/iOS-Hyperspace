@@ -18,6 +18,10 @@
 [Ryan Gant](https://github.com/ganttastic)
 [#102](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/102)
 
+* Migrate the request recovery strategy to the BackendServiceProtocol definition.
+[Will McGinty](https://github.com/wmcginty)
+[#110](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/110)
+
 ##### Bug Fixes
 
 * Add an assertion to `BackendService` if a GET HTTP request with body data is detected.
