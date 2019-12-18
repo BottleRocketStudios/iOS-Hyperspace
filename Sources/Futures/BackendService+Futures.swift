@@ -33,7 +33,7 @@ extension BackendServiceProtocol {
     public func execute<T: Request & Recoverable>(recoverable: T) -> Future<T.ResponseType, T.ErrorType> {
         let promise = Promise<T.ResponseType, T.ErrorType>()
 
-        execute(recoverable: request) { result in
+        execute(recoverable: recoverable) { result in
             promise.complete(result)
         }
 
