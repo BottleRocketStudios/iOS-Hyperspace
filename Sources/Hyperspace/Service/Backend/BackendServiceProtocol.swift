@@ -8,31 +8,33 @@
 
 import Foundation
 
-/// Represents the completion of a request executed using a BackendService.
-/// When successful, the parsed object is provided as the associated value.
-/// When request execution fails, the relevant E is provided as the associated value.
-public typealias BackendServiceCompletion<T, E: Swift.Error> = (Result<T, E>) -> Void
+/// Represents an error which can be constructed from a `TransportFailure`.
+public protocol TransportFailureRepresentable: Swift.Error {
+    
+    init(transportFailure: TransportFailure)
+    
+    var failureResponse: HTTP.Response? { get }
+    var transportError: TransportError { get }
+}
+
+/// Represents an error which can be constructed from a `DecodingError` and `Data`.
+public protocol DecodingFailureRepresentable: TransportFailureRepresentable {
+    init(error: DecodingError, decoding: Decodable.Type, data: Data)
+}
 
 /// Represents something that's capable of executing a typed Request
 public protocol BackendServiceProtocol: AnyObject {
 
     /// Determines how the backend service should recover from errors, should the request be able to do so. If this object is not present, all errors are returned to the client.
-    var recoveryStrategy: RequestRecoveryStrategy? { get }
+    var recoveryStrategies: [RecoveryStrategy] { get }
 
     /// Executes the Request, calling the provided completion block when finished.
     ///
     /// - Parameters:
     ///   - request: The Request to be executed.
     ///   - completion: The completion block to invoke when execution has finished.
-    func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>)
+    func execute<R, E>(request: Request<R, E>, completion: @escaping (Result<R, E>) -> Void)
 
-    /// Executes the Recoverable Request, calling the provided completion block when finished.
-    ///
-    /// - Parameters:
-    ///   - recoverable: The Request to be executed.
-    ///   - completion: The completion block to invoke when execution has finished.
-    func execute<T: Request & Recoverable>(recoverable request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>)
-    
     /// Cancels the task for the given request (if it is currently running).
     func cancelTask(for request: URLRequest)
     
@@ -43,29 +45,33 @@ public protocol BackendServiceProtocol: AnyObject {
 // MARK: - BackendServiceProtocol Default Implementations
 
 public extension BackendServiceProtocol {
-
-    var recoveryStrategy: RequestRecoveryStrategy? { return nil }
-
-    func execute<T: Request & Recoverable>(recoverable request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
-        execute(request: request) { [weak self] result in
-            switch result {
-            case .success(let response):
-                BackendServiceHelper.handleResponse(response, completion: completion)
-
-            case .failure(let error):
-                guard let recoveryStrategy = self?.recoveryStrategy else {
-                    return BackendServiceHelper.handleErrorFailure(error, completion: completion)
-                }
-
-                recoveryStrategy.handleRecoveryAttempt(for: request, withError: error) { recoveryDisposition in
-                    switch recoveryDisposition {
-                    case .fail:
-                        BackendServiceHelper.handleErrorFailure(error, completion: completion)
-                    case .retry(let recoveredRequest):
-                        self?.execute(recoverable: recoveredRequest, completion: completion)
-                    }
-                }
+    
+    var recoveryStrategies: [RecoveryStrategy] { return [] }
+    
+    /// <#Description#>
+    /// - Parameters:
+    ///   - error: <#error description#>
+    ///   - request: <#request description#>
+    ///   - completion: <#completion description#>
+    func attemptToRecover<R, E>(from error: E, executing request: Request<R, E>, completion: @escaping (Result<R, E>) -> Void) {
+        guard let recoveryStrategy = recoveryStrategies.first(where: { $0.canAttemptRecovery(from: error, for: request) }) else {
+            return executeOnMainThread(completion(.failure(error)))
+        }
+        
+        recoveryStrategy.attemptRecovery(for: request, with: error) { [weak self] disposition in
+            switch disposition {
+            case .retry(let recovered): self?.execute(request: recovered, completion: completion)
+            case .fail: self?.executeOnMainThread(completion(.failure(error)))
             }
+        }
+    }
+    
+    /// Guarantees execution of a closure on the main thread.
+    /// - Parameter closure: The work that needs to be performed.
+    func executeOnMainThread(_ closure: @autoclosure @escaping () -> Void) {
+        guard !Thread.isMainThread else { return closure() }
+        DispatchQueue.main.async {
+            closure()
         }
     }
 }

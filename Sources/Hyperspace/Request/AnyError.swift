@@ -10,11 +10,11 @@ import Foundation
 
 public struct AnyError: Swift.Error {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     public let error: Swift.Error
     
-    // MARK: Initializers
+    // MARK: - Initializers
     
     public init(_ error: Swift.Error) {
         guard let anyError = error as? AnyError else { self.error = error; return }
@@ -22,7 +22,7 @@ public struct AnyError: Swift.Error {
     }
 }
 
-// MARK: AnyError Conformance to CustomStringConvertible
+// MARK: - AnyError Conformance to CustomStringConvertible
 
 extension AnyError: CustomStringConvertible {
     
@@ -31,7 +31,7 @@ extension AnyError: CustomStringConvertible {
     }
 }
 
-// MARK: AnyError Conformance to LocalizedError
+// MARK: - AnyError Conformance to LocalizedError
 
 extension AnyError: LocalizedError {
     
@@ -52,27 +52,23 @@ extension AnyError: LocalizedError {
     }
 }
 
-// MARK: - AnyError Conformance to NetworkServiceInitializable
+// MARK: - AnyError Conformance to DecodingFailureRepresentable
 
-extension AnyError: NetworkServiceFailureInitializable {
-    
-    public init(networkServiceFailure: NetworkServiceFailure) {
-        self.init(networkServiceFailure)
+extension AnyError: DecodingFailureRepresentable {
+
+    public init(error: DecodingError, decoding: Decodable.Type, data: Data) {
+        self.init(error)
     }
     
-    public var networkServiceError: NetworkServiceError {
-        return (error as? NetworkServiceFailure)?.error ?? .unknownError
+    public init(transportFailure: TransportFailure) {
+        self.init(transportFailure)
+    }
+   
+    public var transportError: TransportError {
+        return (error as? TransportFailure)?.error ?? TransportError(code: .unknownError, failingURL: failureResponse?.url)
     }
     
     public var failureResponse: HTTP.Response? {
-        return (error as? NetworkServiceFailure)?.response
-    }
-}
-
-// MARK: - AnyError Conformance to DecodingFailureInitializable
-
-extension AnyError: DecodingFailureInitializable {
-    public init(error: DecodingError, decoding: Decodable.Type, data: Data) {
-        self.init(error)
+        return (error as? TransportFailure)?.response
     }
 }
