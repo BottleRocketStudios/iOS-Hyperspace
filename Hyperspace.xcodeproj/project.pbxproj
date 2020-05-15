@@ -27,6 +27,8 @@
 		0E81B4A420ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */; };
 		0EBF9B1E246F349500E990DC /* AnyErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */; };
 		0EBF9B1F246F349600E990DC /* AnyErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */; };
+		0EBF9B22246F404C00E990DC /* jsonplaceholder.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF9B20246F3FD900E990DC /* jsonplaceholder.der */; };
+		0EBF9B23246F404D00E990DC /* jsonplaceholder.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF9B20246F3FD900E990DC /* jsonplaceholder.der */; };
 		0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		0ECDC1C820A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */; };
@@ -65,7 +67,6 @@
 		0EFB543D2204BF7F00949F24 /* leaf.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543B2204BF7F00949F24 /* leaf.cer */; };
 		0EFB543F2204BF9500949F24 /* intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543E2204BF9500949F24 /* intermediate.cer */; };
 		0EFB54402204BF9500949F24 /* intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543E2204BF9500949F24 /* intermediate.cer */; };
-		0EFB54422204C3A400949F24 /* jsonplaceholder.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54412204C3A400949F24 /* jsonplaceholder.der */; };
 		0EFB544A2204CC1500949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
 		0EFB544B2204CC1500949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
 		0EFB544C2204CC1600949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
@@ -338,6 +339,7 @@
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONCoder+Container.swift"; sourceTree = "<group>"; };
 		0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyErrorTests.swift; sourceTree = "<group>"; };
+		0EBF9B20246F3FD900E990DC /* jsonplaceholder.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = jsonplaceholder.der; sourceTree = "<group>"; };
 		0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterTests.swift; sourceTree = "<group>"; };
 		0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RootKeyObjectPlus.json; sourceTree = "<group>"; };
 		0ECDC1CA20A9FCDE00ABF991 /* RootKeyIncorrectType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RootKeyIncorrectType.json; sourceTree = "<group>"; };
@@ -355,7 +357,6 @@
 		0EFB54382204BF6900949F24 /* root.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = root.cer; sourceTree = "<group>"; };
 		0EFB543B2204BF7F00949F24 /* leaf.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = leaf.cer; sourceTree = "<group>"; };
 		0EFB543E2204BF9500949F24 /* intermediate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = intermediate.cer; sourceTree = "<group>"; };
-		0EFB54412204C3A400949F24 /* jsonplaceholder.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = jsonplaceholder.der; sourceTree = "<group>"; };
 		0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustValidatingTransportService.swift; sourceTree = "<group>"; };
 		125DD8F822F0C51900AFA88B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		125DD8FA22F0C52700AFA88B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/tvOS/BrightFutures.framework; sourceTree = "<group>"; };
@@ -802,7 +803,7 @@
 		60D6C420201D156500B3B012 /* Hyperspace-iOSExample */ = {
 			isa = PBXGroup;
 			children = (
-				0EFB54412204C3A400949F24 /* jsonplaceholder.der */,
+				0EBF9B20246F3FD900E990DC /* jsonplaceholder.der */,
 				60D6C421201D156500B3B012 /* AppDelegate.swift */,
 				60D6C423201D156500B3B012 /* ViewController.swift */,
 				60D6C425201D156500B3B012 /* Main.storyboard */,
@@ -1235,7 +1236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EFB54422204C3A400949F24 /* jsonplaceholder.der in Resources */,
+				0EBF9B22246F404C00E990DC /* jsonplaceholder.der in Resources */,
 				60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */,
 				60D6C429201D156500B3B012 /* Assets.xcassets in Resources */,
 				60D6C427201D156500B3B012 /* Main.storyboard in Resources */,
@@ -1247,6 +1248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */,
+				0EBF9B23246F404D00E990DC /* jsonplaceholder.der in Resources */,
 				60D6C443201D188B00B3B012 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

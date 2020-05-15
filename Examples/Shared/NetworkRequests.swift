@@ -36,32 +36,9 @@ extension Request {
 extension Request where Response == User, Error == AnyError {
     
     static func getUser(withID id: Int) -> Request<User, AnyError> {
-        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
+        return Request(method: .get, url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
     }
 }
-
-//struct GetUserRequest: Request {
-//
-//    // Define the model we want to get back
-//    typealias ResponseType = User
-//    typealias ErrorType = AnyError
-//
-//    // Define Request property values
-//    var method: HTTP.Method = .get
-//    var url: URL
-//
-//    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-//    var body: Data?
-//
-//    // Define any custom properties needed
-//    private let userId: Int
-//
-//    // Initializer
-//    init(userId: Int) {
-//        self.userId = userId
-//        self.url = URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)")!
-//    }
-//}
 
 // MARK: - Create Post Request
 
@@ -73,28 +50,6 @@ extension Request where Response == Post, Error == AnyError {
     }
 }
 
-//struct CreatePostRequest: Request {
-//
-//    // Define the model we want to get back
-//    typealias ResponseType = Post
-//    typealias ErrorType = AnyError
-//
-//    // Define Request property values
-//    var method: HTTP.Method = .post
-//    var url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
-//    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? =
-//    var body: Data?
-//
-//    // Define any custom properties needed
-//    private let newPost: NewPost
-//
-//    // Initializer
-//    init(newPost: NewPost) {
-//        self.newPost = newPost
-//        body = try? JSONEncoder().encode(newPost)
-//    }
-//}
-
 // MARK: - Delete Post Request
 
 extension Request where Response == EmptyResponse, Error == AnyError {
@@ -103,21 +58,3 @@ extension Request where Response == EmptyResponse, Error == AnyError {
         return Request(method: .delete, url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!)
     }
 }
-
-//struct DeletePostRequest: Request {
-//    typealias ResponseType = EmptyResponse
-//    typealias ErrorType = AnyError
-//
-//    var method: HTTP.Method = .delete
-//    var url: URL
-//
-//    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-//    var body: Data?
-//
-//    private let postId: Int
-//
-//    init(postId: Int) {
-//        self.postId = postId
-//        self.url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(postId)")!
-//    }
-//}
