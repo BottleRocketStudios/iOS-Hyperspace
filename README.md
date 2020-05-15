@@ -8,22 +8,6 @@
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace)
 [![codebeat badge](https://codebeat.co/badges/ebf9c2d1-d736-4d75-85cc-5c0feb19cab1)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-hyperspace-master-5e50b1a2-1d6c-48a3-8d1f-2407b2f439ba)
 
-## High Level Changes
-* Rename `NetworkService` to `TransportService`
-* Rename `NetworkService*` to `Transport*`
-* Make `DecodingFailureRepresentable` a refinement of `TransportFailureRepresentable`
-* Re-work the `TransportService` result creation to allow for more flexibility in responses
-* Utilize `URLError` to allow for more detailed `TransportError`s
-* Add the `URL` property to the `HTTP.Response`
-* Convert `Request` to a `struct`. Eliminate `AnyRequest`
-* Move some of the `RequestRecoveryStrategy` into an extension on `BackendServiceProtocol` for easier use
-* Simplify initialization options for `Decodable` and  `DecodableContainer` responses
-* Create a `URLRequestCreationStrategy` to allow for edge cases creating a `URLRequest`
-* Ability to have multiple `RecoveryStrategy`   (renamed `RequestRecoveryStrategy` to `RecoveryStrategy`)
-* `HTTP.Body` type added, works with `Encodable` and `EncodableContainer`
-* Add `failingURL` to `TransportError`
-* Make `HTTP.Response` available in `DecodingFailureRepresentable` initializer (#107))
-
 
 ## Purpose
 

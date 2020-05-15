@@ -12,20 +12,20 @@ import XCTest
 class DecodingFailureTests: XCTestCase {
     
     private struct MockDecodeError: DecodingFailureRepresentable {
-        var transportError: TransportError = .init(code: .unknownError)
+        var transportError: TransportError
         var failureResponse: HTTP.Response?
         
-        let error: DecodingError
-        let type: Decodable.Type
-        let response: HTTP.Response
-        
-        // TODO: Do they need to be dependent on one another?
+        var error: DecodingError?
+        var type: Decodable.Type?
+        var response: HTTP.Response?
+
         init(transportFailure: TransportFailure) {
-            fatalError()
-            /* No op - unused for test */
+            transportError = transportFailure.error
+            failureResponse = transportFailure.response
         }
         
         init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
+            self.transportError = .init(code: .unknownError)
             self.error = error
             self.type = decoding
             self.response = response
@@ -39,8 +39,9 @@ class DecodingFailureTests: XCTestCase {
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let result = transformer(serviceSuccess)
         
-        guard let error = result.error else { XCTFail("The decode should fail."); return }
-        XCTAssertEqual(String(describing: error.type), String(describing: MockCodableContainer.self))
-        XCTAssertEqual(error.response.data, objectJSON)
+        guard let error = result.error else { return XCTFail("The decode should fail.") }
+        guard let type = error.type else { return XCTFail("The decoding failure should detect the failed type information") }
+        XCTAssertEqual(String(describing: type), String(describing: MockCodableContainer.self))
+        XCTAssertEqual(error.response?.data, objectJSON)
     }
 }
