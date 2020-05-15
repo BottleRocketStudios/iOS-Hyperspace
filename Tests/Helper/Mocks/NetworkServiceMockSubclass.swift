@@ -9,12 +9,12 @@
 import Foundation
 @testable import Hyperspace
 
-class NetworkServiceMockSubclass: NetworkService {
+class NetworkServiceMockSubclass: TransportService {
     
     private(set) var initWithNetworkActivityControllerCalled = false
     
-    override init(session: NetworkSession, networkActivityController: NetworkActivityController?) {
+    override init(session: NetworkSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
         initWithNetworkActivityControllerCalled = true
-        super.init(session: session, networkActivityController: networkActivityController)
+        super.init(session: session, networkActivityIndicatable: networkActivityIndicatable)
     }
 }

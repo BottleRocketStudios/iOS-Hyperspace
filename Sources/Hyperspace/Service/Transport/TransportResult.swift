@@ -20,7 +20,6 @@ public struct TransportError: Error, Equatable {
         case noInternetConnection
         case timedOut
         case redirection
-        case noData
         case other(URLError)
         case unknownError
         
@@ -58,11 +57,10 @@ public struct TransportError: Error, Equatable {
 
 /// Represents the successful result of executing a `Request` using a `TransportService`.
 public struct TransportSuccess: Equatable {
-    public let data: Data
     public let response: HTTP.Response
+    public var data: Data { return response.data ?? Data() }
     
-    public init(data: Data, response: HTTP.Response) {
-        self.data = data
+    public init(response: HTTP.Response) {
         self.response = response
     }
 }
@@ -84,13 +82,7 @@ public extension HTTP.Response {
     
     var transportResult: TransportResult {
         switch status {
-        case .success:
-            guard let data = data else {
-                return .failure(TransportFailure(error: TransportError(code: .noData, failingURL: url), response: self))
-            }
-            
-            return .success(TransportSuccess(data: data, response: self))
-        
+        case .success: return .success(TransportSuccess(response: self))
         case .redirection: return .failure(TransportFailure(error: TransportError(code: .redirection, failingURL: url), response: self))
         case .clientError(let clientError): return .failure(TransportFailure(error: TransportError(code: .clientError(clientError), failingURL: url), response: self))
         case .serverError(let serverError): return .failure(TransportFailure(error: TransportError(code: .serverError(serverError), failingURL: url), response: self))

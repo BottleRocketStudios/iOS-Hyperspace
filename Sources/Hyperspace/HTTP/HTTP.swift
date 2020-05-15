@@ -100,7 +100,7 @@ public struct HTTP {
     public struct Body: Equatable {
         
         /// The raw body data to be attached to the HTTP request
-        let data: Data
+        public let data: Data
         
         /// Initializes a new `HTTP.Body` instance given the raw `Data` to be attached.
         /// - Parameter data: The raw `Data` to set as the HTTP body.

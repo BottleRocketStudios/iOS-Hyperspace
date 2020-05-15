@@ -19,7 +19,7 @@ public protocol TransportFailureRepresentable: Swift.Error {
 
 /// Represents an error which can be constructed from a `DecodingError` and `Data`.
 public protocol DecodingFailureRepresentable: TransportFailureRepresentable {
-    init(error: DecodingError, decoding: Decodable.Type, data: Data)
+    init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response)
 }
 
 /// Represents something that's capable of executing a typed Request

@@ -9,23 +9,23 @@
 import Foundation
 @testable import Hyperspace
 
-public enum MockBackendServiceError: NetworkServiceFailureInitializable, DecodingFailureInitializable {
+public enum MockBackendServiceError: TransportFailureRepresentable, DecodingFailureRepresentable {
 
-    case networkError(NetworkServiceError, HTTP.Response?)
+    case networkError(TransportError, HTTP.Response?)
     case dataTransformationError(Error)
     
-    public init(networkServiceFailure: NetworkServiceFailure) {
-        self = .networkError(networkServiceFailure.error, networkServiceFailure.response)
+    public init(transportFailure: TransportFailure) {
+        self = .networkError(transportFailure.error, transportFailure.response)
     }
     
-    public init(error: DecodingError, decoding: Decodable.Type, data: Data) {
+    public init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
         self = .dataTransformationError(error)
     }
     
-    public var networkServiceError: NetworkServiceError {
+    public var transportError: TransportError {
         switch self {
         case .networkError(let error, _): return error
-        case .dataTransformationError: return .unknownError
+        case .dataTransformationError: return TransportError(code: .unknownError)
         }
     }
     
@@ -51,9 +51,9 @@ extension MockBackendServiceError: Equatable {
 }
 
 class MockBackendService: BackendServiceProtocol {
-    func execute<T>(request: T, completion: @escaping (Result<T.ResponseType, T.ErrorType>) -> Void) where T: Request {
-        let failure = NetworkServiceFailure(error: .timedOut, response: nil)
-        completion(Result.failure(T.ErrorType(networkServiceFailure: failure)))
+    func execute<T, U>(request: Request<T, U>, completion: @escaping (Result<T, U>) -> Void) {
+        let failure = TransportFailure(error: .init(code: .timedOut), response: nil)
+        completion(.failure(U(transportFailure: failure)))
     }
 
     func cancelTask(for request: URLRequest) {

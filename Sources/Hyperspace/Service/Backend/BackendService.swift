@@ -17,7 +17,7 @@ public class BackendService {
     
     // MARK: - Initializer
     
-    public init(transportService: Transporting = TransportService(), recoveryStrategies: [RecoveryStrategy] = []) {
+    public init(transportService: Transporting = TransportService(), recoveryStrategies: RecoveryStrategy...) {
         self.transportService = transportService
         self.recoveryStrategies = recoveryStrategies
     }

@@ -43,20 +43,18 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
     }
     
     static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type,
-                                                          errorTransformer: @escaping (DecodingError, Decodable.Type, Data) -> Error) -> (TransportSuccess) -> Result<Response, Error> where C.Contained == Response {
+                                                          errorTransformer: @escaping (DecodingError, Decodable.Type, HTTP.Response) -> Error) -> (TransportSuccess) -> Result<Response, Error> where C.Contained == Response {
         return { transportSuccess in
-            let data = transportSuccess.data
-            
             do {
-                let decodedResponse = try decoder.decode(C.self, from: data)
+                let decodedResponse = try decoder.decode(C.self, from: transportSuccess.data)
                 return .success(decodedResponse.element)
                 
             } catch let error as DecodingError {
-                return .failure(errorTransformer(error, C.self, data))
+                return .failure(errorTransformer(error, C.self, transportSuccess.response))
                 
             } catch {
                 let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription))
-                return .failure(errorTransformer(decodingError, C.self, data))
+                return .failure(errorTransformer(decodingError, C.self, transportSuccess.response))
             }
         }
     }

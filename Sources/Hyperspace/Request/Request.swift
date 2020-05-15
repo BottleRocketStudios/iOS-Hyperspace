@@ -69,7 +69,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     }
     
     // MARK: - Public
-    var urlRequest: URLRequest {
+    public var urlRequest: URLRequest {
         return urlRequestCreationStrategy.urlRequest(using: self)
     }
     

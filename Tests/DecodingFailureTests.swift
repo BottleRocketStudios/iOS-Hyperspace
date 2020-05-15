@@ -11,28 +11,36 @@ import XCTest
 
 class DecodingFailureTests: XCTestCase {
     
-    private struct MockDecodeError: DecodingFailureInitializable {
+    private struct MockDecodeError: DecodingFailureRepresentable {
+        var transportError: TransportError = .init(code: .unknownError)
+        var failureResponse: HTTP.Response?
         
         let error: DecodingError
         let type: Decodable.Type
-        let data: Data
+        let response: HTTP.Response
         
-        init(error: DecodingError, decoding: Decodable.Type, data: Data) {
+        // TODO: Do they need to be dependent on one another?
+        init(transportFailure: TransportFailure) {
+            fatalError()
+            /* No op - unused for test */
+        }
+        
+        init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
             self.error = error
             self.type = decoding
-            self.data = data
+            self.response = response
         }
     }
     
     func test_DecodingFailure_CatchesFailedTypeInformation() {
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
 
-        let transformer: RequestTransformBlock<MockDecodableContainer, MockDecodeError> = RequestDefaults.successTransformer(for: JSONDecoder())
-        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let transformer = Request<MockDecodableContainer, MockDecodeError>.successTransformer(for: JSONDecoder())
+        let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let result = transformer(serviceSuccess)
         
         guard let error = result.error else { XCTFail("The decode should fail."); return }
         XCTAssertEqual(String(describing: error.type), String(describing: MockDecodableContainer.self))
-        XCTAssertEqual(error.data, objectJSON)
+        XCTAssertEqual(error.response.data, objectJSON)
     }
 }

@@ -139,8 +139,8 @@
 		60D6C406201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F3201CFCCF00B3B012 /* MockNetworkSession.swift */; };
 		60D6C407201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F4201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift */; };
 		60D6C408201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F4201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift */; };
-		60D6C409201CFCCF00B3B012 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockNetworkService.swift */; };
-		60D6C40A201CFCCF00B3B012 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockNetworkService.swift */; };
+		60D6C409201CFCCF00B3B012 /* MockTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */; };
+		60D6C40A201CFCCF00B3B012 /* MockTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */; };
 		60D6C40B201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F6201CFCCF00B3B012 /* MockDecodableContainer.swift */; };
 		60D6C40C201CFCCF00B3B012 /* MockDecodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F6201CFCCF00B3B012 /* MockDecodableContainer.swift */; };
 		60D6C40D201CFCCF00B3B012 /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */; };
@@ -401,7 +401,7 @@
 		60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		60D6C3F3201CFCCF00B3B012 /* MockNetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkSession.swift; sourceTree = "<group>"; };
 		60D6C3F4201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkSessionDataTask.swift; sourceTree = "<group>"; };
-		60D6C3F5201CFCCF00B3B012 /* MockNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTransportService.swift; sourceTree = "<group>"; };
 		60D6C3F6201CFCCF00B3B012 /* MockDecodableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDecodableContainer.swift; sourceTree = "<group>"; };
 		60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestTests.swift; sourceTree = "<group>"; };
 		60D6C3F9201CFCCF00B3B012 /* DateObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DateObject.json; sourceTree = "<group>"; };
@@ -753,7 +753,7 @@
 				60D6C3F3201CFCCF00B3B012 /* MockNetworkSession.swift */,
 				B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */,
 				60D6C3F4201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift */,
-				60D6C3F5201CFCCF00B3B012 /* MockNetworkService.swift */,
+				60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */,
 				60D6C3F6201CFCCF00B3B012 /* MockDecodableContainer.swift */,
 				30F073562021720B0045CB01 /* MockBackendService.swift */,
 				30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */,
@@ -1452,7 +1452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4C32C33201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift in Sources */,
-				60D6C409201CFCCF00B3B012 /* MockNetworkService.swift in Sources */,
+				60D6C409201CFCCF00B3B012 /* MockTransportService.swift in Sources */,
 				60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				0E81B49B20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */,
 				0E347E6521599B7F00BF18FA /* XCTestCase+JSON.swift in Sources */,
@@ -1547,7 +1547,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4C32C34201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift in Sources */,
-				60D6C40A201CFCCF00B3B012 /* MockNetworkService.swift in Sources */,
+				60D6C40A201CFCCF00B3B012 /* MockTransportService.swift in Sources */,
 				60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */,
 				0E347E6421599B7D00BF18FA /* XCTestCase+JSON.swift in Sources */,

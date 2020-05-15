@@ -11,6 +11,8 @@ import Foundation
 // MARK: - Request Default Implementations
 
 public extension Request where Response: Decodable, Error: DecodingFailureRepresentable {
+    
+    typealias Transformer = (TransportSuccess) -> Result<Response, Error>
 
     // MARK: - Initializer
     
@@ -26,25 +28,22 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
     
     // MARK: - Convenience Transformers
 
-    static func successTransformer(for decoder: JSONDecoder) -> (TransportSuccess) -> Result<Response, Error> {
+    static func successTransformer(for decoder: JSONDecoder) -> Transformer {
         return successTransformer(for: decoder, errorTransformer: Error.init)
     }
     
-    static func successTransformer(for decoder: JSONDecoder,
-                                   errorTransformer: @escaping (DecodingError, Decodable.Type, Data) -> Error) -> (TransportSuccess) -> Result<Response, Error> {
+    static func successTransformer(for decoder: JSONDecoder, errorTransformer: @escaping (DecodingError, Decodable.Type, HTTP.Response) -> Error) -> Transformer {
         return { transportSuccess in
-            let data = transportSuccess.data
-            
             do {
-                let decodedResponse = try decoder.decode(Response.self, from: data)
+                let decodedResponse = try decoder.decode(Response.self, from: transportSuccess.data)
                 return .success(decodedResponse)
                 
             } catch let error as DecodingError {
-                return .failure(errorTransformer(error, Response.self, data))
+                return .failure(errorTransformer(error, Response.self, transportSuccess.response))
                 
             } catch {
                 let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription))
-                return .failure(errorTransformer(decodingError, Response.self, data))
+                return .failure(errorTransformer(decodingError, Response.self, transportSuccess.response))
             }
         }
     }

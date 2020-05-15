@@ -11,64 +11,15 @@ import Hyperspace
 
 class RequestTests: XCTestCase {
     
-    // MARK: - Constants
-    
-    private static let defaultRequestMethod: HTTP.Method = .get
-    private static let defaultURL = URL(string: "http://apple.com")!
-    private static let defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
-    private static let defaultTimeout: TimeInterval = 1.0
-    
-    // MARK: - Request Implementations
-    
-    public struct SimpleGETRequest: Request {
-        // swiftlint:disable nesting
-        typealias ResponseType = String
-        typealias ErrorType = AnyError
-        // swiftlint:enable nesting
-        
-        var method: HTTP.Method = RequestTests.defaultRequestMethod
-        var url = RequestTests.defaultURL
-        var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-        var body: Data?
-        var cachePolicy: URLRequest.CachePolicy = RequestTests.defaultCachePolicy
-        var timeout: TimeInterval = RequestTests.defaultTimeout
-    }
-    
-    struct SimplePOSTRequest: Request {
-        // swiftlint:disable nesting
-        typealias ResponseType = String
-        typealias ErrorType = AnyError
-        // swiftlint:enable nesting
-        
-        var method: HTTP.Method = .post
-        var url = RequestTests.defaultURL
-        var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-        var body: Data?
-        var cachePolicy: URLRequest.CachePolicy = RequestTests.defaultCachePolicy
-        var timeout: TimeInterval = RequestTests.defaultTimeout
-    }
-    
-    struct CachePolicyAndTimeOutRequest: Request {
-        // swiftlint:disable nesting
-        typealias ResponseType = EmptyResponse
-        typealias ErrorType = AnyError
-        // swiftlint:enable nesting
-        
-        var method: HTTP.Method = RequestTests.defaultRequestMethod
-        var url = RequestTests.defaultURL
-        var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-        var body: Data?
-    }
-    
     // MARK: - Tests
     
     func test_SimpleGETRequestWithoutQueryParametersOrHeaders_GeneratesCorrectURLRequest() {
-        let request = SimpleGETRequest()
+        let request: Request<String, AnyError> = .simpleGET
         assertParameters(for: request)
     }
     
     func test_SimpleGETRequestWithHeaders_GeneratesCorrectURLRequest() {
-        var request = SimpleGETRequest()
+        var request: Request<String, AnyError> = .simpleGET
         request.headers = [.contentType: .applicationJSON]
         
         assertParameters(headers: ["Content-Type": "application/json"], for: request)
@@ -76,9 +27,9 @@ class RequestTests: XCTestCase {
     
     func test_SimplePOSTRequestWithData_GeneratesCorrectURLRequest() {
         let bodyData = "Test".data(using: .utf8)!
-        
-        var request = SimplePOSTRequest()
-        request.body = bodyData
+
+        var request: Request<String, AnyError> = .simplePOST
+        request.body = HTTP.Body(bodyData)
         
         assertParameters(method: "POST", body: bodyData, for: request)
     }
@@ -89,27 +40,27 @@ class RequestTests: XCTestCase {
     }
     
     func test_RequestWithoutExplicitCachePolicyAndTimeout_ReturnsDefaultCachePolicyAndTimeout() {
-        let request = CachePolicyAndTimeOutRequest()
+        let request: Request<String, AnyError> = .cachePolicyAndTimeoutRequest
         XCTAssert(request.cachePolicy == .useProtocolCachePolicy)
         XCTAssert(request.timeout == 30)
     }
         
     func test_Request_TransformData() {
+        let request: Request<String, AnyError> = .cachePolicyAndTimeoutRequest
         
-        let request = CachePolicyAndTimeOutRequest()
         let data = "this is dummy content".data(using: .utf8)!
-        let serviceSuccess = NetworkServiceSuccess(data: data, response: HTTP.Response(code: 200, data: data))
-        let result: Result<CachePolicyAndTimeOutRequest.ResponseType, CachePolicyAndTimeOutRequest.ErrorType> = request.transformSuccess(serviceSuccess)
+        let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: data))
+        let result: Result<String, AnyError> = request.transform(success: serviceSuccess)
         
         XCTAssertNotNil(result.value)
     }
     
     func test_Request_ModifyingBody() {
         let body = Data([1, 2, 3, 4, 5, 6, 7, 8])
-        let request = SimpleGETRequest()
-        let modified = request.usingBody(body)
+        let request: Request<String, AnyError> = .simpleGET
+        let modified = request.usingBody(HTTP.Body(body))
         
-        XCTAssertEqual(modified.body, body)
+        XCTAssertEqual(modified.body?.data, body)
         XCTAssertEqual(modified.headers, request.headers)
         XCTAssertEqual(modified.url, request.url)
         XCTAssertEqual(modified.method, request.method)
@@ -119,7 +70,7 @@ class RequestTests: XCTestCase {
     
     func test_Request_ModifyingHeaders() {
         let headers: [HTTP.HeaderKey: HTTP.HeaderValue] = [.authorization: HTTP.HeaderValue(rawValue: "auth")]
-        let request = SimpleGETRequest()
+        let request: Request<String, AnyError> = .simpleGET
         let modified = request.usingHeaders([.authorization: HTTP.HeaderValue(rawValue: "auth")])
         
         XCTAssertEqual(modified.body, request.body)
@@ -131,7 +82,7 @@ class RequestTests: XCTestCase {
     }
     
     func test_Request_AddingHeaders() {
-        let request = SimpleGETRequest()
+        let request: Request<String, AnyError> = .simpleGET
         let headers = [HTTP.HeaderKey.authorization: HTTP.HeaderValue(rawValue: "some_value")]
         let new = request.addingHeaders(headers)
         let headers2 = [HTTP.HeaderKey.contentType: HTTP.HeaderValue(rawValue: "some_value")]
@@ -143,7 +94,7 @@ class RequestTests: XCTestCase {
     }
     
     func test_Request_AddingHeadersWhenNonePresent() {
-        var request = SimpleGETRequest()
+        var request: Request<String, AnyError> = .simpleGET
         request.headers = nil
         
         let headers = [HTTP.HeaderKey.authorization: HTTP.HeaderValue(rawValue: "some_value")]
@@ -154,14 +105,14 @@ class RequestTests: XCTestCase {
     }
     
     func test_Request_ModifyingURL() {
-        let request = SimpleGETRequest()
+        let request: Request<String, AnyError> = .simpleGET
         
         let final = request.usingURL(request.url.appendingQueryItems([URLQueryItem(name: "test", value: "value")]))
         XCTAssertEqual(final.url.absoluteString, "http://apple.com?test=value")
     }
         
     func test_Request_CollisionsPrefersNewHeadersWhenAddingHeaders() {
-        let request = SimpleGETRequest().addingHeaders([.authorization: HTTP.HeaderValue(rawValue: "some_value")])
+        let request = Request<String, AnyError>.simpleGET.addingHeaders([.authorization: HTTP.HeaderValue(rawValue: "some_value")])
         let accessToken = "access_token"
         let final = request.addingHeaders([.authorization: HTTP.HeaderValue(rawValue: accessToken)])
         
@@ -171,15 +122,15 @@ class RequestTests: XCTestCase {
 
     // MARK: - Private
     
-    private func assertParameters<T: Request, U>(method: String = RequestTests.defaultRequestMethod.rawValue,
-                                                 urlString: String = RequestTests.defaultURL.absoluteString,
-                                                 headers: [String: String]? = nil,
-                                                 body: Data? = nil,
-                                                 cachePolicy: URLRequest.CachePolicy = RequestTests.defaultCachePolicy,
-                                                 timeout: TimeInterval = RequestTests.defaultTimeout,
-                                                 for request: T,
-                                                 file: StaticString = #file,
-                                                 line: UInt = #line) where T.ResponseType == U {
+    private func assertParameters<T, U>(method: String = HTTP.Method.get.rawValue,
+                                        urlString: String = "http://apple.com",
+                                        headers: [String: String]? = nil,
+                                        body: Data? = nil,
+                                        cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+                                        timeout: TimeInterval = 1,
+                                        for request: Request<T, U>,
+                                        file: StaticString = #file,
+                                        line: UInt = #line) {
         let urlRequest = request.urlRequest
         
         XCTAssertEqual(urlRequest.httpMethod, method, file: file, line: line)
@@ -188,5 +139,23 @@ class RequestTests: XCTestCase {
         XCTAssertEqual(urlRequest.httpBody, body, file: file, line: line)
         XCTAssertEqual(urlRequest.cachePolicy, cachePolicy, file: file, line: line)
         XCTAssertEqual(urlRequest.timeoutInterval, timeout, file: file, line: line)
+    }
+}
+
+// MARK: - Request Implementations
+
+private extension Request {
+
+    // MARK: - Request Implementations
+    static var simpleGET: Request<String, AnyError> {
+        return .init(method: .get, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
+    }
+    
+    static var simplePOST: Request<String, AnyError> {
+        return .init(method: .post, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
+    }
+    
+    static var cachePolicyAndTimeoutRequest: Request<String, AnyError> {
+        return .init(method: .get, url: URL(string: "http://apple.com")!)
     }
 }

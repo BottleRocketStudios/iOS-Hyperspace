@@ -22,6 +22,7 @@
 * Ability to have multiple `RecoveryStrategy`   (renamed `RequestRecoveryStrategy` to `RecoveryStrategy`)
 * `HTTP.Body` type added, works with `Encodable` and `EncodableContainer`
 * Add `failingURL` to `TransportError`
+* Make `HTTP.Response` available in `DecodingFailureRepresentable` initializer (#107))
 
 
 ## Purpose
