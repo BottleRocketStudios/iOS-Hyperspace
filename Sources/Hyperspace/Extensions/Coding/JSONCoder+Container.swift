@@ -13,6 +13,10 @@ public extension JSONDecoder {
     func decode<R, C: DecodableContainer>(_ type: R.Type, from data: Data, with container: C.Type) throws -> R where R == C.Contained {
         return try decode(C.self, from: data).element
     }
+    
+    func decode<R, C: DecodableContainer>(from data: Data, with container: C.Type) throws -> R where R == C.Contained {
+        return try decode(R.self, from: data, with: container)
+    }
 }
 
 public extension JSONEncoder {

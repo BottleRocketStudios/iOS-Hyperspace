@@ -8,7 +8,7 @@
 
 //  TODO: Future functionality:
 //          - Provide an implementation that uses the URLSession delegate methods.
-//          - Look into using an ephemeral URLSession as the default NetworkSession since it requires no cleanup.
+//          - Look into using an ephemeral URLSession as the default TransportSession since it requires no cleanup.
 
 import Foundation
 
@@ -17,13 +17,13 @@ public class TransportService {
     
     // MARK: - Properties
     
-    private let session: NetworkSession
-    private var networkActivityController: NetworkActivityController?
-    private var tasks = [URLRequest: NetworkSessionDataTask]()
+    let session: TransportSession
+    private(set) var networkActivityController: NetworkActivityController?
+    private var tasks = [URLRequest: TransportDataTask]()
     
     // MARK: - Initializer
     
-    public init(session: NetworkSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
+    public init(session: TransportSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
         self.session = session
         self.networkActivityController = networkActivityIndicatable.map { NetworkActivityController(indicator: $0) }
     }

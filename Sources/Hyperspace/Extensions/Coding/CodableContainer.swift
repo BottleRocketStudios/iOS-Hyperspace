@@ -8,6 +8,20 @@
 
 import Foundation
 
+// Represents something that is capable of Encoding itself (using `Swift.Encodable`) and contains a child type.
+public protocol EncodableContainer: Encodable {
+    
+    /// The type of the `Swift.Encodable` child element.
+    associatedtype Contained: Encodable
+    
+    /// Initializes a new instance of the container.
+    /// - Parameter element: The element to be placed inside the container.
+    init(element: Contained)
+    
+    /// Retrieve the child type from its container.
+    var element: Contained { get }
+}
+
 /// Represents something that is capable of Decoding itself (using Swift.Decodable) and contains a child type.
 public protocol DecodableContainer: Decodable {
     
@@ -17,6 +31,9 @@ public protocol DecodableContainer: Decodable {
     /// Retrieve the child type from its container.
     var element: Contained { get }
 }
+
+/// Represents something that is capable of both Encoding and Decoding itself and contains a child type.
+public typealias CodableContainer = DecodableContainer & EncodableContainer
 
 // MARK: - Request Default Implementations
 

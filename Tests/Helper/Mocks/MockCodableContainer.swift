@@ -1,5 +1,5 @@
 //
-//  MockDecodableContainer.swift
+//  MockCodableContainer.swift
 //  Hyperspace_Tests
 //
 //  Created by Will McGinty on 12/5/17.
@@ -23,7 +23,7 @@ struct MockDate: Decodable {
     let date: Date
 }
 
-struct MockDecodableContainer: DecodableContainer {
+struct MockCodableContainer: EncodableContainer, DecodableContainer {
     var element: MockObject
     
     private enum CodingKeys: String, CodingKey {

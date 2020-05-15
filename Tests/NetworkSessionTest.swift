@@ -18,8 +18,8 @@ class NetworkSessionTest: XCTestCase {
     // MARK: - Tests
     
     func test_URLSessionNetworkSessionImplementation_ReturnsURLSessionDataTask() {
-        let networkSession: NetworkSession = URLSession.shared
-        let networkSessionDataTask: NetworkSessionDataTask = networkSession.dataTask(with: defaultRequest, completionHandler: { _, _, _ in })
+        let networkSession: TransportSession = URLSession.shared
+        let networkSessionDataTask: TransportDataTask = networkSession.dataTask(with: defaultRequest, completionHandler: { _, _, _ in })
 
         XCTAssert(networkSessionDataTask is URLSessionDataTask)
     }

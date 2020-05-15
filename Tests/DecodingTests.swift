@@ -21,11 +21,24 @@ class DecodingTests: XCTestCase {
     
     // MARK: - Tests
     
+    func test_JSONDecoder_properlyDecodesTypeInsideContainer() {
+        let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
+        do {
+            let decoder = JSONDecoder()
+            let element: MockObject = try decoder.decode(from: objectJSON, with: MockCodableContainer.self)
+            XCTAssertEqual(element.title, "Title")
+            XCTAssertEqual(element.subtitle, "Subtitle")
+            
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
     func test_DecodingDecodableContainer_AutomaticallyDecodesChildElement() {
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         do {
             let decoder = JSONDecoder()
-            let container = try decoder.decode(MockDecodableContainer.self, from: objectJSON)
+            let container = try decoder.decode(MockCodableContainer.self, from: objectJSON)
             let child = container.element
             XCTAssertEqual(child.title, "Title")
             XCTAssertEqual(child.subtitle, "Subtitle")
@@ -54,7 +67,7 @@ class DecodingTests: XCTestCase {
     }
     
     func test_RequestDefaultsContainer_AutomaticallyDecodesChildElement() {
-        let function = Request<MockObject, AnyError>.successTransformer(for: JSONDecoder(), with: MockDecodableContainer.self)
+        let function = Request<MockObject, AnyError>.successTransformer(for: JSONDecoder(), with: MockCodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let mockObject = function(serviceSuccess)
@@ -70,7 +83,7 @@ class DecodingTests: XCTestCase {
     }
     
     func test_RequestDefaultsContainer_ThrowsErrorForChildElement() {
-        let function = Request<MockObject, AnyError>.successTransformer(for: JSONDecoder(), with: MockDecodableContainer.self)
+        let function = Request<MockObject, AnyError>.successTransformer(for: JSONDecoder(), with: MockCodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let mockObject = function(serviceSuccess)
@@ -126,7 +139,7 @@ class DecodingTests: XCTestCase {
     }
     
     func test_AnyRequestWithDecodableContainer_SuccessfullyDecodesChildElement() {
-        let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
+        let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockCodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let result = request.transform(success: serviceSuccess)
@@ -142,7 +155,7 @@ class DecodingTests: XCTestCase {
     }
     
     func test_AnyRequestWithDecodableContainer_FailsToDecodesChildElement() {
-        let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockDecodableContainer.self)
+        let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockCodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let result = request.transform(success: serviceSuccess)
