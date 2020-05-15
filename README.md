@@ -18,14 +18,14 @@ This library provides a simple abstraction around URLSession and HTTP. There are
     * Make error handling more pleasant.
     * Make it easy to define the details of your request and the model type you want to get back.
 * Keep things simple.
-    * There are currently around 800 SLOC, with about a quarter of that being boilerplate HTTP definitions.
+    * There are currently a few thousand SLOC, with about a quarter of that being boilerplate HTTP definitions.
     * Of course, complexity will increase over time as new features are added, but we're not trying to cover every possible networking use case here.
 
 ## Key Concepts
 
 * **HTTP** - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request!
-* **Request** - A protocol that defines the details of a request, including the desired result type. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
-* **NetworkService** - Uses a `TransportSession` (`URLSession` by default) to execute `URLRequests`. Deals with raw `HTTP` and `Data`.
+* **Request** - A struct that defines the details of a network request, including the desired result and error types. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
+* **TransportService** - Uses a `TransportSession` (`URLSession` by default) to execute `URLRequests`. Deals with raw `HTTP` and `Data`.
 * **BackendService** - Uses a `TransportService` to execute `Requests`. Transforms the raw `Data` returned from the `TransportService` into the response model type defined by the `Request`. **This is the main worker object your app will deal with directly**.
 
 ## Usage
