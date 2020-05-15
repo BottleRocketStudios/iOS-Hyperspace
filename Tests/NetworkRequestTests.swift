@@ -40,17 +40,17 @@ class RequestTests: XCTestCase {
     }
     
     func test_RequestWithoutExplicitCachePolicyAndTimeout_ReturnsDefaultCachePolicyAndTimeout() {
-        let request: Request<String, AnyError> = .cachePolicyAndTimeoutRequest
+        let request: Request<EmptyResponse, AnyError> = .cachePolicyAndTimeoutRequest
         XCTAssert(request.cachePolicy == .useProtocolCachePolicy)
         XCTAssert(request.timeout == 30)
     }
         
     func test_Request_TransformData() {
-        let request: Request<String, AnyError> = .cachePolicyAndTimeoutRequest
+        let request: Request<EmptyResponse, AnyError> = .cachePolicyAndTimeoutRequest
         
         let data = "this is dummy content".data(using: .utf8)!
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: data))
-        let result: Result<String, AnyError> = request.transform(success: serviceSuccess)
+        let result: Result<EmptyResponse, AnyError> = request.transform(success: serviceSuccess)
         
         XCTAssertNotNil(result.value)
     }
@@ -155,7 +155,7 @@ private extension Request {
         return .init(method: .post, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
     }
     
-    static var cachePolicyAndTimeoutRequest: Request<String, AnyError> {
+    static var cachePolicyAndTimeoutRequest: Request<EmptyResponse, AnyError> {
         return .init(method: .get, url: URL(string: "http://apple.com")!)
     }
 }

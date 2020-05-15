@@ -110,7 +110,7 @@ class DecodingTests: XCTestCase {
             decoder.dateDecodingStrategy = .formatted(DecodingTests.iso8601DateFormatter)
         }
         
-        let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, decoder: decoder)
+        let request = Request<MockDate, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, decoder: decoder)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let result = request.transform(success: serviceSuccess)

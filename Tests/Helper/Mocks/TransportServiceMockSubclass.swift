@@ -1,5 +1,5 @@
 //
-//  NetworkServiceMockSubclass.swift
+//  TransportServiceMockSubclass.swift
 //  Hyperspace
 //
 //  Created by Adam Brzozowski on 1/31/18.
@@ -9,7 +9,7 @@
 import Foundation
 @testable import Hyperspace
 
-class NetworkServiceMockSubclass: TransportService {
+class TransportServiceMockSubclass: TransportService {
     
     private(set) var initWithNetworkActivityControllerCalled = false
     

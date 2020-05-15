@@ -74,6 +74,10 @@ public struct TransportFailure: Error, Equatable {
         self.error = error
         self.response = response
     }
+    
+    public init(code: TransportError.Code, response: HTTP.Response?) {
+        self.init(error: TransportError(code: code, failingURL: response?.url), response: response)
+    }
 }
 
 // MARK: - HTTP.Response + TransportResult

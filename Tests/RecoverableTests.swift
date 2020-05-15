@@ -139,8 +139,8 @@ class RecoverableTests: XCTestCase {
                 XCTFail("The error should not recoverable!")
                 
             case .failure(let error):
-                guard let innerError = error.error as? TransportError else { return XCTFail("The error that causes the failure should be a NetworkServiceFailure .") }
-                guard case let .clientError(clientError) = innerError.code else { return XCTFail("The error that causes the failure should be a NetworkServiceError.ClientError.") }
+                guard let innerError = error.error as? TransportFailure else { return XCTFail("The error that causes the failure should be a TransportFailure .") }
+                guard case let .clientError(clientError) = innerError.error.code else { return XCTFail("The error that causes the failure should be a TransportFailure.TransportError.Code.ClientError.") }
                 XCTAssertEqual(clientError, .unauthorized)
             }
             

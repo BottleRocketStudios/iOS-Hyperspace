@@ -81,8 +81,8 @@
 		30F0735E202205350045CB01 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
 		30F07361202213E50045CB01 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */; };
 		30F07362202213E60045CB01 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */; };
-		30F07367202227790045CB01 /* NetworkServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */; };
-		30F073682022277A0045CB01 /* NetworkServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */; };
+		30F07367202227790045CB01 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
+		30F073682022277A0045CB01 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
 		60326016201D1DED008CEFC8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
 		60326017201D1DF1008CEFC8 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
 		60836787201D1A2B00007247 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
@@ -129,8 +129,8 @@
 		60D6C38E201CCCBE00B3B012 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
 		60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
 		60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
-		60D6C3FF201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */; };
-		60D6C400201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */; };
+		60D6C3FF201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
+		60D6C400201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
 		60D6C401201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
 		60D6C402201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
 		60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */; };
@@ -363,7 +363,7 @@
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
 		30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkRequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/NetworkRequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
-		30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMockSubclass.swift; sourceTree = "<group>"; };
+		30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportServiceMockSubclass.swift; sourceTree = "<group>"; };
 		60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_DELETE.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601A201D1F1F008CEFC8 /* Hyperspace.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601B201D1F1F008CEFC8 /* Hyperspace_AnyNetworkRequest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_AnyNetworkRequest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -396,7 +396,7 @@
 		60AC834C1FF596B600120172 /* TransportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportService.swift; sourceTree = "<group>"; };
 		60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceProtocol.swift; sourceTree = "<group>"; };
 		60AC834F1FF596B600120172 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
-		60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportServiceTests.swift; sourceTree = "<group>"; };
 		60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
 		60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		60D6C3F3201CFCCF00B3B012 /* MockNetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkSession.swift; sourceTree = "<group>"; };
@@ -654,7 +654,7 @@
 				0E29092B21349F320031F67C /* DecodingFailureTests.swift */,
 				CB0961EA21E5317B006CC9F5 /* FutureTests.swift */,
 				60D6C3F7201CFCCF00B3B012 /* NetworkRequestTests.swift */,
-				60D6C3EF201CFCCF00B3B012 /* NetworkServiceTests.swift */,
+				60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */,
 				3026E457202008470003A321 /* NetworkSessionTest.swift */,
 				30F07352202109F60045CB01 /* HTTPTests.swift */,
 				B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */,
@@ -756,7 +756,7 @@
 				60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */,
 				60D6C3F6201CFCCF00B3B012 /* MockDecodableContainer.swift */,
 				30F073562021720B0045CB01 /* MockBackendService.swift */,
-				30F073652022246E0045CB01 /* NetworkServiceMockSubclass.swift */,
+				30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1468,13 +1468,13 @@
 				60D6C401201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
 				30F07358202172420045CB01 /* MockBackendService.swift in Sources */,
 				B4C32C30201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
-				60D6C3FF201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
+				60D6C3FF201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */,
 				0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */,
 				0EF57B88220296A700484C01 /* CertificateHashTests.swift in Sources */,
 				0EFB54362204AFBA00949F24 /* Trusts.swift in Sources */,
 				CBB361BB21E643520082E860 /* Result+Extensions.swift in Sources */,
 				60D6C405201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
-				30F07367202227790045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
+				30F07367202227790045CB01 /* TransportServiceMockSubclass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1563,13 +1563,13 @@
 				60D6C402201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
 				30F07359202172450045CB01 /* MockBackendService.swift in Sources */,
 				B4C32C31201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */,
-				60D6C400201CFCCF00B3B012 /* NetworkServiceTests.swift in Sources */,
+				60D6C400201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */,
 				0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */,
 				CBB361BC21E643520082E860 /* Result+Extensions.swift in Sources */,
 				0EFB54372204AFBA00949F24 /* Trusts.swift in Sources */,
 				0EF57B89220296A700484C01 /* CertificateHashTests.swift in Sources */,
 				60D6C406201CFCCF00B3B012 /* MockNetworkSession.swift in Sources */,
-				30F073682022277A0045CB01 /* NetworkServiceMockSubclass.swift in Sources */,
+				30F073682022277A0045CB01 /* TransportServiceMockSubclass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

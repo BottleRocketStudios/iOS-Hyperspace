@@ -46,12 +46,12 @@ extension TransportService: Transporting {
             self?.networkActivityController?.stop()
             
             switch (data, response, error) {
-            case let (.some(responseData), .some(urlResponse as HTTPURLResponse), .none):
+            case let (responseData, .some(urlResponse as HTTPURLResponse), .none):
                 let httpResponse = HTTP.Response(httpURLResponse: urlResponse, data: responseData)
                 completion(httpResponse.transportResult)
                 
-            case let (responseData, urlResponse as HTTPURLResponse, .some(clientError)):
-                let transportFailure = TransportFailure(error: TransportError(clientError: clientError), response: HTTP.Response(httpURLResponse: urlResponse, data: responseData))
+            case let (responseData, urlResponse as HTTPURLResponse?, .some(clientError)):
+                let transportFailure = TransportFailure(error: TransportError(clientError: clientError), response: urlResponse.map { HTTP.Response(httpURLResponse: $0, data: responseData) })
                 completion(.failure(transportFailure))
                 
             default:
