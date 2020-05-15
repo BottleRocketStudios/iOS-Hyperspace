@@ -173,6 +173,18 @@ class PinningTests: XCTestCase {
         default: XCTFail("This trust should pass pinning validation.")
         }
     }
+
+    func test_TrustValidator_decidesOnAuthenticationFailureWhenPinningFails() {
+        let trust = TestTrusts.leaf.trust
+        let domainConfig = TrustConfiguration.DomainConfiguration(domain: secondaryHost, encodedPinningHashes: ["invalid"])
+        let validator = TrustValidator(configuration: TrustConfiguration(domainConfigurations: [domainConfig]))
+        let result = validator.evaluate(trust, forHost: secondaryHost)
+
+        switch result {
+        case .block: break
+        default: XCTFail("This trust should pass pinning validation.")
+        }
+    }
     
     func test_TrustValidator_decidesOnAuthenticationCancellationWhenPinningFails() {
         let trust = TestTrusts.leafMissingIntermediate.trust

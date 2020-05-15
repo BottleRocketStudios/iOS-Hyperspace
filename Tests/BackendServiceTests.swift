@@ -23,14 +23,6 @@ class BackendServiceTests: XCTestCase {
     
     // MARK: - Tests
     
-    func test_AnyError_CreatesSuccessfullyFromTransportFailure() {
-        let failure = TransportFailure(error: .init(code: .noInternetConnection), response: nil)
-        let anyError = AnyError(transportFailure: failure)
-        
-        XCTAssertTrue(anyError.error is TransportFailure)
-        XCTAssertEqual((anyError.error as! TransportFailure).error, TransportError(code: .noInternetConnection))
-    }
-    
     func test_TransportSuccess_TransformsResponseCorrectly() {
         let model = RequestTestDefaults.defaultModel
         let mockedResult = TransportSuccess(response: defaultSuccessResponse)

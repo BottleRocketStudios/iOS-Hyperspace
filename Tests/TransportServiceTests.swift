@@ -21,6 +21,14 @@ class TransportServiceTests: XCTestCase {
         let expectedResult = TransportFailure(error: .init(code: .unknownError), response: nil)
         executeTransportServiceUsingMockHTTPResponse(nil, expectingResult: .failure(expectedResult))
     }
+
+    func test_MissingDataResponse_FallsBackToEmptyData() {
+        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: nil, headers: [:])
+        let expectedResult = TransportSuccess(response: response)
+
+        executeTransportServiceUsingMockHTTPResponse(response, expectingResult: .success(expectedResult))
+        XCTAssertEqual(expectedResult.data, Data())
+    }
     
     func test_SuccessResponseWithData_Succeeds() {
         let responseData = "test".data(using: .utf8)!
