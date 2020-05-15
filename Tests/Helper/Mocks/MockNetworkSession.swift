@@ -14,7 +14,7 @@ class MockNetworkSession {
     private let responseStatusCode: Int?
     private let responseData: Data?
     private let error: Error?
-    var nextDataTask: NetworkSessionDataTask = MockNetworkSessionDataTask(request: URLRequest(url: RequestTestDefaults.defaultURL))
+    var nextDataTask: TransportDataTask = MockNetworkSessionDataTask(request: URLRequest(url: RequestTestDefaults.defaultURL))
     
     init(responseStatusCode: Int?, responseData: Data?, error: Error?) {
         self.responseStatusCode = responseStatusCode
@@ -23,8 +23,11 @@ class MockNetworkSession {
     }
 }
 
-extension MockNetworkSession: NetworkSession {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> NetworkSessionDataTask {
+extension MockNetworkSession: TransportSession {
+    
+    var configuration: URLSessionConfiguration { return .default }
+    
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> TransportDataTask {
         guard let url = request.url else { fatalError("No \(URL.self) provided") }
         
         let response: HTTPURLResponse? = responseStatusCode.flatMap { HTTPURLResponse(url: url, statusCode: $0, httpVersion: "HTTP/1.1", headerFields: nil) }

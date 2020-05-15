@@ -35,12 +35,12 @@ class DecodingFailureTests: XCTestCase {
     func test_DecodingFailure_CatchesFailedTypeInformation() {
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
 
-        let transformer = Request<MockDecodableContainer, MockDecodeError>.successTransformer(for: JSONDecoder())
+        let transformer = Request<MockCodableContainer, MockDecodeError>.successTransformer(for: JSONDecoder())
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let result = transformer(serviceSuccess)
         
         guard let error = result.error else { XCTFail("The decode should fail."); return }
-        XCTAssertEqual(String(describing: error.type), String(describing: MockDecodableContainer.self))
+        XCTAssertEqual(String(describing: error.type), String(describing: MockCodableContainer.self))
         XCTAssertEqual(error.response.data, objectJSON)
     }
 }

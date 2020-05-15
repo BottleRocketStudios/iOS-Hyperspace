@@ -13,7 +13,7 @@ class TransportServiceMockSubclass: TransportService {
     
     private(set) var initWithNetworkActivityControllerCalled = false
     
-    override init(session: NetworkSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
+    override init(session: TransportSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
         initWithNetworkActivityControllerCalled = true
         super.init(session: session, networkActivityIndicatable: networkActivityIndicatable)
     }

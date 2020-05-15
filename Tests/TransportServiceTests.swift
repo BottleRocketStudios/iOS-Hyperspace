@@ -17,6 +17,13 @@ class TransportServiceTests: XCTestCase {
     
     // MARK: - Tests
     
+    func test_TransportService_ProperlyInitializesWithSessionConfiguration() {
+        let config = URLSessionConfiguration.ephemeral
+        let service = TransportService(sessionConfiguration: config)
+        
+        XCTAssertEqual(service.session.configuration, config)
+    }
+    
     func test_MissingURLResponse_GeneratesUnknownError() {
         let expectedResult = TransportFailure(error: .init(code: .unknownError), response: nil)
         executeTransportServiceUsingMockHTTPResponse(nil, expectingResult: .failure(expectedResult))
@@ -57,6 +64,14 @@ class TransportServiceTests: XCTestCase {
         let expectedResult = TransportFailure(code: .serverError(.internalServerError), response: response)
         
         executeTransportServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
+    }
+    
+    func test_ClientErrorWithResponse_GeneratesDataLengthExceedsMaximumError() {
+        let response = HTTP.Response(code: 100, url: RequestTestDefaults.defaultURL, data: Data([1, 2, 3, 4, 5]), headers: [:])
+        let exceedsMaxError = URLError(.dataLengthExceedsMaximum)
+        let expectedResult = TransportFailure(error: TransportError(clientError: exceedsMaxError), response: response)
+        
+        executeTransportServiceUsingMockHTTPResponse(response, mockError: exceedsMaxError, expectingResult: .failure(expectedResult))
     }
     
     func test_NoInternet_GeneratesNoInternetError() {
@@ -149,7 +164,7 @@ class TransportServiceTests: XCTestCase {
     
     // MARK: - Private
     
-    private func execute(dataTask: NetworkSessionDataTask) -> Transporting {
+    private func execute(dataTask: TransportDataTask) -> Transporting {
         let mockSession = MockNetworkSession(responseStatusCode: nil, responseData: nil, error: nil)
         mockSession.nextDataTask = dataTask
         
@@ -168,7 +183,7 @@ class TransportServiceTests: XCTestCase {
         executeTransportService(using: mockSession, expectingResult: expectedResult, file: file, line: line)
     }
     
-    private func executeTransportService(using session: NetworkSession, expectingResult expectedResult: TransportResult, file: StaticString = #file, line: UInt = #line) {
+    private func executeTransportService(using session: TransportSession, expectingResult expectedResult: TransportResult, file: StaticString = #file, line: UInt = #line) {
         let service = TransportService(session: session)
         let asyncExpectation = expectation(description: "\(TransportService.self) completion")
         
