@@ -70,8 +70,7 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
                 return .failure(errorTransformer(error, C.self, transportSuccess.response))
                 
             } catch {
-                let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription))
-                return .failure(errorTransformer(decodingError, C.self, transportSuccess.response))
+                return .failure(errorTransformer(.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription)), C.self, transportSuccess.response))
             }
         }
     }

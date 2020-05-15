@@ -77,10 +77,17 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
         return successTransformer(serviceSuccess)
     }
     
-    func map<New>(_ responseTransformer: @escaping (Response) -> New) -> Request<New, Error> {
+    public func map<New>(_ responseTransformer: @escaping (Response) -> New) -> Request<New, Error> {
         return Request<New, Error>(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             let originalResponse = self.transform(success: transportSuccess)
             return originalResponse.map(responseTransformer)
+        }
+    }
+
+    public func mapError<New>(_ errorTransformer: @escaping (Error) -> New) -> Request<Response, New> {
+        return Request<Response, New>(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
+            let originalResponse = self.transform(success: transportSuccess)
+            return originalResponse.mapError(errorTransformer)
         }
     }
 }

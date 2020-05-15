@@ -120,6 +120,56 @@ class RequestTests: XCTestCase {
         XCTAssertEqual(finalHeaders?[.authorization]?.rawValue, accessToken)
     }
 
+    func test_Request_MappingARequestToANewResponseMaintainsErrorType() {
+        let exp = expectation(description: "Transformer Executed")
+        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: loadedJSONData(fromFileNamed: "Object"), headers: [:])
+        let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
+        let mapped: Request<[MockObject], AnyError> = request.map { exp.fulfill(); return [$0] }
+
+        _ = mapped.transform(success: TransportSuccess(response: response))
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func test_Request_MappingARequestToANewResponseDoesNotUseHandlerWhenInitialRequestFails() {
+        let exp = expectation(description: "Transformer Executed")
+        exp.isInverted = true
+
+        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: loadedJSONData(fromFileNamed: "DateObject"), headers: [:])
+        let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
+        let mapped: Request<[MockObject], AnyError> = request.map { exp.fulfill(); return [$0] }
+
+        _ = mapped.transform(success: TransportSuccess(response: response))
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func test_Request_MappingErrorOfARequestToANewTypeMaintainsResponseType() {
+        let exp = expectation(description: "Transformer Executed")
+        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: loadedJSONData(fromFileNamed: "DateObject"), headers: [:])
+        let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
+        let mapped: Request<MockObject, MockBackendServiceError> = request.mapError { _ in
+            exp.fulfill()
+            return MockBackendServiceError(transportFailure: TransportFailure(code: .redirection, response: nil))
+        }
+
+        _ = mapped.transform(success: TransportSuccess(response: response))
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func test_Request_MappingErrorOfARequestToANewTypeDoesNotUseHandlerWhenInitialRequestSucceeds() {
+        let exp = expectation(description: "Transformer Executed")
+        exp.isInverted = true
+
+        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: loadedJSONData(fromFileNamed: "Object"), headers: [:])
+        let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
+        let mapped: Request<MockObject, MockBackendServiceError> = request.mapError { _ in
+            exp.fulfill()
+            return MockBackendServiceError(transportFailure: TransportFailure(code: .redirection, response: nil))
+        }
+
+        _ = mapped.transform(success: TransportSuccess(response: response))
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
     // MARK: - Private
     
     private func assertParameters<T, U>(method: String = HTTP.Method.get.rawValue,
