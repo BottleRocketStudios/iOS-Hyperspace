@@ -22,10 +22,10 @@ public enum MockBackendServiceError: TransportFailureRepresentable, DecodingFail
         self = .dataTransformationError(error)
     }
     
-    public var transportError: TransportError {
+    public var transportError: TransportError? {
         switch self {
         case .networkError(let error, _): return error
-        case .dataTransformationError: return TransportError(code: .unknownError)
+        default: return nil
         }
     }
     

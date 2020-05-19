@@ -33,16 +33,17 @@ class RequestTests: XCTestCase {
         
         assertParameters(method: "POST", body: bodyData, for: request)
     }
-    
-    func test_Request_EmptyResponseInit() {
-        _ = EmptyResponse()
-        XCTAssert(true)
-    }
-    
+
     func test_RequestWithoutExplicitCachePolicyAndTimeout_ReturnsDefaultCachePolicyAndTimeout() {
+        let timeout: TimeInterval = 1
+        let cachePolicy: URLRequest.CachePolicy = .returnCacheDataDontLoad
+        
+        RequestDefaults.defaultTimeout = timeout
+        RequestDefaults.defaultCachePolicy = cachePolicy
+              
         let request: Request<EmptyResponse, AnyError> = .cachePolicyAndTimeoutRequest
-        XCTAssert(request.cachePolicy == .useProtocolCachePolicy)
-        XCTAssert(request.timeout == 30)
+        XCTAssert(request.cachePolicy == cachePolicy)
+        XCTAssert(request.timeout == timeout)
     }
         
     func test_Request_TransformData() {

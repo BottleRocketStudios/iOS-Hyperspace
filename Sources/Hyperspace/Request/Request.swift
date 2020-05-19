@@ -44,10 +44,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     /// The number of recovery attempts that this operation has made
     public var recoveryAttemptCount: UInt = 0
     
-    /// Attempts to parse the provided TransportSuccess into the associated response model type for this request.
-    ///
-    /// - Parameter serviceSuccess: The successful result of executing a Request using a TransportService.
-    /// - Returns: A result indicating the successful or failed transformation of the data into the associated response type.
+    /// Attempts to parse the provided `TransportSuccess` into the associated response model type for this request.
     public var successTransformer: TransformBlock
     
     // MARK: - Initializer
