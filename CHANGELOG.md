@@ -36,7 +36,7 @@
 [Will McGinty](https://github.com/wmcginty)
 [#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
 
-* Several changes to simply and refine `DecodableContainer`, as well as introduce `EncodableContainer` and `CodableContainer`.
+* Several changes to simplify and refine `DecodableContainer`, as well as introduce `EncodableContainer` and `CodableContainer`.
 [Will McGinty](https://github.com/wmcginty)
 [#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
 

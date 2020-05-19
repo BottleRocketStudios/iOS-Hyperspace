@@ -41,8 +41,8 @@ class RequestTests: XCTestCase {
     
     func test_RequestWithoutExplicitCachePolicyAndTimeout_ReturnsDefaultCachePolicyAndTimeout() {
         let request: Request<EmptyResponse, AnyError> = .cachePolicyAndTimeoutRequest
-        XCTAssert(request.cachePolicy == .useProtocolCachePolicy)
-        XCTAssert(request.timeout == 30)
+        XCTAssertEqual(request.cachePolicy, .useProtocolCachePolicy)
+        XCTAssertEqual(request.timeout, 30)
     }
         
     func test_Request_TransformData() {
