@@ -12,7 +12,7 @@ import XCTest
 class DecodingFailureTests: XCTestCase {
     
     private struct MockDecodeError: DecodingFailureRepresentable {
-        var transportError: TransportError
+        var transportError: TransportError?
         var failureResponse: HTTP.Response?
         
         var error: DecodingError?
@@ -25,7 +25,6 @@ class DecodingFailureTests: XCTestCase {
         }
         
         init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
-            self.transportError = .init(code: .unknownError)
             self.error = error
             self.type = decoding
             self.response = response

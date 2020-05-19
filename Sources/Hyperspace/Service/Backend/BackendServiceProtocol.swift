@@ -14,7 +14,7 @@ public protocol TransportFailureRepresentable: Swift.Error {
     init(transportFailure: TransportFailure)
     
     var failureResponse: HTTP.Response? { get }
-    var transportError: TransportError { get }
+    var transportError: TransportError? { get }
 }
 
 /// Represents an error which can be constructed from a `DecodingError` and `Data`.
@@ -25,7 +25,8 @@ public protocol DecodingFailureRepresentable: TransportFailureRepresentable {
 /// Represents something that's capable of executing a typed Request
 public protocol BackendServiceProtocol: AnyObject {
 
-    /// Determines how the backend service should recover from errors, should the request be able to do so. If this object is not present, all errors are returned to the client.
+    /// Determines how the backend service should recover from errors, should the `Request` be able to do so. If multiple `RecoveryStrategy` objects are present,
+    /// they are executed in order until one attempts to recover from the failure. If no `RecoveryStrategy` is present, all errors are returned directly to the client.
     var recoveryStrategies: [RecoveryStrategy] { get }
 
     /// Executes the Request, calling the provided completion block when finished.
@@ -48,11 +49,12 @@ public extension BackendServiceProtocol {
     
     var recoveryStrategies: [RecoveryStrategy] { return [] }
     
-    /// <#Description#>
+    /// Attempt to recover from an error encountered when executing a request.
     /// - Parameters:
-    ///   - error: <#error description#>
-    ///   - request: <#request description#>
-    ///   - completion: <#completion description#>
+    ///   - error: The error encountered when executing the request.
+    ///   - request: The request that was executing.
+    ///   - completion: The completion which should be executed when the recovery attempt is complete. In the case the recovery succeeds,
+    ///   this completion is passed to the recovered `Request` instance. In the case of a failed recovery, the completion should be passed an error.
     func attemptToRecover<R, E>(from error: E, executing request: Request<R, E>, completion: @escaping (Result<R, E>) -> Void) {
         guard let recoveryStrategy = recoveryStrategies.first(where: { $0.canAttemptRecovery(from: error, for: request) }) else {
             return executeOnMainThread(completion(.failure(error)))

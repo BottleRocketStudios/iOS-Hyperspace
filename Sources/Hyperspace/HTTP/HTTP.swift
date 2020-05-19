@@ -157,6 +157,7 @@ public struct HTTP {
         ///
         /// - Parameters:
         ///   - code: The raw HTTP status code for this response.
+        ///   - url: The `URL` from which this response was received.
         ///   - data: The raw `Data` associated with the HTTP response, if any was provided.
         ///   - headers: The HTTP header fields for this response.
         public init(code: Int, url: URL? = nil, data: Data? = nil, headers: [String: String]? = nil) {

@@ -10,18 +10,18 @@ import Foundation
 
 public extension JSONDecoder {
     
-    func decode<R, C: DecodableContainer>(_ type: R.Type, from data: Data, with container: C.Type) throws -> R where R == C.Contained {
+    func decode<T, C: DecodableContainer>(_ type: T.Type, from data: Data, with container: C.Type) throws -> T where T == C.Contained {
         return try decode(C.self, from: data).element
     }
     
-    func decode<R, C: DecodableContainer>(from data: Data, with container: C.Type) throws -> R where R == C.Contained {
-        return try decode(R.self, from: data, with: container)
+    func decode<T, C: DecodableContainer>(from data: Data, with container: C.Type) throws -> T where T == C.Contained {
+        return try decode(T.self, from: data, with: container)
     }
 }
 
 public extension JSONEncoder {
     
-    func encode<R, C: EncodableContainer>(_ element: R, in container: C.Type) throws -> Data where R == C.Contained {
+    func encode<T, C: EncodableContainer>(_ element: T, in container: C.Type) throws -> Data where T == C.Contained {
         return try encode(C(element: element))
     }
 }

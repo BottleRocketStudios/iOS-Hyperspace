@@ -98,7 +98,7 @@ class DecodingTests: XCTestCase {
         XCTAssertNotNil(mockObject.error)
     }
     
-    func test_AnyRequestWithDefaultJSONDecoder_SuccessfullyDecodes() {
+    func test_RequestWithDefaultJSONDecoder_SuccessfullyDecodes() {
         let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, decoder: JSONDecoder())
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
@@ -106,7 +106,7 @@ class DecodingTests: XCTestCase {
         XCTAssertNotNil(result.value)
     }
     
-    func test_AnyRequestWithImplicitJSONDecoder_SuccessfullyDecodes() {
+    func test_RequestWithImplicitJSONDecoder_SuccessfullyDecodes() {
         let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "Object")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
@@ -114,7 +114,7 @@ class DecodingTests: XCTestCase {
         XCTAssertNotNil(result.value)
     }
     
-    func test_AnyRequestWithISOJSONDecoder_SuccessfullyDecodes() {
+    func test_RequestWithISOJSONDecoder_SuccessfullyDecodes() {
         let decoder = JSONDecoder()
         
         if #available(iOS 10.0, *) {
@@ -130,7 +130,7 @@ class DecodingTests: XCTestCase {
         XCTAssertNotNil(result.value)
     }
     
-    func test_AnyRequestWithImplicitJSONDecoder_DecodeFails() {
+    func test_RequestWithImplicitJSONDecoder_DecodeFails() {
         let request = Request<MockDate, AnyError>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
@@ -138,7 +138,7 @@ class DecodingTests: XCTestCase {
         XCTAssertNil(result.value)
     }
     
-    func test_AnyRequestWithDecodableContainer_SuccessfullyDecodesChildElement() {
+    func test_RequestWithDecodableContainer_SuccessfullyDecodesChildElement() {
         let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockCodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyObject")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
@@ -146,7 +146,7 @@ class DecodingTests: XCTestCase {
         XCTAssertNotNil(result.value)
     }
 
-    func test_AnyRequestWithDecodableContainer_SuccessfullyDecodesChildElements() {
+    func test_RequestWithDecodableContainer_SuccessfullyDecodesChildElements() {
         let request = Request<[MockObject], AnyError>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockArrayDecodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
@@ -154,7 +154,7 @@ class DecodingTests: XCTestCase {
         XCTAssertNotNil(result.value)
     }
     
-    func test_AnyRequestWithDecodableContainer_FailsToDecodesChildElement() {
+    func test_RequestWithDecodableContainer_FailsToDecodesChildElement() {
         let request = Request<MockObject, AnyError>(method: .get, url: RequestTestDefaults.defaultURL, containerType: MockCodableContainer.self)
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))

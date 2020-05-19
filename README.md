@@ -13,13 +13,9 @@
 
 This library provides a simple abstraction around URLSession and HTTP. There are a few main goals:
 
-* Wrap up all the HTTP boilerplate (method, headers, status codes, etc.) to allow your app to deal with them in a type-safe way.
-* Provide a thin wrapper around URLSession:
-    * Make error handling more pleasant.
-    * Make it easy to define the details of your request and the model type you want to get back.
 * Keep things simple.
-    * There are currently a few thousand SLOC, with about a quarter of that being boilerplate HTTP definitions.
-    * Of course, complexity will increase over time as new features are added, but we're not trying to cover every possible networking use case here.
+* Keep the overall library size to a minimum. Of course, there will be some boilerplate involved (such as the `HTTP` definitions), but our main goal is to keep the library highly functional and maintainable without over-engineering.
+* Tailor the library to the networking use cases that we encounter the most often. We will continue to add features based on the common needs across all of the apps that we build.
 
 ## Key Concepts
 
@@ -49,7 +45,7 @@ extension Request {
 #### Option 2 - Define Each `Request` Locally
 
 ```swift
-Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
+let createPostRequest = Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
         body: try? HTTP.Body(post))
 ```
 

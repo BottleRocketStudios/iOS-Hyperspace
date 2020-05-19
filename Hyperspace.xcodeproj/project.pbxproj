@@ -82,8 +82,8 @@
 		30F07358202172420045CB01 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
 		30F07359202172450045CB01 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
 		30F0735E202205350045CB01 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
-		30F07361202213E50045CB01 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */; };
-		30F07362202213E60045CB01 /* NetworkRequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */; };
+		30F07361202213E50045CB01 /* RequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* RequestTestDefaults.swift */; };
+		30F07362202213E60045CB01 /* RequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* RequestTestDefaults.swift */; };
 		30F07367202227790045CB01 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
 		30F073682022277A0045CB01 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
 		60326016201D1DED008CEFC8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
@@ -365,7 +365,7 @@
 		3026E457202008470003A321 /* TransportSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportSessionTest.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
-		30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkRequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/NetworkRequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
+		30F0735F202213E00045CB01 /* RequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/RequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
 		30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportServiceMockSubclass.swift; sourceTree = "<group>"; };
 		60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_DELETE.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6032601A201D1F1F008CEFC8 /* Hyperspace.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -782,7 +782,7 @@
 		60D6C3FD201CFCCF00B3B012 /* Test Defaults */ = {
 			isa = PBXGroup;
 			children = (
-				30F0735F202213E00045CB01 /* NetworkRequestTestDefaults.swift */,
+				30F0735F202213E00045CB01 /* RequestTestDefaults.swift */,
 			);
 			path = "Test Defaults";
 			sourceTree = "<group>";
@@ -1452,7 +1452,7 @@
 				60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				0E81B49B20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */,
 				0E347E6521599B7F00BF18FA /* XCTestCase+JSON.swift in Sources */,
-				30F07361202213E50045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
+				30F07361202213E50045CB01 /* RequestTestDefaults.swift in Sources */,
 				0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */,
 				B4255B59246E528C009B6D6A /* EncodingTests.swift in Sources */,
 				60D6C40D201CFCCF00B3B012 /* RequestTests.swift in Sources */,
@@ -1547,7 +1547,7 @@
 				60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */,
 				0E347E6421599B7D00BF18FA /* XCTestCase+JSON.swift in Sources */,
-				30F07362202213E60045CB01 /* NetworkRequestTestDefaults.swift in Sources */,
+				30F07362202213E60045CB01 /* RequestTestDefaults.swift in Sources */,
 				0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */,
 				B4255B5A246E528D009B6D6A /* EncodingTests.swift in Sources */,
 				60D6C40E201CFCCF00B3B012 /* RequestTests.swift in Sources */,

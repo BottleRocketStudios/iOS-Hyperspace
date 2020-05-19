@@ -64,7 +64,7 @@ extension AnyError: DecodingFailureRepresentable {
         self.init(transportFailure)
     }
    
-    public var transportError: TransportError {
+    public var transportError: TransportError? {
         return (error as? TransportFailure)?.error ?? TransportError(code: .unknownError, failingURL: failureResponse?.url)
     }
     
