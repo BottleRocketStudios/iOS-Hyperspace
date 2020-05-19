@@ -15,7 +15,7 @@ extension Request where Response == EmptyResponse, Error == AnyError {
     }
 }
 
-let deletePostRequest = Request<EmptyResponse, AnyError>.deletePost
+let deletePostRequest = Request<EmptyResponse, AnyError>.deletePost(withID: 1)
 let backendService = BackendService()
 
 backendService.execute(request: deletePostRequest) { result in
