@@ -37,55 +37,25 @@ RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default ca
 
 /// 2. Create your concrete Request types
 
-struct GetUserRequest: Request {
-    // Define the model we want to get back
-    typealias ResponseType = User
-    typealias ErrorType = AnyError
-    
-    // Define Request property values
-    var method: HTTP.Method = .get
-    var url: URL {
-        return URL(string: "http://jsonplaceholder.typicode.com/users/\(userId)")!
-    }
-    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-    var body: Data?
-    
-    // Define any custom properties needed
-    private let userId: Int
-    
-    // Initializer
-    init(userId: Int) {
-        self.userId = userId
+extension Request where Response == User, Error == AnyError {
+
+    static func getUser(withID id: Int) -> Request<User, AnyError> {
+        return Request(method: .get, url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
     }
 }
 
-struct CreatePostRequest: Request {
-    // Define the model we want to get back
-    typealias ResponseType = Post
-    typealias ErrorType = AnyError
-    
-    // Define Request property values
-    var method: HTTP.Method = .post
-    var url = URL(string: "http://jsonplaceholder.typicode.com/posts")!
-    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
-    var body: Data?
-    
-    // Define any custom properties needed
-    private let newPost: NewPost
-    
-    // Initializer
-    init(newPost: NewPost) {
-        self.newPost = newPost
-        
-        let encoder = JSONEncoder()
-        self.body = try? encoder.encode(newPost)
+extension Request where Response == Post, Error == AnyError {
+
+    static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
+        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
+                       body: try? HTTP.Body(post))
     }
 }
 
 /// 3. Instantiate your concrete Request types
 
-let getUserRequest = GetUserRequest(userId: 1)
-let createPostRequest = CreatePostRequest(newPost: NewPost(userId: 1, title: "Test tile", body: "Test body"))
+let getUserRequest = Request<User, AnyError>.getUser(withID: 1)
+let createPostRequest = Request<Post, AnyError>.createPost(NewPost(userId: 1, title: "Test tile", body: "Test body"))
 
 /// 4. Create a BackendServices to execute the requests
 
