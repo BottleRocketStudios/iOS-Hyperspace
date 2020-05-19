@@ -26,6 +26,8 @@ This library provides a simple abstraction around URLSession and HTTP. There are
 
 ## Usage
 
+**TODO** - Improve this section with a more streamlined intro to the library (see https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117#discussion_r426082785)
+
 ### 1. Create Requests
 
 You have multiple options when creating requests- including creating static functions to reduce the boilerplace when creating a `Request` object, or you can simply create them locally. In addition, you can still create your own custom struct that wraps and vends a `Request` object if your network requests are complex.
