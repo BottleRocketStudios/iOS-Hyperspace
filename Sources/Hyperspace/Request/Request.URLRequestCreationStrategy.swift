@@ -11,27 +11,33 @@ import Foundation
 public extension Request {
     
     // MARK: - URLRequestCreationStrategy
-    
-    enum URLRequestCreationStrategy {
-        case custom((Request) -> URLRequest)
-        
+
+    struct URLRequestCreationStrategy {
+
+        // MARK: - Properties
+        let creationBlock: (Request) -> URLRequest
+
+        // MARK: - Interface
         func urlRequest(using request: Request) -> URLRequest {
-            switch self {
-            case .custom(let creator): return creator(request)
-            }
+            return creationBlock(request)
         }
-        
-        /// The `default` strategy applies the `Requests` URL, cache policy, timeout as well as the HTTP method, body and headers.
+
+        // MARK: - Preset
+
+        public static func custom(_ creationBlock: @escaping (Request) -> URLRequest) -> URLRequestCreationStrategy {
+            return URLRequestCreationStrategy(creationBlock: creationBlock)
+        }
+
         public static var `default`: URLRequestCreationStrategy {
-            return .custom { request -> URLRequest in
+            return URLRequestCreationStrategy { request -> URLRequest in
                 var urlRequest = URLRequest(url: request.url, cachePolicy: request.cachePolicy, timeoutInterval: request.timeout)
                 urlRequest.httpMethod = request.method.rawValue
                 urlRequest.httpBody = request.body?.data
-                
+
                 // Transform the headers from [HTTP.HeaderKey: HTTP.HeaderValue] to [String: String]
                 let rawHeaders: [String: String] = Dictionary(uniqueKeysWithValues: (request.headers ?? [:]).map { ($0.rawValue, $1.rawValue) })
                 urlRequest.allHTTPHeaderFields = rawHeaders
-                
+
                 return urlRequest
             }
         }
