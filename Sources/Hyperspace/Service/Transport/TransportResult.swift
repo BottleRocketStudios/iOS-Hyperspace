@@ -39,8 +39,8 @@ public struct TransportError: Error, Equatable {
     
     // MARK: - Properties
     
-    let code: Code
-    let failingURL: URL?
+    public let code: Code
+    public let failingURL: URL?
     
     // MARK: - Initializers
     
