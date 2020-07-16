@@ -9,7 +9,7 @@
 import Foundation
 import Hyperspace
 
-class MockNetworkSessionDataTask: NetworkSessionDataTask {
+class MockNetworkSessionDataTask: TransportDataTask {
     private(set) var resumeCallCount = 0
     private(set) var cancelCallCount = 0
     private let request: URLRequest

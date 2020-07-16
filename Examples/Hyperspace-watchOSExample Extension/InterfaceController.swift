@@ -34,7 +34,7 @@ class InterfaceController: WKInterfaceController {
 
 extension InterfaceController {
     private func getUser() {
-        let getUserRequest = GetUserRequest(userId: 1)
+        let getUserRequest = Request<User, AnyError>.getUser(withID: 1)
 
         backendService.execute(request: getUserRequest) { [weak self] result in
             debugPrint("Get user result: \(result)")
@@ -50,7 +50,7 @@ extension InterfaceController {
     
     private func createPost(titled title: String) {
         let post = NewPost(userId: 1, title: title, body: "")
-        let createPostRequest = CreatePostRequest(newPost: post)
+        let createPostRequest = Request<Post, AnyError>.createPost(post)
         
         backendService.execute(request: createPostRequest) { [weak self] result in
             debugPrint("Create post result: \(result)")
@@ -65,7 +65,7 @@ extension InterfaceController {
     }
     
     private func deletePost(postId: Int) {
-        let deletePostRequest = DeletePostRequest(postId: postId)
+        let deletePostRequest = Request<EmptyResponse, AnyError>.deletePost(withID: postId)
         
         backendService.execute(request: deletePostRequest) { [weak self] result in
             switch result {

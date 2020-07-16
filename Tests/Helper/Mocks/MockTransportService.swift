@@ -1,5 +1,5 @@
 //
-//  MockNetworkService.swift
+//  MockTransportService.swift
 //  HyperspaceTests
 //
 //  Created by Tyler Milner on 6/29/17.
@@ -9,24 +9,23 @@
 import Foundation
 import Hyperspace
 
-class MockNetworkService {
+class MockTransportService {
     private(set) var executeCallCount = 0
     private(set) var cancelCallCount = 0
     private(set) var cancelAllTasksCallCount = 0
     private(set) var lastExecutedURLRequest: URLRequest?
     private(set) var lastCancelledURLRequest: URLRequest?
-    var responseResult: Result<NetworkServiceSuccess, NetworkServiceFailure>
+    var responseResult: TransportResult
     
-    init(responseResult: Result<NetworkServiceSuccess, NetworkServiceFailure>) {
+    init(responseResult: TransportResult) {
         self.responseResult = responseResult
     }
 }
 
-extension MockNetworkService: NetworkServiceProtocol {
+extension MockTransportService: Transporting {
     
-    func execute(request: URLRequest, completion: @escaping NetworkServiceCompletion) {
+    func execute(request: URLRequest, completion: @escaping (TransportResult) -> Void) {
         lastExecutedURLRequest = request
-        
         executeCallCount += 1
         
         DispatchQueue.global().async {

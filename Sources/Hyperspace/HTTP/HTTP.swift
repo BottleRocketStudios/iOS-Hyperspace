@@ -96,13 +96,48 @@ public struct HTTP {
         }
     }
     
+    /// Represents an HTTP request body
+    public struct Body: Equatable {
+        
+        /// The raw body data to be attached to the HTTP request
+        public let data: Data
+        
+        /// Initializes a new `HTTP.Body` instance given the raw `Data` to be attached.
+        /// - Parameter data: The raw `Data` to set as the HTTP body.
+        public init(_ data: Data) {
+            self.data = data
+        }
+        
+        /// Initializes a new `HTTP.Body` instance given an encodable object.
+        /// - Parameters:
+        ///   - encodable: The `Encodable` object to be included in the request.
+        ///   - encoder: The `JSONEncoder` to be used to encode the object.
+        public init<E: Encodable>(_ encodable: E, encoder: JSONEncoder = JSONEncoder()) throws {
+            let data = try encoder.encode(encodable)
+            self.init(data)
+        }
+        
+        /// Initializes a new `HTTP.Body` instance given an encodable object.
+        /// - Parameters:
+        ///   - encodable: The `Encodable` object to be included in the request.
+        ///   - container: A type of `EncodableContainer` in which to encode the object.
+        ///   - encoder: The `JSONEncoder` to be used to encode the object.
+        public init<E, C: EncodableContainer>(_ encodable: E, container: C.Type, encoder: JSONEncoder = JSONEncoder()) throws where C.Contained == E {
+            let data = try encoder.encode(encodable, in: container)
+            self.init(data)
+        }
+    }
+    
     /// Represents a HTTP response.
     public struct Response: Equatable {
 
         /// The raw HTTP status code for this response.
         public let code: Int
+        
+        /// The URL from which the `Response` originated.
+        public let url: URL?
 
-        /// The raw Data associated with the HTTP response, if any data was provided.
+        /// The raw `Data` associated with the HTTP response, if any data was provided.
         public let data: Data?
 
         /// The HTTP header fields for this response.
@@ -113,21 +148,32 @@ public struct HTTP {
             return HTTP.Status(code: code)
         }
 
-        /// A convenience property to encode the data associated with this response into a String. Can be useful for debugging.
+        /// A convenience property to encode the data associated with this response into a `String`. Can be useful for debugging.
         public var dataString: String? {
             return data.flatMap { String(data: $0, encoding: .utf8) }
         }
 
-        /// Initialize a new Response with any given HTTP status code and Data.
+        /// Initialize a new `Response` with any given HTTP status code and `Data`.
         ///
         /// - Parameters:
         ///   - code: The raw HTTP status code for this response.
-        ///   - data: The raw Data associated with the HTTP response, if any data was provided.
+        ///   - url: The `URL` from which this response was received.
+        ///   - data: The raw `Data` associated with the HTTP response, if any was provided.
         ///   - headers: The HTTP header fields for this response.
-        public init(code: Int, data: Data?, headers: [String: String]? = nil) {
+        public init(code: Int, url: URL? = nil, data: Data? = nil, headers: [String: String]? = nil) {
             self.code = code
+            self.url = url
             self.data = data
             self.headers = headers
+        }
+        
+        /// Initializes a new `Response` given a URL response and `Data`.
+        /// - Parameters:
+        ///   - httpURLResponse: The `HTTPURLResponse` returned by the backend.
+        ///   - data: The raw `Data` associated with the response, if any was provided.
+        init(httpURLResponse: HTTPURLResponse, data: Data? = nil) {
+            let headers = httpURLResponse.allHeaderFields as? [String: String]
+            self.init(code: httpURLResponse.statusCode, url: httpURLResponse.url, data: data, headers: headers)
         }
     }
 }

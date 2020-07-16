@@ -1,5 +1,5 @@
 //
-//  TrustValidatingNetworkService.swift
+//  TrustValidatingTransportService.swift
 //  Hyperspace
 //
 //  Created by Will McGinty on 2/1/19.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-/// This class builds upon the `NetworkServiceProtocol` to offer a quick option for performing server trust validation.
+/// This class builds upon the `Transporting` to offer a quick option for performing server trust validation.
 @available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
-public class TrustValidatingNetworkService: NetworkServiceProtocol {
+public class TrustValidatingTransportService: Transporting {
     
     class SessionDelegate: NSObject, URLSessionDelegate {
         
@@ -41,37 +41,36 @@ public class TrustValidatingNetworkService: NetworkServiceProtocol {
 
     // MARK: Properties
     
-    private let networkService: NetworkService
+    private let transportService: TransportService
     private let sessionTrustValidator: SessionDelegate
     
     // MARK: - Initializers
     
-    /// Returns an instance of `TrustValidatingNetworkService` capable of performing server trust validation based on the provided configuration.
+    /// Returns an instance of `TrustValidatingTransportService` capable of performing server trust validation based on the provided configuration.
     ///
     /// - Parameters:
     ///   - trustConfiguration: The configuration object used to govern the rules as to how server trust validation is performed on the network service.
-    ///   - sessionConfiguration: The configuration of the `URLSession` object used by the `NetworkService`.
+    ///   - sessionConfiguration: The configuration of the `URLSession` object used by the `TransportService`.
     ///   - networkActivityIndicatable: An object capable of displaying current network activity visually to the user.
     public init(trustConfiguration: TrustConfiguration, sessionConfiguration: URLSessionConfiguration = .default, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
         let trustDelegate = SessionDelegate(configuration: trustConfiguration)
         let session = URLSession(configuration: sessionConfiguration, delegate: trustDelegate, delegateQueue: .main)
-        let networkActivityController = networkActivityIndicatable.map { NetworkActivityController(indicator: $0) }
-        
-        self.networkService = NetworkService(session: session, networkActivityController: networkActivityController)
+    
+        self.transportService = TransportService(session: session, networkActivityIndicatable: networkActivityIndicatable)
         self.sessionTrustValidator = trustDelegate
     }
     
-    // MARK: - TrustValidatingNetworkService conformance to NetworkServiceProtocol
+    // MARK: - TrustValidatingTransportService conformance to Transporting
     
-    public func execute(request: URLRequest, completion: @escaping NetworkServiceCompletion) {
-        networkService.execute(request: request, completion: completion)
+    public func execute(request: URLRequest, completion: @escaping (TransportResult) -> Void) {
+        transportService.execute(request: request, completion: completion)
     }
     
     public func cancelTask(for request: URLRequest) {
-        networkService.cancelTask(for: request)
+        transportService.cancelTask(for: request)
     }
     
     public func cancelAllTasks() {
-        networkService.cancelAllTasks()
+        transportService.cancelAllTasks()
     }
 }
