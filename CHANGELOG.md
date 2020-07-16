@@ -52,6 +52,10 @@
 [Will McGinty](https://github.com/wmcginty)
 [#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
 
+* Make `TransportError` inits `public`..
+  [Earl Gaspard](https://github.com/earlgaspard)
+  [#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
+
 ##### Bug Fixes
 
 * Add an assertion to `BackendService` if a GET HTTP request with body data is detected.
