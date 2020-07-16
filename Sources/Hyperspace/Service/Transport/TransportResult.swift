@@ -25,7 +25,7 @@ public struct TransportError: Error, Equatable {
         
         // MARK: - Initializer
         
-        init(clientError: Error?) {
+        public init(clientError: Error?) {
             self = (clientError as? URLError).flatMap {
                 switch $0.code {
                 case .cancelled: return .cancelled
@@ -44,12 +44,12 @@ public struct TransportError: Error, Equatable {
     
     // MARK: - Initializers
     
-    init(code: Code, failingURL: URL? = nil) {
+    public init(code: Code, failingURL: URL? = nil) {
         self.code = code
         self.failingURL = failingURL
     }
     
-    init(clientError: Error?) {
+    public init(clientError: Error?) {
         let urlError = clientError as? URLError
         self.init(code: Code(clientError: clientError), failingURL: urlError?.failingURL)
     }
