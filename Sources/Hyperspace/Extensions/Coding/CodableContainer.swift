@@ -10,7 +10,7 @@ import Foundation
 
 // Represents something that is capable of Encoding itself (using `Swift.Encodable`) and contains a child type.
 public protocol EncodableContainer: Encodable {
-    
+
     /// The type of the `Swift.Encodable` child element.
     associatedtype Contained: Encodable
     

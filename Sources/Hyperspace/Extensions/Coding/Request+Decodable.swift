@@ -12,8 +12,6 @@ import Foundation
 
 public extension Request where Response: Decodable, Error: DecodingFailureRepresentable {
     
-    typealias Transformer = (TransportSuccess) -> Result<Response, Error>
-
     // MARK: - Initializer
     
     init(method: HTTP.Method,
