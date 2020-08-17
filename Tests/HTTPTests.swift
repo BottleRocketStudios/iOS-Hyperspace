@@ -120,4 +120,30 @@ class HTTPTests: XCTestCase {
             XCTFail("100 status should produce an 'unknown' response")
         }
     }
+
+    func test_HTTPBodyInitWithEncodable_ProducesProperlyEncodedData() {
+        let encodable = MockObject(title: "title", subtitle: "subtitle")
+        let encoder = JSONEncoder()
+
+        do {
+            let body = try HTTP.Body(encodable, encoder: encoder)
+            let data = try encoder.encode(encodable)
+            XCTAssertEqual(body.data, data)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+
+    func test_HTTPBodyInitWithEncodableAndContainer_ProducesProperlyEncodedData() {
+        let encodable = MockObject(title: "title", subtitle: "subtitle")
+        let encoder = JSONEncoder()
+
+        do {
+            let body = try HTTP.Body(encodable, container: MockCodableContainer.self, encoder: encoder)
+            let data = try encoder.encode(encodable, in: MockCodableContainer.self)
+            XCTAssertEqual(body.data, data)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
 }

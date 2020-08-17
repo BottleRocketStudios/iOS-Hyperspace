@@ -2,6 +2,8 @@
 
 #### Enhancements
 
+## High Level Changes
+
 * Changed underlying error in AnyError's NetworkServiceFailureInitializable implementation from NetworkServiceError to NetworkServiceFailure so it can return its failure response rather than nil.
 [Richard Burgess](https://github.com/rickbdotcom)
 [#95](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/95)
@@ -21,6 +23,38 @@
 * Migrate the request recovery strategy to the BackendServiceProtocol definition.
 [Will McGinty](https://github.com/wmcginty)
 [#110](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/110)
+
+* Rename `RequestRecoveryStrategy` to `RecoveryStrategy` and allow multiple to be attached to a single `BackendService`. They are executed in the order they are initialized.
+[Will McGinty](https://github.com/wmcginty)
+[#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
+
+* Rename `DecodingFailureInitializable` to `DecodingFailureRepresentable` and make the failing `HTTP.Response` available during initialization.
+[Will McGinty](https://github.com/wmcginty)
+[#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
+
+* Create an `HTTP.Body` type to abstract the `Data` of a `URLRequest`.
+[Will McGinty](https://github.com/wmcginty)
+[#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
+
+* Several changes to simplify and refine `DecodableContainer`, as well as introduce `EncodableContainer` and `CodableContainer`.
+[Will McGinty](https://github.com/wmcginty)
+[#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
+
+* Convert `Request` protocol into a `struct` and eliminate the `AnyRequest` type.  A `URLRequestCreationStrategy` has been created to allow for differences in `URLRequest` generation.
+[Will McGinty](https://github.com/wmcginty)
+[#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
+
+* Rename `Network*` to `Transport*` to provide a clearer distinction between the role of the `BackendService` and `TransportService`. 
+[Will McGinty](https://github.com/wmcginty)
+[#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
+
+* Utilize `URLError` as part of the `Transporting` protocol to allow for more granularity and detail in error reporting.
+[Will McGinty](https://github.com/wmcginty)
+[#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
+
+* Make `TransportError` inits `public`..
+  [Earl Gaspard](https://github.com/earlgaspard)
+  [#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
 
 ##### Bug Fixes
 

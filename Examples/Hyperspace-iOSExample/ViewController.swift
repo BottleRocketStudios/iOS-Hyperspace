@@ -18,13 +18,13 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let backendService = BackendService(networkService: NetworkService(networkActivityIndicatable: UIApplication.shared))
+    private let backendService = BackendService(transportService: TransportService(networkActivityIndicatable: UIApplication.shared))
     private lazy var trustValidatingBackendService: BackendService = {
         // Creates a trust configuration whereby requests to the domain 'jsonplaceholder.typicode.com' will be validated to ensure they are being served a certificate matching 'jsonplaceholder.der'
         let domainConfiguration = try? TrustConfiguration.DomainConfiguration(domain: "jsonplaceholder.typicode.com", certificates: certificate(named: "jsonplaceholder").map { [$0] } ?? [])
-        let validatingNetworkService = TrustValidatingNetworkService(trustConfiguration: domainConfiguration.map { [$0] } ?? [],
+        let validatingTransportService = TrustValidatingTransportService(trustConfiguration: domainConfiguration.map { [$0] } ?? [],
                                                                      networkActivityIndicatable: UIApplication.shared)
-        return BackendService(networkService: validatingNetworkService)
+        return BackendService(transportService: validatingTransportService)
     }()
     
     var preferredBackendService: BackendService {
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
 
 extension ViewController {
     private func getUser() {
-        let getUserRequest = GetUserRequest(userId: 1)
+        let getUserRequest = Request<User, AnyError>.getUser(withID: 1)
         
         preferredBackendService.execute(request: getUserRequest) { [weak self] result in
             debugPrint("Get user result: \(result)")
@@ -65,7 +65,7 @@ extension ViewController {
     
     private func createPost(titled title: String) {
         let post = NewPost(userId: 1, title: title, body: "")
-        let createPostRequest = CreatePostRequest(newPost: post)
+        let createPostRequest = Request<Post, AnyError>.createPost(post)
         
         preferredBackendService.execute(request: createPostRequest) { [weak self] result in
             debugPrint("Create post result: \(result)")
@@ -80,7 +80,7 @@ extension ViewController {
     }
     
     private func deletePost(postId: Int) {
-        let deletePostRequest = DeletePostRequest(postId: postId)
+        let deletePostRequest = Request<EmptyResponse, AnyError>.deletePost(withID: postId)
         
         preferredBackendService.execute(request: deletePostRequest) { [weak self] result in
             switch result {

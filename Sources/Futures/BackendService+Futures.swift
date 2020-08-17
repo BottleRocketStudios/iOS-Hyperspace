@@ -14,29 +14,14 @@ extension BackendServiceProtocol {
     ///
     /// - Parameters:
     ///   - request: The Request to be executed.
-    /// - Returns: A Future<T.ResponseType> that resolves to the request's response type.
-    public func execute<T: Request>(request: T) -> Future<T.ResponseType, T.ErrorType> {
-        let promise = Promise<T.ResponseType, T.ErrorType>()
+    /// - Returns: A Future<T> that resolves to the request's response type.
+    public func execute<T, U>(request: Request<T, U>) -> Future<T, U> {
+        let promise = Promise<T, U>()
         
         execute(request: request) { result in
             promise.complete(result)
         }
         
-        return promise.future
-    }
-
-    /// Executes the Request, returning a Future when finished.
-    ///
-    /// - Parameters:
-    ///   - recoverable: The Request to be executed, and is eligible to be recovered from in the case of failure.
-    /// - Returns: A Future<T.ResponseType> that resolves to the request's response type.
-    public func execute<T: Request & Recoverable>(recoverable: T) -> Future<T.ResponseType, T.ErrorType> {
-        let promise = Promise<T.ResponseType, T.ErrorType>()
-
-        execute(recoverable: recoverable) { result in
-            promise.complete(result)
-        }
-
         return promise.future
     }
 }

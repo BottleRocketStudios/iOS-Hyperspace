@@ -11,31 +11,31 @@ import BrightFutures
 @testable import Hyperspace
 
 class FutureTests: XCTestCase {
-    // MARK: Type Aliases
+    
+    // MARK: - Type Aliases
     typealias DefaultModel = RequestTestDefaults.DefaultModel
     
-    // MARK: Properties
+    // MARK: - Properties
     private let defaultModelJSONData = RequestTestDefaults.defaultModelJSONData
-    private let defaultRequest = RequestTestDefaults.DefaultRequest<DefaultModel>()
-    private let defaultSuccessResponse = HTTP.Response(code: 200, data: nil)
+    private let defaultRequest: Request<DefaultModel, MockBackendServiceError> = RequestTestDefaults.defaultRequest()
     
-    // MARK: Tests
+    // MARK: - Tests
     func test_FailingRequestAlsoFailsFuture() {
-        let failure = NetworkServiceFailure(error: .noData, response: nil)
+        let failure = TransportFailure(error: TransportError(code: .noInternetConnection), response: nil)
         executeBackendRequest(expectedResult: .failure(failure))
     }
     
     func test_SuccessfulResultAlsoSucceedsFuture() {
-        let success = NetworkServiceSuccess(data: defaultModelJSONData, response: defaultSuccessResponse)
+        let success = TransportSuccess(response: HTTP.Response(code: 200, data: defaultModelJSONData))
         executeBackendRequest(expectedResult: .success(success))
     }
     
-    // MARK: Private Helpers
-    private func executeBackendRequest(expectedResult: Result<NetworkServiceSuccess, NetworkServiceFailure>, file: StaticString = #file, line: UInt = #line) {
+    // MARK: - Private Helpers
+    private func executeBackendRequest(expectedResult: TransportResult, file: StaticString = #file, line: UInt = #line) {
         let expectation = self.expectation(description: "\(BackendService.self) Completion")
         
-        let networkService = MockNetworkService(responseResult: expectedResult)
-        let backendService = BackendService(networkService: networkService, recoveryStrategy: nil)
+        let transportService = MockTransportService(responseResult: expectedResult)
+        let backendService = BackendService(transportService: transportService)
         
         backendService.execute(request: defaultRequest).onSuccess { _ in
             XCTAssertTrue(expectedResult.isSuccess, file: file, line: line)

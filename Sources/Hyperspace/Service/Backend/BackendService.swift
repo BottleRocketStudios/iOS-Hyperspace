@@ -12,14 +12,14 @@ public class BackendService {
     
     // MARK: - Properties
     
-    private let networkService: NetworkServiceProtocol
-    public var recoveryStrategy: RequestRecoveryStrategy?
+    private let transportService: Transporting
+    public var recoveryStrategies: [RecoveryStrategy]
     
-    // MARK: - Init
+    // MARK: - Initializer
     
-    public init(networkService: NetworkServiceProtocol = NetworkService(), recoveryStrategy: RequestRecoveryStrategy? = nil) {
-        self.networkService = networkService
-        self.recoveryStrategy = recoveryStrategy
+    public init(transportService: Transporting = TransportService(), recoveryStrategies: RecoveryStrategy...) {
+        self.transportService = transportService
+        self.recoveryStrategies = recoveryStrategies
     }
     
     deinit {
@@ -30,25 +30,23 @@ public class BackendService {
 // MARK: - BackendService Conformance to BackendServiceProtocol
 
 extension BackendService: BackendServiceProtocol {
-
-    public func execute<T: Request>(request: T, completion: @escaping BackendServiceCompletion<T.ResponseType, T.ErrorType>) {
+    
+    public func execute<R, E>(request: Request<R, E>, completion: @escaping (Result<R, E>) -> Void) {
         assert(!(request.method == .get && request.body != nil), "An HTTP GET request should not contain request body data.")
         
-        networkService.execute(request: request.urlRequest) { result in
+        transportService.execute(request: request.urlRequest) { [weak self] result in
             switch result {
-            case .success(let serviceSuccess):
-                BackendServiceHelper.handleNetworkServiceSuccess(serviceSuccess, for: request, completion: completion)
-            case .failure(let serviceFailure):
-                BackendServiceHelper.handleNetworkServiceFailure(serviceFailure, completion: completion)
+            case .success(let success): self?.executeOnMainThread(completion(request.transform(success: success)))
+            case .failure(let failure): self?.attemptToRecover(from: E(transportFailure: failure), executing: request, completion: completion)
             }
         }
     }
-    
+
     public func cancelTask(for request: URLRequest) {
-        networkService.cancelTask(for: request)
+        transportService.cancelTask(for: request)
     }
     
     public func cancelAllTasks() {
-        networkService.cancelAllTasks()
+        transportService.cancelAllTasks()
     }
 }

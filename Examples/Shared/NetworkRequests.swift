@@ -13,6 +13,7 @@ import Hyperspace
 
 // An extension like this can be used so that you don't have to specify them in every Request you create.
 extension Request {
+    
     static var defaultTimeout: TimeInterval {
         return 30.0
     }
@@ -32,69 +33,28 @@ extension Request {
 
 // MARK: - Get User Request
 
-struct GetUserRequest: Request {
+extension Request where Response == User, Error == AnyError {
     
-    // Define the model we want to get back
-    typealias ResponseType = User
-    typealias ErrorType = AnyError
-    
-    // Define Request property values
-    var method: HTTP.Method = .get
-    var url: URL
-    
-    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-    var body: Data?
-    
-    // Define any custom properties needed
-    private let userId: Int
-    
-    // Initializer
-    init(userId: Int) {
-        self.userId = userId
-        self.url = URL(string: "https://jsonplaceholder.typicode.com/users/\(userId)")!
+    static func getUser(withID id: Int) -> Request<User, AnyError> {
+        return Request(method: .get, url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
     }
 }
 
 // MARK: - Create Post Request
 
-struct CreatePostRequest: Request {
-
-    // Define the model we want to get back
-    typealias ResponseType = Post
-    typealias ErrorType = AnyError
+extension Request where Response == Post, Error == AnyError {
     
-    // Define Request property values
-    var method: HTTP.Method = .post
-    var url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
-    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
-    var body: Data?
-    
-    // Define any custom properties needed
-    private let newPost: NewPost
-    
-    // Initializer
-    init(newPost: NewPost) {
-        self.newPost = newPost
-        body = try? JSONEncoder().encode(newPost)
+    static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
+        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
+                       body: try? HTTP.Body(post))
     }
 }
 
 // MARK: - Delete Post Request
 
-struct DeletePostRequest: Request {
-    typealias ResponseType = EmptyResponse
-    typealias ErrorType = AnyError
+extension Request where Response == EmptyResponse, Error == AnyError {
     
-    var method: HTTP.Method = .delete
-    var url: URL
-    
-    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]?
-    var body: Data?
-    
-    private let postId: Int
-    
-    init(postId: Int) {
-        self.postId = postId
-        self.url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(postId)")!
+    static func deletePost(withID id: Int) -> Request<EmptyResponse, AnyError> {
+        return Request(method: .delete, url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!)
     }
 }

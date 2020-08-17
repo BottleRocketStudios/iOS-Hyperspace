@@ -8,66 +8,57 @@
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace)
 [![codebeat badge](https://codebeat.co/badges/ebf9c2d1-d736-4d75-85cc-5c0feb19cab1)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-hyperspace-master-5e50b1a2-1d6c-48a3-8d1f-2407b2f439ba)
 
+
 ## Purpose
 
 This library provides a simple abstraction around URLSession and HTTP. There are a few main goals:
 
-* Wrap up all the HTTP boilerplate (method, headers, status codes, etc.) to allow your app to deal with them in a type-safe way.
-* Provide a thin wrapper around URLSession:
-    * Make error handling more pleasant.
-    * Make it easy to define the details of your request and the model type you want to get back.
 * Keep things simple.
-    * There are currently around 800 SLOC, with about a quarter of that being boilerplate HTTP definitions.
-    * Of course, complexity will increase over time as new features are added, but we're not trying to cover every possible networking use case here.
+* Keep the overall library size to a minimum. Of course, there will be some boilerplate involved (such as the `HTTP` definitions), but our main goal is to keep the library highly functional and maintainable without over-engineering.
+* Tailor the library to the networking use cases that we encounter the most often. We will continue to add features based on the common needs across all of the apps that we build.
 
 ## Key Concepts
 
 * **HTTP** - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request!
-* **Request** - A protocol that defines the details of a request, including the desired result type. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
-* **NetworkService** - Uses a `NetworkSession` (`URLSession` by default) to execute `URLRequests`. Deals with raw `HTTP` and `Data`.
-* **BackendService** - Uses a `NetworkService` to execute `Requests`. Transforms the raw `Data` returned from the `NetworkService` into the response model type defined by the `Request`. **This is the main worker object your app will deal with directly**.
+* **Request** - A struct that defines the details of a network request, including the desired result and error types. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
+* **TransportService** - Uses a `TransportSession` (`URLSession` by default) to execute `URLRequests`. Deals with raw `HTTP` and `Data`.
+* **BackendService** - Uses a `TransportService` to execute `Requests`. Transforms the raw `Data` returned from the `TransportService` into the response model type defined by the `Request`. **This is the main worker object your app will deal with directly**.
 
 ## Usage
 
 ### 1. Create Requests
 
-You have two options to create requests - create your own struct or class that conforms to the `Request` protocol or by utilize the built-in `AnyRequest<T>` type-erased struct. Creating your own structs or classes is a bit more explicit, but can help encourage encapsulation and testability if your requests are complex. The `AnyRequest<T>` struct is generally fine to use for most cases.
+You have multiple options when creating requests- including creating static functions to reduce the boilerplace when creating a `Request` object, or you can simply create them locally. In addition, you can still create your own custom struct that wraps and vends a `Request` object if your network requests are complex.
 
-#### Option 1 - Adopting the `Request` protocol
+#### Option 1 - Extending `Request` 
 
-The `CreatePostRequest` in the example below represents a simple request to create a new post in something like a social network feed:
+The example below illustrates how to create an extension on `Request` which can drastically reduce the boilerplate when creating a request to create a new post in something like a social network feed. It takes advantage of the many defaults into `Request` (all are which are customizable) to keep the definition brief:
 ```swift
-struct CreatePostRequest: Request {
-    // Define the model we want to get back
-    typealias ResponseType = Post
-    typealias ErrorType = AnyError
-
-    // Define Request property values
-    var method: HTTP.Method = .post
-    var url = URL(string: "http://jsonplaceholder.typicode.com/posts")!
-    var headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = [.contentType: .applicationJSON]
-    var body: Data? {
-        let encoder = JSONEncoder()
-        return try? encoder.encode(newPost)
-    }
-
-    // Define any custom properties needed
-    private let newPost: NewPost
-
-    // Initializer
-    init(newPost: NewPost) {
-        self.newPost = newPost
+extension Request {
+    static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
+        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
+                       body: try? HTTP.Body(post))
     }
 }
 ```
 
-#### Option 2 - Using the `AnyRequest<T>` struct
+#### Option 2 - Define Each `Request` Locally
 
 ```swift
-let createPostRequest = AnyRequest<Post>(method: .post,
-                                         url: URL(string: "http://jsonplaceholder.typicode.com/posts")!,
-                                         headers: [.contentType: .applicationJSON],
-                                         body: postBody)
+let createPostRequest = Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
+        body: try? HTTP.Body(post))
+```
+
+#### Option 3 - Create a `CreatePostRequest` that wraps a `Request`
+```swift
+struct CreatePostRequest {
+    let newPost: NewPost
+    
+    var request: Request<Post, AnyError> {
+        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
+                       body: try? HTTP.Body(post))
+    }
+}
 ```
 
 For the above examples, the `Post` response type and `NewPost` body are defined as follows:
@@ -90,20 +81,7 @@ struct NewPost: Encodable {
 
 ### 2. Create Request defaults (optional)
 
-To avoid having to define default `Request` property values for every request in your app, it can be useful to extend `Request` with the defaults you want every request to have:
-```swift
-extension Request {
-    var cachePolicy: URLRequest.CachePolicy {
-        return .reloadIgnoringLocalCacheData
-    }
-
-    var timeout: TimeInterval {
-        return 60.0
-    }
-}
-```
-
-Alternatively, you can also modify the values of `RequestDefaults` directly:
+To avoid having to define default `Request` property values for every request in your app, it can be useful to rely on the `RequestDefaults` provided by Hyperspace. These can even be customized:
 ```swift
 RequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
 RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
@@ -224,7 +202,7 @@ github "BottleRocketStudios/iOS-Hyperspace"
 
 Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
-NOTE: Don't forget to add both `Hyperspace.framework` and the `BrightFutures.framework` dependency to your project.
+NOTE: Don't forget to add both `Hyperspace.framework` and the `BrightFutures.framework` dependency to your project (if using the `Futures` subspec).
 
 ### Swift Package Manager
 

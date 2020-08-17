@@ -11,28 +11,36 @@ import XCTest
 
 class DecodingFailureTests: XCTestCase {
     
-    private struct MockDecodeError: DecodingFailureInitializable {
+    private struct MockDecodeError: DecodingFailureRepresentable {
+        var transportError: TransportError?
+        var failureResponse: HTTP.Response?
         
-        let error: DecodingError
-        let type: Decodable.Type
-        let data: Data
+        var error: DecodingError?
+        var type: Decodable.Type?
+        var response: HTTP.Response?
+
+        init(transportFailure: TransportFailure) {
+            transportError = transportFailure.error
+            failureResponse = transportFailure.response
+        }
         
-        init(error: DecodingError, decoding: Decodable.Type, data: Data) {
+        init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
             self.error = error
             self.type = decoding
-            self.data = data
+            self.response = response
         }
     }
     
     func test_DecodingFailure_CatchesFailedTypeInformation() {
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
 
-        let transformer: RequestTransformBlock<MockDecodableContainer, MockDecodeError> = RequestDefaults.successTransformer(for: JSONDecoder())
-        let serviceSuccess = NetworkServiceSuccess(data: objectJSON, response: HTTP.Response(code: 200, data: objectJSON))
+        let transformer = Request<MockCodableContainer, MockDecodeError>.successTransformer(for: JSONDecoder())
+        let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: objectJSON))
         let result = transformer(serviceSuccess)
         
-        guard let error = result.error else { XCTFail("The decode should fail."); return }
-        XCTAssertEqual(String(describing: error.type), String(describing: MockDecodableContainer.self))
-        XCTAssertEqual(error.data, objectJSON)
+        guard let error = result.error else { return XCTFail("The decode should fail.") }
+        guard let type = error.type else { return XCTFail("The decoding failure should detect the failed type information") }
+        XCTAssertEqual(String(describing: type), String(describing: MockCodableContainer.self))
+        XCTAssertEqual(error.response?.data, objectJSON)
     }
 }
