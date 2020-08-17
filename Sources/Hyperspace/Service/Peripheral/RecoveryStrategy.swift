@@ -39,7 +39,7 @@ public extension Recoverable {
 }
 
 @available(*, renamed: "RecoveryStrategy")
-typealias RequestRecoveryStrategy = RecoveryStrategy
+public typealias RequestRecoveryStrategy = RecoveryStrategy
 
 /// Represents a type that is capable of determining the recovery strategy for a failed `Request`.
 public protocol RecoveryStrategy {
