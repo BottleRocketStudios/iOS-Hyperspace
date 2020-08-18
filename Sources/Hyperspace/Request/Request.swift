@@ -12,8 +12,7 @@ import Foundation
 public struct Request<Response, Error: TransportFailureRepresentable>: Recoverable {
     
     // MARK: - Typealias
-    
-    public typealias TransformBlock = (TransportSuccess) -> Result<Response, Error>
+    public typealias Transformer = (TransportSuccess) -> Result<Response, Error>
     
     // MARK: - Properties
     
@@ -45,7 +44,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     public var recoveryAttemptCount: UInt = 0
     
     /// Attempts to parse the provided `TransportSuccess` into the associated response model type for this request.
-    public var successTransformer: TransformBlock
+    public var successTransformer: Transformer
     
     // MARK: - Initializer
     
@@ -55,7 +54,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
                 body: HTTP.Body? = nil,
                 cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
                 timeout: TimeInterval = RequestDefaults.defaultTimeout,
-                successTransformer: @escaping TransformBlock) {
+                successTransformer: @escaping Transformer) {
         self.method = method
         self.url = url
         self.headers = headers

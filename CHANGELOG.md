@@ -4,6 +4,10 @@
 
 ## High Level Changes
 
+* Add deprecated typealias to ease migration to 4.0
+[Will McGinty](https://github.com/wmcginty)
+[#124(https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/124)
+
 * Changed underlying error in AnyError's NetworkServiceFailureInitializable implementation from NetworkServiceError to NetworkServiceFailure so it can return its failure response rather than nil.
 [Richard Burgess](https://github.com/rickbdotcom)
 [#95](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/95)
