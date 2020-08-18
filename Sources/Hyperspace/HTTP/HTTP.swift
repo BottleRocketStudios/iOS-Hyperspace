@@ -23,20 +23,28 @@ public struct HTTP {
     }
     
     /// Represents the key portion of a HTTP header field key-value pair.
-    public struct HeaderKey: RawRepresentable, Equatable, Hashable {
+    public struct HeaderKey: RawRepresentable, Equatable, Hashable, ExpressibleByStringLiteral {
         public var rawValue: String
         
         public init(rawValue: String) {
             self.rawValue = rawValue
         }
+
+        public init(stringLiteral value: String) {
+            self.rawValue = value
+        }
     }
     
     /// Represents the value portion of a HTTP header field key-value pair.
-    public struct HeaderValue: RawRepresentable, Equatable {
+    public struct HeaderValue: RawRepresentable, Equatable, ExpressibleByStringLiteral {
         public var rawValue: String
         
         public init(rawValue: String) {
             self.rawValue = rawValue
+        }
+
+        public init(stringLiteral value: String) {
+            self.rawValue = value
         }
     }
     
@@ -100,31 +108,52 @@ public struct HTTP {
     public struct Body: Equatable {
         
         /// The raw body data to be attached to the HTTP request
-        public let data: Data
+        public let data: Data?
+        public let additionalHeaders: [HeaderKey: HeaderValue]
         
         /// Initializes a new `HTTP.Body` instance given the raw `Data` to be attached.
-        /// - Parameter data: The raw `Data` to set as the HTTP body.
-        public init(_ data: Data) {
+        /// - Parameters:
+        ///   - data: The raw `Data` to set as the HTTP body.
+        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
+        public init(_ data: Data?, additionalHeaders: [HeaderKey: HeaderValue] = [:]) {
             self.data = data
+            self.additionalHeaders = additionalHeaders
         }
         
-        /// Initializes a new `HTTP.Body` instance given an encodable object.
+        /// Returns a new `HTTP.Body` instance given an encodable object.
         /// - Parameters:
         ///   - encodable: The `Encodable` object to be included in the request.
         ///   - encoder: The `JSONEncoder` to be used to encode the object.
-        public init<E: Encodable>(_ encodable: E, encoder: JSONEncoder = JSONEncoder()) throws {
+        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
+        /// - Returns: Returns a new instance of `HTTP.Body` with the given encodable representation.
+        public static func json<E: Encodable>(_ encodable: E, encoder: JSONEncoder = JSONEncoder(),
+                                              additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON]) throws -> HTTP.Body {
             let data = try encoder.encode(encodable)
-            self.init(data)
+            return HTTP.Body(data, additionalHeaders: additionalHeaders)
         }
         
-        /// Initializes a new `HTTP.Body` instance given an encodable object.
+        /// Returns a new `HTTP.Body` instance given an encodable object.
         /// - Parameters:
         ///   - encodable: The `Encodable` object to be included in the request.
         ///   - container: A type of `EncodableContainer` in which to encode the object.
         ///   - encoder: The `JSONEncoder` to be used to encode the object.
-        public init<E, C: EncodableContainer>(_ encodable: E, container: C.Type, encoder: JSONEncoder = JSONEncoder()) throws where C.Contained == E {
-            let data = try encoder.encode(encodable, in: container)
-            self.init(data)
+        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
+        /// - Returns: Returns a new instance of `HTTP.Body` with the given encodable representation.
+        public static func json<E, C: EncodableContainer>(_ encodable: E, container: C.Type, encoder: JSONEncoder = JSONEncoder(),
+                                                          additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON])
+            throws -> HTTP.Body where C.Contained == E {
+                let data = try encoder.encode(encodable, in: container)
+                return HTTP.Body(data, additionalHeaders: additionalHeaders)
+        }
+
+        /// Initializes a new `HTTP.Body` instance given a set of URL form content
+        /// - Parameters:
+        ///   - formContent: An array of `(String, String)` representing the content to be encoded.
+        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
+        /// - Returns: Returns a new instance of `HTTP.Body` with the given form content.
+        public static func urlForm(using formContent: [(String, String)], additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationFormURLEncoded]) -> HTTP.Body {
+            let formURLEncoder = FormURLEncoder()
+            return HTTP.Body(formURLEncoder.encode(formContent), additionalHeaders: additionalHeaders)
         }
     }
     

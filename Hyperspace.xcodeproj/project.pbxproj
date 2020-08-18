@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E03975D24EB8CD50078BA7D /* FormURLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03975C24EB8CD50078BA7D /* FormURLEncoder.swift */; };
 		0E29092D21349F600031F67C /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
 		0E29092E21349F610031F67C /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
 		0E347E6421599B7D00BF18FA /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
@@ -331,6 +332,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E03975C24EB8CD50078BA7D /* FormURLEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncoder.swift; sourceTree = "<group>"; };
 		0E29092B21349F320031F67C /* DecodingFailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingFailureTests.swift; sourceTree = "<group>"; };
 		0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+JSON.swift"; sourceTree = "<group>"; };
 		0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustValidator.swift; sourceTree = "<group>"; };
@@ -704,6 +706,7 @@
 				60AC83461FF596B600120172 /* Request.swift */,
 				B476477424136071003C97E9 /* Request.URLRequestCreationStrategy.swift */,
 				0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */,
+				0E03975C24EB8CD50078BA7D /* FormURLEncoder.swift */,
 				0EEBA729226FA482007980C1 /* AnyError.swift */,
 			);
 			path = Request;
@@ -1420,6 +1423,7 @@
 				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
 				0EF57B972203CD0B00484C01 /* AuthenticationChallenge.swift in Sources */,
 				B469328F2413539700D2B650 /* TransportResult.swift in Sources */,
+				0E03975D24EB8CD50078BA7D /* FormURLEncoder.swift in Sources */,
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* CodableContainer.swift in Sources */,
 				CB0DE06321E7E62500661F0E /* BackendService+Futures.swift in Sources */,

@@ -34,8 +34,9 @@ public extension Request {
                 urlRequest.httpMethod = request.method.rawValue
                 urlRequest.httpBody = request.body?.data
 
-                // Transform the headers from [HTTP.HeaderKey: HTTP.HeaderValue] to [String: String]
-                let rawHeaders: [String: String] = Dictionary(uniqueKeysWithValues: (request.headers ?? [:]).map { ($0.rawValue, $1.rawValue) })
+                // Transform the headers from [HTTP.HeaderKey: HTTP.HeaderValue] to [String: String], preferring those explicitly added to the request
+                let mergedHeaders = (request.headers ?? [:]).merging(request.body?.additionalHeaders ?? [:]) { lhs, _ in lhs }
+                let rawHeaders: [String: String] = Dictionary(uniqueKeysWithValues: mergedHeaders.map { ($0.rawValue, $1.rawValue) })
                 urlRequest.allHTTPHeaderFields = rawHeaders
 
                 return urlRequest
