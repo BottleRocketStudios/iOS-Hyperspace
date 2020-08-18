@@ -55,6 +55,10 @@
 * Make `TransportError` inits `public`..
   [Earl Gaspard](https://github.com/earlgaspard)
   [#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
+  
+  * Create a form URL encoded `HTTP.Body` convenience
+  [Will McGinty](https://github.com/wmcginty)
+  [#125](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/125)
 
 ##### Bug Fixes
 
