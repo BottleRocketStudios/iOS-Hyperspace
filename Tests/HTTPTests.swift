@@ -35,6 +35,7 @@ class HTTPTests: XCTestCase {
         
         headerKeys.forEach { (key, value) in
             XCTAssertEqual(key, HTTP.HeaderKey(rawValue: value))
+            XCTAssertEqual(key, HTTP.HeaderKey(stringLiteral: value))
         }
     }
     
@@ -60,6 +61,7 @@ class HTTPTests: XCTestCase {
 
         headerValues.forEach { (key, value) in
             XCTAssertEqual(value, HTTP.HeaderValue(rawValue: key))
+            XCTAssertEqual(value, HTTP.HeaderValue(stringLiteral: key))
         }
     }
     
@@ -121,7 +123,7 @@ class HTTPTests: XCTestCase {
         }
     }
 
-    func test_HTTPBodyInitWithEncodable_ProducesProperlyEncodedData() {
+    func test_HTTPBodyWithEncodable_ProducesProperlyEncodedData() {
         let encodable = MockObject(title: "title", subtitle: "subtitle")
         let encoder = JSONEncoder()
 
@@ -134,7 +136,7 @@ class HTTPTests: XCTestCase {
         }
     }
 
-    func test_HTTPBodyInitWithEncodableAndContainer_ProducesProperlyEncodedData() {
+    func test_HTTPBodyWithEncodableAndContainer_ProducesProperlyEncodedData() {
         let encodable = MockObject(title: "title", subtitle: "subtitle")
         let encoder = JSONEncoder()
 
@@ -145,5 +147,14 @@ class HTTPTests: XCTestCase {
         } catch {
             XCTFail(error.localizedDescription)
         }
+    }
+
+    func test_HTTPBodyWithFormContent_ProducesProperlyEncodedData() {
+        let content = [("hello world", "hello world")]
+        let encoder = FormURLEncoder()
+
+        let body = HTTP.Body.urlForm(using: content)
+        let data = encoder.encode(content)
+        XCTAssertEqual(body.data, data)
     }
 }

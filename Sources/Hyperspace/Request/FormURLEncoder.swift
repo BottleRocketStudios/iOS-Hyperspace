@@ -26,7 +26,7 @@ struct FormURLEncoder {
 
 // MARK: - Helper
 
-private extension FormURLEncoder {
+extension FormURLEncoder {
 
     func formURLEscaped(string: String) -> String? {
         return string.replacingOccurrences(of: "\n", with: "\r\n")
@@ -36,7 +36,7 @@ private extension FormURLEncoder {
 
 // MARK: - URLForm Allowed Character Set
 
-private extension CharacterSet {
+extension CharacterSet {
 
     /* The `urlQueryAllowed` character set with the following modifications:
      - The " " added (it will later be converted to a "+"
