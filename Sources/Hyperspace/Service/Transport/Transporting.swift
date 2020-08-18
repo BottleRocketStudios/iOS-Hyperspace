@@ -8,8 +8,14 @@
 
 import Foundation
 
+@available(*, renamed: "TransportResult")
+public typealias NetworkServiceResult = TransportResult
+
 /// Represents the possible resulting values of a `Request` using a `TransportService`.
 public typealias TransportResult = Result<TransportSuccess, TransportFailure>
+
+@available(*, renamed: "Transporting")
+public typealias NetworkServiceProtocol = Transporting
 
 /// Represents something that can execute a URLRequest.
 public protocol Transporting {

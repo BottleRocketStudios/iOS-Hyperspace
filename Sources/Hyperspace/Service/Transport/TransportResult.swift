@@ -56,6 +56,10 @@ public struct TransportError: Error, Equatable {
 }
 
 /// Represents the successful result of executing a `Request` using a `TransportService`.
+
+@available(*, renamed: "TransportSuccess")
+public typealias NetworkServiceSuccess = TransportSuccess
+
 public struct TransportSuccess: Equatable {
     public let response: HTTP.Response
     public var data: Data { return response.data ?? Data() }
@@ -64,6 +68,9 @@ public struct TransportSuccess: Equatable {
         self.response = response
     }
 }
+
+@available(*, renamed: "TransportFailure")
+public typealias NetworkServiceFailure = TransportFailure
 
 /// Represents the failed result of executing a `Request` using a `TransportService`.
 public struct TransportFailure: Error, Equatable {
