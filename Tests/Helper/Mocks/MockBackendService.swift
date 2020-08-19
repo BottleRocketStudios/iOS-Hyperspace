@@ -52,7 +52,7 @@ extension MockBackendServiceError: Equatable {
 
 class MockBackendService: BackendServiceProtocol {
     func execute<T, U>(request: Request<T, U>, completion: @escaping (Result<T, U>) -> Void) {
-        let failure = TransportFailure(error: .init(code: .timedOut), response: nil)
+        let failure = TransportFailure(error: .init(code: .timedOut), request: HTTP.Request(urlRequest: request.urlRequest), response: nil)
         completion(.failure(U(transportFailure: failure)))
     }
 

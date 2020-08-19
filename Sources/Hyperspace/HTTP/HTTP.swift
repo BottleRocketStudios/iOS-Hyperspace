@@ -127,31 +127,54 @@ public struct HTTP {
             self.init(data)
         }
     }
+
+    /// Represents an HTTP request
+    public struct Request: Equatable {
+
+        ///
+        public let url: URL?
+
+        ///
+        public let headers: [String: String]?
+
+        ///
+        public let body: Data?
+
+        /// <#Description#>
+        /// - Parameters:
+        ///   - url: <#url description#>
+        ///   - headers: <#headers description#>
+        ///   - body: <#body description#>
+        public init(url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
+            self.url = url
+            self.headers = headers
+            self.body = body
+        }
+
+        /// <#Description#>
+        /// - Parameter urlRequest: <#urlRequest description#>
+        public init(urlRequest: URLRequest) {
+            self.init(url: urlRequest.url, headers: urlRequest.allHTTPHeaderFields, body: urlRequest.httpBody)
+        }
+    }
     
     /// Represents a HTTP response.
     public struct Response: Equatable {
 
-        /// The raw HTTP status code for this response.
+        /// The `HTTP.Request` object used to receive this response
+        public let request: Request
+
+        /// The raw HTTP status code for this response
         public let code: Int
-        
-        /// The URL from which the `Response` originated.
+
+        /// The `URL` from which the `Response` originated.
         public let url: URL?
 
-        /// The raw `Data` associated with the HTTP response, if any data was provided.
-        public let data: Data?
+        /// The raw `Data` associated with the HTTP response, if any was provided.
+        public let body: Data?
 
         /// The HTTP header fields for this response.
         public let headers: [String: String]?
-
-        /// The parsed HTTP status associated with this response.
-        public var status: HTTP.Status {
-            return HTTP.Status(code: code)
-        }
-
-        /// A convenience property to encode the data associated with this response into a `String`. Can be useful for debugging.
-        public var dataString: String? {
-            return data.flatMap { String(data: $0, encoding: .utf8) }
-        }
 
         /// Initialize a new `Response` with any given HTTP status code and `Data`.
         ///
@@ -160,10 +183,11 @@ public struct HTTP {
         ///   - url: The `URL` from which this response was received.
         ///   - data: The raw `Data` associated with the HTTP response, if any was provided.
         ///   - headers: The HTTP header fields for this response.
-        public init(code: Int, url: URL? = nil, data: Data? = nil, headers: [String: String]? = nil) {
+        public init(request: Request, code: Int, url: URL? = nil, body: Data? = nil, headers: [String: String]? = nil) {
+            self.request = request
             self.code = code
             self.url = url
-            self.data = data
+            self.body = body
             self.headers = headers
         }
         
@@ -171,9 +195,25 @@ public struct HTTP {
         /// - Parameters:
         ///   - httpURLResponse: The `HTTPURLResponse` returned by the backend.
         ///   - data: The raw `Data` associated with the response, if any was provided.
-        init(httpURLResponse: HTTPURLResponse, data: Data? = nil) {
+        init(request: HTTP.Request, httpURLResponse: HTTPURLResponse, body: Data? = nil) {
             let headers = httpURLResponse.allHeaderFields as? [String: String]
-            self.init(code: httpURLResponse.statusCode, url: httpURLResponse.url, data: data, headers: headers)
+            self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url, body: body, headers: headers)
+        }
+
+        // MARK: - Public
+        
+        /// The parsed HTTP status associated with this response.
+        public var status: HTTP.Status {
+            return HTTP.Status(code: code)
+        }
+
+        public var statusMessage: String {
+            return HTTPURLResponse.localizedString(forStatusCode: code)
+        }
+
+        /// A convenience property to encode the data associated with this response into a `String`. Can be useful for debugging.
+        public var bodyString: String? {
+            return body.flatMap { String(data: $0, encoding: .utf8) }
         }
     }
 }

@@ -13,6 +13,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     
     // MARK: - Typealias
     public typealias Transformer = (TransportSuccess) -> Result<Response, Error>
+    public typealias DecodingErrorTransformer = (DecodingError, Decodable.Type, HTTP.Response) -> Error
     
     // MARK: - Properties
     

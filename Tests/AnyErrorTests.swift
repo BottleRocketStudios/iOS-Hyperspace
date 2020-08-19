@@ -20,7 +20,7 @@ class AnyErrorTests: XCTestCase {
     }
 
     func test_AnyError_CreatesSuccessfullyFromTransportFailure() {
-        let failure = TransportFailure(error: .init(code: .noInternetConnection), response: nil)
+        let failure = TransportFailure(error: .init(code: .noInternetConnection), request: HTTP.Request(), response: nil)
         let anyError = AnyError(transportFailure: failure)
 
         XCTAssertTrue(anyError.error is TransportFailure)

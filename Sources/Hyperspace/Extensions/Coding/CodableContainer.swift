@@ -63,7 +63,7 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
                                                           errorTransformer: @escaping (DecodingError, Decodable.Type, HTTP.Response) -> Error) -> (TransportSuccess) -> Result<Response, Error> where C.Contained == Response {
         return { transportSuccess in
             do {
-                let decodedResponse = try decoder.decode(C.self, from: transportSuccess.data)
+                let decodedResponse = try decoder.decode(C.self, from: transportSuccess.body ?? Data())
                 return .success(decodedResponse.element)
                 
             } catch let error as DecodingError {

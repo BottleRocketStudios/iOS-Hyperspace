@@ -63,12 +63,14 @@ class RecoverableTests: XCTestCase {
         
         // MARK: Presets
         static func protectedService<T: Encodable>(for object: T) -> MockRecoverableTransportService {
+            
             return MockRecoverableTransportService { request -> TransportResult in
+                let httpRequest = HTTP.Request()
                 if request.allHTTPHeaderFields?["Authorization"] != nil {
                     let data = try! JSONEncoder().encode(object)
-                    return .success(TransportSuccess(response: HTTP.Response(code: 200, data: data)))
+                    return .success(TransportSuccess(response: HTTP.Response(request: httpRequest, code: 200, body: data)))
                 } else {
-                    return .failure(TransportFailure(error: .init(code: .clientError(.unauthorized)), response: nil))
+                    return .failure(TransportFailure(error: .init(code: .clientError(.unauthorized)), request: httpRequest, response: nil))
                 }
             }
         }
