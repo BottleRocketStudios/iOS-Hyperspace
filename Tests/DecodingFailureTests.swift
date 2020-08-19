@@ -13,21 +13,17 @@ class DecodingFailureTests: XCTestCase {
     
     private struct MockDecodeError: DecodingFailureRepresentable {
         var transportError: TransportError?
+        var decodingFailure: DecodingFailure?
         var failureResponse: HTTP.Response?
-        
-        var error: DecodingError?
-        var type: Decodable.Type?
-        var response: HTTP.Response?
 
         init(transportFailure: TransportFailure) {
             transportError = transportFailure.error
             failureResponse = transportFailure.response
         }
-        
-        init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
-            self.error = error
-            self.type = decoding
-            self.response = response
+
+        init(decodingFailure: DecodingFailure) {
+            self.decodingFailure = decodingFailure
+            self.failureResponse = decodingFailure.response
         }
     }
     
@@ -39,8 +35,9 @@ class DecodingFailureTests: XCTestCase {
         let result = transformer(serviceSuccess)
         
         guard let error = result.error else { return XCTFail("The decode should fail.") }
-        guard let type = error.type else { return XCTFail("The decoding failure should detect the failed type information") }
-        XCTAssertEqual(String(describing: type), String(describing: MockCodableContainer.self))
-        XCTAssertEqual(error.response?.body, objectJSON)
+        XCTAssertEqual(error.failureResponse?.body, objectJSON)
+
+        guard let failingType = error.decodingFailure?.decodingContext?.failingType else { return XCTFail("The decoding should fail because the JSONDecoder failed.") }
+        XCTAssertEqual(String(describing: failingType), String(describing: MockCodableContainer.self))
     }
 }

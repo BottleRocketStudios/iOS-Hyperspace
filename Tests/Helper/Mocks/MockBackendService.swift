@@ -17,9 +17,9 @@ public enum MockBackendServiceError: TransportFailureRepresentable, DecodingFail
     public init(transportFailure: TransportFailure) {
         self = .networkError(transportFailure.error, transportFailure.response)
     }
-    
-    public init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
-        self = .dataTransformationError(error)
+
+    public init(decodingFailure: DecodingFailure) {
+        self = .dataTransformationError(decodingFailure)
     }
     
     public var transportError: TransportError? {

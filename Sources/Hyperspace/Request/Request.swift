@@ -13,7 +13,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     
     // MARK: - Typealias
     public typealias Transformer = (TransportSuccess) -> Result<Response, Error>
-    public typealias DecodingErrorTransformer = (DecodingError, Decodable.Type, HTTP.Response) -> Error
+    public typealias DecodingFailureTransformer = (DecodingFailure) -> Error
     
     // MARK: - Properties
     
@@ -152,10 +152,11 @@ public extension Request {
     }
 }
 
-// MARK: - Request Default Implementations [EmptyResponse]
+// MARK: - Request Default Implementations EmptyResponse
 
 public extension Request where Response == EmptyResponse {
-    
+
+    @available(*, deprecated, message: "Use `Request.withEmptyResponse` instead.")
     init(method: HTTP.Method,
          url: URL,
          headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,

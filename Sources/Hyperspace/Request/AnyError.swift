@@ -56,6 +56,10 @@ extension AnyError: LocalizedError {
 
 extension AnyError: DecodingFailureRepresentable {
 
+    public init(decodingFailure: DecodingFailure) {
+        self.init(decodingFailure)
+    }
+
     public init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
         self.init(error)
     }
