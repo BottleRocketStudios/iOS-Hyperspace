@@ -207,6 +207,6 @@ private extension Request {
     }
     
     static var cachePolicyAndTimeoutRequest: Request<EmptyResponse, AnyError> {
-        return .init(method: .get, url: URL(string: "http://apple.com")!)
+        return .withEmptyResponse(method: .get, url: URL(string: "http://apple.com")!)
     }
 }
