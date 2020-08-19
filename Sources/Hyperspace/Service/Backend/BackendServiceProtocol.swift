@@ -10,6 +10,8 @@ import Foundation
 
 public enum DecodingFailure: Error {
 
+    // MARK: - Context Subtype
+
     public struct Context {
         let decodingError: DecodingError
         let failingType: Decodable.Type
@@ -18,6 +20,8 @@ public enum DecodingFailure: Error {
 
     case invalidEmptyResponse(HTTP.Response)
     case decodingError(Context)
+
+    // MARK: - Interface
 
     public var response: HTTP.Response {
         switch self {
@@ -31,6 +35,14 @@ public enum DecodingFailure: Error {
         case .decodingError(let context): return context
         default: return nil
         }
+    }
+
+    // MARK: - Convenience
+
+    static func genericFailure(decoding: Decodable.Type, from response: HTTP.Response, debugDescription: String) -> DecodingFailure {
+        let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: debugDescription))
+        let context = DecodingFailure.Context(decodingError: decodingError, failingType: decoding, response: response)
+        return .decodingError(context)
     }
 }
 

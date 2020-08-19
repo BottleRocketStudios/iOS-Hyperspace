@@ -6,10 +6,6 @@
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 
-//  TODO: Future functionality:
-//          - Provide an implementation that uses the URLSession delegate methods.
-//          - Look into using an ephemeral URLSession as the default TransportSession since it requires no cleanup.
-
 import Foundation
 
 /// Adopts the `Transporting` to perform HTTP communication via the execution of URLRequests.

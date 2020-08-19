@@ -131,28 +131,28 @@ public struct HTTP {
     /// Represents an HTTP request
     public struct Request: Equatable {
 
-        ///
+        /// The `URL` to which the `Request` originated.
         public let url: URL?
 
-        ///
+        /// The HTTP header fields for this request.
         public let headers: [String: String]?
 
-        ///
+        /// The raw `Data` associated with the HTTP request, if any was provided.
         public let body: Data?
 
-        /// <#Description#>
+        /// Initialize a new `Request` with any given `URL`, HTTP headers and body.
         /// - Parameters:
-        ///   - url: <#url description#>
-        ///   - headers: <#headers description#>
-        ///   - body: <#body description#>
+        ///   - url: The `URL` for which this request was created.
+        ///   - data: The raw `Data` associated with the HTTP request, if any was provided.
+        ///   - headers: The HTTP header fields for this request.
         public init(url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
             self.url = url
             self.headers = headers
             self.body = body
         }
 
-        /// <#Description#>
-        /// - Parameter urlRequest: <#urlRequest description#>
+        /// Initialize a new `Request` given a URL request.
+        /// - Parameter urlRequest: The `URLRequest` instance used to initiate the request.
         public init(urlRequest: URLRequest) {
             self.init(url: urlRequest.url, headers: urlRequest.allHTTPHeaderFields, body: urlRequest.httpBody)
         }

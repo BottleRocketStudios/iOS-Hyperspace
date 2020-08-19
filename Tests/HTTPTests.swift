@@ -70,6 +70,11 @@ class HTTPTests: XCTestCase {
         
         XCTAssertEqual(dataString, content)
     }
+
+    func test_Response_ReturnsAppropriateMessageForStatus() {
+        let response = HTTP.Response(request: HTTP.Request(), code: 400)
+        XCTAssertEqual(response.statusMessage, "bad request")
+    }
     
     func test_HTTPResponseInitWithCode200_ProducesStatusSuccessOK() {
         let response = HTTP.Response(request: HTTP.Request(), code: 200, body: nil)

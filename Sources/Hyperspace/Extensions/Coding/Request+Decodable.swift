@@ -42,9 +42,7 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
                 
             } catch {
                 // Received an unexpected non-`DecodingError` from the `JSONDecoder`. Generate a default `DecodingError` and pass that along.
-                let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription))
-                let context = DecodingFailure.Context(decodingError: decodingError, failingType: Response.self, response: transportSuccess.response)
-                return .failure(errorTransformer(.decodingError(context)))
+                return .failure(errorTransformer(.genericFailure(decoding: Response.self, from: transportSuccess.response, debugDescription: error.localizedDescription)))
             }
         }
     }

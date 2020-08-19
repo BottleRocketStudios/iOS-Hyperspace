@@ -121,6 +121,14 @@ class RequestTests: XCTestCase {
         XCTAssertEqual(finalHeaders?[.authorization]?.rawValue, accessToken)
     }
 
+    func test_Request_CustomURLRequestCreationStrategyUsed() {
+        let url = URL(string: "www.apple.com")!
+        var request = Request<String, AnyError>.simpleGET
+        request.urlRequestCreationStrategy = .custom { _ in URLRequest(url: url) }
+
+        XCTAssertEqual(request.urlRequest.url, url)
+    }
+
     func test_Request_MappingARequestToANewResponseMaintainsErrorType() {
         let exp = expectation(description: "Transformer Executed")
         let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, body: loadedJSONData(fromFileNamed: "Object"), headers: [:])

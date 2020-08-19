@@ -55,12 +55,12 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
     
     // MARK: - Convenience Transformers
     
-    static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type) -> (TransportSuccess) -> Result<Response, Error> where C.Contained == Response {
+    static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type) -> Transformer where C.Contained == Response {
         return successTransformer(for: decoder, with: containerType, errorTransformer: Error.init)
     }
     
     static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type,
-                                                          errorTransformer: @escaping (DecodingFailure.Context) -> Error) -> (TransportSuccess) -> Result<Response, Error> where C.Contained == Response {
+                                                          errorTransformer: @escaping DecodingFailureTransformer) -> Transformer where C.Contained == Response {
         return { transportSuccess in
             do {
                 let decodedResponse = try decoder.decode(Response.self, from: transportSuccess.body ?? Data(), with: C.self)
@@ -68,13 +68,11 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
                 
             } catch let error as DecodingError {
                 let context = DecodingFailure.Context(decodingError: error, failingType: C.self, response: transportSuccess.response)
-                return .failure(errorTransformer(context))
+                return .failure(errorTransformer(.decodingError(context)))
                 
             } catch {
                 // Received an unexpected non-`DecodingError` from the `JSONDecoder`. Generate a default `DecodingError` and pass that along.
-                let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription))
-                let context = DecodingFailure.Context(decodingError: decodingError, failingType: C.self, response: transportSuccess.response)
-                return .failure(errorTransformer(context))
+                return .failure(errorTransformer(.genericFailure(decoding: Response.self, from: transportSuccess.response, debugDescription: error.localizedDescription)))
             }
         }
     }

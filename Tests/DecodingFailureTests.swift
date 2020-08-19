@@ -26,6 +26,35 @@ class DecodingFailureTests: XCTestCase {
             self.failureResponse = decodingFailure.response
         }
     }
+
+    func test_DecodingFailure_ReturnsNonOptionalResponseFromUnderlyingCase() {
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, body: Data([1, 2, 3, 4]))
+        let failure = DecodingFailure.invalidEmptyResponse(response)
+        let failure2 = DecodingFailure.decodingError(.init(decodingError: DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: "")),
+                                                           failingType: MockObject.self, response: response))
+
+        XCTAssertEqual(failure.response, response)
+        XCTAssertEqual(failure2.response, response)
+    }
+
+    func test_DecodingFailure_ReturnsOptionalDecodingContextFromUnderlyingCase() {
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, body: Data([1, 2, 3, 4]))
+        let failure = DecodingFailure.invalidEmptyResponse(response)
+        let context = DecodingFailure.Context(decodingError: DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: "")),
+                                              failingType: MockObject.self, response: response)
+        let failure2 = DecodingFailure.decodingError(context)
+
+        XCTAssertNil(failure.decodingContext)
+        XCTAssertNotNil(failure2.decodingContext)
+        XCTAssertEqual(failure2.decodingContext?.response, context.response)
+    }
+
+    func test_DecodingFailure_GenericFailureTranslatesToDecodingError() {
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, body: Data([1, 2, 3, 4]))
+        let failure = DecodingFailure.genericFailure(decoding: MockObject.self, from: response, debugDescription: "debug description")
+
+        XCTAssertEqual(failure.decodingContext?.response, response)
+    }
     
     func test_DecodingFailure_CatchesFailedTypeInformation() {
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")

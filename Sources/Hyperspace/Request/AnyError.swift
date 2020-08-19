@@ -60,10 +60,6 @@ extension AnyError: DecodingFailureRepresentable {
         self.init(decodingFailure)
     }
 
-    public init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
-        self.init(error)
-    }
-    
     public init(transportFailure: TransportFailure) {
         self.init(transportFailure)
     }

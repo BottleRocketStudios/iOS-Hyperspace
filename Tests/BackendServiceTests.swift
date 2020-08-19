@@ -80,6 +80,11 @@ class BackendServiceTests: XCTestCase {
         
         XCTAssertEqual(mockTransportService.cancelAllTasksCallCount, 1)
     }
+
+    func test_BackendService_DefaultsToEmptyArrayOfRecoveryStrategies() {
+        let service = MockBackendService()
+        XCTAssertTrue(service.recoveryStrategies.isEmpty)
+    }
     
     // MARK: - Private
     
