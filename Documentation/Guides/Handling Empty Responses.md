@@ -17,7 +17,7 @@ To make matters worse, sometimes these servers always return a `200 OK` status c
 }
 ```
 
-Fortunately, Hyperspace makes the variable decoding and validation of `EmptyResponse` incredibly flexible and powerful (if you need to deal with these variable return codes with non-`EmptyResponse` objects, check out `Custom Decoding`). Unlike many of Hyperspace `Request`s, an `EmptyResponse` request is created using the following API:
+Fortunately, Hyperspace makes the variable decoding and validation of `EmptyResponse` incredibly flexible and powerful (if you need to deal with these variable return codes with non-`EmptyResponse` objects, check out [`Documentation/Guides/Custom Decoding.md`](../Guides/Custom%20Decoding.md).). Unlike many of Hyperspace `Request`s, an `EmptyResponse` request is created using the following API:
 
 ```swift
 public extension Request where Response == EmptyResponse {
@@ -50,11 +50,11 @@ public extension Request where Response == EmptyResponse, Error: DecodingFailure
 }
 ```
 
-Every flexibility afforded to a standard `Request` is available here, and although using a `Response.Error` that conforms to `DecodingFailureRepresentable` is highly recommended, it is possible to create a `Request<EmptyResponse, _>`  for any error in which you can define a transform to convert a `DecodingFailure`  to your custom `Error` type.
+Every flexibility afforded to a standard `Request` is available here, and although using a `Request.Error` that conforms to `DecodingFailureRepresentable` is highly recommended, it is possible to create a `Request<EmptyResponse, _>`  for any error in which you can define a transform to convert a `DecodingFailure` to your custom `Error` type.
 
 The addition here that makes decoding an `EmptyResponse` so flexible is the `EmptyDecodingStrategy`. This is the object that governs the transformation from the `TransportSuccess` into a `Result<EmptyResponse, Error>`. If you need to implement custom validation logic (perhaps to ensure the `returnCode` in the response matches the HTTP status code - you'll want to extend `EmptyDecodingStrategy`). To cover the vast majority of use cases though, Hyperspace ships with two `EmptyDecodingStrategy` of it's own:
 
-- `default` : If the handler receives a `TransportSuccess`, this will return a `.success(EmptyResponse())`, regardless of the actual contents of the HTTP response
+- `default` : If the handler receives a `TransportSuccess`, this will return a `.success(EmptyResponse())`, regardless of the actual contents of the HTTP response.
 - `validatedEmpty` : If the handler receives a `TransportSuccess`, this strategy will check to ensure the HTTP response body is either `nil` or `isEmpty` before returning a `.success(EmptyResponse())`. In the case that the body fails either of those checks, a `DecodingFailure.invalidEmptyResponse` is returned, along with the `HTTP.Response` received from the request.
 
 ### Extending EmptyDecodingStrategy
@@ -67,7 +67,7 @@ What about the special case where some kind of custom validation of that "empty"
 }
 ```
 
-How would we go about validating that the `returnCode` matches the HTTP status code before we return a "success"?
+How would we go about validating that the `returnCode` indicates a successful response before we return a "success"?
 
 ```swift
 enum MyError: DecodingFailureRepresentable {
@@ -123,7 +123,7 @@ extension Request.EmptyDecodingStrategy where Response == EmptyResponse, Error =
 }
 ```
 
-Using this brand new is then as easy as you would use any of the pre-existing `EmptyDecodingStrategy`:
+Using this brand new strategy is then as easy as you would use any of the pre-existing `EmptyDecodingStrategy`:
 
 ```swift
 extension Request where Response == EmptyResponse, Error == MyError {

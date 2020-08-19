@@ -27,12 +27,15 @@ public extension Request where Response == EmptyResponse {
             return EmptyDecodingStrategy(transformer: transformer)
         }
 
+
+        /// The default `EmptyDecodingStrategy` will always return a successful `EmptyResponse` object given a successful transport.
         public static var `default`: EmptyDecodingStrategy {
             return EmptyDecodingStrategy { _ -> Transformer in
                 return { _ in .success(EmptyResponse()) }
             }
         }
 
+        /// The validating `EmptyDecodingStrategy` will first validate that the response data is either nil or empty before returning an `EmptyResponse`.
         public static var validatedEmpty: EmptyDecodingStrategy {
             return EmptyDecodingStrategy { decodingFailureTransformer -> Transformer in
                 return { transportSuccess in
