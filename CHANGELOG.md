@@ -4,10 +4,6 @@
 
 ## High Level Changes
 
-* Add deprecated typealias to ease migration to 4.0
-[Will McGinty](https://github.com/wmcginty)
-[#124(https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/124)
-
 * Changed underlying error in AnyError's NetworkServiceFailureInitializable implementation from NetworkServiceError to NetworkServiceFailure so it can return its failure response rather than nil.
 [Richard Burgess](https://github.com/rickbdotcom)
 [#95](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/95)
@@ -57,8 +53,16 @@
 [#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
 
 * Make `TransportError` inits `public`..
-  [Earl Gaspard](https://github.com/earlgaspard)
-  [#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
+[Earl Gaspard](https://github.com/earlgaspard)
+[#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
+  
+  * Add deprecated typealias to ease migration to 4.0
+  [Will McGinty](https://github.com/wmcginty)
+  [#124](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/124)
+  
+  * Create `EmptyDecodingStrategy` to add flexibility to decoding `EmptyResponse`
+  [Will McGinty](https://github.com/wmcginty)
+  [#130](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/130)
 
 ##### Bug Fixes
 
