@@ -28,13 +28,13 @@ public extension Request where Response == EmptyResponse {
         }
 
         public static var `default`: EmptyDecodingStrategy {
-            return EmptyDecodingStrategy { _ -> (TransportSuccess) -> Result<EmptyResponse, Error> in
+            return EmptyDecodingStrategy { _ -> Transformer in
                 return { _ in .success(EmptyResponse()) }
             }
         }
 
         public static var validatedEmpty: EmptyDecodingStrategy {
-            return EmptyDecodingStrategy { decodingFailureTransformer -> (TransportSuccess) -> Result<EmptyResponse, Error> in
+            return EmptyDecodingStrategy { decodingFailureTransformer -> Transformer in
                 return { transportSuccess in
                     guard transportSuccess.body.map(\.isEmpty) ?? true else {
                         return .failure(decodingFailureTransformer(.invalidEmptyResponse(transportSuccess.response)))
@@ -84,5 +84,60 @@ public extension Request where Response == EmptyResponse, Error: DecodingFailure
 
     static func successTransformer(for emptyDecodingStrategy: EmptyDecodingStrategy) -> Transformer {
         return emptyDecodingStrategy.transform(using: Error.init)
+    }
+}
+
+enum MyError: DecodingFailureRepresentable {
+    case networkResponseCodeMismatch
+
+    var failureResponse: HTTP.Response? { return nil }
+    var transportError: TransportError? { return nil }
+
+    init(transportFailure: TransportFailure) {
+        self = .networkResponseCodeMismatch
+    }
+
+    init(decodingFailure: DecodingFailure) {
+        self = .networkResponseCodeMismatch
+    }
+}
+
+extension Request.EmptyDecodingStrategy where Response == EmptyResponse, Error == MyError {
+
+    struct NetworkResponse: Decodable {
+        let returnCode: Int
+        let message: String
+    }
+
+    static var validatingNetworkResponse: Request.EmptyDecodingStrategy {
+        return Request.EmptyDecodingStrategy { decodingFailureTransformer -> Request.Transformer in
+            return { transportSuccess in
+
+                do {
+                    let networkResponse =  try JSONDecoder().decode(NetworkResponse.self, from: transportSuccess.body ?? Data())
+                    guard networkResponse.returnCode == 200 else {
+                        return .failure(MyError.networkResponseCodeMismatch)
+                    }
+
+                    return .success(EmptyResponse())
+
+                } catch let decodingError as DecodingError {
+                    let context = DecodingFailure.Context(decodingError: decodingError, failingType: NetworkResponse.self, response: transportSuccess.response)
+                    return .failure(decodingFailureTransformer(.decodingError(context)))
+
+                } catch {
+                    let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription))
+                    let context = DecodingFailure.Context(decodingError: decodingError, failingType: NetworkResponse.self, response: transportSuccess.response)
+                    return .failure(decodingFailureTransformer(.decodingError(context)))
+                }
+            }
+        }
+    }
+}
+
+extension Request where Response == EmptyResponse, Error == MyError {
+
+    static func delete(withID id: Int) -> Request<EmptyResponse, MyError> {
+        return Request.withEmptyResponse(method: .delete, url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!, emptyDecodingStrategy: .validatingNetworkResponse)
     }
 }
