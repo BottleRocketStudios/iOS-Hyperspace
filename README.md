@@ -202,7 +202,7 @@ Add the following to your [Cartfile](https://github.com/Carthage/Carthage/blob/m
 github "BottleRocketStudios/iOS-Hyperspace"
 ```
 
-Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
+Run `carthage bootstrap` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
 NOTE: Don't forget to add both `Hyperspace.framework` and the `BrightFutures.framework` dependency to your project (if using the `Futures` subspec).
 
