@@ -8,7 +8,7 @@ Handling an empty response from your API, such as a DELETE request that returns 
 }
 ```
 
-To make matters worse, sometimes these servers always return a `200 OK` status code, and instead send that information in response body, like so below. This forces the consumer of the API to be checking errors when initially it would seem there should be none.
+To make matters worse, sometimes servers return a `200 OK` status code and send error information in the response body. This forces the consumer of the API to check errors when essentially it seems there should be none.
 
 ```json
 {
@@ -58,7 +58,7 @@ The addition here that makes decoding an `EmptyResponse` so flexible is the `Emp
 - `validatedEmpty` : If the handler receives a `TransportSuccess`, this strategy will check to ensure the HTTP response body is either `nil` or `isEmpty` before returning a `.success(EmptyResponse())`. In the case that the body fails either of those checks, a `DecodingFailure.invalidEmptyResponse` is returned, along with the `HTTP.Response` received from the request.
 
 ### Extending EmptyDecodingStrategy
-What about the special case where some kind of custom validation of that "empty" response is needed before the request can be deemed successful? `EmptyDecodingStrategy` has you covered here as well. For example, let's assume that we are going to receive a response that looks like the following:
+What about the special case where some kind of custom validation of "empty" response is needed before the request can be deemed successful? `EmptyDecodingStrategy` has you covered here as well. For example, let's assume that we are going to receive a response that looks like the following: 
 
 ```json
 {
