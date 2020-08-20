@@ -143,7 +143,7 @@ public struct HTTP {
         /// Initialize a new `Request` with any given `URL`, HTTP headers and body.
         /// - Parameters:
         ///   - url: The `URL` for which this request was created.
-        ///   - data: The raw `Data` associated with the HTTP request, if any was provided.
+        ///   - body: The raw `Data` associated with the HTTP request, if any was provided.
         ///   - headers: The HTTP header fields for this request.
         public init(url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
             self.url = url
@@ -181,9 +181,9 @@ public struct HTTP {
         /// - Parameters:
         ///   - code: The raw HTTP status code for this response.
         ///   - url: The `URL` from which this response was received.
-        ///   - data: The raw `Data` associated with the HTTP response, if any was provided.
         ///   - headers: The HTTP header fields for this response.
-        public init(request: Request, code: Int, url: URL? = nil, body: Data? = nil, headers: [String: String]? = nil) {
+        ///   - body: The raw `Data` associated with the HTTP response, if any was provided.
+        public init(request: Request, code: Int, url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
             self.request = request
             self.code = code
             self.url = url
@@ -193,11 +193,12 @@ public struct HTTP {
         
         /// Initializes a new `Response` given a URL response and `Data`.
         /// - Parameters:
+        ///   - request: The `HTTP.Request` that was sent to receive this response.
         ///   - httpURLResponse: The `HTTPURLResponse` returned by the backend.
-        ///   - data: The raw `Data` associated with the response, if any was provided.
+        ///   - body: The raw `Data` associated with the response, if any was provided.
         init(request: HTTP.Request, httpURLResponse: HTTPURLResponse, body: Data? = nil) {
             let headers = httpURLResponse.allHeaderFields as? [String: String]
-            self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url, body: body, headers: headers)
+            self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url, headers: headers, body: body)
         }
 
         // MARK: - Public

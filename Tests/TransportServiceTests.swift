@@ -31,7 +31,7 @@ class TransportServiceTests: XCTestCase {
     }
 
     func test_MissingDataResponse_ReturnsNilData() {
-        let response = HTTP.Response(request: defaultHTTPRequest, code: 200, url: RequestTestDefaults.defaultURL, body: nil, headers: [:])
+        let response = HTTP.Response(request: defaultHTTPRequest, code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: nil)
         let expectedResult = TransportSuccess(response: response)
 
         executeTransportServiceUsingMockHTTPResponse(response, expectingResult: .success(expectedResult))
@@ -40,35 +40,35 @@ class TransportServiceTests: XCTestCase {
     
     func test_SuccessResponseWithData_Succeeds() {
         let responseData = "test".data(using: .utf8)!
-        let response = HTTP.Response(request: defaultHTTPRequest, code: 200, url: RequestTestDefaults.defaultURL, body: responseData, headers: [:])
+        let response = HTTP.Response(request: defaultHTTPRequest, code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: responseData)
         let expectedResult = TransportSuccess(response: response)
         
         executeTransportServiceUsingMockHTTPResponse(response, expectingResult: .success(expectedResult))
     }
     
     func test_300Status_GeneratesRedirectionError() {
-        let response = HTTP.Response(request: defaultHTTPRequest, code: 300, url: RequestTestDefaults.defaultURL, body: nil, headers: [:])
+        let response = HTTP.Response(request: defaultHTTPRequest, code: 300, url: RequestTestDefaults.defaultURL, headers: [:], body: nil)
         let expectedResult = TransportFailure(code: .redirection, response: response)
 
         executeTransportServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
     }
     
     func test_400Status_GeneratesClientError() {
-        let response = HTTP.Response(request: defaultHTTPRequest, code: 400, url: RequestTestDefaults.defaultURL, body: nil, headers: [:])
+        let response = HTTP.Response(request: defaultHTTPRequest, code: 400, url: RequestTestDefaults.defaultURL, headers: [:], body: nil)
         let expectedResult = TransportFailure(code: .clientError(.badRequest), response: response)
         
         executeTransportServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
     }
     
     func test_500Status_GeneratesServerError() {
-        let response = HTTP.Response(request: defaultHTTPRequest, code: 500, url: RequestTestDefaults.defaultURL, body: nil, headers: [:])
+        let response = HTTP.Response(request: defaultHTTPRequest, code: 500, url: RequestTestDefaults.defaultURL, headers: [:], body: nil)
         let expectedResult = TransportFailure(code: .serverError(.internalServerError), response: response)
         
         executeTransportServiceUsingMockHTTPResponse(response, expectingResult: .failure(expectedResult))
     }
     
     func test_ClientErrorWithResponse_GeneratesDataLengthExceedsMaximumError() {
-        let response = HTTP.Response(request: defaultHTTPRequest, code: 100, url: RequestTestDefaults.defaultURL, body: Data([1, 2, 3, 4, 5]), headers: [:])
+        let response = HTTP.Response(request: defaultHTTPRequest, code: 100, url: RequestTestDefaults.defaultURL, headers: [:], body: Data([1, 2, 3, 4, 5]))
         let exceedsMaxError = URLError(.dataLengthExceedsMaximum)
         let expectedResult = TransportFailure(error: TransportError(clientError: exceedsMaxError), response: response)
         

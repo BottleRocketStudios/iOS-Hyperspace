@@ -131,7 +131,7 @@ class RequestTests: XCTestCase {
 
     func test_Request_MappingARequestToANewResponseMaintainsErrorType() {
         let exp = expectation(description: "Transformer Executed")
-        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, body: loadedJSONData(fromFileNamed: "Object"), headers: [:])
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "Object"))
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<[MockObject], AnyError> = request.map { exp.fulfill(); return [$0] }
 
@@ -143,7 +143,7 @@ class RequestTests: XCTestCase {
         let exp = expectation(description: "Transformer Executed")
         exp.isInverted = true
 
-        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, body: loadedJSONData(fromFileNamed: "DateObject"), headers: [:])
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "DateObject"))
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<[MockObject], AnyError> = request.map { exp.fulfill(); return [$0] }
 
@@ -153,7 +153,7 @@ class RequestTests: XCTestCase {
 
     func test_Request_MappingErrorOfARequestToANewTypeMaintainsResponseType() {
         let exp = expectation(description: "Transformer Executed")
-        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, body: loadedJSONData(fromFileNamed: "DateObject"), headers: [:])
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "DateObject"))
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<MockObject, MockBackendServiceError> = request.mapError { _ in
             exp.fulfill()
@@ -168,7 +168,7 @@ class RequestTests: XCTestCase {
         let exp = expectation(description: "Transformer Executed")
         exp.isInverted = true
 
-        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, body: loadedJSONData(fromFileNamed: "Object"), headers: [:])
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "Object"))
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<MockObject, MockBackendServiceError> = request.mapError { _ in
             exp.fulfill()

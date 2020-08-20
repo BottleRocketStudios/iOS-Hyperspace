@@ -1,4 +1,5 @@
 ### Handling Empty Responses
+
 Handling an empty response from your API, such as a DELETE request that returns a `204 No Content`, seems like a very straightforward task. In reality, there is a huge amount of complexity in handling the many different ways that APIs can choose to communicate 'the request was successful, there is nothing else to return'. REST API guidelines would dictate that in these situations no body should be sent back but some servers may opt to send a confirmation that the request succeeded.
 
 ```json
@@ -20,23 +21,6 @@ To make matters worse, sometimes servers return a `200 OK` status code and send 
 Fortunately, Hyperspace makes the variable decoding and validation of `EmptyResponse` incredibly flexible and powerful (if you need to deal with these variable return codes with non-`EmptyResponse` objects, check out [`Documentation/Guides/Custom Decoding.md`](../Guides/Custom%20Decoding.md).). Unlike many of Hyperspace `Request`s, an `EmptyResponse` request is created using the following API:
 
 ```swift
-public extension Request where Response == EmptyResponse {
-
-    static func withEmptyResponse(method: HTTP.Method,
-                                  url: URL,
-                                  headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
-                                  body: HTTP.Body? = nil,
-                                  cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
-                                  timeout: TimeInterval = RequestDefaults.defaultTimeout,
-                                  emptyDecodingStrategy: EmptyDecodingStrategy = .default,
-                                  decodingFailureTransformer: @escaping DecodingFailureTransformer) -> Request {
-        return Request(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout,
-                       successTransformer: Request.successTransformer(for: emptyDecodingStrategy, decodingFailureTransformer: decodingFailureTransformer))
-    }
-}
-
-public extension Request where Response == EmptyResponse, Error: DecodingFailureRepresentable {
-
     static func withEmptyResponse(method: HTTP.Method,
                                   url: URL,
                                   headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
@@ -44,10 +28,7 @@ public extension Request where Response == EmptyResponse, Error: DecodingFailure
                                   cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
                                   timeout: TimeInterval = RequestDefaults.defaultTimeout,
                                   emptyDecodingStrategy: EmptyDecodingStrategy = .default) -> Request {
-        return Request(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout,
-                       successTransformer: Request.successTransformer(for: emptyDecodingStrategy))
     }
-}
 ```
 
 Every flexibility afforded to a standard `Request` is available here, and although using a `Request.Error` that conforms to `DecodingFailureRepresentable` is highly recommended, it is possible to create a `Request<EmptyResponse, _>` for any error in which you can define a transform to convert a `DecodingFailure` to your custom `Error` type.
@@ -58,6 +39,7 @@ The addition here that makes decoding an `EmptyResponse` so flexible is the `Emp
 - `validatedEmpty` : If the handler receives a `TransportSuccess`, this strategy will check to ensure the HTTP response body is either `nil` or `isEmpty` before returning a `.success(EmptyResponse())`. In the case that the body fails either of those checks, a `DecodingFailure.invalidEmptyResponse` is returned, along with the `HTTP.Response` received from the request.
 
 ### Extending EmptyDecodingStrategy
+
 What about the special case where some kind of custom validation of "empty" response is needed before the request can be deemed successful? `EmptyDecodingStrategy` has you covered here as well. For example, let's assume that we are going to receive a response that looks like the following: 
 
 ```json

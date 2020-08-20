@@ -16,7 +16,7 @@ class TransportResultTests: XCTestCase {
 
     func test_TransportResult_RetrieveHTTPRequestFromSuccess() {
         let response = HTTP.Response(request: defaultHTTPRequest, code: 200,
-                                     url: RequestTestDefaults.defaultURL, body: Data([1, 2, 3, 4]), headers: ["content-type": "application/json"])
+                                     url: RequestTestDefaults.defaultURL, headers: ["content-type": "application/json"], body: Data([1, 2, 3, 4]))
         let success = TransportSuccess(response: response)
         let result = TransportResult.success(success)
 
@@ -25,7 +25,7 @@ class TransportResultTests: XCTestCase {
 
     func test_TransportResult_RetrieveHTTPResponseFromSuccess() {
         let response = HTTP.Response(request: defaultHTTPRequest, code: 200,
-                                     url: RequestTestDefaults.defaultURL, body: Data([1, 2, 3, 4]), headers: ["content-type": "application/json"])
+                                     url: RequestTestDefaults.defaultURL, headers: ["content-type": "application/json"], body: Data([1, 2, 3, 4]))
         let success = TransportSuccess(response: response)
         let result = TransportResult.success(success)
 
@@ -34,7 +34,7 @@ class TransportResultTests: XCTestCase {
 
     func test_TransportResult_RetrieveHTTPRequestFromFailure() {
         let response = HTTP.Response(request: defaultHTTPRequest, code: 400,
-                                     url: RequestTestDefaults.defaultURL, body: Data([1, 2, 3, 4]), headers: ["content-type": "application/json"])
+                                     url: RequestTestDefaults.defaultURL, headers: ["content-type": "application/json"], body: Data([1, 2, 3, 4]))
         let failure = TransportFailure(code: .clientError(.badRequest), response: response)
         let result = TransportResult.failure(failure)
 
@@ -43,7 +43,7 @@ class TransportResultTests: XCTestCase {
 
     func test_TransportResult_RetrieveHTTPResponseFromFailure() {
         let response = HTTP.Response(request: defaultHTTPRequest, code: 400,
-                                     url: RequestTestDefaults.defaultURL, body: Data([1, 2, 3, 4]), headers: ["content-type": "application/json"])
+                                     url: RequestTestDefaults.defaultURL, headers: ["content-type": "application/json"], body: Data([1, 2, 3, 4]))
         let failure = TransportFailure(code: .clientError(.badRequest), response: response)
         let result = TransportResult.failure(failure)
 

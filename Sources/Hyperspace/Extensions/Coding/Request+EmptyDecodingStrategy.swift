@@ -27,7 +27,6 @@ public extension Request where Response == EmptyResponse {
             return EmptyDecodingStrategy(transformer: transformer)
         }
 
-
         /// The default `EmptyDecodingStrategy` will always return a successful `EmptyResponse` object given a successful transport.
         public static var `default`: EmptyDecodingStrategy {
             return EmptyDecodingStrategy { _ -> Transformer in
