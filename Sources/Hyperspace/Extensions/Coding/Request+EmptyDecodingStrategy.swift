@@ -38,7 +38,7 @@ public extension Request where Response == EmptyResponse {
         public static var validatedEmpty: EmptyDecodingStrategy {
             return EmptyDecodingStrategy { decodingFailureTransformer -> Transformer in
                 return { transportSuccess in
-                    guard transportSuccess.body.map(\.isEmpty) ?? true else {
+                    guard transportSuccess.body.map({ $0.isEmpty }) ?? true else {
                         return .failure(decodingFailureTransformer(.invalidEmptyResponse(transportSuccess.response)))
                     }
 
