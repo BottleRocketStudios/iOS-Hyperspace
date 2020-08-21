@@ -35,6 +35,7 @@ class HTTPTests: XCTestCase {
         
         headerKeys.forEach { (key, value) in
             XCTAssertEqual(key, HTTP.HeaderKey(rawValue: value))
+            XCTAssertEqual(key, HTTP.HeaderKey(stringLiteral: value))
         }
     }
     
@@ -60,6 +61,7 @@ class HTTPTests: XCTestCase {
 
         headerValues.forEach { (key, value) in
             XCTAssertEqual(value, HTTP.HeaderValue(rawValue: key))
+            XCTAssertEqual(value, HTTP.HeaderValue(stringLiteral: key))
         }
     }
     
@@ -121,12 +123,12 @@ class HTTPTests: XCTestCase {
         }
     }
 
-    func test_HTTPBodyInitWithEncodable_ProducesProperlyEncodedData() {
+    func test_HTTPBodyWithEncodable_ProducesProperlyEncodedData() {
         let encodable = MockObject(title: "title", subtitle: "subtitle")
         let encoder = JSONEncoder()
 
         do {
-            let body = try HTTP.Body(encodable, encoder: encoder)
+            let body = try HTTP.Body.json(encodable, encoder: encoder)
             let data = try encoder.encode(encodable)
             XCTAssertEqual(body.data, data)
         } catch {
@@ -134,16 +136,25 @@ class HTTPTests: XCTestCase {
         }
     }
 
-    func test_HTTPBodyInitWithEncodableAndContainer_ProducesProperlyEncodedData() {
+    func test_HTTPBodyWithEncodableAndContainer_ProducesProperlyEncodedData() {
         let encodable = MockObject(title: "title", subtitle: "subtitle")
         let encoder = JSONEncoder()
 
         do {
-            let body = try HTTP.Body(encodable, container: MockCodableContainer.self, encoder: encoder)
+            let body = try HTTP.Body.json(encodable, container: MockCodableContainer.self, encoder: encoder)
             let data = try encoder.encode(encodable, in: MockCodableContainer.self)
             XCTAssertEqual(body.data, data)
         } catch {
             XCTFail(error.localizedDescription)
         }
+    }
+
+    func test_HTTPBodyWithFormContent_ProducesProperlyEncodedData() {
+        let content = [("hello world", "hello world")]
+        let encoder = FormURLEncoder()
+
+        let body = HTTP.Body.urlForm(using: content)
+        let data = encoder.encode(content)
+        XCTAssertEqual(body.data, data)
     }
 }
