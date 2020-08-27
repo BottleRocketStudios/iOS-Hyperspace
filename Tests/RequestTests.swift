@@ -68,6 +68,26 @@ class RequestTests: XCTestCase {
         XCTAssertEqual(modified.cachePolicy, request.cachePolicy)
         XCTAssertEqual(modified.timeout, request.timeout)
     }
+
+    func test_Request_AppliesAdditionalHeadersFromBody() throws {
+        let request: Request<String, AnyError> = .simpleGET
+        let modified = try request.usingBody(.json(MockObject(title: "title", subtitle: "subtitle")))
+
+        let urlRequest = modified.urlRequest
+        XCTAssertTrue(urlRequest.allHTTPHeaderFields?.contains { $0.0 == "Content-Type" } == true)
+        XCTAssertTrue(urlRequest.allHTTPHeaderFields?.contains { $0.1 == "application/json" } == true)
+    }
+
+    func test_Request_HeadersFromBodyDoNotOverrideThoseFromRequest() throws {
+        let request: Request<String, AnyError> = .simpleGET
+        let modified = try request
+            .usingHeaders([.contentType: .multipartForm])
+            .usingBody(.json(MockObject(title: "title", subtitle: "subtitle")))
+
+        let urlRequest = modified.urlRequest
+        XCTAssertTrue(urlRequest.allHTTPHeaderFields?.contains { $0.0 == "Content-Type" } == true)
+        XCTAssertTrue(urlRequest.allHTTPHeaderFields?.contains { $0.1 == "multipart/form-data" } == true)
+    }
     
     func test_Request_ModifyingHeaders() {
         let headers: [HTTP.HeaderKey: HTTP.HeaderValue] = [.authorization: HTTP.HeaderValue(rawValue: "auth")]
