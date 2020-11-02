@@ -56,13 +56,17 @@
 [Will McGinty](https://github.com/wmcginty)
 [#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
 
-* Make `TransportError` inits `public`..
-  [Earl Gaspard](https://github.com/earlgaspard)
-  [#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
+* Make `TransportError` inits `public`.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
   
-  * Create a form URL encoded `HTTP.Body` convenience
-  [Will McGinty](https://github.com/wmcginty)
-  [#125](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/125)
+* Create a form URL encoded `HTTP.Body` convenience
+[Will McGinty](https://github.com/wmcginty)
+[#125](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/125)
+  
+* Add `defaultDecoder` to `RequestDefaults` and use when initializing a `Request`.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#131](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/131)
 
 ##### Bug Fixes
 
