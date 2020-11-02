@@ -83,8 +83,9 @@ struct NewPost: Encodable {
 
 To avoid having to define default `Request` property values for every request in your app, it can be useful to rely on the `RequestDefaults` provided by Hyperspace. These can even be customized:
 ```swift
-RequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
 RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
+RequestDefaults.defaultDecoder = MyCustomDecoder() // Default decoder is JSONDecoder
+RequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
 ```
 
 ### 3. Create a BackendService to execute your requests

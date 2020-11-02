@@ -20,7 +20,7 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
          body: HTTP.Body? = nil,
          cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
          timeout: TimeInterval = RequestDefaults.defaultTimeout,
-         decoder: JSONDecoder = JSONDecoder()) {
+         decoder: JSONDecoder = RequestDefaults.defaultDecoder) {
         self.init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout, successTransformer: Request.successTransformer(for: decoder))
     }
     

@@ -104,6 +104,7 @@ public struct EmptyResponse {
 public struct RequestDefaults {
     
     public static var defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
+    public static var defaultDecoder: JSONDecoder = JSONDecoder()
     public static var defaultTimeout: TimeInterval = 30
 }
 
