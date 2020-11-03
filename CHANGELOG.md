@@ -50,7 +50,7 @@
 [Will McGinty](https://github.com/wmcginty)
 [#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
 
-* Make `TransportError` inits `public`..
+* Make `TransportError` inits `public`.
 [Earl Gaspard](https://github.com/earlgaspard)
 [#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
   
@@ -65,6 +65,10 @@
 * Create `EmptyDecodingStrategy` to add flexibility to decoding `EmptyResponse`
 [Will McGinty](https://github.com/wmcginty)
 [#130](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/130)
+  
+* Add `defaultDecoder` to `RequestDefaults` and use when initializing a `Request`.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#131](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/131)
 
 ##### Bug Fixes
 
