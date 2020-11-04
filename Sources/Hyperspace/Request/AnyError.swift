@@ -56,16 +56,16 @@ extension AnyError: LocalizedError {
 
 extension AnyError: DecodingFailureRepresentable {
 
-    public init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
-        self.init(error)
+    public init(decodingFailure: DecodingFailure) {
+        self.init(decodingFailure)
     }
-    
+
     public init(transportFailure: TransportFailure) {
         self.init(transportFailure)
     }
    
     public var transportError: TransportError? {
-        return (error as? TransportFailure)?.error ?? TransportError(code: .unknownError, failingURL: failureResponse?.url)
+        return (error as? TransportFailure)?.error ?? TransportError(code: .unknownError)
     }
     
     public var failureResponse: HTTP.Response? {

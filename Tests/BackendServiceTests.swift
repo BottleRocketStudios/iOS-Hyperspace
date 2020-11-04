@@ -18,9 +18,10 @@ class BackendServiceTests: XCTestCase {
     // MARK: - Properties
     
     private let modelJSONData = RequestTestDefaults.defaultModelJSONData
-    private lazy var defaultSuccessResponse: HTTP.Response = HTTP.Response(code: 200, data: modelJSONData)
     private let defaultRequest: Request<DefaultModel, MockBackendServiceError> = RequestTestDefaults.defaultRequest()
-    
+    private lazy var defaultHTTPRequest = HTTP.Request(urlRequest: defaultRequest.urlRequest)
+    private lazy var defaultSuccessResponse = HTTP.Response(request: defaultHTTPRequest, code: 200, body: modelJSONData)
+
     // MARK: - Tests
     
     func test_TransportSuccess_TransformsResponseCorrectly() {
@@ -32,15 +33,16 @@ class BackendServiceTests: XCTestCase {
     
     func test_TransportResponseTransformFailure_GeneratesDataTransformationError() {
         let invalidJSONData = "test".data(using: .utf8)!
-        let jsonDecodingError = NSError(domain: NSCocoaErrorDomain, code: 3840, userInfo: nil)
-        let response = HTTP.Response(code: 200, data: invalidJSONData)
+        let response = HTTP.Response(request: defaultHTTPRequest, code: 200, body: invalidJSONData)
+        let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: "The given data was not valid JSON."))
+        let jsonDecodingError = DecodingFailure.decodingError(.init(decodingError: decodingError, failingType: DefaultModel.self, response: response))
         let mockedResult = TransportSuccess(response: response)
         
         executeBackendService(mockedTransportResult: .success(mockedResult), expectingResult: .failure(.dataTransformationError(jsonDecodingError)))
     }
     
     func test_TransportNetworkFailure_GeneratesNetworkError() {
-        let response = HTTP.Response(code: 503, data: nil)
+        let response = HTTP.Response(request: HTTP.Request(), code: 503, body: nil)
         let mockedResult = TransportFailure(error: .init(code: .serverError(.serviceUnavailable)), response: response)
         
         executeBackendService(mockedTransportResult: .failure(mockedResult), expectingResult: .failure(.networkError(.init(code: .serverError(.serviceUnavailable)), response)))
@@ -77,6 +79,11 @@ class BackendServiceTests: XCTestCase {
         XCTAssertNil(backendService) // To silence the "variable was written to, but never read" warning. See https://stackoverflow.com/a/32861678/4343618
         
         XCTAssertEqual(mockTransportService.cancelAllTasksCallCount, 1)
+    }
+
+    func test_BackendService_DefaultsToEmptyArrayOfRecoveryStrategies() {
+        let service = MockBackendService()
+        XCTAssertTrue(service.recoveryStrategies.isEmpty)
     }
     
     // MARK: - Private

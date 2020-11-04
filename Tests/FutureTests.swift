@@ -18,15 +18,16 @@ class FutureTests: XCTestCase {
     // MARK: - Properties
     private let defaultModelJSONData = RequestTestDefaults.defaultModelJSONData
     private let defaultRequest: Request<DefaultModel, MockBackendServiceError> = RequestTestDefaults.defaultRequest()
+    private var defaultHTTPRequest: HTTP.Request { HTTP.Request(urlRequest: defaultRequest.urlRequest) }
     
     // MARK: - Tests
     func test_FailingRequestAlsoFailsFuture() {
-        let failure = TransportFailure(error: TransportError(code: .noInternetConnection), response: nil)
+        let failure = TransportFailure(error: TransportError(code: .noInternetConnection), request: defaultHTTPRequest, response: nil)
         executeBackendRequest(expectedResult: .failure(failure))
     }
     
     func test_SuccessfulResultAlsoSucceedsFuture() {
-        let success = TransportSuccess(response: HTTP.Response(code: 200, data: defaultModelJSONData))
+        let success = TransportSuccess(response: HTTP.Response(request: defaultHTTPRequest, code: 200, body: defaultModelJSONData))
         executeBackendRequest(expectedResult: .success(success))
     }
     

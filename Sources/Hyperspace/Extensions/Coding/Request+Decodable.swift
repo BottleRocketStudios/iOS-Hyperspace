@@ -30,17 +30,19 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
         return successTransformer(for: decoder, errorTransformer: Error.init)
     }
     
-    static func successTransformer(for decoder: JSONDecoder, errorTransformer: @escaping (DecodingError, Decodable.Type, HTTP.Response) -> Error) -> Transformer {
+    static func successTransformer(for decoder: JSONDecoder, errorTransformer: @escaping DecodingFailureTransformer) -> Transformer {
         return { transportSuccess in
             do {
-                let decodedResponse = try decoder.decode(Response.self, from: transportSuccess.data)
+                let decodedResponse = try decoder.decode(Response.self, from: transportSuccess.body ?? Data())
                 return .success(decodedResponse)
                 
             } catch let error as DecodingError {
-                return .failure(errorTransformer(error, Response.self, transportSuccess.response))
+                let context = DecodingFailure.Context(decodingError: error, failingType: Response.self, response: transportSuccess.response)
+                return .failure(errorTransformer(.decodingError(context)))
                 
             } catch {
-                return .failure(errorTransformer(.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription)), Response.self, transportSuccess.response))
+                // Received an unexpected non-`DecodingError` from the `JSONDecoder`. Generate a default `DecodingError` and pass that along.
+                return .failure(errorTransformer(.genericFailure(decoding: Response.self, from: transportSuccess.response, debugDescription: error.localizedDescription)))
             }
         }
     }

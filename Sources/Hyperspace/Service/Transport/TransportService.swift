@@ -6,10 +6,6 @@
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 
-//  TODO: Future functionality:
-//          - Provide an implementation that uses the URLSession delegate methods.
-//          - Look into using an ephemeral URLSession as the default TransportSession since it requires no cleanup.
-
 import Foundation
 
 /// Adopts the `Transporting` to perform HTTP communication via the execution of URLRequests.
@@ -44,7 +40,7 @@ extension TransportService: Transporting {
     public func execute(request: URLRequest, completion: @escaping (TransportResult) -> Void) {
         let task = session.dataTask(with: request) { [weak self] (data, response, error) in
             self?.networkActivityController?.stop()
-            self?.handle(data: data, response: response, error: error, completion: completion)
+            self?.handle(data: data, response: response, error: error, for: HTTP.Request(urlRequest: request), completion: completion)
         }
         
         tasks[request] = task
@@ -66,18 +62,22 @@ extension TransportService: Transporting {
 
 private extension TransportService {
 
-    func handle(data: Data?, response: URLResponse?, error: Error?, completion: @escaping (TransportResult) -> Void) {
+    func handle(data: Data?, response: URLResponse?, error: Error?, for request: HTTP.Request, completion: @escaping (TransportResult) -> Void) {
         switch (data, response, error) {
         case let (responseData, .some(urlResponse as HTTPURLResponse), .none):
-            let httpResponse = HTTP.Response(httpURLResponse: urlResponse, data: responseData)
+            // A response and no client error was received, rely on the response status code to determine the result
+            let httpResponse = HTTP.Response(request: request, httpURLResponse: urlResponse, body: responseData)
             completion(httpResponse.transportResult)
 
         case let (responseData, urlResponse as HTTPURLResponse?, .some(clientError)):
-            let transportFailure = TransportFailure(error: TransportError(clientError: clientError), response: urlResponse.map { HTTP.Response(httpURLResponse: $0, data: responseData) })
+            // A client error was received, we know this response resulted in a failure
+            let httpResponse = urlResponse.map { HTTP.Response(request: request, httpURLResponse: $0, body: responseData) }
+            let transportFailure = TransportFailure(error: TransportError(clientError: clientError), request: request, response: httpResponse)
             completion(.failure(transportFailure))
 
         default:
-            completion(.failure(TransportFailure(error: TransportError(code: .unknownError), response: nil)))
+            // An unexpected response was received, we don't know what went wrong
+            completion(.failure(TransportFailure(error: TransportError(clientError: error), request: request, response: nil)))
         }
     }
 }

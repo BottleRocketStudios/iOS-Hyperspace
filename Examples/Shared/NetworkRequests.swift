@@ -55,6 +55,6 @@ extension Request where Response == Post, Error == AnyError {
 extension Request where Response == EmptyResponse, Error == AnyError {
     
     static func deletePost(withID id: Int) -> Request<EmptyResponse, AnyError> {
-        return Request(method: .delete, url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!)
+        return Request.withEmptyResponse(method: .delete, url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!)
     }
 }

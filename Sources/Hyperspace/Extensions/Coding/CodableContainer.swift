@@ -55,22 +55,24 @@ public extension Request where Response: Decodable, Error: DecodingFailureRepres
     
     // MARK: - Convenience Transformers
     
-    static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type) -> (TransportSuccess) -> Result<Response, Error> where C.Contained == Response {
+    static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type) -> Transformer where C.Contained == Response {
         return successTransformer(for: decoder, with: containerType, errorTransformer: Error.init)
     }
     
     static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type,
-                                                          errorTransformer: @escaping (DecodingError, Decodable.Type, HTTP.Response) -> Error) -> (TransportSuccess) -> Result<Response, Error> where C.Contained == Response {
+                                                          errorTransformer: @escaping DecodingFailureTransformer) -> Transformer where C.Contained == Response {
         return { transportSuccess in
             do {
-                let decodedResponse = try decoder.decode(C.self, from: transportSuccess.data)
-                return .success(decodedResponse.element)
+                let decodedResponse = try decoder.decode(Response.self, from: transportSuccess.body ?? Data(), with: C.self)
+                return .success(decodedResponse)
                 
             } catch let error as DecodingError {
-                return .failure(errorTransformer(error, C.self, transportSuccess.response))
+                let context = DecodingFailure.Context(decodingError: error, failingType: C.self, response: transportSuccess.response)
+                return .failure(errorTransformer(.decodingError(context)))
                 
             } catch {
-                return .failure(errorTransformer(.dataCorrupted(.init(codingPath: [], debugDescription: error.localizedDescription)), C.self, transportSuccess.response))
+                // Received an unexpected non-`DecodingError` from the `JSONDecoder`. Generate a default `DecodingError` and pass that along.
+                return .failure(errorTransformer(.genericFailure(decoding: Response.self, from: transportSuccess.response, debugDescription: error.localizedDescription)))
             }
         }
     }

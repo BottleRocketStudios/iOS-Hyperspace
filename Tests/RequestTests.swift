@@ -50,7 +50,7 @@ class RequestTests: XCTestCase {
         let request: Request<EmptyResponse, AnyError> = .cachePolicyAndTimeoutRequest
         
         let data = "this is dummy content".data(using: .utf8)!
-        let serviceSuccess = TransportSuccess(response: HTTP.Response(code: 200, data: data))
+        let serviceSuccess = TransportSuccess(response: HTTP.Response(request: HTTP.Request(urlRequest: request.urlRequest), code: 200, body: data))
         let result: Result<EmptyResponse, AnyError> = request.transform(success: serviceSuccess)
         
         XCTAssertNotNil(result.value)
@@ -141,9 +141,17 @@ class RequestTests: XCTestCase {
         XCTAssertEqual(finalHeaders?[.authorization]?.rawValue, accessToken)
     }
 
+    func test_Request_CustomURLRequestCreationStrategyUsed() {
+        let url = URL(string: "www.apple.com")!
+        var request = Request<String, AnyError>.simpleGET
+        request.urlRequestCreationStrategy = .custom { _ in URLRequest(url: url) }
+
+        XCTAssertEqual(request.urlRequest.url, url)
+    }
+
     func test_Request_MappingARequestToANewResponseMaintainsErrorType() {
         let exp = expectation(description: "Transformer Executed")
-        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: loadedJSONData(fromFileNamed: "Object"), headers: [:])
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "Object"))
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<[MockObject], AnyError> = request.map { exp.fulfill(); return [$0] }
 
@@ -155,7 +163,7 @@ class RequestTests: XCTestCase {
         let exp = expectation(description: "Transformer Executed")
         exp.isInverted = true
 
-        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: loadedJSONData(fromFileNamed: "DateObject"), headers: [:])
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "DateObject"))
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<[MockObject], AnyError> = request.map { exp.fulfill(); return [$0] }
 
@@ -165,11 +173,11 @@ class RequestTests: XCTestCase {
 
     func test_Request_MappingErrorOfARequestToANewTypeMaintainsResponseType() {
         let exp = expectation(description: "Transformer Executed")
-        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: loadedJSONData(fromFileNamed: "DateObject"), headers: [:])
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "DateObject"))
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<MockObject, MockBackendServiceError> = request.mapError { _ in
             exp.fulfill()
-            return MockBackendServiceError(transportFailure: TransportFailure(code: .redirection, response: nil))
+            return MockBackendServiceError(transportFailure: TransportFailure(code: .redirection, request: HTTP.Request(), response: nil))
         }
 
         _ = mapped.transform(success: TransportSuccess(response: response))
@@ -180,11 +188,11 @@ class RequestTests: XCTestCase {
         let exp = expectation(description: "Transformer Executed")
         exp.isInverted = true
 
-        let response = HTTP.Response(code: 200, url: RequestTestDefaults.defaultURL, data: loadedJSONData(fromFileNamed: "Object"), headers: [:])
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "Object"))
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<MockObject, MockBackendServiceError> = request.mapError { _ in
             exp.fulfill()
-            return MockBackendServiceError(transportFailure: TransportFailure(code: .redirection, response: nil))
+            return MockBackendServiceError(transportFailure: TransportFailure(code: .redirection, request: HTTP.Request(), response: nil))
         }
 
         _ = mapped.transform(success: TransportSuccess(response: response))
@@ -227,6 +235,6 @@ private extension Request {
     }
     
     static var cachePolicyAndTimeoutRequest: Request<EmptyResponse, AnyError> {
-        return .init(method: .get, url: URL(string: "http://apple.com")!)
+        return .withEmptyResponse(method: .get, url: URL(string: "http://apple.com")!)
     }
 }

@@ -17,9 +17,9 @@ public enum MockBackendServiceError: TransportFailureRepresentable, DecodingFail
     public init(transportFailure: TransportFailure) {
         self = .networkError(transportFailure.error, transportFailure.response)
     }
-    
-    public init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response) {
-        self = .dataTransformationError(error)
+
+    public init(decodingFailure: DecodingFailure) {
+        self = .dataTransformationError(decodingFailure)
     }
     
     public var transportError: TransportError? {
@@ -52,7 +52,7 @@ extension MockBackendServiceError: Equatable {
 
 class MockBackendService: BackendServiceProtocol {
     func execute<T, U>(request: Request<T, U>, completion: @escaping (Result<T, U>) -> Void) {
-        let failure = TransportFailure(error: .init(code: .timedOut), response: nil)
+        let failure = TransportFailure(error: .init(code: .timedOut), request: HTTP.Request(urlRequest: request.urlRequest), response: nil)
         completion(.failure(U(transportFailure: failure)))
     }
 

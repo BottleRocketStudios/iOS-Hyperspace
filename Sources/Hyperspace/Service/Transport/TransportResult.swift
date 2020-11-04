@@ -8,6 +8,15 @@
 
 import Foundation
 
+/// Represents an error which can be constructed from a `TransportFailure`.
+public protocol TransportFailureRepresentable: Swift.Error {
+
+    init(transportFailure: TransportFailure)
+
+    var failureResponse: HTTP.Response? { get }
+    var transportError: TransportError? { get }
+}
+
 /// Represents an error that occurred when executing a `Request` using a `TransportService`.
 public struct TransportError: Error, Equatable {
     
@@ -40,18 +49,22 @@ public struct TransportError: Error, Equatable {
     // MARK: - Properties
     
     public let code: Code
-    public let failingURL: URL?
-    
+    public let underlyingError: Error?
+
     // MARK: - Initializers
     
-    public init(code: Code, failingURL: URL? = nil) {
+    public init(code: Code, underlyingError: Error? = nil) {
         self.code = code
-        self.failingURL = failingURL
+        self.underlyingError = underlyingError
     }
     
     public init(clientError: Error?) {
-        let urlError = clientError as? URLError
-        self.init(code: Code(clientError: clientError), failingURL: urlError?.failingURL)
+        self.init(code: Code(clientError: clientError), underlyingError: clientError)
+    }
+
+    // MARK: - Equatable
+    public static func == (lhs: TransportError, rhs: TransportError) -> Bool {
+        return lhs.code == rhs.code
     }
 }
 
@@ -61,9 +74,16 @@ public struct TransportError: Error, Equatable {
 public typealias NetworkServiceSuccess = TransportSuccess
 
 public struct TransportSuccess: Equatable {
+
+    // MARK: - Properties
+
     public let response: HTTP.Response
-    public var data: Data { return response.data ?? Data() }
-    
+
+    public var body: Data? { return response.body }
+    public var request: HTTP.Request { return response.request }
+
+    // MARK: - Initializer
+
     public init(response: HTTP.Response) {
         self.response = response
     }
@@ -74,16 +94,31 @@ public typealias NetworkServiceFailure = TransportFailure
 
 /// Represents the failed result of executing a `Request` using a `TransportService`.
 public struct TransportFailure: Error, Equatable {
+
+    // MARK: - Properties
+
     public let error: TransportError
+    public let request: HTTP.Request
     public let response: HTTP.Response?
+
+    // MARK: - Initializers
     
-    public init(error: TransportError, response: HTTP.Response?) {
+    public init(error: TransportError, request: HTTP.Request, response: HTTP.Response?) {
         self.error = error
+        self.request = request
         self.response = response
     }
-    
-    public init(code: TransportError.Code, response: HTTP.Response?) {
-        self.init(error: TransportError(code: code, failingURL: response?.url), response: response)
+
+    public init(code: TransportError.Code, request: HTTP.Request, response: HTTP.Response?) {
+        self.init(error: TransportError(code: code), request: request, response: response)
+    }
+
+    public init(code: TransportError.Code, response: HTTP.Response) {
+        self.init(code: code, request: response.request, response: response)
+    }
+
+    public init(error: TransportError, response: HTTP.Response) {
+        self.init(error: error, request: response.request, response: response)
     }
 }
 
@@ -94,10 +129,10 @@ public extension HTTP.Response {
     var transportResult: TransportResult {
         switch status {
         case .success: return .success(TransportSuccess(response: self))
-        case .redirection: return .failure(TransportFailure(error: TransportError(code: .redirection, failingURL: url), response: self))
-        case .clientError(let clientError): return .failure(TransportFailure(error: TransportError(code: .clientError(clientError), failingURL: url), response: self))
-        case .serverError(let serverError): return .failure(TransportFailure(error: TransportError(code: .serverError(serverError), failingURL: url), response: self))
-        case .unknown: return .failure(TransportFailure(error: TransportError(code: .unknownError, failingURL: url), response: self))
+        case .redirection: return .failure(TransportFailure(error: TransportError(code: .redirection), response: self))
+        case .clientError(let clientError): return .failure(TransportFailure(error: TransportError(code: .clientError(clientError)), response: self))
+        case .serverError(let serverError): return .failure(TransportFailure(error: TransportError(code: .serverError(serverError)), response: self))
+        case .unknown: return .failure(TransportFailure(error: TransportError(code: .unknownError), response: self))
         }
     }
 }

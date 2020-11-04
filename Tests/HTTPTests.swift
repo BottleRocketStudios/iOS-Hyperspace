@@ -67,14 +67,19 @@ class HTTPTests: XCTestCase {
     
     func test_ResponseDataString_ReturnsResponseDataAsString() {
         let content = "This is my data"
-        let response = HTTP.Response(code: 200, data: content.data(using: .utf8))
-        let dataString = response.dataString
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, body: content.data(using: .utf8))
+        let dataString = response.bodyString
         
         XCTAssertEqual(dataString, content)
     }
+
+    func test_Response_ReturnsAppropriateMessageForStatus() {
+        let response = HTTP.Response(request: HTTP.Request(), code: 400)
+        XCTAssertEqual(response.statusMessage, "bad request")
+    }
     
     func test_HTTPResponseInitWithCode200_ProducesStatusSuccessOK() {
-        let response = HTTP.Response(code: 200, data: nil)
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, body: nil)
         switch response.status {
         case .success(let status):
             XCTAssertEqual(status, HTTP.Status.Success.ok)
@@ -84,7 +89,7 @@ class HTTPTests: XCTestCase {
     }
     
     func test_HTTPStatusInitWithCode300_ProducesStatusRedirectionMultipleChoices() {
-        let response = HTTP.Response(code: 300, data: nil)
+        let response = HTTP.Response(request: HTTP.Request(), code: 300, body: nil)
         switch response.status {
         case .redirection(let status):
             XCTAssertEqual(status, HTTP.Status.Redirection.multipleChoices)
@@ -94,7 +99,7 @@ class HTTPTests: XCTestCase {
     }
     
     func test_HTTPStatusInitWithCode400_ProducesStatusClientErrorBadRequest() {
-        let response = HTTP.Response(code: 400, data: nil)
+        let response = HTTP.Response(request: HTTP.Request(), code: 400, body: nil)
         switch response.status {
         case .clientError(let status):
             XCTAssertEqual(status, HTTP.Status.ClientError.badRequest)
@@ -104,7 +109,7 @@ class HTTPTests: XCTestCase {
     }
     
     func test_HTTPStatusInitWithCode500_ProducesStatusServerErrorInternalServerError() {
-        let response = HTTP.Response(code: 500, data: nil)
+        let response = HTTP.Response(request: HTTP.Request(), code: 500, body: nil)
         switch response.status {
         case .serverError(let status):
             XCTAssertEqual(status, HTTP.Status.ServerError.internalServerError)
@@ -114,7 +119,7 @@ class HTTPTests: XCTestCase {
     }
     
     func test_HTTPStatusInitWithCode100_ProducesStatusUnknown() {
-        let response = HTTP.Response(code: 100, data: nil)
+        let response = HTTP.Response(request: HTTP.Request(), code: 100, body: nil)
         switch response.status {
         case .unknown(let code):
             XCTAssertEqual(code, 100)

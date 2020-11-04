@@ -2,12 +2,6 @@
 
 #### Enhancements
 
-## High Level Changes
-
-* Add deprecated typealias to ease migration to 4.0
-[Will McGinty](https://github.com/wmcginty)
-[#124(https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/124)
-
 * Changed underlying error in AnyError's NetworkServiceFailureInitializable implementation from NetworkServiceError to NetworkServiceFailure so it can return its failure response rather than nil.
 [Richard Burgess](https://github.com/rickbdotcom)
 [#95](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/95)
@@ -63,6 +57,14 @@
 * Create a form URL encoded `HTTP.Body` convenience
 [Will McGinty](https://github.com/wmcginty)
 [#125](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/125)
+
+* Add deprecated typealias to ease migration to 4.0
+[Will McGinty](https://github.com/wmcginty)
+[#124](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/124)
+
+* Create `EmptyDecodingStrategy` to add flexibility to decoding `EmptyResponse`
+[Will McGinty](https://github.com/wmcginty)
+[#130](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/130)
   
 * Add `defaultDecoder` to `RequestDefaults` and use when initializing a `Request`.
 [Earl Gaspard](https://github.com/earlgaspard)

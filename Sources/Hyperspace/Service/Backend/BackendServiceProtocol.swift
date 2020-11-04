@@ -8,18 +8,55 @@
 
 import Foundation
 
-/// Represents an error which can be constructed from a `TransportFailure`.
-public protocol TransportFailureRepresentable: Swift.Error {
-    
-    init(transportFailure: TransportFailure)
-    
-    var failureResponse: HTTP.Response? { get }
-    var transportError: TransportError? { get }
+public enum DecodingFailure: Error {
+
+    // MARK: - Context Subtype
+
+    public struct Context {
+        let decodingError: DecodingError
+        let failingType: Decodable.Type
+        let response: HTTP.Response
+    }
+
+    case invalidEmptyResponse(HTTP.Response)
+    case decodingError(Context)
+
+    // MARK: - Interface
+
+    public var response: HTTP.Response {
+        switch self {
+        case .invalidEmptyResponse(let response): return response
+        case .decodingError(let context): return context.response
+        }
+    }
+
+    public var decodingContext: Context? {
+        switch self {
+        case .decodingError(let context): return context
+        default: return nil
+        }
+    }
+
+    // MARK: - Convenience
+
+    static func genericFailure(decoding: Decodable.Type, from response: HTTP.Response, debugDescription: String) -> DecodingFailure {
+        let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: debugDescription))
+        let context = DecodingFailure.Context(decodingError: decodingError, failingType: decoding, response: response)
+        return .decodingError(context)
+    }
 }
 
 /// Represents an error which can be constructed from a `DecodingError` and `Data`.
 public protocol DecodingFailureRepresentable: TransportFailureRepresentable {
-    init(error: DecodingError, decoding: Decodable.Type, response: HTTP.Response)
+
+    init(decodingFailure: DecodingFailure)
+}
+
+public extension DecodingFailureRepresentable {
+
+    init(context: DecodingFailure.Context) {
+        self.init(decodingFailure: .decodingError(context))
+    }
 }
 
 /// Represents something that's capable of executing a typed Request

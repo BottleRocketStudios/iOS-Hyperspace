@@ -105,7 +105,7 @@ extension UIViewController {
     }
     
     func certificate(named: String) -> SecCertificate? {
-        guard let certPath = Bundle.main.url(forResource: named, withExtension: "der"),
+        guard let certPath = Bundle.main.url(forResource: named, withExtension: "cer"),
             let certificateData = try? Data(contentsOf: certPath),
             let certificate = SecCertificateCreateWithData(kCFAllocatorDefault, certificateData as CFData) else {
                 return nil

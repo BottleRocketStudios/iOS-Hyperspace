@@ -156,53 +156,94 @@ public struct HTTP {
             return HTTP.Body(formURLEncoder.encode(formContent), additionalHeaders: additionalHeaders)
         }
     }
+
+    /// Represents an HTTP request
+    public struct Request: Equatable {
+
+        /// The `URL` to which the `Request` originated.
+        public let url: URL?
+
+        /// The HTTP header fields for this request.
+        public let headers: [String: String]?
+
+        /// The raw `Data` associated with the HTTP request, if any was provided.
+        public let body: Data?
+
+        /// Initialize a new `Request` with any given `URL`, HTTP headers and body.
+        /// - Parameters:
+        ///   - url: The `URL` for which this request was created.
+        ///   - body: The raw `Data` associated with the HTTP request, if any was provided.
+        ///   - headers: The HTTP header fields for this request.
+        public init(url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
+            self.url = url
+            self.headers = headers
+            self.body = body
+        }
+
+        /// Initialize a new `Request` given a URL request.
+        /// - Parameter urlRequest: The `URLRequest` instance used to initiate the request.
+        public init(urlRequest: URLRequest) {
+            self.init(url: urlRequest.url, headers: urlRequest.allHTTPHeaderFields, body: urlRequest.httpBody)
+        }
+    }
     
     /// Represents a HTTP response.
     public struct Response: Equatable {
 
-        /// The raw HTTP status code for this response.
+        /// The `HTTP.Request` object used to receive this response
+        public let request: Request
+
+        /// The raw HTTP status code for this response
         public let code: Int
-        
-        /// The URL from which the `Response` originated.
+
+        /// The `URL` from which the `Response` originated.
         public let url: URL?
 
-        /// The raw `Data` associated with the HTTP response, if any data was provided.
-        public let data: Data?
+        /// The raw `Data` associated with the HTTP response, if any was provided.
+        public let body: Data?
 
         /// The HTTP header fields for this response.
         public let headers: [String: String]?
-
-        /// The parsed HTTP status associated with this response.
-        public var status: HTTP.Status {
-            return HTTP.Status(code: code)
-        }
-
-        /// A convenience property to encode the data associated with this response into a `String`. Can be useful for debugging.
-        public var dataString: String? {
-            return data.flatMap { String(data: $0, encoding: .utf8) }
-        }
 
         /// Initialize a new `Response` with any given HTTP status code and `Data`.
         ///
         /// - Parameters:
         ///   - code: The raw HTTP status code for this response.
         ///   - url: The `URL` from which this response was received.
-        ///   - data: The raw `Data` associated with the HTTP response, if any was provided.
         ///   - headers: The HTTP header fields for this response.
-        public init(code: Int, url: URL? = nil, data: Data? = nil, headers: [String: String]? = nil) {
+        ///   - body: The raw `Data` associated with the HTTP response, if any was provided.
+        public init(request: Request, code: Int, url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
+            self.request = request
             self.code = code
             self.url = url
-            self.data = data
+            self.body = body
             self.headers = headers
         }
         
         /// Initializes a new `Response` given a URL response and `Data`.
         /// - Parameters:
+        ///   - request: The `HTTP.Request` that was sent to receive this response.
         ///   - httpURLResponse: The `HTTPURLResponse` returned by the backend.
-        ///   - data: The raw `Data` associated with the response, if any was provided.
-        init(httpURLResponse: HTTPURLResponse, data: Data? = nil) {
+        ///   - body: The raw `Data` associated with the response, if any was provided.
+        init(request: HTTP.Request, httpURLResponse: HTTPURLResponse, body: Data? = nil) {
             let headers = httpURLResponse.allHeaderFields as? [String: String]
-            self.init(code: httpURLResponse.statusCode, url: httpURLResponse.url, data: data, headers: headers)
+            self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url, headers: headers, body: body)
+        }
+
+        // MARK: - Public
+        
+        /// The parsed HTTP status associated with this response.
+        public var status: HTTP.Status {
+            return HTTP.Status(code: code)
+        }
+
+        public var statusMessage: String {
+            return HTTPURLResponse.localizedString(forStatusCode: code)
+        }
+
+        /// A convenience property to encode the data associated with this response into a `String`. Can be useful for debugging.
+        public var bodyString: String? {
+            return body.flatMap { String(data: $0, encoding: .utf8) }
         }
     }
 }

@@ -14,6 +14,23 @@ public typealias NetworkServiceResult = TransportResult
 /// Represents the possible resulting values of a `Request` using a `TransportService`.
 public typealias TransportResult = Result<TransportSuccess, TransportFailure>
 
+public extension TransportResult {
+
+    var request: HTTP.Request {
+        switch self {
+        case .success(let success): return success.request
+        case .failure(let failure): return failure.request
+        }
+    }
+
+    var response: HTTP.Response? {
+        switch self {
+        case .success(let success): return success.response
+        case .failure(let failure): return failure.response
+        }
+    }
+}
+
 @available(*, renamed: "Transporting")
 public typealias NetworkServiceProtocol = Transporting
 
