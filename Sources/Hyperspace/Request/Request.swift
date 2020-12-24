@@ -93,7 +93,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
 
 /// A simple struct representing an empty server response to a request.
 /// This is useful primarily for DELETE requests, in which case a "200" status with empty body is often the response.
-public struct EmptyResponse {
+public struct EmptyResponse: Decodable {
 
     // NOTE: It would be ideal if the implicitly-generated memberwise initializer could automatically be available publicly instead of defining this manually.
     //       It may be possible someday - https://github.com/apple/swift-evolution/blob/master/proposals/0018-flexible-memberwise-initialization.md
