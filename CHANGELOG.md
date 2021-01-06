@@ -70,6 +70,10 @@
 [Earl Gaspard](https://github.com/earlgaspard)
 [#131](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/131)
 
+* Make `transportService` public in `BackendService`.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#134](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/134)
+
 ##### Bug Fixes
 
 * Add an assertion to `BackendService` if a GET HTTP request with body data is detected.
