@@ -13,9 +13,15 @@ public enum DecodingFailure: Error {
     // MARK: - Context Subtype
 
     public struct Context {
-        let decodingError: DecodingError
-        let failingType: Decodable.Type
-        let response: HTTP.Response
+        public let decodingError: DecodingError
+        public let failingType: Decodable.Type
+        public let response: HTTP.Response
+        
+        public init(decodingError: DecodingError, failingType: Decodable.Type, response: HTTP.Response) {
+            self.decodingError = decodingError
+            self.failingType = failingType
+            self.response = response
+        }
     }
 
     case invalidEmptyResponse(HTTP.Response)
@@ -32,8 +38,8 @@ public enum DecodingFailure: Error {
 
     public var decodingContext: Context? {
         switch self {
+        case .invalidEmptyResponse: return nil
         case .decodingError(let context): return context
-        default: return nil
         }
     }
 
