@@ -80,7 +80,7 @@
 
 * Add `defaultMaxRecoveryAttempts` to `RequestDefaults` and use for `maxRecoveryAttempts` in `Request`.
 [Earl Gaspard](https://github.com/earlgaspard)
-[#136](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/136)
+[#137](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/137)
 
 ##### Bug Fixes
 
