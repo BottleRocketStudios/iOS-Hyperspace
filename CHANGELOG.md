@@ -78,6 +78,10 @@
 [Earl Gaspard](https://github.com/earlgaspard)
 [#135](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/135)
 
+* Add `defaultMaxRecoveryAttempts` to `RequestDefaults` and use for `maxRecoveryAttempts` in `Request`.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#136](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/136)
+
 ##### Bug Fixes
 
 * Add an assertion to `BackendService` if a GET HTTP request with body data is detected.
