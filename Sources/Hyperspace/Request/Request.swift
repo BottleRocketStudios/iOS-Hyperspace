@@ -38,7 +38,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     /// The creation strategy for generating a `URLRequest`. Can be customized by using the `.custom` case.
     public var urlRequestCreationStrategy: URLRequestCreationStrategy = .default
     
-    /// The maximum number of attempts this operation should make before completely aborting. A value of nil means there is no maximum.
+    /// The maximum number of attempts this operation should make before completely aborting. A value of `nil` means there is no maximum.
     public var maxRecoveryAttempts: UInt? = RequestDefaults.defaultMaxRecoveryAttempts
     
     /// The number of recovery attempts this operation has made.

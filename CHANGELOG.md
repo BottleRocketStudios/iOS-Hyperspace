@@ -78,7 +78,7 @@
 [Earl Gaspard](https://github.com/earlgaspard)
 [#135](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/135)
 
-* Add `defaultMaxRecoveryAttempts` to `RequestDefaults` and use for `maxRecoveryAttempts` in `Request`.
+* Add `defaultMaxRecoveryAttempts` to `RequestDefaults` and use for `maxRecoveryAttempts` in `Request`. This changes the default retrys from unlimited to 1.
 [Earl Gaspard](https://github.com/earlgaspard)
 [#137](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/137)
 
