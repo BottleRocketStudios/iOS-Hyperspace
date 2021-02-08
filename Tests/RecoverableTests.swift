@@ -156,9 +156,6 @@ class RecoverableTests: XCTestCase {
 private extension Request {
 
     static func mockRecoverableRequest<T: Codable>() -> Request<T, AnyError> {
-        var request = Request<T, AnyError>(method: .get, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
-        request.maxRecoveryAttempts = 1
-        
-        return request
+        return Request<T, AnyError>(method: .get, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
     }
 }

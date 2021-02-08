@@ -78,6 +78,10 @@
 [Earl Gaspard](https://github.com/earlgaspard)
 [#135](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/135)
 
+* Add `defaultMaxRecoveryAttempts` to `RequestDefaults` and use for `maxRecoveryAttempts` in `Request`. This changes the default retries from unlimited to 1.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#137](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/137)
+
 ##### Bug Fixes
 
 * Add an assertion to `BackendService` if a GET HTTP request with body data is detected.
