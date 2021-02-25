@@ -162,6 +162,9 @@ public struct HTTP {
 
         /// The `URL` to which the `Request` originated.
         public let url: URL?
+        
+        /// The HTTP method for a request
+        public let method: String?
 
         /// The HTTP header fields for this request.
         public let headers: [String: String]?
@@ -172,10 +175,12 @@ public struct HTTP {
         /// Initialize a new `Request` with any given `URL`, HTTP headers and body.
         /// - Parameters:
         ///   - url: The `URL` for which this request was created.
+        ///   - method: The HTTP method for this request
         ///   - body: The raw `Data` associated with the HTTP request, if any was provided.
         ///   - headers: The HTTP header fields for this request.
-        public init(url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
+        public init(url: URL? = nil, method: String? = nil, headers: [String: String]? = nil, body: Data? = nil) {
             self.url = url
+            self.method = method
             self.headers = headers
             self.body = body
         }
@@ -183,7 +188,7 @@ public struct HTTP {
         /// Initialize a new `Request` given a URL request.
         /// - Parameter urlRequest: The `URLRequest` instance used to initiate the request.
         public init(urlRequest: URLRequest) {
-            self.init(url: urlRequest.url, headers: urlRequest.allHTTPHeaderFields, body: urlRequest.httpBody)
+            self.init(url: urlRequest.url, method: urlRequest.httpMethod, headers: urlRequest.allHTTPHeaderFields, body: urlRequest.httpBody)
         }
     }
     
