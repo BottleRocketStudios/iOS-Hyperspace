@@ -163,7 +163,7 @@ public struct HTTP {
         /// The `URL` to which the `Request` originated.
         public let url: URL?
         
-        /// The HTTP method for a request
+        /// The HTTP method for a request.
         public let method: String?
 
         /// The HTTP header fields for this request.
@@ -175,7 +175,7 @@ public struct HTTP {
         /// Initialize a new `Request` with any given `URL`, HTTP headers and body.
         /// - Parameters:
         ///   - url: The `URL` for which this request was created.
-        ///   - method: The HTTP method for this request
+        ///   - method: The HTTP method for this request.
         ///   - body: The raw `Data` associated with the HTTP request, if any was provided.
         ///   - headers: The HTTP header fields for this request.
         public init(url: URL? = nil, method: String? = nil, headers: [String: String]? = nil, body: Data? = nil) {
