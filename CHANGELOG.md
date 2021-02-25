@@ -2,7 +2,7 @@
 
 #### Enhancements
 
-* Added `method` parameter to `HTTP.Request`.ß
+* Added `method` parameter to `HTTP.Request`.
 [Alex Reyes](https://github.com/alexreyesBR)
 [#138](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/138)
 
