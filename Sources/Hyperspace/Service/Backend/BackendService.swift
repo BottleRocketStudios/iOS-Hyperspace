@@ -12,7 +12,7 @@ public class BackendService {
     
     // MARK: - Properties
     
-    private let transportService: Transporting
+    public let transportService: Transporting
     public var recoveryStrategies: [RecoveryStrategy]
     
     // MARK: - Initializer

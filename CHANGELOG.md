@@ -2,6 +2,10 @@
 
 #### Enhancements
 
+* Added `method` parameter to `HTTP.Request`.
+[Alex Reyes](https://github.com/br-alex-reyes)
+[#138](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/138)
+
 * Changed underlying error in AnyError's NetworkServiceFailureInitializable implementation from NetworkServiceError to NetworkServiceFailure so it can return its failure response rather than nil.
 [Richard Burgess](https://github.com/rickbdotcom)
 [#95](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/95)
@@ -69,6 +73,18 @@
 * Add `defaultDecoder` to `RequestDefaults` and use when initializing a `Request`.
 [Earl Gaspard](https://github.com/earlgaspard)
 [#131](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/131)
+
+* Make `transportService` public in `BackendService`.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#134](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/134)
+
+* Make `DecodingFailure.Context` properties public.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#135](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/135)
+
+* Add `defaultMaxRecoveryAttempts` to `RequestDefaults` and use for `maxRecoveryAttempts` in `Request`. This changes the default retries from unlimited to 1.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#137](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/137)
 
 ##### Bug Fixes
 
