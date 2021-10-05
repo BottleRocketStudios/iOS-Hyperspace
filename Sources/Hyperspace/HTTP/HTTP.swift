@@ -88,7 +88,7 @@ public struct HTTP {
         case clientError(ClientError)
         case serverError(ServerError)
         
-        init(code: Int) {
+        public init(code: Int) {
             switch code {
             case 200..<300:
                 self = .success(Success(rawValue: code))
