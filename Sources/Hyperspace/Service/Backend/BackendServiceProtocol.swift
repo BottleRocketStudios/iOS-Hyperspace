@@ -107,7 +107,6 @@ public extension BackendServiceProtocol {
             switch disposition {
             case .retry(let recovered): self?.execute(request: recovered, completion: completion)
             case .fail: self?.executeOnMainThread(completion(.failure(error)))
-            case .succeed(let response): self?.executeOnMainThread(completion(.success(response)))
             }
         }
     }

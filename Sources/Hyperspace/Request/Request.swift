@@ -87,6 +87,17 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
             return originalResponse.mapError(errorTransformer)
         }
     }
+
+    public func attemptRecovery<NewError: TransportFailureRepresentable>(_ errorTransformer: @escaping (Error) -> Result<Response, NewError>) -> Request<Response, NewError> {
+        return Request<Response, NewError>(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
+            let originalResponse = self.transform(success: transportSuccess)
+
+            switch originalResponse {
+            case .success(let response): return .success(response)
+            case .failure(let error): return errorTransformer(error)
+            }
+        }
+    }
 }
 
 // MARK: - EmptyResponse
