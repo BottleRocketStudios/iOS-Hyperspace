@@ -56,6 +56,8 @@ public struct HTTP {
             public init(rawValue: Int) {
                 self.rawValue = rawValue
             }
+
+            fileprivate static let acceptedRange: Range<Int> = 200..<300
         }
         
         public struct Redirection: RawRepresentable, Equatable {
@@ -64,6 +66,8 @@ public struct HTTP {
             public init(rawValue: Int) {
                 self.rawValue = rawValue
             }
+
+            fileprivate static let acceptedRange: Range<Int> = 300..<400
         }
         
         public struct ClientError: RawRepresentable, Equatable {
@@ -72,6 +76,8 @@ public struct HTTP {
             public init(rawValue: Int) {
                 self.rawValue = rawValue
             }
+
+            fileprivate static let acceptedRange: Range<Int> = 400..<500
         }
         
         public struct ServerError: RawRepresentable, Equatable {
@@ -80,6 +86,8 @@ public struct HTTP {
             public init(rawValue: Int) {
                 self.rawValue = rawValue
             }
+
+            fileprivate static let acceptedRange: Range<Int> = 500..<600
         }
         
         case unknown(Int)
@@ -87,21 +95,36 @@ public struct HTTP {
         case redirection(Redirection)
         case clientError(ClientError)
         case serverError(ServerError)
-        
-        public init(code: Int) {
+
+        init(code: Int) {
             switch code {
-            case 200..<300:
+            case Success.acceptedRange:
                 self = .success(Success(rawValue: code))
-            case 300..<400:
+            case Redirection.acceptedRange:
                 self = .redirection(Redirection(rawValue: code))
-            case 400..<500:
+            case ClientError.acceptedRange:
                 self = .clientError(ClientError(rawValue: code))
-            case 500..<600:
+            case ServerError.acceptedRange:
                 self = .serverError(ServerError(rawValue: code))
             default:
                 self = .unknown(code)
             }
         }
+
+        public var rawValue: Int {
+            switch self {
+            case .success(let success): return success.rawValue
+            case .redirection(let redirection): return redirection.rawValue
+            case .clientError(let clientError): return clientError.rawValue
+            case .serverError(let serverError): return serverError.rawValue
+            case .unknown(let code): return code
+            }
+        }
+
+        public var isSuccess: Bool { return Success.acceptedRange ~= rawValue }
+        public var isRedirection: Bool { return Redirection.acceptedRange ~= rawValue }
+        public var isClientError: Bool { return ClientError.acceptedRange ~= rawValue }
+        public var isServerError: Bool { return ServerError.acceptedRange ~= rawValue }
     }
     
     /// Represents an HTTP request body
