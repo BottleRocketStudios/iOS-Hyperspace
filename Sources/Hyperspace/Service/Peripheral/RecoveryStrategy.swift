@@ -55,7 +55,7 @@ public protocol RecoveryStrategy {
     ///   - request: The object that encountered a failure.
     ///   - error: The specific failure returned by the operation.
     ///   - completion: The handler to execute once the `RecoveryDisposition` has been determined.
-    func attemptRecovery<R, E>(for request: Request<R, E>, with error: E, completion: @escaping (RecoveryDisposition<Request<R, E>>) -> Void)
+    func attemptRecovery<R, E>(for request: Request<R, E>, with error: E, completion: @escaping (RecoveryDisposition<R, E>) -> Void)
 }
 
 // MARK: - RecoveryDisposition
@@ -64,7 +64,8 @@ public protocol RecoveryStrategy {
 ///
 /// - retry: The action should be retried with the supplied instance of `Request`.
 /// - fail: The action should be aborted, the failure returned to the caller.
-public enum RecoveryDisposition<Request> {
-    case retry(Request)
+public enum RecoveryDisposition<R, E: TransportFailureRepresentable> {
+    case retry(Request<R, E>)
+    case succeed(R)
     case fail
 }

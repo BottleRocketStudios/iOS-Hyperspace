@@ -26,7 +26,7 @@ class RecoverableTests: XCTestCase {
             return true
         }
         
-        func attemptRecovery<R, E>(for request: Request<R, E>, with error: E, completion: @escaping (RecoveryDisposition<Request<R, E>>) -> Void) where E: TransportFailureRepresentable {
+        func attemptRecovery<R, E>(for request: Request<R, E>, with error: E, completion: @escaping (RecoveryDisposition<R, E>) -> Void) where E: TransportFailureRepresentable {
             guard case let .clientError(clientError) = error.transportError?.code, clientError == .unauthorized, let nextAttempt = request.updatedForNextAttempt() else { return completion(.fail) }
             
             let authorized = nextAttempt.addingHeaders([.authorization: HTTP.HeaderValue(rawValue: "some_access_token")])
@@ -39,7 +39,7 @@ class RecoverableTests: XCTestCase {
             return true
         }
         
-        func attemptRecovery<R, E>(for request: Request<R, E>, with error: E, completion: @escaping (RecoveryDisposition<Request<R, E>>) -> Void) where E: TransportFailureRepresentable {
+        func attemptRecovery<R, E>(for request: Request<R, E>, with error: E, completion: @escaping (RecoveryDisposition<R, E>) -> Void) where E: TransportFailureRepresentable {
             completion(.fail)
         }
     }
