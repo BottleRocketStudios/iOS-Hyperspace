@@ -38,7 +38,7 @@ extension BackendService: BackendServiceProtocol {
             switch result {
             case .success(let success): self?.executeOnMainThread(completion(request.transform(success: success)))
             case .failure(let failure):
-                guard let recoveredSuccess = request.recoveryAttemptHandler(failure) else {
+                guard let recoveredSuccess = request.recoveryTransformer(failure) else {
                     self?.attemptToRecover(from: E(transportFailure: failure), executing: request, completion: completion)
                     return
                 }
