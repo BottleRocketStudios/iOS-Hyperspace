@@ -47,7 +47,8 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     /// Attempts to parse the provided `TransportSuccess` into the associated response model type for this request.
     public var successTransformer: Transformer
 
-    public var errorRecoveryAttempt: ((TransportFailure) -> Result<Response, Error>)?
+    /// Attempts to recover from a failure by converting a `TransportFailure` into a `TransportSucces`. The default implementation fails by returning nil.
+    public var recoveryAttemptHandler: (TransportFailure) -> TransportSuccess? = { _ in nil }
     
     // MARK: - Initializer
     
