@@ -159,6 +159,22 @@ class RequestTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
+    func test_Request_MappingARequestToANewResponsePassesTransportSuccessFromResponse() {
+        let exp = expectation(description: "Transformer Executed")
+        let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "Object"))
+        let success = TransportSuccess(response: response)
+
+        let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
+        let mapped: Request<(TransportSuccess, [MockObject]), AnyError> = request.map {
+            exp.fulfill()
+            XCTAssertEqual($0, success)
+            return ($0, [$1])
+        }
+
+        _ = mapped.transform(success: success)
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
     func test_Request_MappingARequestToANewResponseDoesNotUseHandlerWhenInitialRequestFails() {
         let exp = expectation(description: "Transformer Executed")
         exp.isInverted = true
