@@ -190,7 +190,7 @@ public struct HTTP {
         public let method: String?
 
         /// The HTTP header fields for this request.
-        public let headers: [String: String]?
+        public let headers: [HeaderKey: HeaderValue]?
 
         /// The raw `Data` associated with the HTTP request, if any was provided.
         public let body: Data?
@@ -201,7 +201,7 @@ public struct HTTP {
         ///   - method: The HTTP method for this request.
         ///   - body: The raw `Data` associated with the HTTP request, if any was provided.
         ///   - headers: The HTTP header fields for this request.
-        public init(url: URL? = nil, method: String? = nil, headers: [String: String]? = nil, body: Data? = nil) {
+        public init(url: URL? = nil, method: String? = nil, headers: [HeaderKey: HeaderValue]? = nil, body: Data? = nil) {
             self.url = url
             self.method = method
             self.headers = headers
@@ -211,7 +211,10 @@ public struct HTTP {
         /// Initialize a new `Request` given a URL request.
         /// - Parameter urlRequest: The `URLRequest` instance used to initiate the request.
         public init(urlRequest: URLRequest) {
-            self.init(url: urlRequest.url, method: urlRequest.httpMethod, headers: urlRequest.allHTTPHeaderFields, body: urlRequest.httpBody)
+            let headers = urlRequest.allHTTPHeaderFields
+            self.init(url: urlRequest.url, method: urlRequest.httpMethod,
+                      headers: Dictionary(uniqueKeysWithValues: headers?.map { (.init(rawValue: $0.key), .init(rawValue: $0.value)) } ?? []),
+                      body: urlRequest.httpBody)
         }
     }
     
@@ -231,7 +234,7 @@ public struct HTTP {
         public let body: Data?
 
         /// The HTTP header fields for this response.
-        public let headers: [String: String]?
+        public let headers: [HeaderKey: HeaderValue]?
 
         /// Initialize a new `Response` with any given HTTP status code and `Data`.
         ///
@@ -240,7 +243,7 @@ public struct HTTP {
         ///   - url: The `URL` from which this response was received.
         ///   - headers: The HTTP header fields for this response.
         ///   - body: The raw `Data` associated with the HTTP response, if any was provided.
-        public init(request: Request, code: Int, url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
+        public init(request: Request, code: Int, url: URL? = nil, headers: [HeaderKey: HeaderValue]? = nil, body: Data? = nil) {
             self.request = request
             self.code = code
             self.url = url
@@ -255,7 +258,9 @@ public struct HTTP {
         ///   - body: The raw `Data` associated with the response, if any was provided.
         init(request: HTTP.Request, httpURLResponse: HTTPURLResponse, body: Data? = nil) {
             let headers = httpURLResponse.allHeaderFields as? [String: String]
-            self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url, headers: headers, body: body)
+            self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url,
+                      headers: Dictionary(uniqueKeysWithValues: headers?.map { (.init(rawValue: $0.key), .init(rawValue: $0.value)) } ?? []),
+                      body: body)
         }
 
         // MARK: - Public
@@ -290,6 +295,7 @@ extension HTTP.HeaderKey {
     public static let contentMD5 = HTTP.HeaderKey(rawValue: "Content-MD5")
     public static let contentType = HTTP.HeaderKey(rawValue: "Content-Type")
     public static let date = HTTP.HeaderKey(rawValue: "Date")
+    public static let location = HTTP.HeaderKey(rawValue: "Location")
     public static let userAgent = HTTP.HeaderKey(rawValue: "User-Agent")
 }
 
