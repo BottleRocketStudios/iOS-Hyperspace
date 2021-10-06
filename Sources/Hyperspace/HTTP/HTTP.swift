@@ -57,7 +57,7 @@ public struct HTTP {
                 self.rawValue = rawValue
             }
 
-            fileprivate static let acceptedRange: Range<Int> = 200..<300
+            public static let acceptedRange: Range<Int> = 200..<300
         }
         
         public struct Redirection: RawRepresentable, Equatable {
@@ -67,7 +67,7 @@ public struct HTTP {
                 self.rawValue = rawValue
             }
 
-            fileprivate static let acceptedRange: Range<Int> = 300..<400
+            public static let acceptedRange: Range<Int> = 300..<400
         }
         
         public struct ClientError: RawRepresentable, Equatable {
@@ -77,7 +77,7 @@ public struct HTTP {
                 self.rawValue = rawValue
             }
 
-            fileprivate static let acceptedRange: Range<Int> = 400..<500
+            public static let acceptedRange: Range<Int> = 400..<500
         }
         
         public struct ServerError: RawRepresentable, Equatable {
@@ -87,7 +87,7 @@ public struct HTTP {
                 self.rawValue = rawValue
             }
 
-            fileprivate static let acceptedRange: Range<Int> = 500..<600
+            public static let acceptedRange: Range<Int> = 500..<600
         }
         
         case unknown(Int)
