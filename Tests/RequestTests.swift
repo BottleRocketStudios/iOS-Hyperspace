@@ -166,8 +166,8 @@ class RequestTests: XCTestCase {
 
         let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<(TransportSuccess, [MockObject]), AnyError> = request.map {
-            exp.fulfill()
             XCTAssertEqual($0, success)
+            exp.fulfill()
             return ($0, [$1])
         }
 
