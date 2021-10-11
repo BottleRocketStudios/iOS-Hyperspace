@@ -13,6 +13,7 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     
     // MARK: - Typealias
     public typealias Transformer = (TransportSuccess) -> Result<Response, Error>
+    public typealias RecoveryTransformer = (TransportFailure) -> TransportSuccess?
     public typealias DecodingFailureTransformer = (DecodingFailure) -> Error
     
     // MARK: - Properties
@@ -46,6 +47,9 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     
     /// Attempts to parse the provided `TransportSuccess` into the associated response model type for this request.
     public var successTransformer: Transformer
+
+    /// Attempts to recover from a failure by converting a `TransportFailure` into a `TransportSucces`. The default implementation fails by returning nil.
+    public var recoveryTransformer: RecoveryTransformer = { _ in nil }
     
     // MARK: - Initializer
     
@@ -78,6 +82,13 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
         return Request<New, Error>(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             let originalResponse = self.transform(success: transportSuccess)
             return originalResponse.map(responseTransformer)
+        }
+    }
+
+    public func map<New>(_ responseTransformer: @escaping (TransportSuccess, Response) -> New) -> Request<New, Error> {
+        return Request<New, Error>(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
+            let responseResult = self.transform(success: transportSuccess)
+            return responseResult.map { responseTransformer(transportSuccess, $0) }
         }
     }
 

@@ -21,6 +21,7 @@ class BackendServiceTests: XCTestCase {
     private let defaultRequest: Request<DefaultModel, MockBackendServiceError> = RequestTestDefaults.defaultRequest()
     private lazy var defaultHTTPRequest = HTTP.Request(urlRequest: defaultRequest.urlRequest)
     private lazy var defaultSuccessResponse = HTTP.Response(request: defaultHTTPRequest, code: 200, body: modelJSONData)
+    private lazy var defaultFailureResponse = HTTP.Response(request: defaultHTTPRequest, code: 500)
 
     // MARK: - Tests
     
@@ -84,6 +85,67 @@ class BackendServiceTests: XCTestCase {
     func test_BackendService_DefaultsToEmptyArrayOfRecoveryStrategies() {
         let service = MockBackendService()
         XCTAssertTrue(service.recoveryStrategies.isEmpty)
+    }
+
+    func test_BackendService_RequestRecoveryTransformerAllowsForMappingTransportFailureToSuccess() {
+        let exp = expectation(description: "Request Executed")
+        let exp2 = expectation(description: "Recovery Executed")
+
+        let mockedResult = TransportFailure(code: .serverError(.internalServerError), response: defaultFailureResponse)
+        let recoveredResponse = defaultSuccessResponse
+        let mockTransportService = MockTransportService(responseResult: .failure(mockedResult))
+        let backendService = BackendService(transportService: mockTransportService)
+
+        var request = defaultRequest
+        request.recoveryTransformer = { _ in
+            exp2.fulfill()
+            return TransportSuccess(response: recoveredResponse)
+        }
+
+        backendService.execute(request: request) { result in
+            XCTAssertTrue(result.isSuccess)
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func test_BackendService_RequestDefaultRecoveryHandlerWillNotRecoverFromReceivedTransportFailure() {
+        let exp = expectation(description: "Request Executed")
+        let mockedResult = TransportFailure(code: .serverError(.internalServerError), request: defaultHTTPRequest, response: defaultFailureResponse)
+        let mockTransportService = MockTransportService(responseResult: .failure(mockedResult))
+        let backendService = BackendService(transportService: mockTransportService)
+
+        let request: Request<MockObject, AnyError> = .init(method: .get, url: RequestTestDefaults.defaultURL)
+        backendService.execute(request: request) { result in
+            XCTAssertTrue(result.isFailure)
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func test_BackendService_RequestRecoveryHandlerNotCalledWhenTransportSuccessReceived() {
+        let exp = expectation(description: "Request Executed")
+        let exp2 = expectation(description: "Recovery Executed")
+        exp2.isInverted = true
+
+        let mockedResult = TransportSuccess(response: defaultSuccessResponse)
+        let mockTransportService = MockTransportService(responseResult: .success(mockedResult))
+        let backendService = BackendService(transportService: mockTransportService)
+
+        var request = defaultRequest
+        request.recoveryTransformer = { _ in
+            exp2.fulfill()
+            return nil
+        }
+
+        backendService.execute(request: request) { result in
+            XCTAssertTrue(result.isSuccess)
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 1, handler: nil)
     }
     
     // MARK: - Private

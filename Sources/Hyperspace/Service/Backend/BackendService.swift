@@ -24,7 +24,7 @@ public class BackendService {
     
     deinit {
         cancelAllTasks()
-    }
+    } 
 }
 
 // MARK: - BackendService Conformance to BackendServiceProtocol
@@ -37,7 +37,13 @@ extension BackendService: BackendServiceProtocol {
         transportService.execute(request: request.urlRequest) { [weak self] result in
             switch result {
             case .success(let success): self?.executeOnMainThread(completion(request.transform(success: success)))
-            case .failure(let failure): self?.attemptToRecover(from: E(transportFailure: failure), executing: request, completion: completion)
+            case .failure(let failure):
+                guard let recoveredSuccess = request.recoveryTransformer(failure) else {
+                    self?.attemptToRecover(from: E(transportFailure: failure), executing: request, completion: completion)
+                    return
+                }
+
+                self?.executeOnMainThread(completion(request.transform(success: recoveredSuccess)))
             }
         }
     }

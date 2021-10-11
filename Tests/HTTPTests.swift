@@ -80,6 +80,8 @@ class HTTPTests: XCTestCase {
     
     func test_HTTPResponseInitWithCode200_ProducesStatusSuccessOK() {
         let response = HTTP.Response(request: HTTP.Request(), code: 200, body: nil)
+        XCTAssertTrue(response.status.isSuccess)
+
         switch response.status {
         case .success(let status):
             XCTAssertEqual(status, HTTP.Status.Success.ok)
@@ -90,6 +92,8 @@ class HTTPTests: XCTestCase {
     
     func test_HTTPStatusInitWithCode300_ProducesStatusRedirectionMultipleChoices() {
         let response = HTTP.Response(request: HTTP.Request(), code: 300, body: nil)
+        XCTAssertTrue(response.status.isRedirection)
+
         switch response.status {
         case .redirection(let status):
             XCTAssertEqual(status, HTTP.Status.Redirection.multipleChoices)
@@ -100,6 +104,8 @@ class HTTPTests: XCTestCase {
     
     func test_HTTPStatusInitWithCode400_ProducesStatusClientErrorBadRequest() {
         let response = HTTP.Response(request: HTTP.Request(), code: 400, body: nil)
+        XCTAssertTrue(response.status.isClientError)
+
         switch response.status {
         case .clientError(let status):
             XCTAssertEqual(status, HTTP.Status.ClientError.badRequest)
@@ -110,6 +116,8 @@ class HTTPTests: XCTestCase {
     
     func test_HTTPStatusInitWithCode500_ProducesStatusServerErrorInternalServerError() {
         let response = HTTP.Response(request: HTTP.Request(), code: 500, body: nil)
+        XCTAssertTrue(response.status.isServerError)
+
         switch response.status {
         case .serverError(let status):
             XCTAssertEqual(status, HTTP.Status.ServerError.internalServerError)
@@ -120,12 +128,33 @@ class HTTPTests: XCTestCase {
     
     func test_HTTPStatusInitWithCode100_ProducesStatusUnknown() {
         let response = HTTP.Response(request: HTTP.Request(), code: 100, body: nil)
+        XCTAssertFalse(response.status.isSuccess)
+        XCTAssertFalse(response.status.isRedirection)
+        XCTAssertFalse(response.status.isClientError)
+        XCTAssertFalse(response.status.isServerError)
+
         switch response.status {
         case .unknown(let code):
             XCTAssertEqual(code, 100)
         default:
             XCTFail("100 status should produce an 'unknown' response")
         }
+    }
+
+    func test_HTTPStatusSuccess_acceptRangeFollowsStandards() {
+        XCTAssertEqual(HTTP.Status.Success.acceptedRange, 200..<300)
+    }
+
+    func test_HTTPStatusRedirection_acceptRangeFollowsStandards() {
+        XCTAssertEqual(HTTP.Status.Redirection.acceptedRange, 300..<400)
+    }
+
+    func test_HTTPStatusClientError_acceptRangeFollowsStandards() {
+        XCTAssertEqual(HTTP.Status.ClientError.acceptedRange, 400..<500)
+    }
+
+    func test_HTTPStatusServerError_acceptRangeFollowsStandards() {
+        XCTAssertEqual(HTTP.Status.ServerError.acceptedRange, 500..<600)
     }
 
     func test_HTTPBodyWithEncodable_ProducesProperlyEncodedData() {
