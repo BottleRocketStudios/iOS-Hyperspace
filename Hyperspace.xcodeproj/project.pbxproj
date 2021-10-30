@@ -179,6 +179,7 @@
 		60D6C440201D188B00B3B012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C43F201D188B00B3B012 /* ViewController.swift */; };
 		60D6C443201D188B00B3B012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C441201D188B00B3B012 /* Main.storyboard */; };
 		60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C444201D188B00B3B012 /* Assets.xcassets */; };
+		65709A27272E0B9D0066361E /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
 		B4255B59246E528C009B6D6A /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4255B57246E525F009B6D6A /* EncodingTests.swift */; };
 		B4255B5A246E528D009B6D6A /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4255B57246E525F009B6D6A /* EncodingTests.swift */; };
 		B469328F2413539700D2B650 /* TransportResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B469328E2413539700D2B650 /* TransportResult.swift */; };
@@ -445,6 +446,7 @@
 		60D6C444201D188B00B3B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60D6C446201D188B00B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60EB8FDB1FF59FB000AC0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65709A26272E0B9D0066361E /* BackendService+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendService+Async.swift"; sourceTree = "<group>"; };
 		B4255B57246E525F009B6D6A /* EncodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingTests.swift; sourceTree = "<group>"; };
 		B469328E2413539700D2B650 /* TransportResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportResult.swift; sourceTree = "<group>"; };
 		B476477424136071003C97E9 /* Request.URLRequestCreationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.URLRequestCreationStrategy.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 			isa = PBXGroup;
 			children = (
 				60AC833D1FF596B600120172 /* Hyperspace */,
+				65709A25272E0B8E0066361E /* Async */,
 				0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */,
 				CB0DE06121E7E5EF00661F0E /* Futures */,
 				60AC82F91FF58E3600120172 /* Supporting Files */,
@@ -876,6 +879,14 @@
 				60EB8FDB1FF59FB000AC0B55 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		65709A25272E0B8E0066361E /* Async */ = {
+			isa = PBXGroup;
+			children = (
+				65709A26272E0B9D0066361E /* BackendService+Async.swift */,
+			);
+			path = Async;
 			sourceTree = "<group>";
 		};
 		CB0DE06121E7E5EF00661F0E /* Futures */ = {
@@ -1445,6 +1456,7 @@
 				0EF57B972203CD0B00484C01 /* AuthenticationChallenge.swift in Sources */,
 				B469328F2413539700D2B650 /* TransportResult.swift in Sources */,
 				0E03975D24EB8CD50078BA7D /* FormURLEncoder.swift in Sources */,
+				65709A27272E0B9D0066361E /* BackendService+Async.swift in Sources */,
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* CodableContainer.swift in Sources */,
 				CB0DE06321E7E62500661F0E /* BackendService+Futures.swift in Sources */,
