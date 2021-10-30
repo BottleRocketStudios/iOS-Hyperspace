@@ -48,7 +48,7 @@ public class TrustValidator {
     ///   - handler: The handler to be called when the challenge is a 'server trust' authentication challenge. For all other types of authentication challenge, this handler will NOT be called.
     public func handle(challenge: AuthenticationChallenge, handler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         guard canHandle(challenge: challenge), let serverTrust = challenge.serverTrust else {
-            return //The challenge was not a server trust evaluation, and so left unhandled
+            return // The challenge was not a server trust evaluation, and so left unhandled
         }
         
         switch evaluate(serverTrust, forHost: challenge.host) {
@@ -60,22 +60,22 @@ public class TrustValidator {
     
     func evaluate(_ trust: SecTrust, forHost host: String, date: Date = Date()) -> Decision {
         guard let domainConfig = configuration.domainConfiguration(forHost: host), domainConfig.shouldValidateCertificate(forHost: host, at: date) else {
-            return .notPinned //We are either not able to retrieve the certificate from the trust or we are not configured to pin this domain
+            return .notPinned // We are either not able to retrieve the certificate from the trust or we are not configured to pin this domain
         }
         
-        //Set an SSL policy and evaluate the trust
+        // Set an SSL policy and evaluate the trust
         let policies = NSArray(array: [SecPolicyCreateSSL(true, nil)])
         SecTrustSetPolicies(trust, policies)
         
         guard trust.isValid else { return .block }
         
-        //If the server trust evaluation is successful, walk the certificate chain
+        // If the server trust evaluation is successful, walk the certificate chain
         let certificateCount = SecTrustGetCertificateCount(trust)
         for certIndex in 0..<certificateCount {
             guard let certificate = SecTrustGetCertificateAtIndex(trust, certIndex) else { continue }
             
             if domainConfig.validate(against: certificate) {
-                //Found a pinned certificate, allow the connection
+                // Found a pinned certificate, allow the connection
                 return .allow(URLCredential(trust: trust))
             }
         }

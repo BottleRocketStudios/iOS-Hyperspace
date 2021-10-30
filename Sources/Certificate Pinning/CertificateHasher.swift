@@ -13,9 +13,9 @@ import CommonCrypto
 struct CertificateHasher {
     
     enum Error: Swift.Error {
-        case contextError //There was an issue performing the cryptographic operations to retrieve the pinning hash
-        case unableToRetrievePublicKey //There was an issue extracting the public key from the certificate
-        case unsupportedAlgorithm //The public key is utilizing an unsupporting algorithm. RSA2048, RSA4096, ECSECPrimeRandom256 and ECSECPrimeRandom384 are supported
+        case contextError // There was an issue performing the cryptographic operations to retrieve the pinning hash
+        case unableToRetrievePublicKey // There was an issue extracting the public key from the certificate
+        case unsupportedAlgorithm // The public key is utilizing an unsupporting algorithm. RSA2048, RSA4096, ECSECPrimeRandom256 and ECSECPrimeRandom384 are supported
     }
     
     enum PublicKeyAlgorithm: String {
@@ -92,11 +92,11 @@ private extension CertificateHasher {
         var shaCtx = CC_SHA256_CTX()
         CC_SHA256_Init(&shaCtx)
         
-        //Add the missing ASN1 header
+        // Add the missing ASN1 header
         guard let algorithm = PublicKeyAlgorithm(keyType: publicKey.type, keySize: publicKey.size) else { throw Error.unsupportedAlgorithm }
         let header = algorithm.asn1HeaderBytes
 
-        //Add the appropriate header and public key
+        // Add the appropriate header and public key
         CC_SHA256_Update(&shaCtx, header, CC_LONG(header.count))
         CC_SHA256_Update(&shaCtx, keyData.bytes, CC_LONG(keyData.length))
         
