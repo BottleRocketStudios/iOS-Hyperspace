@@ -133,7 +133,7 @@ public struct HTTP {
         /// The raw body data to be attached to the HTTP request
         public let data: Data?
         public let additionalHeaders: [HeaderKey: HeaderValue]
-        
+
         /// Initializes a new `HTTP.Body` instance given the raw `Data` to be attached.
         /// - Parameters:
         ///   - data: The raw `Data` to set as the HTTP body.

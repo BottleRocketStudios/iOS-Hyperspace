@@ -53,10 +53,10 @@ struct CertificateHasher {
     }
     
     static func checkValidity(of trust: SecTrust) -> Bool {
-        var result = SecTrustResultType.invalid
-        let status = SecTrustEvaluate(trust, &result)
+        var result: CFError?
+        let status = SecTrustEvaluateWithError(trust, &result)
         
-        return (status == errSecSuccess) ? (result == .unspecified || result == .proceed) : false
+        return status || result == nil
     }
 }
 
