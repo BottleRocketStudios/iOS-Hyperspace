@@ -50,6 +50,48 @@ extension MockBackendServiceError: Equatable {
     }
 }
 
+public enum MockAnalyticsServiceError: TransportFailureRepresentable, DecodingFailureRepresentable {
+
+
+    case networkError(TransportError, HTTP.Response?)
+    case dataTransformationError(Error)
+
+    public init(transportFailure: TransportFailure) {
+        self = .networkError(transportFailure.error, transportFailure.response)
+    }
+
+    public init(decodingFailure: DecodingFailure) {
+        self = .dataTransformationError(decodingFailure)
+    }
+
+    public var transportError: TransportError? {
+        switch self {
+        case .networkError(let error, _): return error
+        default: return nil
+        }
+    }
+
+    public var failureResponse: HTTP.Response? {
+        switch self {
+        case .networkError(_, let response): return response
+        case .dataTransformationError: return nil
+        }
+    }
+}
+
+extension MockAnalyticsServiceError: Equatable {
+    public static func == (lhs: MockAnalyticsServiceError, rhs: MockAnalyticsServiceError) -> Bool {
+        switch (lhs, rhs) {
+        case (.networkError(let lhsError, let lhsResponse), .networkError(let rhsError, let rhsResponse)):
+            return lhsError == rhsError && lhsResponse == rhsResponse
+        case (.dataTransformationError(let lhsError), .dataTransformationError(let rhsError)):
+            return lhsError.localizedDescription == rhsError.localizedDescription
+        default:
+            return false
+        }
+    }
+}
+
 class MockBackendService: BackendServiceProtocol {
     func execute<T, U>(request: Request<T, U>, completion: @escaping (Result<T, U>) -> Void) {
         let failure = TransportFailure(error: .init(code: .timedOut), request: HTTP.Request(urlRequest: request.urlRequest), response: nil)

@@ -672,8 +672,8 @@
 		60AC831F1FF58E8B00120172 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				65709A28272E0F600066361E /* AsyncTests.swift */,
 				0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */,
+				65709A28272E0F600066361E /* AsyncTests.swift */,
 				60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */,
 				0EF57B87220296A700484C01 /* CertificateHashTests.swift */,
 				0E29092B21349F320031F67C /* DecodingFailureTests.swift */,
@@ -2009,6 +2009,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
@@ -2032,6 +2033,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;

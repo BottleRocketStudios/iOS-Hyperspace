@@ -18,7 +18,11 @@ class RequestTestDefaults {
     static func defaultRequest<T: Decodable>() -> Request<T, MockBackendServiceError> {
         return Request(method: .get, url: RequestTestDefaults.defaultURL, cachePolicy: RequestTestDefaults.defaultCachePolicy, timeout: RequestTestDefaults.defaultTimeout)
     }
-    
+
+    static func analyticsRequest<T: Decodable>() -> Request<T, MockAnalyticsServiceError> {
+        return Request(method: .get, url: RequestTestDefaults.defaultURL, cachePolicy: RequestTestDefaults.defaultCachePolicy, timeout: RequestTestDefaults.defaultTimeout)
+    }
+
     static let defaultModel = DefaultModel(title: "test")
     static let defaultModelJSONData: Data = {
         let jsonEncoder = JSONEncoder()

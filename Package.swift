@@ -4,10 +4,10 @@ import PackageDescription
 let package = Package(
     name: "Hyperspace",
     platforms: [
-        .macOS("10.12"),
-        .iOS("10.0"),
-        .tvOS("10.0"),
-        .watchOS("4.2")
+        .macOS("10.15"),
+        .iOS("12.0"),
+        .tvOS("12.0"),
+        .watchOS("6.0")
     ],
     products: [
         .library(
