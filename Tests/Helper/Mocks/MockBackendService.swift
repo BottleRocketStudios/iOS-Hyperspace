@@ -52,7 +52,6 @@ extension MockBackendServiceError: Equatable {
 
 public enum MockAnalyticsServiceError: TransportFailureRepresentable, DecodingFailureRepresentable {
 
-
     case networkError(TransportError, HTTP.Response?)
     case dataTransformationError(Error)
 

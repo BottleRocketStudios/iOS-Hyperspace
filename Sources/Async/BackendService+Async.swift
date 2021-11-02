@@ -17,13 +17,11 @@ extension BackendServiceProtocol {
     ///   - request: The Request to be executed.
     /// - Returns: The decodable type specified in the `Request`.
     public func execute<T, U>(request: Request<T, U>) async throws -> T {
-        return try await withCheckedThrowingContinuation { continuation in
-            execute(request: request) { result in
-                switch result {
-                case .success(let value): continuation.resume(returning: value)
-                case .failure(let err): continuation.resume(throwing: err)
-                }
-            }
+        let result = await executeWithResult(request: request)
+
+        switch result {
+        case .success(let value): return value
+        case .failure(let err): throw err
         }
     }
 

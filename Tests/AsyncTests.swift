@@ -75,10 +75,10 @@ class AsyncTests: XCTestCase {
     }
 
     private func executeBackendService<T: Equatable, U: Equatable>(mockRequest: Request<T, U>,
-                                             mockedTransportResult: TransportResult,
-                                             expectingResult expectedResult: Result<T, U>,
-                                             file: StaticString = #file,
-                                             line: UInt = #line) async {
+                                                                   mockedTransportResult: TransportResult,
+                                                                   expectingResult expectedResult: Result<T, U>,
+                                                                   file: StaticString = #file,
+                                                                   line: UInt = #line) async {
         let mockTransportService = MockTransportService(responseResult: mockedTransportResult)
         let backendService = BackendService(transportService: mockTransportService)
 
