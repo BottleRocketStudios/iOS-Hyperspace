@@ -160,6 +160,6 @@ class DecodingTests: XCTestCase {
         let objectJSON = loadedJSONData(fromFileNamed: "RootKeyArray")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(request: HTTP.Request(), code: 200, body: objectJSON))
         let result = request.transform(success: serviceSuccess)
-        XCTAssertNil(result.value) //Should fail because RootKeyArray json contains [MockObject], not a single MockObject
+        XCTAssertNil(result.value) // Should fail because RootKeyArray json contains [MockObject], not a single MockObject
     }
 }

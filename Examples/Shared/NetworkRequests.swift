@@ -46,7 +46,7 @@ extension Request where Response == Post, Error == AnyError {
     
     static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
         return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
-                       body: try? HTTP.Body(post))
+                       body: try? HTTP.Body.json(post))
     }
 }
 

@@ -81,7 +81,7 @@ extension InterfaceController {
 extension WKInterfaceController {
     func presentAlert(titled title: String, message: String) {
         let dismissAction = WKAlertAction(title: "OK", style: .default) {
-            //Do nothing
+            // Do nothing
         }
         presentAlert(withTitle: title, message: message, preferredStyle: .alert, actions: [dismissAction])
     }
