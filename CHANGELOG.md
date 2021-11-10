@@ -2,6 +2,10 @@
 
 #### Enhancements
 
+* Renamed async execution function `executeAsync` to avoid namespace collision with futures-based execution.
+[Daniel Larsen](https://github.com/grandlarseny)
+[#142]https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/143
+
 * Added async / await functions for executing requests
 [Daniel Larsen](https://github.com/grandlarseny)
 [#142]https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/142
