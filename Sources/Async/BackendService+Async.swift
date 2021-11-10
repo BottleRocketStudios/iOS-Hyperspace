@@ -16,7 +16,7 @@ extension BackendServiceProtocol {
     /// - Parameters:
     ///   - request: The Request to be executed.
     /// - Returns: The decodable type specified in the `Request`.
-    public func execute<T, U>(request: Request<T, U>) async throws -> T {
+    public func executeAsync<T, U>(request: Request<T, U>) async throws -> T {
         let result = await executeWithResult(request: request)
 
         switch result {

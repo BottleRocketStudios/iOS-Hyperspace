@@ -102,6 +102,6 @@ class AsyncTests: XCTestCase {
         let transportService = MockTransportService(responseResult: expectedResult)
         let backendService = BackendService(transportService: transportService)
 
-        return try await backendService.execute(request: defaultRequest)
+        return try await backendService.executeAsync(request: defaultRequest)
     }
 }
