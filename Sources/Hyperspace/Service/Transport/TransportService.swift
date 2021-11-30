@@ -14,7 +14,7 @@ public class TransportService {
     // MARK: - Properties
     
     let session: TransportSession
-    private let queue = DispatchQueue(label: "Hyperspace.tasks.sync")
+    private let queue = DispatchQueue(label: "com.bottlerocketstudios.hyperspace.tasks")
     private(set) var networkActivityController: NetworkActivityController?
     private var tasks = [URLRequest: TransportDataTask]()
     
@@ -47,19 +47,19 @@ extension TransportService: Transporting {
         queue.async { [weak self] in
             self?.tasks[request] = task
             task.resume()
-
-            self?.networkActivityController?.start()
         }
+
+        networkActivityController?.start()
     }
     
     public func cancelTask(for request: URLRequest) {
-        queue.async { [weak self] in
+        queue.sync { [weak self] in
             self?.tasks[request]?.cancel()
         }
     }
     
     public func cancelAllTasks() {
-        queue.async { [weak self] in
+        queue.sync { [weak self] in
             self?.tasks.forEach { $1.cancel() }
         }
     }
