@@ -2,6 +2,10 @@
 
 #### Enhancements
 
+* Make `TransportService` thread-safe
+[Daniel Larsen](https://github.com/grandlarseny)
+[#145]https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/145
+
 * Added async / await functions for executing requests
 [Daniel Larsen](https://github.com/grandlarseny)
 [#142]https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/142
