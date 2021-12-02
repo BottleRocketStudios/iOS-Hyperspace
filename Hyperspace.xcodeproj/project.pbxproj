@@ -32,6 +32,8 @@
 		0E81B4A220ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */; };
 		0E81B4A320ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */; };
 		0E81B4A420ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */; };
+		0EBE2334275985EF00760DC7 /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
+		0EBE2335275985F000760DC7 /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
 		0EBEC09524EC66F500C37ADA /* FormURLEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */; };
 		0EBEC09624EC66F600C37ADA /* FormURLEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */; };
 		0EBEC81424EC885100627564 /* FormURLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03975C24EB8CD50078BA7D /* FormURLEncoder.swift */; };
@@ -1419,6 +1421,7 @@
 				B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				0EBEC81924ECB12100627564 /* Request+EmptyDecodingStrategy.swift in Sources */,
 				0EFB544C2204CC1600949F24 /* TrustValidatingTransportService.swift in Sources */,
+				0EBE2335275985F000760DC7 /* BackendService+Async.swift in Sources */,
 				0EF57B842202902000484C01 /* CertificateHasher.swift in Sources */,
 				60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */,
 			);
@@ -1451,6 +1454,7 @@
 				B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				0EBEC81824ECB12000627564 /* Request+EmptyDecodingStrategy.swift in Sources */,
 				0EFB544B2204CC1500949F24 /* TrustValidatingTransportService.swift in Sources */,
+				0EBE2334275985EF00760DC7 /* BackendService+Async.swift in Sources */,
 				0EF57B832202901F00484C01 /* CertificateHasher.swift in Sources */,
 				60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */,
 			);
@@ -1807,6 +1811,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOS";
 				PRODUCT_NAME = Hyperspace;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1832,6 +1837,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOS";
 				PRODUCT_NAME = Hyperspace;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
