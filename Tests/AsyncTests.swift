@@ -9,7 +9,7 @@
 import Hyperspace
 import XCTest
 
-@available(iOS 13.0.0, *)
+@available(iOS 15.0, *)
 class AsyncTests: XCTestCase {
 
     // MARK: - Type Aliases

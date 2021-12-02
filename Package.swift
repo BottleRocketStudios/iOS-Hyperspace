@@ -14,13 +14,11 @@ let package = Package(
             name: "Hyperspace",
             targets: ["Hyperspace"])
     ],
-    dependencies: [
-        .package(url: "https://github.com/Thomvis/BrightFutures.git", from: "8.0.1")
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "Hyperspace",
-            dependencies: ["BrightFutures"],
+            dependencies: [],
             path: "Sources"),
         .testTarget(
             name: "HyperspaceTests",

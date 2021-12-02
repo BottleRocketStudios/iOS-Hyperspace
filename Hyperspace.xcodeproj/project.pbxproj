@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,9 +41,6 @@
 		0EBEC81924ECB12100627564 /* Request+EmptyDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC81624ECB11B00627564 /* Request+EmptyDecodingStrategy.swift */; };
 		0EBF9B1E246F349500E990DC /* AnyErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */; };
 		0EBF9B1F246F349600E990DC /* AnyErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */; };
-		0EC35679270CDF7D00F0A8C5 /* BrightFutures.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC35678270CDF7D00F0A8C5 /* BrightFutures.xcframework */; };
-		0EC3567C270CDF9400F0A8C5 /* BrightFutures.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC35678270CDF7D00F0A8C5 /* BrightFutures.xcframework */; };
-		0EC3567F270CDF9B00F0A8C5 /* BrightFutures.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC35678270CDF7D00F0A8C5 /* BrightFutures.xcframework */; };
 		0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
 		0ECDC1C820A9FBE600ABF991 /* RootKeyObjectPlus.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */; };
@@ -85,8 +82,6 @@
 		0EFB544A2204CC1500949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
 		0EFB544B2204CC1500949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
 		0EFB544C2204CC1600949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
-		125DD90D22F0E47D00AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8F822F0C51900AFA88B /* BrightFutures.framework */; };
-		125DD90F22F0E4E900AFA88B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125DD8FA22F0C52700AFA88B /* BrightFutures.framework */; };
 		3026E459202008720003A321 /* TransportSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* TransportSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* TransportSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* TransportSessionTest.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
@@ -210,11 +205,6 @@
 		B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
 		B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
-		CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961EA21E5317B006CC9F5 /* FutureTests.swift */; };
-		CB0DE06321E7E62500661F0E /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
-		CB7B20A621ECDDC400AB8FE3 /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
-		CB7B20A721ECDDC500AB8FE3 /* BackendService+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */; };
 		CBB361BB21E643520082E860 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
 		CBB361BC21E643520082E860 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -461,8 +451,6 @@
 		B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkActivityIndicator.swift; sourceTree = "<group>"; };
 		B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorTests.swift; sourceTree = "<group>"; };
 		CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
-		CB0961EA21E5317B006CC9F5 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
-		CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendService+Futures.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,7 +466,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EC35679270CDF7D00F0A8C5 /* BrightFutures.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +473,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				125DD90D22F0E47D00AFA88B /* BrightFutures.framework in Frameworks */,
 				60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,7 +481,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EC3567F270CDF9B00F0A8C5 /* BrightFutures.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +488,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EC3567C270CDF9400F0A8C5 /* BrightFutures.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +495,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				125DD90F22F0E4E900AFA88B /* BrightFutures.framework in Frameworks */,
 				60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,7 +639,6 @@
 				60AC833D1FF596B600120172 /* Hyperspace */,
 				65709A25272E0B8E0066361E /* Async */,
 				0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */,
-				CB0DE06121E7E5EF00661F0E /* Futures */,
 				60AC82F91FF58E3600120172 /* Supporting Files */,
 			);
 			path = Sources;
@@ -684,7 +666,6 @@
 				0E458C8924EDC7FE00DC3E70 /* EmptyDecodingStrategyTests.swift */,
 				B4255B57246E525F009B6D6A /* EncodingTests.swift */,
 				0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */,
-				CB0961EA21E5317B006CC9F5 /* FutureTests.swift */,
 				30F07352202109F60045CB01 /* HTTPTests.swift */,
 				B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */,
 				0EF57B7C2202745800484C01 /* PinningTests.swift */,
@@ -897,14 +878,6 @@
 			path = Async;
 			sourceTree = "<group>";
 		};
-		CB0DE06121E7E5EF00661F0E /* Futures */ = {
-			isa = PBXGroup;
-			children = (
-				CB0DE06221E7E62500661F0E /* BackendService+Futures.swift */,
-			);
-			path = Futures;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -963,7 +936,6 @@
 				60836794201D1AF500007247 /* Frameworks */,
 				60836795201D1AF500007247 /* Resources */,
 				B4C32C67201EA4C900FC82C1 /* Embed Frameworks */,
-				125DD90122F0C89600AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1001,7 +973,6 @@
 				60AC82BB1FF588D600120172 /* Sources */,
 				60AC82BC1FF588D600120172 /* Frameworks */,
 				60AC82BD1FF588D600120172 /* Resources */,
-				125DD90E22F0E49900AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1021,7 +992,7 @@
 				60AC82D11FF5899800120172 /* Frameworks */,
 				60AC82D21FF5899800120172 /* Headers */,
 				60AC82D31FF5899800120172 /* Resources */,
-				0EEB77B120222F9000671424 /* ShellScript */,
+				0EEB77B120222F9000671424 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -1058,7 +1029,6 @@
 				60AC82E61FF589C200120172 /* Sources */,
 				60AC82E71FF589C200120172 /* Frameworks */,
 				60AC82E81FF589C200120172 /* Resources */,
-				125DD91022F0E4EF00AFA88B /* Carthage Copy-Framework */,
 			);
 			buildRules = (
 			);
@@ -1079,7 +1049,6 @@
 				60D6C41D201D156500B3B012 /* Resources */,
 				608367B0201D1AF500007247 /* Embed Watch Content */,
 				B4C32C57201EA4B700FC82C1 /* Embed Frameworks */,
-				125DD8FE22F0C5C400AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1100,7 +1069,6 @@
 				60D6C438201D188B00B3B012 /* Frameworks */,
 				60D6C439201D188B00B3B012 /* Resources */,
 				B4C32C5C201EA4BC00FC82C1 /* Embed Frameworks */,
-				125DD90022F0C77800AFA88B /* Carthage Copy-Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1323,120 +1291,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		0EEB77B120222F9000671424 /* ShellScript */ = {
+		0EEB77B120222F9000671424 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		125DD8FE22F0C5C400AFA88B /* Carthage Copy-Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
-			);
-			name = "Carthage Copy-Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
-		};
-		125DD90022F0C77800AFA88B /* Carthage Copy-Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/tvOS/BrightFutures.framework",
-			);
-			name = "Carthage Copy-Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
-		};
-		125DD90122F0C89600AFA88B /* Carthage Copy-Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/watchOS/BrightFutures.framework",
-			);
-			name = "Carthage Copy-Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
-		};
-		125DD90E22F0E49900AFA88B /* Carthage Copy-Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
-			);
-			name = "Carthage Copy-Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
-		};
-		125DD91022F0E4EF00AFA88B /* Carthage Copy-Framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/tvOS/BrightFutures.framework",
-			);
-			name = "Carthage Copy-Framework";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1467,7 +1336,6 @@
 				65709A27272E0B9D0066361E /* BackendService+Async.swift in Sources */,
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* CodableContainer.swift in Sources */,
-				CB0DE06321E7E62500661F0E /* BackendService+Futures.swift in Sources */,
 				0E4B3AE3220244B100D65DB5 /* TrustConfiguration.swift in Sources */,
 				0E4B3ADF22023C0D00D65DB5 /* TrustValidator.swift in Sources */,
 				60D6C372201CC81100B3B012 /* Request.swift in Sources */,
@@ -1505,7 +1373,6 @@
 				0E458C8C24EDCC3500DC3E70 /* EmptyDecodingStrategyTests.swift in Sources */,
 				30F0735420210A890045CB01 /* HTTPTests.swift in Sources */,
 				3026E459202008720003A321 /* TransportSessionTest.swift in Sources */,
-				CB0961EC21E531A3006CC9F5 /* FutureTests.swift in Sources */,
 				65A672F62731991A000E3511 /* TestDecodingError.swift in Sources */,
 				60D6C40B201CFCCF00B3B012 /* MockCodableContainer.swift in Sources */,
 				0EF57B7D2202745800484C01 /* PinningTests.swift in Sources */,
@@ -1540,7 +1407,6 @@
 				0EFB54292204A8A400949F24 /* AuthenticationChallenge.swift in Sources */,
 				60D6C387201CCCBE00B3B012 /* HTTP.swift in Sources */,
 				0ECDC1DE20AB3E6C00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
-				CB7B20A721ECDDC500AB8FE3 /* BackendService+Futures.swift in Sources */,
 				60D6C388201CCCBE00B3B012 /* CodableContainer.swift in Sources */,
 				0E4B3AE52202483A00D65DB5 /* TrustConfiguration.swift in Sources */,
 				0E4B3AE02202449F00D65DB5 /* TrustValidator.swift in Sources */,
@@ -1573,7 +1439,6 @@
 				0EFB54282204A8A400949F24 /* AuthenticationChallenge.swift in Sources */,
 				60D6C37C201CCCAE00B3B012 /* CodableContainer.swift in Sources */,
 				0ECDC1DD20AB3E6B00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
-				CB7B20A621ECDDC400AB8FE3 /* BackendService+Futures.swift in Sources */,
 				0E4B3AE42202483A00D65DB5 /* TrustConfiguration.swift in Sources */,
 				0E4B3AE1220244A000D65DB5 /* TrustValidator.swift in Sources */,
 				60D6C37E201CCCAE00B3B012 /* Request.swift in Sources */,
@@ -1609,7 +1474,6 @@
 				0E458C8D24EDCC3700DC3E70 /* EmptyDecodingStrategyTests.swift in Sources */,
 				30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */,
 				3026E45A2020087C0003A321 /* TransportSessionTest.swift in Sources */,
-				CB0961ED21E531A4006CC9F5 /* FutureTests.swift in Sources */,
 				65A672F72731991A000E3511 /* TestDecodingError.swift in Sources */,
 				60D6C40C201CFCCF00B3B012 /* MockCodableContainer.swift in Sources */,
 				0EF57B7E2202745800484C01 /* PinningTests.swift in Sources */,
@@ -1738,11 +1602,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1759,11 +1619,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1782,10 +1638,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				IBSC_MODULE = Hyperspace_watchOSExample_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1803,10 +1656,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				IBSC_MODULE = Hyperspace_watchOSExample_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1929,8 +1779,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 				VERSION = 3.2.1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1954,11 +1803,7 @@
 				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOS";
 				PRODUCT_NAME = Hyperspace;
 				SKIP_INSTALL = YES;
@@ -1983,11 +1828,7 @@
 				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOS";
 				PRODUCT_NAME = Hyperspace;
 				SKIP_INSTALL = YES;
@@ -2006,11 +1847,7 @@
 				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2030,11 +1867,7 @@
 				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2060,11 +1893,7 @@
 				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-watchOS";
 				PRODUCT_NAME = Hyperspace;
 				SDKROOT = watchos;
@@ -2091,11 +1920,7 @@
 				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-watchOS";
 				PRODUCT_NAME = Hyperspace;
 				SDKROOT = watchos;
@@ -2122,11 +1947,7 @@
 				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOS";
 				PRODUCT_NAME = Hyperspace;
 				SDKROOT = appletvos;
@@ -2153,11 +1974,7 @@
 				);
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOS";
 				PRODUCT_NAME = Hyperspace;
 				SDKROOT = appletvos;
@@ -2178,11 +1995,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -2203,11 +2016,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -2226,10 +2035,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-iOSExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2245,10 +2051,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-iOSExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2264,10 +2067,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-tvOSExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -2285,10 +2085,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-tvOSExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;

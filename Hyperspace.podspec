@@ -31,12 +31,6 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   core.source_files = 'Sources/Hyperspace/**/*'
   end
 
-  s.subspec 'Futures' do |futures|
-  futures.dependency 'BrightFutures', '~> 8.0.0'
-  futures.dependency 'Hyperspace/Core'
-  futures.source_files = 'Sources/Futures/**/*'
-  end
-
   s.subspec 'Pinning' do |pinning|
   pinning.dependency 'Hyperspace/Core'
   pinning.source_files = 'Sources/Certificate\ Pinning/**/*'
