@@ -2,7 +2,7 @@ name: Main
 
 on:
   push:
-    branches: [ main, release/*, feature/githubActions]
+    branches: [ main, release/*]
   pull_request:
 
 jobs:
