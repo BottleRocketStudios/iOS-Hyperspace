@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: ["iOS"]
+        name: ["iOS", "tvOS", "watchOS"]
         include:
             - name: "iOS"
               scheme: "Hyperspace_iOS"
