@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Hyperspace'
-  s.version          = '3.2.1'
+  s.version          = '4.0.0'
   s.summary          = 'An extremely lightweight wrapper around URLSession to make working with APIs a breeze.'
 
   s.description      = <<-DESC
@@ -22,9 +22,9 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.source           = { :git => 'https://github.com/BottleRocketStudios/iOS-Hyperspace.git', :tag => s.version.to_s }
 
   s.swift_version = '5.0'
-  s.ios.deployment_target = '8.0'
-  s.watchos.deployment_target = '2.0'
-  s.tvos.deployment_target = '9.0'
+  s.ios.deployment_target = '12.0'
+  s.watchos.deployment_target = '6.0'
+  s.tvos.deployment_target = '12.0'
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
