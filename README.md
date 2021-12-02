@@ -133,18 +133,10 @@ backendService.execute(request: createPostRequest) { [weak self] result in
 
 ## Example
 
-To run the example project, you'll first need to use [Carthage](https://github.com/Carthage/Carthage) to install Hyperspace's dependency ([BrightFutures](https://github.com/Thomvis/BrightFutures).
-
-After [installing Carthage](https://github.com/Carthage/Carthage#installing-carthage), clone the repo:
+Clone the repo:
 
 ```bash
 git clone https://github.com/BottleRocketStudios/iOS-Hyperspace.git
-```
-
-Next, use Carthage to install the dependencies:
-
-```bash
-carthage update
 ```
 
 From here, you can open up `Hyperspace.xcworkspace` and run the examples:
