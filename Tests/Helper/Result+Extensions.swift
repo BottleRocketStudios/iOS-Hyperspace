@@ -9,15 +9,26 @@
 import Foundation
 
 extension Result {
-    
-    var isFailure: Bool {
+
+    var value: Success? {
         switch self {
-        case .failure: return true
-        default: return false
+        case .success(let value): return value
+        default: return nil
         }
     }
-    
+
+    var error: Failure? {
+        switch self {
+        case .failure(let error): return error
+        default: return nil
+        }
+    }
+
     var isSuccess: Bool {
-        return !isFailure
+        return value != nil
+    }
+    
+    var isFailure: Bool {
+        return !isSuccess
     }
 }

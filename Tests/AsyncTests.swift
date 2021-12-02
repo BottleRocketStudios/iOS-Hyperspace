@@ -44,11 +44,11 @@ class AsyncTests: XCTestCase {
                                               response: nil)
 
         await executeBackendService(mockRequest: defaultRequest,
-                                    mockedTransportResult: TransportResult(error: backendFailure),
+                                    mockedTransportResult: TransportResult.failure(backendFailure),
                                     expectingResult: .failure(MockBackendServiceError(transportFailure: backendFailure)))
 
         await executeBackendService(mockRequest: analyticsRequest,
-                                    mockedTransportResult: TransportResult(error: backendFailure),
+                                    mockedTransportResult: TransportResult.failure(backendFailure),
                                     expectingResult: .failure(MockAnalyticsServiceError(transportFailure: backendFailure)))
     }
 
