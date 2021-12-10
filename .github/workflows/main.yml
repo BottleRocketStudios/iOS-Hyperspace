@@ -9,6 +9,7 @@ jobs:
   Build:
     runs-on: macos-11
     env:
+      DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
       workspace: "Hyperspace.xcworkspace"
     strategy:
       fail-fast: false
