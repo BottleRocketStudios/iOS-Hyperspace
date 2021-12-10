@@ -18,19 +18,19 @@ jobs:
         include:
             - name: "iOS"
               scheme: "Hyperspace_iOS"
-              destination: "platform=iOS Simulator,OS=15.0,name=iPhone 12 Pro"
+              destination: "platform=iOS Simulator,OS=15.2,name=iPhone 12 Pro"
               test: true
               lint: true
 
             - name: "tvOS"
               scheme: "Hyperspace_tvOS"
-              destination: "platform=tvOS Simulator,OS=15.0,name=Apple TV 4K"
+              destination: "platform=tvOS Simulator,OS=15.2,name=Apple TV 4K"
               test: true
               lint: true
 
             - name: "watchOS"
               scheme: "Hyperspace_watchOS"
-              destination: "platform=watchOS Simulator,OS=8.0,name=Apple Watch Series 6 - 44mm"
+              destination: "platform=watchOS Simulator,OS=8.3,name=Apple Watch Series 6 - 44mm"
               test: false
               lint: true
     steps:
