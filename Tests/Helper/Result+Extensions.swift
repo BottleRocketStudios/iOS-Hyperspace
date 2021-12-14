@@ -6,14 +6,29 @@
 //  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 
-import BrightFutures
+import Foundation
 
 extension Result {
-    var isFailure: Bool {
-        return error != nil
+
+    var value: Success? {
+        switch self {
+        case .success(let value): return value
+        default: return nil
+        }
     }
-    
+
+    var error: Failure? {
+        switch self {
+        case .failure(let error): return error
+        default: return nil
+        }
+    }
+
     var isSuccess: Bool {
         return value != nil
+    }
+    
+    var isFailure: Bool {
+        return !isSuccess
     }
 }

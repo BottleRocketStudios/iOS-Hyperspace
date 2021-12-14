@@ -8,7 +8,7 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
+@available(iOS 13, tvOS 13, watchOS 6, *)
 extension BackendServiceProtocol {
 
     /// Executes the Request asynchronously, returning the specified value type. Throws an error if unable to return the value as specified.
