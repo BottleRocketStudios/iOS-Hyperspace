@@ -127,59 +127,6 @@ public struct HTTP {
         public var isServerError: Bool { return ServerError.acceptedRange ~= rawValue }
     }
     
-    /// Represents an HTTP request body
-    public struct Body: Equatable {
-        
-        /// The raw body data to be attached to the HTTP request
-        public let data: Data?
-        public let additionalHeaders: [HeaderKey: HeaderValue]
-
-        /// Initializes a new `HTTP.Body` instance given the raw `Data` to be attached.
-        /// - Parameters:
-        ///   - data: The raw `Data` to set as the HTTP body.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        public init(_ data: Data?, additionalHeaders: [HeaderKey: HeaderValue] = [:]) {
-            self.data = data
-            self.additionalHeaders = additionalHeaders
-        }
-        
-        /// Returns a new `HTTP.Body` instance given an encodable object.
-        /// - Parameters:
-        ///   - encodable: The `Encodable` object to be included in the request.
-        ///   - encoder: The `JSONEncoder` to be used to encode the object.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        /// - Returns: A new instance of `HTTP.Body` with the given encodable representation.
-        public static func json<E: Encodable>(_ encodable: E, encoder: JSONEncoder = JSONEncoder(),
-                                              additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON]) throws -> HTTP.Body {
-            let data = try encoder.encode(encodable)
-            return HTTP.Body(data, additionalHeaders: additionalHeaders)
-        }
-        
-        /// Returns a new `HTTP.Body` instance given an encodable object.
-        /// - Parameters:
-        ///   - encodable: The `Encodable` object to be included in the request.
-        ///   - container: A type of `EncodableContainer` in which to encode the object.
-        ///   - encoder: The `JSONEncoder` to be used to encode the object.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        /// - Returns: A new instance of `HTTP.Body` with the given encodable representation.
-        public static func json<E, C: EncodableContainer>(_ encodable: E, container: C.Type, encoder: JSONEncoder = JSONEncoder(),
-                                                          additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON])
-            throws -> HTTP.Body where C.Contained == E {
-                let data = try encoder.encode(encodable, in: container)
-                return HTTP.Body(data, additionalHeaders: additionalHeaders)
-        }
-
-        /// Initializes a new `HTTP.Body` instance given a set of URL form content
-        /// - Parameters:
-        ///   - formContent: An array of `(String, String)` representing the content to be encoded.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        /// - Returns: A new instance of `HTTP.Body` with the given form content.
-        public static func urlForm(using formContent: [(String, String)], additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationFormURLEncoded]) -> HTTP.Body {
-            let formURLEncoder = FormURLEncoder()
-            return HTTP.Body(formURLEncoder.encode(formContent), additionalHeaders: additionalHeaders)
-        }
-    }
-
     /// Represents an HTTP request
     public struct Request: Equatable {
 
@@ -319,6 +266,11 @@ extension HTTP.HeaderValue {
     public static let encodingBr = HTTP.HeaderValue(rawValue: "br")
     public static let passKit = HTTP.HeaderValue(rawValue: "application/vnd.apple.pkpass")
     public static let jsonAPI = HTTP.HeaderValue(rawValue: "application/vnd.api+json")
+
+    public static func authorizationBasic(username: String, password: String) -> HTTP.HeaderValue? {
+        let credentials = "\(username):\(password)".data(using: .utf8)
+        return credentials.map { HTTP.HeaderValue(rawValue: "Basic \($0.base64EncodedString())") }
+    }
     
     public static func authorizationBearer(token: String) -> HTTP.HeaderValue {
         return HTTP.HeaderValue(rawValue: "Bearer \(token)")
