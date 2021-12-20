@@ -9,7 +9,7 @@
 import Hyperspace
 import XCTest
 
-@available(iOS 13.0.0, *)
+@available(iOS 13, tvOS 13, watchOS 6, *)
 class AsyncTests: XCTestCase {
 
     // MARK: - Type Aliases
@@ -44,11 +44,11 @@ class AsyncTests: XCTestCase {
                                               response: nil)
 
         await executeBackendService(mockRequest: defaultRequest,
-                                    mockedTransportResult: TransportResult(error: backendFailure),
+                                    mockedTransportResult: TransportResult.failure(backendFailure),
                                     expectingResult: .failure(MockBackendServiceError(transportFailure: backendFailure)))
 
         await executeBackendService(mockRequest: analyticsRequest,
-                                    mockedTransportResult: TransportResult(error: backendFailure),
+                                    mockedTransportResult: TransportResult.failure(backendFailure),
                                     expectingResult: .failure(MockAnalyticsServiceError(transportFailure: backendFailure)))
     }
 

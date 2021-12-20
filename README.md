@@ -1,6 +1,6 @@
 # Hyperspace
 
-[![CI Status](https://img.shields.io/travis/BottleRocketStudios/iOS-Hyperspace/master.svg)](https://travis-ci.org/BottleRocketStudios/iOS-Hyperspace)
+![CI Status](https://github.com/BottleRocketStudios/iOS-UtiliKit/actions/workflows/main.yml/badge.svg)
 [![Version](https://img.shields.io/cocoapods/v/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
@@ -133,18 +133,10 @@ backendService.execute(request: createPostRequest) { [weak self] result in
 
 ## Example
 
-To run the example project, you'll first need to use [Carthage](https://github.com/Carthage/Carthage) to install Hyperspace's dependency ([BrightFutures](https://github.com/Thomvis/BrightFutures).
-
-After [installing Carthage](https://github.com/Carthage/Carthage#installing-carthage), clone the repo:
+Clone the repo:
 
 ```bash
 git clone https://github.com/BottleRocketStudios/iOS-Hyperspace.git
-```
-
-Next, use Carthage to install the dependencies:
-
-```bash
-carthage update
 ```
 
 From here, you can open up `Hyperspace.xcworkspace` and run the examples:

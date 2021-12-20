@@ -30,7 +30,7 @@ public class TransportService {
     }
     
     deinit {
-        cancelAllTasks()
+        tasks.forEach { $1.cancel() }
     }
 }
 
@@ -44,7 +44,7 @@ extension TransportService: Transporting {
             self?.handle(data: data, response: response, error: error, for: HTTP.Request(urlRequest: request), completion: completion)
         }
 
-        queue.async { [weak self] in
+        queue.sync { [weak self] in
             self?.tasks[request] = task
             task.resume()
         }
