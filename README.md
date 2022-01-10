@@ -85,12 +85,12 @@ To avoid having to define default `Request` property values for every request in
 ```swift
 RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
 RequestDefaults.defaultDecoder = MyCustomDecoder() // Default decoder is JSONDecoder
-RequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
 ```
 
 ### 3. Create a BackendService to execute your requests
 
 We recommend adhering to the [Interface Segregation](https://en.wikipedia.org/wiki/Interface_segregation_principle) principle by creating separate "controller" objects for each section of the API you're communicating with. Each controller should expose a set of related funtions and use a `BackendService` to execute requests. However, for this simple example, we'll just use `BackendService` directly as a `private` property on the view controller:
+
 ```swift
 class ViewController: UIViewController {
 
@@ -103,6 +103,7 @@ class ViewController: UIViewController {
 ### 4. Instantiate your Request
 
 Let's say our view controller is supposed to create the post whenever the user taps the "send" button. Here's what that might look like:
+
 ```swift
 @IBAction private func sendButtonTapped(_ sender: UIButton) {
     let title = ... // Get the title from a text view in the UI...
@@ -194,8 +195,6 @@ github "BottleRocketStudios/iOS-Hyperspace"
 ```
 
 Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
-
-NOTE: Don't forget to add both `Hyperspace.framework` and the `BrightFutures.framework` dependency to your project (if using the `Futures` subspec).
 
 ### Swift Package Manager
 
