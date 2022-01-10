@@ -8,7 +8,11 @@
 
 import Foundation
 
+@available(*, renamed: "TransportService")
+public typealias NetworkService = TransportService
+
 /// Adopts the `Transporting` to perform HTTP communication via the execution of URLRequests.
+
 public class TransportService {
     
     // MARK: - Properties
