@@ -38,9 +38,10 @@ The addition here that makes decoding an `EmptyResponse` so flexible is the `Emp
 - `default` : If the handler receives a `TransportSuccess`, this will return a `.success(EmptyResponse())`, regardless of the actual contents of the HTTP response.
 - `validatedEmpty` : If the handler receives a `TransportSuccess`, this strategy will check to ensure the HTTP response body is either `nil` or `isEmpty` before returning a `.success(EmptyResponse())`. In the case that the body fails either of those checks, a `DecodingFailure.invalidEmptyResponse` is returned, along with the `HTTP.Response` received from the request.
 
+
 ### Extending EmptyDecodingStrategy
 
-What about the special case where some kind of custom validation of "empty" response is needed before the request can be deemed successful? `EmptyDecodingStrategy` has you covered here as well. For example, let's assume that we are going to receive a response that looks like the following: 
+What about the special case where some kind of custom validation of "empty" response is needed before the request can be deemed successful? `EmptyDecodingStrategy` has you covered here as well. For example, let's assume that we are going to receive a response that looks like the following:
 
 ```json
 {

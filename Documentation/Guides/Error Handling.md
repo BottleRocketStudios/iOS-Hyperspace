@@ -32,6 +32,7 @@ In the case the result contains a `TransportFailure`, the failure will be used t
 
 In the case of a `TransportSuccess`, the success object is forwarded on to `Request.transformSuccess(_:)`. The result of this transform (`Result<Response, Error>`) is then returned to the original caller.
 
+
 ### Custom Error Handling
 
 In many cases, simply wrapped the underlying error in an `AnyError` and returning that is not an efficient form of error handling. It requires every caller of the API to then unwrap the `AnyError` to find the underlying cause. In cases where more sophisticated error handling is required, a custom `Request` can be used which defines a custom `Error` type.

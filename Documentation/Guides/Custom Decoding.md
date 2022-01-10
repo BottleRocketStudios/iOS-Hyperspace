@@ -25,6 +25,7 @@ public static func successTransformer(for decoder: JSONDecoder, errorTransformer
 
 The first of these functions provides a default that can be used for any `Codable` type, as long as your error conforms to `DecodingFailureRepresentable`. But, in the case that your `Error` does not conform, you can use the other function - in which you simply provide a closure to convert a generic error to your type: `(Swift.Error) -> Error`
 
+
 ### Decoding With Containers
 
 It is not uncommon to see JSON resembling below (where the object at 'root_key' is what you're trying to decode):
