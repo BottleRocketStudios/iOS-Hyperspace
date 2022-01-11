@@ -2,6 +2,16 @@
 
 #### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 4.0.0 (2022-01-14)
+
+#### Enhancements
+
 * Make `TransportService` thread-safe
 [Daniel Larsen](https://github.com/grandlarseny)
 [#145]https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/145
