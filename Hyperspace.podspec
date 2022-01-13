@@ -21,14 +21,15 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.author           = { 'Tyler Milner' => 'tyler.milner@bottlerocketstudios.com' }
   s.source           = { :git => 'https://github.com/BottleRocketStudios/iOS-Hyperspace.git', :tag => s.version.to_s }
 
-  s.swift_version = '5.0'
+  s.swift_version = '5.5'
   s.ios.deployment_target = '12.0'
   s.watchos.deployment_target = '6.0'
   s.tvos.deployment_target = '12.0'
+  s.macos.deployment_target = '10.15'
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
-  core.source_files = 'Sources/Hyperspace/**/*'
+  core.source_files = 'Sources/Hyperspace/**/*', 'Sources/Async/**/*'
   end
 
   s.subspec 'Pinning' do |pinning|

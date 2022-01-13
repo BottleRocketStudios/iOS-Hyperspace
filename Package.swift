@@ -4,25 +4,16 @@ import PackageDescription
 let package = Package(
     name: "Hyperspace",
     platforms: [
-        .macOS("10.15"),
-        .iOS("12.0"),
-        .tvOS("12.0"),
-        .watchOS("6.0")
+        .macOS(.v10_15),
+        .iOS(.v12),
+        .tvOS(.v12),
+        .watchOS(.v6)
     ],
     products: [
-        .library(
-            name: "Hyperspace",
-            targets: ["Hyperspace"])
+        .library(name: "Hyperspace", targets: ["Hyperspace"])
     ],
-    dependencies: [],
     targets: [
-        .target(
-            name: "Hyperspace",
-            dependencies: [],
-            path: "Sources"),
-        .testTarget(
-            name: "HyperspaceTests",
-            dependencies: ["Hyperspace"],
-            path: "Tests")
+        .target(name: "Hyperspace", path: "Sources"),
+        .testTarget(name: "HyperspaceTests", dependencies: ["Hyperspace"], path: "Tests")
     ]
 )
