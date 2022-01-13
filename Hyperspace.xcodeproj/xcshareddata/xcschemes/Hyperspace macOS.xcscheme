@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0EFFCC6F2790B28900D3FD83"
-               BuildableName = "Hyperspace_macOS.framework"
+               BuildableName = "Hyperspace.framework"
                BlueprintName = "Hyperspace macOS"
                ReferencedContainer = "container:Hyperspace.xcodeproj">
             </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0EFFCC6F2790B28900D3FD83"
-            BuildableName = "Hyperspace_macOS.framework"
+            BuildableName = "Hyperspace.framework"
             BlueprintName = "Hyperspace macOS"
             ReferencedContainer = "container:Hyperspace.xcodeproj">
          </BuildableReference>
