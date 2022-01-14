@@ -2,7 +2,6 @@
 //  URLQueryItem+Extensions.swift
 //  Hyperspace
 //
-//  Created by Tyler Milner on 8/4/17.
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 

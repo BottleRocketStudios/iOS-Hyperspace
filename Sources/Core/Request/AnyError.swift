@@ -1,8 +1,7 @@
 //
 //  AnyError.swift
-//  Hyperspace-iOS
+//  Hyperspace
 //
-//  Created by Will McGinty on 3/25/19.
 //  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 

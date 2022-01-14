@@ -2,7 +2,6 @@
 //  FormURLEncoder.swift
 //  Hyperspace
 //
-//  Created by Will McGinty on 8/17/20.
 //  Copyright © 2020 Bottle Rocket Studios. All rights reserved.
 //
 

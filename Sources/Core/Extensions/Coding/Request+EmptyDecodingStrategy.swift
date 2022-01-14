@@ -1,8 +1,7 @@
 //
 //  Request+EmptyDecodingStrategy.swift
-//  Hyperspace-iOS
+//  Hyperspace
 //
-//  Created by Will McGinty on 8/18/20.
 //  Copyright © 2020 Bottle Rocket Studios. All rights reserved.
 //
 

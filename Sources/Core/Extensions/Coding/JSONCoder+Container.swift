@@ -2,7 +2,6 @@
 //  JSONDecoder+DecodableContainer.swift
 //  Hyperspace
 //
-//  Created by Will McGinty on 5/17/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

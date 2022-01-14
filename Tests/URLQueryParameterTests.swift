@@ -1,8 +1,7 @@
 //
 //  URLQueryParameterTests.swift
-//  Hyperspace
+//  Tests
 //
-//  Created by Will McGinty on 5/14/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

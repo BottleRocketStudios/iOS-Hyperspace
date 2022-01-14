@@ -2,7 +2,6 @@
 //  Hyperspace.h
 //  Hyperspace
 //
-//  Created by Tyler Milner on 12/28/17.
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 

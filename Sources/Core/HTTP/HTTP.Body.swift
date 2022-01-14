@@ -2,7 +2,6 @@
 //  HTTP.Body.swift
 //  Hyperspace
 //
-//  Created by Will McGinty on 12/14/21.
 //  Copyright © 2021 Bottle Rocket Studios. All rights reserved.
 //
 

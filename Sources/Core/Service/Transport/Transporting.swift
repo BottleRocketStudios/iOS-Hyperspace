@@ -2,7 +2,6 @@
 //  Transporting.swift
 //  Hyperspace
 //
-//  Created by Tyler Milner on 7/10/17.
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 

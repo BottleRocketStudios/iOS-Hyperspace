@@ -1,8 +1,7 @@
 //
 //  AnyErrorTests.swift
-//  Hyperspace-iOS
+//  Tests
 //
-//  Created by Will McGinty on 5/15/20.
 //  Copyright © 2020 Bottle Rocket Studios. All rights reserved.
 //
 

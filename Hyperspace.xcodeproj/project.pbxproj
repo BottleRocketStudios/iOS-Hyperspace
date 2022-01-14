@@ -529,9 +529,9 @@
 		0E09A3992790ACDA00AB7DD8 /* Deployment */ = {
 			isa = PBXGroup;
 			children = (
+				12746B8522F4C95500B99373 /* Package.swift */,
 				0E09A39B2790ACF300AB7DD8 /* Hyperspace.podspec */,
 				0E09A39A2790ACEC00AB7DD8 /* LICENSE.txt */,
-				12746B8522F4C95500B99373 /* Package.swift */,
 			);
 			name = Deployment;
 			sourceTree = "<group>";
@@ -611,7 +611,7 @@
 		60AC82B81FF588D500120172 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				60AC833D1FF596B600120172 /* Hyperspace */,
+				60AC833D1FF596B600120172 /* Core */,
 				65709A25272E0B8E0066361E /* Async */,
 				0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */,
 			);
@@ -645,7 +645,7 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		60AC833D1FF596B600120172 /* Hyperspace */ = {
+		60AC833D1FF596B600120172 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */,
@@ -654,7 +654,7 @@
 				60AC83431FF596B600120172 /* Request */,
 				60AC83471FF596B600120172 /* Service */,
 			);
-			path = Hyperspace;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		60AC833E1FF596B600120172 /* Extensions */ = {

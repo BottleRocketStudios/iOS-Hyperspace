@@ -2,7 +2,6 @@
 //  Request+Decodable.swift
 //  Hyperspace
 //
-//  Created by William McGinty on 3/7/20.
 //  Copyright © 2020 Bottle Rocket Studios. All rights reserved.
 //
 

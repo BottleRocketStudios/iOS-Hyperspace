@@ -2,7 +2,6 @@
 //  URLQueryParameterEncoder.swift
 //  Hyperspace
 //
-//  Created by Will McGinty on 5/15/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

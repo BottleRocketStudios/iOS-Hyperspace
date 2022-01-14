@@ -1,8 +1,7 @@
 //
 //  RecoverableBackendService.swift
-//  Hyperspace-iOS
+//  Hyperspace
 //
-//  Created by Will McGinty on 5/16/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

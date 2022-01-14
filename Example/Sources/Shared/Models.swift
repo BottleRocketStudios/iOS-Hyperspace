@@ -1,8 +1,7 @@
 //
 //  Models.swift
-//  Hyperspace_Example
+//  Example
 //
-//  Created by Tyler Milner on 7/14/17.
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 
