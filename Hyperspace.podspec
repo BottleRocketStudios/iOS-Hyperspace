@@ -29,7 +29,7 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
-  core.source_files = 'Sources/Hyperspace/**/*', 'Sources/Async/**/*'
+  core.source_files = 'Sources/Core/**/*', 'Sources/Async/**/*'
   end
 
   s.subspec 'Pinning' do |pinning|
