@@ -339,10 +339,10 @@
 		0E09A3982790ACD100AB7DD8 /* Error Recovery.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Error Recovery.md"; sourceTree = "<group>"; };
 		0E09A39A2790ACEC00AB7DD8 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		0E09A39B2790ACF300AB7DD8 /* Hyperspace.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Hyperspace.podspec; sourceTree = "<group>"; };
-		0E09A39C2790AD1300AB7DD8 /* Dangerfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Dangerfile.swift; path = Documentation/Dangerfile.swift; sourceTree = SOURCE_ROOT; };
-		0E09A39D2790AD1300AB7DD8 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = Documentation/CONTRIBUTING.md; sourceTree = SOURCE_ROOT; };
-		0E09A39E2790AD1300AB7DD8 /* CODEOWNERS */ = {isa = PBXFileReference; lastKnownFileType = text; name = CODEOWNERS; path = Documentation/CODEOWNERS; sourceTree = SOURCE_ROOT; };
-		0E09A39F2790AD1300AB7DD8 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = NOTICE.txt; path = Documentation/NOTICE.txt; sourceTree = SOURCE_ROOT; };
+		0E09A39C2790AD1300AB7DD8 /* Dangerfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dangerfile.swift; sourceTree = SOURCE_ROOT; };
+		0E09A39D2790AD1300AB7DD8 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = SOURCE_ROOT; };
+		0E09A39E2790AD1300AB7DD8 /* CODEOWNERS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CODEOWNERS; sourceTree = SOURCE_ROOT; };
+		0E09A39F2790AD1300AB7DD8 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = SOURCE_ROOT; };
 		0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Hyperspace.h; path = Sources/Hyperspace.h; sourceTree = SOURCE_ROOT; };
 		0E29092B21349F320031F67C /* DecodingFailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingFailureTests.swift; sourceTree = "<group>"; };
 		0E2EBCF127692AC300EE8625 /* HTTP.Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.Body.swift; sourceTree = "<group>"; };
@@ -384,7 +384,7 @@
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
 		30F0735F202213E00045CB01 /* RequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/RequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
 		30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportServiceMockSubclass.swift; sourceTree = "<group>"; };
-		6077BA2120A3B7F600326828 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		6077BA2120A3B7F600326828 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		60AC82B61FF588D500120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC82BF1FF588D600120172 /* Hyperspace iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC82D51FF5899800120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -412,7 +412,7 @@
 		60D6C3FA201CFCCF00B3B012 /* RootKeyObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RootKeyObject.json; sourceTree = "<group>"; };
 		60D6C3FB201CFCCF00B3B012 /* Object.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Object.json; sourceTree = "<group>"; };
 		60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RootKeyArray.json; sourceTree = "<group>"; };
-		60D6C41A201D13EC00B3B012 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		60D6C41A201D13EC00B3B012 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		65709A26272E0B9D0066361E /* BackendService+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendService+Async.swift"; sourceTree = "<group>"; };
 		65709A28272E0F600066361E /* AsyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTests.swift; sourceTree = "<group>"; };
 		65A672F52731991A000E3511 /* TestDecodingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDecodingError.swift; sourceTree = "<group>"; };
