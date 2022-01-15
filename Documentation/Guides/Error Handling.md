@@ -2,7 +2,7 @@
 
 As a general rule, networking is hard. A lot can go wrong in the process of communicating between an application and a backend. One of the goals of Hyperspace is to make the many different failure reasons easy to understand and easy to react to. In this section, we'll describe the steps needed to do the bare minimum to effectively handle errors.
 
-In the vast majority of scenarios, your app will interface with Hyperspace by creating an object that conforms to the `Request` protocol and handing it to a `BackendService`. At this point, the `BackendService` will unwrap the underlying `URLRequest` and forward it on to an object called a `TransportService`, which in turn uses a `NetworkSession` to execute the request itself. Each of the layers in this process play a distinct role in the error handling process.
+In the vast majority of scenarios, your app will interface with Hyperspace by creating a `Request` struct and handing it to a `BackendService`. At this point, the `BackendService` will unwrap the underlying `URLRequest` and forward it on to an object called a `TransportService`, which in turn uses a `NetworkSession` to execute the request itself. Each of the layers in this process play a distinct role in the error handling process.
 
 After the request has been handed off to the `TransportSession` (on iOS, this will most likely be a `URLSession` object) there are a large number of states, both successful and failed, that can result. The job of the `TransportService` is to convert the data returned by the `TransportSession` into a more concise cause of the problem:
 
