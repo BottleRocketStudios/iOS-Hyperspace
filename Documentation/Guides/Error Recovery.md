@@ -33,7 +33,7 @@ This strategy checks to ensure that the error is a 401 Unauthorized, before retr
 
 All of these recovery attempts are transparent to the caller - the completion block passed in to the `BackendService` initially will only be executed when either the request returns successfully, or the strategy dictates `RecoveryDisposition.fail`.
 
-In the case that you have multiple ways in which you can attempt recovery, it is recommended to attach them separately to the `BackendService.recoveryStrategies` property. In the case you have multiple strategies, each will be queried in order before recvery is attempted. The first strategy that returns `true` from `canAttemptRecovery(from:for:)` will be allowed to attempt the recovery. If that attempt at recovery fails (returns `RecoveryDisposition.fail`), no other strategies will be attemped. If however, the recovery attempt succeeds (returns `RecoveryDisposition.retry`), but this retried request fails again - the entire set of recovery strategies will be checked again for their ability to recover.
+In the case that you have multiple ways in which you can attempt recovery, it is recommended to attach them separately to the `BackendService.recoveryStrategies` property. In the case you have multiple strategies, each will be queried in order before recovery is attempted. The first strategy that returns `true` from `canAttemptRecovery(from:for:)` will be allowed to attempt the recovery. If that attempt at recovery fails (returns `RecoveryDisposition.fail`), no other strategies will be attemped. If however, the recovery attempt succeeds (returns `RecoveryDisposition.retry`), but this retried request fails again - the entire set of recovery strategies will be checked again for their ability to recover.
 
 
 ## Quick Recovery

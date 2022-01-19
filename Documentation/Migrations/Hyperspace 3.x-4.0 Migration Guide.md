@@ -31,7 +31,7 @@ extension Request {
 }
 ```
 
-For advanced usages, it is still possible to create unique types for each request by wrapping the framework's `Request` type and create the `Hyperspace.Request` in a computed property
+For advanced usages, it is still possible to create unique types for each request by wrapping the framework's `Request` type and create the `Hyperspace.Request` in a computed property:
 
 ```swift
 struct CreatePostRequest {
@@ -64,8 +64,8 @@ The `BackendService` now supports multiple possible `RecoveryStrategy` objects (
 
 There have been several changes made to the core `NetworkService` functionality to allow for more fine grained error handling. These changes include:
 
-- Any time you a custom `Error` type is initialized, the raw `HTTP.Response` received by the server will be provided. This will happen both when a transport failure and decoding failure occurs, and gives access to data like the raw http status and response data.
-- The given `HTTP.Response` includes the `HTTP.Request` that was sent in order to recive that given response.  
+- Any time your custom `Error` type is initialized, the raw `HTTP.Response` received by the server will be provided. This will happen both when a transport failure and decoding failure occurs, and gives access to data like the raw http status and response data.
+- The given `HTTP.Response` includes the `HTTP.Request` that was sent in order to receive that given response.  
 - `DecodingFailureRepresentable` has been changed to provide a `DecodingFailure` which can support more types of errors than just `DecodingError` (for example, a response which should not have been empty but is).
 
 
@@ -95,7 +95,7 @@ This is just the beginning of `async` / `await` support in Hyperspace, there wil
 
 ### Request Recovery Additions
 
-In addition to the changes to `RecoveryStrategy` described above, it is also possible to set a `recoveryTransformer` on an individual request - `public var recoveryTransformer: ((TransportFailure) -> TransportSuccess?)`. This property will allow you to attempt to consider any ordinarily failing `Request` as a success. If this handler exists, it is run before any of the `BackendService.recoveryStrategies`. If the handler returns a non-nil `TransportSuccess`, that success will be returned to the caller. If a recovery can not be completed, returning `nil` here will preserve the existing functionality of the `BackendService`.
+In addition to the changes to `RecoveryStrategy` described above, it is also possible to set a `recoveryTransformer` on an individual request - `public var recoveryTransformer: ((TransportFailure) -> TransportSuccess?)`. This property will allow you to attempt to consider any ordinarily failing `Request` as a success. If this handler exists, it is run before any of the `BackendService.recoveryStrategies`. If the handler returns a non-nil `TransportSuccess`, that success will be returned to the caller. If a recovery can not be completed, returning `nil` here will preserve the existing recovery functionality of the `BackendService`.
 
 ### Empty Decoding Strategy
 
@@ -108,4 +108,4 @@ In Hyperspace 4.0 though, this is more easily accomplished using `Request.withEm
 
 ### CodableContainer
 
-While `DecodableContainer` has existed in Hyperspace for quite some time, 4.0 brings with it `EncodableContainer`. This protocol functions incredibly similar to it's decoding counterpart and is fully supported by `HTTP.Body`, making it easier than ever to package data into a `URLRequest`. In addition for types that can function as a container for both decoding and encoding, the typealias `CodableContainer` exists.
+While `DecodableContainer` has existed in Hyperspace for quite some time, 4.0 brings with it `EncodableContainer`. This protocol functions incredibly similar to its decoding counterpart and is fully supported by `HTTP.Body`, making it easier than ever to package data into a `URLRequest`. In addition for types that can function as a container for both decoding and encoding, the typealias `CodableContainer` exists.
