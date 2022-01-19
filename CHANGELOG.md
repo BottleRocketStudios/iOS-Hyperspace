@@ -2,6 +2,48 @@
 
 #### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 4.0.0 (2022-01-14)
+
+#### Enhancements
+
+* Make `TransportService` thread-safe
+[Daniel Larsen](https://github.com/grandlarseny)
+[#145](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/145)
+
+* Added async / await functions for executing requests
+[Daniel Larsen](https://github.com/grandlarseny)
+[#142](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/142)
+
+* Migrate to use .xcframework's when resolving depencies using Carthage
+[Will McGinty](https://github.com/wmcginty)
+[#139](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/139)
+
+* Add `acceptedRange` to `HTTP.Status` subtypes and allow for individual subtypes to be detected.
+[Will McGinty](https://github.com/wmcginty)
+[#139](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/139)
+
+* Strongly type `HTTP.Request.headers` and `HTTP.Response.headers` as `[HTTP.HeaderKey: HTTP.HeaderValue]`.
+[Will McGinty](https://github.com/wmcginty)
+[#139](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/139)
+
+* Add functionality to consider an arbitrary `TransportFailure` a success, using `Request.recoveryTransformer`.
+[Will McGinty](https://github.com/wmcginty)
+[#139](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/139)
+
+* Add an overload to `map` which passes along the `TransportSuccess` as well as the original `Response`.
+[Will McGinty](https://github.com/wmcginty)
+[#139](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/139)
+
+* Migrate the request recovery strategy to the BackendServiceProtocol definition.
+[Will McGinty](https://github.com/wmcginty)
+[#110](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/110)
+
 * Added `method` parameter to `HTTP.Request`.
 [Alex Reyes](https://github.com/br-alex-reyes)
 [#138](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/138)
@@ -46,7 +88,7 @@
 [Will McGinty](https://github.com/wmcginty)
 [#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
 
-* Rename `Network*` to `Transport*` to provide a clearer distinction between the role of the `BackendService` and `TransportService`. 
+* Rename `Network*` to `Transport*` to provide a clearer distinction between the role of the `BackendService` and `TransportService`.
 [Will McGinty](https://github.com/wmcginty)
 [#117](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/117)
 
@@ -57,7 +99,7 @@
 * Make `TransportError` inits `public`.
 [Earl Gaspard](https://github.com/earlgaspard)
 [#121](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/121)
-  
+
 * Create a form URL encoded `HTTP.Body` convenience
 [Will McGinty](https://github.com/wmcginty)
 [#125](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/125)
@@ -69,7 +111,7 @@
 * Create `EmptyDecodingStrategy` to add flexibility to decoding `EmptyResponse`
 [Will McGinty](https://github.com/wmcginty)
 [#130](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/130)
-  
+
 * Add `defaultDecoder` to `RequestDefaults` and use when initializing a `Request`.
 [Earl Gaspard](https://github.com/earlgaspard)
 [#131](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/131)

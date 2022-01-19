@@ -56,6 +56,8 @@ public struct HTTP {
             public init(rawValue: Int) {
                 self.rawValue = rawValue
             }
+
+            public static let acceptedRange: Range<Int> = 200..<300
         }
         
         public struct Redirection: RawRepresentable, Equatable {
@@ -64,6 +66,8 @@ public struct HTTP {
             public init(rawValue: Int) {
                 self.rawValue = rawValue
             }
+
+            public static let acceptedRange: Range<Int> = 300..<400
         }
         
         public struct ClientError: RawRepresentable, Equatable {
@@ -72,6 +76,8 @@ public struct HTTP {
             public init(rawValue: Int) {
                 self.rawValue = rawValue
             }
+
+            public static let acceptedRange: Range<Int> = 400..<500
         }
         
         public struct ServerError: RawRepresentable, Equatable {
@@ -80,6 +86,8 @@ public struct HTTP {
             public init(rawValue: Int) {
                 self.rawValue = rawValue
             }
+
+            public static let acceptedRange: Range<Int> = 500..<600
         }
         
         case unknown(Int)
@@ -87,76 +95,38 @@ public struct HTTP {
         case redirection(Redirection)
         case clientError(ClientError)
         case serverError(ServerError)
-        
+
         init(code: Int) {
             switch code {
-            case 200..<300:
+            case Success.acceptedRange:
                 self = .success(Success(rawValue: code))
-            case 300..<400:
+            case Redirection.acceptedRange:
                 self = .redirection(Redirection(rawValue: code))
-            case 400..<500:
+            case ClientError.acceptedRange:
                 self = .clientError(ClientError(rawValue: code))
-            case 500..<600:
+            case ServerError.acceptedRange:
                 self = .serverError(ServerError(rawValue: code))
             default:
                 self = .unknown(code)
             }
         }
+
+        public var rawValue: Int {
+            switch self {
+            case .success(let success): return success.rawValue
+            case .redirection(let redirection): return redirection.rawValue
+            case .clientError(let clientError): return clientError.rawValue
+            case .serverError(let serverError): return serverError.rawValue
+            case .unknown(let code): return code
+            }
+        }
+
+        public var isSuccess: Bool { return Success.acceptedRange ~= rawValue }
+        public var isRedirection: Bool { return Redirection.acceptedRange ~= rawValue }
+        public var isClientError: Bool { return ClientError.acceptedRange ~= rawValue }
+        public var isServerError: Bool { return ServerError.acceptedRange ~= rawValue }
     }
     
-    /// Represents an HTTP request body
-    public struct Body: Equatable {
-        
-        /// The raw body data to be attached to the HTTP request
-        public let data: Data?
-        public let additionalHeaders: [HeaderKey: HeaderValue]
-        
-        /// Initializes a new `HTTP.Body` instance given the raw `Data` to be attached.
-        /// - Parameters:
-        ///   - data: The raw `Data` to set as the HTTP body.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        public init(_ data: Data?, additionalHeaders: [HeaderKey: HeaderValue] = [:]) {
-            self.data = data
-            self.additionalHeaders = additionalHeaders
-        }
-        
-        /// Returns a new `HTTP.Body` instance given an encodable object.
-        /// - Parameters:
-        ///   - encodable: The `Encodable` object to be included in the request.
-        ///   - encoder: The `JSONEncoder` to be used to encode the object.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        /// - Returns: A new instance of `HTTP.Body` with the given encodable representation.
-        public static func json<E: Encodable>(_ encodable: E, encoder: JSONEncoder = JSONEncoder(),
-                                              additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON]) throws -> HTTP.Body {
-            let data = try encoder.encode(encodable)
-            return HTTP.Body(data, additionalHeaders: additionalHeaders)
-        }
-        
-        /// Returns a new `HTTP.Body` instance given an encodable object.
-        /// - Parameters:
-        ///   - encodable: The `Encodable` object to be included in the request.
-        ///   - container: A type of `EncodableContainer` in which to encode the object.
-        ///   - encoder: The `JSONEncoder` to be used to encode the object.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        /// - Returns: A new instance of `HTTP.Body` with the given encodable representation.
-        public static func json<E, C: EncodableContainer>(_ encodable: E, container: C.Type, encoder: JSONEncoder = JSONEncoder(),
-                                                          additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON])
-            throws -> HTTP.Body where C.Contained == E {
-                let data = try encoder.encode(encodable, in: container)
-                return HTTP.Body(data, additionalHeaders: additionalHeaders)
-        }
-
-        /// Initializes a new `HTTP.Body` instance given a set of URL form content
-        /// - Parameters:
-        ///   - formContent: An array of `(String, String)` representing the content to be encoded.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        /// - Returns: A new instance of `HTTP.Body` with the given form content.
-        public static func urlForm(using formContent: [(String, String)], additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationFormURLEncoded]) -> HTTP.Body {
-            let formURLEncoder = FormURLEncoder()
-            return HTTP.Body(formURLEncoder.encode(formContent), additionalHeaders: additionalHeaders)
-        }
-    }
-
     /// Represents an HTTP request
     public struct Request: Equatable {
 
@@ -167,7 +137,7 @@ public struct HTTP {
         public let method: String?
 
         /// The HTTP header fields for this request.
-        public let headers: [String: String]?
+        public let headers: [HeaderKey: HeaderValue]?
 
         /// The raw `Data` associated with the HTTP request, if any was provided.
         public let body: Data?
@@ -178,7 +148,7 @@ public struct HTTP {
         ///   - method: The HTTP method for this request.
         ///   - body: The raw `Data` associated with the HTTP request, if any was provided.
         ///   - headers: The HTTP header fields for this request.
-        public init(url: URL? = nil, method: String? = nil, headers: [String: String]? = nil, body: Data? = nil) {
+        public init(url: URL? = nil, method: String? = nil, headers: [HeaderKey: HeaderValue]? = nil, body: Data? = nil) {
             self.url = url
             self.method = method
             self.headers = headers
@@ -188,7 +158,10 @@ public struct HTTP {
         /// Initialize a new `Request` given a URL request.
         /// - Parameter urlRequest: The `URLRequest` instance used to initiate the request.
         public init(urlRequest: URLRequest) {
-            self.init(url: urlRequest.url, method: urlRequest.httpMethod, headers: urlRequest.allHTTPHeaderFields, body: urlRequest.httpBody)
+            let headers = urlRequest.allHTTPHeaderFields
+            self.init(url: urlRequest.url, method: urlRequest.httpMethod,
+                      headers: Dictionary(uniqueKeysWithValues: headers?.map { (.init(rawValue: $0.key), .init(rawValue: $0.value)) } ?? []),
+                      body: urlRequest.httpBody)
         }
     }
     
@@ -208,7 +181,7 @@ public struct HTTP {
         public let body: Data?
 
         /// The HTTP header fields for this response.
-        public let headers: [String: String]?
+        public let headers: [HeaderKey: HeaderValue]?
 
         /// Initialize a new `Response` with any given HTTP status code and `Data`.
         ///
@@ -217,7 +190,7 @@ public struct HTTP {
         ///   - url: The `URL` from which this response was received.
         ///   - headers: The HTTP header fields for this response.
         ///   - body: The raw `Data` associated with the HTTP response, if any was provided.
-        public init(request: Request, code: Int, url: URL? = nil, headers: [String: String]? = nil, body: Data? = nil) {
+        public init(request: Request, code: Int, url: URL? = nil, headers: [HeaderKey: HeaderValue]? = nil, body: Data? = nil) {
             self.request = request
             self.code = code
             self.url = url
@@ -232,7 +205,9 @@ public struct HTTP {
         ///   - body: The raw `Data` associated with the response, if any was provided.
         init(request: HTTP.Request, httpURLResponse: HTTPURLResponse, body: Data? = nil) {
             let headers = httpURLResponse.allHeaderFields as? [String: String]
-            self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url, headers: headers, body: body)
+            self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url,
+                      headers: Dictionary(uniqueKeysWithValues: headers?.map { (.init(rawValue: $0.key), .init(rawValue: $0.value)) } ?? []),
+                      body: body)
         }
 
         // MARK: - Public
@@ -267,6 +242,7 @@ extension HTTP.HeaderKey {
     public static let contentMD5 = HTTP.HeaderKey(rawValue: "Content-MD5")
     public static let contentType = HTTP.HeaderKey(rawValue: "Content-Type")
     public static let date = HTTP.HeaderKey(rawValue: "Date")
+    public static let location = HTTP.HeaderKey(rawValue: "Location")
     public static let userAgent = HTTP.HeaderKey(rawValue: "User-Agent")
 }
 
@@ -290,6 +266,11 @@ extension HTTP.HeaderValue {
     public static let encodingBr = HTTP.HeaderValue(rawValue: "br")
     public static let passKit = HTTP.HeaderValue(rawValue: "application/vnd.apple.pkpass")
     public static let jsonAPI = HTTP.HeaderValue(rawValue: "application/vnd.api+json")
+
+    public static func authorizationBasic(username: String, password: String) -> HTTP.HeaderValue? {
+        let credentials = "\(username):\(password)".data(using: .utf8)
+        return credentials.map { HTTP.HeaderValue(rawValue: "Basic \($0.base64EncodedString())") }
+    }
     
     public static func authorizationBearer(token: String) -> HTTP.HeaderValue {
         return HTTP.HeaderValue(rawValue: "Bearer \(token)")

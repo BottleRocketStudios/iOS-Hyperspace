@@ -1,6 +1,6 @@
 # Hyperspace
 
-[![CI Status](https://img.shields.io/travis/BottleRocketStudios/iOS-Hyperspace/master.svg)](https://travis-ci.org/BottleRocketStudios/iOS-Hyperspace)
+![CI Status](https://github.com/BottleRocketStudios/iOS-UtiliKit/actions/workflows/main.yml/badge.svg)
 [![Version](https://img.shields.io/cocoapods/v/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
@@ -85,12 +85,12 @@ To avoid having to define default `Request` property values for every request in
 ```swift
 RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
 RequestDefaults.defaultDecoder = MyCustomDecoder() // Default decoder is JSONDecoder
-RequestDefaults.defaultTimeout = 60 // Default timeout is 30 seconds
 ```
 
 ### 3. Create a BackendService to execute your requests
 
 We recommend adhering to the [Interface Segregation](https://en.wikipedia.org/wiki/Interface_segregation_principle) principle by creating separate "controller" objects for each section of the API you're communicating with. Each controller should expose a set of related funtions and use a `BackendService` to execute requests. However, for this simple example, we'll just use `BackendService` directly as a `private` property on the view controller:
+
 ```swift
 class ViewController: UIViewController {
 
@@ -103,6 +103,7 @@ class ViewController: UIViewController {
 ### 4. Instantiate your Request
 
 Let's say our view controller is supposed to create the post whenever the user taps the "send" button. Here's what that might look like:
+
 ```swift
 @IBAction private func sendButtonTapped(_ sender: UIButton) {
     let title = ... // Get the title from a text view in the UI...
@@ -133,18 +134,10 @@ backendService.execute(request: createPostRequest) { [weak self] result in
 
 ## Example
 
-To run the example project, you'll first need to use [Carthage](https://github.com/Carthage/Carthage) to install Hyperspace's dependency ([BrightFutures](https://github.com/Thomvis/BrightFutures).
-
-After [installing Carthage](https://github.com/Carthage/Carthage#installing-carthage), clone the repo:
+Clone the repo:
 
 ```bash
 git clone https://github.com/BottleRocketStudios/iOS-Hyperspace.git
-```
-
-Next, use Carthage to install the dependencies:
-
-```bash
-carthage update
 ```
 
 From here, you can open up `Hyperspace.xcworkspace` and run the examples:
@@ -202,8 +195,6 @@ github "BottleRocketStudios/iOS-Hyperspace"
 ```
 
 Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
-
-NOTE: Don't forget to add both `Hyperspace.framework` and the `BrightFutures.framework` dependency to your project (if using the `Futures` subspec).
 
 ### Swift Package Manager
 

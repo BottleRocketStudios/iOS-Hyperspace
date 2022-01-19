@@ -45,7 +45,7 @@ public enum DecodingFailure: Error {
 
     // MARK: - Convenience
 
-    static func genericFailure(decoding: Decodable.Type, from response: HTTP.Response, debugDescription: String) -> DecodingFailure {
+    public static func genericFailure(decoding: Decodable.Type, from response: HTTP.Response, debugDescription: String) -> DecodingFailure {
         let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: debugDescription))
         let context = DecodingFailure.Context(decodingError: decodingError, failingType: decoding, response: response)
         return .decodingError(context)

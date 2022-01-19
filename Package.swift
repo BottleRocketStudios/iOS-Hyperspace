@@ -4,23 +4,21 @@ import PackageDescription
 let package = Package(
     name: "Hyperspace",
     platforms: [
-        .macOS("10.12"),
-        .iOS("10.0"),
-        .tvOS("10.0"),
-        .watchOS("4.2")
+        .macOS("10.15"),
+        .iOS("12.0"),
+        .tvOS("12.0"),
+        .watchOS("6.0")
     ],
     products: [
         .library(
             name: "Hyperspace",
             targets: ["Hyperspace"])
     ],
-    dependencies: [
-        .package(url: "https://github.com/Thomvis/BrightFutures.git", from: "8.0.1")
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "Hyperspace",
-            dependencies: ["BrightFutures"],
+            dependencies: [],
             path: "Sources"),
         .testTarget(
             name: "HyperspaceTests",

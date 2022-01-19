@@ -30,12 +30,12 @@ public class TrustValidatingTransportService: Transporting {
             let validator = TrustValidator(configuration: configuration)
             
             guard validator.canHandle(challenge: challenge) else {
-                //This was NOT a server trust authentication challenge - further input is required
+                // This was NOT a server trust authentication challenge - further input is required
                 return completionHandler(.performDefaultHandling, nil)
             }
             
             validator.handle(challenge: challenge, handler: completionHandler)
-            //The server trust authentication challenge was handled (for both allow and blocks) - not further input is required
+            // The server trust authentication challenge was handled (for both allow and blocks) - not further input is required
         }
     }
 

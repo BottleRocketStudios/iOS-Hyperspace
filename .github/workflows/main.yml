@@ -1,0 +1,60 @@
+name: Main
+
+on:
+  push:
+    branches: [ main, release/*]
+  pull_request:
+
+jobs:
+  Build:
+    runs-on: macos-11
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
+      workspace: "Hyperspace.xcworkspace"
+    strategy:
+      fail-fast: false
+      matrix:
+        name: ["iOS", "tvOS", "watchOS"]
+        include:
+            - name: "iOS"
+              scheme: "Hyperspace_iOS"
+              destination: "platform=iOS Simulator,OS=15.2,name=iPhone 12 Pro"
+              test: true
+              lint: true
+
+            - name: "tvOS"
+              scheme: "Hyperspace_tvOS"
+              destination: "platform=tvOS Simulator,OS=15.2,name=Apple TV 4K"
+              test: true
+              lint: false
+
+            - name: "watchOS"
+              scheme: "Hyperspace_watchOS"
+              destination: "platform=watchOS Simulator,OS=8.3,name=Apple Watch Series 6 - 44mm"
+              test: false
+              lint: false
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build and Test
+      run: >
+        if [[ ${{ matrix.test }} == true ]]; then
+          xcodebuild test \
+            -workspace ${{ env.workspace }} \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES || exit 1
+        else
+          xcodebuild \
+            -workspace ${{ env.workspace }} \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            ONLY_ACTIVE_ARCH=NO || exit 1
+        fi
+
+    - name: Lint
+      run: >
+        if [[ ${{ matrix.lint }} == true ]]; then
+          pod lib lint
+        fi

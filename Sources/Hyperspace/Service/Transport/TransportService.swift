@@ -8,12 +8,17 @@
 
 import Foundation
 
+@available(*, renamed: "TransportService")
+public typealias NetworkService = TransportService
+
 /// Adopts the `Transporting` to perform HTTP communication via the execution of URLRequests.
+
 public class TransportService {
     
     // MARK: - Properties
     
     let session: TransportSession
+    private let queue = DispatchQueue(label: "com.bottlerocketstudios.hyperspace.tasks")
     private(set) var networkActivityController: NetworkActivityController?
     private var tasks = [URLRequest: TransportDataTask]()
     
@@ -29,7 +34,7 @@ public class TransportService {
     }
     
     deinit {
-        cancelAllTasks()
+        tasks.forEach { $1.cancel() }
     }
 }
 
@@ -42,19 +47,25 @@ extension TransportService: Transporting {
             self?.networkActivityController?.stop()
             self?.handle(data: data, response: response, error: error, for: HTTP.Request(urlRequest: request), completion: completion)
         }
-        
-        tasks[request] = task
-        task.resume()
-        
+
+        queue.sync { [weak self] in
+            self?.tasks[request] = task
+            task.resume()
+        }
+
         networkActivityController?.start()
     }
     
     public func cancelTask(for request: URLRequest) {
-        tasks[request]?.cancel()
+        queue.sync { [weak self] in
+            self?.tasks[request]?.cancel()
+        }
     }
     
     public func cancelAllTasks() {
-        tasks.forEach { cancelTask(for: $0.key) }
+        queue.sync { [weak self] in
+            self?.tasks.forEach { $1.cancel() }
+        }
     }
 }
 

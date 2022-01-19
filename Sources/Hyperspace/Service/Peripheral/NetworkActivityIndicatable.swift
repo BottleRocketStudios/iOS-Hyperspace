@@ -74,7 +74,7 @@ private extension NetworkActivityController {
         delayedHide = nil
 
         DispatchQueue.main.async {
-            //Only need to set the visibility of the indicator if it has changed
+            // Only need to set the visibility of the indicator if it has changed
             if self.indicator.isNetworkActivityIndicatorVisible != visible {
                 self.indicator.isNetworkActivityIndicatorVisible = visible
             }
