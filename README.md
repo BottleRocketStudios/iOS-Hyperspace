@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/cocoapods/l/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![Platform](https://img.shields.io/cocoapods/p/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace)
-[![codebeat badge](https://codebeat.co/badges/ebf9c2d1-d736-4d75-85cc-5c0feb19cab1)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-hyperspace-master-5e50b1a2-1d6c-48a3-8d1f-2407b2f439ba)
+
 
 
 ## Purpose
