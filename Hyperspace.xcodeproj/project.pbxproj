@@ -351,6 +351,7 @@
 		0E458C8924EDC7FE00DC3E70 /* EmptyDecodingStrategyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDecodingStrategyTests.swift; sourceTree = "<group>"; };
 		0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustValidator.swift; sourceTree = "<group>"; };
 		0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustConfiguration.swift; sourceTree = "<group>"; };
+		0E666BDF27A0809E001082D0 /* SSL Pinning.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "SSL Pinning.md"; sourceTree = "<group>"; };
 		0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryStrategy.swift; sourceTree = "<group>"; };
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONCoder+Container.swift"; sourceTree = "<group>"; };
@@ -522,6 +523,7 @@
 				0E09A3962790ACD100AB7DD8 /* Error Handling.md */,
 				0E09A3972790ACD100AB7DD8 /* Handling Empty Responses.md */,
 				0E09A3982790ACD100AB7DD8 /* Error Recovery.md */,
+				0E666BDF27A0809E001082D0 /* SSL Pinning.md */,
 			);
 			path = Guides;
 			sourceTree = "<group>";

@@ -1,4 +1,4 @@
-## Recovery Strategies
+### Recovery Strategies
 
 There are times when certain errors received are not fatal, and a retry at some point in the future would prove successful. `BackendService` provides support for this through two protocols. `Recoverable` is a protocol which outlines the metrics required to determine when it is appropriate to recover from a failure and retry a request (and `Request` conforms to this protocol). It records the number of attempts made, as well as the number allowed and is used by the `RecoveryStrategy` to determine if the failure can be recovered from. This strategy, has two requirements:
 
@@ -36,7 +36,7 @@ All of these recovery attempts are transparent to the caller - the completion bl
 In the case that you have multiple ways in which you can attempt recovery, it is recommended to attach them separately to the `BackendService.recoveryStrategies` property. In the case you have multiple strategies, each will be queried in order before recovery is attempted. The first strategy that returns `true` from `canAttemptRecovery(from:for:)` will be allowed to attempt the recovery. If that attempt at recovery fails (returns `RecoveryDisposition.fail`), no other strategies will be attemped. If however, the recovery attempt succeeds (returns `RecoveryDisposition.retry`), but this retried request fails again - the entire set of recovery strategies will be checked again for their ability to recover.
 
 
-## Quick Recovery
+### Quick Recovery
 
 Sometimes it is necessary to consider a status code that typically indicates a failure as a success. For example, some auth implementations return a redirect and ask the user to then manually extract information from the headers of that redirect response. In in this case, it is very easy to tell Hyperspace to consider a 3XX response a success:
 
