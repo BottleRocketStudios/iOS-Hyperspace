@@ -9,7 +9,7 @@ Hyperspace has a built-in mechanism for implementing SSL pinning which is availa
 
 If you are deploying on iOS 14 or above, it is recommended to use the new `NSPinnedDomains` Info.plist key. This means that you do not need to use the `TrustConfiguration` in Hyperspace, and can instead rely almost entirely on the operating system to perform the extra trust validations on server SSL certificates.
 
-More information on how to implement this new `NSPinnedDomains` Info.plist key, as well as information around other considerations and strategies involving pinning is availabile [here](https://developer.apple.com/forums/thread/672291).
+More information on how to implement this new `NSPinnedDomains` Info.plist key, as well as information around other considerations and strategies involving pinning is available [here](https://developer.apple.com/forums/thread/672291), with the standard developer documentation [here](https://developer.apple.com/documentation/bundleresources/information_property_list/nsapptransportsecurity/nspinneddomains).
 
 
 #### Older iOS Versions

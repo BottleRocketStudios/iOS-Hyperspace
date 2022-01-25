@@ -8,7 +8,8 @@
 import Foundation
 import CommonCrypto
 
-@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
+@available(iOS, deprecated: 14.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
+@available(macOS, deprecated: 11.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
 struct CertificateHasher {
     
     enum Error: Swift.Error {
@@ -60,7 +61,8 @@ struct CertificateHasher {
 }
 
 // MARK: - Helper
-@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
+@available(iOS, deprecated: 14.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
+@available(macOS, deprecated: 11.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
 private extension CertificateHasher {
     
     // MARK: - PublicKey Internal Subtype
