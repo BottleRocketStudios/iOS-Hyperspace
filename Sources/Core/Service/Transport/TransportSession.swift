@@ -1,7 +1,8 @@
 //
 //  TransportSession.swift
 //  Hyperspace
-////  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
+
+//  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 
 import Foundation
