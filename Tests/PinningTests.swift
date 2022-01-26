@@ -1,8 +1,7 @@
 //
 //  PinningTests.swift
-//  Hyperspace
+//  Tests
 //
-//  Created by Will McGinty on 1/30/19.
 //  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 

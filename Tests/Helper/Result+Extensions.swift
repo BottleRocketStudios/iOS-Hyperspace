@@ -1,8 +1,7 @@
 //
 //  Result+Extensions.swift
-//  Hyperspace-iOS
+//  Tests
 //
-//  Created by Pranjal Satija on 1/8/19.
 //  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 

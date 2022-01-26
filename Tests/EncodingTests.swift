@@ -1,8 +1,7 @@
 //
 //  EncodingTests.swift
-//  Hyperspace-iOS
+//  Tests
 //
-//  Created by William McGinty on 5/14/20.
 //  Copyright © 2020 Bottle Rocket Studios. All rights reserved.
 //
 

@@ -1,8 +1,7 @@
 //
 //  XCTestCase+JSON.swift
-//  Hyperspace-iOS
+//  Tests
 //
-//  Created by Will McGinty on 9/24/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

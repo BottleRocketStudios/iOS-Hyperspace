@@ -15,8 +15,6 @@
 		0E2EBCF427692AC300EE8625 /* HTTP.Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2EBCF127692AC300EE8625 /* HTTP.Body.swift */; };
 		0E347E6421599B7D00BF18FA /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
 		0E347E6521599B7F00BF18FA /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
-		0E458C8224EDACE700DC3E70 /* jsonplaceholder.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0E458C8124EDACE700DC3E70 /* jsonplaceholder.cer */; };
-		0E458C8324EDACE700DC3E70 /* jsonplaceholder.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0E458C8124EDACE700DC3E70 /* jsonplaceholder.cer */; };
 		0E458C8724EDB03100DC3E70 /* TransportResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E458C8424EDAEF700DC3E70 /* TransportResultTests.swift */; };
 		0E458C8824EDB03200DC3E70 /* TransportResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E458C8424EDAEF700DC3E70 /* TransportResultTests.swift */; };
 		0E458C8C24EDCC3500DC3E70 /* EmptyDecodingStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E458C8924EDC7FE00DC3E70 /* EmptyDecodingStrategyTests.swift */; };
@@ -87,6 +85,125 @@
 		0EFB544A2204CC1500949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
 		0EFB544B2204CC1500949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
 		0EFB544C2204CC1600949F24 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
+		0EFFCC782790B28A00D3FD83 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFFCC702790B28900D3FD83 /* Hyperspace.framework */; };
+		0EFFCC8D2790B2A300D3FD83 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
+		0EFFCC932790B33400D3FD83 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EFFCC942790B33500D3FD83 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EFFCC952790B33500D3FD83 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EFFCC962790B33500D3FD83 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EFFCC972790B34600D3FD83 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
+		0EFFCC982790B34600D3FD83 /* Request+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476477624137A75003C97E9 /* Request+Decodable.swift */; };
+		0EFFCC992790B34600D3FD83 /* Request+EmptyDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC81624ECB11B00627564 /* Request+EmptyDecodingStrategy.swift */; };
+		0EFFCC9A2790B34600D3FD83 /* CodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83441FF596B600120172 /* CodableContainer.swift */; };
+		0EFFCC9B2790B34600D3FD83 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
+		0EFFCC9C2790B34600D3FD83 /* JSONCoder+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */; };
+		0EFFCC9D2790B34900D3FD83 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
+		0EFFCC9E2790B34900D3FD83 /* HTTP.Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2EBCF127692AC300EE8625 /* HTTP.Body.swift */; };
+		0EFFCC9F2790B34E00D3FD83 /* Request.URLRequestCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476477424136071003C97E9 /* Request.URLRequestCreationStrategy.swift */; };
+		0EFFCCA02790B34E00D3FD83 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1DB20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift */; };
+		0EFFCCA12790B34E00D3FD83 /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBA729226FA482007980C1 /* AnyError.swift */; };
+		0EFFCCA22790B34E00D3FD83 /* FormURLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03975C24EB8CD50078BA7D /* FormURLEncoder.swift */; };
+		0EFFCCA32790B34E00D3FD83 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* Request.swift */; };
+		0EFFCCA42790B35200D3FD83 /* NetworkActivityIndicatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2B201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift */; };
+		0EFFCCA52790B35200D3FD83 /* RecoveryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */; };
+		0EFFCCA62790B35500D3FD83 /* Transporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* Transporting.swift */; };
+		0EFFCCA72790B35500D3FD83 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
+		0EFFCCA82790B35500D3FD83 /* TransportResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B469328E2413539700D2B650 /* TransportResult.swift */; };
+		0EFFCCA92790B35500D3FD83 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
+		0EFFCCAA2790B35800D3FD83 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		0EFFCCAB2790B35800D3FD83 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
+		0EFFCCAC2790B35C00D3FD83 /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
+		0EFFCCAD2790B36000D3FD83 /* TrustConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */; };
+		0EFFCCAE2790B36000D3FD83 /* CertificateHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7F22028F0000484C01 /* CertificateHasher.swift */; };
+		0EFFCCAF2790B36000D3FD83 /* TrustValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */; };
+		0EFFCCB02790B36000D3FD83 /* TrustValidatingTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */; };
+		0EFFCCB12790B36000D3FD83 /* AuthenticationChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B962203CD0B00484C01 /* AuthenticationChallenge.swift */; };
+		0EFFCCB22790B36400D3FD83 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A28272E0F600066361E /* AsyncTests.swift */; };
+		0EFFCCB32790B36400D3FD83 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
+		0EFFCCB42790B36400D3FD83 /* TransportResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E458C8424EDAEF700DC3E70 /* TransportResultTests.swift */; };
+		0EFFCCB52790B36400D3FD83 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
+		0EFFCCB62790B36400D3FD83 /* EmptyDecodingStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E458C8924EDC7FE00DC3E70 /* EmptyDecodingStrategyTests.swift */; };
+		0EFFCCB72790B36400D3FD83 /* AnyErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */; };
+		0EFFCCB82790B36400D3FD83 /* TransportSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* TransportSessionTest.swift */; };
+		0EFFCCB92790B36400D3FD83 /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
+		0EFFCCBA2790B36400D3FD83 /* CertificateHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B87220296A700484C01 /* CertificateHashTests.swift */; };
+		0EFFCCBB2790B36400D3FD83 /* NetworkActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */; };
+		0EFFCCBC2790B36400D3FD83 /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
+		0EFFCCBD2790B36400D3FD83 /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4255B57246E525F009B6D6A /* EncodingTests.swift */; };
+		0EFFCCBE2790B36400D3FD83 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
+		0EFFCCBF2790B36400D3FD83 /* FormURLEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */; };
+		0EFFCCC02790B36400D3FD83 /* PinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7C2202745800484C01 /* PinningTests.swift */; };
+		0EFFCCC12790B36400D3FD83 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F7201CFCCF00B3B012 /* RequestTests.swift */; };
+		0EFFCCC22790B36400D3FD83 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */; };
+		0EFFCCC32790B36400D3FD83 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
+		0EFFCCC42790B36500D3FD83 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A28272E0F600066361E /* AsyncTests.swift */; };
+		0EFFCCC52790B36500D3FD83 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
+		0EFFCCC62790B36500D3FD83 /* TransportResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E458C8424EDAEF700DC3E70 /* TransportResultTests.swift */; };
+		0EFFCCC72790B36500D3FD83 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
+		0EFFCCC82790B36500D3FD83 /* EmptyDecodingStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E458C8924EDC7FE00DC3E70 /* EmptyDecodingStrategyTests.swift */; };
+		0EFFCCC92790B36500D3FD83 /* AnyErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */; };
+		0EFFCCCA2790B36500D3FD83 /* TransportSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* TransportSessionTest.swift */; };
+		0EFFCCCB2790B36500D3FD83 /* DecodingFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E29092B21349F320031F67C /* DecodingFailureTests.swift */; };
+		0EFFCCCC2790B36500D3FD83 /* CertificateHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B87220296A700484C01 /* CertificateHashTests.swift */; };
+		0EFFCCCD2790B36500D3FD83 /* NetworkActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */; };
+		0EFFCCCE2790B36500D3FD83 /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
+		0EFFCCCF2790B36500D3FD83 /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4255B57246E525F009B6D6A /* EncodingTests.swift */; };
+		0EFFCCD02790B36500D3FD83 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
+		0EFFCCD12790B36500D3FD83 /* FormURLEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */; };
+		0EFFCCD22790B36500D3FD83 /* PinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7C2202745800484C01 /* PinningTests.swift */; };
+		0EFFCCD32790B36500D3FD83 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F7201CFCCF00B3B012 /* RequestTests.swift */; };
+		0EFFCCD42790B36500D3FD83 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */; };
+		0EFFCCD52790B36500D3FD83 /* URLQueryParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */; };
+		0EFFCCD62790B36900D3FD83 /* apple.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B8D2202A25300484C01 /* apple.der */; };
+		0EFFCCD72790B36900D3FD83 /* leaf.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543B2204BF7F00949F24 /* leaf.cer */; };
+		0EFFCCD82790B36900D3FD83 /* google.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B862202968300484C01 /* google.der */; };
+		0EFFCCD92790B36900D3FD83 /* bbc.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B932202A39E00484C01 /* bbc.der */; };
+		0EFFCCDA2790B36900D3FD83 /* root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54382204BF6900949F24 /* root.cer */; };
+		0EFFCCDB2790B36900D3FD83 /* intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543E2204BF9500949F24 /* intermediate.cer */; };
+		0EFFCCDC2790B36A00D3FD83 /* apple.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B8D2202A25300484C01 /* apple.der */; };
+		0EFFCCDD2790B36A00D3FD83 /* leaf.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543B2204BF7F00949F24 /* leaf.cer */; };
+		0EFFCCDE2790B36A00D3FD83 /* google.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B862202968300484C01 /* google.der */; };
+		0EFFCCDF2790B36A00D3FD83 /* bbc.der in Resources */ = {isa = PBXBuildFile; fileRef = 0EF57B932202A39E00484C01 /* bbc.der */; };
+		0EFFCCE02790B36A00D3FD83 /* root.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB54382204BF6900949F24 /* root.cer */; };
+		0EFFCCE12790B36A00D3FD83 /* intermediate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0EFB543E2204BF9500949F24 /* intermediate.cer */; };
+		0EFFCCE22790B36D00D3FD83 /* TestDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A672F52731991A000E3511 /* TestDecodingError.swift */; };
+		0EFFCCE32790B36D00D3FD83 /* RequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* RequestTestDefaults.swift */; };
+		0EFFCCE42790B36E00D3FD83 /* TestDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A672F52731991A000E3511 /* TestDecodingError.swift */; };
+		0EFFCCE52790B36E00D3FD83 /* RequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* RequestTestDefaults.swift */; };
+		0EFFCCE62790B37200D3FD83 /* MockCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F6201CFCCF00B3B012 /* MockCodableContainer.swift */; };
+		0EFFCCE72790B37200D3FD83 /* MockNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F3201CFCCF00B3B012 /* MockNetworkSession.swift */; };
+		0EFFCCE82790B37200D3FD83 /* MockNetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F4201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift */; };
+		0EFFCCE92790B37200D3FD83 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
+		0EFFCCEA2790B37200D3FD83 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
+		0EFFCCEB2790B37200D3FD83 /* MockNetworkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */; };
+		0EFFCCEC2790B37200D3FD83 /* MockTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */; };
+		0EFFCCED2790B37200D3FD83 /* MockCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F6201CFCCF00B3B012 /* MockCodableContainer.swift */; };
+		0EFFCCEE2790B37200D3FD83 /* MockNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F3201CFCCF00B3B012 /* MockNetworkSession.swift */; };
+		0EFFCCEF2790B37200D3FD83 /* MockNetworkSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F4201CFCCF00B3B012 /* MockNetworkSessionDataTask.swift */; };
+		0EFFCCF02790B37200D3FD83 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
+		0EFFCCF12790B37200D3FD83 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
+		0EFFCCF22790B37200D3FD83 /* MockNetworkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */; };
+		0EFFCCF32790B37200D3FD83 /* MockTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */; };
+		0EFFCCF42790B37700D3FD83 /* DateObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3F9201CFCCF00B3B012 /* DateObject.json */; };
+		0EFFCCF52790B37700D3FD83 /* RootKeyObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FA201CFCCF00B3B012 /* RootKeyObject.json */; };
+		0EFFCCF62790B37700D3FD83 /* RootKeyObjectPlus.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */; };
+		0EFFCCF72790B37700D3FD83 /* RootKeyIncorrectType.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1CA20A9FCDE00ABF991 /* RootKeyIncorrectType.json */; };
+		0EFFCCF82790B37700D3FD83 /* MixedTypeObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1D020AA039F00ABF991 /* MixedTypeObject.json */; };
+		0EFFCCF92790B37700D3FD83 /* RootKeyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */; };
+		0EFFCCFA2790B37700D3FD83 /* Object.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FB201CFCCF00B3B012 /* Object.json */; };
+		0EFFCCFB2790B37800D3FD83 /* DateObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3F9201CFCCF00B3B012 /* DateObject.json */; };
+		0EFFCCFC2790B37800D3FD83 /* RootKeyObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FA201CFCCF00B3B012 /* RootKeyObject.json */; };
+		0EFFCCFD2790B37800D3FD83 /* RootKeyObjectPlus.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */; };
+		0EFFCCFE2790B37800D3FD83 /* RootKeyIncorrectType.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1CA20A9FCDE00ABF991 /* RootKeyIncorrectType.json */; };
+		0EFFCCFF2790B37800D3FD83 /* MixedTypeObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ECDC1D020AA039F00ABF991 /* MixedTypeObject.json */; };
+		0EFFCD002790B37800D3FD83 /* RootKeyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */; };
+		0EFFCD012790B37800D3FD83 /* Object.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FB201CFCCF00B3B012 /* Object.json */; };
+		0EFFCD022790B37B00D3FD83 /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
+		0EFFCD032790B37B00D3FD83 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
+		0EFFCD042790B37B00D3FD83 /* Trusts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54352204AFBA00949F24 /* Trusts.swift */; };
+		0EFFCD052790B37C00D3FD83 /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */; };
+		0EFFCD062790B37C00D3FD83 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
+		0EFFCD072790B37C00D3FD83 /* Trusts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54352204AFBA00949F24 /* Trusts.swift */; };
 		3026E459202008720003A321 /* TransportSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* TransportSessionTest.swift */; };
 		3026E45A2020087C0003A321 /* TransportSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3026E457202008470003A321 /* TransportSessionTest.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
@@ -98,23 +215,8 @@
 		30F07362202213E60045CB01 /* RequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* RequestTestDefaults.swift */; };
 		30F07367202227790045CB01 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
 		30F073682022277A0045CB01 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
-		60326016201D1DED008CEFC8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
-		60326017201D1DF1008CEFC8 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
-		60836787201D1A2B00007247 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
-		60836788201D1A2E00007247 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
-		6083678F201D1AF400007247 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6083678D201D1AF400007247 /* Interface.storyboard */; };
-		60836791201D1AF400007247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60836790201D1AF400007247 /* Assets.xcassets */; };
-		60836798201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		6083679D201D1AF500007247 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083679C201D1AF500007247 /* InterfaceController.swift */; };
-		6083679F201D1AF500007247 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6083679E201D1AF500007247 /* ExtensionDelegate.swift */; };
-		608367A1201D1AF500007247 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608367A0201D1AF500007247 /* NotificationController.swift */; };
-		608367A3201D1AF500007247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 608367A2201D1AF500007247 /* Assets.xcassets */; };
-		608367A8201D1AF500007247 /* Hyperspace-watchOSExample.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */; };
 		60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; };
 		60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; };
-		60AC830F1FF58E3600120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60AC831D1FF58E4D00120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60AC831E1FF58E4F00120172 /* Hyperspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 60AC82FA1FF58E3600120172 /* Hyperspace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60D6C36D201CC81100B3B012 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
 		60D6C36E201CC81100B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
 		60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
@@ -168,17 +270,6 @@
 		60D6C414201CFCCF00B3B012 /* Object.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FB201CFCCF00B3B012 /* Object.json */; };
 		60D6C415201CFCCF00B3B012 /* RootKeyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */; };
 		60D6C416201CFCCF00B3B012 /* RootKeyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */; };
-		60D6C422201D156500B3B012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C421201D156500B3B012 /* AppDelegate.swift */; };
-		60D6C424201D156500B3B012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C423201D156500B3B012 /* ViewController.swift */; };
-		60D6C427201D156500B3B012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C425201D156500B3B012 /* Main.storyboard */; };
-		60D6C429201D156500B3B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C428201D156500B3B012 /* Assets.xcassets */; };
-		60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C42A201D156500B3B012 /* LaunchScreen.storyboard */; };
-		60D6C435201D170F00B3B012 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C433201D170F00B3B012 /* Models.swift */; };
-		60D6C436201D170F00B3B012 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C434201D170F00B3B012 /* NetworkRequests.swift */; };
-		60D6C43E201D188B00B3B012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C43D201D188B00B3B012 /* AppDelegate.swift */; };
-		60D6C440201D188B00B3B012 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C43F201D188B00B3B012 /* ViewController.swift */; };
-		60D6C443201D188B00B3B012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C441201D188B00B3B012 /* Main.storyboard */; };
-		60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C444201D188B00B3B012 /* Assets.xcassets */; };
 		65709A27272E0B9D0066361E /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
 		65709A2A272E0F8E0066361E /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A28272E0F600066361E /* AsyncTests.swift */; };
 		65709A2B272E0F8F0066361E /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A28272E0F600066361E /* AsyncTests.swift */; };
@@ -202,32 +293,24 @@
 		B4C32C31201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C2F201E9F8400FC82C1 /* MockNetworkActivityIndicator.swift */; };
 		B4C32C33201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */; };
 		B4C32C34201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityIndicatorTests.swift */; };
-		B4C32C53201EA4B700FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; };
-		B4C32C54201EA4B700FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B4C32C58201EA4BC00FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; };
-		B4C32C59201EA4BC00FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B4C32C5D201EA4C100FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
-		B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; };
-		B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82D51FF5899800120172 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CBB361BB21E643520082E860 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
 		CBB361BC21E643520082E860 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0961E821E52FF4006CC9F5 /* Result+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		60836799201D1AF500007247 /* PBXContainerItemProxy */ = {
+		0EFFCC792790B28A00D3FD83 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 60836796201D1AF500007247;
-			remoteInfo = "Hyperspace-watchOSExample Extension";
+			remoteGlobalIDString = 0EFFCC6F2790B28900D3FD83;
+			remoteInfo = "Hyperspace macOS";
 		};
-		608367A6201D1AF500007247 /* PBXContainerItemProxy */ = {
+		0EFFCC8E2790B2A300D3FD83 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6083678A201D1AF400007247;
-			remoteInfo = "Hyperspace-watchOSExample";
+			remoteGlobalIDString = 60AC82D41FF5899800120172;
+			remoteInfo = "Hyperspace watchOS";
 		};
 		60AC82C11FF588D600120172 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -243,111 +326,27 @@
 			remoteGlobalIDString = 60AC82E11FF589C200120172;
 			remoteInfo = "Hyperspace-tvOS";
 		};
-		B4C32C55201EA4B700FC82C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 60AC82B51FF588D500120172;
-			remoteInfo = "Hyperspace-iOS";
-		};
-		B4C32C5A201EA4BC00FC82C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 60AC82E11FF589C200120172;
-			remoteInfo = "Hyperspace-tvOS";
-		};
-		B4C32C5F201EA4C100FC82C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 60AC82D41FF5899800120172;
-			remoteInfo = "Hyperspace-watchOS";
-		};
-		B4C32C65201EA4C900FC82C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 60AC82AD1FF588D500120172 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 60AC82D41FF5899800120172;
-			remoteInfo = "Hyperspace-watchOS";
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		608367AC201D1AF500007247 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				60836798201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		608367B0201D1AF500007247 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				608367A8201D1AF500007247 /* Hyperspace-watchOSExample.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B4C32C57201EA4B700FC82C1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B4C32C54201EA4B700FC82C1 /* Hyperspace.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B4C32C5C201EA4BC00FC82C1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B4C32C59201EA4BC00FC82C1 /* Hyperspace.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B4C32C62201EA4C100FC82C1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B4C32C5E201EA4C100FC82C1 /* Hyperspace.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B4C32C67201EA4C900FC82C1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B4C32C64201EA4C900FC82C1 /* Hyperspace.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E03975C24EB8CD50078BA7D /* FormURLEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncoder.swift; sourceTree = "<group>"; };
+		0E09A3912790ACD100AB7DD8 /* Hyperspace 2.x-3.0 Migration Guide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Hyperspace 2.x-3.0 Migration Guide.md"; sourceTree = "<group>"; };
+		0E09A3922790ACD100AB7DD8 /* Hyperspace 1.x-2.0 Migration Guide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Hyperspace 1.x-2.0 Migration Guide.md"; sourceTree = "<group>"; };
+		0E09A3932790ACD100AB7DD8 /* Hyperspace 3.x-4.0 Migration Guide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Hyperspace 3.x-4.0 Migration Guide.md"; sourceTree = "<group>"; };
+		0E09A3952790ACD100AB7DD8 /* Custom Decoding.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Custom Decoding.md"; sourceTree = "<group>"; };
+		0E09A3962790ACD100AB7DD8 /* Error Handling.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Error Handling.md"; sourceTree = "<group>"; };
+		0E09A3972790ACD100AB7DD8 /* Handling Empty Responses.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Handling Empty Responses.md"; sourceTree = "<group>"; };
+		0E09A3982790ACD100AB7DD8 /* Error Recovery.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Error Recovery.md"; sourceTree = "<group>"; };
+		0E09A39A2790ACEC00AB7DD8 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		0E09A39B2790ACF300AB7DD8 /* Hyperspace.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Hyperspace.podspec; sourceTree = "<group>"; };
+		0E09A39C2790AD1300AB7DD8 /* Dangerfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dangerfile.swift; sourceTree = SOURCE_ROOT; };
+		0E09A39D2790AD1300AB7DD8 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = SOURCE_ROOT; };
+		0E09A39E2790AD1300AB7DD8 /* CODEOWNERS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CODEOWNERS; sourceTree = SOURCE_ROOT; };
+		0E09A39F2790AD1300AB7DD8 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = SOURCE_ROOT; };
+		0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Hyperspace.h; path = Sources/Hyperspace.h; sourceTree = SOURCE_ROOT; };
 		0E29092B21349F320031F67C /* DecodingFailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingFailureTests.swift; sourceTree = "<group>"; };
 		0E2EBCF127692AC300EE8625 /* HTTP.Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.Body.swift; sourceTree = "<group>"; };
 		0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+JSON.swift"; sourceTree = "<group>"; };
-		0E458C8124EDACE700DC3E70 /* jsonplaceholder.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = jsonplaceholder.cer; sourceTree = "<group>"; };
 		0E458C8424EDAEF700DC3E70 /* TransportResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportResultTests.swift; sourceTree = "<group>"; };
 		0E458C8924EDC7FE00DC3E70 /* EmptyDecodingStrategyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDecodingStrategyTests.swift; sourceTree = "<group>"; };
 		0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustValidator.swift; sourceTree = "<group>"; };
@@ -358,7 +357,6 @@
 		0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncoderTests.swift; sourceTree = "<group>"; };
 		0EBEC81624ECB11B00627564 /* Request+EmptyDecodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+EmptyDecodingStrategy.swift"; sourceTree = "<group>"; };
 		0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyErrorTests.swift; sourceTree = "<group>"; };
-		0EC35678270CDF7D00F0A8C5 /* BrightFutures.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BrightFutures.xcframework; path = Carthage/Build/BrightFutures.xcframework; sourceTree = "<group>"; };
 		0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryParameterTests.swift; sourceTree = "<group>"; };
 		0ECDC1C620A9FB8300ABF991 /* RootKeyObjectPlus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RootKeyObjectPlus.json; sourceTree = "<group>"; };
 		0ECDC1CA20A9FCDE00ABF991 /* RootKeyIncorrectType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RootKeyIncorrectType.json; sourceTree = "<group>"; };
@@ -377,36 +375,21 @@
 		0EFB543B2204BF7F00949F24 /* leaf.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = leaf.cer; sourceTree = "<group>"; };
 		0EFB543E2204BF9500949F24 /* intermediate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = intermediate.cer; sourceTree = "<group>"; };
 		0EFB54482204CBE400949F24 /* TrustValidatingTransportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustValidatingTransportService.swift; sourceTree = "<group>"; };
-		125DD8F822F0C51900AFA88B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
-		125DD8FA22F0C52700AFA88B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/tvOS/BrightFutures.framework; sourceTree = "<group>"; };
-		125DD8FC22F0C52F00AFA88B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/watchOS/BrightFutures.framework; sourceTree = "<group>"; };
+		0EFFCC702790B28900D3FD83 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EFFCC772790B28A00D3FD83 /* Hyperspace macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EFFCC892790B2A300D3FD83 /* Hyperspace watchOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace watchOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12746B8522F4C95500B99373 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		3026E457202008470003A321 /* TransportSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportSessionTest.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
 		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
 		30F0735F202213E00045CB01 /* RequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/RequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
 		30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportServiceMockSubclass.swift; sourceTree = "<group>"; };
-		60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_DELETE.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		6032601A201D1F1F008CEFC8 /* Hyperspace.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		6077BA2120A3B7F600326828 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
-		6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-watchOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6083678E201D1AF400007247 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		60836790201D1AF400007247 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		60836792201D1AF400007247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Hyperspace-watchOSExample Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6083679C201D1AF500007247 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		6083679E201D1AF500007247 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		608367A0201D1AF500007247 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		608367A2201D1AF500007247 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		608367A4201D1AF500007247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		608367A5201D1AF500007247 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		6077BA2120A3B7F600326828 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		60AC82B61FF588D500120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		60AC82BF1FF588D600120172 /* Hyperspace-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		60AC82BF1FF588D600120172 /* Hyperspace iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC82D51FF5899800120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC82E21FF589C200120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		60AC82FA1FF58E3600120172 /* Hyperspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hyperspace.h; sourceTree = "<group>"; };
-		60AC82FB1FF58E3600120172 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60AC82EA1FF589C200120172 /* Hyperspace tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC833F1FF596B600120172 /* URL+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Additions.swift"; sourceTree = "<group>"; };
 		60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItem+Extensions.swift"; sourceTree = "<group>"; };
 		60AC83421FF596B600120172 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -429,23 +412,7 @@
 		60D6C3FA201CFCCF00B3B012 /* RootKeyObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RootKeyObject.json; sourceTree = "<group>"; };
 		60D6C3FB201CFCCF00B3B012 /* Object.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Object.json; sourceTree = "<group>"; };
 		60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RootKeyArray.json; sourceTree = "<group>"; };
-		60D6C41A201D13EC00B3B012 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-iOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		60D6C421201D156500B3B012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		60D6C423201D156500B3B012 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		60D6C426201D156500B3B012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		60D6C428201D156500B3B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		60D6C42B201D156500B3B012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		60D6C42D201D156500B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60D6C433201D170F00B3B012 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		60D6C434201D170F00B3B012 /* NetworkRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
-		60D6C43B201D188B00B3B012 /* Hyperspace-tvOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyperspace-tvOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		60D6C43D201D188B00B3B012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		60D6C43F201D188B00B3B012 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		60D6C442201D188B00B3B012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		60D6C444201D188B00B3B012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		60D6C446201D188B00B3B012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60EB8FDB1FF59FB000AC0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60D6C41A201D13EC00B3B012 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		65709A26272E0B9D0066361E /* BackendService+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendService+Async.swift"; sourceTree = "<group>"; };
 		65709A28272E0F600066361E /* AsyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTests.swift; sourceTree = "<group>"; };
 		65A672F52731991A000E3511 /* TestDecodingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDecodingError.swift; sourceTree = "<group>"; };
@@ -460,11 +427,26 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		60836794201D1AF500007247 /* Frameworks */ = {
+		0EFFCC6D2790B28900D3FD83 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4C32C63201EA4C900FC82C1 /* Hyperspace.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFFCC742790B28A00D3FD83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFFCC782790B28A00D3FD83 /* Hyperspace.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFFCC862790B2A300D3FD83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFFCC8D2790B2A300D3FD83 /* Hyperspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,33 +487,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60D6C41C201D156500B3B012 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B4C32C53201EA4B700FC82C1 /* Hyperspace.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60D6C438201D188B00B3B012 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B4C32C58201EA4BC00FC82C1 /* Hyperspace.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B4C32C61201EA4C100FC82C1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B4C32C5D201EA4C100FC82C1 /* Hyperspace.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E09A38F2790ACD100AB7DD8 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				0E09A3902790ACD100AB7DD8 /* Migrations */,
+				0E09A3942790ACD100AB7DD8 /* Guides */,
+				6077BA2120A3B7F600326828 /* CHANGELOG.md */,
+				0E09A39E2790AD1300AB7DD8 /* CODEOWNERS */,
+				0E09A39D2790AD1300AB7DD8 /* CONTRIBUTING.md */,
+				0E09A39F2790AD1300AB7DD8 /* NOTICE.txt */,
+				60D6C41A201D13EC00B3B012 /* README.md */,
+				0E09A39C2790AD1300AB7DD8 /* Dangerfile.swift */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		0E09A3902790ACD100AB7DD8 /* Migrations */ = {
+			isa = PBXGroup;
+			children = (
+				0E09A3912790ACD100AB7DD8 /* Hyperspace 2.x-3.0 Migration Guide.md */,
+				0E09A3922790ACD100AB7DD8 /* Hyperspace 1.x-2.0 Migration Guide.md */,
+				0E09A3932790ACD100AB7DD8 /* Hyperspace 3.x-4.0 Migration Guide.md */,
+			);
+			path = Migrations;
+			sourceTree = "<group>";
+		};
+		0E09A3942790ACD100AB7DD8 /* Guides */ = {
+			isa = PBXGroup;
+			children = (
+				0E09A3952790ACD100AB7DD8 /* Custom Decoding.md */,
+				0E09A3962790ACD100AB7DD8 /* Error Handling.md */,
+				0E09A3972790ACD100AB7DD8 /* Handling Empty Responses.md */,
+				0E09A3982790ACD100AB7DD8 /* Error Recovery.md */,
+			);
+			path = Guides;
+			sourceTree = "<group>";
+		};
+		0E09A3992790ACDA00AB7DD8 /* Deployment */ = {
+			isa = PBXGroup;
+			children = (
+				12746B8522F4C95500B99373 /* Package.swift */,
+				0E09A39B2790ACF300AB7DD8 /* Hyperspace.podspec */,
+				0E09A39A2790ACEC00AB7DD8 /* LICENSE.txt */,
+			);
+			name = Deployment;
+			sourceTree = "<group>";
+		};
 		0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,47 +581,13 @@
 			path = Certificates;
 			sourceTree = "<group>";
 		};
-		60326018201D1F1F008CEFC8 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				60326019201D1F1F008CEFC8 /* Hyperspace_DELETE.playground */,
-				6032601A201D1F1F008CEFC8 /* Hyperspace.playground */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		6083678C201D1AF400007247 /* Hyperspace-watchOSExample */ = {
-			isa = PBXGroup;
-			children = (
-				6083678D201D1AF400007247 /* Interface.storyboard */,
-				60836790201D1AF400007247 /* Assets.xcassets */,
-				60836792201D1AF400007247 /* Info.plist */,
-			);
-			path = "Hyperspace-watchOSExample";
-			sourceTree = "<group>";
-		};
-		6083679B201D1AF500007247 /* Hyperspace-watchOSExample Extension */ = {
-			isa = PBXGroup;
-			children = (
-				6083679C201D1AF500007247 /* InterfaceController.swift */,
-				6083679E201D1AF500007247 /* ExtensionDelegate.swift */,
-				608367A0201D1AF500007247 /* NotificationController.swift */,
-				608367A2201D1AF500007247 /* Assets.xcassets */,
-				608367A4201D1AF500007247 /* Info.plist */,
-				608367A5201D1AF500007247 /* PushNotificationPayload.apns */,
-			);
-			path = "Hyperspace-watchOSExample Extension";
-			sourceTree = "<group>";
-		};
 		60AC82AC1FF588D500120172 = {
 			isa = PBXGroup;
 			children = (
-				60D6C41A201D13EC00B3B012 /* README.md */,
-				6077BA2120A3B7F600326828 /* CHANGELOG.md */,
-				12746B8522F4C95500B99373 /* Package.swift */,
+				0E09A3992790ACDA00AB7DD8 /* Deployment */,
+				0E09A38F2790ACD100AB7DD8 /* Documentation */,
 				60AC82B81FF588D500120172 /* Sources */,
 				60AC831F1FF58E8B00120172 /* Tests */,
-				60D6C431201D16D100B3B012 /* Examples */,
 				60AC82B71FF588D500120172 /* Products */,
 				60D6C3E6201CD77400B3B012 /* Frameworks */,
 			);
@@ -627,14 +597,13 @@
 			isa = PBXGroup;
 			children = (
 				60AC82B61FF588D500120172 /* Hyperspace.framework */,
-				60AC82BF1FF588D600120172 /* Hyperspace-iOSTests.xctest */,
+				60AC82BF1FF588D600120172 /* Hyperspace iOS Tests.xctest */,
 				60AC82D51FF5899800120172 /* Hyperspace.framework */,
 				60AC82E21FF589C200120172 /* Hyperspace.framework */,
-				60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */,
-				60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */,
-				60D6C43B201D188B00B3B012 /* Hyperspace-tvOSExample.app */,
-				6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */,
-				60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */,
+				60AC82EA1FF589C200120172 /* Hyperspace tvOS Tests.xctest */,
+				0EFFCC702790B28900D3FD83 /* Hyperspace.framework */,
+				0EFFCC772790B28A00D3FD83 /* Hyperspace macOSTests.xctest */,
+				0EFFCC892790B2A300D3FD83 /* Hyperspace watchOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -642,23 +611,12 @@
 		60AC82B81FF588D500120172 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				60AC833D1FF596B600120172 /* Hyperspace */,
+				60AC833D1FF596B600120172 /* Core */,
 				65709A25272E0B8E0066361E /* Async */,
 				0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */,
-				60AC82F91FF58E3600120172 /* Supporting Files */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
-		};
-		60AC82F91FF58E3600120172 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				60AC82FA1FF58E3600120172 /* Hyperspace.h */,
-				60AC82FB1FF58E3600120172 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			path = "Sources/Supporting Files";
-			sourceTree = SOURCE_ROOT;
 		};
 		60AC831F1FF58E8B00120172 /* Tests */ = {
 			isa = PBXGroup;
@@ -683,20 +641,20 @@
 				0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */,
 				0EF57B852202967900484C01 /* Certificates */,
 				60D6C419201CFCE500B3B012 /* Helper */,
-				60EB8FDA1FF59FB000AC0B55 /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		60AC833D1FF596B600120172 /* Hyperspace */ = {
+		60AC833D1FF596B600120172 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */,
 				60AC833E1FF596B600120172 /* Extensions */,
 				60AC83411FF596B600120172 /* HTTP */,
 				60AC83431FF596B600120172 /* Request */,
 				60AC83471FF596B600120172 /* Service */,
 			);
-			path = Hyperspace;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		60AC833E1FF596B600120172 /* Extensions */ = {
@@ -763,10 +721,6 @@
 		60D6C3E6201CD77400B3B012 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0EC35678270CDF7D00F0A8C5 /* BrightFutures.xcframework */,
-				125DD8FC22F0C52F00AFA88B /* BrightFutures.framework */,
-				125DD8FA22F0C52700AFA88B /* BrightFutures.framework */,
-				125DD8F822F0C51900AFA88B /* BrightFutures.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -821,62 +775,6 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		60D6C420201D156500B3B012 /* Hyperspace-iOSExample */ = {
-			isa = PBXGroup;
-			children = (
-				0E458C8124EDACE700DC3E70 /* jsonplaceholder.cer */,
-				60D6C421201D156500B3B012 /* AppDelegate.swift */,
-				60D6C423201D156500B3B012 /* ViewController.swift */,
-				60D6C425201D156500B3B012 /* Main.storyboard */,
-				60D6C428201D156500B3B012 /* Assets.xcassets */,
-				60D6C42A201D156500B3B012 /* LaunchScreen.storyboard */,
-				60D6C42D201D156500B3B012 /* Info.plist */,
-			);
-			path = "Hyperspace-iOSExample";
-			sourceTree = "<group>";
-		};
-		60D6C431201D16D100B3B012 /* Examples */ = {
-			isa = PBXGroup;
-			children = (
-				60326018201D1F1F008CEFC8 /* Playground */,
-				60D6C432201D16F000B3B012 /* Shared */,
-				60D6C420201D156500B3B012 /* Hyperspace-iOSExample */,
-				60D6C43C201D188B00B3B012 /* Hyperspace-tvOSExample */,
-				6083678C201D1AF400007247 /* Hyperspace-watchOSExample */,
-				6083679B201D1AF500007247 /* Hyperspace-watchOSExample Extension */,
-			);
-			path = Examples;
-			sourceTree = "<group>";
-		};
-		60D6C432201D16F000B3B012 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				60D6C433201D170F00B3B012 /* Models.swift */,
-				60D6C434201D170F00B3B012 /* NetworkRequests.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		60D6C43C201D188B00B3B012 /* Hyperspace-tvOSExample */ = {
-			isa = PBXGroup;
-			children = (
-				60D6C43D201D188B00B3B012 /* AppDelegate.swift */,
-				60D6C43F201D188B00B3B012 /* ViewController.swift */,
-				60D6C441201D188B00B3B012 /* Main.storyboard */,
-				60D6C444201D188B00B3B012 /* Assets.xcassets */,
-				60D6C446201D188B00B3B012 /* Info.plist */,
-			);
-			path = "Hyperspace-tvOSExample";
-			sourceTree = "<group>";
-		};
-		60EB8FDA1FF59FB000AC0B55 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				60EB8FDB1FF59FB000AC0B55 /* Info.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		65709A25272E0B8E0066361E /* Async */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,11 +786,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0EFFCC6B2790B28900D3FD83 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFFCC962790B33500D3FD83 /* Hyperspace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60AC82B31FF588D500120172 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60AC830F1FF58E3600120172 /* Hyperspace.h in Headers */,
+				0EFFCC932790B33400D3FD83 /* Hyperspace.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,7 +806,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60AC831D1FF58E4D00120172 /* Hyperspace.h in Headers */,
+				0EFFCC952790B33500D3FD83 /* Hyperspace.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,55 +814,70 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60AC831E1FF58E4F00120172 /* Hyperspace.h in Headers */,
+				0EFFCC942790B33500D3FD83 /* Hyperspace.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6083678A201D1AF400007247 /* Hyperspace-watchOSExample */ = {
+		0EFFCC6F2790B28900D3FD83 /* Hyperspace macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 608367AD201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample" */;
+			buildConfigurationList = 0EFFCC7F2790B28A00D3FD83 /* Build configuration list for PBXNativeTarget "Hyperspace macOS" */;
 			buildPhases = (
-				60836789201D1AF400007247 /* Resources */,
-				608367AC201D1AF500007247 /* Embed App Extensions */,
-				B4C32C61201EA4C100FC82C1 /* Frameworks */,
-				B4C32C62201EA4C100FC82C1 /* Embed Frameworks */,
+				0EFFCC6B2790B28900D3FD83 /* Headers */,
+				0EFFCC6C2790B28900D3FD83 /* Sources */,
+				0EFFCC6D2790B28900D3FD83 /* Frameworks */,
+				0EFFCC6E2790B28900D3FD83 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6083679A201D1AF500007247 /* PBXTargetDependency */,
-				B4C32C60201EA4C100FC82C1 /* PBXTargetDependency */,
 			);
-			name = "Hyperspace-watchOSExample";
-			productName = "Hyperspace-watchOSExample";
-			productReference = 6083678B201D1AF400007247 /* Hyperspace-watchOSExample.app */;
-			productType = "com.apple.product-type.application.watchapp2";
+			name = "Hyperspace macOS";
+			productName = "Hyperspace macOS";
+			productReference = 0EFFCC702790B28900D3FD83 /* Hyperspace.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		60836796201D1AF500007247 /* Hyperspace-watchOSExample Extension */ = {
+		0EFFCC762790B28A00D3FD83 /* Hyperspace macOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 608367A9201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample Extension" */;
+			buildConfigurationList = 0EFFCC822790B28A00D3FD83 /* Build configuration list for PBXNativeTarget "Hyperspace macOSTests" */;
 			buildPhases = (
-				60836793201D1AF500007247 /* Sources */,
-				60836794201D1AF500007247 /* Frameworks */,
-				60836795201D1AF500007247 /* Resources */,
-				B4C32C67201EA4C900FC82C1 /* Embed Frameworks */,
+				0EFFCC732790B28A00D3FD83 /* Sources */,
+				0EFFCC742790B28A00D3FD83 /* Frameworks */,
+				0EFFCC752790B28A00D3FD83 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B4C32C66201EA4C900FC82C1 /* PBXTargetDependency */,
+				0EFFCC7A2790B28A00D3FD83 /* PBXTargetDependency */,
 			);
-			name = "Hyperspace-watchOSExample Extension";
-			productName = "Hyperspace-watchOSExample Extension";
-			productReference = 60836797201D1AF500007247 /* Hyperspace-watchOSExample Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
+			name = "Hyperspace macOSTests";
+			productName = "Hyperspace macOSTests";
+			productReference = 0EFFCC772790B28A00D3FD83 /* Hyperspace macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		60AC82B51FF588D500120172 /* Hyperspace-iOS */ = {
+		0EFFCC882790B2A300D3FD83 /* Hyperspace watchOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60AC82CA1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOS" */;
+			buildConfigurationList = 0EFFCC902790B2A300D3FD83 /* Build configuration list for PBXNativeTarget "Hyperspace watchOS Tests" */;
+			buildPhases = (
+				0EFFCC852790B2A300D3FD83 /* Sources */,
+				0EFFCC862790B2A300D3FD83 /* Frameworks */,
+				0EFFCC872790B2A300D3FD83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0EFFCC8F2790B2A300D3FD83 /* PBXTargetDependency */,
+			);
+			name = "Hyperspace watchOS Tests";
+			productName = "Hyperspace watchOS Tests";
+			productReference = 0EFFCC892790B2A300D3FD83 /* Hyperspace watchOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		60AC82B51FF588D500120172 /* Hyperspace iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60AC82CA1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace iOS" */;
 			buildPhases = (
 				60AC82B11FF588D500120172 /* Sources */,
 				60AC82B21FF588D500120172 /* Frameworks */,
@@ -968,14 +889,14 @@
 			);
 			dependencies = (
 			);
-			name = "Hyperspace-iOS";
+			name = "Hyperspace iOS";
 			productName = Hyperspace;
 			productReference = 60AC82B61FF588D500120172 /* Hyperspace.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		60AC82BE1FF588D600120172 /* Hyperspace-iOSTests */ = {
+		60AC82BE1FF588D600120172 /* Hyperspace iOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60AC82CD1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOSTests" */;
+			buildConfigurationList = 60AC82CD1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace iOS Tests" */;
 			buildPhases = (
 				60AC82BB1FF588D600120172 /* Sources */,
 				60AC82BC1FF588D600120172 /* Frameworks */,
@@ -986,14 +907,14 @@
 			dependencies = (
 				60AC82C21FF588D600120172 /* PBXTargetDependency */,
 			);
-			name = "Hyperspace-iOSTests";
+			name = "Hyperspace iOS Tests";
 			productName = HyperspaceTests;
-			productReference = 60AC82BF1FF588D600120172 /* Hyperspace-iOSTests.xctest */;
+			productReference = 60AC82BF1FF588D600120172 /* Hyperspace iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		60AC82D41FF5899800120172 /* Hyperspace-watchOS */ = {
+		60AC82D41FF5899800120172 /* Hyperspace watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60AC82DA1FF5899800120172 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOS" */;
+			buildConfigurationList = 60AC82DA1FF5899800120172 /* Build configuration list for PBXNativeTarget "Hyperspace watchOS" */;
 			buildPhases = (
 				60AC82D01FF5899800120172 /* Sources */,
 				60AC82D11FF5899800120172 /* Frameworks */,
@@ -1005,14 +926,14 @@
 			);
 			dependencies = (
 			);
-			name = "Hyperspace-watchOS";
+			name = "Hyperspace watchOS";
 			productName = "Hyperspace-watchOS";
 			productReference = 60AC82D51FF5899800120172 /* Hyperspace.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		60AC82E11FF589C200120172 /* Hyperspace-tvOS */ = {
+		60AC82E11FF589C200120172 /* Hyperspace tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60AC82F31FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOS" */;
+			buildConfigurationList = 60AC82F31FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace tvOS" */;
 			buildPhases = (
 				60AC82DD1FF589C200120172 /* Sources */,
 				60AC82DE1FF589C200120172 /* Frameworks */,
@@ -1024,14 +945,14 @@
 			);
 			dependencies = (
 			);
-			name = "Hyperspace-tvOS";
+			name = "Hyperspace tvOS";
 			productName = "Hyperspace-tvOS";
 			productReference = 60AC82E21FF589C200120172 /* Hyperspace.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		60AC82E91FF589C200120172 /* Hyperspace-tvOSTests */ = {
+		60AC82E91FF589C200120172 /* Hyperspace tvOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60AC82F61FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOSTests" */;
+			buildConfigurationList = 60AC82F61FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace tvOS Tests" */;
 			buildPhases = (
 				60AC82E61FF589C200120172 /* Sources */,
 				60AC82E71FF589C200120172 /* Frameworks */,
@@ -1042,50 +963,10 @@
 			dependencies = (
 				60AC82ED1FF589C200120172 /* PBXTargetDependency */,
 			);
-			name = "Hyperspace-tvOSTests";
+			name = "Hyperspace tvOS Tests";
 			productName = "Hyperspace-tvOSTests";
-			productReference = 60AC82EA1FF589C200120172 /* Hyperspace-tvOSTests.xctest */;
+			productReference = 60AC82EA1FF589C200120172 /* Hyperspace tvOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		60D6C41E201D156500B3B012 /* Hyperspace-iOSExample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 60D6C42E201D156500B3B012 /* Build configuration list for PBXNativeTarget "Hyperspace-iOSExample" */;
-			buildPhases = (
-				60D6C41B201D156500B3B012 /* Sources */,
-				60D6C41C201D156500B3B012 /* Frameworks */,
-				60D6C41D201D156500B3B012 /* Resources */,
-				608367B0201D1AF500007247 /* Embed Watch Content */,
-				B4C32C57201EA4B700FC82C1 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				608367A7201D1AF500007247 /* PBXTargetDependency */,
-				B4C32C56201EA4B700FC82C1 /* PBXTargetDependency */,
-			);
-			name = "Hyperspace-iOSExample";
-			productName = "Hyperspace-iOSExample";
-			productReference = 60D6C41F201D156500B3B012 /* Hyperspace-iOSExample.app */;
-			productType = "com.apple.product-type.application";
-		};
-		60D6C43A201D188B00B3B012 /* Hyperspace-tvOSExample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 60D6C447201D188B00B3B012 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOSExample" */;
-			buildPhases = (
-				60D6C437201D188B00B3B012 /* Sources */,
-				60D6C438201D188B00B3B012 /* Frameworks */,
-				60D6C439201D188B00B3B012 /* Resources */,
-				B4C32C5C201EA4BC00FC82C1 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B4C32C5B201EA4BC00FC82C1 /* PBXTargetDependency */,
-			);
-			name = "Hyperspace-tvOSExample";
-			productName = "Hyperspace-tvOSExample";
-			productReference = 60D6C43B201D188B00B3B012 /* Hyperspace-tvOSExample.app */;
-			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -1093,17 +974,20 @@
 		60AC82AD1FF588D500120172 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "Bottle Rocket Studios";
 				TargetAttributes = {
-					6083678A201D1AF400007247 = {
-						CreatedOnToolsVersion = 9.2;
+					0EFFCC6F2790B28900D3FD83 = {
+						CreatedOnToolsVersion = 13.2.1;
 						ProvisioningStyle = Automatic;
 					};
-					60836796201D1AF500007247 = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1020;
+					0EFFCC762790B28A00D3FD83 = {
+						CreatedOnToolsVersion = 13.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					0EFFCC882790B2A300D3FD83 = {
+						CreatedOnToolsVersion = 13.2.1;
 						ProvisioningStyle = Automatic;
 					};
 					60AC82B51FF588D500120172 = {
@@ -1131,16 +1015,6 @@
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
-					60D6C41E201D156500B3B012 = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-					};
-					60D6C43A201D188B00B3B012 = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = 60AC82B01FF588D500120172 /* Build configuration list for PBXProject "Hyperspace" */;
@@ -1156,34 +1030,63 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				60AC82B51FF588D500120172 /* Hyperspace-iOS */,
-				60AC82BE1FF588D600120172 /* Hyperspace-iOSTests */,
-				60D6C41E201D156500B3B012 /* Hyperspace-iOSExample */,
-				60AC82E11FF589C200120172 /* Hyperspace-tvOS */,
-				60AC82E91FF589C200120172 /* Hyperspace-tvOSTests */,
-				60D6C43A201D188B00B3B012 /* Hyperspace-tvOSExample */,
-				60AC82D41FF5899800120172 /* Hyperspace-watchOS */,
-				6083678A201D1AF400007247 /* Hyperspace-watchOSExample */,
-				60836796201D1AF500007247 /* Hyperspace-watchOSExample Extension */,
+				60AC82B51FF588D500120172 /* Hyperspace iOS */,
+				60AC82BE1FF588D600120172 /* Hyperspace iOS Tests */,
+				60AC82E11FF589C200120172 /* Hyperspace tvOS */,
+				60AC82E91FF589C200120172 /* Hyperspace tvOS Tests */,
+				60AC82D41FF5899800120172 /* Hyperspace watchOS */,
+				0EFFCC882790B2A300D3FD83 /* Hyperspace watchOS Tests */,
+				0EFFCC6F2790B28900D3FD83 /* Hyperspace macOS */,
+				0EFFCC762790B28A00D3FD83 /* Hyperspace macOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		60836789201D1AF400007247 /* Resources */ = {
+		0EFFCC6E2790B28900D3FD83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60836791201D1AF400007247 /* Assets.xcassets in Resources */,
-				6083678F201D1AF400007247 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60836795201D1AF500007247 /* Resources */ = {
+		0EFFCC752790B28A00D3FD83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				608367A3201D1AF500007247 /* Assets.xcassets in Resources */,
+				0EFFCCDD2790B36A00D3FD83 /* leaf.cer in Resources */,
+				0EFFCD002790B37800D3FD83 /* RootKeyArray.json in Resources */,
+				0EFFCCDC2790B36A00D3FD83 /* apple.der in Resources */,
+				0EFFCCDE2790B36A00D3FD83 /* google.der in Resources */,
+				0EFFCD012790B37800D3FD83 /* Object.json in Resources */,
+				0EFFCCE12790B36A00D3FD83 /* intermediate.cer in Resources */,
+				0EFFCCE02790B36A00D3FD83 /* root.cer in Resources */,
+				0EFFCCDF2790B36A00D3FD83 /* bbc.der in Resources */,
+				0EFFCCFD2790B37800D3FD83 /* RootKeyObjectPlus.json in Resources */,
+				0EFFCCFF2790B37800D3FD83 /* MixedTypeObject.json in Resources */,
+				0EFFCCFC2790B37800D3FD83 /* RootKeyObject.json in Resources */,
+				0EFFCCFB2790B37800D3FD83 /* DateObject.json in Resources */,
+				0EFFCCFE2790B37800D3FD83 /* RootKeyIncorrectType.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFFCC872790B2A300D3FD83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFFCCD72790B36900D3FD83 /* leaf.cer in Resources */,
+				0EFFCCF92790B37700D3FD83 /* RootKeyArray.json in Resources */,
+				0EFFCCD62790B36900D3FD83 /* apple.der in Resources */,
+				0EFFCCD82790B36900D3FD83 /* google.der in Resources */,
+				0EFFCCFA2790B37700D3FD83 /* Object.json in Resources */,
+				0EFFCCDB2790B36900D3FD83 /* intermediate.cer in Resources */,
+				0EFFCCDA2790B36900D3FD83 /* root.cer in Resources */,
+				0EFFCCD92790B36900D3FD83 /* bbc.der in Resources */,
+				0EFFCCF62790B37700D3FD83 /* RootKeyObjectPlus.json in Resources */,
+				0EFFCCF82790B37700D3FD83 /* MixedTypeObject.json in Resources */,
+				0EFFCCF52790B37700D3FD83 /* RootKeyObject.json in Resources */,
+				0EFFCCF42790B37700D3FD83 /* DateObject.json in Resources */,
+				0EFFCCF72790B37700D3FD83 /* RootKeyIncorrectType.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1248,27 +1151,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60D6C41D201D156500B3B012 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0E458C8224EDACE700DC3E70 /* jsonplaceholder.cer in Resources */,
-				60D6C42C201D156500B3B012 /* LaunchScreen.storyboard in Resources */,
-				60D6C429201D156500B3B012 /* Assets.xcassets in Resources */,
-				60D6C427201D156500B3B012 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60D6C439201D188B00B3B012 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				60D6C445201D188B00B3B012 /* Assets.xcassets in Resources */,
-				0E458C8324EDACE700DC3E70 /* jsonplaceholder.cer in Resources */,
-				60D6C443201D188B00B3B012 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1317,15 +1199,111 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		60836793201D1AF500007247 /* Sources */ = {
+		0EFFCC6C2790B28900D3FD83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				608367A1201D1AF500007247 /* NotificationController.swift in Sources */,
-				60326017201D1DF1008CEFC8 /* NetworkRequests.swift in Sources */,
-				6083679F201D1AF500007247 /* ExtensionDelegate.swift in Sources */,
-				6083679D201D1AF500007247 /* InterfaceController.swift in Sources */,
-				60326016201D1DED008CEFC8 /* Models.swift in Sources */,
+				0EFFCCA92790B35500D3FD83 /* TransportService.swift in Sources */,
+				0EFFCCA12790B34E00D3FD83 /* AnyError.swift in Sources */,
+				0EFFCCA32790B34E00D3FD83 /* Request.swift in Sources */,
+				0EFFCC972790B34600D3FD83 /* URLQueryItem+Extensions.swift in Sources */,
+				0EFFCCA22790B34E00D3FD83 /* FormURLEncoder.swift in Sources */,
+				0EFFCCB02790B36000D3FD83 /* TrustValidatingTransportService.swift in Sources */,
+				0EFFCCA52790B35200D3FD83 /* RecoveryStrategy.swift in Sources */,
+				0EFFCCAD2790B36000D3FD83 /* TrustConfiguration.swift in Sources */,
+				0EFFCCAA2790B35800D3FD83 /* BackendServiceProtocol.swift in Sources */,
+				0EFFCCAF2790B36000D3FD83 /* TrustValidator.swift in Sources */,
+				0EFFCC992790B34600D3FD83 /* Request+EmptyDecodingStrategy.swift in Sources */,
+				0EFFCC9D2790B34900D3FD83 /* HTTP.swift in Sources */,
+				0EFFCCB12790B36000D3FD83 /* AuthenticationChallenge.swift in Sources */,
+				0EFFCC9A2790B34600D3FD83 /* CodableContainer.swift in Sources */,
+				0EFFCCAB2790B35800D3FD83 /* BackendService.swift in Sources */,
+				0EFFCCA62790B35500D3FD83 /* Transporting.swift in Sources */,
+				0EFFCC982790B34600D3FD83 /* Request+Decodable.swift in Sources */,
+				0EFFCCA82790B35500D3FD83 /* TransportResult.swift in Sources */,
+				0EFFCCA02790B34E00D3FD83 /* URLQueryParameterEncoder.swift in Sources */,
+				0EFFCCAE2790B36000D3FD83 /* CertificateHasher.swift in Sources */,
+				0EFFCC9B2790B34600D3FD83 /* URL+Additions.swift in Sources */,
+				0EFFCCA42790B35200D3FD83 /* NetworkActivityIndicatable.swift in Sources */,
+				0EFFCC9E2790B34900D3FD83 /* HTTP.Body.swift in Sources */,
+				0EFFCC9F2790B34E00D3FD83 /* Request.URLRequestCreationStrategy.swift in Sources */,
+				0EFFCCA72790B35500D3FD83 /* TransportSession.swift in Sources */,
+				0EFFCC9C2790B34600D3FD83 /* JSONCoder+Container.swift in Sources */,
+				0EFFCCAC2790B35C00D3FD83 /* BackendService+Async.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFFCC732790B28A00D3FD83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFFCCEF2790B37200D3FD83 /* MockNetworkSessionDataTask.swift in Sources */,
+				0EFFCCBF2790B36400D3FD83 /* FormURLEncoderTests.swift in Sources */,
+				0EFFCCBB2790B36400D3FD83 /* NetworkActivityIndicatorTests.swift in Sources */,
+				0EFFCCB42790B36400D3FD83 /* TransportResultTests.swift in Sources */,
+				0EFFCCC02790B36400D3FD83 /* PinningTests.swift in Sources */,
+				0EFFCCBC2790B36400D3FD83 /* RecoverableTests.swift in Sources */,
+				0EFFCCBA2790B36400D3FD83 /* CertificateHashTests.swift in Sources */,
+				0EFFCCF02790B37200D3FD83 /* MockBackendService.swift in Sources */,
+				0EFFCCC22790B36400D3FD83 /* DecodingTests.swift in Sources */,
+				0EFFCCB22790B36400D3FD83 /* AsyncTests.swift in Sources */,
+				0EFFCCE22790B36D00D3FD83 /* TestDecodingError.swift in Sources */,
+				0EFFCCC32790B36400D3FD83 /* URLQueryParameterTests.swift in Sources */,
+				0EFFCCBE2790B36400D3FD83 /* BackendServiceTests.swift in Sources */,
+				0EFFCCB32790B36400D3FD83 /* HTTPTests.swift in Sources */,
+				0EFFCD042790B37B00D3FD83 /* Trusts.swift in Sources */,
+				0EFFCCB72790B36400D3FD83 /* AnyErrorTests.swift in Sources */,
+				0EFFCCED2790B37200D3FD83 /* MockCodableContainer.swift in Sources */,
+				0EFFCCEE2790B37200D3FD83 /* MockNetworkSession.swift in Sources */,
+				0EFFCCB62790B36400D3FD83 /* EmptyDecodingStrategyTests.swift in Sources */,
+				0EFFCD022790B37B00D3FD83 /* XCTestCase+JSON.swift in Sources */,
+				0EFFCCF22790B37200D3FD83 /* MockNetworkActivityIndicator.swift in Sources */,
+				0EFFCCE32790B36D00D3FD83 /* RequestTestDefaults.swift in Sources */,
+				0EFFCCF32790B37200D3FD83 /* MockTransportService.swift in Sources */,
+				0EFFCCBD2790B36400D3FD83 /* EncodingTests.swift in Sources */,
+				0EFFCD032790B37B00D3FD83 /* Result+Extensions.swift in Sources */,
+				0EFFCCB92790B36400D3FD83 /* DecodingFailureTests.swift in Sources */,
+				0EFFCCC12790B36400D3FD83 /* RequestTests.swift in Sources */,
+				0EFFCCB82790B36400D3FD83 /* TransportSessionTest.swift in Sources */,
+				0EFFCCB52790B36400D3FD83 /* TransportServiceTests.swift in Sources */,
+				0EFFCCF12790B37200D3FD83 /* TransportServiceMockSubclass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EFFCC852790B2A300D3FD83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFFCCE82790B37200D3FD83 /* MockNetworkSessionDataTask.swift in Sources */,
+				0EFFCCD12790B36500D3FD83 /* FormURLEncoderTests.swift in Sources */,
+				0EFFCCCD2790B36500D3FD83 /* NetworkActivityIndicatorTests.swift in Sources */,
+				0EFFCCC62790B36500D3FD83 /* TransportResultTests.swift in Sources */,
+				0EFFCCD22790B36500D3FD83 /* PinningTests.swift in Sources */,
+				0EFFCCCE2790B36500D3FD83 /* RecoverableTests.swift in Sources */,
+				0EFFCCCC2790B36500D3FD83 /* CertificateHashTests.swift in Sources */,
+				0EFFCCE92790B37200D3FD83 /* MockBackendService.swift in Sources */,
+				0EFFCCD42790B36500D3FD83 /* DecodingTests.swift in Sources */,
+				0EFFCCC42790B36500D3FD83 /* AsyncTests.swift in Sources */,
+				0EFFCCE42790B36E00D3FD83 /* TestDecodingError.swift in Sources */,
+				0EFFCCD52790B36500D3FD83 /* URLQueryParameterTests.swift in Sources */,
+				0EFFCCD02790B36500D3FD83 /* BackendServiceTests.swift in Sources */,
+				0EFFCCC52790B36500D3FD83 /* HTTPTests.swift in Sources */,
+				0EFFCD072790B37C00D3FD83 /* Trusts.swift in Sources */,
+				0EFFCCC92790B36500D3FD83 /* AnyErrorTests.swift in Sources */,
+				0EFFCCE62790B37200D3FD83 /* MockCodableContainer.swift in Sources */,
+				0EFFCCE72790B37200D3FD83 /* MockNetworkSession.swift in Sources */,
+				0EFFCCC82790B36500D3FD83 /* EmptyDecodingStrategyTests.swift in Sources */,
+				0EFFCD052790B37C00D3FD83 /* XCTestCase+JSON.swift in Sources */,
+				0EFFCCEB2790B37200D3FD83 /* MockNetworkActivityIndicator.swift in Sources */,
+				0EFFCCE52790B36E00D3FD83 /* RequestTestDefaults.swift in Sources */,
+				0EFFCCEC2790B37200D3FD83 /* MockTransportService.swift in Sources */,
+				0EFFCCCF2790B36500D3FD83 /* EncodingTests.swift in Sources */,
+				0EFFCD062790B37C00D3FD83 /* Result+Extensions.swift in Sources */,
+				0EFFCCCB2790B36500D3FD83 /* DecodingFailureTests.swift in Sources */,
+				0EFFCCD32790B36500D3FD83 /* RequestTests.swift in Sources */,
+				0EFFCCCA2790B36500D3FD83 /* TransportSessionTest.swift in Sources */,
+				0EFFCCC72790B36500D3FD83 /* TransportServiceTests.swift in Sources */,
+				0EFFCCEA2790B37200D3FD83 /* TransportServiceMockSubclass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1505,176 +1483,172 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60D6C41B201D156500B3B012 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				60D6C435201D170F00B3B012 /* Models.swift in Sources */,
-				60D6C424201D156500B3B012 /* ViewController.swift in Sources */,
-				60D6C436201D170F00B3B012 /* NetworkRequests.swift in Sources */,
-				60D6C422201D156500B3B012 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		60D6C437201D188B00B3B012 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				60836787201D1A2B00007247 /* Models.swift in Sources */,
-				60D6C440201D188B00B3B012 /* ViewController.swift in Sources */,
-				60836788201D1A2E00007247 /* NetworkRequests.swift in Sources */,
-				60D6C43E201D188B00B3B012 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6083679A201D1AF500007247 /* PBXTargetDependency */ = {
+		0EFFCC7A2790B28A00D3FD83 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 60836796201D1AF500007247 /* Hyperspace-watchOSExample Extension */;
-			targetProxy = 60836799201D1AF500007247 /* PBXContainerItemProxy */;
+			target = 0EFFCC6F2790B28900D3FD83 /* Hyperspace macOS */;
+			targetProxy = 0EFFCC792790B28A00D3FD83 /* PBXContainerItemProxy */;
 		};
-		608367A7201D1AF500007247 /* PBXTargetDependency */ = {
+		0EFFCC8F2790B2A300D3FD83 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6083678A201D1AF400007247 /* Hyperspace-watchOSExample */;
-			targetProxy = 608367A6201D1AF500007247 /* PBXContainerItemProxy */;
+			target = 60AC82D41FF5899800120172 /* Hyperspace watchOS */;
+			targetProxy = 0EFFCC8E2790B2A300D3FD83 /* PBXContainerItemProxy */;
 		};
 		60AC82C21FF588D600120172 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 60AC82B51FF588D500120172 /* Hyperspace-iOS */;
+			target = 60AC82B51FF588D500120172 /* Hyperspace iOS */;
 			targetProxy = 60AC82C11FF588D600120172 /* PBXContainerItemProxy */;
 		};
 		60AC82ED1FF589C200120172 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 60AC82E11FF589C200120172 /* Hyperspace-tvOS */;
+			target = 60AC82E11FF589C200120172 /* Hyperspace tvOS */;
 			targetProxy = 60AC82EC1FF589C200120172 /* PBXContainerItemProxy */;
-		};
-		B4C32C56201EA4B700FC82C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 60AC82B51FF588D500120172 /* Hyperspace-iOS */;
-			targetProxy = B4C32C55201EA4B700FC82C1 /* PBXContainerItemProxy */;
-		};
-		B4C32C5B201EA4BC00FC82C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 60AC82E11FF589C200120172 /* Hyperspace-tvOS */;
-			targetProxy = B4C32C5A201EA4BC00FC82C1 /* PBXContainerItemProxy */;
-		};
-		B4C32C60201EA4C100FC82C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 60AC82D41FF5899800120172 /* Hyperspace-watchOS */;
-			targetProxy = B4C32C5F201EA4C100FC82C1 /* PBXContainerItemProxy */;
-		};
-		B4C32C66201EA4C900FC82C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 60AC82D41FF5899800120172 /* Hyperspace-watchOS */;
-			targetProxy = B4C32C65201EA4C900FC82C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		6083678D201D1AF400007247 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6083678E201D1AF400007247 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
-		60D6C425201D156500B3B012 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				60D6C426201D156500B3B012 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		60D6C42A201D156500B3B012 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				60D6C42B201D156500B3B012 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		60D6C441201D188B00B3B012 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				60D6C442201D188B00B3B012 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		608367AA201D1AF500007247 /* Debug */ = {
+		0EFFCC802790B28A00D3FD83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bottle Rocket Studios. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
-		608367AB201D1AF500007247 /* Release */ = {
+		0EFFCC812790B28A00D3FD83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bottle Rocket Studios. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
-		608367AE201D1AF500007247 /* Debug */ = {
+		0EFFCC832790B28A00D3FD83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				IBSC_MODULE = Hyperspace_watchOSExample_Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		608367AF201D1AF500007247 /* Release */ = {
+		0EFFCC842790B28A00D3FD83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				IBSC_MODULE = Hyperspace_watchOSExample_Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-watchOSExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample.watchkitapp";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		0EFFCC912790B2A300D3FD83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-watchOS-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		0EFFCC922790B2A300D3FD83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-watchOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
 			};
 			name = Release;
 		};
@@ -1716,6 +1690,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1730,10 +1705,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(VERSION)";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Hyperspace;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1781,6 +1758,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1789,9 +1767,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(VERSION)";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Hyperspace;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -1811,15 +1791,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOS";
-				PRODUCT_NAME = Hyperspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -1837,15 +1811,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOS";
-				PRODUCT_NAME = Hyperspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -1857,11 +1825,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSTests";
@@ -1877,11 +1840,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSTests";
@@ -1903,15 +1861,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
-				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-watchOS";
-				PRODUCT_NAME = Hyperspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1930,15 +1882,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
-				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-watchOS";
-				PRODUCT_NAME = Hyperspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1957,15 +1903,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOS";
-				PRODUCT_NAME = Hyperspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1984,15 +1924,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOS";
-				PRODUCT_NAME = Hyperspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2006,11 +1940,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2027,11 +1956,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2043,91 +1967,32 @@
 			};
 			name = Release;
 		};
-		60D6C42F201D156500B3B012 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-iOSExample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		60D6C430201D156500B3B012 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-iOSExample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSExample";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		60D6C448201D188B00B3B012 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-tvOSExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSExample";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-			};
-			name = Debug;
-		};
-		60D6C449201D188B00B3B012 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "$(SRCROOT)/Examples/Hyperspace-tvOSExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSExample";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		608367A9201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample Extension" */ = {
+		0EFFCC7F2790B28A00D3FD83 /* Build configuration list for PBXNativeTarget "Hyperspace macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				608367AA201D1AF500007247 /* Debug */,
-				608367AB201D1AF500007247 /* Release */,
+				0EFFCC802790B28A00D3FD83 /* Debug */,
+				0EFFCC812790B28A00D3FD83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		608367AD201D1AF500007247 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOSExample" */ = {
+		0EFFCC822790B28A00D3FD83 /* Build configuration list for PBXNativeTarget "Hyperspace macOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				608367AE201D1AF500007247 /* Debug */,
-				608367AF201D1AF500007247 /* Release */,
+				0EFFCC832790B28A00D3FD83 /* Debug */,
+				0EFFCC842790B28A00D3FD83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EFFCC902790B2A300D3FD83 /* Build configuration list for PBXNativeTarget "Hyperspace watchOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EFFCC912790B2A300D3FD83 /* Debug */,
+				0EFFCC922790B2A300D3FD83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2141,7 +2006,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60AC82CA1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOS" */ = {
+		60AC82CA1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60AC82CB1FF588D600120172 /* Debug */,
@@ -2150,7 +2015,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60AC82CD1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace-iOSTests" */ = {
+		60AC82CD1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60AC82CE1FF588D600120172 /* Debug */,
@@ -2159,7 +2024,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60AC82DA1FF5899800120172 /* Build configuration list for PBXNativeTarget "Hyperspace-watchOS" */ = {
+		60AC82DA1FF5899800120172 /* Build configuration list for PBXNativeTarget "Hyperspace watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60AC82DB1FF5899800120172 /* Debug */,
@@ -2168,7 +2033,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60AC82F31FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOS" */ = {
+		60AC82F31FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60AC82F41FF589C200120172 /* Debug */,
@@ -2177,29 +2042,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60AC82F61FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOSTests" */ = {
+		60AC82F61FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace tvOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60AC82F71FF589C200120172 /* Debug */,
 				60AC82F81FF589C200120172 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		60D6C42E201D156500B3B012 /* Build configuration list for PBXNativeTarget "Hyperspace-iOSExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				60D6C42F201D156500B3B012 /* Debug */,
-				60D6C430201D156500B3B012 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		60D6C447201D188B00B3B012 /* Build configuration list for PBXNativeTarget "Hyperspace-tvOSExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				60D6C448201D188B00B3B012 /* Debug */,
-				60D6C449201D188B00B3B012 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -14,25 +14,28 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: ["iOS", "tvOS", "watchOS"]
+        name: ["iOS", "tvOS", "watchOS", "macOS"]
         include:
             - name: "iOS"
-              scheme: "Hyperspace_iOS"
+              scheme: "Hyperspace iOS"
               destination: "platform=iOS Simulator,OS=15.2,name=iPhone 12 Pro"
               test: true
-              lint: true
 
             - name: "tvOS"
-              scheme: "Hyperspace_tvOS"
+              scheme: "Hyperspace tvOS"
               destination: "platform=tvOS Simulator,OS=15.2,name=Apple TV 4K"
               test: true
-              lint: false
 
             - name: "watchOS"
-              scheme: "Hyperspace_watchOS"
+              scheme: "Hyperspace watchOS"
               destination: "platform=watchOS Simulator,OS=8.3,name=Apple Watch Series 6 - 44mm"
-              test: false
-              lint: false
+              test: true
+
+            - name: "macOS"
+              scheme: "Hyperspace macOS"
+              destination: "arch=x86_64"
+              test: true
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -53,8 +56,23 @@ jobs:
             ONLY_ACTIVE_ARCH=NO || exit 1
         fi
 
+  Lint:
+    runs-on: macos-11
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
+      cocoapods: true
+      spm: true
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Lint
       run: >
-        if [[ ${{ matrix.lint }} == true ]]; then
+        if [[ ${{ env.spm }} == true ]]; then
+          swift package describe
+        fi
+
+        if [[ ${{ env.cocoapods }} == true ]]; then
           pod lib lint
         fi

@@ -1,8 +1,7 @@
 //
 //  NetworkSessionTest.swift
-//  HyperspaceTests
+//  Tests
 //
-//  Created by Adam Brzozowski on 1/29/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

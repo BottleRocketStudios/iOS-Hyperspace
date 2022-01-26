@@ -1,8 +1,7 @@
 //
 //  MockNetworkSessionDataTask.swift
-//  HyperspaceTests
+//  Tests
 //
-//  Created by Tyler Milner on 6/28/17.
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 

@@ -1,8 +1,7 @@
 //
 //  DecodableContainerTests.swift
-//  Hyperspace_Example
+//  Tests
 //
-//  Created by Will McGinty on 12/5/17.
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 

@@ -1,8 +1,7 @@
 //
 //  TransportServiceMockSubclass.swift
-//  Hyperspace
+//  Tests
 //
-//  Created by Adam Brzozowski on 1/31/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

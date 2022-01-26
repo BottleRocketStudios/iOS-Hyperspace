@@ -1,8 +1,7 @@
 //
 //  AsyncTests.swift
-//  Hyperspace-iOS
+//  Tests
 //
-//  Created by Daniel Larsen on 10/30/21.
 //  Copyright © 2021 Bottle Rocket Studios. All rights reserved.
 //
 

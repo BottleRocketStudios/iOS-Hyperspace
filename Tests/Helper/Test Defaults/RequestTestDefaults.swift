@@ -1,8 +1,7 @@
 //
 //  RequestTestDefaults.swift
-//  HyperspaceTests
+//  Tests
 //
-//  Created by Tyler Milner on 6/29/17.
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
 //
 

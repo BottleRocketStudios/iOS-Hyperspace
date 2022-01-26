@@ -1,8 +1,7 @@
 //
 //  AuthenticationChallenge.swift
-//  Hyperspace-iOS
+//  Hyperspace
 //
-//  Created by Will McGinty on 1/31/19.
 //  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 

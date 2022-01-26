@@ -1,8 +1,7 @@
 //
 //  TrustConfiguration.swift
-//  Hyperspace-iOS
+//  Hyperspace
 //
-//  Created by Will McGinty on 1/30/19.
 //  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 

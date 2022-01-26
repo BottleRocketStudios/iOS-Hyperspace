@@ -1,8 +1,7 @@
 //
 //  TestDecodingError.swift
-//  Hyperspace
+//  Tests
 //
-//  Created by Daniel Larsen on 10/31/21.
 //  Copyright © 2021 Bottle Rocket Studios. All rights reserved.
 //
 
