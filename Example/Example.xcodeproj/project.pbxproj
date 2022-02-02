@@ -59,7 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0E09A3032790AABA00AB7DD8 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E09A3032790AABA00AB7DD8 /* iOS+Catalyst Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS+Catalyst Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E09A3352790AB2B00AB7DD8 /* tvOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tvOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E09A34E2790ABD100AB7DD8 /* Hyperspace_DELETE.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace_DELETE.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0E09A34F2790ABD100AB7DD8 /* Hyperspace.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hyperspace.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -112,7 +112,7 @@
 		0E09A3042790AABA00AB7DD8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E09A3032790AABA00AB7DD8 /* iOS Example.app */,
+				0E09A3032790AABA00AB7DD8 /* iOS+Catalyst Example.app */,
 				0E09A3352790AB2B00AB7DD8 /* tvOS Example.app */,
 			);
 			name = Products;
@@ -184,9 +184,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0E09A3022790AABA00AB7DD8 /* iOS Example */ = {
+		0E09A3022790AABA00AB7DD8 /* iOS+Catalyst Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E09A3172790AABB00AB7DD8 /* Build configuration list for PBXNativeTarget "iOS Example" */;
+			buildConfigurationList = 0E09A3172790AABB00AB7DD8 /* Build configuration list for PBXNativeTarget "iOS+Catalyst Example" */;
 			buildPhases = (
 				0E09A2FF2790AABA00AB7DD8 /* Sources */,
 				0E09A3002790AABA00AB7DD8 /* Frameworks */,
@@ -198,9 +198,9 @@
 			);
 			dependencies = (
 			);
-			name = "iOS Example";
+			name = "iOS+Catalyst Example";
 			productName = Example;
-			productReference = 0E09A3032790AABA00AB7DD8 /* iOS Example.app */;
+			productReference = 0E09A3032790AABA00AB7DD8 /* iOS+Catalyst Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0E09A3342790AB2B00AB7DD8 /* tvOS Example */ = {
@@ -253,7 +253,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0E09A3022790AABA00AB7DD8 /* iOS Example */,
+				0E09A3022790AABA00AB7DD8 /* iOS+Catalyst Example */,
 				0E09A3342790AB2B00AB7DD8 /* tvOS Example */,
 			);
 		};
@@ -571,7 +571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E09A3172790AABB00AB7DD8 /* Build configuration list for PBXNativeTarget "iOS Example" */ = {
+		0E09A3172790AABB00AB7DD8 /* Build configuration list for PBXNativeTarget "iOS+Catalyst Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E09A3182790AABB00AB7DD8 /* Debug */,
