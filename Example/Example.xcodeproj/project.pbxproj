@@ -157,7 +157,7 @@
 			children = (
 				0E09A34D2790ABD100AB7DD8 /* Playgrounds */,
 				0E09A3582790ABD100AB7DD8 /* iOS+Catalyst */,
-				A388B74127AB306D00F39361 /* macOS Example */,
+				A388B74127AB306D00F39361 /* macOS */,
 				0E09A3502790ABD100AB7DD8 /* Shared */,
 				0E09A3622790ABD100AB7DD8 /* tvOS */,
 			);
@@ -218,7 +218,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A388B74127AB306D00F39361 /* macOS Example */ = {
+		A388B74127AB306D00F39361 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
 				A388B74227AB306D00F39361 /* AppDelegate.swift */,
@@ -227,7 +227,7 @@
 				A388B74827AB307100F39361 /* Main.storyboard */,
 				A388B74B27AB307100F39361 /* macOS_Example.entitlements */,
 			);
-			path = "macOS Example";
+			path = macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
