@@ -78,6 +78,7 @@
 		0E09A3682790ABD100AB7DD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EFFCC622790B04300D3FD83 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EFFCC662790B05300D3FD83 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A388B6EE27AAF57900F39361 /* iOS+Catalyst Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS+Catalyst Example.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,7 @@
 		0E09A2FA2790AABA00AB7DD8 = {
 			isa = PBXGroup;
 			children = (
+				A388B6EE27AAF57900F39361 /* iOS+Catalyst Example.entitlements */,
 				0E09A3202790AB0800AB7DD8 /* Sources */,
 				0E09A3042790AABA00AB7DD8 /* Products */,
 				0EFFCC612790B04300D3FD83 /* Frameworks */,
@@ -454,6 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iOS+Catalyst Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -471,6 +474,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -482,6 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iOS+Catalyst Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -499,6 +504,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
