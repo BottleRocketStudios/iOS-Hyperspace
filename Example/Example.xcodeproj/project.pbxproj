@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				0E09A34D2790ABD100AB7DD8 /* Playgrounds */,
-				0E09A3582790ABD100AB7DD8 /* iOS */,
+				0E09A3582790ABD100AB7DD8 /* iOS+Catalyst */,
 				0E09A3502790ABD100AB7DD8 /* Shared */,
 				0E09A3622790ABD100AB7DD8 /* tvOS */,
 			);
@@ -147,7 +147,7 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		0E09A3582790ABD100AB7DD8 /* iOS */ = {
+		0E09A3582790ABD100AB7DD8 /* iOS+Catalyst */ = {
 			isa = PBXGroup;
 			children = (
 				0E09A3592790ABD100AB7DD8 /* ViewController.swift */,
@@ -157,7 +157,7 @@
 				0E09A3602790ABD100AB7DD8 /* AppDelegate.swift */,
 				0E09A3612790ABD100AB7DD8 /* Info.plist */,
 			);
-			path = iOS;
+			path = "iOS+Catalyst";
 			sourceTree = "<group>";
 		};
 		0E09A3622790ABD100AB7DD8 /* tvOS */ = {
