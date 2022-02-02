@@ -104,7 +104,6 @@
 		0E09A2FA2790AABA00AB7DD8 = {
 			isa = PBXGroup;
 			children = (
-				A388B6EE27AAF57900F39361 /* iOS+Catalyst Example.entitlements */,
 				0E09A3202790AB0800AB7DD8 /* Sources */,
 				0E09A3042790AABA00AB7DD8 /* Products */,
 				0EFFCC612790B04300D3FD83 /* Frameworks */,
@@ -157,6 +156,7 @@
 				0E09A35B2790ABD100AB7DD8 /* LaunchScreen.storyboard */,
 				0E09A35D2790ABD100AB7DD8 /* Main.storyboard */,
 				0E09A3602790ABD100AB7DD8 /* AppDelegate.swift */,
+				A388B6EE27AAF57900F39361 /* iOS+Catalyst Example.entitlements */,
 				0E09A3612790ABD100AB7DD8 /* Info.plist */,
 			);
 			path = "iOS+Catalyst";
@@ -456,7 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "iOS+Catalyst Example.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sources/iOS+Catalyst/iOS+Catalyst Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -486,7 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "iOS+Catalyst Example.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sources/iOS+Catalyst/iOS+Catalyst Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
