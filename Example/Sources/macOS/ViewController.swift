@@ -68,6 +68,8 @@ extension ViewController {
         let deletePostRequest = Request<EmptyResponse, AnyError>.deletePost(withID: postId)
 
         backendService.execute(request: deletePostRequest) { [weak self] result in
+            debugPrint("Delete user post: \(result)")
+
             switch result {
             case .success:
                 self?.presentAlert(titled: "Deleted Post", message: "Success")
