@@ -1,10 +1,11 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.5
 import PackageDescription
 
 let package = Package(
     name: "Hyperspace",
     platforms: [
         .macOS(.v10_15),
+        .macCatalyst(.v13),
         .iOS(.v12),
         .tvOS(.v12),
         .watchOS(.v6)

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0E09A3022790AABA00AB7DD8"
-               BuildableName = "iOS Example.app"
-               BlueprintName = "iOS Example"
+               BuildableName = "iOS+Catalyst Example.app"
+               BlueprintName = "iOS+Catalyst Example"
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E09A3022790AABA00AB7DD8"
-            BuildableName = "iOS Example.app"
-            BlueprintName = "iOS Example"
+            BuildableName = "iOS+Catalyst Example.app"
+            BlueprintName = "iOS+Catalyst Example"
             ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E09A3022790AABA00AB7DD8"
-            BuildableName = "iOS Example.app"
-            BlueprintName = "iOS Example"
+            BuildableName = "iOS+Catalyst Example.app"
+            BlueprintName = "iOS+Catalyst Example"
             ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
