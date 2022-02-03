@@ -29,6 +29,8 @@
 		A388B74A27AB307100F39361 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A388B74827AB307100F39361 /* Main.storyboard */; };
 		A388B75027AB33D700F39361 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A388B74F27AB33D700F39361 /* Hyperspace.framework */; };
 		A388B75127AB33D700F39361 /* Hyperspace.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A388B74F27AB33D700F39361 /* Hyperspace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A3C42A4A27AC4ADB000B0D58 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09A3512790ABD100AB7DD8 /* Models.swift */; };
+		A3C42A4B27AC4ADD000B0D58 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09A3522790ABD100AB7DD8 /* NetworkRequests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -387,7 +389,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3C42A4A27AC4ADB000B0D58 /* Models.swift in Sources */,
 				A388B74527AB306D00F39361 /* ViewController.swift in Sources */,
+				A3C42A4B27AC4ADD000B0D58 /* NetworkRequests.swift in Sources */,
 				A388B74327AB306D00F39361 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
