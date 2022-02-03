@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  macOS Example
 //
-//  Created by Andrew Winn on 2/2/22.
 //  Copyright © 2022 Bottle Rocket Studios. All rights reserved.
 //
 

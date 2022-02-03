@@ -12,6 +12,14 @@
 
 #### Enhancements
 
+* Add support for Mac Catalyst
+[Andrew Winn](https://github.com/andrew-winn-br)
+[#152](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/152)
+
+* Add example for macOS (AppKit and Catalyst)
+[Andrew Winn](https://github.com/andrew-winn-br)
+[#152](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/152)
+
 * Make `TransportService` thread-safe
 [Daniel Larsen](https://github.com/grandlarseny)
 [#145](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/145)
