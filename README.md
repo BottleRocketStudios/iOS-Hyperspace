@@ -7,8 +7,6 @@
 [![Platform](https://img.shields.io/cocoapods/p/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace)
 
-
-
 ## Purpose
 
 This library provides a simple abstraction around URLSession and HTTP. There are a few main goals:
