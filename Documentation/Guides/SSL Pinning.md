@@ -1,6 +1,6 @@
 ### SSL Pinning
 
-SSL Pinning is the practice of limiting the set of server certificates your app trusts when making network requests. This occurs in addition to the trust verification the operating system performs by default. This, in combination with HTTPS, allows you to better preserve the privacy and integrity of the information you are transmitting back and worth to a backend server.
+SSL Pinning is the practice of limiting the set of server certificates your app trusts when making network requests. This occurs in addition to the trust verification the operating system performs by default. This, in combination with HTTPS, allows you to better preserve the privacy and integrity of the information you are transmitting back and forth to a backend server.
 
 Hyperspace has a built-in mechanism for implementing SSL pinning which is available by default when using Swift Package Manager or Carthage, and when using the `Pinning` subspec when using Cocoapods. But, depending on your deployment target, the recommended approach to implementation of certificate pinning differs.
 
