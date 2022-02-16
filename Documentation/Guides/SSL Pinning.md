@@ -1,6 +1,6 @@
 ### SSL Pinning
 
-SSL Pinning is the practice of limiting the set of server certificates your app trusts when making network requests. This occurs in addition to the trust verification the operating system performs by default. This, in combination with HTTPS, allows you to better preserve the privacy and integrity of the information you are transmitting back and forth to a backend server.
+SSL Pinning is the practice of limiting the set of server certificates your app trusts when making network requests. This occurs in addition to the trust verification the operating system performs by default. This, in combination with HTTPS, better preserves the privacy and integrity of the information you are transmitting back-and-forth to a backend server.
 
 Hyperspace has a built-in mechanism for implementing SSL pinning which is available by default when using Swift Package Manager or Carthage, and when using the `Pinning` subspec when using Cocoapods. But, depending on your deployment target, the recommended approach to implementation of certificate pinning differs.
 
@@ -14,11 +14,11 @@ More information on how to implement this new `NSPinnedDomains` Info.plist key, 
 
 #### Older iOS Versions
 
-On the other hand, if you have not yet dropped iOS 13 you can use the Hyperspace implementation. The basics involve creating a `TrustConfiguration` that details the certificates that your app should trust, and then utilizing a `TrustValidator` to check each incoming server SSL certificate against the previously defined configuration. To make the evaluation of certificates simpler, Hyperspace also includes a `TrustValidatingTransportService` that can be used with any `BackendService` that automates this process.
+If you have not yet dropped iOS 13 you can use the Hyperspace implementation. The basics involve creating a `TrustConfiguration` that details the certificates that your app should trust, and then utilizing a `TrustValidator` to check each incoming server SSL certificate against the previously defined configuration. To make the evaluation of certificates simpler, Hyperspace also includes a `TrustValidatingTransportService` that can be used with any `BackendService` that automates this process.
 
-For example, let's assume we want to pin all our connections to https://jsonplaceholder.typicode.com. At the time the app connects to that TLS network, the server will provide it's SSL certificate for validation. When pinning is enabled, the app will inspect the contents of the certificate, and if that certificate does not match one that it is looking for (even if the certificate is valid and trusted by iOS) the request will be rejected.
+For example, let's assume we want to pin all our connections to https://jsonplaceholder.typicode.com. The server will provide its SSL certificate for validation when the app connects to that TLS network. When pinning is enabled, the app will inspect the contents of the certificate. If that certificate does not match one the app is looking for (even if the certificate is valid and trusted by iOS) the request will be rejected.
 
-The first thing we need to do then, is create a certificate to pin to. Assuming you have `certificate.cer` for this domain, you can pass this certificate directly to the `TrustConfiguration` using the `DomainConfiguration(domain:certificates:)`. This initializer will automatically create a formatted hash for this certificate and use that as the basis for pinning.
+The first thing we need to do is create a certificate to pin to. Assuming you have `certificate.cer` for this domain, you can pass this certificate directly to the `TrustConfiguration` using the `DomainConfiguration(domain:certificates:)`. This initializer will automatically create a formatted hash for this certificate and use that as the basis for pinning.
 
 If you would like, instead of embedding certificates directly into the bundle, you can manually create this hash. A SHA-256 hash of the public key of the certificate is used by the `TrustValidator` under the hood. Again, using the `jsonplaceholder.typicode.com` example - you can use a variety of tools to view the details of the certificate itself (include Safari - click the padlock in the address bar). This will allow you to see the hex bytes of the public key of the certificate. At the time of writing, these are:
 
