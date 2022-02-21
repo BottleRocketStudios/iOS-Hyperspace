@@ -4,7 +4,7 @@ When it comes to networking, errors are a given. It is very important that a net
 
 ## Quick Recovery
 
-Sometimes it is necessary to consider a status code that typically indicates a failure as a success. For example, some auth implementations return a redirect and ask the user to then manually extract information from the headers of that redirect response. In in this case, it is very easy to tell Hyperspace to consider a 3XX response a success:
+Sometimes it is necessary to consider a status code that typically indicates a failure as a success. For example, some auth implementations return a redirect and ask the user to then manually extract information from the headers of that redirect response. In this case, it is very easy to tell Hyperspace to consider a 3XX response a success:
 
 ```swift
 func handlingRedirectsAsSuccess() -> Request<Response, Error> {
@@ -24,7 +24,7 @@ let request = Request<HTTP.Response, MyError> = .init(method: .get, url: url, he
        }.handlingRedirectsAsSuccess()
 ```
 
-Instead of going through the `TransportFailureRepresentable` machinery as usual, the present of a `Request.recoveryTransfer` that returns a non-nil `TransportSuccess` object, allows the request to be considered successful, giving the `Request.successTransformer` access to the raw 3XX `HTTP.Response`.
+Instead of going through the `TransportFailureRepresentable` machinery as usual, the presence of a `Request.recoveryTransfer` that returns a non-nil `TransportSuccess` object allows the request to be considered successful giving the `Request.successTransformer` access to the raw 3XX `HTTP.Response`.
 
 The `recoveryTransformer` is run before any of the `RecoveryStrategy`, meaning it is the quickest way to convert a "failure" into a "success". It is a non-optional property that defaults to simply returning `nil`.
 
