@@ -1,4 +1,4 @@
-### Custom Decoding with Request
+# Custom Decoding with Request
 
 Since the introduction of `Codable`, parsing alternate representations of model objects has become drastically simpler. Hyperspace is no different - it heavily leans on `Codable` to make parsing network responses painless. By default, Hyperspace will opt to use the default instance of `JSONDecoder`. This object expects it's `Date`s represented as a time interval since 1970, it's data represented as a base-64 encoded `String` and will `throw` if encountering any non-conforming floats.
 
@@ -26,7 +26,7 @@ public static func successTransformer(for decoder: JSONDecoder, errorTransformer
 The first of these functions provides a default that can be used for any `Codable` type, as long as your error conforms to `DecodingFailureRepresentable`. But, in the case that your `Error` does not conform, you can use the other function - in which you simply provide a closure to convert a generic error to your type: `(Swift.Error) -> Error`
 
 
-### Decoding With Containers
+## Decoding With Containers
 
 It is not uncommon to see JSON resembling below (where the object at 'root_key' is what you're trying to decode):
 

@@ -9,7 +9,8 @@ import Foundation
 
 /** This class performs validation on authentication challenges presented to it. In addition to ensuring that the challenge is trusted by the operating system, it will
     ensure that the certificate being presented as part of the SSL/TLS authentication challenge is recognized by the device. */
-@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
+@available(iOS, deprecated: 14.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
+@available(macOS, deprecated: 11.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
 public class TrustValidator {
     
     // MARK: - ValidationDecision Subtype
@@ -84,8 +85,8 @@ public class TrustValidator {
 }
 
 // MARK: - SecTrust Utility
-
-@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
+@available(iOS, deprecated: 14.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
+@available(macOS, deprecated: 11.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
 extension SecTrust {
     
     /// Evaluates `self` and returns `true` if the evaluation succeeds with a value of `.unspecified` or `.proceed`.

@@ -8,7 +8,8 @@
 import Foundation
 
 /// This class builds upon the `Transporting` to offer a quick option for performing server trust validation.
-@available(iOSApplicationExtension 10.0, tvOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, *)
+@available(iOS, deprecated: 14.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
+@available(macOS, deprecated: 11.0, message: "Prefer the `NSPinnedDomains` Info.plist key")
 public class TrustValidatingTransportService: Transporting {
     
     class SessionDelegate: NSObject, URLSessionDelegate {

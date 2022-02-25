@@ -1,4 +1,4 @@
-### Handling Empty Responses
+# Handling Empty Responses
 
 Handling an empty response from your API, such as a DELETE request that returns a `204 No Content`, seems like a very straightforward task. In reality, there is a huge amount of complexity in handling the many different ways that APIs can choose to communicate 'the request was successful, there is nothing else to return'. REST API guidelines would dictate that in these situations no body should be sent back but some servers may opt to send a confirmation that the request succeeded.
 
@@ -39,7 +39,7 @@ The addition here that makes decoding an `EmptyResponse` so flexible is the `Emp
 - `validatedEmpty` : If the handler receives a `TransportSuccess`, this strategy will check to ensure the HTTP response body is either `nil` or `isEmpty` before returning a `.success(EmptyResponse())`. In the case that the body fails either of those checks, a `DecodingFailure.invalidEmptyResponse` is returned, along with the `HTTP.Response` received from the request.
 
 
-### Extending EmptyDecodingStrategy
+## Extending EmptyDecodingStrategy
 
 What about the special case where some kind of custom validation of "empty" response is needed before the request can be deemed successful? `EmptyDecodingStrategy` has you covered here as well. For example, let's assume that we are going to receive a response that looks like the following:
 

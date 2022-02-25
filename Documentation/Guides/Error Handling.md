@@ -1,4 +1,4 @@
-### Basic Error Handling
+# Error Handling
 
 As a general rule, networking is hard. A lot can go wrong in the process of communicating between an application and a backend. One of the goals of Hyperspace is to make the many different failure reasons easy to understand and easy to react to. In this section, we'll describe the steps needed to do the bare minimum to effectively handle errors.
 
@@ -33,7 +33,7 @@ In the case the result contains a `TransportFailure`, the failure will be used t
 In the case of a `TransportSuccess`, the success object is forwarded on to `Request.transformSuccess(_:)`. The result of this transform (`Result<Response, Error>`) is then returned to the original caller.
 
 
-### Custom Error Handling
+## Custom Error Handling
 
 In many cases, simply wrapped the underlying error in an `AnyError` and returning that is not an efficient form of error handling. It requires every caller of the API to then unwrap the `AnyError` to find the underlying cause. In cases where more sophisticated error handling is required, a custom `Request` can be used which defines a custom `Error` type.
 
