@@ -13,18 +13,23 @@ class FormURLEncoderTests: XCTestCase {
     private let encoder = FormURLEncoder()
 
     func test_formURLEncoder_encodesFollowingHTMLSpec() {
-        guard let encoded = encoder.encode([("hello world", "/?+ ")]) else {
+        guard let encoded = encoder.encode([("hello world", "/?&+ ")]) else {
             return XCTFail("Could not properly URL Form encode the value")
         }
 
         let string = String(data: encoded, encoding: .utf8)
         let decoded = string?.removingPercentEncoding
-        XCTAssertEqual(decoded, "hello+world=/?++")
+        XCTAssertEqual(decoded, "hello+world=/?&++")
     }
 
     func test_formURLEncoder_encodesSpacesAsPlus() {
         let encoded = encoder.formURLEscaped(string: "hello world")
         XCTAssertEqual(encoded, "hello+world")
+    }
+
+    func test_formURLEncoder_encodesAmpersand() {
+        let encoded = encoder.formURLEscaped(string: "hello&world")
+        XCTAssertEqual(encoded, "hello%26world")
     }
 
     func test_formURLEncoder_percentEncodesPlus() {
@@ -43,5 +48,6 @@ class FormURLEncoderTests: XCTestCase {
         XCTAssertFalse(CharacterSet.urlFormAllowed.contains("/"))
         XCTAssertFalse(CharacterSet.urlFormAllowed.contains("?"))
         XCTAssertFalse(CharacterSet.urlFormAllowed.contains("+"))
+        XCTAssertFalse(CharacterSet.urlFormAllowed.contains("&"))
     }
 }

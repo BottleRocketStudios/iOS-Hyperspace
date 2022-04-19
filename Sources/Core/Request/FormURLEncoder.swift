@@ -44,7 +44,7 @@ extension CharacterSet {
     static let urlFormAllowed: CharacterSet = {
         var allowed = CharacterSet.urlQueryAllowed
         allowed.insert(" ")
-        allowed.remove(charactersIn: "+/?")
+        allowed.remove(charactersIn: "+/?&")
 
         return allowed
     }()

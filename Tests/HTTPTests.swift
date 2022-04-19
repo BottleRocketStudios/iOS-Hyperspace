@@ -188,11 +188,18 @@ class HTTPTests: XCTestCase {
     }
 
     func test_HTTPBodyWithFormContent_ProducesProperlyEncodedData() {
-        let content = [("hello world", "hello world")]
+        let content = [("hello world", "hello world"),
+                       ("username", "BottleRocket"),
+                       ("password", "abc&123"),
+                       ("user_id", "0001")]
+
         let encoder = FormURLEncoder()
 
         let body = HTTP.Body.urlForm(using: content)
+        let bodyString = String(data: body.data ?? Data(), encoding: .utf8)
         let data = encoder.encode(content)
         XCTAssertEqual(body.data, data)
+        XCTAssertEqual(bodyString, "hello+world=hello+world&username=BottleRocket&password=abc%26123&user_id=0001")
+
     }
 }
