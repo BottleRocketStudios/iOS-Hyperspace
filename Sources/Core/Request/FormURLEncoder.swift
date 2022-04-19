@@ -37,15 +37,11 @@ extension FormURLEncoder {
 
 extension CharacterSet {
 
-    /* The `urlQueryAllowed` character set with the following modifications:
-     - The " " added (it will later be converted to a "+"
-     - The "+" removed (to disambiguate), as well as "/" and "?"
+    /*
+     - The " " will later be converted to a "+"
+     - https://url.spec.whatwg.org/#urlencoded-serializing
      */
     static let urlFormAllowed: CharacterSet = {
-        var allowed = CharacterSet.urlQueryAllowed
-        allowed.insert(" ")
-        allowed.remove(charactersIn: "+/?&")
-
-        return allowed
+        CharacterSet(charactersIn: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._* ")
     }()
 }
