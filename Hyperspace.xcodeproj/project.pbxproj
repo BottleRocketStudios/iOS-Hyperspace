@@ -881,9 +881,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60AC82CA1FF588D600120172 /* Build configuration list for PBXNativeTarget "Hyperspace iOS" */;
 			buildPhases = (
+				60AC82B31FF588D500120172 /* Headers */,
 				60AC82B11FF588D500120172 /* Sources */,
 				60AC82B21FF588D500120172 /* Frameworks */,
-				60AC82B31FF588D500120172 /* Headers */,
 				60AC82B41FF588D500120172 /* Resources */,
 				0EEB77AF20222D0C00671424 /* SwiftLint */,
 			);
@@ -918,9 +918,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60AC82DA1FF5899800120172 /* Build configuration list for PBXNativeTarget "Hyperspace watchOS" */;
 			buildPhases = (
+				60AC82D21FF5899800120172 /* Headers */,
 				60AC82D01FF5899800120172 /* Sources */,
 				60AC82D11FF5899800120172 /* Frameworks */,
-				60AC82D21FF5899800120172 /* Headers */,
 				60AC82D31FF5899800120172 /* Resources */,
 				0EEB77B120222F9000671424 /* SwiftLint */,
 			);
@@ -937,9 +937,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60AC82F31FF589C200120172 /* Build configuration list for PBXNativeTarget "Hyperspace tvOS" */;
 			buildPhases = (
+				60AC82DF1FF589C200120172 /* Headers */,
 				60AC82DD1FF589C200120172 /* Sources */,
 				60AC82DE1FF589C200120172 /* Frameworks */,
-				60AC82DF1FF589C200120172 /* Headers */,
 				60AC82E01FF589C200120172 /* Resources */,
 				0EEB77B020222F7F00671424 /* SwiftLint */,
 			);
