@@ -2,13 +2,25 @@
 
 #### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 4.1.0 (2022-04-19)
+
+#### Enhancements
+
 * Deprecate `TrustConfiguration`, `TrustValidator`, `CertificateHasher`, `AuthenticationChallenge` and `TrustValidatingTransportService` for iOS 14+ and macOS 11+ in favor of `NSPinnedDomains` Info.plist key
 [Will McGinty](https://github.com/wmcginty)
 [#154](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/154)
 
 ##### Bug Fixes
 
-* None
+* Fix an issue with `FormURLEncoder` not properly encoding ampersands
+[Andrew Winn](https://github.com/andrew-winn-br)
+[#155](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/155)
 
 ## 4.0.0 (2022-01-14)
 
