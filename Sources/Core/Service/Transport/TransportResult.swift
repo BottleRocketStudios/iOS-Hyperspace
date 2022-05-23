@@ -7,9 +7,6 @@
 
 import Foundation
 
-@available(*, renamed: "TransportFailureRepresentable")
-public typealias NetworkServiceFailureInitializable = TransportFailureRepresentable
-
 /// Represents an error which can be constructed from a `TransportFailure`.
 public protocol TransportFailureRepresentable: Swift.Error {
 
@@ -18,9 +15,6 @@ public protocol TransportFailureRepresentable: Swift.Error {
     var failureResponse: HTTP.Response? { get }
     var transportError: TransportError? { get }
 }
-
-@available(*, renamed: "TransportError")
-public typealias NetworkServiceError = TransportError
 
 /// Represents an error that occurred when executing a `Request` using a `TransportService`.
 public struct TransportError: Error, Equatable {
@@ -74,10 +68,6 @@ public struct TransportError: Error, Equatable {
 }
 
 /// Represents the successful result of executing a `Request` using a `TransportService`.
-
-@available(*, renamed: "TransportSuccess")
-public typealias NetworkServiceSuccess = TransportSuccess
-
 public struct TransportSuccess: Equatable {
 
     // MARK: - Properties
@@ -93,9 +83,6 @@ public struct TransportSuccess: Equatable {
         self.response = response
     }
 }
-
-@available(*, renamed: "TransportFailure")
-public typealias NetworkServiceFailure = TransportFailure
 
 /// Represents the failed result of executing a `Request` using a `TransportService`.
 public struct TransportFailure: Error, Equatable {

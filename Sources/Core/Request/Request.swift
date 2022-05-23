@@ -163,24 +163,3 @@ public extension Request {
         return copy
     }
 }
-
-// MARK: - Request Default Implementations EmptyResponse
-
-public extension Request where Response == EmptyResponse {
-
-    @available(*, deprecated, message: "Use `Request.withEmptyResponse` instead.")
-    init(method: HTTP.Method,
-         url: URL,
-         headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
-         body: HTTP.Body? = nil,
-         cachePolicy: URLRequest.CachePolicy = RequestDefaults.defaultCachePolicy,
-         timeout: TimeInterval = RequestDefaults.defaultTimeout) {
-        self.method = method
-        self.url = url
-        self.headers = headers
-        self.body = body
-        self.cachePolicy = cachePolicy
-        self.timeout = timeout
-        self.successTransformer = { _ in .success(EmptyResponse()) }
-    }
-}

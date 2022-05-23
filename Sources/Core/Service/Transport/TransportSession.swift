@@ -9,9 +9,6 @@ import Foundation
 
 // MARK: - TransportDataTask
 
-@available(*, renamed: "TransportDataTask")
-public typealias NetworkSessionDataTask = TransportDataTask
-
 /// Represents a data task that can be executed or cancelled. Modeled after URLSessionDataTask to allow for injecting mock data tasks into a TransportSession.
 public protocol TransportDataTask {
     func resume()
@@ -21,9 +18,6 @@ public protocol TransportDataTask {
 // MARK: - URLSessionDataTask Conformance to TransportDataTask
 
 extension URLSessionDataTask: TransportDataTask { }
-
-@available(*, renamed: "TransportSession")
-public typealias NetworkSession = TransportSession
 
 /// Represents something that can execute a URLRequest to return a TransportDataTask. Modeled after URLSession to allow for injecting mock sessions into a BackendService.
 public protocol TransportSession {
