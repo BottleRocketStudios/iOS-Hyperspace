@@ -15,7 +15,6 @@ public protocol TransportSession {
     var configuration: TransportSessionConfiguration { get }
 
     func data(for request: URLRequest, delegate: TransportTaskDelegate?) async throws -> (Data, URLResponse)
-    func download(for request: URLRequest, delegate: TransportTaskDelegate?) async throws -> (URL, URLResponse)
 }
 
 // MARK: - URLSession Conformance to TransportSession

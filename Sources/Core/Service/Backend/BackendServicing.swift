@@ -7,62 +7,6 @@
 
 import Foundation
 
-public enum DecodingFailure: Error {
-
-    // MARK: - Context Subtype
-    public struct Context {
-        public let decodingError: DecodingError
-        public let failingType: Decodable.Type
-        public let response: HTTP.Response
-        
-        public init(decodingError: DecodingError, failingType: Decodable.Type, response: HTTP.Response) {
-            self.decodingError = decodingError
-            self.failingType = failingType
-            self.response = response
-        }
-    }
-
-    case invalidEmptyResponse(HTTP.Response)
-    case decodingError(Context)
-
-    // MARK: - Interface
-
-    public var response: HTTP.Response {
-        switch self {
-        case .invalidEmptyResponse(let response): return response
-        case .decodingError(let context): return context.response
-        }
-    }
-
-    public var decodingContext: Context? {
-        switch self {
-        case .invalidEmptyResponse: return nil
-        case .decodingError(let context): return context
-        }
-    }
-
-    // MARK: - Convenience
-
-    public static func genericFailure(decoding: Decodable.Type, from response: HTTP.Response, debugDescription: String) -> DecodingFailure {
-        let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: debugDescription))
-        let context = DecodingFailure.Context(decodingError: decodingError, failingType: decoding, response: response)
-        return .decodingError(context)
-    }
-}
-
-/// Represents an error which can be constructed from a `DecodingError` and `Data`.
-public protocol DecodingFailureRepresentable: TransportFailureRepresentable {
-
-    init(decodingFailure: DecodingFailure)
-}
-
-public extension DecodingFailureRepresentable {
-
-    init(context: DecodingFailure.Context) {
-        self.init(decodingFailure: .decodingError(context))
-    }
-}
-
 /// Represents something that's capable of executing a typed Request
 public protocol BackendServicing: AnyObject {
 
@@ -76,12 +20,6 @@ public protocol BackendServicing: AnyObject {
     ///   - request: The Request to be executed.
     ///   - completion: The completion block to invoke when execution has finished.
     func execute<R>(request: Request<R>) async throws -> R
-
-    /// Cancels the task for the given request (if it is currently running).
-//    func cancelTask(for request: URLRequest)
-//    
-//    /// Cancels all currently running tasks
-//    func cancelAllTasks()
 }
 
 // MARK: - BackendServiceProtocol Default Implementations

@@ -5,10 +5,10 @@ let package = Package(
     name: "Hyperspace",
     platforms: [
         .macOS(.v11),
-        .macCatalyst(.v13),
-        .iOS(.v13),
-        .tvOS(.v13),
-        .watchOS(.v6)
+        .macCatalyst(.v15),
+        .iOS(.v15),
+        .tvOS(.v15),
+        .watchOS(.v8)
     ],
     products: [
         .library(name: "Hyperspace", targets: ["Hyperspace"])

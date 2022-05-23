@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Recoverable
+
 /// Represents an operation that can be attempted multiple times in the event of failure.
 public protocol Recoverable {
     

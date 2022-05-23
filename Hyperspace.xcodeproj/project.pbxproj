@@ -97,7 +97,6 @@
 		0EFFCCA62790B35500D3FD83 /* Transporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* Transporting.swift */; };
 		0EFFCCA72790B35500D3FD83 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
 		0EFFCCA82790B35500D3FD83 /* TransportResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B469328E2413539700D2B650 /* TransportResult.swift */; };
-		0EFFCCA92790B35500D3FD83 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
 		0EFFCCAA2790B35800D3FD83 /* BackendServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServicing.swift */; };
 		0EFFCCAB2790B35800D3FD83 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		0EFFCCAD2790B36000D3FD83 /* TrustConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */; };
@@ -209,14 +208,12 @@
 		60D6C372201CC81100B3B012 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* Request.swift */; };
 		60D6C374201CC81100B3B012 /* Transporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* Transporting.swift */; };
 		60D6C375201CC81100B3B012 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
-		60D6C376201CC81100B3B012 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
 		60D6C377201CC81100B3B012 /* BackendServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServicing.swift */; };
 		60D6C378201CC81100B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
 		60D6C37E201CCCAE00B3B012 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* Request.swift */; };
 		60D6C380201CCCAE00B3B012 /* Transporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* Transporting.swift */; };
 		60D6C381201CCCAE00B3B012 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
-		60D6C382201CCCAE00B3B012 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
 		60D6C383201CCCAE00B3B012 /* BackendServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServicing.swift */; };
 		60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		60D6C385201CCCBE00B3B012 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URLQueryParameterEncoder.swift */; };
@@ -224,7 +221,6 @@
 		60D6C38A201CCCBE00B3B012 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83461FF596B600120172 /* Request.swift */; };
 		60D6C38C201CCCBE00B3B012 /* Transporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* Transporting.swift */; };
 		60D6C38D201CCCBE00B3B012 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
-		60D6C38E201CCCBE00B3B012 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
 		60D6C38F201CCCBE00B3B012 /* BackendServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServicing.swift */; };
 		60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		60D6C3FF201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
@@ -374,7 +370,6 @@
 		60AC83461FF596B600120172 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		60AC834A1FF596B600120172 /* Transporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transporting.swift; sourceTree = "<group>"; };
 		60AC834B1FF596B600120172 /* TransportSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportSession.swift; sourceTree = "<group>"; };
-		60AC834C1FF596B600120172 /* TransportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportService.swift; sourceTree = "<group>"; };
 		60AC834E1FF596B600120172 /* BackendServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServicing.swift; sourceTree = "<group>"; };
 		60AC834F1FF596B600120172 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
 		60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportServiceTests.swift; sourceTree = "<group>"; };
@@ -673,7 +668,6 @@
 		60AC83481FF596B600120172 /* Transport */ = {
 			isa = PBXGroup;
 			children = (
-				60AC834C1FF596B600120172 /* TransportService.swift */,
 				B469328E2413539700D2B650 /* TransportResult.swift */,
 				60AC834A1FF596B600120172 /* Transporting.swift */,
 				60AC834B1FF596B600120172 /* TransportSession.swift */,
@@ -1167,7 +1161,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EFFCCA92790B35500D3FD83 /* TransportService.swift in Sources */,
 				0EFFCCA32790B34E00D3FD83 /* Request.swift in Sources */,
 				0EFFCCA22790B34E00D3FD83 /* URLFormEncoder.swift in Sources */,
 				0EFFCCB02790B36000D3FD83 /* TrustValidatingTransportService.swift in Sources */,
@@ -1283,7 +1276,6 @@
 				60D6C374201CC81100B3B012 /* Transporting.swift in Sources */,
 				60D6C375201CC81100B3B012 /* TransportSession.swift in Sources */,
 				0E81B4A220ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */,
-				60D6C376201CC81100B3B012 /* TransportService.swift in Sources */,
 				60D6C377201CC81100B3B012 /* BackendServicing.swift in Sources */,
 				B4C32C2C201E9F2D00FC82C1 /* NetworkActivityController.swift in Sources */,
 				60D6C378201CC81100B3B012 /* BackendService.swift in Sources */,
@@ -1351,7 +1343,6 @@
 				60D6C38C201CCCBE00B3B012 /* Transporting.swift in Sources */,
 				60D6C38D201CCCBE00B3B012 /* TransportSession.swift in Sources */,
 				0E81B4A420ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */,
-				60D6C38E201CCCBE00B3B012 /* TransportService.swift in Sources */,
 				60D6C38F201CCCBE00B3B012 /* BackendServicing.swift in Sources */,
 				B4C32C2E201E9F2D00FC82C1 /* NetworkActivityController.swift in Sources */,
 				0EBEC81924ECB12100627564 /* Request+EmptyDecodingStrategy.swift in Sources */,
@@ -1378,7 +1369,6 @@
 				60D6C37E201CCCAE00B3B012 /* Request.swift in Sources */,
 				60D6C380201CCCAE00B3B012 /* Transporting.swift in Sources */,
 				60D6C381201CCCAE00B3B012 /* TransportSession.swift in Sources */,
-				60D6C382201CCCAE00B3B012 /* TransportService.swift in Sources */,
 				0E81B4A320ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */,
 				60D6C383201CCCAE00B3B012 /* BackendServicing.swift in Sources */,
 				30F0735E202205350045CB01 /* URLQueryParameterEncoder.swift in Sources */,
@@ -1471,7 +1461,6 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bottle Rocket Studios. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
@@ -1500,7 +1489,6 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bottle Rocket Studios. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = macosx;
@@ -1743,7 +1731,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1764,7 +1751,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1822,7 +1808,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -1843,7 +1828,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -1864,7 +1848,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -1885,7 +1868,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};

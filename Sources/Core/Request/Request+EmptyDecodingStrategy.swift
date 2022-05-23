@@ -9,16 +9,8 @@ import Foundation
 
 // MARK: - EmptyResponse
 
-/// A simple struct representing an empty server response to a request. This is useful primarily for DELETE / PUT requests, in which case a "200" status with empty body is often the response.
-public struct EmptyResponse {
-
-    // NOTE: It would be ideal if the implicitly-generated memberwise initializer could automatically be available publicly instead of defining this manually.
-    //       It may be possible someday - https://github.com/apple/swift-evolution/blob/master/proposals/0018-flexible-memberwise-initialization.md
-    public init() { }
-}
-
 // MARK: - Empty Response Request Default Implementations
-public extension Request where Response == EmptyResponse {
+public extension Request where Response == Void {
 
     static func withEmptyResponse(method: HTTP.Method = .get,
                                   url: URL,
@@ -38,7 +30,7 @@ public extension Request where Response == EmptyResponse {
 }
 
 // MARK: = Request.EmptyDecodingStrategy
-public extension Request where Response == EmptyResponse {
+public extension Request where Response == Void {
 
     struct EmptyDecodingStrategy {
 
@@ -50,18 +42,18 @@ public extension Request where Response == EmptyResponse {
         /// The default `EmptyDecodingStrategy` will always return a successful `EmptyResponse` object given a successful transport.
         public static var `default`: EmptyDecodingStrategy {
             return EmptyDecodingStrategy { _ in
-                return EmptyResponse()
+                return Void()
             }
         }
 
         /// The validating `EmptyDecodingStrategy` will first validate that the response data is either nil or empty before returning an `EmptyResponse`.
-        public static var validatedEmpty: EmptyDecodingStrategy {
+        public static func validatedEmpty(throwing errorCreator: @escaping (TransportSuccess) -> Error) -> EmptyDecodingStrategy {
             return EmptyDecodingStrategy { transportSuccess in
                 guard transportSuccess.body.map(\.isEmpty) ?? true else {
-                    throw DecodingFailure.invalidEmptyResponse(transportSuccess.response)
+                    throw errorCreator(transportSuccess)
                 }
 
-                return EmptyResponse()
+                return Void()
             }
         }
     }
