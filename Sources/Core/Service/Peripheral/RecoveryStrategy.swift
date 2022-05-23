@@ -18,7 +18,6 @@ public protocol Recoverable {
 }
 
 // MARK: - Recoverable Default Implementations
-
 public extension Recoverable {
     
     /// The ability of this operation to recover from the last encountered failure.
@@ -37,17 +36,6 @@ public extension Recoverable {
     }
 }
 
-/// Represents a type that is capable of determining the recovery strategy for a failed `Request`.
-public protocol RecoveryStrategy {
-
-    /// Handle the recovery attempt. The object should asynchronously determine and return the correct `RecoveryDisposition` in order to determine the next action taken.
-    /// - Parameters:
-    ///   - request: The object that encountered a failure.
-    ///   - error: The specific failure returned by the operation.
-    ///   - completion: The handler to execute once the `RecoveryDisposition` has been determined.
-    func attemptRecovery<R, E>(for request: Request<R, E>, with error: E) async -> RecoveryDisposition<Request<R, E>>
-}
-
 // MARK: - RecoveryDisposition
 
 /// The action to take in response to a recovery attempt.
@@ -58,4 +46,17 @@ public enum RecoveryDisposition<Request> {
     case noAttemptMade
     case fail
     case retry(Request)
+}
+
+// MARK: - RecoveryStrategy
+
+/// Represents a type that is capable of determining the recovery strategy for a failed `Request`.
+public protocol RecoveryStrategy {
+
+    /// Handle the recovery attempt. The object should asynchronously determine and return the correct `RecoveryDisposition` in order to determine the next action taken.
+    /// - Parameters:
+    ///   - request: The object that encountered a failure.
+    ///   - error: The specific failure returned by the operation.
+    ///   - completion: The handler to execute once the `RecoveryDisposition` has been determined.
+    func attemptRecovery<R>(from error: Error, executing request: Request<R>) async -> RecoveryDisposition<Request<R>>
 }

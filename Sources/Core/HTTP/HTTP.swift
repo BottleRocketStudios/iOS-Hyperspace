@@ -176,11 +176,11 @@ public struct HTTP {
         /// The `URL` from which the `Response` originated.
         public let url: URL?
 
-        /// The raw `Data` associated with the HTTP response, if any was provided.
-        public let body: Data?
-
         /// The HTTP header fields for this response.
         public let headers: [HeaderKey: HeaderValue]?
+
+        /// The raw `Data` associated with the HTTP response, if any was provided.
+        public let body: Data?
 
         /// Initialize a new `Response` with any given HTTP status code and `Data`.
         ///
@@ -209,7 +209,7 @@ public struct HTTP {
                       body: body)
         }
 
-        // MARK: - Public
+        // MARK: - Interface
         
         /// The parsed HTTP status associated with this response.
         public var status: HTTP.Status {

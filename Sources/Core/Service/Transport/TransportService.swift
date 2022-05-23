@@ -34,9 +34,9 @@ extension TransportService: Transporting {
         finishTransportTask()
 
         try Task.checkCancellation()
+
         guard let httpURLResponse = urlResponse as? HTTPURLResponse else {
-            //todo: better error handling
-            throw TransportError(code: .unknownError)
+            throw URLError(.badServerResponse)
         }
 
         let response = HTTP.Response(request: .init(urlRequest: request), httpURLResponse: httpURLResponse, body: data)

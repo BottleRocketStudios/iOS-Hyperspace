@@ -29,6 +29,7 @@ public struct TransportError: Error, Equatable {
         case redirection
         case other(URLError)
         case unknownError
+
         
         // MARK: - Initializer
         public init(clientError: Error?) {
@@ -103,6 +104,28 @@ public struct TransportFailure: Error, Equatable {
 
     public init(error: TransportError, response: HTTP.Response) {
         self.init(error: error, request: response.request, response: response)
+    }
+}
+
+// MARK: - TransportResult
+
+/// Represents the possible resulting values of a `Request` using a `TransportService`.
+public typealias TransportResult = Result<TransportSuccess, TransportFailure>
+
+public extension TransportResult {
+
+    var request: HTTP.Request {
+        switch self {
+        case .success(let success): return success.request
+        case .failure(let failure): return failure.request
+        }
+    }
+
+    var response: HTTP.Response? {
+        switch self {
+        case .success(let success): return success.response
+        case .failure(let failure): return failure.response
+        }
     }
 }
 

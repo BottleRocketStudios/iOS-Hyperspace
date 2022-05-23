@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - JSONDecoder + Convenience
 public extension JSONDecoder {
     
     func decode<T, C: DecodableContainer>(_ type: T.Type, from data: Data, with container: C.Type) throws -> T where T == C.Contained {
@@ -18,6 +19,7 @@ public extension JSONDecoder {
     }
 }
 
+// MARK: - JSONEncoder + Convenience
 public extension JSONEncoder {
     
     func encode<T, C: EncodableContainer>(_ element: T, in container: C.Type) throws -> Data where T == C.Contained {

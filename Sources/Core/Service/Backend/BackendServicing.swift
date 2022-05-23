@@ -10,7 +10,6 @@ import Foundation
 public enum DecodingFailure: Error {
 
     // MARK: - Context Subtype
-
     public struct Context {
         public let decodingError: DecodingError
         public let failingType: Decodable.Type
@@ -76,7 +75,7 @@ public protocol BackendServicing: AnyObject {
     /// - Parameters:
     ///   - request: The Request to be executed.
     ///   - completion: The completion block to invoke when execution has finished.
-    func execute<R, E>(request: Request<R, E>) async throws -> R
+    func execute<R>(request: Request<R>) async throws -> R
 
     /// Cancels the task for the given request (if it is currently running).
 //    func cancelTask(for request: URLRequest)
@@ -97,9 +96,9 @@ public extension BackendServicing {
     ///   - request: The request that was executing.
     ///   - completion: The completion which should be executed when the recovery attempt is complete. In the case the recovery succeeds,
     ///   this completion is passed to the recovered `Request` instance. In the case of a failed recovery, the completion should be passed an error.
-    func attemptToRecover<R, E>(from error: E, executing request: Request<R, E>) async throws -> R {
+    func attemptToRecover<R>(from error: Error, executing request: Request<R>) async throws -> R {
         for strategy in recoveryStrategies {
-            let recoveryDisposition = await strategy.attemptRecovery(for: request, with: error)
+            let recoveryDisposition = await strategy.attemptRecovery(from: error, executing: request)
 
             switch recoveryDisposition {
             case .noAttemptMade: continue

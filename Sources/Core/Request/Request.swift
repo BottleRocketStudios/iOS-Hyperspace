@@ -8,13 +8,15 @@
 import Foundation
 
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
-public struct Request<Response, Error: TransportFailureRepresentable>: Recoverable {
+public struct Request<Response>: Recoverable {
     
-    // MARK: - Typealias
-    public typealias Transformer = (TransportSuccess) -> Result<Response, Error>
-    public typealias RecoveryTransformer = (TransportFailure) -> TransportSuccess?
-    public typealias DecodingFailureTransformer = (DecodingFailure) -> Error
-    
+    // MARK: - Typealiases
+    public typealias Transformer = (TransportSuccess) throws -> Response
+    public typealias QuickRecoveryTransformer = (TransportFailure) -> TransportSuccess?
+
+    @available(*, renamed: "QuickRecoveryTransformer")
+    public typealias RecoveryTransformer = QuickRecoveryTransformer
+
     // MARK: - Properties
     
     /// The HTTP method to be use when executing this request.
@@ -48,11 +50,17 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
     public var successTransformer: Transformer
 
     /// Attempts to recover from a failure by converting a `TransportFailure` into a `TransportSucces`. The default implementation fails by returning nil.
-    public var recoveryTransformer: RecoveryTransformer = { _ in nil }
+    public var quickRecoveryTransformer: QuickRecoveryTransformer = { _ in nil }
+
+    /// Attempts to recover from a failure by converting a `TransportFailure` into a `TransportSucces`. The default implementation fails by returning nil.
+    @available(*, renamed: "quickRecoveryTransformer")
+    public var recoveryTransformer: QuickRecoveryTransformer {
+        get { quickRecoveryTransformer }
+        set { quickRecoveryTransformer = newValue }
+    }
     
     // MARK: - Initializer
-    
-    public init(method: HTTP.Method,
+    public init(method: HTTP.Method = .get,
                 url: URL,
                 headers: [HTTP.HeaderKey: HTTP.HeaderValue]? = nil,
                 body: HTTP.Body? = nil,
@@ -68,62 +76,33 @@ public struct Request<Response, Error: TransportFailureRepresentable>: Recoverab
         self.successTransformer = successTransformer
     }
     
-    // MARK: - Public
+    // MARK: - Interface
     public var urlRequest: URLRequest {
         return urlRequestCreationStrategy.urlRequest(using: self)
     }
     
-    public func transform(success serviceSuccess: TransportSuccess) -> Result<Response, Error> {
-        return successTransformer(serviceSuccess)
+    public func transform(success serviceSuccess: TransportSuccess) throws -> Response {
+        return try successTransformer(serviceSuccess)
     }
     
-    public func map<New>(_ responseTransformer: @escaping (Response) -> New) -> Request<New, Error> {
-        return Request<New, Error>(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
-            let originalResponse = self.transform(success: transportSuccess)
-            return originalResponse.map(responseTransformer)
+    public func map<New>(_ responseTransformer: @escaping (Response) -> New) -> Request<New> {
+        return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
+            let originalResponse = try transform(success: transportSuccess)
+            return responseTransformer(originalResponse)
         }
     }
 
-    public func map<New>(_ responseTransformer: @escaping (TransportSuccess, Response) -> New) -> Request<New, Error> {
-        return Request<New, Error>(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
-            let responseResult = self.transform(success: transportSuccess)
-            return responseResult.map { responseTransformer(transportSuccess, $0) }
-        }
-    }
-
-    public func mapError<New>(_ errorTransformer: @escaping (Error) -> New) -> Request<Response, New> {
-        return Request<Response, New>(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
-            let originalResponse = self.transform(success: transportSuccess)
-            return originalResponse.mapError(errorTransformer)
+    public func map<New>(_ responseTransformer: @escaping (TransportSuccess, Response) -> New) -> Request<New> {
+        return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
+            let responseResult = try transform(success: transportSuccess)
+            return responseTransformer(transportSuccess, responseResult)
         }
     }
 }
 
-// MARK: - EmptyResponse
-
-/// A simple struct representing an empty server response to a request.
-/// This is useful primarily for DELETE requests, in which case a "200" status with empty body is often the response.
-public struct EmptyResponse {
-
-    // NOTE: It would be ideal if the implicitly-generated memberwise initializer could automatically be available publicly instead of defining this manually.
-    //       It may be possible someday - https://github.com/apple/swift-evolution/blob/master/proposals/0018-flexible-memberwise-initialization.md
-    public init() { }
-}
-
-// MARK: - Request Defaults
-
-public struct RequestDefaults {
-    
-    public static var defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
-    public static var defaultDecoder: JSONDecoder = JSONDecoder()
-    public static var defaultMaxRecoveryAttempts: UInt = 1
-    public static var defaultTimeout: TimeInterval = 60
-}
-
-// MARK: - Request Default Implementations
-
+// MARK: - Convenience Modifications
 public extension Request {
-    
+
     /// Adds the specified headers to the HTTP headers already attached to the `Request`.
     ///
     /// - Parameter additionalHeaders: The HTTP headers to add to the request
@@ -162,4 +141,13 @@ public extension Request {
         copy.body = body
         return copy
     }
+}
+
+// MARK: - RequestDefaults
+public struct RequestDefaults {
+    
+    public static var defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
+    public static var defaultDecoder: JSONDecoder = JSONDecoder()
+    public static var defaultMaxRecoveryAttempts: UInt = 1
+    public static var defaultTimeout: TimeInterval = 60
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FormURLEncoder {
+struct URLFormEncoder {
 
     /// Form URL encodes the specified content suitably for attaching to an HTTP request. The only specification for this encoding is in the [Forms][spec]
     /// section of the HTML 4.01 Specification. <http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4>
@@ -24,8 +24,7 @@ struct FormURLEncoder {
 }
 
 // MARK: - Helper
-
-extension FormURLEncoder {
+extension URLFormEncoder {
 
     func formURLEscaped(string: String) -> String? {
         return string.replacingOccurrences(of: "\n", with: "\r\n")
@@ -34,8 +33,7 @@ extension FormURLEncoder {
 }
 
 // MARK: - URLForm Allowed Character Set
-
-extension CharacterSet {
+private extension CharacterSet {
 
     /*
      - The " " will later be converted to a "+"

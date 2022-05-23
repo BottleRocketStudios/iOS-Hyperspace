@@ -14,7 +14,7 @@ public class BackendService {
     public var recoveryStrategies: [RecoveryStrategy]
     
     // MARK: - Initializer
-    public init(transportService: Transporting/* = TransportService()*/, recoveryStrategies: RecoveryStrategy...) {
+    public init(transportService: Transporting = TransportService(), recoveryStrategies: RecoveryStrategy...) {
         self.transportService = transportService
         self.recoveryStrategies = recoveryStrategies
     }
@@ -23,20 +23,18 @@ public class BackendService {
 // MARK: - BackendService + BackendServiceProtocol
 extension BackendService: BackendServicing {
 
-    public func execute<R, E>(request: Request<R, E>) async throws -> R where E: TransportFailureRepresentable {
+    public func execute<R>(request: Request<R>) async throws -> R {
         assert(!(request.method == .get && request.body != nil), "An HTTP GET request should not contain request body data.")
 
         let result = try await transportService.execute(request: request.urlRequest, delegate: nil)
         switch result {
-        case .success(let success):
-            return try request.transform(success: success).get()
-
+        case .success(let success): return try request.transform(success: success)
         case .failure(let failure):
             guard let quickRecovered = request.recoveryTransformer(failure) else {
-                return try await attemptToRecover(from: E(transportFailure: failure), executing: request)
+                return try await attemptToRecover(from: failure, executing: request)
             }
 
-            return try request.transform(success: quickRecovered).get()
+            return try request.transform(success: quickRecovered)
         }
     }
 }

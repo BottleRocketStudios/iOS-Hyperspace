@@ -10,7 +10,6 @@ import Foundation
 public extension Request {
     
     // MARK: - URLRequestCreationStrategy
-
     struct URLRequestCreationStrategy {
 
         // MARK: - Properties
@@ -21,8 +20,7 @@ public extension Request {
             return creationBlock(request)
         }
 
-        // MARK: - Preset
-
+        // MARK: - Presets
         public static func custom(_ creationBlock: @escaping (Request) -> URLRequest) -> URLRequestCreationStrategy {
             return URLRequestCreationStrategy(creationBlock: creationBlock)
         }
