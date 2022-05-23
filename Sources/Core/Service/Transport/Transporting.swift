@@ -35,11 +35,11 @@ public protocol Transporting {
     /// - Parameters:
     ///   - request: The `URLRequest` to execute.
     ///   - completion: The completion block to be invoked when request execution is complete.
-    func execute(request: URLRequest, completion: @escaping (TransportResult) -> Void)
+    func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportResult
     
     /// Cancels the task for the given request (if it is currently running).
-    func cancelTask(for request: URLRequest)
-
-    /// Cancels all currently running tasks
-    func cancelAllTasks()
+//    func cancelTask(for request: URLRequest)
+//
+//    /// Cancels all currently running tasks
+//    func cancelAllTasks()
 }

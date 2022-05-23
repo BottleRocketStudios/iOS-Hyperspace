@@ -7,18 +7,14 @@
 
 import Foundation
 
-/// Adopts the `Transporting` to perform HTTP communication via the execution of URLRequests.
-public class TransportService {
+/// Adopts the `Transporting` protocol to perform HTTP communication via the execution of URLRequests.
+public actor TransportService {
     
     // MARK: - Properties
-    
     let session: TransportSession
-    private let queue = DispatchQueue(label: "com.bottlerocketstudios.hyperspace.tasks")
-    private(set) var networkActivityController: NetworkActivityController?
-    private var tasks = [URLRequest: TransportDataTask]()
-    
-    // MARK: - Initializer
-    
+    let networkActivityController: NetworkActivityController?
+
+    // MARK: - Initializers
     public init(session: TransportSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
         self.session = session
         self.networkActivityController = networkActivityIndicatable.map { NetworkActivityController(indicator: $0) }
@@ -27,63 +23,39 @@ public class TransportService {
     public convenience init(sessionConfiguration: URLSessionConfiguration, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
         self.init(session: URLSession(configuration: sessionConfiguration), networkActivityIndicatable: networkActivityIndicatable)
     }
-    
-    deinit {
-        tasks.forEach { $1.cancel() }
-    }
 }
 
-// MARK: - TransportService Conformance to Transporting
-
+// MARK: - TransportService + Transporting
 extension TransportService: Transporting {
-    
-    public func execute(request: URLRequest, completion: @escaping (TransportResult) -> Void) {
-        let task = session.dataTask(with: request) { [weak self] (data, response, error) in
-            self?.networkActivityController?.stop()
-            self?.handle(data: data, response: response, error: error, for: HTTP.Request(urlRequest: request), completion: completion)
+
+    public func execute(request: URLRequest, delegate: TransportTaskDelegate? = nil) async throws -> TransportResult {
+        startTransportTask()
+        let (data, urlResponse) = try await session.data(for: request, delegate: delegate)
+        finishTransportTask()
+
+        try Task.checkCancellation()
+        guard let httpURLResponse = urlResponse as? HTTPURLResponse else {
+            //todo: better error handling
+            throw TransportError(code: .unknownError)
         }
 
-        queue.sync { [weak self] in
-            self?.tasks[request] = task
-            task.resume()
-        }
-
-        networkActivityController?.start()
-    }
-    
-    public func cancelTask(for request: URLRequest) {
-        queue.sync { [weak self] in
-            self?.tasks[request]?.cancel()
-        }
-    }
-    
-    public func cancelAllTasks() {
-        queue.sync { [weak self] in
-            self?.tasks.forEach { $1.cancel() }
-        }
+        let response = HTTP.Response(request: .init(urlRequest: request), httpURLResponse: httpURLResponse, body: data)
+        return response.transportResult
     }
 }
 
 // MARK: - Helper
-
 private extension TransportService {
 
-    func handle(data: Data?, response: URLResponse?, error: Error?, for request: HTTP.Request, completion: @escaping (TransportResult) -> Void) {
-        switch (data, response, error) {
-        case let (responseData, .some(urlResponse as HTTPURLResponse), .none):
-            // A response and no client error was received, rely on the response status code to determine the result
-            let httpResponse = HTTP.Response(request: request, httpURLResponse: urlResponse, body: responseData)
-            completion(httpResponse.transportResult)
+    func startTransportTask() {
+        Task {
+            await networkActivityController?.start()
+        }
+    }
 
-        case let (responseData, urlResponse as HTTPURLResponse?, .some(clientError)):
-            // A client error was received, we know this response resulted in a failure
-            let httpResponse = urlResponse.map { HTTP.Response(request: request, httpURLResponse: $0, body: responseData) }
-            let transportFailure = TransportFailure(error: TransportError(clientError: clientError), request: request, response: httpResponse)
-            completion(.failure(transportFailure))
-
-        default:
-            // An unexpected response was received, we don't know what went wrong
-            completion(.failure(TransportFailure(error: TransportError(clientError: error), request: request, response: nil)))
+    func finishTransportTask() {
+        Task {
+            await networkActivityController?.stop()
         }
     }
 }

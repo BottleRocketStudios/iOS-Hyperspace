@@ -7,29 +7,16 @@
 
 import Foundation
 
-// MARK: - TransportDataTask
-
-/// Represents a data task that can be executed or cancelled. Modeled after URLSessionDataTask to allow for injecting mock data tasks into a TransportSession.
-public protocol TransportDataTask {
-    func resume()
-    func cancel()
-}
-
-// MARK: - URLSessionDataTask Conformance to TransportDataTask
-
-extension URLSessionDataTask: TransportDataTask { }
+public typealias TransportSessionConfiguration = URLSessionConfiguration
+public typealias TransportTaskDelegate = URLSessionTaskDelegate
 
 /// Represents something that can execute a URLRequest to return a TransportDataTask. Modeled after URLSession to allow for injecting mock sessions into a BackendService.
 public protocol TransportSession {
-    var configuration: URLSessionConfiguration { get }
-    
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> TransportDataTask
+    var configuration: TransportSessionConfiguration { get }
+
+    func data(for request: URLRequest, delegate: TransportTaskDelegate?) async throws -> (Data, URLResponse)
+    func download(for request: URLRequest, delegate: TransportTaskDelegate?) async throws -> (URL, URLResponse)
 }
 
 // MARK: - URLSession Conformance to TransportSession
-
-extension URLSession: TransportSession {
-    public func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> TransportDataTask {
-        return (dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTask) as TransportDataTask
-    }
-}
+extension URLSession: TransportSession { }

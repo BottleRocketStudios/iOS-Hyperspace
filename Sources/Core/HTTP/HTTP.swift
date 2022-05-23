@@ -202,7 +202,7 @@ public struct HTTP {
         ///   - request: The `HTTP.Request` that was sent to receive this response.
         ///   - httpURLResponse: The `HTTPURLResponse` returned by the backend.
         ///   - body: The raw `Data` associated with the response, if any was provided.
-        init(request: HTTP.Request, httpURLResponse: HTTPURLResponse, body: Data? = nil) {
+        public init(request: HTTP.Request, httpURLResponse: HTTPURLResponse, body: Data? = nil) {
             let headers = httpURLResponse.allHeaderFields as? [String: String]
             self.init(request: request, code: httpURLResponse.statusCode, url: httpURLResponse.url,
                       headers: Dictionary(uniqueKeysWithValues: headers?.map { (.init(rawValue: $0.key), .init(rawValue: $0.value)) } ?? []),

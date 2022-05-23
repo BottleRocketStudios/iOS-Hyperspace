@@ -33,8 +33,6 @@
 		0E81B4A220ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */; };
 		0E81B4A320ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */; };
 		0E81B4A420ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */; };
-		0EBE2334275985EF00760DC7 /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
-		0EBE2335275985F000760DC7 /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
 		0EBEC09524EC66F500C37ADA /* FormURLEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */; };
 		0EBEC09624EC66F600C37ADA /* FormURLEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */; };
 		0EBEC81424EC885100627564 /* FormURLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03975C24EB8CD50078BA7D /* FormURLEncoder.swift */; };
@@ -110,9 +108,8 @@
 		0EFFCCA72790B35500D3FD83 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
 		0EFFCCA82790B35500D3FD83 /* TransportResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B469328E2413539700D2B650 /* TransportResult.swift */; };
 		0EFFCCA92790B35500D3FD83 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
-		0EFFCCAA2790B35800D3FD83 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		0EFFCCAA2790B35800D3FD83 /* BackendServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServicing.swift */; };
 		0EFFCCAB2790B35800D3FD83 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
-		0EFFCCAC2790B35C00D3FD83 /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
 		0EFFCCAD2790B36000D3FD83 /* TrustConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3AE2220244B100D65DB5 /* TrustConfiguration.swift */; };
 		0EFFCCAE2790B36000D3FD83 /* CertificateHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7F22028F0000484C01 /* CertificateHasher.swift */; };
 		0EFFCCAF2790B36000D3FD83 /* TrustValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B3ADE22023C0D00D65DB5 /* TrustValidator.swift */; };
@@ -225,7 +222,7 @@
 		60D6C374201CC81100B3B012 /* Transporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* Transporting.swift */; };
 		60D6C375201CC81100B3B012 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
 		60D6C376201CC81100B3B012 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
-		60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		60D6C377201CC81100B3B012 /* BackendServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServicing.swift */; };
 		60D6C378201CC81100B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		60D6C37A201CCCAE00B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
 		60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83421FF596B600120172 /* HTTP.swift */; };
@@ -234,7 +231,7 @@
 		60D6C380201CCCAE00B3B012 /* Transporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* Transporting.swift */; };
 		60D6C381201CCCAE00B3B012 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
 		60D6C382201CCCAE00B3B012 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
-		60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		60D6C383201CCCAE00B3B012 /* BackendServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServicing.swift */; };
 		60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		60D6C385201CCCBE00B3B012 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URL+Additions.swift */; };
 		60D6C386201CCCBE00B3B012 /* URLQueryItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC83401FF596B600120172 /* URLQueryItem+Extensions.swift */; };
@@ -244,7 +241,7 @@
 		60D6C38C201CCCBE00B3B012 /* Transporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834A1FF596B600120172 /* Transporting.swift */; };
 		60D6C38D201CCCBE00B3B012 /* TransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834B1FF596B600120172 /* TransportSession.swift */; };
 		60D6C38E201CCCBE00B3B012 /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834C1FF596B600120172 /* TransportService.swift */; };
-		60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */; };
+		60D6C38F201CCCBE00B3B012 /* BackendServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834E1FF596B600120172 /* BackendServicing.swift */; };
 		60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		60D6C3FF201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
 		60D6C400201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
@@ -270,7 +267,6 @@
 		60D6C414201CFCCF00B3B012 /* Object.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FB201CFCCF00B3B012 /* Object.json */; };
 		60D6C415201CFCCF00B3B012 /* RootKeyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */; };
 		60D6C416201CFCCF00B3B012 /* RootKeyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */; };
-		65709A27272E0B9D0066361E /* BackendService+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A26272E0B9D0066361E /* BackendService+Async.swift */; };
 		65709A2A272E0F8E0066361E /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A28272E0F600066361E /* AsyncTests.swift */; };
 		65709A2B272E0F8F0066361E /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65709A28272E0F600066361E /* AsyncTests.swift */; };
 		65A672F62731991A000E3511 /* TestDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A672F52731991A000E3511 /* TestDecodingError.swift */; };
@@ -399,7 +395,7 @@
 		60AC834A1FF596B600120172 /* Transporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transporting.swift; sourceTree = "<group>"; };
 		60AC834B1FF596B600120172 /* TransportSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportSession.swift; sourceTree = "<group>"; };
 		60AC834C1FF596B600120172 /* TransportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportService.swift; sourceTree = "<group>"; };
-		60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceProtocol.swift; sourceTree = "<group>"; };
+		60AC834E1FF596B600120172 /* BackendServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServicing.swift; sourceTree = "<group>"; };
 		60AC834F1FF596B600120172 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
 		60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportServiceTests.swift; sourceTree = "<group>"; };
 		60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
@@ -414,7 +410,6 @@
 		60D6C3FB201CFCCF00B3B012 /* Object.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Object.json; sourceTree = "<group>"; };
 		60D6C3FC201CFCCF00B3B012 /* RootKeyArray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RootKeyArray.json; sourceTree = "<group>"; };
 		60D6C41A201D13EC00B3B012 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		65709A26272E0B9D0066361E /* BackendService+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendService+Async.swift"; sourceTree = "<group>"; };
 		65709A28272E0F600066361E /* AsyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTests.swift; sourceTree = "<group>"; };
 		65A672F52731991A000E3511 /* TestDecodingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDecodingError.swift; sourceTree = "<group>"; };
 		B4255B57246E525F009B6D6A /* EncodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingTests.swift; sourceTree = "<group>"; };
@@ -614,7 +609,6 @@
 			isa = PBXGroup;
 			children = (
 				60AC833D1FF596B600120172 /* Core */,
-				65709A25272E0B8E0066361E /* Async */,
 				0E4B3ADD22023BFD00D65DB5 /* Certificate Pinning */,
 			);
 			path = Sources;
@@ -714,7 +708,7 @@
 		60AC834D1FF596B600120172 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				60AC834E1FF596B600120172 /* BackendServiceProtocol.swift */,
+				60AC834E1FF596B600120172 /* BackendServicing.swift */,
 				60AC834F1FF596B600120172 /* BackendService.swift */,
 			);
 			path = Backend;
@@ -775,14 +769,6 @@
 				0E347E6221599B5900BF18FA /* XCTestCase+JSON.swift */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		65709A25272E0B8E0066361E /* Async */ = {
-			isa = PBXGroup;
-			children = (
-				65709A26272E0B9D0066361E /* BackendService+Async.swift */,
-			);
-			path = Async;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1213,7 +1199,7 @@
 				0EFFCCB02790B36000D3FD83 /* TrustValidatingTransportService.swift in Sources */,
 				0EFFCCA52790B35200D3FD83 /* RecoveryStrategy.swift in Sources */,
 				0EFFCCAD2790B36000D3FD83 /* TrustConfiguration.swift in Sources */,
-				0EFFCCAA2790B35800D3FD83 /* BackendServiceProtocol.swift in Sources */,
+				0EFFCCAA2790B35800D3FD83 /* BackendServicing.swift in Sources */,
 				0EFFCCAF2790B36000D3FD83 /* TrustValidator.swift in Sources */,
 				0EFFCC992790B34600D3FD83 /* Request+EmptyDecodingStrategy.swift in Sources */,
 				0EFFCC9D2790B34900D3FD83 /* HTTP.swift in Sources */,
@@ -1231,7 +1217,6 @@
 				0EFFCC9F2790B34E00D3FD83 /* Request.URLRequestCreationStrategy.swift in Sources */,
 				0EFFCCA72790B35500D3FD83 /* TransportSession.swift in Sources */,
 				0EFFCC9C2790B34600D3FD83 /* JSONCoder+Container.swift in Sources */,
-				0EFFCCAC2790B35C00D3FD83 /* BackendService+Async.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1321,7 +1306,6 @@
 				0EF57B972203CD0B00484C01 /* AuthenticationChallenge.swift in Sources */,
 				B469328F2413539700D2B650 /* TransportResult.swift in Sources */,
 				0E03975D24EB8CD50078BA7D /* FormURLEncoder.swift in Sources */,
-				65709A27272E0B9D0066361E /* BackendService+Async.swift in Sources */,
 				0ECDC1DC20AB3B3E00ABF991 /* URLQueryParameterEncoder.swift in Sources */,
 				60D6C370201CC81100B3B012 /* CodableContainer.swift in Sources */,
 				0E4B3AE3220244B100D65DB5 /* TrustConfiguration.swift in Sources */,
@@ -1331,7 +1315,7 @@
 				60D6C375201CC81100B3B012 /* TransportSession.swift in Sources */,
 				0E81B4A220ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */,
 				60D6C376201CC81100B3B012 /* TransportService.swift in Sources */,
-				60D6C377201CC81100B3B012 /* BackendServiceProtocol.swift in Sources */,
+				60D6C377201CC81100B3B012 /* BackendServicing.swift in Sources */,
 				B4C32C2C201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				0EEBA72A226FA482007980C1 /* AnyError.swift in Sources */,
 				60D6C378201CC81100B3B012 /* BackendService.swift in Sources */,
@@ -1404,11 +1388,10 @@
 				60D6C38D201CCCBE00B3B012 /* TransportSession.swift in Sources */,
 				0E81B4A420ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */,
 				60D6C38E201CCCBE00B3B012 /* TransportService.swift in Sources */,
-				60D6C38F201CCCBE00B3B012 /* BackendServiceProtocol.swift in Sources */,
+				60D6C38F201CCCBE00B3B012 /* BackendServicing.swift in Sources */,
 				B4C32C2E201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				0EBEC81924ECB12100627564 /* Request+EmptyDecodingStrategy.swift in Sources */,
 				0EFB544C2204CC1600949F24 /* TrustValidatingTransportService.swift in Sources */,
-				0EBE2335275985F000760DC7 /* BackendService+Async.swift in Sources */,
 				0EF57B842202902000484C01 /* CertificateHasher.swift in Sources */,
 				60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */,
 			);
@@ -1437,12 +1420,11 @@
 				60D6C381201CCCAE00B3B012 /* TransportSession.swift in Sources */,
 				60D6C382201CCCAE00B3B012 /* TransportService.swift in Sources */,
 				0E81B4A320ADE0E100DC1F4E /* JSONCoder+Container.swift in Sources */,
-				60D6C383201CCCAE00B3B012 /* BackendServiceProtocol.swift in Sources */,
+				60D6C383201CCCAE00B3B012 /* BackendServicing.swift in Sources */,
 				30F0735E202205350045CB01 /* URL+Additions.swift in Sources */,
 				B4C32C2D201E9F2D00FC82C1 /* NetworkActivityIndicatable.swift in Sources */,
 				0EBEC81824ECB12000627564 /* Request+EmptyDecodingStrategy.swift in Sources */,
 				0EFB544B2204CC1500949F24 /* TrustValidatingTransportService.swift in Sources */,
-				0EBE2334275985EF00760DC7 /* BackendService+Async.swift in Sources */,
 				0EF57B832202901F00484C01 /* CertificateHasher.swift in Sources */,
 				60D6C384201CCCAE00B3B012 /* BackendService.swift in Sources */,
 			);
@@ -1708,8 +1690,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(VERSION)";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1717,9 +1699,11 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VERSION = 4.1.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -1771,17 +1755,19 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(VERSION)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Hyperspace;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 				VERSION = 4.1.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};

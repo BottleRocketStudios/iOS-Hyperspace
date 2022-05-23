@@ -20,7 +20,6 @@ public protocol TransportFailureRepresentable: Swift.Error {
 public struct TransportError: Error, Equatable {
     
     // MARK: - Code Subtype
-    
     public enum Code: Equatable {
         case clientError(HTTP.Status.ClientError)
         case serverError(HTTP.Status.ServerError)
@@ -32,7 +31,6 @@ public struct TransportError: Error, Equatable {
         case unknownError
         
         // MARK: - Initializer
-        
         public init(clientError: Error?) {
             self = (clientError as? URLError).flatMap {
                 switch $0.code {
@@ -46,12 +44,10 @@ public struct TransportError: Error, Equatable {
     }
     
     // MARK: - Properties
-    
     public let code: Code
     public let underlyingError: Error?
 
     // MARK: - Initializers
-    
     public init(code: Code, underlyingError: Error? = nil) {
         self.code = code
         self.underlyingError = underlyingError
@@ -71,14 +67,12 @@ public struct TransportError: Error, Equatable {
 public struct TransportSuccess: Equatable {
 
     // MARK: - Properties
-
     public let response: HTTP.Response
 
     public var body: Data? { return response.body }
     public var request: HTTP.Request { return response.request }
 
     // MARK: - Initializer
-
     public init(response: HTTP.Response) {
         self.response = response
     }
@@ -88,13 +82,11 @@ public struct TransportSuccess: Equatable {
 public struct TransportFailure: Error, Equatable {
 
     // MARK: - Properties
-
     public let error: TransportError
     public let request: HTTP.Request
     public let response: HTTP.Response?
 
     // MARK: - Initializers
-    
     public init(error: TransportError, request: HTTP.Request, response: HTTP.Response?) {
         self.error = error
         self.request = request
@@ -115,7 +107,6 @@ public struct TransportFailure: Error, Equatable {
 }
 
 // MARK: - HTTP.Response + TransportResult
-
 public extension HTTP.Response {
     
     var transportResult: TransportResult {

@@ -11,46 +11,34 @@ public protocol NetworkActivityIndicatable {
     var isNetworkActivityIndicatorVisible: Bool { get set }
 }
 
-/// Represents an object that is capable of recording the state of network requests and forwarding that state to the corresponding indicator.
-protocol NetworkActivityObservable {
-    func start()
-    func stop()
-
-    var activityCount: Int { get }
-    var indicator: NetworkActivityIndicatable { get }
-}
-
 /// Manages and records the number of active network requests in relation to their effect on network indicators.
-class NetworkActivityController: NetworkActivityObservable {
+actor NetworkActivityController {
 
     // MARK: - Properties
     let delayInterval: TimeInterval
     private(set) var indicator: NetworkActivityIndicatable
 
-    private let queue = DispatchQueue(label: "com.bottlerocketstudios.hyperspace.networkactivityindicator", qos: .userInitiated)
-    private(set) var delayedHide: DispatchWorkItem?
     private(set) var activityCount = 0
+    private(set) var delayedHide: Task<Void, Never>?
 
     // MARK: - Initializers
-    public init(delayInterval: TimeInterval = 1.0, indicator: NetworkActivityIndicatable) {
+    init(delayInterval: TimeInterval = 1.0, indicator: NetworkActivityIndicatable) {
         self.delayInterval = delayInterval
         self.indicator = indicator
     }
 
+    // MARK: - Interface
+
     /// Indicate to the controller that a new network request has started.
     func start() {
-        queue.sync {
-            self.activityCount += 1
-            self.update()
-        }
+        activityCount += 1
+        update()
     }
 
     /// Indicate to the controller that a network request has ended (through cancellation or completion)
     func stop() {
-        queue.sync {
-            self.activityCount -= 1
-            self.update()
-        }
+        activityCount -= 1
+        update()
     }
 }
 
@@ -58,25 +46,37 @@ class NetworkActivityController: NetworkActivityObservable {
 private extension NetworkActivityController {
 
     func update() {
-        guard activityCount <= 0 else { return configureIndicator(visible: true) }
-
-        let workItem = DispatchWorkItem {
-            self.configureIndicator(visible: false)
+        guard activityCount <= 0 else {
+            // If there is 1+ activities, immediately configure the indicator as visible
+            return configureIndicator(visible: true)
         }
 
-        delayedHide = workItem
-        queue.asyncAfter(deadline: .now() + delayInterval, execute: workItem)
+        // If there is no activity, wait the specified delay period before configuring the indicator as not visible
+        delayedHide = Task {
+            try? await Task.sleep(seconds: delayInterval)
+
+            if !Task.isCancelled {
+                self.configureIndicator(visible: false)
+            }
+        }
     }
 
     func configureIndicator(visible: Bool) {
         delayedHide?.cancel()
         delayedHide = nil
 
-        DispatchQueue.main.async {
-            // Only need to set the visibility of the indicator if it has changed
-            if self.indicator.isNetworkActivityIndicatorVisible != visible {
-                self.indicator.isNetworkActivityIndicatorVisible = visible
-            }
+        // Only need to set the visibility of the indicator if it has changed
+        if indicator.isNetworkActivityIndicatorVisible != visible {
+            indicator.isNetworkActivityIndicatorVisible = visible
         }
+    }
+}
+
+// MARK: - Task Convenience
+private extension Task where Success == Never, Failure == Never {
+
+    static func sleep(seconds: Double) async throws {
+        let duration = UInt64(seconds * 1_000_000_000)
+        try await Task.sleep(nanoseconds: duration)
     }
 }
