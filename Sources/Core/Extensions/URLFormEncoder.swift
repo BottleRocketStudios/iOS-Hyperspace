@@ -13,7 +13,7 @@ struct URLFormEncoder {
     /// section of the HTML 4.01 Specification. <http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4>
     /// - Parameter formContent: The `String` content that makes up the form elements
     /// - Returns: A `Data?` object that represents the encoded form
-    public func encode(_ formContent: [(String, String)]) -> Data? {
+    func encode(_ formContent: [(String, String)]) -> Data? {
         return formContent.compactMap {
             guard let lhs = formURLEscaped(string: $0), let rhs = formURLEscaped(string: $1) else { return nil }
             return lhs + "=" + rhs

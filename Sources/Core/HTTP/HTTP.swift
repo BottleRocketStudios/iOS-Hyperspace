@@ -97,16 +97,11 @@ public struct HTTP {
 
         init(code: Int) {
             switch code {
-            case Success.acceptedRange:
-                self = .success(Success(rawValue: code))
-            case Redirection.acceptedRange:
-                self = .redirection(Redirection(rawValue: code))
-            case ClientError.acceptedRange:
-                self = .clientError(ClientError(rawValue: code))
-            case ServerError.acceptedRange:
-                self = .serverError(ServerError(rawValue: code))
-            default:
-                self = .unknown(code)
+            case Success.acceptedRange: self = .success(Success(rawValue: code))
+            case Redirection.acceptedRange: self = .redirection(Redirection(rawValue: code))
+            case ClientError.acceptedRange: self = .clientError(ClientError(rawValue: code))
+            case ServerError.acceptedRange: self = .serverError(ServerError(rawValue: code))
+            default: self = .unknown(code)
             }
         }
 
@@ -133,7 +128,7 @@ public struct HTTP {
         public let url: URL?
         
         /// The HTTP method for a request.
-        public let method: String?
+        public let method: HTTP.Method?
 
         /// The HTTP header fields for this request.
         public let headers: [HeaderKey: HeaderValue]?
@@ -147,7 +142,7 @@ public struct HTTP {
         ///   - method: The HTTP method for this request.
         ///   - body: The raw `Data` associated with the HTTP request, if any was provided.
         ///   - headers: The HTTP header fields for this request.
-        public init(url: URL? = nil, method: String? = nil, headers: [HeaderKey: HeaderValue]? = nil, body: Data? = nil) {
+        public init(url: URL? = nil, method: HTTP.Method? = nil, headers: [HeaderKey: HeaderValue]? = nil, body: Data? = nil) {
             self.url = url
             self.method = method
             self.headers = headers
@@ -158,7 +153,7 @@ public struct HTTP {
         /// - Parameter urlRequest: The `URLRequest` instance used to initiate the request.
         public init(urlRequest: URLRequest) {
             let headers = urlRequest.allHTTPHeaderFields
-            self.init(url: urlRequest.url, method: urlRequest.httpMethod,
+            self.init(url: urlRequest.url, method: urlRequest.httpMethod.flatMap(HTTP.Method.init),
                       headers: Dictionary(uniqueKeysWithValues: headers?.map { (.init(rawValue: $0.key), .init(rawValue: $0.value)) } ?? []),
                       body: urlRequest.httpBody)
         }
@@ -277,7 +272,6 @@ extension HTTP.HeaderValue {
 }
 
 // MARK: - Common HTTP Status Codes
-
 extension HTTP.Status.Success {
     public static let ok = HTTP.Status.Success(rawValue: 200)
     public static let created = HTTP.Status.Success(rawValue: 201)

@@ -31,16 +31,14 @@ extension Request {
 }
 
 // MARK: - Get User Request
-
 extension Request where Response == User {
     
     static func getUser(withID id: Int) -> Request<User> {
-        return Request(method: .get, url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
+        return Request(url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
     }
 }
 
 // MARK: - Create Post Request
-
 extension Request where Response == Post {
     
     static func createPost(_ post: NewPost) -> Request<Post> {
@@ -50,7 +48,6 @@ extension Request where Response == Post {
 }
 
 // MARK: - Delete Post Request
-
 extension Request where Response == Void {
     
     static func deletePost(withID id: Int) -> Request<Void> {

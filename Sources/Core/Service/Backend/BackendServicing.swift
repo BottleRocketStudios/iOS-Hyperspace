@@ -19,7 +19,7 @@ public protocol BackendServicing: AnyObject {
     /// - Parameters:
     ///   - request: The Request to be executed.
     ///   - completion: The completion block to invoke when execution has finished.
-    func execute<R>(request: Request<R>) async throws -> R
+    func execute<R>(request: Request<R>, delegate: TransportTaskDelegate?) async throws -> R
 }
 
 // MARK: - BackendServiceProtocol Default Implementations
@@ -34,14 +34,14 @@ public extension BackendServicing {
     ///   - request: The request that was executing.
     ///   - completion: The completion which should be executed when the recovery attempt is complete. In the case the recovery succeeds,
     ///   this completion is passed to the recovered `Request` instance. In the case of a failed recovery, the completion should be passed an error.
-    func attemptToRecover<R>(from error: Error, executing request: Request<R>) async throws -> R {
+    func attemptToRecover<R>(from error: Error, executing request: Request<R>, delegate: TransportTaskDelegate? = nil) async throws -> R {
         for strategy in recoveryStrategies {
             let recoveryDisposition = await strategy.attemptRecovery(from: error, executing: request)
 
             switch recoveryDisposition {
             case .noAttemptMade: continue
             case .fail: throw error
-            case .retry(let recoveredRequest): return try await execute(request: recoveredRequest)
+            case .retry(let recoveredRequest): return try await execute(request: recoveredRequest, delegate: delegate)
             }
         }
 

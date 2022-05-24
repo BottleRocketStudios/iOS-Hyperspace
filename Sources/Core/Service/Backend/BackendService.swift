@@ -20,18 +20,18 @@ public class BackendService {
     }
 }
 
-// MARK: - BackendService + BackendServiceProtocol
+// MARK: - BackendService + BackendServicing
 extension BackendService: BackendServicing {
 
-    public func execute<R>(request: Request<R>) async throws -> R {
+    public func execute<R>(request: Request<R>, delegate: TransportTaskDelegate? = nil) async throws -> R {
         assert(!(request.method == .get && request.body != nil), "An HTTP GET request should not contain request body data.")
 
-        let result = try await transportService.execute(request: request.urlRequest, delegate: nil)
+        let result = try await transportService.execute(request: request.urlRequest, delegate: delegate)
         switch result {
         case .success(let success): return try request.transform(success: success)
         case .failure(let failure):
             guard let quickRecovered = request.recoveryTransformer(failure) else {
-                return try await attemptToRecover(from: failure, executing: request)
+                return try await attemptToRecover(from: failure, executing: request, delegate: delegate)
             }
 
             return try request.transform(success: quickRecovered)

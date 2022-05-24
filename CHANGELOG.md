@@ -3,6 +3,8 @@
 #### Enhancements
 
 * convert to async await
+* deprecate URLQueryParameterEncoder (it isn't used internally, and Request<R> accepts a URL)
+
 
 ##### Bug Fixes
 
