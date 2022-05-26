@@ -2,8 +2,14 @@
 
 #### Enhancements
 
-* convert to async await
-* deprecate URLQueryParameterEncoder (it isn't used internally, and Request<R> accepts a URL)
+* Deprecate URLQueryParameterEncoder
+[Will McGinty](https://github.com/wmcginty)
+[#](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/)
+
+* Convert `Transporting`, `BackendServicing` and related subsystems to utilize structured concurrency.
+[Will McGinty](https://github.com/wmcginty)
+[#](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/)
+
 
 * Remove migration typeliases for all the types that were deprecated in 4.0, including `RequestRecoveryStrategy`, `NetworkServiceFailureInitializable`, and `NetworkService*`.
 [Will McGinty](https://github.com/wmcginty)

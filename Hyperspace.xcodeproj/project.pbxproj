@@ -331,6 +331,7 @@
 		0E81B49820AC8E0B00DC1F4E /* RecoveryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryStrategy.swift; sourceTree = "<group>"; };
 		0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableTests.swift; sourceTree = "<group>"; };
 		0E81B4A120ADE0E100DC1F4E /* JSONCoder+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONCoder+Container.swift"; sourceTree = "<group>"; };
+		0E957089283EE4B200B769E0 /* Handling Common Networking Scenarios.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Handling Common Networking Scenarios.md"; sourceTree = "<group>"; };
 		0EBEC09324EC66D700C37ADA /* FormURLEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncoderTests.swift; sourceTree = "<group>"; };
 		0EBEC81624ECB11B00627564 /* Request+EmptyDecodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+EmptyDecodingStrategy.swift"; sourceTree = "<group>"; };
 		0EBF9B1C246F347800E990DC /* AnyErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyErrorTests.swift; sourceTree = "<group>"; };
@@ -494,6 +495,7 @@
 				0E09A3972790ACD100AB7DD8 /* Handling Empty Responses.md */,
 				0E09A3982790ACD100AB7DD8 /* Error Recovery.md */,
 				0E666BDF27A0809E001082D0 /* SSL Pinning.md */,
+				0E957089283EE4B200B769E0 /* Handling Common Networking Scenarios.md */,
 			);
 			path = Guides;
 			sourceTree = "<group>";

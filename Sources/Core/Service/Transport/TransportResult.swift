@@ -36,10 +36,10 @@ public struct TransportFailure: Error, Equatable {
     // MARK: - Properties
     public let kind: Kind
     public let request: HTTP.Request
-    public let response: HTTP.Response?
+    public let response: HTTP.Response
 
     // MARK: - Initializers
-    public init(kind: Kind, request: HTTP.Request, response: HTTP.Response? = nil) {
+    public init(kind: Kind, request: HTTP.Request, response: HTTP.Response) {
         self.kind = kind
         self.request = request
         self.response = response
@@ -53,27 +53,10 @@ public struct TransportFailure: Error, Equatable {
 // MARK: - TransportResult
 
 /// Represents the possible resulting values of a `Request` using a `TransportService`.
-public typealias TransportResult = Result<TransportSuccess, TransportFailure>
-
-public extension TransportResult {
-
-    var request: HTTP.Request {
-        switch self {
-        case .success(let success): return success.request
-        case .failure(let failure): return failure.request
-        }
-    }
-
-    var response: HTTP.Response? {
-        switch self {
-        case .success(let success): return success.response
-        case .failure(let failure): return failure.response
-        }
-    }
-}
+typealias TransportResult = Result<TransportSuccess, TransportFailure>
 
 // MARK: - HTTP.Response + TransportResult
-public extension HTTP.Response {
+extension HTTP.Response {
     
     var transportResult: TransportResult {
         switch status {

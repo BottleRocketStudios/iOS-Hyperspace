@@ -49,6 +49,9 @@ public struct Request<Response>: Recoverable {
     /// Attempts to parse the provided `TransportSuccess` into the associated response model type for this request.
     public var successTransformer: Transformer
 
+    /// Validates a given `TransportSuccess` object, `throwing` if necessary. This is only called for otherwise successful requests, and the default implementation does nothing.
+    public var successValidator: (TransportSuccess) throws -> Void = { _ in }
+
     /// Attempts to recover from a failure by converting a `TransportFailure` into a `TransportSucces`. The default implementation fails by returning nil.
     public var quickRecoveryTransformer: QuickRecoveryTransformer = { _ in nil }
 
@@ -58,7 +61,7 @@ public struct Request<Response>: Recoverable {
         get { quickRecoveryTransformer }
         set { quickRecoveryTransformer = newValue }
     }
-    
+
     // MARK: - Initializer
     public init(method: HTTP.Method = .get,
                 url: URL,
@@ -85,17 +88,27 @@ public struct Request<Response>: Recoverable {
         return try successTransformer(serviceSuccess)
     }
     
-    public func map<New>(_ responseTransformer: @escaping (Response) -> New) -> Request<New> {
+    public func map<New>(_ responseTransformer: @escaping (Response) throws -> New) -> Request<New> {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             let originalResponse = try transform(success: transportSuccess)
-            return responseTransformer(originalResponse)
+            return try responseTransformer(originalResponse)
         }
     }
 
-    public func map<New>(_ responseTransformer: @escaping (TransportSuccess, Response) -> New) -> Request<New> {
+    public func map<New>(_ responseTransformer: @escaping (TransportSuccess, Response) throws -> New) -> Request<New> {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             let responseResult = try transform(success: transportSuccess)
-            return responseTransformer(transportSuccess, responseResult)
+            return try responseTransformer(transportSuccess, responseResult)
+        }
+    }
+
+    public func throwing(_ responseTransformer: @escaping (TransportSuccess, Error) -> Error) -> Request {
+        return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
+            do {
+                return try transform(success: transportSuccess)
+            } catch {
+                throw responseTransformer(transportSuccess, error)
+            }
         }
     }
 }

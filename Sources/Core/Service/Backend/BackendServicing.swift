@@ -40,7 +40,7 @@ public extension BackendServicing {
 
             switch recoveryDisposition {
             case .noAttemptMade: continue
-            case .fail: throw error
+            case .fail(let error): throw error
             case .retry(let recoveredRequest): return try await execute(request: recoveredRequest, delegate: delegate)
             }
         }

@@ -224,7 +224,6 @@ public struct HTTP {
 // swiftlint:enable nesting
 
 // MARK: - Common HTTP Header Field Keys
-
 extension HTTP.HeaderKey {
     public static let accept = HTTP.HeaderKey(rawValue: "Accept")
     public static let acceptCharset = HTTP.HeaderKey(rawValue: "Accept-Charset")
@@ -241,7 +240,6 @@ extension HTTP.HeaderKey {
 }
 
 // MARK: - Common HTTP Header Field Values
-
 extension HTTP.HeaderValue {
     public static let applicationJSON = HTTP.HeaderValue(rawValue: "application/json")
     public static let applicationFormURLEncoded = HTTP.HeaderValue(rawValue: "application/x-www-form-urlencoded")

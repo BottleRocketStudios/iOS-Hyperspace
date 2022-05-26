@@ -58,7 +58,7 @@ public class TrustValidatingTransportService: Transporting {
     }
 
     // MARK: - TrustValidatingTransportService + Transporting
-    public func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportResult {
+    public func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportSuccess {
         return try await transportService.execute(request: request, delegate: delegate)
     }
 }

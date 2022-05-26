@@ -17,7 +17,7 @@ public protocol Transporting {
     /// - Parameters:
     ///   - request: The `URLRequest` to execute.
     ///   - completion: The completion block to be invoked when request execution is complete.
-    func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportResult
+    func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportSuccess
 }
 
 // MARK: - TransportService
@@ -43,7 +43,7 @@ public actor TransportService {
 // MARK: - TransportService + Transporting
 extension TransportService: Transporting {
 
-    public func execute(request: URLRequest, delegate: TransportTaskDelegate? = nil) async throws -> TransportResult {
+    public func execute(request: URLRequest, delegate: TransportTaskDelegate? = nil) async throws -> TransportSuccess {
         startTransportTask()
         let (data, urlResponse) = try await session.data(for: request, delegate: delegate)
         finishTransportTask()
@@ -52,7 +52,7 @@ extension TransportService: Transporting {
 
         guard let httpURLResponse = urlResponse as? HTTPURLResponse else { throw URLError(.badServerResponse) }
         let response = HTTP.Response(request: .init(urlRequest: request), httpURLResponse: httpURLResponse, body: data)
-        return response.transportResult
+        return try response.transportResult.get()
     }
 }
 
