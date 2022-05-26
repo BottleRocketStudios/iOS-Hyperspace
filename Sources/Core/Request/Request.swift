@@ -11,7 +11,7 @@ import Foundation
 public struct Request<Response>: Recoverable {
     
     // MARK: - Typealiases
-    public typealias Transformer = (TransportSuccess) throws -> Response
+    public typealias Transformer = (TransportSuccess) async throws -> Response
     public typealias QuickRecoveryTransformer = (TransportFailure) -> TransportSuccess?
 
     @available(*, renamed: "QuickRecoveryTransformer")
@@ -84,20 +84,20 @@ public struct Request<Response>: Recoverable {
         return urlRequestCreationStrategy.urlRequest(using: self)
     }
     
-    public func transform(success serviceSuccess: TransportSuccess) throws -> Response {
-        return try successTransformer(serviceSuccess)
+    public func transform(success serviceSuccess: TransportSuccess) async throws -> Response {
+        return try await successTransformer(serviceSuccess)
     }
     
     public func map<New>(_ responseTransformer: @escaping (Response) throws -> New) -> Request<New> {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
-            let originalResponse = try transform(success: transportSuccess)
+            let originalResponse = try await transform(success: transportSuccess)
             return try responseTransformer(originalResponse)
         }
     }
 
     public func map<New>(_ responseTransformer: @escaping (TransportSuccess, Response) throws -> New) -> Request<New> {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
-            let responseResult = try transform(success: transportSuccess)
+            let responseResult = try await transform(success: transportSuccess)
             return try responseTransformer(transportSuccess, responseResult)
         }
     }
@@ -105,7 +105,7 @@ public struct Request<Response>: Recoverable {
     public func throwing(_ responseTransformer: @escaping (TransportSuccess, Error) -> Error) -> Request {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             do {
-                return try transform(success: transportSuccess)
+                return try await transform(success: transportSuccess)
             } catch {
                 throw responseTransformer(transportSuccess, error)
             }
