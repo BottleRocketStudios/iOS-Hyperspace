@@ -26,7 +26,7 @@ public protocol Transporting {
 public actor TransportService {
 
     // MARK: - Properties
-    let session: TransportSession
+    public let session: TransportSession
     let networkActivityController: NetworkActivityController?
 
     // MARK: - Initializers

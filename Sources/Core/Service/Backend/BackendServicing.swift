@@ -39,8 +39,8 @@ public extension BackendServicing {
             let recoveryDisposition = await strategy.attemptRecovery(from: error, executing: request)
 
             switch recoveryDisposition {
-            case .noAttemptMade: continue
-            case .fail(let error): throw error
+            case .notAttempted: continue
+            case .failure(let error): throw error
             case .retry(let recoveredRequest): return try await execute(request: recoveredRequest, delegate: delegate)
             }
         }

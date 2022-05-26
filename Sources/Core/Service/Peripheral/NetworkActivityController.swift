@@ -1,4 +1,4 @@
-//  NetworkActivityIndicatable.swift
+//  NetworkActivityController.swift
 //  Hyperspace
 //
 //  Copyright © 2017 Bottle Rocket Studios. All rights reserved.

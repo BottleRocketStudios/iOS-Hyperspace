@@ -45,8 +45,8 @@ public extension Recoverable {
 /// - retry: The action should be retried with the supplied instance of `Request`.
 /// - fail: The action should be aborted, the failure returned to the caller.
 public enum RecoveryDisposition<Request> {
-    case noAttemptMade
-    case fail(Error)
+    case notAttempted
+    case failure(Error)
     case retry(Request)
 }
 
