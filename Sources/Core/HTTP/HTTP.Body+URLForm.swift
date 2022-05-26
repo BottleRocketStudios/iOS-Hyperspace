@@ -1,13 +1,28 @@
 //
-//  FormURLEncoder.swift
+//  HTTP.Body+URLForm.swift
 //  Hyperspace
 //
-//  Copyright © 2020 Bottle Rocket Studios. All rights reserved.
+//  Created by Will McGinty on 5/26/22.
+//  Copyright © 2022 Bottle Rocket Studios. All rights reserved.
 //
 
 import Foundation
 
-struct URLFormEncoder {
+public extension HTTP.Body {
+    
+    /// Initializes a new `HTTP.Body` instance given a set of URL form content
+    /// - Parameters:
+    ///   - formContent: An array of `(String, String)` representing the content to be encoded.
+    ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
+    /// - Returns: A new instance of `HTTP.Body` with the given form content.
+    static func urlForm(using formContent: [(String, String)], additionalHeaders: [HTTP.HeaderKey: HTTP.HeaderValue] = [.contentType: .applicationFormURLEncoded]) -> Self {
+        let formURLEncoder = URLFormEncoder()
+        return .init(formURLEncoder.encode(formContent), additionalHeaders: additionalHeaders)
+    }
+}
+
+// MARK: - URLFormEncoder
+private struct URLFormEncoder {
 
     /// Form URL encodes the specified content suitably for attaching to an HTTP request. The only specification for this encoding is in the [Forms][spec]
     /// section of the HTML 4.01 Specification. <http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4>
@@ -32,7 +47,7 @@ extension URLFormEncoder {
     }
 }
 
-// MARK: - URLForm Allowed Character Set
+// MARK: - URL Form Allowed Character Set
 private extension CharacterSet {
 
     /*

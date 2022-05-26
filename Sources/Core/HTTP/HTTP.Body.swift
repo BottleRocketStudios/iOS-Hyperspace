@@ -38,7 +38,7 @@ public extension HTTP {
         ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
         /// - Returns: A new instance of `HTTP.Body` with the given encodable representation.
         public static func json<E: Encodable>(_ encodable: E, encoder: JSONEncoder = JSONEncoder(),
-                                              additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON]) throws -> HTTP.Body {
+                                              additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON]) throws -> Self {
             let data = try encoder.encode(encodable)
             return .init(data, additionalHeaders: additionalHeaders)
         }
@@ -51,20 +51,9 @@ public extension HTTP {
         ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
         /// - Returns: A new instance of `HTTP.Body` with the given encodable representation.
         public static func json<E, C: EncodableContainer>(_ encodable: E, container: C.Type, encoder: JSONEncoder = JSONEncoder(),
-                                                          additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON])
-            throws -> HTTP.Body where C.Contained == E {
+                                                          additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON]) throws -> Self where C.Contained == E {
                 let data = try encoder.encode(encodable, in: container)
                 return .init(data, additionalHeaders: additionalHeaders)
-        }
-
-        /// Initializes a new `HTTP.Body` instance given a set of URL form content
-        /// - Parameters:
-        ///   - formContent: An array of `(String, String)` representing the content to be encoded.
-        ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
-        /// - Returns: A new instance of `HTTP.Body` with the given form content.
-        public static func urlForm(using formContent: [(String, String)], additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationFormURLEncoded]) -> HTTP.Body {
-            let formURLEncoder = URLFormEncoder()
-            return .init(formURLEncoder.encode(formContent), additionalHeaders: additionalHeaders)
         }
     }
 }
