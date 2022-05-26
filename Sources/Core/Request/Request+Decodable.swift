@@ -64,15 +64,24 @@ public extension Request where Response: Decodable {
     }
 
     // MARK: - Convenience Transformers
-    static func successTransformer(for decoder: JSONDecoder) -> Transformer {
+    static func successTransformer(for decoder: JSONDecoder, errorTransformer: @escaping (Error) -> Error = { $0 }) -> Transformer {
         return { transportSuccess in
-            return try decoder.decode(Response.self, from: transportSuccess.body ?? Data())
+            do {
+                return try decoder.decode(Response.self, from: transportSuccess.body ?? Data())
+            } catch {
+                throw errorTransformer(error)
+            }
         }
     }
 
-    static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type) -> Transformer where C.Contained == Response {
+    static func successTransformer<C: DecodableContainer>(for decoder: JSONDecoder, with containerType: C.Type,
+                                                          errorTransformer: @escaping (Error) -> Error = { $0 }) -> Transformer where C.Contained == Response {
         return { transportSuccess in
-            return try decoder.decode(Response.self, from: transportSuccess.body ?? Data(), with: C.self)
+            do {
+                return try decoder.decode(Response.self, from: transportSuccess.body ?? Data(), with: C.self)
+            } catch {
+                throw errorTransformer(error)
+            }
         }
     }
 }
