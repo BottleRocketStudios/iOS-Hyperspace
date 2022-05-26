@@ -4,11 +4,11 @@
 
 * Deprecate URLQueryParameterEncoder
 [Will McGinty](https://github.com/wmcginty)
-[#](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/)
+[#160](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/160)
 
 * Convert `Transporting`, `BackendServicing` and related subsystems to utilize structured concurrency.
 [Will McGinty](https://github.com/wmcginty)
-[#](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/)
+[#160](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/160)
 
 
 * Remove migration typeliases for all the types that were deprecated in 4.0, including `RequestRecoveryStrategy`, `NetworkServiceFailureInitializable`, and `NetworkService*`.
