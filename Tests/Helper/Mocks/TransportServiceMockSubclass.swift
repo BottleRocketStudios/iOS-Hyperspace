@@ -1,19 +1,19 @@
+////
+////  TransportServiceMockSubclass.swift
+////  Tests
+////
+////  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
+////
 //
-//  TransportServiceMockSubclass.swift
-//  Tests
+//import Foundation
+//@testable import Hyperspace
 //
-//  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
-//
-
-import Foundation
-@testable import Hyperspace
-
-class TransportServiceMockSubclass: TransportService {
-    
-    private(set) var initWithNetworkActivityControllerCalled = false
-    
-    override init(session: TransportSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
-        initWithNetworkActivityControllerCalled = true
-        super.init(session: session, networkActivityIndicatable: networkActivityIndicatable)
-    }
-}
+//class TransportServiceMockSubclass: TransportService {
+//    
+//    private(set) var initWithNetworkActivityControllerCalled = false
+//    
+//    override init(session: TransportSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
+//        initWithNetworkActivityControllerCalled = true
+//        super.init(session: session, networkActivityIndicatable: networkActivityIndicatable)
+//    }
+//}

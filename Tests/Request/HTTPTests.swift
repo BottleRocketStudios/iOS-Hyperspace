@@ -9,19 +9,18 @@ import XCTest
 @testable import Hyperspace
 
 class HTTPTests: XCTestCase {
-    
-    // MARK: - Tests
 
+    // MARK: - Tests
     func test_AuthorizationBasicHeaderValue_IsGeneratedCorrectly() {
         let authorizationBasic = HTTP.HeaderValue.authorizationBasic(username: "john@example.com", password: "abc123")
         XCTAssertEqual(authorizationBasic?.rawValue, "Basic am9obkBleGFtcGxlLmNvbTphYmMxMjM=")
     }
-    
+
     func test_AuthorizationBearerHeaderValue_IsGeneratedCorrectly() {
         let authorizationBearer = HTTP.HeaderValue.authorizationBearer(token: "1234567890")
         XCTAssertEqual(authorizationBearer.rawValue, "Bearer 1234567890")
     }
-    
+
     func test_HeaderKey_RawValuesAreCorrect() {
         let headerKeys: [HTTP.HeaderKey: String] = [
             .accept: "Accept",
@@ -36,13 +35,13 @@ class HTTPTests: XCTestCase {
             .date: "Date",
             .userAgent: "User-Agent"
         ]
-        
+
         headerKeys.forEach { (key, value) in
             XCTAssertEqual(key, HTTP.HeaderKey(rawValue: value))
             XCTAssertEqual(key, HTTP.HeaderKey(stringLiteral: value))
         }
     }
-    
+
     func test_HeaderValue_RawValuesAreCorrect() {
         let headerValues: [String: HTTP.HeaderValue] = [
             "application/json": .applicationJSON,
@@ -68,12 +67,12 @@ class HTTPTests: XCTestCase {
             XCTAssertEqual(value, HTTP.HeaderValue(stringLiteral: key))
         }
     }
-    
+
     func test_ResponseDataString_ReturnsResponseDataAsString() {
         let content = "This is my data"
         let response = HTTP.Response(request: HTTP.Request(), code: 200, body: content.data(using: .utf8))
         let dataString = response.bodyString
-        
+
         XCTAssertEqual(dataString, content)
     }
 
@@ -81,7 +80,7 @@ class HTTPTests: XCTestCase {
         let response = HTTP.Response(request: HTTP.Request(), code: 400)
         XCTAssertEqual(response.statusMessage, "bad request")
     }
-    
+
     func test_HTTPResponseInitWithCode200_ProducesStatusSuccessOK() {
         let response = HTTP.Response(request: HTTP.Request(), code: 200, body: nil)
         XCTAssertTrue(response.status.isSuccess)
@@ -93,7 +92,7 @@ class HTTPTests: XCTestCase {
             XCTFail("200 status should produce a 'success - ok' response")
         }
     }
-    
+
     func test_HTTPStatusInitWithCode300_ProducesStatusRedirectionMultipleChoices() {
         let response = HTTP.Response(request: HTTP.Request(), code: 300, body: nil)
         XCTAssertTrue(response.status.isRedirection)
@@ -105,7 +104,7 @@ class HTTPTests: XCTestCase {
             XCTFail("300 status should produce a 'redirection - multiple choices' response")
         }
     }
-    
+
     func test_HTTPStatusInitWithCode400_ProducesStatusClientErrorBadRequest() {
         let response = HTTP.Response(request: HTTP.Request(), code: 400, body: nil)
         XCTAssertTrue(response.status.isClientError)
@@ -117,7 +116,7 @@ class HTTPTests: XCTestCase {
             XCTFail("400 status should produce a 'client error - bad request' response")
         }
     }
-    
+
     func test_HTTPStatusInitWithCode500_ProducesStatusServerErrorInternalServerError() {
         let response = HTTP.Response(request: HTTP.Request(), code: 500, body: nil)
         XCTAssertTrue(response.status.isServerError)
@@ -129,7 +128,7 @@ class HTTPTests: XCTestCase {
             XCTFail("500 status should produce a 'server error - internal server error' response")
         }
     }
-    
+
     func test_HTTPStatusInitWithCode100_ProducesStatusUnknown() {
         let response = HTTP.Response(request: HTTP.Request(), code: 100, body: nil)
         XCTAssertFalse(response.status.isSuccess)
@@ -193,13 +192,11 @@ class HTTPTests: XCTestCase {
                        ("password", "abc&123"),
                        ("user_id", "0001")]
 
-        let encoder = FormURLEncoder()
-
+        let encoder = URLFormEncoder()
         let body = HTTP.Body.urlForm(using: content)
         let bodyString = String(data: body.data ?? Data(), encoding: .utf8)
         let data = encoder.encode(content)
         XCTAssertEqual(body.data, data)
         XCTAssertEqual(bodyString, "hello+world=hello+world&username=BottleRocket&password=abc%26123&user_id=0001")
-
     }
 }

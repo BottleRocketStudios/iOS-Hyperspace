@@ -8,6 +8,7 @@
 import XCTest
 @testable import Hyperspace
 
+@available(*, deprecated)
 class URLQueryParameterTests: XCTestCase {
     
     func test_DefaultURLQueryEncodingStraegy_GeneratesCorrectURL() {
@@ -70,6 +71,7 @@ class URLQueryParameterTests: XCTestCase {
     }
 }
 
+@available(*, deprecated)
 fileprivate extension URLQueryParameterEncoder {
     static let customEncoder: URLQueryParameterEncoder = {
         var encoder = URLQueryParameterEncoder()

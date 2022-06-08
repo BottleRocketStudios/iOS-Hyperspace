@@ -9,16 +9,16 @@ import Foundation
 import Hyperspace
 
 class RequestTestDefaults {
-    
+
     struct DefaultModel: Codable, Equatable {
         let title: String
     }
-    
-    static func defaultRequest<T: Decodable>() -> Request<T, MockBackendServiceError> {
+
+    static func defaultRequest<T: Decodable>() -> Request<T> {
         return Request(method: .get, url: RequestTestDefaults.defaultURL, cachePolicy: RequestTestDefaults.defaultCachePolicy, timeout: RequestTestDefaults.defaultTimeout)
     }
 
-    static func analyticsRequest<T: Decodable>() -> Request<T, MockAnalyticsServiceError> {
+    static func analyticsRequest<T: Decodable>() -> Request<T> {
         return Request(method: .get, url: RequestTestDefaults.defaultURL, cachePolicy: RequestTestDefaults.defaultCachePolicy, timeout: RequestTestDefaults.defaultTimeout)
     }
 

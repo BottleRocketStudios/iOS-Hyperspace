@@ -8,8 +8,9 @@
 import XCTest
 @testable import Hyperspace
 
+@available(*, deprecated)
 class CertificateHashTests: XCTestCase {
-    
+
     func test_CertificateHasher_publicKeyHashGenerationFromCertificate() {        
         do {
             let googleHash = try CertificateHasher.pinningHash(for: TestCertificates.google).base64EncodedString()

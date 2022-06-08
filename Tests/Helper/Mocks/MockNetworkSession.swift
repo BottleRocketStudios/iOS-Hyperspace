@@ -1,40 +1,40 @@
+////
+////  MockNetworkSession.swift
+////  Tests
+////
+////  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
+////
 //
-//  MockNetworkSession.swift
-//  Tests
+//import Foundation
+//import Hyperspace
 //
-//  Copyright © 2017 Bottle Rocket Studios. All rights reserved.
+//class MockNetworkSession {
 //
-
-import Foundation
-import Hyperspace
-
-class MockNetworkSession {
-    
-    private let responseStatusCode: Int?
-    private let responseData: Data?
-    private let error: Error?
-    var nextDataTask: TransportDataTask = MockNetworkSessionDataTask(request: URLRequest(url: RequestTestDefaults.defaultURL))
-    
-    init(responseStatusCode: Int?, responseData: Data?, error: Error?) {
-        self.responseStatusCode = responseStatusCode
-        self.responseData = responseData
-        self.error = error
-    }
-}
-
-extension MockNetworkSession: TransportSession {
-    
-    var configuration: URLSessionConfiguration { return .default }
-    
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> TransportDataTask {
-        guard let url = request.url else { fatalError("No \(URL.self) provided") }
-        
-        let response: HTTPURLResponse? = responseStatusCode.flatMap { HTTPURLResponse(url: url, statusCode: $0, httpVersion: "HTTP/1.1", headerFields: nil) }
-        
-        DispatchQueue.global().async {
-            completionHandler(self.responseData, response, self.error)
-        }
-        
-        return nextDataTask
-    }
-}
+//    private let responseStatusCode: Int?
+//    private let responseData: Data?
+//    private let error: Error?
+//    var nextDataTask: TransportDataTask = MockNetworkSessionDataTask(request: URLRequest(url: RequestTestDefaults.defaultURL))
+//
+//    init(responseStatusCode: Int?, responseData: Data?, error: Error?) {
+//        self.responseStatusCode = responseStatusCode
+//        self.responseData = responseData
+//        self.error = error
+//    }
+//}
+//
+//extension MockNetworkSession: TransportSession {
+//
+//    var configuration: URLSessionConfiguration { return .default }
+//
+//    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> TransportDataTask {
+//        guard let url = request.url else { fatalError("No \(URL.self) provided") }
+//
+//        let response: HTTPURLResponse? = responseStatusCode.flatMap { HTTPURLResponse(url: url, statusCode: $0, httpVersion: "HTTP/1.1", headerFields: nil) }
+//
+//        DispatchQueue.global().async {
+//            completionHandler(self.responseData, response, self.error)
+//        }
+//
+//        return nextDataTask
+//    }
+//}

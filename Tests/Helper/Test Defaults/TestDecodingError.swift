@@ -8,7 +8,6 @@
 import Foundation
 
 enum TestDecodingError: Error, Equatable {
-
     case keyNotFound
     case invalidValue
 }
