@@ -48,7 +48,7 @@ public struct HTTP {
     }
     
     /// Represents a HTTP status code.
-    public enum Status {
+    public enum Status: Equatable {
         public struct Success: RawRepresentable, Equatable {
             public var rawValue: Int
             
@@ -236,6 +236,7 @@ public extension HTTP.HeaderKey {
     static let contentType = HTTP.HeaderKey(rawValue: "Content-Type")
     static let date = HTTP.HeaderKey(rawValue: "Date")
     static let location = HTTP.HeaderKey(rawValue: "Location")
+    static let retryAfter = HTTP.HeaderKey(rawValue: "Retry-After")
     static let userAgent = HTTP.HeaderKey(rawValue: "User-Agent")
 }
 
