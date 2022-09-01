@@ -164,7 +164,7 @@ class RequestTests: XCTestCase {
 
     func test_Request_MappingARequestToANewResponseDoesNotUseHandlerWhenInitialRequestFails() async {
         let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "DateObject"))
-        let request: Request<MockDate> = .init(method: .get, url: RequestTestDefaults.defaultURL)
+        let request: Request<MockDate> = .init(method: .get, url: RequestTestDefaults.defaultURL, decoder: .iso8601)
         let mapped: Request<[MockDate]> = request.map { [$0] }
 
         _ = try! await mapped.transform(success: TransportSuccess(response: response))

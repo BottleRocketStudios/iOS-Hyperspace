@@ -24,7 +24,7 @@ struct TestCertificates {
     static let apple = TestCertificates.certificate(filename: "apple")
     
     static func certificate(filename: String, type: String = "der") -> SecCertificate {
-        let filePath = Bundle.module.url(forResource: filename, withExtension: type)!
+        let filePath = Bundle.REPLACE_ME_module.url(forResource: filename, withExtension: type)!
         let data = try! Data(contentsOf: filePath)
         return SecCertificateCreateWithData(nil, data as CFData)!
     }

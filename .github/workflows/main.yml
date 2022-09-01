@@ -8,8 +8,6 @@ on:
 jobs:
   Build:
     runs-on: macos-12
-    env:
-      workspace: "Hyperspace.xcworkspace"
     strategy:
       fail-fast: false
       matrix:
@@ -46,17 +44,13 @@ jobs:
 
     - name: Build and Test
       run: >
-        swift build
-        
         if [[ ${{ matrix.test }} == true ]]; then
           xcodebuild test \
-            -workspace ${{ env.workspace }} \
             -scheme "${{ matrix.scheme }}" \
             -destination "${{ matrix.destination }}" \
             ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES || exit 1
         else
           xcodebuild \
-            -workspace ${{ env.workspace }} \
             -scheme "${{ matrix.scheme }}" \
             -destination "${{ matrix.destination }}" \
             ONLY_ACTIVE_ARCH=NO || exit 1
