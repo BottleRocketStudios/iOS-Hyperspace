@@ -160,7 +160,11 @@ public extension Request {
 public struct RequestDefaults {
     
     public static var defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
-    public static var defaultDecoder: JSONDecoder = JSONDecoder()
+    public static var defaultDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return decoder
+    }()
     public static var defaultMaxRecoveryAttempts: UInt = 1
     public static var defaultTimeout: TimeInterval = 60
 }

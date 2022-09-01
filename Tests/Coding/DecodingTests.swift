@@ -75,7 +75,7 @@ class DecodingTests: XCTestCase {
     }
 
     func test_RequestWithImplicitJSONDecoder_DecodeFails() async throws {
-        let request = Request<MockDate>(method: .get, url: RequestTestDefaults.defaultURL)
+        let request = Request<MockObject>(method: .get, url: RequestTestDefaults.defaultURL)
         let objectJSON = loadedJSONData(fromFileNamed: "DateObject")
         let serviceSuccess = TransportSuccess(response: HTTP.Response(request: HTTP.Request(), code: 200, body: objectJSON))
 

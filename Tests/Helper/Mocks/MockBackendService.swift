@@ -12,7 +12,7 @@
 //
 //    case networkError(TransportError, HTTP.Response?)
 //    case dataTransformationError(Error)
-//    
+//
 //    public init(transportFailure: TransportFailure) {
 //        self = .networkError(transportFailure.error, transportFailure.response)
 //    }
@@ -20,14 +20,14 @@
 //    public init(decodingFailure: DecodingFailure) {
 //        self = .dataTransformationError(decodingFailure)
 //    }
-//    
+//
 //    public var transportError: TransportError? {
 //        switch self {
 //        case .networkError(let error, _): return error
 //        default: return nil
 //        }
 //    }
-//    
+//
 //    public var failureResponse: HTTP.Response? {
 //        switch self {
 //        case .networkError(_, let response): return response
@@ -99,7 +99,7 @@
 //    func cancelTask(for request: URLRequest) {
 //        /* No op */
 //    }
-//    
+//
 //    func cancelAllTasks() {
 //        /* No op */
 //    }

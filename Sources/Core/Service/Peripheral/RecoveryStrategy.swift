@@ -80,6 +80,7 @@ extension DateFormatter {
 
 // MARK: - BackoffStrategy
 
+/// Protocol for determining the correct interval of time to delay network requests
 public protocol BackoffStrategy {
 
     func delay(forRetryCount count: UInt, afterReceiving error: Error) -> TimeInterval
@@ -98,6 +99,7 @@ public extension BackoffStrategy {
     }
 }
 
+/// Delay network requests exponentially by powers of 2. The delay will be, in order, 2, 4, 8, 16, ... up to a given maximum
 public struct ExponentialBackoff: BackoffStrategy {
 
     // MARK: - Properties
@@ -116,6 +118,7 @@ public struct ExponentialBackoff: BackoffStrategy {
     }
 }
 
+/// Delay network requests by amount instructed in response header
 public struct HeaderBackoff: BackoffStrategy {
 
     // MARK: - Properties
@@ -130,6 +133,7 @@ public struct HeaderBackoff: BackoffStrategy {
 
 // MARK: - BackoffRecoveryStrategy
 
+/// Concrete recovery strategy to attempt retrying request after a given delay. The delay is determined by the backoff strategy passed to the initializer
 public struct BackoffRecoveryStrategy: RecoveryStrategy {
 
     // MARK: - Properties

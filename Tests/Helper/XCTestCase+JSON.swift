@@ -10,8 +10,7 @@ import XCTest
 extension XCTestCase {
     
     func loadedJSONData(fromFileNamed name: String) -> Data {
-        let bundle = Bundle(for: DecodingTests.self)
-        let url = bundle.url(forResource: name, withExtension: "json")!
+        let url = Bundle.module.url(forResource: name, withExtension: "json")!
         return try! Data(contentsOf: url)
     }
 }
