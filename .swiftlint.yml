@@ -13,3 +13,4 @@ identifier_name:
 excluded:
   - Carthage
   - .build
+  - BR_resource_bundle_accessor.swift
