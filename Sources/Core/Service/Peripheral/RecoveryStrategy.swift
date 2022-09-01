@@ -110,7 +110,7 @@ public struct ExponentialBackoff: BackoffStrategy {
     public func delay(forRetryCount count: UInt, afterReceiving error: Error) -> TimeInterval {
         var delay = TimeInterval(pow(2.0, Float(count))) * 1000
 
-        if let jitter {
+        if let jitter = jitter {
             delay += TimeInterval.random(in: jitter)
         }
 
