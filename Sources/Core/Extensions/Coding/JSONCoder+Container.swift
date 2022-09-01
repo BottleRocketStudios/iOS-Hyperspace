@@ -9,6 +9,12 @@ import Foundation
 
 // MARK: - JSONDecoder + Convenience
 public extension JSONDecoder {
+
+    static var iso8601: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return decoder
+    }
     
     func decode<T, C: DecodableContainer>(_ type: T.Type, from data: Data, with container: C.Type) throws -> T where T == C.Contained {
         return try decode(C.self, from: data).element
