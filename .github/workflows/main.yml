@@ -46,10 +46,20 @@ jobs:
 
     - name: Build and Test
       run: >
+        swift build
+        
         if [[ ${{ matrix.test }} == true ]]; then
-          swift test || exit 1
+          xcodebuild test \
+            -workspace ${{ env.workspace }} \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES || exit 1
         else
-          swift build || exit 1
+          xcodebuild \
+            -workspace ${{ env.workspace }} \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            ONLY_ACTIVE_ARCH=NO || exit 1
         fi
 
   Lint:
@@ -62,6 +72,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Setup Xcode version
+      uses: maxim-lobanov/setup-xcode@v1.4.1
+      with:
+        xcode-version: '14.0-beta'
 
     - name: Lint
       run: >
