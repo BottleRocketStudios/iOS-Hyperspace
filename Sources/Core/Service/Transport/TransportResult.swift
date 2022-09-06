@@ -36,10 +36,10 @@ public struct TransportFailure: Error, Equatable {
     // MARK: - Properties
     public let kind: Kind
     public let request: HTTP.Request
-    public let response: HTTP.Response
+    public let response: HTTP.Response?
 
     // MARK: - Initializers
-    public init(kind: Kind, request: HTTP.Request, response: HTTP.Response) {
+    public init(kind: Kind, request: HTTP.Request, response: HTTP.Response?) {
         self.kind = kind
         self.request = request
         self.response = response

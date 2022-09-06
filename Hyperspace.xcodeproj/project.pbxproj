@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -109,7 +109,6 @@
 		0EFFCCBB2790B36400D3FD83 /* NetworkActivityControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityControllerTests.swift */; };
 		0EFFCCBC2790B36400D3FD83 /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0EFFCCBD2790B36400D3FD83 /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4255B57246E525F009B6D6A /* EncodingTests.swift */; };
-		0EFFCCBE2790B36400D3FD83 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
 		0EFFCCBF2790B36400D3FD83 /* URLFormEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC09324EC66D700C37ADA /* URLFormEncoderTests.swift */; };
 		0EFFCCC02790B36400D3FD83 /* PinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7C2202745800484C01 /* PinningTests.swift */; };
 		0EFFCCC12790B36400D3FD83 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F7201CFCCF00B3B012 /* RequestTests.swift */; };
@@ -122,7 +121,6 @@
 		0EFFCCCD2790B36500D3FD83 /* NetworkActivityControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C32C32201E9F9300FC82C1 /* NetworkActivityControllerTests.swift */; };
 		0EFFCCCE2790B36500D3FD83 /* RecoverableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E81B49A20AC97C900DC1F4E /* RecoverableTests.swift */; };
 		0EFFCCCF2790B36500D3FD83 /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4255B57246E525F009B6D6A /* EncodingTests.swift */; };
-		0EFFCCD02790B36500D3FD83 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
 		0EFFCCD12790B36500D3FD83 /* URLFormEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBEC09324EC66D700C37ADA /* URLFormEncoderTests.swift */; };
 		0EFFCCD22790B36500D3FD83 /* PinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF57B7C2202745800484C01 /* PinningTests.swift */; };
 		0EFFCCD32790B36500D3FD83 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F7201CFCCF00B3B012 /* RequestTests.swift */; };
@@ -146,13 +144,9 @@
 		0EFFCCE52790B36E00D3FD83 /* RequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* RequestTestDefaults.swift */; };
 		0EFFCCE62790B37200D3FD83 /* MockCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F6201CFCCF00B3B012 /* MockCodableContainer.swift */; };
 		0EFFCCE72790B37200D3FD83 /* MockTransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F3201CFCCF00B3B012 /* MockTransportSession.swift */; };
-		0EFFCCE92790B37200D3FD83 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
-		0EFFCCEA2790B37200D3FD83 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
 		0EFFCCEC2790B37200D3FD83 /* MockTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */; };
 		0EFFCCED2790B37200D3FD83 /* MockCodableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F6201CFCCF00B3B012 /* MockCodableContainer.swift */; };
 		0EFFCCEE2790B37200D3FD83 /* MockTransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F3201CFCCF00B3B012 /* MockTransportSession.swift */; };
-		0EFFCCF02790B37200D3FD83 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
-		0EFFCCF12790B37200D3FD83 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
 		0EFFCCF32790B37200D3FD83 /* MockTransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */; };
 		0EFFCCF42790B37700D3FD83 /* DateObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3F9201CFCCF00B3B012 /* DateObject.json */; };
 		0EFFCCF52790B37700D3FD83 /* RootKeyObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 60D6C3FA201CFCCF00B3B012 /* RootKeyObject.json */; };
@@ -174,13 +168,17 @@
 		0EFFCD072790B37C00D3FD83 /* Trusts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB54352204AFBA00949F24 /* Trusts.swift */; };
 		30F0735420210A890045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
 		30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F07352202109F60045CB01 /* HTTPTests.swift */; };
-		30F07358202172420045CB01 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
-		30F07359202172450045CB01 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073562021720B0045CB01 /* MockBackendService.swift */; };
 		30F0735E202205350045CB01 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URLQueryParameterEncoder.swift */; };
 		30F07361202213E50045CB01 /* RequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* RequestTestDefaults.swift */; };
 		30F07362202213E60045CB01 /* RequestTestDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0735F202213E00045CB01 /* RequestTestDefaults.swift */; };
-		30F07367202227790045CB01 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
-		30F073682022277A0045CB01 /* TransportServiceMockSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */; };
+		42DFB85628C7F0CE00F742C9 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85528C7F0CE00F742C9 /* BackendServiceTests.swift */; };
+		42DFB85728C7F0CE00F742C9 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85528C7F0CE00F742C9 /* BackendServiceTests.swift */; };
+		42DFB85828C7F0CE00F742C9 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85528C7F0CE00F742C9 /* BackendServiceTests.swift */; };
+		42DFB85928C7F0CE00F742C9 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85528C7F0CE00F742C9 /* BackendServiceTests.swift */; };
+		42DFB85B28C7F0F300F742C9 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */; };
+		42DFB85C28C7F0F300F742C9 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */; };
+		42DFB85D28C7F0F300F742C9 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */; };
+		42DFB85E28C7F0F300F742C9 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */; };
 		60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; };
 		60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; };
 		60D6C36D201CC81100B3B012 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URLQueryParameterEncoder.swift */; };
@@ -205,8 +203,6 @@
 		60D6C390201CCCBE00B3B012 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC834F1FF596B600120172 /* BackendService.swift */; };
 		60D6C3FF201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
 		60D6C400201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */; };
-		60D6C401201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
-		60D6C402201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */; };
 		60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */; };
 		60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */; };
 		60D6C405201CFCCF00B3B012 /* MockTransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6C3F3201CFCCF00B3B012 /* MockTransportSession.swift */; };
@@ -326,9 +322,9 @@
 		0EFFCC892790B2A300D3FD83 /* Hyperspace watchOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace watchOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12746B8522F4C95500B99373 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		30F07352202109F60045CB01 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
-		30F073562021720B0045CB01 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
 		30F0735F202213E00045CB01 /* RequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/RequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
-		30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportServiceMockSubclass.swift; sourceTree = "<group>"; };
+		42DFB85528C7F0CE00F742C9 /* BackendServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
+		42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
 		6077BA2120A3B7F600326828 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		60AC82B61FF588D500120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC82BF1FF588D600120172 /* Hyperspace iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,7 +339,6 @@
 		60AC834E1FF596B600120172 /* BackendServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServicing.swift; sourceTree = "<group>"; };
 		60AC834F1FF596B600120172 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
 		60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportServiceTests.swift; sourceTree = "<group>"; };
-		60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
 		60D6C3F1201CFCCF00B3B012 /* DecodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		60D6C3F3201CFCCF00B3B012 /* MockTransportSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTransportSession.swift; sourceTree = "<group>"; };
 		60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTransportService.swift; sourceTree = "<group>"; };
@@ -597,7 +592,7 @@
 				0E9570902840230300B769E0 /* Certificate Pinning */,
 				0E95708F28401C6500B769E0 /* Coding */,
 				0E95709B2840327700B769E0 /* Request */,
-				60D6C3F0201CFCCF00B3B012 /* BackendServiceTests.swift */,
+				42DFB85528C7F0CE00F742C9 /* BackendServiceTests.swift */,
 				0EBEC09324EC66D700C37ADA /* URLFormEncoderTests.swift */,
 				60D6C3EF201CFCCF00B3B012 /* TransportServiceTests.swift */,
 				0ECDC1C220A9ED6700ABF991 /* URLQueryParameterTests.swift */,
@@ -689,10 +684,9 @@
 			isa = PBXGroup;
 			children = (
 				60D6C3F3201CFCCF00B3B012 /* MockTransportSession.swift */,
+				42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */,
 				60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */,
 				60D6C3F6201CFCCF00B3B012 /* MockCodableContainer.swift */,
-				30F073562021720B0045CB01 /* MockBackendService.swift */,
-				30F073652022246E0045CB01 /* TransportServiceMockSubclass.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -925,7 +919,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Bottle Rocket Studios";
 				TargetAttributes = {
 					0EFFCC6F2790B28900D3FD83 = {
@@ -1106,6 +1100,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		0EEB77AF20222D0C00671424 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1116,10 +1111,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		0EEB77B020222F7F00671424 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1130,10 +1126,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		0EEB77B120222F9000671424 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1144,7 +1141,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1183,15 +1180,14 @@
 			files = (
 				0EFFCCBF2790B36400D3FD83 /* URLFormEncoderTests.swift in Sources */,
 				0E9570992840247600B769E0 /* XCTest+Async.swift in Sources */,
+				42DFB85928C7F0CE00F742C9 /* BackendServiceTests.swift in Sources */,
 				0EFFCCBB2790B36400D3FD83 /* NetworkActivityControllerTests.swift in Sources */,
 				0EFFCCC02790B36400D3FD83 /* PinningTests.swift in Sources */,
 				0EFFCCBC2790B36400D3FD83 /* RecoverableTests.swift in Sources */,
 				0EFFCCBA2790B36400D3FD83 /* CertificateHashTests.swift in Sources */,
-				0EFFCCF02790B37200D3FD83 /* MockBackendService.swift in Sources */,
 				0EFFCCC22790B36400D3FD83 /* DecodingTests.swift in Sources */,
 				0EFFCCE22790B36D00D3FD83 /* TestDecodingError.swift in Sources */,
 				0EFFCCC32790B36400D3FD83 /* URLQueryParameterTests.swift in Sources */,
-				0EFFCCBE2790B36400D3FD83 /* BackendServiceTests.swift in Sources */,
 				0EFFCCB32790B36400D3FD83 /* HTTPTests.swift in Sources */,
 				0EFFCD042790B37B00D3FD83 /* Trusts.swift in Sources */,
 				0EFFCCED2790B37200D3FD83 /* MockCodableContainer.swift in Sources */,
@@ -1202,8 +1198,8 @@
 				0EFFCCF32790B37200D3FD83 /* MockTransportService.swift in Sources */,
 				0EFFCCBD2790B36400D3FD83 /* EncodingTests.swift in Sources */,
 				0EFFCCC12790B36400D3FD83 /* RequestTests.swift in Sources */,
+				42DFB85E28C7F0F300F742C9 /* MockBackendService.swift in Sources */,
 				0EFFCCB52790B36400D3FD83 /* TransportServiceTests.swift in Sources */,
-				0EFFCCF12790B37200D3FD83 /* TransportServiceMockSubclass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,15 +1209,14 @@
 			files = (
 				0EFFCCD12790B36500D3FD83 /* URLFormEncoderTests.swift in Sources */,
 				0E9570982840247500B769E0 /* XCTest+Async.swift in Sources */,
+				42DFB85828C7F0CE00F742C9 /* BackendServiceTests.swift in Sources */,
 				0EFFCCCD2790B36500D3FD83 /* NetworkActivityControllerTests.swift in Sources */,
 				0EFFCCD22790B36500D3FD83 /* PinningTests.swift in Sources */,
 				0EFFCCCE2790B36500D3FD83 /* RecoverableTests.swift in Sources */,
 				0EFFCCCC2790B36500D3FD83 /* CertificateHashTests.swift in Sources */,
-				0EFFCCE92790B37200D3FD83 /* MockBackendService.swift in Sources */,
 				0EFFCCD42790B36500D3FD83 /* DecodingTests.swift in Sources */,
 				0EFFCCE42790B36E00D3FD83 /* TestDecodingError.swift in Sources */,
 				0EFFCCD52790B36500D3FD83 /* URLQueryParameterTests.swift in Sources */,
-				0EFFCCD02790B36500D3FD83 /* BackendServiceTests.swift in Sources */,
 				0EFFCCC52790B36500D3FD83 /* HTTPTests.swift in Sources */,
 				0EFFCD072790B37C00D3FD83 /* Trusts.swift in Sources */,
 				0EFFCCE62790B37200D3FD83 /* MockCodableContainer.swift in Sources */,
@@ -1232,8 +1227,8 @@
 				0EFFCCEC2790B37200D3FD83 /* MockTransportService.swift in Sources */,
 				0EFFCCCF2790B36500D3FD83 /* EncodingTests.swift in Sources */,
 				0EFFCCD32790B36500D3FD83 /* RequestTests.swift in Sources */,
+				42DFB85D28C7F0F300F742C9 /* MockBackendService.swift in Sources */,
 				0EFFCCC72790B36500D3FD83 /* TransportServiceTests.swift in Sources */,
-				0EFFCCEA2790B37200D3FD83 /* TransportServiceMockSubclass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1266,7 @@
 			files = (
 				B4C32C33201E9F9300FC82C1 /* NetworkActivityControllerTests.swift in Sources */,
 				0E9570972840247400B769E0 /* XCTest+Async.swift in Sources */,
+				42DFB85628C7F0CE00F742C9 /* BackendServiceTests.swift in Sources */,
 				60D6C409201CFCCF00B3B012 /* MockTransportService.swift in Sources */,
 				60D6C403201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				0E81B49B20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */,
@@ -1284,14 +1280,12 @@
 				65A672F62731991A000E3511 /* TestDecodingError.swift in Sources */,
 				60D6C40B201CFCCF00B3B012 /* MockCodableContainer.swift in Sources */,
 				0EF57B7D2202745800484C01 /* PinningTests.swift in Sources */,
-				60D6C401201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
-				30F07358202172420045CB01 /* MockBackendService.swift in Sources */,
 				60D6C3FF201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */,
 				0EF57B88220296A700484C01 /* CertificateHashTests.swift in Sources */,
 				0EBEC09524EC66F500C37ADA /* URLFormEncoderTests.swift in Sources */,
 				0EFB54362204AFBA00949F24 /* Trusts.swift in Sources */,
+				42DFB85B28C7F0F300F742C9 /* MockBackendService.swift in Sources */,
 				60D6C405201CFCCF00B3B012 /* MockTransportSession.swift in Sources */,
-				30F07367202227790045CB01 /* TransportServiceMockSubclass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1357,6 +1351,7 @@
 			files = (
 				B4C32C34201E9F9300FC82C1 /* NetworkActivityControllerTests.swift in Sources */,
 				0E9570962840247300B769E0 /* XCTest+Async.swift in Sources */,
+				42DFB85728C7F0CE00F742C9 /* BackendServiceTests.swift in Sources */,
 				60D6C40A201CFCCF00B3B012 /* MockTransportService.swift in Sources */,
 				60D6C404201CFCCF00B3B012 /* DecodingTests.swift in Sources */,
 				0E81B49C20AC97CA00DC1F4E /* RecoverableTests.swift in Sources */,
@@ -1370,14 +1365,12 @@
 				65A672F72731991A000E3511 /* TestDecodingError.swift in Sources */,
 				60D6C40C201CFCCF00B3B012 /* MockCodableContainer.swift in Sources */,
 				0EF57B7E2202745800484C01 /* PinningTests.swift in Sources */,
-				60D6C402201CFCCF00B3B012 /* BackendServiceTests.swift in Sources */,
-				30F07359202172450045CB01 /* MockBackendService.swift in Sources */,
 				60D6C400201CFCCF00B3B012 /* TransportServiceTests.swift in Sources */,
 				0EBEC09624EC66F600C37ADA /* URLFormEncoderTests.swift in Sources */,
 				0EFB54372204AFBA00949F24 /* Trusts.swift in Sources */,
 				0EF57B89220296A700484C01 /* CertificateHashTests.swift in Sources */,
+				42DFB85C28C7F0F300F742C9 /* MockBackendService.swift in Sources */,
 				60D6C406201CFCCF00B3B012 /* MockTransportSession.swift in Sources */,
-				30F073682022277A0045CB01 /* TransportServiceMockSubclass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1416,6 +1409,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1424,7 +1418,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bottle Rocket Studios. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
@@ -1444,6 +1442,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1452,7 +1451,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bottle Rocket Studios. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = macosx;
@@ -1471,6 +1474,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1493,6 +1497,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1669,7 +1674,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Hyperspace;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 				VERSION = 4.1.0;
@@ -1690,7 +1696,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1710,7 +1720,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1723,7 +1737,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1737,7 +1755,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1758,7 +1780,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1778,7 +1804,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1798,7 +1828,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1818,7 +1852,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bottlerocketstudios.Hyperspace;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1832,7 +1870,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -1847,7 +1889,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bottlerocketstudios.Hyperspace-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;

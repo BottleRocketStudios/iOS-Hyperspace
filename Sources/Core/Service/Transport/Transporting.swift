@@ -35,7 +35,7 @@ public actor TransportService {
         self.networkActivityController = networkActivityIndicatable.map { NetworkActivityController(indicator: $0) }
     }
 
-    public convenience init(sessionConfiguration: TransportSessionConfiguration, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
+    public init(sessionConfiguration: TransportSessionConfiguration, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
         self.init(session: URLSession(configuration: sessionConfiguration), networkActivityIndicatable: networkActivityIndicatable)
     }
 }
