@@ -178,13 +178,14 @@ private extension TransportServiceTests {
 
     func executeTransportService(using session: TransportSession, expectingResult expectedResult: TransportResult, file: StaticString = #file, line: UInt = #line) async {
         let service = TransportService(session: session)
-        let asyncExpectation = expectation(description: "\(TransportService.self) completion")
-
+        
         do {
             let success = try await service.execute(request: defaultRequest)
             XCTAssertTrue(.success(success) == expectedResult, "Result '\(success)' did not equal expected result '\(expectedResult)'", file: file, line: line)
-        } catch {
+        } catch let error as TransportFailure {
             XCTAssertTrue(.failure(error) == expectedResult, "Result '\(error)' did not equal expected result '\(expectedResult)'", file: file, line: line)
+        } catch {
+            XCTFail("Test failure because of unexpectedly thrown error: \(error)")
         }
     }
 }
