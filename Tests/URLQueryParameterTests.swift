@@ -10,7 +10,8 @@ import XCTest
 
 @available(*, deprecated)
 class URLQueryParameterTests: XCTestCase {
-    
+
+    // MARK: - Tests
     func test_DefaultURLQueryEncodingStraegy_GeneratesCorrectURL() {
         let url = RequestTestDefaults.defaultURL
         

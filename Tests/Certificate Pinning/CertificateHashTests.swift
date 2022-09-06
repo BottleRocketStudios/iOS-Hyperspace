@@ -11,6 +11,7 @@ import XCTest
 @available(*, deprecated)
 class CertificateHashTests: XCTestCase {
 
+    // MARK: - Tests
     func test_CertificateHasher_publicKeyHashGenerationFromCertificate() {        
         do {
             let googleHash = try CertificateHasher.pinningHash(for: TestCertificates.google).base64EncodedString()

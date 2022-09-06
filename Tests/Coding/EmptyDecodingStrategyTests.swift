@@ -15,6 +15,7 @@ class EmptyDecodingStrategyTests: XCTestCase {
         case unexpectedNonEmptyResponse
     }
 
+    // MARK: - Tests
     func test_EmptyDecodingStrategy_defaultStrategyAlwaysReturnsEmptyResponse() async throws {
         let transformer = Request<Void>.successTransformer(for: .default)
 

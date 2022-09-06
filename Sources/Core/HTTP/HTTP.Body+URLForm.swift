@@ -48,7 +48,7 @@ extension URLFormEncoder {
 }
 
 // MARK: - URL Form Allowed Character Set
-private extension CharacterSet {
+extension CharacterSet {
 
     /*
      - The " " will later be converted to a "+"
