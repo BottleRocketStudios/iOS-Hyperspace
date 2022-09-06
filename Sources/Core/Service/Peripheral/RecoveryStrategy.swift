@@ -123,8 +123,8 @@ public struct HeaderBackoff: BackoffStrategy {
 
     // MARK: - BackoffStrategy
     public func delay(forRetryCount count: UInt, afterReceiving error: Error) -> TimeInterval {
-        guard let transportFailure = error as? TransportFailure else { return defaultDelay }
-        return retryInterval(from: transportFailure.response.headers) ?? defaultDelay
+        guard let transportFailure = error as? TransportFailure, let response = transportFailure.response else { return defaultDelay }
+        return retryInterval(from: response.headers) ?? defaultDelay
     }
 }
 
@@ -139,8 +139,9 @@ public struct BackoffRecoveryStrategy: RecoveryStrategy {
     // MARK: - Initializers
     public init(backoffStrategy: BackoffStrategy, handlingStatuses: [HTTP.Status] = [.serverError(.serviceUnavailable)]) {
         self.init(backoffStrategy: backoffStrategy) {
-            guard let failure = $0 as? TransportFailure else { return false }
-            return handlingStatuses.contains(failure.response.status)
+            guard let failure = $0 as? TransportFailure, let response = failure.response else { return false }
+
+            return handlingStatuses.contains(response.status)
         }
     }
 

@@ -179,10 +179,6 @@
 		42DFB85C28C7F0F300F742C9 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */; };
 		42DFB85D28C7F0F300F742C9 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */; };
 		42DFB85E28C7F0F300F742C9 /* MockBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */; };
-		42DFB86028C7F11700F742C9 /* TransportServiceMockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85F28C7F11700F742C9 /* TransportServiceMockClass.swift */; };
-		42DFB86128C7F11700F742C9 /* TransportServiceMockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85F28C7F11700F742C9 /* TransportServiceMockClass.swift */; };
-		42DFB86228C7F11700F742C9 /* TransportServiceMockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85F28C7F11700F742C9 /* TransportServiceMockClass.swift */; };
-		42DFB86328C7F11700F742C9 /* TransportServiceMockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DFB85F28C7F11700F742C9 /* TransportServiceMockClass.swift */; };
 		60AC82C01FF588D600120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82B61FF588D500120172 /* Hyperspace.framework */; };
 		60AC82EB1FF589C200120172 /* Hyperspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC82E21FF589C200120172 /* Hyperspace.framework */; };
 		60D6C36D201CC81100B3B012 /* URLQueryParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AC833F1FF596B600120172 /* URLQueryParameterEncoder.swift */; };
@@ -329,7 +325,6 @@
 		30F0735F202213E00045CB01 /* RequestTestDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestTestDefaults.swift; path = "Tests/Helper/Test Defaults/RequestTestDefaults.swift"; sourceTree = SOURCE_ROOT; };
 		42DFB85528C7F0CE00F742C9 /* BackendServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
 		42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackendService.swift; sourceTree = "<group>"; };
-		42DFB85F28C7F11700F742C9 /* TransportServiceMockClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportServiceMockClass.swift; sourceTree = "<group>"; };
 		6077BA2120A3B7F600326828 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		60AC82B61FF588D500120172 /* Hyperspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC82BF1FF588D600120172 /* Hyperspace iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyperspace iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -690,7 +685,6 @@
 			children = (
 				60D6C3F3201CFCCF00B3B012 /* MockTransportSession.swift */,
 				42DFB85A28C7F0F300F742C9 /* MockBackendService.swift */,
-				42DFB85F28C7F11700F742C9 /* TransportServiceMockClass.swift */,
 				60D6C3F5201CFCCF00B3B012 /* MockTransportService.swift */,
 				60D6C3F6201CFCCF00B3B012 /* MockCodableContainer.swift */,
 			);
@@ -1194,7 +1188,6 @@
 				0EFFCCC22790B36400D3FD83 /* DecodingTests.swift in Sources */,
 				0EFFCCE22790B36D00D3FD83 /* TestDecodingError.swift in Sources */,
 				0EFFCCC32790B36400D3FD83 /* URLQueryParameterTests.swift in Sources */,
-				42DFB86328C7F11700F742C9 /* TransportServiceMockClass.swift in Sources */,
 				0EFFCCB32790B36400D3FD83 /* HTTPTests.swift in Sources */,
 				0EFFCD042790B37B00D3FD83 /* Trusts.swift in Sources */,
 				0EFFCCED2790B37200D3FD83 /* MockCodableContainer.swift in Sources */,
@@ -1224,7 +1217,6 @@
 				0EFFCCD42790B36500D3FD83 /* DecodingTests.swift in Sources */,
 				0EFFCCE42790B36E00D3FD83 /* TestDecodingError.swift in Sources */,
 				0EFFCCD52790B36500D3FD83 /* URLQueryParameterTests.swift in Sources */,
-				42DFB86228C7F11700F742C9 /* TransportServiceMockClass.swift in Sources */,
 				0EFFCCC52790B36500D3FD83 /* HTTPTests.swift in Sources */,
 				0EFFCD072790B37C00D3FD83 /* Trusts.swift in Sources */,
 				0EFFCCE62790B37200D3FD83 /* MockCodableContainer.swift in Sources */,
@@ -1282,7 +1274,6 @@
 				30F07361202213E50045CB01 /* RequestTestDefaults.swift in Sources */,
 				0ECDC1C420A9EDA500ABF991 /* URLQueryParameterTests.swift in Sources */,
 				B4255B59246E528C009B6D6A /* EncodingTests.swift in Sources */,
-				42DFB86028C7F11700F742C9 /* TransportServiceMockClass.swift in Sources */,
 				60D6C40D201CFCCF00B3B012 /* RequestTests.swift in Sources */,
 				0E458C8C24EDCC3500DC3E70 /* EmptyDecodingStrategyTests.swift in Sources */,
 				30F0735420210A890045CB01 /* HTTPTests.swift in Sources */,
@@ -1368,7 +1359,6 @@
 				30F07362202213E60045CB01 /* RequestTestDefaults.swift in Sources */,
 				0ECDC1C520A9EDA600ABF991 /* URLQueryParameterTests.swift in Sources */,
 				B4255B5A246E528D009B6D6A /* EncodingTests.swift in Sources */,
-				42DFB86128C7F11700F742C9 /* TransportServiceMockClass.swift in Sources */,
 				60D6C40E201CFCCF00B3B012 /* RequestTests.swift in Sources */,
 				0E458C8D24EDCC3700DC3E70 /* EmptyDecodingStrategyTests.swift in Sources */,
 				30F0735520210A8B0045CB01 /* HTTPTests.swift in Sources */,
