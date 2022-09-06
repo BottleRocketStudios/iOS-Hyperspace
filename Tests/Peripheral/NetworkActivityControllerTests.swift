@@ -65,7 +65,7 @@ class NetworkActivityControllerTests: XCTestCase {
     }
 
     func test_RequestCompletion_HideResponseExecutes() async throws {
-        let delayInterval: TimeInterval = 0.1
+        let delayInterval: TimeInterval = 0.3
         let indicator = MockNetworkActivityIndicator()
         let activityController = NetworkActivityController(delayInterval: delayInterval, indicator: indicator)
 
