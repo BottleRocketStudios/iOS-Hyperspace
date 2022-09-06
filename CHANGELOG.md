@@ -4,7 +4,7 @@
 
 * Remove SSL pinning machinery
 [Will McGinty](https://github.com/wmcginty)
-[#163](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/163)
+[#164](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/164)
 
 * Remove migration typeliases for all the types that were deprecated in 4.0, including `RequestRecoveryStrategy`, `NetworkServiceFailureInitializable`, and `NetworkService*`.
 [Will McGinty](https://github.com/wmcginty)
