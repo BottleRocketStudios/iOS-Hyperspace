@@ -25,7 +25,7 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.ios.deployment_target = '15.0'
   s.tvos.deployment_target = '15.0'
   s.watchos.deployment_target = '8.0'
-  s.macos.deployment_target = '12'
+  s.macos.deployment_target = '12.0'
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|

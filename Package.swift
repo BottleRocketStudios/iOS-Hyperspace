@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Hyperspace",
     platforms: [
-        .macOS(.v11),
+        .macOS(.v12),
         .macCatalyst(.v15),
         .iOS(.v15),
         .tvOS(.v15),
