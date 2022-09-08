@@ -70,11 +70,11 @@ public class TrustValidator {
         guard trust.isValid else { return .block }
         
         // If the server trust evaluation is successful, walk the certificate chain
-        if let chain = SecTrustCopyCertificateChain(trust) as? [SecCertificate],
-           chain.contains(where: { domainConfig.validate(against: $0) }) {
-                // Found a pinned certificate, allow the connection
-                return .allow(URLCredential(trust: trust))
-        }
+//        if let chain = SecTrustCopyCertificateChain(trust) as? [SecCertificate],
+//           chain.contains(where: { domainConfig.validate(against: $0) }) {
+//                // Found a pinned certificate, allow the connection
+//                return .allow(URLCredential(trust: trust))
+//        }
         
         return .block
     }

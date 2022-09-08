@@ -87,7 +87,7 @@ public protocol BackoffStrategy {
 
 public extension BackoffStrategy {
 
-    func retryInterval(from headers: [HTTP.HeaderKey: HTTP.HeaderValue]?, currentDate: Date = .now) -> TimeInterval? {
+    func retryInterval(from headers: [HTTP.HeaderKey: HTTP.HeaderValue]?, currentDate: Date = Date()) -> TimeInterval? {
         if let interval = headers?[.retryAfter].map({ TimeInterval($0.rawValue) }) {
             return interval
         } else if let futureDate = headers?[.retryAfter].flatMap({ DateFormatter.httpDate.date(from: $0.rawValue) }) {

@@ -4,11 +4,11 @@ import PackageDescription
 let package = Package(
     name: "Hyperspace",
     platforms: [
-        .macOS(.v12),
-        .macCatalyst(.v15),
-        .iOS(.v15),
-        .tvOS(.v15),
-        .watchOS(.v8)
+        .macOS(.v11),
+        .macCatalyst(.v13),
+        .iOS(.v13),
+        .tvOS(.v13),
+        .watchOS(.v6)
     ],
     products: [
         .library(name: "Hyperspace", targets: ["Hyperspace"])

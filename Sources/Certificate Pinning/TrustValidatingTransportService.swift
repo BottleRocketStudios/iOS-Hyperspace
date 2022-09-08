@@ -58,6 +58,11 @@ public class TrustValidatingTransportService: Transporting {
     }
 
     // MARK: - TrustValidatingTransportService + Transporting
+    public func execute(request: URLRequest) async throws -> TransportSuccess {
+        return try await transportService.execute(request: request)
+    }
+
+    @available(iOS 15.0, tvOS 15.0, macOS 12.0, watchOS 8.0, *)
     public func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportSuccess {
         return try await transportService.execute(request: request, delegate: delegate)
     }

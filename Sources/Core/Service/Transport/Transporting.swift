@@ -11,12 +11,22 @@ import Foundation
 
 /// Represents something that can execute a URLRequest.
 public protocol Transporting {
+
+    /// Executes the `URLRequest`, calling the provided completion block when complete.
+    ///
+    /// - Parameters:
+    ///   - request: The `URLRequest` to execute.
+    @available(iOS, deprecated: 15.0)
+    @available(tvOS, deprecated: 15.0)
+    @available(macOS, deprecated: 12.0)
+    @available(watchOS, deprecated: 8.0)
+    func execute(request: URLRequest) async throws -> TransportSuccess
     
     /// Executes the `URLRequest`, calling the provided completion block when complete.
     ///
     /// - Parameters:
     ///   - request: The `URLRequest` to execute.
-    ///   - completion: The completion block to be invoked when request execution is complete.
+    @available(iOS 15.0, tvOS 15.0, macOS 12.0, watchOS 8.0, *)
     func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportSuccess
 }
 
@@ -43,6 +53,23 @@ public actor TransportService {
 // MARK: - TransportService + Transporting
 extension TransportService: Transporting {
 
+    @available(iOS, deprecated: 15.0)
+    @available(tvOS, deprecated: 15.0)
+    @available(macOS, deprecated: 12.0)
+    @available(watchOS, deprecated: 8.0)
+    public func execute(request: URLRequest) async throws -> TransportSuccess {
+        startTransportTask()
+        let (data, urlResponse) = try await session.data(for: request)
+        finishTransportTask()
+
+        try Task.checkCancellation()
+
+        guard let httpURLResponse = urlResponse as? HTTPURLResponse else { throw URLError(.badServerResponse) }
+        let response = HTTP.Response(request: .init(urlRequest: request), httpURLResponse: httpURLResponse, body: data)
+        return try response.transportResult.get()
+    }
+
+    @available(iOS 15.0, tvOS 15.0, macOS 12.0, watchOS 8.0, *)
     public func execute(request: URLRequest, delegate: TransportTaskDelegate? = nil) async throws -> TransportSuccess {
         startTransportTask()
         let (data, urlResponse) = try await session.data(for: request, delegate: delegate)

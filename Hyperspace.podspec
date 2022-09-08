@@ -22,10 +22,10 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.source           = { :git => 'https://github.com/BottleRocketStudios/iOS-Hyperspace.git', :tag => s.version.to_s }
 
   s.swift_version = '5.6'
-  s.ios.deployment_target = '15.0'
-  s.tvos.deployment_target = '15.0'
-  s.watchos.deployment_target = '8.0'
-  s.macos.deployment_target = '12.0'
+  s.ios.deployment_target = '13.0'
+  s.tvos.deployment_target = '13.0'
+  s.watchos.deployment_target = '6.0'
+  s.macos.deployment_target = '11.0'
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
