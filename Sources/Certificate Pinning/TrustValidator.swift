@@ -70,11 +70,24 @@ public class TrustValidator {
         guard trust.isValid else { return .block }
         
         // If the server trust evaluation is successful, walk the certificate chain
-//        if let chain = SecTrustCopyCertificateChain(trust) as? [SecCertificate],
-//           chain.contains(where: { domainConfig.validate(against: $0) }) {
-//                // Found a pinned certificate, allow the connection
-//                return .allow(URLCredential(trust: trust))
-//        }
+        if #available(iOS 15.0, tvOS 15.0, watchOS 8.0, macOS 12.0, *) {
+            if let chain = SecTrustCopyCertificateChain(trust) as? [SecCertificate],
+               chain.contains(where: { domainConfig.validate(against: $0) }) {
+                // Found a pinned certificate, allow the connection
+                return .allow(URLCredential(trust: trust))
+            }
+
+        } else {
+            let certificateCount = SecTrustGetCertificateCount(trust)
+            for certIndex in 0..<certificateCount {
+                guard let certificate = SecTrustGetCertificateAtIndex(trust, certIndex) else { continue }
+
+                if domainConfig.validate(against: certificate) {
+                    // Found a pinned certificate, allow the connection
+                    return .allow(URLCredential(trust: trust))
+                }
+            }
+        }
         
         return .block
     }

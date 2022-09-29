@@ -44,6 +44,10 @@ class RecoverableTests: XCTestCase {
             self.responseCreator = responseCreator
         }
 
+        func execute(request: URLRequest) async throws -> TransportSuccess {
+            return try await execute(request: request, delegate: nil)
+        }
+
         func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportSuccess {
             return try responseCreator(request).get()
         }

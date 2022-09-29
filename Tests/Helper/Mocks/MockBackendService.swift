@@ -9,6 +9,11 @@ import Foundation
 @testable import Hyperspace
 
 class MockBackendService: BackendServicing {
+
+    func execute<R>(request: Request<R>) async throws -> R {
+        return try await execute(request: request, delegate: nil)
+    }
+
     func execute<R>(request: Request<R>, delegate: TransportTaskDelegate?) async throws -> R {
         throw TransportFailure(kind: .clientError(.requestTimeout), request: HTTP.Request(urlRequest: request.urlRequest), response: nil)
     }

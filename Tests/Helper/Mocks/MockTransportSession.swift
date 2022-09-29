@@ -25,6 +25,10 @@ extension MockTransportSession: TransportSession {
 
     var configuration: URLSessionConfiguration { return .default }
 
+    func data(for request: URLRequest) async throws -> (Data, URLResponse) {
+        return try await data(for: request, delegate: nil)
+    }
+
     func data(for request: URLRequest, delegate: TransportTaskDelegate?) async throws -> (Data, URLResponse) {
         guard let url = request.url else { fatalError("No \(URL.self) provided") }
 
