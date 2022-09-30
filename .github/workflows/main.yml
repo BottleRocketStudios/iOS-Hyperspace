@@ -28,7 +28,7 @@ jobs:
 
             - name: "watchOS"
               scheme: "Hyperspace watchOS"
-              destination: "platform=watchOS Simulator,OS=9.0,name=Apple Watch Series 6 - 44mm"
+              destination: "platform=watchOS Simulator,OS=9.0,name=Apple Watch Series 6 (44mm)"
               test: true
 
             - name: "macOS"

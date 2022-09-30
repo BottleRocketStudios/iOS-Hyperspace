@@ -114,11 +114,10 @@ private extension CertificateHasher {
         /*We do not need to evaluate trust here as we are simply looking to extract a public key - explicit evaluation is achieved by calling `checkValidity(of:)`.
             This is useful, for instance, when attempting to create a pinning hash for an invalid or expired certificate. If we were to validate on creation, we would not be able to test this. */
         guard let securityTrust = trust, status == errSecSuccess else { return nil }
-        if #available(iOSApplicationExtension 14.0, *) {
+        if #available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *) {
             return SecTrustCopyKey(securityTrust)
         } else {
-            // Fallback on earlier versions
-            return nil
+            return SecTrustCopyPublicKey(securityTrust)
         }
     }
 
