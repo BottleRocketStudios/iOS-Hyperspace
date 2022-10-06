@@ -46,3 +46,12 @@ extension URLSession: TransportSession {
         }
     }
 }
+
+// MARK: - TransportSessionConfiguration Convenience
+public extension TransportSessionConfiguration {
+
+    func set(additionalHTTPHeaders: [HTTP.HeaderKey: HTTP.HeaderValue]?) {
+        guard let additionalHTTPHeaders else { httpAdditionalHeaders = nil; return }
+        httpAdditionalHeaders = Dictionary(uniqueKeysWithValues: additionalHTTPHeaders.map { ($0.rawValue, $1.rawValue) })
+    }
+}
