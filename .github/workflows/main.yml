@@ -59,7 +59,7 @@ jobs:
   Lint:
     runs-on: macos-12
     env:
-      DEVELOPER_DIR: /Applications/Xcode_13.4.1.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
       cocoapods: true
       spm: true
 
@@ -67,6 +67,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    # Temporarily disabled watchOS linting using --platforms option
     - name: Lint
       run: >
         if [[ ${{ env.spm }} == true ]]; then
@@ -74,5 +75,5 @@ jobs:
         fi
 
         if [[ ${{ env.cocoapods }} == true ]]; then
-          pod lib lint
+          pod lib lint --platforms=ios,macos,tvos
         fi
