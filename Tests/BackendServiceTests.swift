@@ -63,29 +63,6 @@ class BackendServiceTests: XCTestCase {
         XCTAssertEqual(mockTransportService.executeCallCount, 1)
     }
 
-    //    func test_CancellingBackendService_CancelsUnderlyingTransportService() {
-    //        let mockedResult = TransportSuccess(response: defaultSuccessResponse)
-    //        let mockTransportService = MockTransportService(responseResult: .success(mockedResult))
-    //
-    //        let backendService = BackendService(transportService: mockTransportService)
-    //        let request = URLRequest(url: RequestTestDefaults.defaultURL)
-    //        backendService.cancelTask(for: request)
-    //
-    //        XCTAssertEqual(mockTransportService.cancelCallCount, 1)
-    //        XCTAssertEqual(mockTransportService.lastCancelledURLRequest, request)
-    //    }
-    //
-    //    func test_BackendServiceDeinit_CancelsAllTasksForUnderlyingTransportService() {
-    //        let mockedResult = TransportSuccess(response: defaultSuccessResponse)
-    //        let mockTransportService = MockTransportService(responseResult: .success(mockedResult))
-    //
-    //        var backendService: BackendService? = BackendService(transportService: mockTransportService)
-    //        backendService = nil
-    //        XCTAssertNil(backendService) // To silence the "variable was written to, but never read" warning. See https://stackoverflow.com/a/32861678/4343618
-    //
-    //        XCTAssertEqual(mockTransportService.cancelAllTasksCallCount, 1)
-    //    }
-
     func test_BackendService_DefaultsToEmptyArrayOfRecoveryStrategies() {
         let service = MockBackendService()
         XCTAssertTrue(service.recoveryStrategies.isEmpty)

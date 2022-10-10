@@ -37,7 +37,7 @@ do {
 
 ## Handling a 3xx / 4xx / 5xx
 
-The `URLSession` type draws a strict line between transport errors (like a lack of connection) and errors returned by the server. This is because the interpretation of a server-side error is server specific, and can not be effectively handled in a generic fashion by `URLSession`. Essentially, any server response with a status code of 200-299 will be considered as success (represented as a `TransportSuccess`), otherwise a failure (represented as a thrown `TransportFailure`). Building upon the previous example, you'd need to additionally handle catching a `TransportFailure`
+The `URLSession` type draws a strict line between transport errors (like a lack of connection) and errors returned by the server. This is because the interpretation of a server-side error is server specific, and can not be effectively handled in a generic fashion by `URLSession`. Essentially, any server response with a status code of 200-299 will be considered as success (represented as a `TransportSuccess`), otherwise a failure (represented as a thrown `TransportFailure`). Building upon the previous example, you'd need to additionally handle catching a `TransportFailure`.
 
 ```swift
 do {
@@ -62,7 +62,7 @@ do {
 
 ## Handling a Transformation Failure
 
-Assuming a `TransportSuccess` object has been received, there is one final part to the `execute` process - transformation. Often occurring through the `Decodable` machinery, this is the the process of converting the received `TransportSuccess` into the designated `Response` type. Depending on the specifics of the transformation there are several different types of `Error` that can be thrown here, but usually errors from this part of the process will be thrown `DecodingError`s.
+Assuming a `TransportSuccess` object has been received, there is one final part to the `execute` process - transformation. Often occurring through the `Decodable` machinery, this is the process of converting the received `TransportSuccess` into the designated `Response` type. Depending on the specifics of the transformation there are several different types of `Error` that can be thrown here, but usually errors from this part of the process will be thrown `DecodingError`s.
 
 ```swift
 do {
@@ -153,9 +153,9 @@ When this `request` is executed, any `TransportSuccess` object received in respo
 
 ## Transforming an Error
 
-In situations like the above though, it it sometimes desirable to not have to run a closure every response (success or not), but maintain the ability to automatically transform the `Error` thrown by the execution of the request.
+In situations like the above, it is sometimes desirable to not have to run a closure for every response (success or not), but maintain the ability to automatically transform the `Error` thrown by the execution of the request.
 
-In these situations, you can use the `.throwing { ... }` function on `Request`.
+In times like this, you can use the `.throwing { ... }` function on `Request`.
 
 ```swift
 let request = Request<User>(url: myURL).throwing { transportSuccess, originalError in

@@ -29,7 +29,7 @@ public extension Request where Response == Void {
     }
 }
 
-// MARK: = Request.EmptyDecodingStrategy
+// MARK: - Request.EmptyDecodingStrategy
 public extension Request where Response == Void {
 
     struct EmptyDecodingStrategy {
