@@ -102,6 +102,10 @@ public struct Request<Response>: Recoverable {
         }
     }
 
+    public func withTransportSuccess() -> Request<(TransportSuccess, Response)> {
+        return map { ($0, $1) }
+    }
+
     public func throwing(_ responseTransformer: @escaping (TransportSuccess, Error) -> Error) -> Request {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             do {
