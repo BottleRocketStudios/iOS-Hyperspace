@@ -165,10 +165,11 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
 ## Requirements
 
-* iOS 8.0+
-* tvOS 9.0+
-* watchOS 2.0+
-* Swift 5.0
+* iOS 12.0+
+* tvOS 12.0+
+* watchOS 6.0+
+* macOS 10.15+
+* Swift 5.5
 
 ## Installation
 
