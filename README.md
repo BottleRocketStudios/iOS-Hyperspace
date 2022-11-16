@@ -16,7 +16,7 @@
 
 ## Contents
 
-* **HTTP** - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request!
+* **HTTP** - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request.
 * **Request** - A struct that defines the details of a network request, including the desired result and error types. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
 * **TransportService** - Uses a `TransportSession` (`URLSession` by default) to execute `URLRequests`. Deals with raw `HTTP` and `Data`.
 * **BackendService** - Uses a `TransportService` to execute `Requests`. Transforms the raw `Data` returned from the `TransportService` into the response model type defined by the `Request`. **This is the main worker object your app will deal with directly**.
@@ -25,11 +25,11 @@
 
 ### 1. Create Requests
 
-You have multiple options when creating requests. These include creating static functions to reduce the boilerplace when creating a `Request` object or simply creating them locally. In addition, you can still create your own custom struct that wraps and vends a `Request` object if your network requests are complex.
+You have multiple options when creating requests. These include creating static functions to reduce the boilerplate when creating a `Request` object or simply creating them locally. In addition, you can still create your own custom struct that wraps and vends a `Request` object if your network requests are complex.
 
 #### Option 1 - Extending `Request` 
 
-The example below illustrates how to create an extension on `Request` which can drastically reduce the boilerplate when creating a request to create a new post in something like a social network feed. It takes advantage of the many defaults into `Request` (all are which are customizable) to keep the definition brief:
+The example below illustrates how to create an extension on `Request` which can drastically reduce the boilerplate when creating a request to create a new post in something like a social network feed. It takes advantage of the many defaults into `Request` (all of which are customizable) to keep the definition brief:
 ```swift
 extension Request where Response == Post, Error == AnyError {
     static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
@@ -47,6 +47,7 @@ let createPostRequest = Request(method: .post, url: URL(string: "https://jsonpla
 ```
 
 #### Option 3 - Create a `CreatePostRequest` that wraps a `Request`
+
 ```swift
 struct CreatePostRequest {
     let newPost: NewPost
@@ -59,6 +60,7 @@ struct CreatePostRequest {
 ```
 
 For the above examples, the `Post` response type and `NewPost` body are defined as follows:
+
 ```swift
 struct Post: Decodable {
     let id: Int
@@ -79,18 +81,18 @@ struct NewPost: Encodable {
 ### 2. Create Request defaults (optional)
 
 To avoid having to define default `Request` property values for every request in your app, it can be useful to rely on the `RequestDefaults` provided by Hyperspace. These can even be customized:
+
 ```swift
 RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
-RequestDefaults.defaultDecoder = MyCustomDecoder() // Default decoder is JSONDecoder
+RequestDefaults.defaultDecoder = MyCustomDecoder() // Default decoder is JSONDecoder()
 ```
 
 ### 3. Create a BackendService to execute your requests
 
-We recommend adhering to the [Interface Segregation](https://en.wikipedia.org/wiki/Interface_segregation_principle) principle by creating separate "controller" objects for each section of the API you're communicating with. Each controller should expose a set of related funtions and use a `BackendService` to execute requests. However, for this simple example, we'll just use `BackendService` directly as a `private` property on the view controller:
+We recommend adhering to the [Interface Segregation](https://en.wikipedia.org/wiki/Interface_segregation_principle) principle by creating separate "controller" objects for each section of the API you're communicating with. Each controller should expose a set of related functions and use a `BackendService` to execute requests. However, for this simple example, we'll just use `BackendService` directly as a `private` property on the view controller:
 
 ```swift
 class ViewController: UIViewController {
-
     private let backendService = BackendService()
 
     // Rest of your view controller code...
@@ -116,6 +118,7 @@ Let's say a view controller is supposed to create the post whenever the user tap
 ### 5. Execute the Request using the BackendService
 
 For the above example, here's how you would execute the request and parse the response. While all data transformation happens on the background queue that the underlying URLSession is using, all `BackendService` completion callbacks happen on the main queue so there's no need to worry about threading before you update UI. Notice that the type of the success response's associated value below is a `Post` struct as defined in the `CreatePostRequest` above:
+
 ```swift
 backendService.execute(request: createPostRequest) { [weak self] result in
     debugPrint("Create post result: \(result)")
@@ -175,8 +178,7 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
 ### Cocoapods
 
-Hyperspace is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Hyperspace is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Hyperspace'
