@@ -2,6 +2,10 @@
 
 #### Enhancements
 
+* Add ability to print formatted JSON from `HTTP.Response'.
+[Will McGinty](https://github.com/wmcginty)
+[#167](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/167)
+
 * Deprecate URLQueryParameterEncoder
 [Will McGinty](https://github.com/wmcginty)
 [#160](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/160)
@@ -9,7 +13,6 @@
 * Convert `Transporting`, `BackendServicing` and related subsystems to utilize structured concurrency.
 [Will McGinty](https://github.com/wmcginty)
 [#160](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/160)
-
 
 * Remove migration typeliases for all the types that were deprecated in 4.0, including `RequestRecoveryStrategy`, `NetworkServiceFailureInitializable`, and `NetworkService*`.
 [Will McGinty](https://github.com/wmcginty)

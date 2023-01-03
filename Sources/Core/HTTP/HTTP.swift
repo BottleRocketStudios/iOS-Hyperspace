@@ -219,6 +219,18 @@ public struct HTTP {
         public var bodyString: String? {
             return body.flatMap { String(data: $0, encoding: .utf8) }
         }
+
+        /// Returns a string of formatted JSON.
+        ///
+        /// - Parameters:
+        ///     - options: Options for creating the JSON data. Default is `.prettyPrinted`.
+        func formattedJSON(with options: JSONSerialization.WritingOptions = [.prettyPrinted]) throws -> String? {
+            guard let data = body else { return nil }
+            let object = try JSONSerialization.jsonObject(with: data, options: [])
+            let serialized = try JSONSerialization.data(withJSONObject: object, options: options)
+
+            return String(data: serialized, encoding: .utf8)
+        }
     }
 }
 // swiftlint:enable nesting
