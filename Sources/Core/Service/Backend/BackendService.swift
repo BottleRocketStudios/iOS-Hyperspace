@@ -13,8 +13,12 @@ public class BackendService {
     public let transportService: Transporting
     public var recoveryStrategies: [RecoveryStrategy]
     
-    // MARK: - Initializer
-    public init(transportService: Transporting = TransportService(), recoveryStrategies: RecoveryStrategy...) {
+    // MARK: - Initializers
+    public convenience init(transportService: Transporting = TransportService(), recoveryStrategies: RecoveryStrategy...) {
+        self.init(transportService: transportService, recoveryStrategies: recoveryStrategies)
+    }
+    
+    public init(transportService: Transporting = TransportService(), recoveryStrategies: [RecoveryStrategy]) {
         self.transportService = transportService
         self.recoveryStrategies = recoveryStrategies
     }
