@@ -3,21 +3,20 @@
 ![CI Status](https://github.com/BottleRocketStudios/iOS-Hyperspace/actions/workflows/main.yml/badge.svg)
 [![Version](https://img.shields.io/cocoapods/v/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![License](https://img.shields.io/cocoapods/l/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
+[![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-4BC51D.svg?style=flat)](https://swift.org/package-manager)
 [![Platform](https://img.shields.io/cocoapods/p/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-Hyperspace)
+[![License](https://img.shields.io/cocoapods/l/Hyperspace.svg?style=flat)](http://cocoapods.org/pods/Hyperspace)
 
-## Purpose
-
-This library provides a simple abstraction around URLSession and HTTP. There are a few main goals:
+**Hyperspace** provides a simple abstraction around URLSession and HTTP. There are a few main goals:
 
 * Keep things simple.
 * Keep the overall library size to a minimum. Of course, there will be some boilerplate involved (such as the `HTTP` definitions), but our main goal is to keep the library highly functional and maintainable without over-engineering.
 * Tailor the library to the networking use cases that we encounter the most often. We will continue to add features based on the common needs across all of the apps that we build.
 
-## Key Concepts
+## Contents
 
-* **HTTP** - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request!
+* **HTTP** - Contains standard HTTP definitions and types. If you feel something is missing from here, please submit a pull request.
 * **Request** - A struct that defines the details of a network request, including the desired result and error types. This is basically a thin wrapper around `URLRequest`, utilizing the definitions in `HTTP`.
 * **TransportService** - Uses a `TransportSession` (`URLSession` by default) to execute `URLRequests`. Deals with raw `HTTP` and `Data`.
 * **BackendService** - Uses a `TransportService` to execute `Requests`. Transforms the raw `Data` returned from the `TransportService` into the response model type defined by the `Request`. **This is the main worker object your app will deal with directly**.
@@ -26,13 +25,13 @@ This library provides a simple abstraction around URLSession and HTTP. There are
 
 ### 1. Create Requests
 
-You have multiple options when creating requests- including creating static functions to reduce the boilerplace when creating a `Request` object, or you can simply create them locally. In addition, you can still create your own custom struct that wraps and vends a `Request` object if your network requests are complex.
+You have multiple options when creating requests. These include creating static functions to reduce the boilerplate when creating a `Request` object or simply creating them locally. In addition, you can still create your own custom struct that wraps and vends a `Request` object if your network requests are complex.
 
 #### Option 1 - Extending `Request` 
 
-The example below illustrates how to create an extension on `Request` which can drastically reduce the boilerplate when creating a request to create a new post in something like a social network feed. It takes advantage of the many defaults into `Request` (all are which are customizable) to keep the definition brief:
+The example below illustrates how to create an extension on `Request` which can drastically reduce the boilerplate when creating a request to create a new post in something like a social network feed. It takes advantage of the many defaults into `Request` (all of which are customizable) to keep the definition brief:
 ```swift
-extension Request {
+extension Request where Response == Post, Error == AnyError {
     static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
         return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
                        body: try? HTTP.Body(post))
@@ -48,6 +47,7 @@ let createPostRequest = Request(method: .post, url: URL(string: "https://jsonpla
 ```
 
 #### Option 3 - Create a `CreatePostRequest` that wraps a `Request`
+
 ```swift
 struct CreatePostRequest {
     let newPost: NewPost
@@ -60,6 +60,7 @@ struct CreatePostRequest {
 ```
 
 For the above examples, the `Post` response type and `NewPost` body are defined as follows:
+
 ```swift
 struct Post: Decodable {
     let id: Int
@@ -80,18 +81,18 @@ struct NewPost: Encodable {
 ### 2. Create Request defaults (optional)
 
 To avoid having to define default `Request` property values for every request in your app, it can be useful to rely on the `RequestDefaults` provided by Hyperspace. These can even be customized:
+
 ```swift
 RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default cache policy is '.useProtocolCachePolicy'
-RequestDefaults.defaultDecoder = MyCustomDecoder() // Default decoder is JSONDecoder
+RequestDefaults.defaultDecoder = MyCustomDecoder() // Default decoder is JSONDecoder()
 ```
 
 ### 3. Create a BackendService to execute your requests
 
-We recommend adhering to the [Interface Segregation](https://en.wikipedia.org/wiki/Interface_segregation_principle) principle by creating separate "controller" objects for each section of the API you're communicating with. Each controller should expose a set of related funtions and use a `BackendService` to execute requests. However, for this simple example, we'll just use `BackendService` directly as a `private` property on the view controller:
+We recommend adhering to the [Interface Segregation](https://en.wikipedia.org/wiki/Interface_segregation_principle) principle by creating separate "controller" objects for each section of the API you're communicating with. Each controller should expose a set of related functions and use a `BackendService` to execute requests. However, for this simple example, we'll just use `BackendService` directly as a `private` property on the view controller:
 
 ```swift
 class ViewController: UIViewController {
-
     private let backendService = BackendService()
 
     // Rest of your view controller code...
@@ -100,7 +101,7 @@ class ViewController: UIViewController {
 
 ### 4. Instantiate your Request
 
-Let's say our view controller is supposed to create the post whenever the user taps the "send" button. Here's what that might look like:
+Let's say a view controller is supposed to create the post whenever the user taps the "send" button. Here's what that might look like:
 
 ```swift
 @IBAction private func sendButtonTapped(_ sender: UIButton) {
@@ -117,6 +118,7 @@ Let's say our view controller is supposed to create the post whenever the user t
 ### 5. Execute the Request using the BackendService
 
 For the above example, here's how you would execute the request and parse the response. While all data transformation happens on the background queue that the underlying URLSession is using, all `BackendService` completion callbacks happen on the main queue so there's no need to worry about threading before you update UI. Notice that the type of the success response's associated value below is a `Post` struct as defined in the `CreatePostRequest` above:
+
 ```swift
 backendService.execute(request: createPostRequest) { [weak self] result in
     debugPrint("Create post result: \(result)")
@@ -161,24 +163,22 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
 * **Playground/Hyperspace.playground**
     * View and run a single file that defines models, network requests, and executes the requests similar to the example targets above.
-* **Playground/Hyperspace_AnyRequest.playground**
-    * The same example as above, but using the `AnyRequest<T>` struct.
 * **Playground/Hyperspace_DELETE.playground**
     * An example of how to deal with requests that don't return a result. This is usually common for DELETE requests.
 
 ## Requirements
 
-* iOS 8.0+
-* tvOS 9.0+
-* watchOS 2.0+
-* Swift 5.0
+* iOS 12.0+
+* tvOS 12.0+
+* watchOS 6.0+
+* macOS 10.15+
+* Swift 5.5
 
 ## Installation
 
 ### Cocoapods
 
-Hyperspace is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Hyperspace is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Hyperspace'
@@ -198,7 +198,7 @@ Run `carthage update` and follow the steps as described in Carthage's [README](h
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/BottleRocketStudios/iOS-Hyperspace.git", from: "3.2.1")
+    .package(url: "https://github.com/BottleRocketStudios/iOS-Hyperspace.git", from: "4.0.0")
 ]
 ```
 
@@ -209,3 +209,10 @@ dependencies: [
 ## License
 
 Hyperspace is available under the Apache 2.0 license. See the LICENSE.txt file for more info.
+
+## Contributing
+
+See the [CONTRIBUTING] document. Thank you, [contributors]!
+
+[CONTRIBUTING]: CONTRIBUTING.md
+[contributors]: https://github.com/BottleRocketStudios/iOS-Hyperspace/graphs/contributors

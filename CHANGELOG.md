@@ -6,6 +6,10 @@
 [Will McGinty](https://github.com/wmcginty)
 [#164](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/164)
 
+* Add ability to print formatted JSON from `HTTP.Response'.
+[Will McGinty](https://github.com/wmcginty)
+[#167](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/167)
+
 * Remove migration typeliases for all the types that were deprecated in 4.0, including `RequestRecoveryStrategy`, `NetworkServiceFailureInitializable`, and `NetworkService*`.
 [Will McGinty](https://github.com/wmcginty)
 [#158](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/158)
