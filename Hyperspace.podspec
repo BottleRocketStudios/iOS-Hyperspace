@@ -31,9 +31,4 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.subspec 'Core' do |core|
   core.source_files = 'Sources/Core/**/*', 'Sources/Async/**/*'
   end
-
-  s.subspec 'Pinning' do |pinning|
-  pinning.dependency 'Hyperspace/Core'
-  pinning.source_files = 'Sources/Certificate\ Pinning/**/*'
-  end
 end
