@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Represents something that's capable of executing a typed Request
+/// Represents something that's capable of executing a typed Request.
 public protocol BackendServicing {
 
     /// Determines how the backend service should recover from errors, should the `Request` be able to do so. If multiple `RecoveryStrategy` objects are present,

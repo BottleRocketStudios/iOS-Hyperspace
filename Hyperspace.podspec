@@ -26,14 +26,6 @@ Unlike other networking libraries, the goal of Hyperspace is to keep things simp
   s.tvos.deployment_target = '13.0'
   s.watchos.deployment_target = '6.0'
   s.macos.deployment_target = '11.0'
-  s.default_subspec = 'Core'
+  s.source_files = 'Sources/**/*'
 
-  s.subspec 'Core' do |core|
-  core.source_files = 'Sources/Core/**/*', 'Sources/Async/**/*'
-  end
-
-  s.subspec 'Pinning' do |pinning|
-  pinning.dependency 'Hyperspace/Core'
-  pinning.source_files = 'Sources/Certificate\ Pinning/**/*'
-  end
 end

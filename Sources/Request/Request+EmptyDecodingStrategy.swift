@@ -7,8 +7,6 @@
 
 import Foundation
 
-// MARK: - EmptyResponse
-
 // MARK: - Empty Response Request Default Implementations
 public extension Request where Response == Void {
 

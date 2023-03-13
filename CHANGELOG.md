@@ -2,6 +2,10 @@
 
 #### Enhancements
 
+* Remove SSL pinning machinery
+[Will McGinty](https://github.com/wmcginty)
+[#164](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/164)
+
 * Add ability to print formatted JSON from `HTTP.Response'.
 [Will McGinty](https://github.com/wmcginty)
 [#167](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/167)

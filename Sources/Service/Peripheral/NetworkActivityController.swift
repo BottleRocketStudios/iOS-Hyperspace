@@ -1,3 +1,4 @@
+//
 //  NetworkActivityController.swift
 //  Hyperspace
 //
@@ -35,7 +36,7 @@ actor NetworkActivityController {
         update()
     }
 
-    /// Indicate to the controller that a network request has ended (through cancellation or completion)
+    /// Indicate to the controller that a network request has ended (through cancellation or completion).
     func stop() {
         activityCount -= 1
         update()
