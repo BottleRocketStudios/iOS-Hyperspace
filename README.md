@@ -30,11 +30,12 @@ You have multiple options when creating requests. These include creating static 
 #### Option 1 - Extending `Request` 
 
 The example below illustrates how to create an extension on `Request` which can drastically reduce the boilerplate when creating a request to create a new post in something like a social network feed. It takes advantage of the many defaults into `Request` (all of which are customizable) to keep the definition brief:
+
 ```swift
-extension Request where Response == Post, Error == AnyError {
-    static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
-        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
-                       body: try? HTTP.Body(post))
+extension Request where Response == Post {
+    
+    static func createPost(_ post: NewPost) -> Request<Post> {
+        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON], body: try? HTTP.Body.json(post))
     }
 }
 ```
@@ -42,8 +43,7 @@ extension Request where Response == Post, Error == AnyError {
 #### Option 2 - Define Each `Request` Locally
 
 ```swift
-let createPostRequest = Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
-        body: try? HTTP.Body(post))
+let createPostRequest: Request<Post> = Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON], body: try? HTTP.Body.json(post))
 ```
 
 #### Option 3 - Create a `CreatePostRequest` that wraps a `Request`
@@ -52,9 +52,8 @@ let createPostRequest = Request(method: .post, url: URL(string: "https://jsonpla
 struct CreatePostRequest {
     let newPost: NewPost
     
-    var request: Request<Post, AnyError> {
-        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
-                       body: try? HTTP.Body(post))
+    var request: Request<Post> {
+        return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON], body: try? HTTP.Body.json(post))
     }
 }
 ```
@@ -120,15 +119,14 @@ Let's say a view controller is supposed to create the post whenever the user tap
 For the above example, here's how you would execute the request and parse the response. While all data transformation happens on the background queue that the underlying URLSession is using, all `BackendService` completion callbacks happen on the main queue so there's no need to worry about threading before you update UI. Notice that the type of the success response's associated value below is a `Post` struct as defined in the `CreatePostRequest` above:
 
 ```swift
-backendService.execute(request: createPostRequest) { [weak self] result in
-    debugPrint("Create post result: \(result)")
-
-    switch result {
-    case .success(let post):
-        // Insert the new post into the UI...
-    case .failure(let error):
-        // Alert the user to the error...
-    }
+do {
+    let post = NewPost(userId: 1, title: title, body: "")
+    let createPostRequest = Request<Post>.createPost(post)
+    let createdPost = try await backendService.execute(request: createPostRequest)
+    // Insert the new post into the UI...
+    
+} catch {
+    // Alert the user to the error...
 }
 ```
 
@@ -168,11 +166,11 @@ From here, you can open up `Hyperspace.xcworkspace` and run the examples:
 
 ## Requirements
 
-* iOS 12.0+
-* tvOS 12.0+
+* iOS 13.0+
+* tvOS 13.0+
 * watchOS 6.0+
-* macOS 10.15+
-* Swift 5.5
+* macOS 11+
+* Swift 5.6
 
 ## Installation
 
@@ -198,7 +196,7 @@ Run `carthage update` and follow the steps as described in Carthage's [README](h
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/BottleRocketStudios/iOS-Hyperspace.git", from: "4.0.0")
+    .package(url: "https://github.com/BottleRocketStudios/iOS-Hyperspace.git", from: "5.0.0")
 ]
 ```
 
