@@ -9,35 +9,30 @@ import Foundation
 import Hyperspace
 
 class MockTransportService {
+
     private(set) var executeCallCount = 0
-    private(set) var cancelCallCount = 0
-    private(set) var cancelAllTasksCallCount = 0
     private(set) var lastExecutedURLRequest: URLRequest?
-    private(set) var lastCancelledURLRequest: URLRequest?
-    var responseResult: TransportResult
-    
-    init(responseResult: TransportResult) {
+    var responseResult: Result<TransportSuccess, TransportFailure>
+
+    init(responseResult: Result<TransportSuccess, TransportFailure>) {
         self.responseResult = responseResult
     }
 }
 
+// MARK: - Transporting
 extension MockTransportService: Transporting {
-    
-    func execute(request: URLRequest, completion: @escaping (TransportResult) -> Void) {
+
+    func execute(request: URLRequest) async throws -> TransportSuccess {
+        return try await execute(request: request, delegate: nil)
+    }
+
+    func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportSuccess {
         lastExecutedURLRequest = request
         executeCallCount += 1
-        
-        DispatchQueue.global().async {
-            completion(self.responseResult)
+
+        switch responseResult {
+        case .success(let success): return success
+        case .failure(let failure): throw failure
         }
-    }
-    
-    func cancelTask(for request: URLRequest) {
-        lastCancelledURLRequest = request
-        cancelCallCount += 1
-    }
-    
-    func cancelAllTasks() {
-        cancelAllTasksCallCount += 1
     }
 }

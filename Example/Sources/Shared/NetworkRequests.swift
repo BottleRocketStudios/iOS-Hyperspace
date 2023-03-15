@@ -31,29 +31,26 @@ extension Request {
 }
 
 // MARK: - Get User Request
-
-extension Request where Response == User, Error == AnyError {
+extension Request where Response == User {
     
-    static func getUser(withID id: Int) -> Request<User, AnyError> {
-        return Request(method: .get, url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
+    static func getUser(withID id: Int) -> Request<User> {
+        return Request(url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
     }
 }
 
 // MARK: - Create Post Request
-
-extension Request where Response == Post, Error == AnyError {
+extension Request where Response == Post {
     
-    static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
+    static func createPost(_ post: NewPost) -> Request<Post> {
         return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
                        body: try? HTTP.Body.json(post))
     }
 }
 
 // MARK: - Delete Post Request
-
-extension Request where Response == EmptyResponse, Error == AnyError {
+extension Request where Response == Void {
     
-    static func deletePost(withID id: Int) -> Request<EmptyResponse, AnyError> {
+    static func deletePost(withID id: Int) -> Request<Void> {
         return Request.withEmptyResponse(method: .delete, url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!)
     }
 }
