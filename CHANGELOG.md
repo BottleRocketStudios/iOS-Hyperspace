@@ -2,6 +2,16 @@
 
 #### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 5.0.0 (2022-03-15)
+
+#### Enhancements
+
 * Remove SSL pinning machinery
 [Will McGinty](https://github.com/wmcginty)
 [#164](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/164)
