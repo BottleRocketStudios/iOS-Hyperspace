@@ -11,20 +11,23 @@ public class BackendService {
     
     // MARK: - Properties
     public let transportService: Transporting
-    public var recoveryStrategies: [RecoveryStrategy]
     public var preparationStrategies: [PreparationStrategy]
-    
+    public var recoveryStrategies: [RecoveryStrategy]
+
     // MARK: - Initializers
-    public convenience init(transportService: Transporting = TransportService(),
-                            recoveryStrategies: RecoveryStrategy..., preparationStratgies: PreparationStrategy...) {
-        self.init(transportService: transportService, recoveryStrategies: recoveryStrategies, preparationStrategies: preparationStratgies)
+    public convenience init(transportService: Transporting = TransportService(), preparationStrategies: PreparationStrategy..., recoveryStrategies: RecoveryStrategy...) {
+        self.init(transportService: transportService, preparationStrategies: preparationStrategies, recoveryStrategies: recoveryStrategies)
     }
-    
-    public init(transportService: Transporting = TransportService(),
-                recoveryStrategies: [RecoveryStrategy], preparationStrategies: [PreparationStrategy]) {
+
+    @available(*, deprecated, renamed: "BackendService.init(transportService:preparationStrategies:recoveryStrategies:)")
+    public convenience init(transportService: Transporting = TransportService(), recoveryStrategies: [RecoveryStrategy]) {
+        self.init(transportService: transportService, preparationStrategies: [], recoveryStrategies: recoveryStrategies)
+    }
+
+    public init(transportService: Transporting = TransportService(), preparationStrategies: [PreparationStrategy], recoveryStrategies: [RecoveryStrategy]) {
         self.transportService = transportService
-        self.recoveryStrategies = recoveryStrategies
         self.preparationStrategies = preparationStrategies
+        self.recoveryStrategies = recoveryStrategies
     }
 }
 

@@ -31,8 +31,10 @@ extension MockTransportService: Transporting {
         executeCallCount += 1
 
         switch responseResult {
-        case .success(let success): return success
-        case .failure(let failure): throw failure
+        case .success(let success):
+            return .init(response: .init(request: .init(urlRequest: request), code: success.response.code, url: success.response.url, headers: success.response.headers, body: success.response.body))
+        case .failure(let failure):
+            throw TransportFailure(kind: failure.kind, request: .init(urlRequest: request), response: failure.response)
         }
     }
 }

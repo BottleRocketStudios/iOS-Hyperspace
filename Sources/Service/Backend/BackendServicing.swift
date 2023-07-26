@@ -14,7 +14,7 @@ public protocol BackendServicing {
     /// they are executed in order until one attempts to recover from the failure. If no `RecoveryStrategy` is present, all errors are returned directly to the client.
     var recoveryStrategies: [RecoveryStrategy] { get }
 
-    /// <#Description#>
+    /// Handles any just-in-time modifications to requests before they are executed.
     var preparationStrategies: [PreparationStrategy] { get }
 
     /// Executes the Request, calling the provided completion block when finished.
@@ -40,9 +40,11 @@ public protocol BackendServicing {
 public extension BackendServicing {
 
     var recoveryStrategies: [RecoveryStrategy] { return [] }
-
     var preparationStrategies: [PreparationStrategy] { return [] }
 
+    /// Applies all of the service's attached `PreparationStrategy` to the outgoing request.
+    /// - Parameter request: The request to be executed.
+    /// - Returns: The modified request after applying each `PreparationStrategy` in turn.
     func prepare<R>(toExecute request: Request<R>) async throws -> Request<R> {
         var toBeExecuted = request
         for strategy in preparationStrategies {
