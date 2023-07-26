@@ -155,31 +155,27 @@ class RequestTests: XCTestCase {
     }
 
     func test_Request_MappingARequestToANewResponsePassesTransportSuccessFromResponse() async throws {
-        let exp = expectation(description: "Transformer Executed")
         let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "Object"))
         let success = TransportSuccess(response: response)
 
         let request: Request<MockObject> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<(TransportSuccess, [MockObject])> = request.map {
             XCTAssertEqual($0, success)
-            exp.fulfill()
             return ($0, [$1])
         }
 
         await XCTAssertNoThrow(try await mapped.transform(success: success))
-        await fulfillment(of: [exp], timeout: 1)
     }
 
     func test_Request_MappingARequestToANewResponseDoesNotUseHandlerWhenInitialRequestFails() async throws {
-        let exp = expectation(description: "Transformer Executed")
-        exp.isInverted = true
-
         let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "DateObject"))
         let request: Request<MockObject> = .init(method: .get, url: RequestTestDefaults.defaultURL)
-        let mapped: Request<[MockObject]> = request.map { exp.fulfill(); return [$0] }
+        let mapped: Request<[MockObject]> = request.map {
+            XCTFail("The map closure should not execute when the initial request fails")
+            return [$0]
+        }
 
         await XCTAssertThrowsError(try await mapped.transform(success: TransportSuccess(response: response)))
-        await fulfillment(of: [exp], timeout: 1)
     }
 
     // MARK: - Private
