@@ -167,7 +167,7 @@ class RequestTests: XCTestCase {
         }
 
         await XCTAssertNoThrow(try await mapped.transform(success: success))
-        await waitForExpectations(timeout: 1, handler: nil)
+        await fulfillment(of: [exp], timeout: 1)
     }
 
     func test_Request_MappingARequestToANewResponseDoesNotUseHandlerWhenInitialRequestFails() async throws {
@@ -179,7 +179,7 @@ class RequestTests: XCTestCase {
         let mapped: Request<[MockObject]> = request.map { exp.fulfill(); return [$0] }
 
         await XCTAssertThrowsError(try await mapped.transform(success: TransportSuccess(response: response)))
-        await waitForExpectations(timeout: 1, handler: nil)
+        await fulfillment(of: [exp], timeout: 1)
     }
 
     // MARK: - Private
@@ -200,21 +200,5 @@ class RequestTests: XCTestCase {
         XCTAssertEqual(urlRequest.httpBody, body, file: file, line: line)
         XCTAssertEqual(urlRequest.cachePolicy, cachePolicy, file: file, line: line)
         XCTAssertEqual(urlRequest.timeoutInterval, timeout, file: file, line: line)
-    }
-}
-
-// MARK: - Request + Convenience
-private extension Request {
-
-    static var simpleGET: Request<String> {
-        return .init(method: .get, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
-    }
-
-    static var simplePOST: Request<String> {
-        return .init(method: .post, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
-    }
-
-    static var cachePolicyAndTimeoutRequest: Request<Void> {
-        return .withEmptyResponse(method: .get, url: URL(string: "http://apple.com")!)
     }
 }
