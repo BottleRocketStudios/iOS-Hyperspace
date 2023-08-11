@@ -5,6 +5,12 @@ disabled_rules:
   - trailing_whitespace # Disables SwiftLint complaining about whitespace characters on empty lines
   - todo # Disables auto-warning of TODO statements
 
+nesting:
+  type_level:
+    warning: 2
+  function_level:
+    warning: 3
+
 identifier_name:
   excluded:
     - id

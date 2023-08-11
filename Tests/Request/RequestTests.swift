@@ -155,31 +155,27 @@ class RequestTests: XCTestCase {
     }
 
     func test_Request_MappingARequestToANewResponsePassesTransportSuccessFromResponse() async throws {
-        let exp = expectation(description: "Transformer Executed")
         let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "Object"))
         let success = TransportSuccess(response: response)
 
         let request: Request<MockObject> = .init(method: .get, url: RequestTestDefaults.defaultURL)
         let mapped: Request<(TransportSuccess, [MockObject])> = request.map {
             XCTAssertEqual($0, success)
-            exp.fulfill()
             return ($0, [$1])
         }
 
         await XCTAssertNoThrow(try await mapped.transform(success: success))
-        await waitForExpectations(timeout: 1, handler: nil)
     }
 
     func test_Request_MappingARequestToANewResponseDoesNotUseHandlerWhenInitialRequestFails() async throws {
-        let exp = expectation(description: "Transformer Executed")
-        exp.isInverted = true
-
         let response = HTTP.Response(request: HTTP.Request(), code: 200, url: RequestTestDefaults.defaultURL, headers: [:], body: loadedJSONData(fromFileNamed: "DateObject"))
         let request: Request<MockObject> = .init(method: .get, url: RequestTestDefaults.defaultURL)
-        let mapped: Request<[MockObject]> = request.map { exp.fulfill(); return [$0] }
+        let mapped: Request<[MockObject]> = request.map {
+            XCTFail("The map closure should not execute when the initial request fails")
+            return [$0]
+        }
 
         await XCTAssertThrowsError(try await mapped.transform(success: TransportSuccess(response: response)))
-        await waitForExpectations(timeout: 1, handler: nil)
     }
 
     // MARK: - Private
@@ -200,21 +196,5 @@ class RequestTests: XCTestCase {
         XCTAssertEqual(urlRequest.httpBody, body, file: file, line: line)
         XCTAssertEqual(urlRequest.cachePolicy, cachePolicy, file: file, line: line)
         XCTAssertEqual(urlRequest.timeoutInterval, timeout, file: file, line: line)
-    }
-}
-
-// MARK: - Request + Convenience
-private extension Request {
-
-    static var simpleGET: Request<String> {
-        return .init(method: .get, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
-    }
-
-    static var simplePOST: Request<String> {
-        return .init(method: .post, url: URL(string: "http://apple.com")!, cachePolicy: .useProtocolCachePolicy, timeout: 1)
-    }
-
-    static var cachePolicyAndTimeoutRequest: Request<Void> {
-        return .withEmptyResponse(method: .get, url: URL(string: "http://apple.com")!)
     }
 }

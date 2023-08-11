@@ -1,5 +1,5 @@
 //
-//  RecoverableTests.swift
+//  RecoveryStrategyTests.swift
 //  Tests
 //
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Hyperspace
 
-class RecoverableTests: XCTestCase {
+class RecoveryStrategyTests: XCTestCase {
 
     // MARK: - MockRecoverable Subtype
     struct MockRecoverable: Recoverable {

@@ -7,7 +7,6 @@
 
 import Foundation
 
-// swiftlint:disable nesting
 /// Represents common components encountered when dealing with HTTP.
 public struct HTTP {
     
@@ -233,7 +232,6 @@ public struct HTTP {
         }
     }
 }
-// swiftlint:enable nesting
 
 // MARK: - Common HTTP Header Field Keys
 public extension HTTP.HeaderKey {
