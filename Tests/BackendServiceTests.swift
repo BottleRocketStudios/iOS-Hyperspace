@@ -23,7 +23,6 @@ class BackendServiceTests: XCTestCase {
     private lazy var defaultFailureResponse = HTTP.Response(request: defaultHTTPRequest, code: 500)
 
     // MARK: - Tests
-
     func test_TransportSuccess_TransformsResponseCorrectly() async throws {
         let model = RequestTestDefaults.defaultModel
         let mockedResult = TransportSuccess(response: defaultSuccessResponse)

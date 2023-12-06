@@ -32,9 +32,11 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+// MARK: - Helper
 
-    private func getUser() {
+private extension ViewController {
+
+    func getUser() {
         Task {
             do {
                 let getUserRequest = Request<User>.getUser(withID: 1)
@@ -46,7 +48,7 @@ extension ViewController {
         }
     }
     
-    private func createPost(titled title: String) {
+    func createPost(titled title: String) {
         Task {
             do {
                 let post = NewPost(userId: 1, title: title, body: "")
@@ -59,7 +61,7 @@ extension ViewController {
         }
     }
     
-    private func deletePost(postId: Int) {
+    func deletePost(postId: Int) {
         Task {
             do {
                 let deletePostRequest = Request<Void>.deletePost(withID: postId)

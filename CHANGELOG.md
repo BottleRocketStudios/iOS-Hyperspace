@@ -2,6 +2,16 @@
 
 #### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 5.1.0 (2023-12-06)
+
+#### Enhancements
+
 * Add a `PreparationStrategy` property to `BackendService` to allow for just-in-time modifications to outgoing `Request`s.
 [Will McGinty](https://github.com/wmcginty)
 [#171](https://github.com/BottleRocketStudios/iOS-Hyperspace/pull/171)
@@ -9,6 +19,7 @@
 ##### Bug Fixes
 
 * None
+
 
 ## 5.0.0 (2022-03-15)
 
