@@ -1,10 +1,7 @@
 // : Playground - noun: a place where people can play
 
 import UIKit
-import PlaygroundSupport
 import Hyperspace
-
-PlaygroundPage.current.needsIndefiniteExecution = true
 
 // MARK: - Models
 
@@ -37,25 +34,26 @@ RequestDefaults.defaultCachePolicy = .reloadIgnoringLocalCacheData // Default ca
 
 /// 2. Create your concrete Request types
 
-extension Request where Response == User, Error == AnyError {
+extension Request where Response == User {
 
-    static func getUser(withID id: Int) -> Request<User, AnyError> {
-        return Request(method: .get, url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
+    static func getUser(withID id: Int) -> Request<User> {
+        return Request(url: URL(string: "https://jsonplaceholder.typicode.com/users/\(id)")!)
     }
 }
 
-extension Request where Response == Post, Error == AnyError {
+extension Request where Response == Post {
 
-    static func createPost(_ post: NewPost) -> Request<Post, AnyError> {
+    static func createPost(_ post: NewPost) -> Request<Post> {
         return Request(method: .post, url: URL(string: "https://jsonplaceholder.typicode.com/posts")!, headers: [.contentType: .applicationJSON],
-                       body: try? HTTP.Body(post))
+                       body: try? HTTP.Body.json(post))
     }
 }
+
 
 /// 3. Instantiate your concrete Request types
 
-let getUserRequest = Request<User, AnyError>.getUser(withID: 1)
-let createPostRequest = Request<Post, AnyError>.createPost(NewPost(userId: 1, title: "Test tile", body: "Test body"))
+let getUserRequest = Request<User>.getUser(withID: 1)
+let createPostRequest = Request<Post>.createPost(NewPost(userId: 1, title: "Test tile", body: "Test body"))
 
 /// 4. Create a BackendServices to execute the requests
 
@@ -63,38 +61,27 @@ let backendService = BackendService()
 
 /// 5. Execute the Request
 
-func getUser(completion: @escaping () -> Void) {
-    backendService.execute(request: getUserRequest) { result in
-        switch result {
-        case .success(let user):
-            print("Fetched user: \(user)")
-        case .failure(let error):
-            print("Error fetching user: \(error)")
-        }
-        
-        completion()
+func getUser() async throws {
+    do {
+        let user = try await backendService.execute(request: getUserRequest)
+        print("Fetched user: \(user)")
+    } catch {
+        print("Error fetching user: \(error)")
     }
 }
 
-func createPost(completion: @escaping () -> Void) {
-    backendService.execute(request: createPostRequest) { result in
-        switch result {
-        case .success(let post):
-            print("Created post: \(post)")
-        case .failure(let error):
-            print("Error creating post: \(error)")
-        }
-        
-        completion()
+func createPost() async throws {
+    do {
+        let post = try await backendService.execute(request: createPostRequest)
+        print("Created post: \(post)")
+    } catch {
+        print("Error creating post: \(error)")
     }
 }
 
-func executeExample() {
-    getUser {
-        createPost {
-            PlaygroundPage.current.finishExecution()
-        }
-    }
+func executeExample() async throws {
+    let user = getUser()
+    let createdPost = createPost()
 }
 
 executeExample()

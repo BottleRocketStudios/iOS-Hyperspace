@@ -1,30 +1,21 @@
 // : Playground - noun: a place where people can play
 
 import UIKit
-import PlaygroundSupport
 import Hyperspace
 
-PlaygroundPage.current.needsIndefiniteExecution = true
+extension Request where Response == Void {
 
-extension Request where Response == EmptyResponse, Error == AnyError {
-
-    static func deletePost(withID id: Int) -> Request<EmptyResponse, AnyError> {
-        return Request<EmptyResponse, AnyError>(method: .delete, url: URL(string: "http://jsonplaceholder.typicode.com/posts/\(id)")!) { success in
-            return .success(EmptyResponse())
-        }
+    static func deletePost(withID id: Int) -> Request<Void> {
+        return Request.withEmptyResponse(method: .delete, url: URL(string: "https://jsonplaceholder.typicode.com/posts/\(id)")!)
     }
 }
 
-let deletePostRequest = Request<EmptyResponse, AnyError>.deletePost(withID: 1)
+let deletePostRequest = Request<EmptyResponse>.deletePost(withID: 1)
 let backendService = BackendService()
 
-backendService.execute(request: deletePostRequest) { result in
-    switch result {
-    case .success:
-        debugPrint("Deleted post successfully")
-    case .failure(let error):
-        debugPrint("Error deleting post: \(error)")
-    }
-    
-    PlaygroundPage.current.finishExecution()
+do {
+    try await backendService.execute(request: deletePostRequest)
+    print("Deleted post successfully")
+} catch {
+    print("Error deleting post: \(error)")
 }

@@ -32,49 +32,43 @@ class ViewController: NSViewController {
     }
 }
 
-extension ViewController {
-    private func getUser() {
-        let getUserRequest = Request<User, AnyError>.getUser(withID: 1)
+// MARK: - Helper
 
-        backendService.execute(request: getUserRequest) { [weak self] result in
-            debugPrint("Get user result: \(result)")
+private extension ViewController {
 
-            switch result {
-            case .success(let user):
-                self?.presentAlert(titled: "Fetched user", message: "\(user)")
-            case .failure(let error):
-                self?.presentAlert(titled: "Error", message: "\(error)")
+    func getUser() {
+        Task {
+            do {
+                let getUserRequest = Request<User>.getUser(withID: 1)
+                let user = try await backendService.execute(request: getUserRequest, delegate: nil)
+                presentAlert(titled: "Fetched user", message: "\(user)")
+            } catch {
+                presentAlert(titled: "Error", message: "\(error)")
             }
         }
     }
 
-    private func createPost(titled title: String) {
-        let post = NewPost(userId: 1, title: title, body: "")
-        let createPostRequest = Request<Post, AnyError>.createPost(post)
-
-        backendService.execute(request: createPostRequest) { [weak self] result in
-            debugPrint("Create post result: \(result)")
-
-            switch result {
-            case .success(let post):
-                self?.presentAlert(titled: "Created post", message: "\(post)")
-            case .failure(let error):
-                self?.presentAlert(titled: "Error", message: "\(error)")
+    func createPost(titled title: String) {
+        Task {
+            do {
+                let post = NewPost(userId: 1, title: title, body: "")
+                let createPostRequest = Request<Post>.createPost(post)
+                let createdPost = try await backendService.execute(request: createPostRequest, delegate: nil)
+                presentAlert(titled: "Created post", message: "\(createdPost)")
+            } catch {
+                presentAlert(titled: "Error", message: "\(error)")
             }
         }
     }
 
-    private func deletePost(postId: Int) {
-        let deletePostRequest = Request<EmptyResponse, AnyError>.deletePost(withID: postId)
-
-        backendService.execute(request: deletePostRequest) { [weak self] result in
-            debugPrint("Delete user post: \(result)")
-
-            switch result {
-            case .success:
-                self?.presentAlert(titled: "Deleted Post", message: "Success")
-            case .failure(let error):
-                self?.presentAlert(titled: "Error", message: "\(error)")
+    func deletePost(postId: Int) {
+        Task {
+            do {
+                let deletePostRequest = Request<Void>.deletePost(withID: postId)
+                try await backendService.execute(request: deletePostRequest, delegate: nil)
+                presentAlert(titled: "Deleted Post", message: "Success")
+            } catch {
+                presentAlert(titled: "Error", message: "\(error)")
             }
         }
     }
