@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents an object that can indicate to the user that network activity is currently taking place.
-public protocol NetworkActivityIndicatable {
+public protocol NetworkActivityIndicatable: Sendable {
     var isNetworkActivityIndicatorVisible: Bool { get set }
 }
 
@@ -17,13 +17,13 @@ actor NetworkActivityController {
 
     // MARK: - Properties
     let delayInterval: TimeInterval
-    private(set) var indicator: NetworkActivityIndicatable
+    private(set) var indicator: any NetworkActivityIndicatable
 
     private(set) var activityCount = 0
     private(set) var delayedHide: Task<Void, Never>?
 
     // MARK: - Initializers
-    init(delayInterval: TimeInterval = 1.0, indicator: NetworkActivityIndicatable) {
+    init(delayInterval: TimeInterval = 1.0, indicator: any NetworkActivityIndicatable) {
         self.delayInterval = delayInterval
         self.indicator = indicator
     }

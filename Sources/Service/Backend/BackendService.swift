@@ -10,21 +10,21 @@ import Foundation
 public class BackendService {
     
     // MARK: - Properties
-    public let transportService: Transporting
-    public var preparationStrategies: [PreparationStrategy]
-    public var recoveryStrategies: [RecoveryStrategy]
+    public let transportService: any Transporting
+    public var preparationStrategies: [any PreparationStrategy]
+    public var recoveryStrategies: [any RecoveryStrategy]
 
     // MARK: - Initializers
-    public convenience init(transportService: Transporting = TransportService(), preparationStrategies: PreparationStrategy..., recoveryStrategies: RecoveryStrategy...) {
+    public convenience init(transportService: any Transporting = TransportService(), preparationStrategies: any PreparationStrategy..., recoveryStrategies: any RecoveryStrategy...) {
         self.init(transportService: transportService, preparationStrategies: preparationStrategies, recoveryStrategies: recoveryStrategies)
     }
 
     @available(*, deprecated, renamed: "BackendService.init(transportService:preparationStrategies:recoveryStrategies:)")
-    public convenience init(transportService: Transporting = TransportService(), recoveryStrategies: [RecoveryStrategy]) {
+    public convenience init(transportService: any Transporting = TransportService(), recoveryStrategies: [any RecoveryStrategy]) {
         self.init(transportService: transportService, preparationStrategies: [], recoveryStrategies: recoveryStrategies)
     }
 
-    public init(transportService: Transporting = TransportService(), preparationStrategies: [PreparationStrategy], recoveryStrategies: [RecoveryStrategy]) {
+    public init(transportService: any Transporting = TransportService(), preparationStrategies: [any PreparationStrategy], recoveryStrategies: [any RecoveryStrategy]) {
         self.transportService = transportService
         self.preparationStrategies = preparationStrategies
         self.recoveryStrategies = recoveryStrategies
@@ -60,7 +60,7 @@ extension BackendService: BackendServicing {
     }
 
     @available(iOS 15.0, tvOS 15.0, macOS 12.0, watchOS 8.0, *)
-    public func execute<R>(request: Request<R>, delegate: TransportTaskDelegate?) async throws -> R {
+    public func execute<R>(request: Request<R>, delegate: (any TransportTaskDelegate)?) async throws -> R {
         assert(!(request.method == .get && request.body != nil), "An HTTP GET request should not contain request body data.")
 
         let preparedRequest = try await prepare(toExecute: request)

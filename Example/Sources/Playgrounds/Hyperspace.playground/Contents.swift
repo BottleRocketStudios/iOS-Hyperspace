@@ -49,7 +49,6 @@ extension Request where Response == Post {
     }
 }
 
-
 /// 3. Instantiate your concrete Request types
 
 let getUserRequest = Request<User>.getUser(withID: 1)

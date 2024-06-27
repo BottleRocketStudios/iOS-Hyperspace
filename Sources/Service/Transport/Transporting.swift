@@ -27,7 +27,7 @@ public protocol Transporting {
     /// - Parameters:
     ///   - request: The `URLRequest` to execute.
     @available(iOS 15.0, tvOS 15.0, macOS 12.0, watchOS 8.0, *)
-    func execute(request: URLRequest, delegate: TransportTaskDelegate?) async throws -> TransportSuccess
+    func execute(request: URLRequest, delegate: (any TransportTaskDelegate)?) async throws -> TransportSuccess
 }
 
 // MARK: - TransportService
@@ -36,16 +36,16 @@ public protocol Transporting {
 public actor TransportService {
 
     // MARK: - Properties
-    public let session: TransportSession
+    public let session: any TransportSession
     let networkActivityController: NetworkActivityController?
 
     // MARK: - Initializers
-    public init(session: TransportSession = URLSession.shared, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
+    public init(session: any TransportSession = URLSession.shared, networkActivityIndicatable: (any NetworkActivityIndicatable)? = nil) {
         self.session = session
         self.networkActivityController = networkActivityIndicatable.map { NetworkActivityController(indicator: $0) }
     }
 
-    public init(sessionConfiguration: TransportSessionConfiguration, networkActivityIndicatable: NetworkActivityIndicatable? = nil) {
+    public init(sessionConfiguration: TransportSessionConfiguration, networkActivityIndicatable: (any NetworkActivityIndicatable)? = nil) {
         self.init(session: URLSession(configuration: sessionConfiguration), networkActivityIndicatable: networkActivityIndicatable)
     }
 }
@@ -70,7 +70,7 @@ extension TransportService: Transporting {
     }
 
     @available(iOS 15.0, tvOS 15.0, macOS 12.0, watchOS 8.0, *)
-    public func execute(request: URLRequest, delegate: TransportTaskDelegate? = nil) async throws -> TransportSuccess {
+    public func execute(request: URLRequest, delegate: (any TransportTaskDelegate)? = nil) async throws -> TransportSuccess {
         startTransportTask()
         let (data, urlResponse) = try await session.data(for: request, delegate: delegate)
         finishTransportTask()

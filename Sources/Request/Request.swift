@@ -106,7 +106,7 @@ public struct Request<Response>: Recoverable {
         return map { ($0, $1) }
     }
 
-    public func throwing(_ responseTransformer: @escaping (TransportSuccess, Error) -> Error) -> Request {
+    public func throwing(_ responseTransformer: @escaping (TransportSuccess, any Error) -> any Error) -> Request {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             do {
                 return try await transform(success: transportSuccess)
@@ -162,9 +162,9 @@ public extension Request {
 
 // MARK: - RequestDefaults
 public struct RequestDefaults {
-    
-    public static var defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
-    public static var defaultDecoder: JSONDecoder = JSONDecoder()
-    public static var defaultMaxRecoveryAttempts: UInt = 1
-    public static var defaultTimeout: TimeInterval = 60
+
+    public static let defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
+    public static let defaultDecoder: JSONDecoder = JSONDecoder()
+    public static let defaultMaxRecoveryAttempts: UInt = 1
+    public static let defaultTimeout: TimeInterval = 60
 }

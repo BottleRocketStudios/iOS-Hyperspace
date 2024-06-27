@@ -46,7 +46,7 @@ public extension Recoverable {
 /// - fail: The action should be aborted, the failure returned to the caller.
 public enum RecoveryDisposition<Request> {
     case notAttempted
-    case failure(Error)
+    case failure(any Error)
     case retry(Request)
 }
 
@@ -60,7 +60,7 @@ public protocol RecoveryStrategy {
     ///   - request: The object that encountered a failure.
     ///   - error: The specific failure returned by the operation.
     ///   - completion: The handler to execute once the `RecoveryDisposition` has been determined.
-    func attemptRecovery<R>(from error: Error, executing request: Request<R>) async -> RecoveryDisposition<Request<R>>
+    func attemptRecovery<R>(from error: any Error, executing request: Request<R>) async -> RecoveryDisposition<Request<R>>
 }
 
 // MARK: - DateFormatter + Retry
@@ -82,7 +82,7 @@ extension DateFormatter {
 
 public protocol BackoffStrategy {
 
-    func delay(forRetryCount count: UInt, afterReceiving error: Error) -> TimeInterval
+    func delay(forRetryCount count: UInt, afterReceiving error: any Error) -> TimeInterval
 }
 
 public extension BackoffStrategy {
@@ -105,7 +105,7 @@ public struct ExponentialBackoff: BackoffStrategy {
     public var jitter: ClosedRange<TimeInterval>?
 
     // MARK: - BackoffStrategy
-    public func delay(forRetryCount count: UInt, afterReceiving error: Error) -> TimeInterval {
+    public func delay(forRetryCount count: UInt, afterReceiving error: any Error) -> TimeInterval {
         var delay = TimeInterval(pow(2.0, Float(count))) * 1000
 
         if let jitter {
@@ -122,7 +122,7 @@ public struct HeaderBackoff: BackoffStrategy {
     public var defaultDelay: TimeInterval
 
     // MARK: - BackoffStrategy
-    public func delay(forRetryCount count: UInt, afterReceiving error: Error) -> TimeInterval {
+    public func delay(forRetryCount count: UInt, afterReceiving error: any Error) -> TimeInterval {
         guard let transportFailure = error as? TransportFailure, let response = transportFailure.response else { return defaultDelay }
         return retryInterval(from: response.headers) ?? defaultDelay
     }
@@ -133,11 +133,11 @@ public struct HeaderBackoff: BackoffStrategy {
 public struct BackoffRecoveryStrategy: RecoveryStrategy {
 
     // MARK: - Properties
-    public var handleDecision: (Error) -> Bool
-    public var backoffStrategy: BackoffStrategy
+    public var handleDecision: (any Error) -> Bool
+    public var backoffStrategy: any BackoffStrategy
 
     // MARK: - Initializers
-    public init(backoffStrategy: BackoffStrategy, handlingStatuses: [HTTP.Status] = [.serverError(.serviceUnavailable)]) {
+    public init(backoffStrategy: any BackoffStrategy, handlingStatuses: [HTTP.Status] = [.serverError(.serviceUnavailable)]) {
         self.init(backoffStrategy: backoffStrategy) {
             guard let failure = $0 as? TransportFailure, let response = failure.response else { return false }
 
@@ -145,13 +145,13 @@ public struct BackoffRecoveryStrategy: RecoveryStrategy {
         }
     }
 
-    public init(backoffStrategy: BackoffStrategy, handleDecision: @escaping (Error) -> Bool) {
+    public init(backoffStrategy: any BackoffStrategy, handleDecision: @escaping (any Error) -> Bool) {
         self.handleDecision = handleDecision
         self.backoffStrategy = backoffStrategy
     }
 
     // MARK: - RecoveryStrategy
-    public func attemptRecovery<R>(from error: Error, executing request: Request<R>) async -> RecoveryDisposition<Request<R>> {
+    public func attemptRecovery<R>(from error: any Error, executing request: Request<R>) async -> RecoveryDisposition<Request<R>> {
         guard handleDecision(error) else { return .notAttempted }
         guard let nextAttempt = request.updatedForNextAttempt() else { return .failure(error) }
 

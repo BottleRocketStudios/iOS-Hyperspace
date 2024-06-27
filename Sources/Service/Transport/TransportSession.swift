@@ -11,7 +11,7 @@ public typealias TransportSessionConfiguration = URLSessionConfiguration
 public typealias TransportTaskDelegate = URLSessionTaskDelegate
 
 /// Represents something that can execute a URLRequest to return a TransportDataTask. Modeled after URLSession to allow for injecting mock sessions into a BackendService.
-public protocol TransportSession {
+public protocol TransportSession: Sendable {
     var configuration: TransportSessionConfiguration { get }
 
     @available(iOS, deprecated: 15.0)
@@ -21,7 +21,7 @@ public protocol TransportSession {
     func data(for request: URLRequest) async throws -> (Data, URLResponse)
 
     @available(iOS 15.0, tvOS 15.0, macOS 12.0, watchOS 8.0, *)
-    func data(for request: URLRequest, delegate: TransportTaskDelegate?) async throws -> (Data, URLResponse)
+    func data(for request: URLRequest, delegate: (any TransportTaskDelegate)?) async throws -> (Data, URLResponse)
 }
 
 // MARK: - URLSession Conformance to TransportSession
