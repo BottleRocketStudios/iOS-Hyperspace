@@ -10,7 +10,7 @@ import Foundation
 public extension HTTP {
 
     /// Represents an HTTP request body
-    struct Body: Equatable {
+    struct Body: Equatable, Sendable {
 
         // MARK: - Properties
 

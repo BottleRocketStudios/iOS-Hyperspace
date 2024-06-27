@@ -8,11 +8,12 @@
 import Foundation
 
 /// Encapsulates all the necessary parameters to represent a request that can be sent over the network.
-public struct Request<Response>: Recoverable {
-    
+public struct Request<Response>: Recoverable, Sendable {
+
     // MARK: - Typealiases
-    public typealias Transformer = (TransportSuccess) async throws -> Response
-    public typealias QuickRecoveryTransformer = (TransportFailure) -> TransportSuccess?
+    public typealias Transformer = @Sendable (TransportSuccess) async throws -> Response
+    public typealias SuccessValidator = @Sendable (TransportSuccess) throws -> Void
+    public typealias QuickRecoveryTransformer = @Sendable (TransportFailure) -> TransportSuccess?
 
     @available(*, renamed: "QuickRecoveryTransformer")
     public typealias RecoveryTransformer = QuickRecoveryTransformer
@@ -50,7 +51,7 @@ public struct Request<Response>: Recoverable {
     public var successTransformer: Transformer
 
     /// Validates a given `TransportSuccess` object, `throwing` if necessary. This is only called for otherwise successful requests, and the default implementation does nothing.
-    public var successValidator: (TransportSuccess) throws -> Void = { _ in }
+    public var successValidator: SuccessValidator = { _ in }
 
     /// Attempts to recover from a failure by converting a `TransportFailure` into a `TransportSucces`. The default implementation fails by returning nil.
     public var quickRecoveryTransformer: QuickRecoveryTransformer = { _ in nil }
@@ -88,14 +89,14 @@ public struct Request<Response>: Recoverable {
         return try await successTransformer(serviceSuccess)
     }
     
-    public func map<New>(_ responseTransformer: @escaping (Response) throws -> New) -> Request<New> {
+    public func map<New>(_ responseTransformer: @escaping @Sendable (Response) throws -> New) -> Request<New> {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             let originalResponse = try await transform(success: transportSuccess)
             return try responseTransformer(originalResponse)
         }
     }
 
-    public func map<New>(_ responseTransformer: @escaping (TransportSuccess, Response) throws -> New) -> Request<New> {
+    public func map<New>(_ responseTransformer: @escaping @Sendable (TransportSuccess, Response) throws -> New) -> Request<New> {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             let responseResult = try await transform(success: transportSuccess)
             return try responseTransformer(transportSuccess, responseResult)
@@ -106,7 +107,7 @@ public struct Request<Response>: Recoverable {
         return map { ($0, $1) }
     }
 
-    public func throwing(_ responseTransformer: @escaping (TransportSuccess, any Error) -> any Error) -> Request {
+    public func throwing(_ responseTransformer: @escaping @Sendable (TransportSuccess, any Error) -> any Error) -> Request {
         return .init(method: method, url: url, headers: headers, body: body, cachePolicy: cachePolicy, timeout: timeout) { transportSuccess in
             do {
                 return try await transform(success: transportSuccess)
@@ -161,7 +162,7 @@ public extension Request {
 }
 
 // MARK: - RequestDefaults
-public struct RequestDefaults {
+public struct RequestDefaults: Sendable {
 
     public static let defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
     public static let defaultDecoder: JSONDecoder = JSONDecoder()

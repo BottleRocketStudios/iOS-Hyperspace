@@ -32,14 +32,14 @@ public extension URL {
 
 // MARK: - URLQueryParameterEncoder
 @available(*, deprecated)
-public struct URLQueryParameterEncoder {
+public struct URLQueryParameterEncoder: Sendable {
 
     public init() { /* No op */ }
 
     /// Represents the strategy used to encode query parameters in the URL.
-    public enum EncodingStrategy {
+    public enum EncodingStrategy: Sendable {
         case urlQueryAllowedCharacterSet
-        case custom((String) -> String?)
+        case custom(@Sendable (String) -> String?)
 
         func encode(string: String) -> String? {
             switch self {

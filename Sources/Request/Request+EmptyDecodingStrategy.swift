@@ -45,7 +45,7 @@ public extension Request where Response == Void {
         }
 
         /// The validating `EmptyDecodingStrategy` will first validate that the response data is either nil or empty before returning an `EmptyResponse`.
-        public static func validatedEmpty(throwing errorCreator: @escaping (TransportSuccess) -> any Error) -> EmptyDecodingStrategy {
+        public static func validatedEmpty(throwing errorCreator: @escaping @Sendable (TransportSuccess) -> any Error) -> EmptyDecodingStrategy {
             return EmptyDecodingStrategy { transportSuccess in
                 guard transportSuccess.body.map(\.isEmpty) ?? true else {
                     throw errorCreator(transportSuccess)

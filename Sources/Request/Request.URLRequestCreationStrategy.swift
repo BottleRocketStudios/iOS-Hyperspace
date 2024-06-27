@@ -10,10 +10,10 @@ import Foundation
 public extension Request {
     
     // MARK: - URLRequestCreationStrategy
-    struct URLRequestCreationStrategy {
+    struct URLRequestCreationStrategy: Sendable {
 
         // MARK: - Properties
-        let creationBlock: (Request) -> URLRequest
+        let creationBlock: @Sendable (Request) -> URLRequest
 
         // MARK: - Interface
         func urlRequest(using request: Request) -> URLRequest {
@@ -21,7 +21,7 @@ public extension Request {
         }
 
         // MARK: - Presets
-        public static func custom(_ creationBlock: @escaping (Request) -> URLRequest) -> URLRequestCreationStrategy {
+        public static func custom(_ creationBlock: @escaping @Sendable (Request) -> URLRequest) -> URLRequestCreationStrategy {
             return URLRequestCreationStrategy(creationBlock: creationBlock)
         }
 

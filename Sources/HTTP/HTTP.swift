@@ -8,10 +8,10 @@
 import Foundation
 
 /// Represents common components encountered when dealing with HTTP.
-public struct HTTP {
-    
+public struct HTTP: Sendable {
+
     /// Represents the HTTP method used to execute a network request.
-    public enum Method: String {
+    public enum Method: String, Sendable {
         case get = "GET"
         case head = "HEAD"
         case post = "POST"
@@ -21,7 +21,7 @@ public struct HTTP {
     }
     
     /// Represents the key portion of a HTTP header field key-value pair.
-    public struct HeaderKey: RawRepresentable, Equatable, Hashable, ExpressibleByStringLiteral {
+    public struct HeaderKey: ExpressibleByStringLiteral, Hashable, RawRepresentable, Sendable {
         public var rawValue: String
         
         public init(rawValue: String) {
@@ -34,7 +34,7 @@ public struct HTTP {
     }
     
     /// Represents the value portion of a HTTP header field key-value pair.
-    public struct HeaderValue: RawRepresentable, Equatable, ExpressibleByStringLiteral {
+    public struct HeaderValue: ExpressibleByStringLiteral, Equatable, RawRepresentable, Sendable {
         public var rawValue: String
         
         public init(rawValue: String) {
@@ -47,8 +47,9 @@ public struct HTTP {
     }
     
     /// Represents a HTTP status code.
-    public enum Status: Equatable {
-        public struct Success: RawRepresentable, Equatable {
+    public enum Status: Equatable, Sendable {
+        
+        public struct Success: Equatable, RawRepresentable, Sendable {
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -58,7 +59,7 @@ public struct HTTP {
             public static let acceptedRange: Range<Int> = 200..<300
         }
         
-        public struct Redirection: RawRepresentable, Equatable {
+        public struct Redirection: Equatable, RawRepresentable, Sendable {
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -68,7 +69,7 @@ public struct HTTP {
             public static let acceptedRange: Range<Int> = 300..<400
         }
         
-        public struct ClientError: RawRepresentable, Equatable {
+        public struct ClientError: Equatable, RawRepresentable, Sendable {
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -78,7 +79,7 @@ public struct HTTP {
             public static let acceptedRange: Range<Int> = 400..<500
         }
         
-        public struct ServerError: RawRepresentable, Equatable {
+        public struct ServerError: Equatable, RawRepresentable, Sendable {
             public var rawValue: Int
             
             public init(rawValue: Int) {
@@ -121,7 +122,7 @@ public struct HTTP {
     }
     
     /// Represents an HTTP request
-    public struct Request: Equatable {
+    public struct Request: Equatable, Sendable {
 
         /// The `URL` to which the `Request` originated.
         public let url: URL?
@@ -159,7 +160,7 @@ public struct HTTP {
     }
     
     /// Represents a HTTP response.
-    public struct Response: Equatable {
+    public struct Response: Equatable, Sendable {
 
         /// The `HTTP.Request` object used to receive this response
         public let request: Request

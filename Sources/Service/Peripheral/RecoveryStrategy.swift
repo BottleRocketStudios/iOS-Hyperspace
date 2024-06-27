@@ -44,7 +44,7 @@ public extension Recoverable {
 ///
 /// - retry: The action should be retried with the supplied instance of `Request`.
 /// - fail: The action should be aborted, the failure returned to the caller.
-public enum RecoveryDisposition<Request> {
+public enum RecoveryDisposition<Request: Sendable>: Sendable {
     case notAttempted
     case failure(any Error)
     case retry(Request)
@@ -98,7 +98,7 @@ public extension BackoffStrategy {
     }
 }
 
-public struct ExponentialBackoff: BackoffStrategy {
+public struct ExponentialBackoff: BackoffStrategy, Sendable {
 
     // MARK: - Properties
     public var maximumDelay: TimeInterval?
@@ -116,7 +116,7 @@ public struct ExponentialBackoff: BackoffStrategy {
     }
 }
 
-public struct HeaderBackoff: BackoffStrategy {
+public struct HeaderBackoff: BackoffStrategy, Sendable {
 
     // MARK: - Properties
     public var defaultDelay: TimeInterval
@@ -133,7 +133,7 @@ public struct HeaderBackoff: BackoffStrategy {
 public struct BackoffRecoveryStrategy: RecoveryStrategy {
 
     // MARK: - Properties
-    public var handleDecision: (any Error) -> Bool
+    public var handleDecision: @Sendable (any Error) -> Bool
     public var backoffStrategy: any BackoffStrategy
 
     // MARK: - Initializers
@@ -145,7 +145,7 @@ public struct BackoffRecoveryStrategy: RecoveryStrategy {
         }
     }
 
-    public init(backoffStrategy: any BackoffStrategy, handleDecision: @escaping (any Error) -> Bool) {
+    public init(backoffStrategy: any BackoffStrategy, handleDecision: @Sendable @escaping (any Error) -> Bool) {
         self.handleDecision = handleDecision
         self.backoffStrategy = backoffStrategy
     }

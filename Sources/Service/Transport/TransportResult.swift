@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents the successful result of executing a `Request` using a `TransportService`.
-public struct TransportSuccess: Equatable {
+public struct TransportSuccess: Equatable, Sendable {
 
     // MARK: - Properties
     public let response: HTTP.Response
@@ -23,10 +23,10 @@ public struct TransportSuccess: Equatable {
 }
 
 /// Represents the failed result of executing a `Request` using a `TransportService`.
-public struct TransportFailure: Error, Equatable {
+public struct TransportFailure: Error, Equatable, Sendable {
 
     // MARK: - Kind Subtype
-    public enum Kind: Equatable {
+    public enum Kind: Equatable, Sendable {
         case redirection
         case clientError(HTTP.Status.ClientError)
         case serverError(HTTP.Status.ServerError)
