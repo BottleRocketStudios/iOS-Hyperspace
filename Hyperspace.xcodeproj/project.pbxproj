@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E09D59C2D4976EA00421CB5 /* Recoverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09D59B2D4976EA00421CB5 /* Recoverable.swift */; };
+		0E09D59D2D4976EA00421CB5 /* Recoverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09D59B2D4976EA00421CB5 /* Recoverable.swift */; };
+		0E09D59E2D4976EA00421CB5 /* Recoverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09D59B2D4976EA00421CB5 /* Recoverable.swift */; };
+		0E09D59F2D4976EA00421CB5 /* Recoverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09D59B2D4976EA00421CB5 /* Recoverable.swift */; };
 		0E2EBCF227692AC300EE8625 /* HTTP.Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2EBCF127692AC300EE8625 /* HTTP.Body.swift */; };
 		0E2EBCF327692AC300EE8625 /* HTTP.Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2EBCF127692AC300EE8625 /* HTTP.Body.swift */; };
 		0E2EBCF427692AC300EE8625 /* HTTP.Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2EBCF127692AC300EE8625 /* HTTP.Body.swift */; };
@@ -243,6 +247,7 @@
 		0E09A39E2790AD1300AB7DD8 /* CODEOWNERS */ = {isa = PBXFileReference; lastKnownFileType = text; path = CODEOWNERS; sourceTree = SOURCE_ROOT; };
 		0E09A39F2790AD1300AB7DD8 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = SOURCE_ROOT; };
 		0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Hyperspace.h; path = Sources/Hyperspace.h; sourceTree = SOURCE_ROOT; };
+		0E09D59B2D4976EA00421CB5 /* Recoverable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recoverable.swift; sourceTree = "<group>"; };
 		0E2EBCF127692AC300EE8625 /* HTTP.Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.Body.swift; sourceTree = "<group>"; };
 		0E30297A2A719B1D00F8A6DA /* PreparationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationStrategy.swift; sourceTree = "<group>"; };
 		0E30297F2A719D5400F8A6DA /* PreparationStrategyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationStrategyTests.swift; sourceTree = "<group>"; };
@@ -430,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				B469328E2413539700D2B650 /* TransportResult.swift */,
+				0E09D59B2D4976EA00421CB5 /* Recoverable.swift */,
 			);
 			path = Transport;
 			sourceTree = "<group>";
@@ -1047,6 +1053,7 @@
 			files = (
 				0EC1738E29BFBFFB00170BEC /* HTTP.swift in Sources */,
 				0EC1738D29BFBFF200170BEC /* RecoveryStrategy.swift in Sources */,
+				0E09D59C2D4976EA00421CB5 /* Recoverable.swift in Sources */,
 				0EC1738C29BFBFE300170BEC /* Request+EmptyDecodingStrategy.swift in Sources */,
 				0EC1738B29BFBFD600170BEC /* BackendServicing.swift in Sources */,
 				0EFFCCA32790B34E00D3FD83 /* Request.swift in Sources */,
@@ -1127,6 +1134,7 @@
 			files = (
 				0EC1738929BFBFAE00170BEC /* TransportResult.swift in Sources */,
 				60D6C36D201CC81100B3B012 /* URL+Additions.swift in Sources */,
+				0E09D59E2D4976EA00421CB5 /* Recoverable.swift in Sources */,
 				B476477724137A75003C97E9 /* Request+Decodable.swift in Sources */,
 				0E2EBCF227692AC300EE8625 /* HTTP.Body.swift in Sources */,
 				60D6C36F201CC81100B3B012 /* HTTP.swift in Sources */,
@@ -1179,6 +1187,7 @@
 			files = (
 				B476477C241384E3003C97E9 /* Request+Decodable.swift in Sources */,
 				0E2EBCF427692AC300EE8625 /* HTTP.Body.swift in Sources */,
+				0E09D59D2D4976EA00421CB5 /* Recoverable.swift in Sources */,
 				60D6C385201CCCBE00B3B012 /* URL+Additions.swift in Sources */,
 				0E81B49E20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */,
 				0E95708D284015C500B769E0 /* HTTP.Body+URLForm.swift in Sources */,
@@ -1203,6 +1212,7 @@
 			files = (
 				B476477A241384E2003C97E9 /* Request+Decodable.swift in Sources */,
 				0E2EBCF327692AC300EE8625 /* HTTP.Body.swift in Sources */,
+				0E09D59F2D4976EA00421CB5 /* Recoverable.swift in Sources */,
 				0E81B49D20AC9CB800DC1F4E /* RecoveryStrategy.swift in Sources */,
 				60D6C37B201CCCAE00B3B012 /* HTTP.swift in Sources */,
 				0E95708C284015C500B769E0 /* HTTP.Body+URLForm.swift in Sources */,
