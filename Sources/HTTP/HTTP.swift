@@ -272,12 +272,12 @@ public extension HTTP.HeaderValue {
     static let jsonAPI = HTTP.HeaderValue(rawValue: "application/vnd.api+json")
 
     static func authorizationBasic(username: String, password: String) -> Self? {
-        let credentials = "\(username):\(password)".data(using: .utf8)
-        return credentials.map { HTTP.HeaderValue(rawValue: "Basic \($0.base64EncodedString())") }
+        let credentials = Data("\(username):\(password)".utf8)
+        return .init(rawValue: "Basic \(credentials.base64EncodedString())")
     }
     
     static func authorizationBearer(token: String) -> Self {
-        return HTTP.HeaderValue(rawValue: "Bearer \(token)")
+        return .init(rawValue: "Bearer \(token)")
     }
 }
 

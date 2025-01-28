@@ -33,7 +33,7 @@ class BackendServiceTests: XCTestCase {
     }
 
     func test_TransportResponseTransformFailure_GeneratesDataTransformationError() async throws {
-        let invalidJSONData = "test".data(using: .utf8)!
+        let invalidJSONData = Data("test".utf8)
         let response = HTTP.Response(request: defaultHTTPRequest, code: 200, body: invalidJSONData)
         let decodingError = DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: "The given data was not valid JSON."))
         let mockedResult = TransportSuccess(response: response)
@@ -109,8 +109,8 @@ class BackendServiceTests: XCTestCase {
 
     private func executeBackendService(mockedTransportResult: TransportResult,
                                        expectingResult expectedResult: DefaultModel?,
-                                       expectingError expectedError: Error?,
-                                       file: StaticString = #file,
+                                       expectingError expectedError: (any Error)?,
+                                       file: StaticString = #filePath,
                                        line: UInt = #line) async throws {
         let mockTransportService = MockTransportService(responseResult: mockedTransportResult)
         let backendService = BackendService(transportService: mockTransportService)

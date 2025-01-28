@@ -11,11 +11,6 @@ import Hyperspace
 struct MockObject: Codable {
     let title: String
     let subtitle: String
-
-    init(title: String, subtitle: String) {
-        self.title = title
-        self.subtitle = subtitle
-    }
 }
 
 struct MockDate: Decodable {

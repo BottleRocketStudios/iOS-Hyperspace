@@ -24,7 +24,7 @@ class RequestTests: XCTestCase {
     }
 
     func test_SimplePOSTRequestWithData_GeneratesCorrectURLRequest() {
-        let bodyData = "Test".data(using: .utf8)!
+        let bodyData = Data("Test".utf8)
 
         var request: Request<String> = .simplePOST
         request.body = HTTP.Body(bodyData)
@@ -36,8 +36,8 @@ class RequestTests: XCTestCase {
         let timeout: TimeInterval = 1
         let cachePolicy: URLRequest.CachePolicy = .returnCacheDataDontLoad
 
-        RequestDefaults.defaultTimeout = timeout
-        RequestDefaults.defaultCachePolicy = cachePolicy
+//        RequestDefaults.defaultTimeout = timeout
+//        RequestDefaults.defaultCachePolicy = cachePolicy
 
         let request: Request<Void> = .cachePolicyAndTimeoutRequest
         XCTAssertEqual(request.cachePolicy, cachePolicy)
@@ -47,7 +47,7 @@ class RequestTests: XCTestCase {
     func test_Request_TransformData() async throws {
         let request: Request<Void> = .cachePolicyAndTimeoutRequest
 
-        let data = "this is dummy content".data(using: .utf8)!
+        let data = Data("this is dummy content".utf8)
         let serviceSuccess = TransportSuccess(response: HTTP.Response(request: HTTP.Request(urlRequest: request.urlRequest), code: 200, body: data))
         await XCTAssertNoThrow(try await request.transform(success: serviceSuccess))
     }
@@ -186,7 +186,7 @@ class RequestTests: XCTestCase {
                                      cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
                                      timeout: TimeInterval = 1,
                                      for request: Request<R>,
-                                     file: StaticString = #file,
+                                     file: StaticString = #filePath,
                                      line: UInt = #line) {
         let urlRequest = request.urlRequest
 
