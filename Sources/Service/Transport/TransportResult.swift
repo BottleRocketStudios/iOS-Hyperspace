@@ -53,11 +53,11 @@ public struct TransportFailure: Error, Equatable, Sendable {
 // MARK: - TransportResult
 
 /// Represents the possible resulting values of a `Request` using a `TransportService`.
-typealias TransportResult = Result<TransportSuccess, TransportFailure>
+public typealias TransportResult = Result<TransportSuccess, TransportFailure>
 
 // MARK: - HTTP.Response + TransportResult
-extension HTTP.Response {
-    
+public extension HTTP.Response {
+
     var transportResult: TransportResult {
         switch status {
         case .success: return .success(TransportSuccess(response: self))

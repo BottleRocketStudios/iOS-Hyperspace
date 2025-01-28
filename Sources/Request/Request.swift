@@ -164,8 +164,8 @@ public extension Request {
 // MARK: - RequestDefaults
 public struct RequestDefaults: Sendable {
 
-    public static var defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
-    public static var defaultDecoder: JSONDecoder = JSONDecoder()
-    public static var defaultMaxRecoveryAttempts: UInt = 1
-    public static var defaultTimeout: TimeInterval = 60
+    public static let defaultCachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
+    public static let defaultDecoder: JSONDecoder = JSONDecoder()
+    public static let defaultMaxRecoveryAttempts: UInt = 1
+    public static let defaultTimeout: TimeInterval = 60
 }
