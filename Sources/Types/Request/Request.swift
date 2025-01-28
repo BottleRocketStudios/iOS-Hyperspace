@@ -56,13 +56,6 @@ public struct Request<Response>: Recoverable, Sendable {
     /// Attempts to recover from a failure by converting a `TransportFailure` into a `TransportSucces`. The default implementation fails by returning nil.
     public var quickRecoveryTransformer: QuickRecoveryTransformer = { _ in nil }
 
-    /// Attempts to recover from a failure by converting a `TransportFailure` into a `TransportSucces`. The default implementation fails by returning nil.
-    @available(*, renamed: "quickRecoveryTransformer")
-    public var recoveryTransformer: QuickRecoveryTransformer {
-        get { quickRecoveryTransformer }
-        set { quickRecoveryTransformer = newValue }
-    }
-
     // MARK: - Initializer
     public init(method: HTTP.Method = .get,
                 url: URL,

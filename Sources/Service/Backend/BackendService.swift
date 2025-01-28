@@ -49,7 +49,7 @@ extension BackendService: BackendServicing {
             return try await preparedRequest.transform(success: success)
 
         } catch let transportFailure as TransportFailure {
-            guard let quickRecovered = preparedRequest.recoveryTransformer(transportFailure) else {
+            guard let quickRecovered = preparedRequest.quickRecoveryTransformer(transportFailure) else {
                 return try await attemptToRecover(from: transportFailure, executing: preparedRequest)
             }
 
@@ -71,7 +71,7 @@ extension BackendService: BackendServicing {
             return try await preparedRequest.transform(success: success)
             
         } catch let transportFailure as TransportFailure {
-            guard let quickRecovered = preparedRequest.recoveryTransformer(transportFailure) else {
+            guard let quickRecovered = preparedRequest.quickRecoveryTransformer(transportFailure) else {
                 return try await attemptToRecover(from: transportFailure, executing: preparedRequest, delegate: delegate)
             }
 

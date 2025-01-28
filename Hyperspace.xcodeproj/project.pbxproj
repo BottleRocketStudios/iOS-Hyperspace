@@ -415,6 +415,25 @@
 			name = Deployment;
 			sourceTree = "<group>";
 		};
+		0E09D5992D49748F00421CB5 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				0E09D59A2D4975C600421CB5 /* Transport */,
+				60AC833E1FF596B600120172 /* Extensions */,
+				60AC83411FF596B600120172 /* HTTP */,
+				60AC83431FF596B600120172 /* Request */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		0E09D59A2D4975C600421CB5 /* Transport */ = {
+			isa = PBXGroup;
+			children = (
+				B469328E2413539700D2B650 /* TransportResult.swift */,
+			);
+			path = Transport;
+			sourceTree = "<group>";
+		};
 		0E81B49520AC85B600DC1F4E /* Peripheral */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,10 +511,8 @@
 		60AC82B81FF588D500120172 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0E09D5992D49748F00421CB5 /* Types */,
 				0E09A3A02790AD8F00AB7DD8 /* Hyperspace.h */,
-				60AC833E1FF596B600120172 /* Extensions */,
-				60AC83411FF596B600120172 /* HTTP */,
-				60AC83431FF596B600120172 /* Request */,
 				60AC83471FF596B600120172 /* Service */,
 			);
 			path = Sources;
@@ -559,7 +576,6 @@
 		60AC83481FF596B600120172 /* Transport */ = {
 			isa = PBXGroup;
 			children = (
-				B469328E2413539700D2B650 /* TransportResult.swift */,
 				60AC834A1FF596B600120172 /* Transporting.swift */,
 				60AC834B1FF596B600120172 /* TransportSession.swift */,
 			);

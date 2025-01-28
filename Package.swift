@@ -11,10 +11,12 @@ let package = Package(
         .watchOS(.v6)
     ],
     products: [
-        .library(name: "Hyperspace", targets: ["Hyperspace"])
+        .library(name: "Hyperspace", targets: ["Hyperspace"]),
+        .library(name: "HyperspaceTypes", targets: ["HyperspaceTypes"])
     ],
     targets: [
-        .target(name: "Hyperspace", path: "Sources"),
+        .target(name: "Hyperspace", dependencies: ["HyperspaceTypes"], path: "Sources/Service"),
+        .target(name: "HyperspaceTypes", path: "Sources/Types"),
         .testTarget(name: "HyperspaceTests", dependencies: ["Hyperspace"], path: "Tests")
     ]
 )
