@@ -50,10 +50,10 @@ public extension HTTP {
         ///   - encoder: The `JSONEncoder` to be used to encode the object.
         ///   - additionalHeaders: Any additional HTTP headers that should be sent with the request.
         /// - Returns: A new instance of `HTTP.Body` with the given encodable representation.
-        public static func json<E, C: EncodableContainer>(_ encodable: E, container: C.Type, encoder: JSONEncoder = JSONEncoder(),
-                                                          additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON]) throws -> Self where C.Contained == E {
-                let data = try encoder.encode(encodable, in: container)
-                return .init(data, additionalHeaders: additionalHeaders)
+        public static func json<C: EncodableContainer>(_ encodable: C.Contained, container: C.Type, encoder: JSONEncoder = JSONEncoder(),
+                                                       additionalHeaders: [HeaderKey: HeaderValue] = [.contentType: .applicationJSON]) throws -> Self {
+            let data = try encoder.encode(encodable, in: container)
+            return .init(data, additionalHeaders: additionalHeaders)
         }
     }
 }
