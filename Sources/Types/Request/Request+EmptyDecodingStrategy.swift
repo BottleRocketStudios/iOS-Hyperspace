@@ -30,10 +30,10 @@ public extension Request where Response == Void {
 // MARK: - Request.EmptyDecodingStrategy
 public extension Request where Response == Void {
 
-    struct EmptyDecodingStrategy {
+    struct EmptyDecodingStrategy: Sendable {
 
         // MARK: - Properties
-        let transformer: Transformer
+        public let transformer: Transformer
 
         // MARK: - Preset
 
